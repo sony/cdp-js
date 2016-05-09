@@ -1,0 +1,17 @@
+{
+    "root": "external",
+    "scripts": "scripts",
+    "stylesheets": "stylesheets",
+    "modules": {
+        "flipsnap": {
+            "scripts": {
+                "cwd": ".",
+                "src": "*.js"
+            }
+        },
+        "cdp-ui-jqm": {
+            "vender": "cdp",
+            "component": { }
+        }
+    }
+}

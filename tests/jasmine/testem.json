@@ -1,0 +1,6 @@
+{
+    "framework" : "jasmine",
+    "launch_in_dev" : ["chrome"],
+    "src_files" : [ "external/jquery/scripts/jquery.js",
+                    "tests/jasmine/*.js" ]
+}

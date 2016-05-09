@@ -1,0 +1,8 @@
+{
+  "node": true,
+  "expr": true,
+  "eqnull": true,
+  "shadow": true,
+  "sub": true,
+  "supernew": true
+}

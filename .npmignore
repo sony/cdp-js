@@ -1,0 +1,14 @@
+/bin
+/build
+/external
+/obj
+/src
+/tests
+/BANNER
+/Gruntfile.js
+/*.sln
+/*.csproj
+/*.csproj.user
+/*.suo
+/test-runner.*
+/.npmignore
