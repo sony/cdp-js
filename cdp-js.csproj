@@ -55,6 +55,7 @@
     <TypeScriptTarget>ES5</TypeScriptTarget>
     <TypeScriptIncludeComments>true</TypeScriptIncludeComments>
     <TypeScriptSourceMap>true</TypeScriptSourceMap>
+    <TypeScriptModuleKind>amd</TypeScriptModuleKind>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Release'">
     <TypeScriptTarget>ES5</TypeScriptTarget>
@@ -73,9 +74,34 @@
   <ItemGroup>
     <Content Include="build\build.cdp.js" />
     <Content Include="build\build.config.js" />
+    <Content Include="external\backbone\scripts\backbone.js" />
+    <Content Include="external\cdp\scripts\cdp.core.js" />
+    <Content Include="external\cdp\scripts\cdp.framework.jqm.js" />
+    <Content Include="external\cdp\scripts\cdp.lazyload.js" />
+    <Content Include="external\cdp\scripts\cdp.promise.js" />
+    <Content Include="external\cdp\scripts\cdp.tools.js" />
+    <Content Include="external\cdp\scripts\cdp.ui.jqm.js" />
+    <Content Include="external\cdp\scripts\cdp.ui.listview.js" />
+    <Content Include="external\flipsnap\scripts\flipsnap.js" />
+    <Content Include="external\hogan\scripts\hogan.js" />
+    <Content Include="external\i18next\scripts\i18next.js" />
+    <Content Include="external\i18next\scripts\i18nextBrowserLanguageDetector.js" />
+    <Content Include="external\i18next\scripts\i18nextLocalStorageCache.js" />
+    <Content Include="external\i18next\scripts\i18nextSprintfPostProcessor.js" />
+    <Content Include="external\i18next\scripts\i18nextXHRBackend.js" />
+    <Content Include="external\i18next\scripts\jquery-i18next.js" />
+    <Content Include="external\iscroll\scripts\iscroll-probe.js" />
     <Content Include="external\jquery\scripts\jquery.js" />
+    <Content Include="external\jquery\scripts\jquery.mobile.js" />
+    <Content Include="external\jquery\stylesheets\images\ajax-loader.gif" />
+    <Content Include="external\jquery\stylesheets\jquery.mobile.css" />
+    <Content Include="external\requirejs\scripts\require.js" />
+    <Content Include="external\underscore\scripts\underscore.js" />
     <Content Include="Gruntfile.js" />
     <Content Include="postinstall.js" />
+    <Content Include="src\scripts\cdp.js">
+      <DependentUpon>cdp.ts</DependentUpon>
+    </Content>
     <Content Include="test-runner.js" />
   </ItemGroup>
   <ItemGroup>
@@ -95,15 +121,34 @@
     <Content Include="tests\tslint\tslint.json" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="external\include\cdp.core.d.ts" />
+    <TypeScriptCompile Include="external\include\cdp.framework.jqm.d.ts" />
     <TypeScriptCompile Include="external\include\cdp.lazyload.d.ts" />
+    <TypeScriptCompile Include="external\include\cdp.promise.d.ts" />
+    <TypeScriptCompile Include="external\include\cdp.tools.d.ts" />
+    <TypeScriptCompile Include="external\include\cdp.ui.jqm.d.ts" />
+    <TypeScriptCompile Include="external\include\cdp.ui.listview.d.ts" />
     <TypeScriptCompile Include="external\include\external.d.ts" />
+    <TypeScriptCompile Include="external\include\flipsnap.d.ts" />
+    <TypeScriptCompile Include="external\include\frameworks.d.ts" />
+    <TypeScriptCompile Include="external\include\hogan.d.ts" />
+    <TypeScriptCompile Include="external\include\i18next.d.ts" />
+    <TypeScriptCompile Include="external\include\iscroll.d.ts" />
     <TypeScriptCompile Include="external\include\jasmine.d.ts" />
     <TypeScriptCompile Include="external\include\jquery.d.ts" />
+    <TypeScriptCompile Include="external\include\jquery.mobile.d.ts" />
+    <TypeScriptCompile Include="external\include\modernizr.d.ts" />
     <TypeScriptCompile Include="external\include\require.d.ts" />
-    <TypeScriptCompile Include="src\scripts\_dev.dependencies.d.ts" />
+    <TypeScriptCompile Include="external\include\underscore.d.ts" />
+    <TypeScriptCompile Include="src\scripts\cdp.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include=".npmignore" />
     <Content Include="external-modules.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="src\scripts\cdp.js.map">
+      <DependentUpon>cdp.ts</DependentUpon>
+    </Content>
   </ItemGroup>
 </Project>

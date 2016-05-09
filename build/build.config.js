@@ -19,10 +19,10 @@ module.exports = function (grunt) {
         scripts:        'scripts',      // js/ts/(coffee) directory
         stylesheets:    'stylesheets',  // css/sass/(less) directory
 
-        // config variable entries: module scripts info file.
-        module_scripts_file: 'src/scripts/CDP/_module.scripts.html',
-
         // config variable typedoc targets
         ci_doc_ts_targets: ['src/scripts/CDP/**/*.ts'],
+
+        // ts build settings.
+        ts_module: 'amd',
     });
 };
