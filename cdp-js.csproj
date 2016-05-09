@@ -102,6 +102,21 @@
     <Content Include="src\scripts\cdp.js">
       <DependentUpon>cdp.ts</DependentUpon>
     </Content>
+    <Content Include="src\scripts\core\core.js">
+      <DependentUpon>core.ts</DependentUpon>
+    </Content>
+    <Content Include="src\scripts\core\framework.js">
+      <DependentUpon>framework.ts</DependentUpon>
+    </Content>
+    <Content Include="src\scripts\core\promise.js">
+      <DependentUpon>promise.ts</DependentUpon>
+    </Content>
+    <Content Include="src\scripts\framework\framework.js">
+      <DependentUpon>framework.ts</DependentUpon>
+    </Content>
+    <Content Include="src\scripts\tools\tools.js">
+      <DependentUpon>tools.ts</DependentUpon>
+    </Content>
     <Content Include="test-runner.js" />
   </ItemGroup>
   <ItemGroup>
@@ -121,6 +136,7 @@
     <Content Include="tests\tslint\tslint.json" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="external\include\backbone.d.ts" />
     <TypeScriptCompile Include="external\include\cdp.core.d.ts" />
     <TypeScriptCompile Include="external\include\cdp.framework.jqm.d.ts" />
     <TypeScriptCompile Include="external\include\cdp.lazyload.d.ts" />
@@ -141,6 +157,15 @@
     <TypeScriptCompile Include="external\include\require.d.ts" />
     <TypeScriptCompile Include="external\include\underscore.d.ts" />
     <TypeScriptCompile Include="src\scripts\cdp.ts" />
+    <TypeScriptCompile Include="src\scripts\core\core.ts" />
+    <TypeScriptCompile Include="src\scripts\core\framework.ts" />
+    <TypeScriptCompile Include="src\scripts\core\promise.ts" />
+    <TypeScriptCompile Include="src\scripts\framework\framework.ts" />
+    <TypeScriptCompile Include="src\scripts\tools\tools.ts" />
+    <TypeScriptCompile Include="src\scripts\ui\ui.jqm.ts" />
+    <TypeScriptCompile Include="src\scripts\ui\ui.listview.ts" />
+    <TypeScriptCompile Include="src\scripts\ui\ui.ts" />
+    <TypeScriptCompile Include="src\scripts\_dev.dependencies.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include=".npmignore" />
@@ -149,6 +174,31 @@
   <ItemGroup>
     <Content Include="src\scripts\cdp.js.map">
       <DependentUpon>cdp.ts</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="src\scripts\core\core.js.map">
+      <DependentUpon>core.ts</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="src\scripts\core\promise.js.map">
+      <DependentUpon>promise.ts</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="src\scripts\core\framework.js.map">
+      <DependentUpon>framework.ts</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="src\scripts\framework\framework.js.map">
+      <DependentUpon>framework.ts</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="src\scripts\tools\tools.js.map">
+      <DependentUpon>tools.ts</DependentUpon>
     </Content>
   </ItemGroup>
 </Project>
