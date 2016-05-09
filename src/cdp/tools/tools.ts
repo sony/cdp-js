@@ -1,6 +1,4 @@
-﻿/* tslint:disable:max-line-length */
-
-import _tools = require("cdp.tools");
+﻿import _tools = require("cdp.tools");
 
 /**
  * @class Blob
@@ -14,7 +12,7 @@ export module Blob {
      * @param mimeType {string} [in] MimeType of data
      * @return {Blob} Blob data
      */
-    export let arrayBufferToBlob: (buf: ArrayBuffer, mimeType: string) => Blob = _tools.Blob.arrayBufferToBlob;
+    export let arrayBufferToBlob = _tools.Blob.arrayBufferToBlob;
     /**
      * Base64 string to Blob
      *
@@ -22,73 +20,73 @@ export module Blob {
      * @param mimeType {string} [in] MimeType of data
      * @return {Blob} Blob data
      */
-    export let base64ToBlob: (base64: string, mimeType: string) => Blob = _tools.Blob.base64ToBlob;
+    export let base64ToBlob = _tools.Blob.base64ToBlob;
     /**
      * Base64 string to ArrayBuffer
      *
      * @param base64 {string} [in] Base64 string data
      * @return {ArrayBuffer} ArrayBuffer data
      */
-    export let base64ToArrayBuffer: (base64: string) => ArrayBuffer = _tools.Blob.base64ToArrayBuffer;
+    export let base64ToArrayBuffer = _tools.Blob.base64ToArrayBuffer;
     /**
      * Base64 string to Uint8Array
      *
      * @param base64 {string} [in] Base64 string data
      * @return {Uint8Array} Uint8Array data
      */
-    export let base64ToUint8Array: (encoded: string) => Uint8Array = _tools.Blob.base64ToUint8Array;
+    export let base64ToUint8Array = _tools.Blob.base64ToUint8Array;
     /**
      * ArrayBuffer to base64 string
      *
      * @param arrayBuffer {ArrayBuffer} [in] ArrayBuffer data
      * @return {string} base64 data
      */
-    export let arrayBufferToBase64: (arrayBuffer: ArrayBuffer) => string = _tools.Blob.arrayBufferToBase64;
+    export let arrayBufferToBase64 = _tools.Blob.arrayBufferToBase64;
     /**
      * Uint8Array to base64 string
      *
      * @param bytes {Uint8Array} [in] Uint8Array data
      * @return {string} base64 data
      */
-    export let uint8ArrayToBase64: (bytes: Uint8Array) => string = _tools.Blob.uint8ArrayToBase64;
+    export let uint8ArrayToBase64 = _tools.Blob.uint8ArrayToBase64;
     /**
      * URL Object
      *
      * @return {any} URL Object
      */
-    export let URL: any = _tools.Blob.URL;
+    export let URL = _tools.Blob.URL;
 }
 
 /**
  * @class DateTime
  * @brief 時刻操作のユーティリティクラス
  */
-export let DateTime: CDP.Tools.DateTime = _tools.DateTime;
+export let DateTime = _tools.DateTime;
 
 /**
  * Math.abs よりも高速な abs
  */
-export let abs: (x: number) => number = _tools.abs;
+export let abs = _tools.abs;
 
 /**
  * Math.max よりも高速な max
  */
-export let max: (lhs: number, rhs: number) => number = _tools.max;
+export let max = _tools.max;
 
 /**
  * Math.min よりも高速な min
  */
-export let min: (lhs: number, rhs: number) => number = _tools.min;
+export let min = _tools.min;
 
 /**
  * condition() が true を返すまで deferred
  */
-export let await: (condition: () => boolean, msec?: number) => JQueryPromise<any> = _tools.await;
+export let await = _tools.await;
 
 /**
  * 数値を 0 詰めして文字列を生成
  */
-export let toZeroPadding: (no: number, limit: number) => string = _tools.toZeroPadding;
+export let toZeroPadding = _tools.toZeroPadding;
 
 /**
  * 多重継承のための実行時継承関数
@@ -101,7 +99,7 @@ export let toZeroPadding: (no: number, limit: number) => string = _tools.toZeroP
  * @param subClass   {constructor} [in] オブジェクトの constructor を指定
  * @param superClass {constructor} [in] オブジェクトの constructor を指定
  */
-export let inherit: (subClass: any, superClass: any) => void = _tools.inherit;
+export let inherit = _tools.inherit;
 
 /**
  * mixin 関数
@@ -113,7 +111,7 @@ export let inherit: (subClass: any, superClass: any) => void = _tools.inherit;
  * @param derived {constructor}    [in] 合成されるオブジェクトの constructor を指定
  * @param bases   {constructor...} [in] 合成元オブジェクトの constructor を指定 (可変引数)
  */
-export let mixin: (derived: any, ...bases: any[]) => void = _tools.mixin;
+export let mixin = _tools.mixin;
 
 /**
  * クラス継承のためのヘルパー関数
@@ -123,20 +121,20 @@ export let mixin: (derived: any, ...bases: any[]) => void = _tools.mixin;
  * @param staticProps {Object} [in] static properties をオブジェクトで指定
  * @return {Object} サブクラスのコンストラクタ
  */
-export let extend: (protoProps: Object, staticProps?: Object) => Object = _tools.extend;
+export let extend = _tools.extend;
 
 /**
  * DPI 取得
  */
-export let getDevicePixcelRatio: () => number = _tools.getDevicePixcelRatio;
+export let getDevicePixcelRatio = _tools.getDevicePixcelRatio;
 
 /**
  * Web Worker 起動ユーティリティ
  */
-export let doWork: (worker: Worker | string, msg: any) => JQueryPromise<any> = _tools.doWork;
+export let doWork = _tools.doWork;
 
 /**
  * @class Template
  * @brief template script を管理するユーティリティクラス
  */
-export let Template: CDP.Tools.Template = _tools.Template;
+export let Template = _tools.Template;

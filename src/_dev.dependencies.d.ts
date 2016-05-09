@@ -1,6 +1,6 @@
 ﻿// for development dependencies definition
 
-/// <reference path="../../external/include/frameworks.d.ts" />
+/// <reference path="../external/include/frameworks.d.ts" />
 
 declare module "iscroll" {
     let _IScroll: IScroll;

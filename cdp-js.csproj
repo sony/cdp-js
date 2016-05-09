@@ -99,23 +99,41 @@
     <Content Include="external\underscore\scripts\underscore.js" />
     <Content Include="Gruntfile.js" />
     <Content Include="postinstall.js" />
-    <Content Include="src\scripts\cdp.js">
+    <Content Include="src\cdp.js">
       <DependentUpon>cdp.ts</DependentUpon>
     </Content>
-    <Content Include="src\scripts\core\core.js">
+    <Content Include="src\cdp\core.js">
       <DependentUpon>core.ts</DependentUpon>
     </Content>
-    <Content Include="src\scripts\core\framework.js">
-      <DependentUpon>framework.ts</DependentUpon>
+    <Content Include="src\cdp\core\core.js">
+      <DependentUpon>core.ts</DependentUpon>
     </Content>
-    <Content Include="src\scripts\core\promise.js">
+    <Content Include="src\cdp\core\framework.jqm.js">
+      <DependentUpon>framework.jqm.ts</DependentUpon>
+    </Content>
+    <Content Include="src\cdp\core\promise.js">
       <DependentUpon>promise.ts</DependentUpon>
     </Content>
-    <Content Include="src\scripts\framework\framework.js">
+    <Content Include="src\cdp\framework.js">
       <DependentUpon>framework.ts</DependentUpon>
     </Content>
-    <Content Include="src\scripts\tools\tools.js">
+    <Content Include="src\cdp\framework\jqm.js">
+      <DependentUpon>jqm.ts</DependentUpon>
+    </Content>
+    <Content Include="src\cdp\tools.js">
       <DependentUpon>tools.ts</DependentUpon>
+    </Content>
+    <Content Include="src\cdp\tools\tools.js">
+      <DependentUpon>tools.ts</DependentUpon>
+    </Content>
+    <Content Include="src\cdp\ui.js">
+      <DependentUpon>ui.ts</DependentUpon>
+    </Content>
+    <Content Include="src\cdp\ui\jqm.js">
+      <DependentUpon>jqm.ts</DependentUpon>
+    </Content>
+    <Content Include="src\cdp\ui\listview.js">
+      <DependentUpon>listview.ts</DependentUpon>
     </Content>
     <Content Include="test-runner.js" />
   </ItemGroup>
@@ -156,49 +174,82 @@
     <TypeScriptCompile Include="external\include\modernizr.d.ts" />
     <TypeScriptCompile Include="external\include\require.d.ts" />
     <TypeScriptCompile Include="external\include\underscore.d.ts" />
-    <TypeScriptCompile Include="src\scripts\cdp.ts" />
-    <TypeScriptCompile Include="src\scripts\core\core.ts" />
-    <TypeScriptCompile Include="src\scripts\core\framework.ts" />
-    <TypeScriptCompile Include="src\scripts\core\promise.ts" />
-    <TypeScriptCompile Include="src\scripts\framework\framework.ts" />
-    <TypeScriptCompile Include="src\scripts\tools\tools.ts" />
-    <TypeScriptCompile Include="src\scripts\ui\ui.jqm.ts" />
-    <TypeScriptCompile Include="src\scripts\ui\ui.listview.ts" />
-    <TypeScriptCompile Include="src\scripts\ui\ui.ts" />
-    <TypeScriptCompile Include="src\scripts\_dev.dependencies.d.ts" />
+    <TypeScriptCompile Include="src\cdp.ts" />
+    <TypeScriptCompile Include="src\cdp\core.ts" />
+    <TypeScriptCompile Include="src\cdp\core\core.ts" />
+    <TypeScriptCompile Include="src\cdp\core\framework.jqm.ts" />
+    <TypeScriptCompile Include="src\cdp\core\promise.ts" />
+    <TypeScriptCompile Include="src\cdp\framework.ts" />
+    <TypeScriptCompile Include="src\cdp\framework\jqm.ts" />
+    <TypeScriptCompile Include="src\cdp\tools.ts" />
+    <TypeScriptCompile Include="src\cdp\tools\tools.ts" />
+    <TypeScriptCompile Include="src\cdp\ui.ts" />
+    <TypeScriptCompile Include="src\cdp\ui\jqm.ts" />
+    <TypeScriptCompile Include="src\cdp\ui\listview.ts" />
+    <TypeScriptCompile Include="src\_dev.dependencies.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include=".npmignore" />
     <Content Include="external-modules.json" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="src\scripts\cdp.js.map">
-      <DependentUpon>cdp.ts</DependentUpon>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="src\scripts\core\core.js.map">
+    <Content Include="src\cdp\core\core.js.map">
       <DependentUpon>core.ts</DependentUpon>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="src\scripts\core\promise.js.map">
+    <Content Include="src\cdp\core\framework.jqm.js.map">
+      <DependentUpon>framework.jqm.ts</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="src\cdp\core\promise.js.map">
       <DependentUpon>promise.ts</DependentUpon>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="src\scripts\core\framework.js.map">
-      <DependentUpon>framework.ts</DependentUpon>
+    <Content Include="src\cdp\framework\jqm.js.map">
+      <DependentUpon>jqm.ts</DependentUpon>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="src\scripts\framework\framework.js.map">
-      <DependentUpon>framework.ts</DependentUpon>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="src\scripts\tools\tools.js.map">
+    <Content Include="src\cdp\tools\tools.js.map">
       <DependentUpon>tools.ts</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="src\cdp\ui\jqm.js.map">
+      <DependentUpon>jqm.ts</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="src\cdp\ui\listview.js.map">
+      <DependentUpon>listview.ts</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="src\cdp\core.js.map">
+      <DependentUpon>core.ts</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="src\cdp\framework.js.map">
+      <DependentUpon>framework.ts</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="src\cdp\tools.js.map">
+      <DependentUpon>tools.ts</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="src\cdp\ui.js.map">
+      <DependentUpon>ui.ts</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="src\cdp.js.map">
+      <DependentUpon>cdp.ts</DependentUpon>
     </Content>
   </ItemGroup>
 </Project>

@@ -1,6 +1,4 @@
-﻿/* tslint:disable:max-line-length */
-
-import _promise = require("cdp.promise");
+﻿import _promise = require("cdp.promise");
 
 /**
  * Promise オブジェクトの作成
@@ -10,7 +8,7 @@ import _promise = require("cdp.promise");
  * @param options? {Object}   [in] jQueryPromise を拡張するオブジェクトを指定
  * @return {IPromise} Tools.IPromise オブジェクト
  */
-export let makePromise: <T>(df: JQueryDeferred<T>, options?: any) => CDP.IPromise<T> = _promise.makePromise;
+export let makePromise = _promise.makePromise;
 
 /**
  * Promise オブジェクトの終了を待つ
@@ -19,10 +17,10 @@ export let makePromise: <T>(df: JQueryDeferred<T>, options?: any) => CDP.IPromis
  * @param deferreds {JQueryPromise<T>|JQueryPromise<T>[]} [in] Promise オブジェクト(可変引数, 配列)
  * @return {JQueryPromise<T>} Promise オブジェクト
  */
-export let wait: <T>(deferreds: CDP.IPromise<T>[] | JQueryGenericPromise<T>[] | T[]) => JQueryPromise<T> = _promise.wait;
+export let wait = _promise.wait;
 
 /**
  * @class PromiseManager
  * @brief 複数の DataProvider.Promise を管理するクラス
  */
-export let PromiseManager: new () => CDP.PromiseManager = _promise.PromiseManager;
+export let PromiseManager = _promise.PromiseManager;

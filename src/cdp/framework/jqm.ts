@@ -4,14 +4,14 @@
  * @class Patch
  * @brief patch class for jqm framework.
  */
-export let Patch: CDP.Framework.Patch = _framework.Patch;
+export let Patch = _framework.Patch;
 
 /**
  * Orientation の取得
  *
  * @return {Number} Orientation Code.
  */
-export let getOrientation: () => CDP.Framework.Orientation = _framework.getOrientation;
+export let getOrientation = _framework.getOrientation;
 
 /**
  * path を URL に変換
@@ -20,7 +20,7 @@ export let getOrientation: () => CDP.Framework.Orientation = _framework.getOrien
  *
  * @param path {String} [in] パスを指定。
  */
-export let toUrl: (path: string) => string = _framework.toUrl;
+export let toUrl = _framework.toUrl;
 
 /**
  * "before route change" ハンドラ設定
@@ -28,28 +28,28 @@ export let toUrl: (path: string) => string = _framework.toUrl;
  * @param  {Function} handler 指定.
  * @return {Function} 以前の handler.
  */
-export let setBeforeRouteChangeHandler: (handler: () => JQueryPromise<any>) => () => JQueryPromise<any> = _framework.setBeforeRouteChangeHandler;
+export let setBeforeRouteChangeHandler = _framework.setBeforeRouteChangeHandler;
 
 /**
  * @class Router
  * @brief jQueryMobile と Backbone.Router を調停する Router クラス
  *        ルーティングを開始していない場合にも、navigate() は jQM フレームワークを使用して機能する。
  */
-export let Router: CDP.Framework.Router = _framework.Router;
+export let Router = _framework.Router;
 
 /**
  * Framework の初期化関数
  *
  * @param options {FrameworkOptions} [in] options object.
  */
-export let initialize: (options?: CDP.Framework.FrameworkOptions) => JQueryPromise<any> = _framework.initialize;
+export let initialize = _framework.initialize;
 
 /**
  * 初期化済みか判定
  *
  * @return {Boolean} true: 初期化済み / false: 未初期化
  */
-export let isInitialized: () => boolean = _framework.isInitialized;
+export let isInitialized = _framework.isInitialized;
 
 /**
  * IOrientationChangedListener を Framework に登録
@@ -57,14 +57,14 @@ export let isInitialized: () => boolean = _framework.isInitialized;
  * @param key      {String}                      [in] ID key
  * @param listener {IOrientationChangedListener} [in] IOrientationChangedListener instance
  */
-export let registerOrientationChangedListener: (key: string, listener: CDP.Framework.IOrientationChangedListener) => void = _framework.registerOrientationChangedListener;
+export let registerOrientationChangedListener = _framework.registerOrientationChangedListener;
 
 /**
  * IOrientationChangedListener を Framework から登録解除
  *
  * @param key {String} [in] ID key
  */
-export let unregisterOrientationChangedListener: (key: string) => void = _framework.unregisterOrientationChangedListener;
+export let unregisterOrientationChangedListener = _framework.unregisterOrientationChangedListener;
 
 /**
  * \~english
@@ -77,7 +77,7 @@ export let unregisterOrientationChangedListener: (key: string) => void = _framew
  *
  * @private
  */
-export let setupEventHandlers: () => void = _framework.setupEventHandlers;
+export let setupEventHandlers = _framework.setupEventHandlers;
 
 /**
  * active Page の設定. Framework がコールする.
@@ -85,7 +85,7 @@ export let setupEventHandlers: () => void = _framework.setupEventHandlers;
  * @private
  * @param page {IPage} [in] IPage instance.
  */
-export let setActivePage: (page: CDP.Framework.IPage) => void = _framework.setActivePage;
+export let setActivePage = _framework.setActivePage;
 
 /**
  * Framework が既定に使用するクリックイベント文字列を取得
@@ -93,10 +93,10 @@ export let setActivePage: (page: CDP.Framework.IPage) => void = _framework.setAc
  * @private
  * @return {String} "vclick" / "click"
  */
-export let getDefaultClickEvent: () => string = _framework.getDefaultClickEvent;
+export let getDefaultClickEvent = _framework.getDefaultClickEvent;
 
 /**
  * @class Page
  * @brief すべてのページの基本となる既定クラス
  */
-export let Page: new (_url: string, _id: string, options?: CDP.Framework.PageConstructOptions) => CDP.Framework.Page = _framework.Page;
+export let Page = _framework.Page;
