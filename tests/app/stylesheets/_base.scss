@@ -1,0 +1,67 @@
+﻿@import "utils";
+
+// ICSでは、position: absoluteのDOMとpostion: fixedのDOMが重なった場合、
+// position: absoluteのz-indexの値を、position: fixedのz-indexより大きな値にすると、
+// 指定が無視され position:absoluteのDOMが下にいってしまう。
+// 結果、JQMのDialogやPop-upメニューが表示されない現象が出た。この問題を回避するために、以下の設定が必要。
+.ui-popup-screen {
+    position: fixed;
+}
+
+body {
+    height: 100%;
+    font-family:Arial,Helvetica,sans-serif;
+    overflow: auto;
+    -webkit-text-size-adjust: 100%;
+       -moz-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+            text-size-adjust: 100%;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+
+    article {
+        .ui-btn, .ui-slider {
+            z-index: 2;
+        }
+
+        // figure
+        figure {
+            margin: 0;
+            padding: 0;
+        }
+
+        // font-size
+        p {
+            @include font-base-set(left, ellipsis);
+            overflow: hidden;
+            white-space: nowrap;
+            color: $color-common-white;
+        }
+
+        section {
+            &.normal-screen {
+                padding: 0;
+            }
+            &.fullscreen {
+                position: absolute;
+                padding: 0;
+                margin: 0;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+            }
+            &.fixed-screen {
+                position: absolute;
+                padding: 0;
+                top: 45px;
+                right: 0;
+                bottom: 0;
+                left: 0;
+            }
+        }
+    }
+}

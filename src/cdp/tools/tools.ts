@@ -1,6 +1,6 @@
 ﻿import _tools = require("cdp.tools");
 
-// @class Blob
+// @module Blob
 export module Blob {
     // Blob methods
     export let arrayBufferToBlob    = _tools.Blob.arrayBufferToBlob;
@@ -14,7 +14,8 @@ export module Blob {
 }
 
 // @class DateTime
-export let DateTime = _tools.DateTime;
+export type DateTime = CDP.Tools.DateTime;
+export let  DateTime = _tools.DateTime;
 
 // Tools APIs
 export let abs                  = _tools.abs;
@@ -29,4 +30,8 @@ export let getDevicePixcelRatio = _tools.getDevicePixcelRatio;
 export let doWork               = _tools.doWork;
 
 // @class Template
-export let Template = _tools.Template;
+export type Template = CDP.Tools.Template;
+export let  Template = _tools.Template;
+
+// interfaces
+export type JST = CDP.Tools.JST;

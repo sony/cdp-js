@@ -5,4 +5,9 @@ export let makePromise    = _promise.makePromise;
 export let wait           = _promise.wait;
 
 // @class PromiseManager
-export let PromiseManager = _promise.PromiseManager;
+export type PromiseManager = CDP.PromiseManager;
+export let  PromiseManager = _promise.PromiseManager;
+
+// interfaces
+export type IPromise<T> = CDP.IPromise<T>;
+export type Promise     = CDP.Promise;

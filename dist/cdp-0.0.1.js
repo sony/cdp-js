@@ -1,7 +1,7 @@
 ﻿/*!
  * cdp.js 0.0.1
  *
- * Date: 2016-05-10T19:44:44+0900
+ * Date: 2016-05-10T22:26:32+0900
  */
 /*!
  * cdp.core.js 1.2.0-dev
@@ -7147,7 +7147,6 @@ define("cdp/core/promise", ["require", "exports", "cdp.promise"], function (requ
     // Promise methods
     exports.makePromise = _promise.makePromise;
     exports.wait = _promise.wait;
-    // @class PromiseManager
     exports.PromiseManager = _promise.PromiseManager;
 });
 /// <amd-dependency path="cdp.framework.jqm" />
@@ -7168,13 +7167,13 @@ define("cdp/core", ["require", "exports", "cdp/core/core", "cdp/core/promise", "
 });
 define("cdp/framework/jqm", ["require", "exports", "cdp.framework.jqm"], function (require, exports, _framework) {
     "use strict";
-    // @class Patch
     exports.Patch = _framework.Patch;
+    // @module Platform
+    exports.Platform = _framework.Platform;
     // Framework methods
     exports.getOrientation = _framework.getOrientation;
     exports.toUrl = _framework.toUrl;
     exports.setBeforeRouteChangeHandler = _framework.setBeforeRouteChangeHandler;
-    // @class Router
     exports.Router = _framework.Router;
     // Framework Core APIs
     exports.initialize = _framework.initialize;
@@ -7184,7 +7183,6 @@ define("cdp/framework/jqm", ["require", "exports", "cdp.framework.jqm"], functio
     exports.setupEventHandlers = _framework.setupEventHandlers;
     exports.setActivePage = _framework.setActivePage;
     exports.getDefaultClickEvent = _framework.getDefaultClickEvent;
-    // @class Page
     exports.Page = _framework.Page;
 });
 define("cdp/framework", ["require", "exports", "cdp/framework/jqm"], function (require, exports, jqm_1) {
@@ -7196,7 +7194,7 @@ define("cdp/framework", ["require", "exports", "cdp/framework/jqm"], function (r
 });
 define("cdp/tools/tools", ["require", "exports", "cdp.tools"], function (require, exports, _tools) {
     "use strict";
-    // @class Blob
+    // @module Blob
     var Blob;
     (function (Blob) {
         // Blob methods
@@ -7209,7 +7207,6 @@ define("cdp/tools/tools", ["require", "exports", "cdp.tools"], function (require
         // Blob stuff
         Blob.URL = _tools.Blob.URL;
     })(Blob = exports.Blob || (exports.Blob = {}));
-    // @class DateTime
     exports.DateTime = _tools.DateTime;
     // Tools APIs
     exports.abs = _tools.abs;
@@ -7222,7 +7219,6 @@ define("cdp/tools/tools", ["require", "exports", "cdp.tools"], function (require
     exports.extend = _tools.extend;
     exports.getDevicePixcelRatio = _tools.getDevicePixcelRatio;
     exports.doWork = _tools.doWork;
-    // @class Template
     exports.Template = _tools.Template;
 });
 define("cdp/tools", ["require", "exports", "cdp/tools/tools"], function (require, exports, tools_1) {
@@ -7234,40 +7230,30 @@ define("cdp/tools", ["require", "exports", "cdp/tools/tools"], function (require
 });
 define("cdp/ui/listview", ["require", "exports", "cdp.ui.listview"], function (require, exports, _ui) {
     "use strict";
-    // @class LineProfile
+    // global config
+    exports.ListViewGlobalConfig = _ui.ListViewGlobalConfig;
     exports.LineProfile = _ui.LineProfile;
-    // @class GroupProfile
     exports.GroupProfile = _ui.GroupProfile;
     // ListView APIs
     exports.composeViews = _ui.composeViews;
     exports.deriveViews = _ui.deriveViews;
     exports.mixinViews = _ui.mixinViews;
-    // @class StatusManager
     exports.StatusManager = _ui.StatusManager;
-    // @class PageProfile
     exports.PageProfile = _ui.PageProfile;
-    // @class ScrollerElement
     exports.ScrollerElement = _ui.ScrollerElement;
     // @class ScrollerNative
     exports.ScrollerNative = _ui.ScrollerNative;
-    // @class ScrollerIScroll
     exports.ScrollerIScroll = _ui.ScrollerIScroll;
-    // @class ListItemView
     exports.ListItemView = _ui.ListItemView;
-    // @class ScrollManager
     exports.ScrollManager = _ui.ScrollManager;
-    // @class ListView
     exports.ListView = _ui.ListView;
-    // @class GroupListItemView
     exports.GroupListItemView = _ui.GroupListItemView;
-    // @class ExpandManager
     exports.ExpandManager = _ui.ExpandManager;
-    // @class ExpandableListView
     exports.ExpandableListView = _ui.ExpandableListView;
 });
 define("cdp/ui/jqm", ["require", "exports", "cdp.ui.jqm"], function (require, exports, _ui) {
     "use strict";
-    // @class Toast
+    // @module Toast
     var Toast;
     (function (Toast) {
         // Toast stuff
@@ -7276,15 +7262,10 @@ define("cdp/ui/jqm", ["require", "exports", "cdp.ui.jqm"], function (require, ex
         Toast.StyleBuilderDefault = _ui.Toast.StyleBuilderDefault;
         Toast.show = _ui.Toast.show;
     })(Toast = exports.Toast || (exports.Toast = {}));
-    // @class Dialog
     exports.Dialog = _ui.Dialog;
-    // @class PageContainerView
     exports.PageContainerView = _ui.PageContainerView;
-    // @class PageView
     exports.PageView = _ui.PageView;
-    // @class PageListView
     exports.PageListView = _ui.PageListView;
-    // @class PageExpandableListView
     exports.PageExpandableListView = _ui.PageExpandableListView;
 });
 define("cdp/ui", ["require", "exports", "cdp/ui/listview", "cdp/ui/jqm"], function (require, exports, listview_1, jqm_2) {

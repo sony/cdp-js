@@ -42,6 +42,12 @@ module.exports = function (grunt) {
                         src: ['cdp.d.ts'],
                         dest: '<%= pkgdir %>/include',
                     },
+                    {// for dev
+                        expand: true,
+                        cwd: '<%= tmpdir %>',
+                        src: ['cdp.d.ts'],
+                        dest: '<%= modules %>/include',
+                    },
                 ],
             },
         },

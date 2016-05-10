@@ -149,6 +149,70 @@
     <Content Include="README.md" />
     <Content Include="RELEASENOTE.md" />
     <Content Include="test-runner.bat" />
+    <Content Include="tests\app\index.html" />
+    <Content Include="tests\app\res\images\btn_expand_down.png" />
+    <Content Include="tests\app\res\images\btn_expand_up.png" />
+    <Content Include="tests\app\scripts\app.js">
+      <DependentUpon>app.ts</DependentUpon>
+    </Content>
+    <Content Include="tests\app\scripts\config.js">
+      <DependentUpon>config.ts</DependentUpon>
+    </Content>
+    <Content Include="tests\app\scripts\init.js">
+      <DependentUpon>init.ts</DependentUpon>
+    </Content>
+    <Content Include="tests\app\scripts\Model\ListView\Config.js">
+      <DependentUpon>Config.ts</DependentUpon>
+    </Content>
+    <Content Include="tests\app\scripts\Model\ListView\DataIF.js">
+      <DependentUpon>DataIF.ts</DependentUpon>
+    </Content>
+    <Content Include="tests\app\scripts\Model\ListView\DataModels.js">
+      <DependentUpon>DataModels.ts</DependentUpon>
+    </Content>
+    <Content Include="tests\app\scripts\Model\ListView\DataUtil.js">
+      <DependentUpon>DataUtil.ts</DependentUpon>
+    </Content>
+    <Content Include="tests\app\scripts\Model\ListView\ItemGenerator.js">
+      <DependentUpon>ItemGenerator.ts</DependentUpon>
+    </Content>
+    <Content Include="tests\app\scripts\Model\Settings.js">
+      <DependentUpon>Settings.ts</DependentUpon>
+    </Content>
+    <Content Include="tests\app\scripts\View\ListView\ExpandListItemView.js">
+      <DependentUpon>ExpandListItemView.ts</DependentUpon>
+    </Content>
+    <Content Include="tests\app\scripts\View\ListView\ListViewsRoot.js">
+      <DependentUpon>ListViewsRoot.ts</DependentUpon>
+    </Content>
+    <Content Include="tests\app\scripts\View\ListView\PageExpandListView.js">
+      <DependentUpon>PageExpandListView.ts</DependentUpon>
+    </Content>
+    <Content Include="tests\app\scripts\View\ListView\PageListViewIScroll.js">
+      <DependentUpon>PageListViewIScroll.ts</DependentUpon>
+    </Content>
+    <Content Include="tests\app\scripts\View\ListView\PageListViewNative.js">
+      <DependentUpon>PageListViewNative.ts</DependentUpon>
+    </Content>
+    <Content Include="tests\app\scripts\View\ListView\SimpleListItemView.js">
+      <DependentUpon>SimpleListItemView.ts</DependentUpon>
+    </Content>
+    <Content Include="tests\app\scripts\View\Options.js">
+      <DependentUpon>Options.ts</DependentUpon>
+    </Content>
+    <Content Include="tests\app\scripts\View\Root.js">
+      <DependentUpon>Root.ts</DependentUpon>
+    </Content>
+    <Content Include="tests\app\stylesheets\.gitignore" />
+    <Content Include="tests\app\stylesheets\app.css" />
+    <Content Include="tests\app\stylesheets\startup.css" />
+    <Content Include="tests\app\templates\listviews\listview-root.html" />
+    <Content Include="tests\app\templates\listviews\listview-templates.html" />
+    <Content Include="tests\app\templates\listviews\page-expandable-listview.html" />
+    <Content Include="tests\app\templates\listviews\page-listview-iscroll.html" />
+    <Content Include="tests\app\templates\listviews\page-listview-native.html" />
+    <Content Include="tests\app\templates\main.html" />
+    <Content Include="tests\app\templates\options.html" />
     <Content Include="tests\jasmine\testem.json" />
     <Content Include="tests\jshint\jshintrc.json" />
     <Content Include="tests\tslint\tslint.json" />
@@ -187,6 +251,24 @@
     <TypeScriptCompile Include="src\cdp\ui\jqm.ts" />
     <TypeScriptCompile Include="src\cdp\ui\listview.ts" />
     <TypeScriptCompile Include="src\_dev.dependencies.d.ts" />
+    <TypeScriptCompile Include="tests\app\scripts\app.ts" />
+    <TypeScriptCompile Include="tests\app\scripts\config.ts" />
+    <TypeScriptCompile Include="tests\app\scripts\init.ts" />
+    <TypeScriptCompile Include="tests\app\scripts\Model\ListView\Config.ts" />
+    <TypeScriptCompile Include="tests\app\scripts\Model\ListView\DataIF.ts" />
+    <TypeScriptCompile Include="tests\app\scripts\Model\ListView\DataModels.ts" />
+    <TypeScriptCompile Include="tests\app\scripts\Model\ListView\DataUtil.ts" />
+    <TypeScriptCompile Include="tests\app\scripts\Model\ListView\ItemGenerator.ts" />
+    <TypeScriptCompile Include="tests\app\scripts\Model\Settings.ts" />
+    <TypeScriptCompile Include="tests\app\scripts\View\ListView\ExpandListItemView.ts" />
+    <TypeScriptCompile Include="tests\app\scripts\View\ListView\ListViewsRoot.ts" />
+    <TypeScriptCompile Include="tests\app\scripts\View\ListView\PageExpandListView.ts" />
+    <TypeScriptCompile Include="tests\app\scripts\View\ListView\PageListViewIScroll.ts" />
+    <TypeScriptCompile Include="tests\app\scripts\View\ListView\PageListViewNative.ts" />
+    <TypeScriptCompile Include="tests\app\scripts\View\ListView\SimpleListItemView.ts" />
+    <TypeScriptCompile Include="tests\app\scripts\View\Options.ts" />
+    <TypeScriptCompile Include="tests\app\scripts\View\Root.ts" />
+    <TypeScriptCompile Include="tests\app\scripts\_dev.dependencies.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include=".npmignore" />
@@ -251,5 +333,83 @@
     <Content Include="src\cdp.js.map">
       <DependentUpon>cdp.ts</DependentUpon>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="tests\app\res\data\sample\image\image.json" />
+    <Content Include="tests\app\res\data\sample\image\item.json" />
+    <Content Include="tests\app\res\data\sample\image\metadata.json" />
+    <Content Include="tests\app\res\data\sample\image\recallplayback.json" />
+    <Content Include="tests\app\res\data\sample\image\thumbnail.json" />
+    <Content Include="tests\app\res\locales\translation-dev.json" />
+    <Content Include="tests\app\res\locales\translation-ja.json" />
+    <Content Include="tests\app\stylesheets\app.scss" />
+    <Content Include="tests\app\stylesheets\config.rb" />
+    <Content Include="tests\app\stylesheets\startup.scss" />
+    <Content Include="tests\app\stylesheets\_base.scss" />
+    <Content Include="tests\app\stylesheets\_constant.scss" />
+    <Content Include="tests\app\stylesheets\_listview-samples.scss" />
+    <Content Include="tests\app\stylesheets\_listview.scss" />
+    <Content Include="tests\app\stylesheets\_splash.scss" />
+    <Content Include="tests\app\stylesheets\_utils.scss" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="web.config" />
+    <Content Include="tests\app\scripts\Model\ListView\Config.js.map">
+      <DependentUpon>Config.ts</DependentUpon>
+    </Content>
+    <Content Include="tests\app\scripts\Model\ListView\DataIF.js.map">
+      <DependentUpon>DataIF.ts</DependentUpon>
+    </Content>
+    <Content Include="tests\app\scripts\Model\ListView\DataModels.js.map">
+      <DependentUpon>DataModels.ts</DependentUpon>
+    </Content>
+    <Content Include="tests\app\scripts\Model\ListView\DataUtil.js.map">
+      <DependentUpon>DataUtil.ts</DependentUpon>
+    </Content>
+    <Content Include="tests\app\scripts\Model\ListView\ItemGenerator.js.map">
+      <DependentUpon>ItemGenerator.ts</DependentUpon>
+    </Content>
+    <Content Include="tests\app\scripts\Model\Settings.js.map">
+      <DependentUpon>Settings.ts</DependentUpon>
+    </Content>
+    <Content Include="tests\app\scripts\View\ListView\ExpandListItemView.js.map">
+      <DependentUpon>ExpandListItemView.ts</DependentUpon>
+    </Content>
+    <Content Include="tests\app\scripts\View\ListView\ListViewsRoot.js.map">
+      <DependentUpon>ListViewsRoot.ts</DependentUpon>
+    </Content>
+    <Content Include="tests\app\scripts\View\ListView\PageExpandListView.js.map">
+      <DependentUpon>PageExpandListView.ts</DependentUpon>
+    </Content>
+    <Content Include="tests\app\scripts\View\ListView\PageListViewIScroll.js.map">
+      <DependentUpon>PageListViewIScroll.ts</DependentUpon>
+    </Content>
+    <Content Include="tests\app\scripts\View\ListView\PageListViewNative.js.map">
+      <DependentUpon>PageListViewNative.ts</DependentUpon>
+    </Content>
+    <Content Include="tests\app\scripts\View\ListView\SimpleListItemView.js.map">
+      <DependentUpon>SimpleListItemView.ts</DependentUpon>
+    </Content>
+    <Content Include="tests\app\scripts\View\Options.js.map">
+      <DependentUpon>Options.ts</DependentUpon>
+    </Content>
+    <Content Include="tests\app\scripts\View\Root.js.map">
+      <DependentUpon>Root.ts</DependentUpon>
+    </Content>
+    <Content Include="tests\app\scripts\app.js.map">
+      <DependentUpon>app.ts</DependentUpon>
+    </Content>
+    <Content Include="tests\app\scripts\config.js.map">
+      <DependentUpon>config.ts</DependentUpon>
+    </Content>
+    <Content Include="tests\app\scripts\init.js.map">
+      <DependentUpon>init.ts</DependentUpon>
+    </Content>
+    <None Include="web.Debug.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
+    <None Include="web.Release.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
   </ItemGroup>
 </Project>
