@@ -32,7 +32,6 @@
     "underscore": "~1.8.3"
   },
   "devDependencies": {
-    "flipsnap": "~0.6.3",
     "cdp-core": "git+http://scm.sm.sony.co.jp/gitlab/cdp-jp/cdp-core.git",
     "cdp-external-module-deployer": "git+http://scm.sm.sony.co.jp/gitlab/cdp-jp/cdp-external-module-deployer.git",
     "cdp-framework-jqm": "git+http://scm.sm.sony.co.jp/gitlab/cdp-jp/cdp-framework-jqm.git",
@@ -41,11 +40,14 @@
     "cdp-tools": "git+http://scm.sm.sony.co.jp/gitlab/cdp-jp/cdp-tools.git",
     "cdp-ui-jqm": "git+http://scm.sm.sony.co.jp/gitlab/cdp-jp/cdp-ui-jqm.git",
     "cdp-ui-listview": "git+http://scm.sm.sony.co.jp/gitlab/cdp-jp/cdp-ui-listview.git",
+    "flipsnap": "~0.6.3",
     "grunt": "~1.0.1",
     "grunt-cdp-tasks": "git+http://scm.sm.sony.co.jp/gitlab/cdp-jp/grunt-cdp-tasks.git",
+    "grunt-contrib-requirejs": "~1.0.0",
     "grunt-ts": "~5.4.0",
     "hogan.js": "~3.0.2",
     "iscroll": "~5.2.0",
+    "phantomjs-prebuilt": "~2.1.7",
     "requirejs": "~2.2.0",
     "typescript": "1.8.10"
   }

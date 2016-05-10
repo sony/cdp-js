@@ -20,7 +20,7 @@ module.exports = function (grunt) {
         stylesheets:    'stylesheets',  // css/sass/(less) directory
 
         // config variable typedoc targets
-        ci_doc_ts_targets: ['src/scripts/CDP/**/*.ts'],
+        ci_doc_ts_targets: ['src/**/*.ts'],
 
         // ts build settings.
         ts_module: 'amd',
