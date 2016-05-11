@@ -1,13 +1,17 @@
 ﻿/*!
  * cdp.ui.jqm.d.ts 
  *
- * Date: 2016-04-12T16:10:18+0900
+ * Date: 2016-05-11T19:57:58+0900
  */
 /// <reference path="jquery.d.ts" />
 /// <reference path="jquery.mobile.d.ts" />
 /// <reference path="cdp.framework.jqm.d.ts" />
 /// <reference path="cdp.tools.d.ts" />
 /// <reference path="cdp.ui.listview.d.ts" />
+declare module "cdp.ui.jqm" {
+    let UI: typeof CDP.UI;
+    export = UI;
+}
 declare namespace CDP {
     namespace UI {
         /**

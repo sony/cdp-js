@@ -1,7 +1,7 @@
 ﻿/*!
  * cdp.ui.listview.d.ts 
  *
- * Date: 2016-04-11T12:01:21+0900
+ * Date: 2016-05-11T19:59:07+0900
  */
 /// <reference path="jquery.d.ts" />
 /// <reference path="backbone.d.ts" />
@@ -635,6 +635,10 @@ declare namespace CDP {
         interface BaseExpandableListView extends IExpandableListView, Backbone.View<Backbone.Model> {
         }
     }
+}
+declare module "cdp.ui.listview" {
+    let UI: typeof CDP.UI;
+    export = UI;
 }
 declare namespace CDP {
     namespace UI {

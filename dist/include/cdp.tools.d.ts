@@ -1,10 +1,14 @@
 ﻿/*!
  * cdp.tools.d.ts 
  *
- * Date: 2016-04-06T21:20:48+0900
+ * Date: 2016-05-11T19:59:59+0900
  */
 /// <reference path="jquery.d.ts" />
 /// <reference path="underscore.d.ts" />
+declare module "cdp.tools" {
+    let Tools: typeof CDP.Tools;
+    export = Tools;
+}
 /**
  * @file  Utils.
  * @brief Tools 専用のユーティリティ
