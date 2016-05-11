@@ -42,6 +42,12 @@ module.exports = function (grunt) {
                         src: ['cdp.d.ts'],
                         dest: '<%= pkgdir %>/include',
                     },
+                    {// d.ts
+                        expand: true,
+                        cwd: '<%= modules %>/include',
+                        src: ['cdp*.d.ts', '!cdp.d.ts'],
+                        dest: '<%= pkgdir %>/include',
+                    },
                     {// for dev
                         expand: true,
                         cwd: '<%= tmpdir %>',
@@ -58,6 +64,7 @@ module.exports = function (grunt) {
                     module: '<%= ts_module %>',
                     rootDir: '<%= orgsrc %>',
                     declaration: true,
+                    comments: false,
                 },
                 files: [
                     {
@@ -73,6 +80,7 @@ module.exports = function (grunt) {
         requirejs: {
             deploy: {
                 options: {
+                    preserveLicenseComments: false,
                     baseUrl: '<%= tmpdir %>',
                     include: [
                         'cdp.core',
@@ -100,6 +108,22 @@ module.exports = function (grunt) {
                 },
             },
         },
+        // remove comment
+        uglify: {
+            comment: {
+                options: {
+                    preserveComments: false,
+                    compress: false,
+                    mangle: false,
+                    beautify: true, // avoid issue #696 https://github.com/mishoo/UglifyJS2/issues/696
+                },
+                files: [
+                    {
+                        '<%= tmpdir %>/cdp.js': '<%= tmpdir %>/cdp.js',
+                    },
+                ],
+            },
+        },
     });
 
     //______________________________________________________________________________________________________________//
@@ -114,6 +138,7 @@ module.exports = function (grunt) {
         'ts:deploy',
         'requirejs:deploy',
         '_pkg_proc_inter_revise',
+        'uglify:comment',
         '_pkg_proc_versioning',
         'uglify:pkg_deploy',
         '_pkg_proc_final_revise',
