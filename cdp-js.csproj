@@ -68,8 +68,8 @@
     </PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PostBuildEvent>cd $(ProjectDir)/tests/app/stylesheets
+call compass compile -c config.rb</PostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
     <Content Include="build\build.cdp.js" />
@@ -353,7 +353,6 @@
     <Content Include="tests\app\stylesheets\_utils.scss" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="web.config" />
     <Content Include="tests\app\scripts\Model\ListView\Config.js.map">
       <DependentUpon>Config.ts</DependentUpon>
     </Content>
@@ -405,6 +404,9 @@
     <Content Include="tests\app\scripts\init.js.map">
       <DependentUpon>init.ts</DependentUpon>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="web.config" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
