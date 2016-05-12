@@ -47,6 +47,7 @@
     "cdp-tools": "git+http://scm.sm.sony.co.jp/gitlab/cdp-jp/cdp-tools.git",
     "cdp-ui-jqm": "git+http://scm.sm.sony.co.jp/gitlab/cdp-jp/cdp-ui-jqm.git",
     "cdp-ui-listview": "git+http://scm.sm.sony.co.jp/gitlab/cdp-jp/cdp-ui-listview.git",
+    "expose-loader": "^0.7.1",
     "flipsnap": "~0.6.3",
     "grunt": "~1.0.1",
     "grunt-cdp-tasks": "git+http://scm.sm.sony.co.jp/gitlab/cdp-jp/grunt-cdp-tasks.git",
@@ -55,6 +56,7 @@
     "hogan.js": "~3.0.2",
     "iscroll": "~5.2.0",
     "phantomjs-prebuilt": "~2.1.7",
-    "typescript": "1.8.10"
+    "typescript": "1.8.10",
+    "webpack": "^1.13.0"
   }
 }
