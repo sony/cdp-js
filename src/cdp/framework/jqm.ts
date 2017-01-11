@@ -34,5 +34,4 @@ export type Orientation         = CDP.Framework.Orientation;
 export type IPage               = CDP.Framework.IPage;
 export type ShowEventData       = CDP.Framework.ShowEventData;
 export type HideEventData       = CDP.Framework.HideEventData;
-export type I18NextOptions      = CDP.Framework.I18NextOptions;
 export type FrameworkOptions    = CDP.Framework.FrameworkOptions;

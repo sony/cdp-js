@@ -507,11 +507,12 @@ interface JQuery {
     jqmData(key: string): any;
     jqmData(key: string, value: any): JQuery;
     jqmRemoveData(key: string): JQuery;
-    // Patch: from TS 0.9.5
     one(events: string, handler: (eventObject: JQueryEventObject, data: any) => any): JQuery;
 }
 
 
 interface JQueryStatic {
     mobile: JQueryMobile;
+    // [CDP modified]: add inteface.
+    migrateMute: boolean;   // jquery-migrate
 }

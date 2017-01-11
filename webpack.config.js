@@ -10,15 +10,8 @@ module.exports = {
     },
     externals: {
         'jquery': true,
-        'jquery.mobile': true,
         'backbone': true,
         'underscore': true,
-        'i18next': true,
-        'i18nextXHRBackend': true,
-        'i18nextLocalStorageCache': true,
-        'i18nextSprintfPostProcessor': true,
-        'i18nextBrowserLanguageDetector': true,
-        'jqueryI18next': true,
     },
     // TODO: cdp.framework.jqm と cdp.ui.jqm にて
     //

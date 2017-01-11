@@ -1,4 +1,4 @@
-﻿/// <reference path="../../../external/include/external.d.ts" />
+﻿/// <reference path="../../../external/include/frameworks.d.ts" />
 
 module Config {
 
@@ -21,7 +21,6 @@ module Config {
         paths: {
             // external modules
             "jquery": "external/jquery/scripts/jquery",
-            "jquery.mobile": "external/jquery/scripts/jquery.mobile",
             "underscore": "external/underscore/scripts/underscore",
             "backbone": "external/backbone/scripts/backbone",
             "hogan": "external/hogan/scripts/hogan",
@@ -45,8 +44,9 @@ module Config {
      * jQuery の設定
      */
     export function jquery(): void {
-        $.support.cors = true;            // cross domain request を許可
-        $.ajaxSetup({ cache: false });    // ajax の cache を無効化
+        $.support.cors = true;          // cross domain request を許可
+        $.ajaxSetup({ cache: false });  // ajax の cache を無効化
+        $.migrateMute = true;           // migrate 警告の抑止
     }
 
     /**
@@ -64,8 +64,7 @@ module Config {
      * i18next の設定
      * http://i18next.com/docs/options/#init-options
      */
-    export let i18next = {
-        modulePath: "external/i18next/scripts",
+    export let i18n: CDP.I18NOptions = {
         options: {
             fallbackLng: "dev",
             ns: "translation",

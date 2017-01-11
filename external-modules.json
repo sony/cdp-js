@@ -7,6 +7,7 @@
             "vender": "jquery",
             "scripts": {
                 "ignore": [
+                    "**/core.*",
                     "**/*.slim.*",
                     "**/*.map"
                 ]
@@ -17,55 +18,8 @@
                 "src": "*.js"
             }
         },
-        "requirejs": {
-            "scripts": {
-                "cwd": ".",
-                "src": "*.js"
-            }
-        },
         "underscore": {
             "scripts": {
-                "src": "*.js"
-            }
-        },
-        "i18next": {
-            "scripts": {
-                "cwd": "./dist/umd",
-                "src": "*.js"
-            }
-        },
-        "i18next-browser-languagedetector": {
-            "vender": "i18next",
-            "scripts": {
-                "cwd": "./dist/umd",
-                "src": "*.js"
-            }
-        },
-        "i18next-localstorage-cache": {
-            "vender": "i18next",
-            "scripts": {
-                "cwd": "./dist/umd",
-                "src": "*.js"
-            }
-        },
-        "i18next-sprintf-postprocessor": {
-            "vender": "i18next",
-            "scripts": {
-                "cwd": "./dist/umd",
-                "src": "*.js"
-            }
-        },
-        "i18next-xhr-backend": {
-            "vender": "i18next",
-            "scripts": {
-                "cwd": "./dist/umd",
-                "src": "*.js"
-            }
-        },
-        "jquery-i18next": {
-            "vender": "i18next",
-            "scripts": {
-                "cwd": "./dist/umd",
                 "src": "*.js"
             }
         },
@@ -77,7 +31,7 @@
         },
         "cdp-ui-jqm": {
             "vender": "cdp",
-            "component": { }
+            "component": {}
         }
     }
 }

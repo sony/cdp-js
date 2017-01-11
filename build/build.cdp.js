@@ -85,6 +85,7 @@ module.exports = function (grunt) {
                     include: [
                         'cdp.core',
                         'cdp.promise',
+                        'cdp.i18n',
                         'cdp.framework.jqm',
                         'cdp.tools',
                         'cdp.ui.listview',
@@ -93,15 +94,8 @@ module.exports = function (grunt) {
                     ],
                     paths: {
                         'jquery': 'empty:',
-                        'jquery.mobile': 'empty:',
                         'underscore': 'empty:',
                         'backbone': 'empty:',
-                        'i18next': 'empty:',
-                        'i18nextXHRBackend': 'empty:',
-                        'i18nextLocalStorageCache': 'empty:',
-                        'i18nextSprintfPostProcessor': 'empty:',
-                        'i18nextBrowserLanguageDetector': 'empty:',
-                        'jqueryI18next': 'empty:',
                     },
                     out: '<%= tmpdir %>/cdp.js',
                     optimize: 'none',
@@ -122,6 +116,12 @@ module.exports = function (grunt) {
                         '<%= tmpdir %>/cdp.js': '<%= tmpdir %>/cdp.js',
                     },
                 ],
+            },
+        },
+        // typedoc
+        typedoc: {
+            options: {
+                ignoreCompilerErrors: '<%= modules %>/include/',
             },
         },
     });

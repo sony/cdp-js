@@ -19,6 +19,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UpgradeBackupLocation />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -84,15 +85,8 @@ call compass compile -c config.rb</PostBuildEvent>
     <Content Include="external\cdp\scripts\cdp.ui.listview.js" />
     <Content Include="external\flipsnap\scripts\flipsnap.js" />
     <Content Include="external\hogan\scripts\hogan.js" />
-    <Content Include="external\i18next\scripts\i18next.js" />
-    <Content Include="external\i18next\scripts\i18nextBrowserLanguageDetector.js" />
-    <Content Include="external\i18next\scripts\i18nextLocalStorageCache.js" />
-    <Content Include="external\i18next\scripts\i18nextSprintfPostProcessor.js" />
-    <Content Include="external\i18next\scripts\i18nextXHRBackend.js" />
-    <Content Include="external\i18next\scripts\jquery-i18next.js" />
     <Content Include="external\iscroll\scripts\iscroll-probe.js" />
     <Content Include="external\jquery\scripts\jquery.js" />
-    <Content Include="external\jquery\scripts\jquery.mobile.js" />
     <Content Include="external\jquery\stylesheets\images\ajax-loader.gif" />
     <Content Include="external\jquery\stylesheets\jquery.mobile.css" />
     <Content Include="external\requirejs\scripts\require.js" />
@@ -110,6 +104,9 @@ call compass compile -c config.rb</PostBuildEvent>
     </Content>
     <Content Include="src\cdp\core\framework.jqm.js">
       <DependentUpon>framework.jqm.ts</DependentUpon>
+    </Content>
+    <Content Include="src\cdp\core\i18n.js">
+      <DependentUpon>i18n.ts</DependentUpon>
     </Content>
     <Content Include="src\cdp\core\promise.js">
       <DependentUpon>promise.ts</DependentUpon>
@@ -222,6 +219,7 @@ call compass compile -c config.rb</PostBuildEvent>
     <TypeScriptCompile Include="external\include\backbone.d.ts" />
     <TypeScriptCompile Include="external\include\cdp.core.d.ts" />
     <TypeScriptCompile Include="external\include\cdp.framework.jqm.d.ts" />
+    <TypeScriptCompile Include="external\include\cdp.i18n.d.ts" />
     <TypeScriptCompile Include="external\include\cdp.lazyload.d.ts" />
     <TypeScriptCompile Include="external\include\cdp.promise.d.ts" />
     <TypeScriptCompile Include="external\include\cdp.tools.d.ts" />
@@ -243,6 +241,7 @@ call compass compile -c config.rb</PostBuildEvent>
     <TypeScriptCompile Include="src\cdp\core.ts" />
     <TypeScriptCompile Include="src\cdp\core\core.ts" />
     <TypeScriptCompile Include="src\cdp\core\framework.jqm.ts" />
+    <TypeScriptCompile Include="src\cdp\core\i18n.ts" />
     <TypeScriptCompile Include="src\cdp\core\promise.ts" />
     <TypeScriptCompile Include="src\cdp\framework.ts" />
     <TypeScriptCompile Include="src\cdp\framework\jqm.ts" />
@@ -408,6 +407,10 @@ call compass compile -c config.rb</PostBuildEvent>
   </ItemGroup>
   <ItemGroup>
     <Content Include="web.config" />
+    <Content Include="npm-install.bat" />
+    <Content Include="src\cdp\core\i18n.js.map">
+      <DependentUpon>i18n.ts</DependentUpon>
+    </Content>
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
