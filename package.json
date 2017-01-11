@@ -48,9 +48,14 @@
     "grunt-contrib-requirejs": "^1.0.0",
     "grunt-ts": "^5.4.0",
     "hogan.js": "^3.0.2",
+    "i18next": "^4.1.4",
+    "i18next-browser-languagedetector": "^1.0.1",
+    "i18next-localstorage-cache": "^0.3.0",
+    "i18next-sprintf-postprocessor": "^0.2.2",
+    "i18next-xhr-backend": "^1.2.1",
     "iscroll": "^5.2.0",
+    "jquery-i18next": "^1.2.0",
     "requirejs": "^2.3.2",
-    "typescript": "^2.1.4",
-    "webpack": "^1.14.0"
+    "typescript": "^2.1.4"
   }
 }

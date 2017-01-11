@@ -16,7 +16,7 @@ module Config {
         //        baseUrl: baseUrl[1],
         baseUrl: baseUrl[1].split("tests")[0],
 
-        urlArgs: "bust=" + Date.now(),
+//        urlArgs: "bust=" + Date.now(),
 
         paths: {
             // external modules
