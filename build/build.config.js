@@ -23,6 +23,7 @@ module.exports = function (grunt) {
         ci_doc_ts_targets: ['src/**/*.ts'],
 
         // ts build settings.
+//        ts_module: 'commonjs',
         ts_module: 'amd',
 //        ts_module: 'umd',
     });
