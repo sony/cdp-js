@@ -23,6 +23,14 @@ module.exports = {
             i18nextSprintfPostProcessor: "../node_modules/i18next-sprintf-postprocessor/dist/umd/i18nextSprintfPostProcessor.js",
             i18nextBrowserLanguageDetector: "../node_modules/i18next-browser-languagedetector/dist/umd/i18nextBrowserLanguageDetector",
         },
+    },
+    module: {
+        loaders: [
+            {
+                test: require.resolve("./dist/cdp"),
+                loader: "imports-loader?this=>window"
+            }
+        ]
     }
     // TODO: cdp.framework.jqm と cdp.ui.jqm にて
     //

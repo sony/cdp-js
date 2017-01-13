@@ -75,9 +75,11 @@ call compass compile -c config.rb</PostBuildEvent>
   <ItemGroup>
     <Content Include="build\build.cdp.js" />
     <Content Include="build\build.config.js" />
+    <Content Include="dist\cdp.js" />
     <Content Include="external\backbone\scripts\backbone.js" />
     <Content Include="external\cdp\scripts\cdp.core.js" />
     <Content Include="external\cdp\scripts\cdp.framework.jqm.js" />
+    <Content Include="external\cdp\scripts\cdp.i18n.js" />
     <Content Include="external\cdp\scripts\cdp.lazyload.js" />
     <Content Include="external\cdp\scripts\cdp.promise.js" />
     <Content Include="external\cdp\scripts\cdp.tools.js" />

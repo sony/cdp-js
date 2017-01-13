@@ -24,5 +24,6 @@ module.exports = function (grunt) {
 
         // ts build settings.
         ts_module: 'amd',
+//        ts_module: 'umd',
     });
 };

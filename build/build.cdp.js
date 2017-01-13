@@ -5,6 +5,8 @@
 
 module.exports = function (grunt) {
 
+    var webpack = require('webpack');
+
     grunt.extendConfig({
         // override
         pkg_deploy_module_name: 'cdp',
@@ -68,6 +70,7 @@ module.exports = function (grunt) {
                 },
                 files: [
                     {
+//                        '<%= tmpdir %>/': [
                         '<%= tmpdir %>/cdp.js': [
                             '<%= modules %>/include/*.d.ts',
                             '<%= orgsrc %>/**/*.ts',
@@ -102,6 +105,81 @@ module.exports = function (grunt) {
                 },
             },
         },
+        // webpack
+        webpack: {
+            deploy: {
+                entry: {
+                    index: './<%= tmpdir %>/cdp.js',
+//                    'cdp': './<%= tmpdir %>/cdp.js',
+                    //'cdp/core': './<%= tmpdir %>/cdp/core.js',
+                    //'cdp/tools': './<%= tmpdir %>/cdp/tools.js',
+                },
+                output: {
+                    path: './<%= tmpdir %>',
+//                    filename: '[name].js',
+                    filename: 'cdp.js',
+                    library: 'CDP',
+//                    library: ['CDP', ['name']],
+                    libraryTarget: 'umd',
+                },
+                externals: {
+                    'jquery': true,
+                    'backbone': true,
+                    'underscore': true,
+                },
+                resolve: {
+                    modules: [
+                        //'./<%= tmpdir %>/cdp.js',
+                        //'./<%= tmpdir %>/cdp.core.js',
+                        //'./<%= tmpdir %>/cdp.promise.js',
+                        //'./<%= tmpdir %>/cdp.i18n.js',
+                        //'./<%= tmpdir %>/cdp.framework.jqm.js',
+                        //'./<%= tmpdir %>/cdp.tools.js',
+                        //'./<%= tmpdir %>/cdp.ui.listview.js',
+                        //'./<%= tmpdir %>/cdp.ui.jqm.js',
+                    ],
+                    root: './<%= tmpdir %>',
+                    alias: {
+                        //'cdp/core': './cdp/core',
+                        //'./cdp/framework': './cdp/framework.js',
+                        //'./cdp/tools': './cdp/tools.js',
+                        //'./cdp/ui': './cdp/ui.js',
+                        ////
+                        //'./core/core': __dirname + '/../<%= tmpdir %>/cdp/core/core.js',
+                        //'./core/promise': './cdp/core/promise.js',
+                        //'./core/i18n': './cdp/core/i18n.js',
+                        //'./core/framework.jqm': './cdp/core/framework.jqm.js',
+                        ////
+                        //'./framework/jqm': './cdp/framework/jqm.js',
+                        //'./tools/tools': './cdp/tools/tools.js',
+                        //'./ui/listview': './cdp/ui/listview.js',
+                        //'./ui/jqm': './cdp/ui/jqm.js',
+                        ////
+                        //'cdp.core': __dirname + '/../<%= tmpdir %>/cdp.core.js',
+
+                        //'cdp.core': './cdp.core.js',
+                        //'cdp.promise': './cdp.promise.js',
+                        //'cdp.i18n': './cdp.i18n.js',
+                        //'cdp.framework.jqm': './cdp.framework.jqm.js',
+                        //'cdp.tools': './cdp.tools.js',
+                        //'cdp.ui.listview': './cdp.ui.listview.js',
+                        //'cdp.ui.jqm': './cdp.ui.jqm.js',
+                    },
+                },
+                //module: {
+                //    loaders: [
+                //        {
+                //            loader: "imports-loader?this=>window",
+                //        },
+                //    ]
+                //},
+                //plugins: [
+                //    new webpack.optimize.LimitChunkCountPlugin({
+                //        maxChunks: 1,
+                //    }),
+                //],
+            },
+        },
         // remove comment
         uglify: {
             comment: {
@@ -128,7 +206,8 @@ module.exports = function (grunt) {
 
     //______________________________________________________________________________________________________________//
 
-    grunt.loadNpmTasks('grunt-contrib-requirejs');
+//    grunt.loadNpmTasks('grunt-contrib-requirejs');
+    grunt.loadNpmTasks('grunt-webpack');
 
     //______________________________________________________________________________________________________________//
 
@@ -136,7 +215,8 @@ module.exports = function (grunt) {
         '_pkg_proc_parse_cmdline',
         'copy:deploy_prepare',
         'ts:deploy',
-        'requirejs:deploy',
+//        'requirejs:deploy',
+        'webpack:deploy',
         '_pkg_proc_inter_revise',
         'uglify:comment',
         '_pkg_proc_versioning',
