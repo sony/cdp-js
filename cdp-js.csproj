@@ -75,6 +75,7 @@ call compass compile -c config.rb</PostBuildEvent>
   <ItemGroup>
     <Content Include="build\build.cdp.js" />
     <Content Include="build\build.config.js" />
+    <None Include="build\res\shim.define.tpl" />
     <Content Include="dist\cdp.js" />
     <Content Include="external\backbone\scripts\backbone.js" />
     <Content Include="external\cdp\scripts\cdp.core.js" />

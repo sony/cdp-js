@@ -5,7 +5,7 @@
 
 module.exports = function (grunt) {
 
-    var webpack = require('webpack');
+    var fs = require('fs');
 
     grunt.extendConfig({
         // override
@@ -66,8 +66,7 @@ module.exports = function (grunt) {
                     module: '<%= ts_module %>',
                     rootDir: '<%= orgsrc %>',
                     declaration: true,
-//                    declaration: false,
-                    comments: false,
+                    comments: true,
                 },
                 files: [
                     {
@@ -84,7 +83,7 @@ module.exports = function (grunt) {
         requirejs: {
             deploy: {
                 options: {
-                    preserveLicenseComments: false,
+                    preserveLicenseComments: true,
                     baseUrl: '<%= tmpdir %>',
                     name: 'cdp',
                     include: [
@@ -95,7 +94,6 @@ module.exports = function (grunt) {
                         'cdp.tools',
                         'cdp.ui.listview',
                         'cdp.ui.jqm',
-//                        'cdp',
                     ],
                     paths: {
                         'jquery': 'empty:',
@@ -104,6 +102,13 @@ module.exports = function (grunt) {
                     },
                     out: '<%= tmpdir %>/cdp.js',
                     optimize: 'none',
+                    onBuildWrite: function (name, path, contents) {
+                        if ('cdp' === name) {
+                            var shim = fs.readFileSync('build/res/shim.define.tpl').toString();
+                            contents = shim + contents;
+                        }
+                        return contents.replace('define([', 'define("' + name + '", [');
+                    }
                 },
             },
         },
@@ -112,16 +117,11 @@ module.exports = function (grunt) {
             deploy: {
                 entry: {
                     index: './<%= tmpdir %>/cdp.js',
-//                    'cdp': './<%= tmpdir %>/cdp.js',
-                    //'cdp/core': './<%= tmpdir %>/cdp/core.js',
-                    //'cdp/tools': './<%= tmpdir %>/cdp/tools.js',
                 },
                 output: {
                     path: './<%= tmpdir %>',
                     filename: 'cdp.js',
                     library: 'CDP',
-//                    library: ['cdp', 'framework', 'cdp/framework'],
-//                    library: ['CDP', ['name']],
                     libraryTarget: 'umd',
                 },
                 externals: {
@@ -130,286 +130,8 @@ module.exports = function (grunt) {
                     'underscore': true,
                 },
                 resolve: {
-                    modules: [
-                        //'./<%= tmpdir %>/cdp.js',
-                        //'./<%= tmpdir %>/cdp.core.js',
-                        //'./<%= tmpdir %>/cdp.promise.js',
-                        //'./<%= tmpdir %>/cdp.i18n.js',
-                        //'./<%= tmpdir %>/cdp.framework.jqm.js',
-                        //'./<%= tmpdir %>/cdp.tools.js',
-                        //'./<%= tmpdir %>/cdp.ui.listview.js',
-                        //'./<%= tmpdir %>/cdp.ui.jqm.js',
-                    ],
                     root: './<%= tmpdir %>',
-                    alias: {
-                        //'cdp/core': './cdp/core',
-                        //'./cdp/framework': './cdp/framework.js',
-                        //'./cdp/tools': './cdp/tools.js',
-                        //'./cdp/ui': './cdp/ui.js',
-                        ////
-                        //'./core/core': __dirname + '/../<%= tmpdir %>/cdp/core/core.js',
-                        //'./core/promise': './cdp/core/promise.js',
-                        //'./core/i18n': './cdp/core/i18n.js',
-                        //'./core/framework.jqm': './cdp/core/framework.jqm.js',
-                        ////
-                        //'./framework/jqm': './cdp/framework/jqm.js',
-                        //'./tools/tools': './cdp/tools/tools.js',
-                        //'./ui/listview': './cdp/ui/listview.js',
-                        //'./ui/jqm': './cdp/ui/jqm.js',
-                        ////
-                        //'cdp.core': __dirname + '/../<%= tmpdir %>/cdp.core.js',
-
-                        //'cdp.core': './cdp.core.js',
-                        //'cdp.promise': './cdp.promise.js',
-                        //'cdp.i18n': './cdp.i18n.js',
-                        //'cdp.framework.jqm': './cdp.framework.jqm.js',
-                        //'cdp.tools': './cdp.tools.js',
-                        //'cdp.ui.listview': './cdp.ui.listview.js',
-                        //'cdp.ui.jqm': './cdp.ui.jqm.js',
-                    },
                 },
-                //module: {
-                //    loaders: [
-                //        {
-                //            loader: "imports-loader?this=>window",
-                //        },
-                //    ]
-                //},
-                //plugins: [
-                //    new webpack.optimize.LimitChunkCountPlugin({
-                //        maxChunks: 1,
-                //    }),
-                //],
-            },
-            umd: {
-                entry: {
-                    'cdp': './<%= tmpdir %>/cdp.js',
-                    'cdp/core': ['./<%= tmpdir %>/cdp/core.js'],
-                    'cdp/framework': ['./<%= tmpdir %>/cdp/framework.js'],
-                    'cdp/tools': ['./<%= tmpdir %>/cdp/tools.js'],
-                    'cdp/ui': ['./<%= tmpdir %>/cdp/ui.js'],
-                },
-                output: {
-                    path: './<%= tmpdir %>',
-                    filename: 'cdp.entry.js',
-//                    filename: 'entry[name].js',
-                    library: 'CDP',
-//                    library: ['CDP', ['name']],
-                    libraryTarget: 'umd',
-                },
-                externals: {
-                    'jquery': true,
-                    'backbone': true,
-                    'underscore': true,
-                    'cdp.core': true,
-                    'cdp.promise': true,
-                    'cdp.i18n': true,
-                    'cdp.framework.jqm': true,
-                    'cdp.tools': true,
-                    'cdp.ui.listview': true,
-                    'cdp.ui.jqm': true,
-                },
-                resolve: {
-                    modules: [
-                        //'./<%= tmpdir %>/cdp.js',
-                        //'./<%= tmpdir %>/cdp.core.js',
-                        //'./<%= tmpdir %>/cdp.promise.js',
-                        //'./<%= tmpdir %>/cdp.i18n.js',
-                        //'./<%= tmpdir %>/cdp.framework.jqm.js',
-                        //'./<%= tmpdir %>/cdp.tools.js',
-                        //'./<%= tmpdir %>/cdp.ui.listview.js',
-                        //'./<%= tmpdir %>/cdp.ui.jqm.js',
-                    ],
-                    root: './<%= tmpdir %>',
-                    alias: {
-                        //'cdp/core': './cdp/core',
-                        //'./cdp/framework': './cdp/framework.js',
-                        //'./cdp/tools': './cdp/tools.js',
-                        //'./cdp/ui': './cdp/ui.js',
-                        ////
-                        //'./core/core': __dirname + '/../<%= tmpdir %>/cdp/core/core.js',
-                        //'./core/promise': './cdp/core/promise.js',
-                        //'./core/i18n': './cdp/core/i18n.js',
-                        //'./core/framework.jqm': './cdp/core/framework.jqm.js',
-                        ////
-                        //'./framework/jqm': './cdp/framework/jqm.js',
-                        //'./tools/tools': './cdp/tools/tools.js',
-                        //'./ui/listview': './cdp/ui/listview.js',
-                        //'./ui/jqm': './cdp/ui/jqm.js',
-                        ////
-                        //'cdp.core': __dirname + '/../<%= tmpdir %>/cdp.core.js',
-
-                        //'cdp.core': './cdp.core.js',
-                        //'cdp.promise': './cdp.promise.js',
-                        //'cdp.i18n': './cdp.i18n.js',
-                        //'cdp.framework.jqm': './cdp.framework.jqm.js',
-                        //'cdp.tools': './cdp.tools.js',
-                        //'cdp.ui.listview': './cdp.ui.listview.js',
-                        //'cdp.ui.jqm': './cdp.ui.jqm.js',
-                    },
-                },
-                //module: {
-                //    loaders: [
-                //        {
-                //            loader: "imports-loader?this=>window",
-                //        },
-                //    ]
-                //},
-                //plugins: [
-                //    new webpack.optimize.LimitChunkCountPlugin({
-                //        maxChunks: 1,
-                //    }),
-                //],
-            },
-            concat: {
-                entry: {
-                    'cdp': './<%= tmpdir %>/cdp.entry.js',
-                    'cdp.core': ['./<%= tmpdir %>/cdp.core.js'],
-                    'cdp.promise': ['./<%= tmpdir %>/cdp.promise.js'],
-                    'cdp.i18n': ['./<%= tmpdir %>/cdp.i18n.js'],
-                    'cdp.framework.jqm': ['./<%= tmpdir %>/cdp.framework.jqm.js'],
-                    'cdp.tools': ['./<%= tmpdir %>/cdp.tools.js'],
-                    'cdp.ui.listview': ['./<%= tmpdir %>/cdp.ui.listview.js'],
-                    'cdp.ui.jqm': ['./<%= tmpdir %>/cdp.ui.jqm.js'],
-                },
-                output: {
-                    path: './<%= tmpdir %>',
-                    filename: 'cdp.umd.js',
-                    library: 'CDP',
-                    libraryTarget: 'umd',
-                },
-                externals: {
-                    'jquery': true,
-                    'backbone': true,
-                    'underscore': true,
-                },
-                resolve: {
-                    modules: [
-                        //'./<%= tmpdir %>/cdp.js',
-                        //'./<%= tmpdir %>/cdp.core.js',
-                        //'./<%= tmpdir %>/cdp.promise.js',
-                        //'./<%= tmpdir %>/cdp.i18n.js',
-                        //'./<%= tmpdir %>/cdp.framework.jqm.js',
-                        //'./<%= tmpdir %>/cdp.tools.js',
-                        //'./<%= tmpdir %>/cdp.ui.listview.js',
-                        //'./<%= tmpdir %>/cdp.ui.jqm.js',
-                    ],
-                    root: './<%= tmpdir %>',
-                    alias: {
-                        //'cdp/core': './cdp/core',
-                        //'./cdp/framework': './cdp/framework.js',
-                        //'./cdp/tools': './cdp/tools.js',
-                        //'./cdp/ui': './cdp/ui.js',
-                        ////
-                        //'./core/core': __dirname + '/../<%= tmpdir %>/cdp/core/core.js',
-                        //'./core/promise': './cdp/core/promise.js',
-                        //'./core/i18n': './cdp/core/i18n.js',
-                        //'./core/framework.jqm': './cdp/core/framework.jqm.js',
-                        ////
-                        //'./framework/jqm': './cdp/framework/jqm.js',
-                        //'./tools/tools': './cdp/tools/tools.js',
-                        //'./ui/listview': './cdp/ui/listview.js',
-                        //'./ui/jqm': './cdp/ui/jqm.js',
-                        ////
-                        //'cdp.core': __dirname + '/../<%= tmpdir %>/cdp.core.js',
-
-                        //'cdp.core': './cdp.core.js',
-                        //'cdp.promise': './cdp.promise.js',
-                        //'cdp.i18n': './cdp.i18n.js',
-                        //'cdp.framework.jqm': './cdp.framework.jqm.js',
-                        //'cdp.tools': './cdp.tools.js',
-                        //'cdp.ui.listview': './cdp.ui.listview.js',
-                        //'cdp.ui.jqm': './cdp.ui.jqm.js',
-                    },
-                },
-                //plugins: [
-                //    new webpack.optimize.LimitChunkCountPlugin({
-                //        maxChunks: 1,
-                //    }),
-                //],
-            },
-            final: {
-                entry: {
-                    index: './<%= tmpdir %>/cdp.js',
-                    //'cdp': './<%= tmpdir %>/cdp.js',
-                    //'cdp/core': ['./<%= tmpdir %>/cdp/core.js'],
-                    //'cdp/framework': ['./<%= tmpdir %>/cdp/framework.js'],
-                    //'cdp/tools': ['./<%= tmpdir %>/cdp/tools.js'],
-                    //'cdp/ui': ['./<%= tmpdir %>/cdp/ui.js'],
-                    //'cdp.core': ['./<%= tmpdir %>/cdp.core.js'],
-                    //'cdp.promise': ['./<%= tmpdir %>/cdp.promise.js'],
-                    //'cdp.i18n': ['./<%= tmpdir %>/cdp.i18n.js'],
-                    //'cdp.framework.jqm': ['./<%= tmpdir %>/cdp.framework.jqm.js'],
-                    //'cdp.tools': ['./<%= tmpdir %>/cdp.tools.js'],
-                    //'cdp.ui.listview': ['./<%= tmpdir %>/cdp.ui.listview.js'],
-                    //'cdp.ui.jqm': ['./<%= tmpdir %>/cdp.ui.jqm.js'],
-                },
-                output: {
-                    path: './<%= tmpdir %>',
-                    filename: 'cdp.umd.js',
-                    library: 'CDP',
-                    libraryTarget: 'umd',
-                },
-                externals: {
-                    'jquery': true,
-                    'backbone': true,
-                    'underscore': true,
-                },
-                extensions: [".webpack-loader.js", ".web-loader.js", ".loader.js", ".js"],
-                resolve: {
-                    modules: [
-                        './<%= tmpdir %>/cdp/core.js',
-                        './<%= tmpdir %>/cdp/framework.js',
-                        './<%= tmpdir %>/cdp/tools.js',
-                        './<%= tmpdir %>/cdp/ui.js',
-                        './<%= tmpdir %>/cdp.core.js',
-                        './<%= tmpdir %>/cdp.promise.js',
-                        './<%= tmpdir %>/cdp.i18n.js',
-                        './<%= tmpdir %>/cdp.framework.jqm.js',
-                        './<%= tmpdir %>/cdp.tools.js',
-                        './<%= tmpdir %>/cdp.ui.listview.js',
-                        './<%= tmpdir %>/cdp.ui.jqm.js',
-                    ],
-                    root: './<%= tmpdir %>',
-                    alias: {
-                        'cdp/core': './cdp/core',
-                        //'./cdp/framework': './cdp/framework.js',
-                        //'./cdp/tools': './cdp/tools.js',
-                        //'./cdp/ui': './cdp/ui.js',
-                        ////
-                        //'./core/core': __dirname + '/../<%= tmpdir %>/cdp/core/core.js',
-                        //'./core/promise': './cdp/core/promise.js',
-                        //'./core/i18n': './cdp/core/i18n.js',
-                        //'./core/framework.jqm': './cdp/core/framework.jqm.js',
-                        ////
-                        //'./framework/jqm': './cdp/framework/jqm.js',
-                        //'./tools/tools': './cdp/tools/tools.js',
-                        //'./ui/listview': './cdp/ui/listview.js',
-                        //'./ui/jqm': './cdp/ui/jqm.js',
-                        ////
-                        //'cdp.core': __dirname + '/../<%= tmpdir %>/cdp.core.js',
-
-                        //'cdp.core': './cdp.core.js',
-                        //'cdp.promise': './cdp.promise.js',
-                        //'cdp.i18n': './cdp.i18n.js',
-                        //'cdp.framework.jqm': './cdp.framework.jqm.js',
-                        //'cdp.tools': './cdp.tools.js',
-                        //'cdp.ui.listview': './cdp.ui.listview.js',
-                        //'cdp.ui.jqm': './cdp.ui.jqm.js',
-                    },
-                },
-                //module: {
-                //    loaders: [
-                //        {
-                //            loader: "imports-loader?this=>window",
-                //        },
-                //    ]
-                //},
-                //plugins: [
-                //    new webpack.optimize.LimitChunkCountPlugin({
-                //        maxChunks: 1,
-                //    }),
-                //],
             },
         },
         // remove comment
@@ -439,31 +161,9 @@ module.exports = function (grunt) {
     //______________________________________________________________________________________________________________//
 
     grunt.loadNpmTasks('grunt-contrib-requirejs');
-    grunt.loadNpmTasks('grunt-webpack');
+//    grunt.loadNpmTasks('grunt-webpack');
 
     //______________________________________________________________________________________________________________//
-
-    grunt.registerTask('test_ts', [
-        '_pkg_proc_parse_cmdline',
-        'copy:deploy_prepare',
-        'ts:deploy',
-    ]);
-
-    grunt.registerTask('test_webpack', [
-        'webpack:deploy',
-    ]);
-
-    grunt.registerTask('test_webpack_umd', [
-        'webpack:umd',
-    ]);
-
-    grunt.registerTask('test_webpack_concat', [
-        'webpack:concat',
-    ]);
-
-    grunt.registerTask('test_webpack_final', [
-    'webpack:final',
-    ]);
 
     grunt.registerTask('deploy', [
         '_pkg_proc_parse_cmdline',
