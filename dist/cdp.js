@@ -1,7 +1,7 @@
 ﻿/*!
  * cdp.js 1.0.0
  *
- * Date: 2017-01-13T21:09:18+0900
+ * Date: 2017-01-14T19:28:40+0900
  */
 (function(root, factory) {
     if (typeof define === "function" && define.amd) {
@@ -70,11 +70,13 @@
         return Patch;
     }();
     var _webRoot = function() {
-        var baseUrl = /(.+\/)[^\/]*#[^\/]+/.exec(location.href);
-        if (!baseUrl) {
-            baseUrl = /(.+\/)/.exec(location.href);
+        if (root.location) {
+            var baseUrl = /(.+\/)[^\/]*#[^\/]+/.exec(root.location.href);
+            if (!baseUrl) {
+                baseUrl = /(.+\/)/.exec(root.location.href);
+            }
+            return baseUrl[1];
         }
-        return baseUrl[1];
     }();
     function _init(options) {
         setTimeout(function() {
@@ -272,7 +274,7 @@
 });
 
 (function webpackUniversalModuleDefinition(root, factory) {
-    if (typeof exports === "object" && typeof module === "object") module.exports = factory(require("jquery"), require("cdp.core")); else if (typeof define === "function" && define.amd) define("cdp.i18n", [ "jquery", "cdp.core" ], factory); else if (typeof exports === "object") exports["CDP"] = factory(require("jquery"), require("cdp.core")); else root["CDP"] = factory(root["jquery"], root["cdp.core"]);
+    if (typeof exports === "object" && typeof module === "object") module.exports = factory(require("jquery"), require("cdp.core")); else if (typeof define === "function" && define.amd) define("cdp.i18n", [ "jquery", "cdp.core" ], factory); else if (typeof exports === "object") exports["CDP"] = factory(require("jquery"), require("cdp.core")); else root["CDP"] = factory(root["jQuery"], root["CDP"]);
 })(this, function(__WEBPACK_EXTERNAL_MODULE_1__, __WEBPACK_EXTERNAL_MODULE_2__) {
     return function(modules) {
         var installedModules = {};
@@ -3033,8 +3035,8 @@
 });
 
 (function webpackUniversalModuleDefinition(root, factory) {
-    if (typeof exports === "object" && typeof module === "object") module.exports = factory(require("cdp.i18n"), require("cdp.promise"), require("backbone"), require("jquery")); else if (typeof define === "function" && define.amd) define("cdp.framework.jqm", [ "cdp.i18n", "cdp.promise", "backbone", "jquery" ], factory); else if (typeof exports === "object") exports["CDP.Framework"] = factory(require("cdp.i18n"), require("cdp.promise"), require("backbone"), require("jquery")); else root["CDP.Framework"] = factory(root["cdp.i18n"], root["cdp.promise"], root["backbone"], root["jquery"]);
-})(this, function(__WEBPACK_EXTERNAL_MODULE_1__, __WEBPACK_EXTERNAL_MODULE_2__, __WEBPACK_EXTERNAL_MODULE_3__, __WEBPACK_EXTERNAL_MODULE_6__) {
+    if (typeof exports === "object" && typeof module === "object") module.exports = factory(require("cdp.i18n"), require("cdp.promise"), require("backbone"), require("jquery")); else if (typeof define === "function" && define.amd) define("cdp.framework.jqm", [ "cdp.i18n", "cdp.promise", "backbone", "jquery" ], factory); else if (typeof exports === "object") exports["CDP.Framework"] = factory(require("cdp.i18n"), require("cdp.promise"), require("backbone"), require("jquery")); else root["CDP.Framework"] = factory(root["CDP"], root["CDP"], root["Backbone"], root["jQuery"]);
+})(this, function(__WEBPACK_EXTERNAL_MODULE_1__, __WEBPACK_EXTERNAL_MODULE_2__, __WEBPACK_EXTERNAL_MODULE_3__, __WEBPACK_EXTERNAL_MODULE_5__) {
     return function(modules) {
         var installedModules = {};
         function __webpack_require__(moduleId) {
@@ -3998,11 +4000,6 @@
                                         Framework.Patch.apply();
                                     }
                                     config.jquery();
-                                    if (!isAMD()) {
-                                        console.warn(TAG + "need to init for 'jquery.mobile', 'i18Next' and 'CDP.Framework.Router' manually, because cdp.framework depends on require.js.");
-                                        _initializedState.done = true;
-                                        return df.resolve();
-                                    }
                                     $(document).on("mobileinit", function() {
                                         config.jquerymobile();
                                         CDP.initializeI18N(config.i18n).always(function(info) {
@@ -4030,13 +4027,13 @@
                                                 console.warn(TAG + "jquery-migrate for 3.0.0+ in use.");
                                             }
                                             !function() {
-                                                var __WEBPACK_AMD_REQUIRE_ARRAY__ = [ __webpack_require__(5) ];
+                                                var __WEBPACK_AMD_REQUIRE_ARRAY__ = [ __webpack_require__(4) ];
                                                 (function() {
-                                                    ![ __webpack_require__(7) ];
+                                                    ![ __webpack_require__(6) ];
                                                 }).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__);
                                             }();
                                         } else {
-                                            ![ __webpack_require__(7) ];
+                                            ![ __webpack_require__(6) ];
                                         }
                                     }
                                 },
@@ -4116,9 +4113,6 @@
                                 anchorVclick: true
                             };
                             return $.extend({}, defConfig, CDP.global.Config, options);
-                        }
-                        function isAMD() {
-                            return "function" === "function" && __webpack_require__(4);
                         }
                         $(window).on("resize", function(event) {
                             var newOrientation = Framework.getOrientation();
@@ -4369,16 +4363,12 @@
         module.exports = __WEBPACK_EXTERNAL_MODULE_2__;
     }, function(module, exports) {
         module.exports = __WEBPACK_EXTERNAL_MODULE_3__;
-    }, function(module, exports) {
-        (function(__webpack_amd_options__) {
-            module.exports = __webpack_amd_options__;
-        }).call(exports, {});
     }, function(module, exports, __webpack_require__) {
         var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;
         (function() {
             (function(factory) {
                 if (true) {
-                    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [ __webpack_require__(6) ], __WEBPACK_AMD_DEFINE_RESULT__ = function($) {
+                    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [ __webpack_require__(5) ], __WEBPACK_AMD_DEFINE_RESULT__ = function($) {
                         return factory($, window);
                     }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
                 } else if (typeof module === "object" && module.exports) {
@@ -4753,13 +4743,13 @@
             });
         }).call(window);
     }, function(module, exports) {
-        module.exports = __WEBPACK_EXTERNAL_MODULE_6__;
+        module.exports = __WEBPACK_EXTERNAL_MODULE_5__;
     }, function(module, exports, __webpack_require__) {
         var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;
         (function() {
             (function(root, doc, factory) {
                 if (true) {
-                    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [ __webpack_require__(6) ], __WEBPACK_AMD_DEFINE_RESULT__ = function($) {
+                    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [ __webpack_require__(5) ], __WEBPACK_AMD_DEFINE_RESULT__ = function($) {
                         factory($, root, doc);
                         return $.mobile;
                     }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
@@ -17471,6 +17461,12 @@
     })(CDP || (CDP = {}));
     return CDP.UI;
 });
+
+(function(root) {
+    if (!(typeof define === "function" && define.amd)) {
+        root.define = function() {};
+    }
+})(this);
 
 define("cdp/core/core", [ "require", "exports", "cdp.core" ], function(require, exports, _core) {
     "use strict";
