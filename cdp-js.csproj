@@ -86,6 +86,8 @@ call compass compile -c config.rb</PostBuildEvent>
     <Content Include="external\cdp\scripts\cdp.tools.js" />
     <Content Include="external\cdp\scripts\cdp.ui.jqm.js" />
     <Content Include="external\cdp\scripts\cdp.ui.listview.js" />
+    <Content Include="external\cdp\stylesheets\cdp.ui.jqm.structure.css" />
+    <Content Include="external\cdp\stylesheets\cdp.ui.jqm.swatch.css" />
     <Content Include="external\flipsnap\scripts\flipsnap.js" />
     <Content Include="external\hogan\scripts\hogan.js" />
     <Content Include="external\iscroll\scripts\iscroll-probe.js" />
