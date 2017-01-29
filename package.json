@@ -48,7 +48,6 @@
     "grunt-ts": "^5.4.0",
     "hogan.js": "^3.0.2",
     "iscroll": "^5.2.0",
-    "jquery-i18next": "^1.2.0",
     "requirejs": "^2.3.2",
     "typescript": "^2.1.5"
   }

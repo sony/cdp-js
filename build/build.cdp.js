@@ -6,6 +6,8 @@
 module.exports = function (grunt) {
 
     var fs = require('fs');
+    var path = require('path');
+    var sourceNodes = [];
 
     grunt.extendConfig({
         // override
@@ -59,6 +61,18 @@ module.exports = function (grunt) {
                 ],
             },
         },
+        // clean
+        clean: {
+            deploy: {
+                files: [
+                    {// work files.
+                        expand: true,
+                        cwd: '<%= tmpdir %>',
+                        src: ['**/*-all.js', '**/*.map'],
+                    },
+                ],
+            },
+        },
         // typescript
         ts: {
             deploy: {
@@ -70,7 +84,6 @@ module.exports = function (grunt) {
                 },
                 files: [
                     {
-//                        '<%= tmpdir %>/': [
                         '<%= tmpdir %>/cdp.js': [
                             '<%= modules %>/include/*.d.ts',
                             '<%= orgsrc %>/**/*.ts',
@@ -100,37 +113,11 @@ module.exports = function (grunt) {
                         'underscore': 'empty:',
                         'backbone': 'empty:',
                     },
-                    out: '<%= tmpdir %>/cdp.js',
+                    out: '<%= tmpdir %>/cdp-all.js',
                     optimize: 'none',
                     onBuildWrite: function (name, path, contents) {
-                        if ('cdp' === name) {
-                            var shim = fs.readFileSync('build/res/shim.define.tpl').toString();
-                            contents = shim + contents;
-                        }
-                        return contents.replace('define([', 'define("' + name + '", [');
+                        return setSourceNode(name, path, contents);
                     }
-                },
-            },
-        },
-        // webpack
-        webpack: {
-            deploy: {
-                entry: {
-                    index: './<%= tmpdir %>/cdp.js',
-                },
-                output: {
-                    path: './<%= tmpdir %>',
-                    filename: 'cdp.js',
-                    library: 'CDP',
-                    libraryTarget: 'umd',
-                },
-                externals: {
-                    'jquery': true,
-                    'backbone': true,
-                    'underscore': true,
-                },
-                resolve: {
-                    root: './<%= tmpdir %>',
                 },
             },
         },
@@ -161,18 +148,80 @@ module.exports = function (grunt) {
     //______________________________________________________________________________________________________________//
 
     grunt.loadNpmTasks('grunt-contrib-requirejs');
-//    grunt.loadNpmTasks('grunt-webpack');
 
     //______________________________________________________________________________________________________________//
 
+    // set SouceNode onBuildWrite()
+    function setSourceNode(name, path, code) {
+        // ensure module name
+        code = code.replace('define([', 'define("' + name + '", [');
+
+        // create sourceNode from code.
+        var node = grunt.cdp.getSourceNodeFromCode(code);
+
+        // add shim chunk if special case.
+        if ('cdp' === name) {
+            var shim = fs.readFileSync('build/res/shim.define.tpl')
+                .toString()
+                .replace(/\r\n/gm, '\n')
+                .replace(/\ufeff/gm, '')
+            ;
+            node.prepend(shim + '\n');
+        }
+
+        // cache node
+        sourceNodes.push(node);
+
+        return node.toString();
+    }
+
+    // generate bunner node
+    function generateBannerNode() {
+        var banner = '\ufeff' + grunt.cdp.getBannerString(
+                grunt.config.get('pkg').name.replace(/-/g, '.'),
+                grunt.config.get('pkg').version
+            )
+            .replace(/\ufeff/gm, '')
+            // TODO: add dependent modules info.
+        ;
+        return grunt.cdp.getSourceNodeFromCode(banner);
+    }
+
+    //______________________________________________________________________________________________________________//
+
+    // build from source node
+    grunt.registerTask('build_srcnode', 'build from source node', function () {
+        var output = path.join(grunt.config.get('tmpdir'), grunt.config.get('pkg').name.replace(/-/g, '.'));
+
+        var node = generateBannerNode();
+        sourceNodes.forEach(function (srcnode) {
+            node.add(srcnode);
+        });
+
+        var script = grunt.cdp.getScriptFromSourceNode(node, function (source) {
+            return source
+                .replace('../src/', 'cdp:///exports:/')
+                .replace('webpack:/webpack', 'webpack:///webpack')
+                .replace('webpack:/external', 'webpack:///external')
+            ;
+        });
+        fs.writeFileSync(output, script, 'utf8');
+
+        // disable automatic banner setup
+        grunt.cdp.setUntergetExtVersioningBanner('.js');
+    });
+
     grunt.registerTask('deploy', [
+        'clean:dstdir',
+        'clean:pkg_deploy',
         '_pkg_proc_parse_cmdline',
         'copy:deploy_prepare',
         'ts:deploy',
         'requirejs:deploy',
-//        'webpack:deploy',
+        'build_srcnode',
+        'clean:deploy',
         '_pkg_proc_inter_revise',
-        'uglify:comment',
+//        'uglify:comment',
         '_pkg_proc_versioning',
         'uglify:pkg_deploy',
         '_pkg_proc_final_revise',

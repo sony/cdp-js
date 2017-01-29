@@ -138,7 +138,6 @@ call compass compile -c config.rb</PostBuildEvent>
       <DependentUpon>listview.ts</DependentUpon>
     </Content>
     <Content Include="test-runner.js" />
-    <Content Include="webpack.config.js" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="BANNER" />
