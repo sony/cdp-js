@@ -5,6 +5,7 @@
         var path = require('path');
         var glob = require('glob');
 
+        // TODO: package.json で管理
         var targets = [
             'cdp-core',
             'cdp-promise',

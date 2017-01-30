@@ -7,6 +7,7 @@ module.exports = function (grunt) {
 
     var fs = require('fs');
     var path = require('path');
+    var _ = grunt.libs._;
     var sourceNodes = [];
 
     grunt.extendConfig({
@@ -99,6 +100,7 @@ module.exports = function (grunt) {
                     preserveLicenseComments: true,
                     baseUrl: '<%= tmpdir %>',
                     name: 'cdp',
+                    // TODO: package.json Ç≈ä«óù
                     include: [
                         'cdp.core',
                         'cdp.promise',
@@ -177,12 +179,37 @@ module.exports = function (grunt) {
 
     // generate bunner node
     function generateBannerNode() {
+        var dependencies = (function () {
+            // TODO: package.json Ç≈ä«óù
+            var targets = [
+                'cdp-core',
+                'cdp-promise',
+                'cdp-i18n',
+                'cdp-framework-jqm',
+                'cdp-tools',
+                'cdp-ui-listview',
+                'cdp-ui-jqm',
+            ];
+
+            var modules = [];
+            targets.forEach(function (target) {
+                var json = grunt.file.readJSON(path.join(process.cwd(), 'node_modules', target, 'package.json'));
+                modules.push({
+                    name: json.name.replace(/-/g, '.') + '.js',
+                    version: json.version,
+                });
+            });
+
+            var include = grunt.file.read(path.join(process.cwd(), 'BANNER-INCLUDES')).toString();
+            return _.template(include)({ modules: modules });
+        })();
+
         var banner = '\ufeff' + grunt.cdp.getBannerString(
                 grunt.config.get('pkg').name.replace(/-/g, '.'),
                 grunt.config.get('pkg').version
             )
+            .replace(' */', dependencies)
             .replace(/\ufeff/gm, '')
-            // TODO: add dependent modules info.
         ;
         return grunt.cdp.getSourceNodeFromCode(banner);
     }
