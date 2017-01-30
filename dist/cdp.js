@@ -1,9 +1,9 @@
 ﻿/*!
  * cdp.js 1.0.0
  *
- * Date: 2017-01-30T16:41:29+0900
+ * Date: 2017-01-30T17:19:28+0900
  *
- * dependencies:
+ * including:
  *     cdp.core.js 2.0.0
  *     cdp.promise.js 2.0.0
  *     cdp.i18n.js 2.0.0

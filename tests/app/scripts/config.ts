@@ -28,6 +28,7 @@ module Config {
 
             // cdp module
             "cdp": "dist/cdp",
+//            "cdp": "dist/cdp-1.0.0.min",
 
             // application
             "app": "tests/app/scripts/app",

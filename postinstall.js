@@ -5,17 +5,7 @@
         var path = require('path');
         var glob = require('glob');
 
-        // TODO: package.json で管理
-        var targets = [
-            'cdp-core',
-            'cdp-promise',
-            'cdp-i18n',
-            'cdp-framework-jqm',
-            'cdp-tools',
-            'cdp-ui-listview',
-            'cdp-ui-jqm',
-        ];
-
+        var targets = require('./package.json').includeLibraries.slice();
         var exports = [];
         targets.forEach(function (target) {
             var location = path.join('node_modules', target, 'exports') + '/**/*.ts';

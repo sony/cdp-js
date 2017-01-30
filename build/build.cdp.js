@@ -100,7 +100,7 @@ module.exports = function (grunt) {
                     preserveLicenseComments: true,
                     baseUrl: '<%= tmpdir %>',
                     name: 'cdp',
-                    // TODO: package.json Ç≈ä«óù
+                    /*
                     include: [
                         'cdp.core',
                         'cdp.promise',
@@ -109,7 +109,18 @@ module.exports = function (grunt) {
                         'cdp.tools',
                         'cdp.ui.listview',
                         'cdp.ui.jqm',
+                        :
                     ],
+                    */
+                    include: (function () {
+                        var pkg = path.join(process.cwd(), 'package.json');
+                        var targets = require(pkg).includeLibraries.slice();
+                        var modules = [];
+                        targets.forEach(function (target) {
+                            modules.push(target.replace(/-/g, '.'));
+                        });
+                        return modules;
+                    })(),
                     paths: {
                         'jquery': 'empty:',
                         'underscore': 'empty:',
@@ -180,16 +191,7 @@ module.exports = function (grunt) {
     // generate bunner node
     function generateBannerNode() {
         var dependencies = (function () {
-            // TODO: package.json Ç≈ä«óù
-            var targets = [
-                'cdp-core',
-                'cdp-promise',
-                'cdp-i18n',
-                'cdp-framework-jqm',
-                'cdp-tools',
-                'cdp-ui-listview',
-                'cdp-ui-jqm',
-            ];
+            var targets = grunt.config.get('pkg').includeLibraries.slice();
 
             var modules = [];
             targets.forEach(function (target) {
