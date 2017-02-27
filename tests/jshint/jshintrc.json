@@ -2,6 +2,7 @@
   "node": true,
   "expr": true,
   "eqnull": true,
+  "proto": true,
   "shadow": true,
   "sub": true,
   "supernew": true
