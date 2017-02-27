@@ -78,6 +78,8 @@ call compass compile -c config.rb</PostBuildEvent>
     <Content Include="BANNER-INCLUDES" />
     <None Include="build\res\shim.define.tpl" />
     <Content Include="dist\cdp.js" />
+    <Content Include="dist\cdp.structure.css" />
+    <Content Include="dist\cdp.swatch.css" />
     <Content Include="external\backbone\scripts\backbone.js" />
     <Content Include="external\cdp\scripts\cdp.core.js" />
     <Content Include="external\cdp\scripts\cdp.framework.jqm.js" />
@@ -95,6 +97,9 @@ call compass compile -c config.rb</PostBuildEvent>
     <Content Include="external\jquery\scripts\jquery.js" />
     <Content Include="external\jquery\stylesheets\images\ajax-loader.gif" />
     <Content Include="external\jquery\stylesheets\jquery.mobile.css" />
+    <Content Include="external\jquery\stylesheets\jquery.mobile.default-theme.css" />
+    <Content Include="external\jquery\stylesheets\jquery.mobile.icons.css" />
+    <Content Include="external\jquery\stylesheets\jquery.mobile.structure.css" />
     <Content Include="external\requirejs\scripts\require.js" />
     <Content Include="external\underscore\scripts\underscore.js" />
     <Content Include="Gruntfile.js" />

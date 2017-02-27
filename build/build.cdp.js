@@ -53,6 +53,15 @@ module.exports = function (grunt) {
                         src: ['cdp*.d.ts', '!cdp.d.ts'],
                         dest: '<%= pkgdir %>/include',
                     },
+                    {// css
+                        expand: true,
+                        cwd: '<%= modules %>/cdp/<%= stylesheets %>',
+                        src: ['*.css'],
+                        dest: '<%= pkgdir %>',
+                        rename: function (dest, src) {
+                            return dest + '/' + src.replace('cdp.ui.jqm', 'cdp');
+                        }
+                    },
                     {// for dev
                         expand: true,
                         cwd: '<%= tmpdir %>',
