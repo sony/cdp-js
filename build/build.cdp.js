@@ -59,7 +59,10 @@ module.exports = function (grunt) {
                         src: ['*.css'],
                         dest: '<%= pkgdir %>',
                         rename: function (dest, src) {
-                            return dest + '/' + src.replace('cdp.ui.jqm', 'cdp');
+                            var version_suffix_regex = /([0-9]+\.[0-9]+\.[A-Za-z0-9_\-]+)/;
+                            return dest + '/' + src
+                                .replace('cdp.ui.jqm', 'cdp')
+                                .replace(version_suffix_regex, grunt.config.get("pkg").version);
                         }
                     },
                     {// for dev

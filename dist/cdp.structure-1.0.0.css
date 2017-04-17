@@ -1,7 +1,7 @@
 ﻿/*!
  * cdp.ui.jqm.structure.css 2.0.0
  *
- * Date: 2017-03-10T14:20:27+0900
+ * Date: 2017-04-17T11:51:16+0900
  */
 /* line 5, cdp/utils/compass/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
@@ -4492,7 +4492,6 @@ html .ui-popup .ui-field-contain > label + .ui-flipswitch {
 /*** transition : jqm slide override ***************************************************/
 /* transition mixin */
 /* base structure declaration mixins */
-/* temporary definitions */
 /*** transition : constant values ***************************************************/
 @-webkit-keyframes slideinfromright {
   from {
@@ -4558,7 +4557,7 @@ html .ui-popup .ui-field-contain > label + .ui-flipswitch {
     transform: translate3d(100%, 0, 0);
   }
 }
-/* line 46, structure/transition/_slide.scss */
+/* line 45, structure/transition/_slide.scss */
 .slide.out, .slide.in {
   -webkit-animation-timing-function: ease;
   animation-timing-function: ease;
@@ -4566,17 +4565,17 @@ html .ui-popup .ui-field-contain > label + .ui-flipswitch {
   animation-duration: 350ms;
 }
 
-/* line 53, structure/transition/_slide.scss */
+/* line 50, structure/transition/_slide.scss */
 .slide.out.reverse {
   z-index: 10;
 }
 
-/* line 57, structure/transition/_slide.scss */
+/* line 54, structure/transition/_slide.scss */
 .slide.in.reverse {
   z-index: 0;
 }
 
-/* line 63, structure/transition/_slide.scss */
+/* line 60, structure/transition/_slide.scss */
 .slide.out:after {
   content: "";
   position: fixed;
@@ -4586,10 +4585,9 @@ html .ui-popup .ui-field-contain > label + .ui-flipswitch {
   bottom: 0;
   left: 0;
   z-index: 999;
-  background-color: rgba(0, 0, 0, 0.3);
 }
 
-/* line 75, structure/transition/_slide.scss */
+/* line 71, structure/transition/_slide.scss */
 .slide.out.reverse:after {
   display: none;
 }
@@ -4619,11 +4617,11 @@ html .ui-popup .ui-field-contain > label + .ui-flipswitch {
   z-index: 1000;
 }
 
-/*** transition : fadeup ***************************************************/
+/*** transition : floatup ***************************************************/
 /* transition mixin */
 /* base structure declaration mixins */
 /*** transition : constant values ***************************************************/
-@-webkit-keyframes fadeupin {
+@-webkit-keyframes floatupin {
   from {
     opacity: 0;
     -webkit-transform: translate3d(0, 56px, 0);
@@ -4633,7 +4631,7 @@ html .ui-popup .ui-field-contain > label + .ui-flipswitch {
     -webkit-transform: translate3d(0, 0, 0);
   }
 }
-@keyframes fadeupin {
+@keyframes floatupin {
   from {
     opacity: 0;
     transform: translate3d(0, 56px, 0);
@@ -4643,7 +4641,7 @@ html .ui-popup .ui-field-contain > label + .ui-flipswitch {
     transform: translate3d(0, 0, 0);
   }
 }
-@-webkit-keyframes fadeupout {
+@-webkit-keyframes floatupout {
   from {
     opacity: 1;
     -webkit-transform: translate3d(0, 0, 0);
@@ -4653,7 +4651,7 @@ html .ui-popup .ui-field-contain > label + .ui-flipswitch {
     -webkit-transform: translate3d(0, 56px, 0);
   }
 }
-@keyframes fadeupout {
+@keyframes floatupout {
   from {
     opacity: 1;
     transform: translate3d(0, 0, 0);
@@ -4663,37 +4661,189 @@ html .ui-popup .ui-field-contain > label + .ui-flipswitch {
     transform: translate3d(0, 56px, 0);
   }
 }
-/* line 30, structure/transition/_fadeup.scss */
-.fadeup.out {
+/* line 30, structure/transition/_floatup.scss */
+.floatup.out {
   animation-name: transition-no-effect;
   animation-duration: 1ms;
 }
 
-/* line 34, structure/transition/_fadeup.scss */
-.fadeup.in {
-  -webkit-animation: fadeupin 300ms forwards;
-  animation: fadeupin 300ms forwards;
+/* line 34, structure/transition/_floatup.scss */
+.floatup.in {
+  -webkit-animation: floatupin 300ms forwards;
+  animation: floatupin 300ms forwards;
 }
 
-/* line 38, structure/transition/_fadeup.scss */
-.fadeup.in.reverse {
+/* line 38, structure/transition/_floatup.scss */
+.floatup.in.reverse {
   animation-name: transition-no-effect;
   animation-duration: 1ms;
 }
 
-/* line 42, structure/transition/_fadeup.scss */
-.fadeup.out.reverse {
-  -webkit-animation: fadeupout 300ms forwards;
-  animation: fadeupout 300ms forwards;
+/* line 42, structure/transition/_floatup.scss */
+.floatup.out.reverse {
+  -webkit-animation: floatupout 300ms forwards;
+  animation: floatupout 300ms forwards;
 }
 
-/* line 47, structure/transition/_fadeup.scss */
-.ui-mobile-viewport-transitioning.viewport-fadeup .ui-page {
+/* line 47, structure/transition/_floatup.scss */
+.ui-mobile-viewport-transitioning.viewport-floatup .ui-page {
   display: block;
   z-index: 0;
 }
-/* line 50, structure/transition/_fadeup.scss */
-.ui-mobile-viewport-transitioning.viewport-fadeup .ui-page.ui-page-active {
+/* line 50, structure/transition/_floatup.scss */
+.ui-mobile-viewport-transitioning.viewport-floatup .ui-page.ui-page-active {
+  z-index: 1000;
+}
+
+/*** transition : crosszoom ***************************************************/
+/* transition mixin */
+/* base structure declaration mixins */
+/*** transition : constant values ***************************************************/
+@-webkit-keyframes crosszoomin {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 0, 0) scale(1.185);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+@keyframes crosszoomin {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) scale(1.185);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+@-webkit-keyframes crosszoomout {
+  from {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0) scale(1);
+  }
+  to {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 0, 0) scale(0.815);
+  }
+}
+@keyframes crosszoomout {
+  from {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) scale(0.815);
+  }
+}
+/* line 30, structure/transition/_crosszoom.scss */
+.crosszoom.out {
+  -webkit-animation: crosszoomout 400ms forwards;
+  animation: crosszoomout 400ms forwards;
+}
+
+/* line 34, structure/transition/_crosszoom.scss */
+.crosszoom.in {
+  -webkit-animation: crosszoomin 400ms forwards;
+  animation: crosszoomin 400ms forwards;
+}
+
+/* line 38, structure/transition/_crosszoom.scss */
+.crosszoom.in.reverse {
+  animation-name: transition-no-effect;
+  animation-duration: 1ms;
+}
+
+/* line 42, structure/transition/_crosszoom.scss */
+.crosszoom.out.reverse {
+  -webkit-animation: crosszoomout 400ms forwards;
+  animation: crosszoomout 400ms forwards;
+}
+
+/* line 47, structure/transition/_crosszoom.scss */
+.ui-mobile-viewport-transitioning.viewport-crosszoom .ui-page {
+  display: block;
+  z-index: 0;
+}
+/* line 50, structure/transition/_crosszoom.scss */
+.ui-mobile-viewport-transitioning.viewport-crosszoom .ui-page.ui-page-active {
+  z-index: 1000;
+}
+
+/*** transition : popzoom ***************************************************/
+/* transition mixin */
+/* base structure declaration mixins */
+/*** transition : constant values ***************************************************/
+@-webkit-keyframes popzoomin {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 0, 0) scale(1.185);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+@keyframes popzoomin {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) scale(1.185);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+@-webkit-keyframes popzoomout {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes popzoomout {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+/* line 28, structure/transition/_popzoom.scss */
+.popzoom.out {
+  -webkit-animation: popzoomout 400ms forwards;
+  animation: popzoomout 400ms forwards;
+}
+
+/* line 32, structure/transition/_popzoom.scss */
+.popzoom.in {
+  -webkit-animation: popzoomin 400ms forwards;
+  animation: popzoomin 400ms forwards;
+}
+
+/* line 36, structure/transition/_popzoom.scss */
+.popzoom.in.reverse {
+  animation-name: transition-no-effect;
+  animation-duration: 1ms;
+}
+
+/* line 40, structure/transition/_popzoom.scss */
+.popzoom.out.reverse {
+  -webkit-animation: popzoomout 400ms forwards;
+  animation: popzoomout 400ms forwards;
+}
+
+/* line 45, structure/transition/_popzoom.scss */
+.ui-mobile-viewport-transitioning.viewport-popzoom .ui-page {
+  display: block;
+  z-index: 0;
+}
+/* line 48, structure/transition/_popzoom.scss */
+.ui-mobile-viewport-transitioning.viewport-popzoom .ui-page.ui-page-active {
   z-index: 1000;
 }
 
@@ -5818,98 +5968,54 @@ button[disabled],
   display: none !important;
 }
 
-/* common cdp theme: dialog base */
+/*** base structure: dialog ***************************************************/
 /* transition mixin */
 /* base structure declaration mixins */
 /* base structure: metrics */
-/* temporary definitions */
-/* line 10, structure/widget/base/_dialog.scss */
-.cdp-common-dialog button.ui-block-b, .cdp-common-dialog .ui-btn.ui-block-b, .cdp-common-dialog button.ui-block-c, .cdp-common-dialog .ui-btn.ui-block-c, .cdp-common-dialog button.ui-block-d, .cdp-common-dialog .ui-btn.ui-block-d, .cdp-common-dialog button.ui-block-e, .cdp-common-dialog .ui-btn.ui-block-e {
-  border-left-width: 1px;
-  border-left-style: solid;
-  border-left-color: rgba(255, 255, 255, 0.4);
-}
-
-/* line 22, structure/widget/base/_dialog.scss */
-.cdp-common-dialog {
-  width: 270px;
+/* line 6, structure/widget/base/_dialog.scss */
+.ui-modal {
   pointer-events: none;
   border: none;
-  -webkit-border-radius: initial;
-  border-radius: initial;
 }
-/* line 30, structure/widget/base/_dialog.scss */
-.cdp-common-dialog header {
-  width: auto;
-  height: auto;
+/* line 12, structure/widget/base/_dialog.scss */
+.ui-modal .ui-content .ui-title {
   display: block;
+  margin: 0;
+  border: none;
   pointer-events: none;
 }
-/* line 36, structure/widget/base/_dialog.scss */
-.cdp-common-dialog header.no-title {
+/* line 17, structure/widget/base/_dialog.scss */
+.ui-modal .ui-content .ui-title.ui-no-title {
   display: none;
 }
-/* line 40, structure/widget/base/_dialog.scss */
-.cdp-common-dialog header .title {
-  margin: 0;
-  padding: 20px 15px 5px;
-  font-size: 17px;
-  font-weight: 600;
-  text-align: center;
-  border: none;
-}
-/* line 51, structure/widget/base/_dialog.scss */
-.cdp-common-dialog .message {
-  margin: 0;
-  padding: 0 15px 20px;
-  font-size: 15px;
-  font-weight: 400;
+/* line 22, structure/widget/base/_dialog.scss */
+.ui-modal .ui-content .ui-message {
   line-height: 1.3;
-  text-align: center;
   white-space: pre-wrap;
   word-break: break-word;
 }
-/* line 63, structure/widget/base/_dialog.scss */
-.cdp-common-dialog button, .cdp-common-dialog .ui-btn {
-  padding: 16px;
-  font-size: 17px;
-  line-height: 1;
-  border: none;
+/* line 32, structure/widget/base/_dialog.scss */
+.ui-modal .ui-modal-footer button.ui-block-b, .ui-modal .ui-modal-footer .ui-btn.ui-block-b, .ui-modal .ui-modal-footer button.ui-block-c, .ui-modal .ui-modal-footer .ui-btn.ui-block-c, .ui-modal .ui-modal-footer button.ui-block-d, .ui-modal .ui-modal-footer .ui-btn.ui-block-d, .ui-modal .ui-modal-footer button.ui-block-e, .ui-modal .ui-modal-footer .ui-btn.ui-block-e {
+  border-left-width: 1px;
+  border-left-style: solid;
+}
+/* line 38, structure/widget/base/_dialog.scss */
+.ui-modal .ui-modal-footer button, .ui-modal .ui-modal-footer .ui-btn {
+  line-height: 1.3;
   font-weight: 400;
+  border: none;
 }
-/* line 69, structure/widget/base/_dialog.scss */
-.cdp-common-dialog button.emphasis, .cdp-common-dialog .ui-btn.emphasis {
-  font-weight: 600;
+/* line 42, structure/widget/base/_dialog.scss */
+.ui-modal .ui-modal-footer button.ui-text-emphasis, .ui-modal .ui-modal-footer .ui-btn.ui-text-emphasis {
+  font-weight: 500;
 }
-/* line 83, structure/widget/base/_dialog.scss */
-.cdp-common-dialog button, .cdp-common-dialog input, .cdp-common-dialog .ui-btn {
+/* line 56, structure/widget/base/_dialog.scss */
+.ui-modal button, .ui-modal input, .ui-modal .ui-btn {
   pointer-events: all;
 }
-/* line 85, structure/widget/base/_dialog.scss */
-.cdp-common-dialog button.ui-state-disabled, .cdp-common-dialog button[disabled], .cdp-common-dialog input.ui-state-disabled, .cdp-common-dialog input[disabled], .cdp-common-dialog .ui-btn.ui-state-disabled, .cdp-common-dialog .ui-btn[disabled] {
+/* line 58, structure/widget/base/_dialog.scss */
+.ui-modal button.ui-state-disabled, .ui-modal button[disabled], .ui-modal input.ui-state-disabled, .ui-modal input[disabled], .ui-modal .ui-btn.ui-state-disabled, .ui-modal .ui-btn[disabled] {
   pointer-events: none;
-}
-
-/* line 95, structure/widget/base/_dialog.scss */
-.ui-body-cdp.cdp-common-dialog {
-  background-color: white;
-}
-/* line 100, structure/widget/base/_dialog.scss */
-.ui-body-cdp.cdp-common-dialog header .title {
-  color: black;
-}
-/* line 106, structure/widget/base/_dialog.scss */
-.ui-body-cdp.cdp-common-dialog .message {
-  color: black;
-}
-/* line 112, structure/widget/base/_dialog.scss */
-.ui-body-cdp.cdp-common-dialog button, .ui-body-cdp.cdp-common-dialog button:visited, .ui-body-cdp.cdp-common-dialog .ui-btn, .ui-body-cdp.cdp-common-dialog .ui-btn:visited {
-  background-color: black;
-  color: white;
-}
-/* line 119, structure/widget/base/_dialog.scss */
-.ui-body-cdp.cdp-common-dialog button:active, .ui-body-cdp.cdp-common-dialog .ui-btn:active {
-  background-color: gray;
 }
 
 /*** android structure: global ***************************************************/
@@ -6559,6 +6665,18 @@ button[disabled],
 .ui-platform-android .ui-mini [placeholder]::-webkit-input-placeholder {
   font-size: 14px;
 }
+/* line 116, structure/widget/android/_text-input.scss */
+.ui-platform-android .ui-modal .ui-input-text, .ui-platform-android .ui-modal .ui-input-search, .ui-platform-android .ui-modal input.ui-slider-input {
+  margin: 0;
+}
+/* line 118, structure/widget/android/_text-input.scss */
+.ui-platform-android .ui-modal .ui-input-text input, .ui-platform-android .ui-modal .ui-input-search input, .ui-platform-android .ui-modal input.ui-slider-input input {
+  height: 36px;
+  min-height: initial;
+  padding: 0 5px;
+  margin: 15px 0 0;
+  box-sizing: border-box;
+}
 
 /*** android structure: switch ***************************************************/
 /* transition mixin */
@@ -6903,9 +7021,68 @@ button[disabled],
   border-radius: 0 0 2px 2px;
 }
 
-/* android: dialog base */
-/* android: color values */
-/* temporary definitions */
+/*** android structure: dialog ***************************************************/
+/* transition mixin */
+/* base structure declaration mixins */
+/* base structure: metrics */
+/* line 7, structure/widget/android/_dialog.scss */
+.ui-platform-android .ui-modal {
+  width: 280px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}
+/* line 11, structure/widget/android/_dialog.scss */
+.ui-platform-android .ui-modal .ui-content {
+  padding: 24px 24px 20px;
+}
+/* line 14, structure/widget/android/_dialog.scss */
+.ui-platform-android .ui-modal .ui-content .ui-title {
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: 500;
+  text-align: left;
+}
+/* line 21, structure/widget/android/_dialog.scss */
+.ui-platform-android .ui-modal .ui-content .ui-message {
+  font-size: 16px;
+  font-weight: 400;
+  text-align: left;
+}
+/* line 28, structure/widget/android/_dialog.scss */
+.ui-platform-android .ui-modal .ui-modal-footer {
+  display: flex;
+  padding: 6px 8px;
+  border: none;
+  -webkit-box-pack: end;
+  box-pack: end;
+  -webkit-justify-content: flex-end;
+  justify-content: flex-end;
+}
+/* line 35, structure/widget/android/_dialog.scss */
+.ui-platform-android .ui-modal .ui-modal-footer button, .ui-platform-android .ui-modal .ui-modal-footer .ui-btn {
+  width: auto;
+  height: 36px;
+  min-width: 64px;
+  font-size: 14px;
+  border: none;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+}
+/* line 42, structure/widget/android/_dialog.scss */
+.ui-platform-android .ui-modal .ui-modal-footer button.ui-text-emphasis, .ui-platform-android .ui-modal .ui-modal-footer .ui-btn.ui-text-emphasis {
+  font-weight: 700;
+}
+/* line 45, structure/widget/android/_dialog.scss */
+.ui-platform-android .ui-modal .ui-modal-footer button:first-child, .ui-platform-android .ui-modal .ui-modal-footer .ui-btn:first-child {
+  -webkit-border-bottom-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+/* line 48, structure/widget/android/_dialog.scss */
+.ui-platform-android .ui-modal .ui-modal-footer button:last-child, .ui-platform-android .ui-modal .ui-modal-footer .ui-btn:last-child {
+  -webkit-border-bottom-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
 /*** ios structure: global ***************************************************/
 /* base structure: metrics */
 /* line 10, structure/widget/ios/_global.scss */
@@ -7226,7 +7403,7 @@ button[disabled],
   margin-left: -4px;
 }
 
-/* ios: checkbox */
+/*** ios structure: checkbox ***************************************************/
 /* transition mixin */
 /* base structure declaration mixins */
 /* line 12, structure/widget/ios/_checkbox.scss */
@@ -7360,9 +7537,27 @@ button[disabled],
 .ui-platform-ios [placeholder]::-webkit-input-placeholder {
   font-size: 17px;
 }
-/* line 21, structure/widget/ios/_text-input.scss */
+/* line 23, structure/widget/ios/_text-input.scss */
+.ui-platform-ios .ui-modal [placeholder]::-webkit-input-placeholder,
 .ui-platform-ios .ui-mini [placeholder]::-webkit-input-placeholder {
   font-size: 14px;
+}
+/* line 29, structure/widget/ios/_text-input.scss */
+.ui-platform-ios .ui-modal .ui-input-text, .ui-platform-ios .ui-modal .ui-input-search, .ui-platform-ios .ui-modal input.ui-slider-input {
+  margin: 0;
+}
+/* line 31, structure/widget/ios/_text-input.scss */
+.ui-platform-ios .ui-modal .ui-input-text input, .ui-platform-ios .ui-modal .ui-input-search input, .ui-platform-ios .ui-modal input.ui-slider-input input {
+  height: 26px;
+  min-height: initial;
+  padding: 0 5px;
+  margin: 15px 0 0;
+  border-style: solid;
+  border-width: 1px;
+  box-sizing: border-box;
+  font-size: 14px;
+  -webkit-border-radius: 0;
+  border-radius: 0;
 }
 
 /*** ios structure: switch ***************************************************/
@@ -7508,6 +7703,52 @@ button[disabled],
   border-bottom-right-radius: 7px;
 }
 
-/* ios: dialog base */
-/* ios: color values */
-/* temporary definitions */
+/*** ios structure: dialog ***************************************************/
+/* transition mixin */
+/* base structure declaration mixins */
+/* base structure: metrics */
+/* line 7, structure/widget/ios/_dialog.scss */
+.ui-platform-ios .ui-modal {
+  width: 270px;
+  -webkit-border-radius: 13px;
+  border-radius: 13px;
+}
+/* line 11, structure/widget/ios/_dialog.scss */
+.ui-platform-ios .ui-modal .ui-content {
+  padding: 15px;
+}
+/* line 14, structure/widget/ios/_dialog.scss */
+.ui-platform-ios .ui-modal .ui-content .ui-title {
+  margin-bottom: 5px;
+  font-size: 18px;
+  font-weight: 500;
+  text-align: center;
+}
+/* line 21, structure/widget/ios/_dialog.scss */
+.ui-platform-ios .ui-modal .ui-content .ui-message {
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+}
+/* line 28, structure/widget/ios/_dialog.scss */
+.ui-platform-ios .ui-modal .ui-modal-footer {
+  border-style: solid;
+  border-top-width: 1px;
+}
+/* line 31, structure/widget/ios/_dialog.scss */
+.ui-platform-ios .ui-modal .ui-modal-footer button, .ui-platform-ios .ui-modal .ui-modal-footer .ui-btn {
+  height: 44px;
+  font-size: 17px;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+}
+/* line 35, structure/widget/ios/_dialog.scss */
+.ui-platform-ios .ui-modal .ui-modal-footer button:first-child, .ui-platform-ios .ui-modal .ui-modal-footer .ui-btn:first-child {
+  -webkit-border-bottom-left-radius: 13px;
+  border-bottom-left-radius: 13px;
+}
+/* line 38, structure/widget/ios/_dialog.scss */
+.ui-platform-ios .ui-modal .ui-modal-footer button:last-child, .ui-platform-ios .ui-modal .ui-modal-footer .ui-btn:last-child {
+  -webkit-border-bottom-right-radius: 13px;
+  border-bottom-right-radius: 13px;
+}
