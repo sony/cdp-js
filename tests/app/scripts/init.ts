@@ -1,6 +1,8 @@
 ﻿namespace TestApp {
     let setup = (callback: Function): void => {
-        var global = global || window;
+        /*jshint evil:true */
+        const global = Function("return this")();
+        /*jshint evil:false */
         if (null != global.orientation) {
             require(["cordova"], () => {
                 callback();

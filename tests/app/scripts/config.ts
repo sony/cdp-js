@@ -2,7 +2,9 @@
 
 module Config {
 
-    var global = global || window;
+    /*jshint evil:true */
+    const global = Function("return this")();
+    /*jshint evil:false */
 
     let baseUrl = /(.+\/)[^/]*#[^/]+/.exec(location.href);
     if (!baseUrl) {
@@ -12,7 +14,7 @@ module Config {
     /**
      * require.js 用設定値
      */
-    let requireConfig = {
+    const requireConfig = {
         //        baseUrl: baseUrl[1],
         baseUrl: baseUrl[1].split("tests")[0],
 
@@ -65,7 +67,7 @@ module Config {
      * i18next の設定
      * http://i18next.com/docs/options/#init-options
      */
-    export let i18n: CDP.I18NOptions = {
+    export const i18n: CDP.I18NOptions = {
         options: {
             fallbackLng: "dev",
             ns: "translation",
@@ -79,13 +81,13 @@ module Config {
      * CDP.lazyLoad() の sourceURL 自動挿入時に、
      * domain を指定しない場合には false を指定
      */
-    export let autoDomainAssign = true;
+    export const autoDomainAssign = true;
 
     /**
      * コンフリクトを避けるために使用される文字列
      * CDP.Tools.Touche の touch event 定義に使用される
      */
-    export let namespace = "cdp";
+    export const namespace = "cdp";
 
     /**
      * ビルド設定判定
