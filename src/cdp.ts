@@ -16,6 +16,6 @@ import * as UI from "./cdp/ui";
 export { Framework, Tools, UI };
 
 // short cut for initialize method
-export let initialize           = Framework.initialize;
-export let isInitialized        = Framework.isInitialized;
-export let waitForInitialize    = Framework.waitForInitialize;
+export const initialize           = Framework.initialize;
+export const isInitialized        = Framework.isInitialized;
+export const waitForInitialize    = Framework.waitForInitialize;

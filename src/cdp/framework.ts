@@ -1,1 +1,2 @@
-﻿export * from "./framework/jqm";
+﻿export * from "./core/promise";
+export * from "./framework/jqm";
