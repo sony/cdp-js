@@ -3,6 +3,7 @@
   "description": "CDP application foundation script",
   "version": "1.0.0",
   "main": "./dist/cdp.js",
+  "types": "./dist/@types/index.d.ts",
   "author": {
     "name": "Shin Ogata",
     "email": "Shin.Ogata@jp.sony.com"
@@ -58,6 +59,6 @@
     "hogan.js": "^3.0.2",
     "iscroll": "^5.2.0",
     "requirejs": "^2.3.3",
-    "typescript": "^2.3.2"
+    "typescript": "^2.3.4"
   }
 }

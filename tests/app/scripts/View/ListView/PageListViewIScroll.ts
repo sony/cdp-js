@@ -16,7 +16,7 @@ const TAG: string = "[View/ListView/PageListViewIScroll] ";
  */
 class PageListViewIScroll extends PageListView<Backbone.Model> {
 
-    private _promise: CDP.Promise = null;
+    private _promise: CDP.IPromise<any> = null;
 
     /**
      * constructor

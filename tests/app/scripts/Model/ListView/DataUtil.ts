@@ -92,12 +92,12 @@ export module DataUtil {
     // private static methods
 
     //! app.data をロード
-    function loadModules(): JQueryPromise<void> {
-        let df = $.Deferred<void>();
-        setTimeout(() => {
-            df.resolve();
+    function loadModules(): CDP.IPromiseBase<void> {
+        return new CDP.Promise<void>((resolve) => {
+            setTimeout(() => {
+                resolve();
+            });
         });
-        return df.promise();
     }
 
     //! エラーハンドラ

@@ -9,7 +9,7 @@ module.exports = function (grunt) {
         // config variable entries: root
         orgsrc: 'src',
         tmpdir: 'temp',
-        pkgdir: 'dist',
+        pkgdir: 'built',
 
         // config variable entries: directory
         libraries:      'src',          // internal-lib modules default directory
