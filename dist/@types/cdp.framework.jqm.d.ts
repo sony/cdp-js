@@ -7,7 +7,6 @@
 /// <reference types="jquery" />
 /// <reference types="underscore" />
 /// <reference types="backbone" />
-/// <reference types="requirejs" />
 /// <reference path="i18next.d.ts" />
 /// <reference path="cdp.promise.d.ts" />
 /// <reference path="jquery.mobile.d.ts" />

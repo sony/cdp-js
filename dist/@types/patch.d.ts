@@ -1,4 +1,9 @@
-﻿/// <reference types="iscroll" />
+﻿/*!
+ * @cdp/mobile patch.d.ts 
+ */
+
+interface IScroll {
+}
 
 declare module "iscroll" {
     let _IScroll: IScroll;

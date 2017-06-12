@@ -4,7 +4,6 @@
  *
  * Date: 2017-06-09T09:49:32+0900
  */
-
 declare namespace CDP {
     /**
     * \~english

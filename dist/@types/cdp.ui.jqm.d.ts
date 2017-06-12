@@ -4,9 +4,7 @@
  *
  * Date: 2017-06-09T21:39:33+0900
  */
-/// <reference types="jquery" />
 /// <reference path="cdp.framework.jqm.d.ts" />
-/// <reference path="jquery.mobile.d.ts" />
 /// <reference path="cdp.tools.d.ts" />
 /// <reference path="cdp.ui.listview.d.ts" />
 declare module "cdp.ui.jqm" {
