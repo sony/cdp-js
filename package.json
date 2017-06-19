@@ -1,5 +1,5 @@
 {
-  "name": "cdp-js",
+  "name": "@cdp/mobile",
   "description": "CDP application foundation script",
   "version": "1.0.0",
   "main": "./dist/cdp.js",
