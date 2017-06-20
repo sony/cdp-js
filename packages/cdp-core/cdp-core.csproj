@@ -84,29 +84,43 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="dist\cdp.core.js" />
+    <Content Include="dist\cdp.core.min.js">
+      <DependentUpon>cdp.core.js</DependentUpon>
+    </Content>
+    <Content Include="dist\cdp.core.min.js.map">
+      <DependentUpon>cdp.core.js</DependentUpon>
+    </Content>
+    <Content Include="docs\reports\coverage\index.html" />
+    <Content Include="docs\reports\metrics\display.html" />
+    <Content Include="docs\reports\metrics\index.html" />
     <Content Include="exports\cdp\core\core.js">
       <DependentUpon>core.ts</DependentUpon>
     </Content>
     <Content Include="project.config.js" />
     <Content Include="src\scripts\cdp.core.js" />
+    <Content Include="tasks\bundle.js" />
+    <Content Include="tasks\coverage.js" />
+    <Content Include="tests\unit\cdp.core.spec.js">
+      <DependentUpon>cdp.core.spec.ts</DependentUpon>
+    </Content>
+    <Content Include="tests\unit\preload\test.prologue.js">
+      <DependentUpon>test.prologue.ts</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="docs\en\README.md" />
     <Content Include="docs\jp\README.md" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="dist\%40types\cdp.core.d.ts" />
     <TypeScriptCompile Include="exports\cdp\core\core.ts" />
-    <TypeScriptCompile Include="external\include\external.d.ts" />
-    <TypeScriptCompile Include="external\include\jasmine.d.ts" />
     <TypeScriptCompile Include="src\scripts\cdp.core.d.ts" />
     <TypeScriptCompile Include="tests\unit\cdp.core.spec.ts" />
+    <TypeScriptCompile Include="tests\unit\preload\test.prologue.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="tasks\banner.js" />
-    <Content Include="tasks\bundle-finalizer.js" />
     <Content Include="tasks\clean.js" />
-    <Content Include="tasks\remap-coverage.js" />
-    <Content Include="tasks\srcmap.js" />
     <Content Include="tests\runner\config-generator.js" />
     <Content Include="tests\runner\test-main.js" />
     <Content Include="tests\runner\testem-amd.js" />

@@ -13,30 +13,22 @@ const target = {
 const dir = {
     src: 'src',
     pkg: 'dist',
-    built: 'built',
+    built: 'exports',
     doc: 'docs',
     task: 'tasks',
     test: 'tests',
     types: '@types',
     temp: '.temp',
+    script: 'scripts',
 };
 
 const main = {
-    basename: 'cool-web',
+    basename: 'cdp-core',
     bundle_d_ts: 'index.d.ts',
 };
 
 const built_cleanee = {
     ts: ['**/*.js', '**/*.d.ts', '**/*.map'],
-};
-
-const d_ts_bundle = {
-    name: pkg.name,
-    main: path.join(dir.built, main.basename + '.d.ts'),
-    baseDir: dir.built,
-    out: path.join('..', dir.pkg, dir.types, pkg.name, main.bundle_d_ts),
-    externals: false,
-    verbose: false,
 };
 
 const banner = {
@@ -47,14 +39,9 @@ const banner = {
 // project configuration
 module.exports = {
     target: target,
-
     pkg: pkg,
     dir: dir,
     main: main,
-
     built_cleanee: built_cleanee,
-
-    dts_bundle: d_ts_bundle,
-
     banner: banner,
 };

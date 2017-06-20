@@ -9,10 +9,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/CDP-Tokyo/cdp-core.git"
+    "url": "https://github.com/CDP-Tokyo/cdp-js.git"
   },
   "bugs": {
-    "url": "https://github.com/CDP-Tokyo/cdp-core/issues"
+    "url": "https://github.com/CDP-Tokyo/cdp-js/issues"
   },
   "license": "Apache-2.0",
   "keywords": [
@@ -20,23 +20,48 @@
     "TypeScript"
   ],
   "scripts": {
-    "build": "npm install && grunt",
-    "test": "grunt ci",
-    "lint": "grunt lint"
+    "test": "run-s -l clean compile lint unit-test",
+    "ci": "run-s -l clean build lint unit-test build metrics",
+    "deploy": "run-s ci clean:deploy",
+    "update": "npm update --save-dev && npm update --save && npm run deploy",
+    "depends": "npm list --depth=1",
+    "depends:prod": "npm list --depth=0 --only=prod",
+    "depends:dev": "npm list --depth=0 --only=dev",
+    "debug": "testem -f ./tests/runner/testem-amd.js",
+    "clean": "node ./tasks/clean.js",
+    "clean:temp": "node ./tasks/clean.js --temp",
+    "clean:coverage": "node ./tasks/clean.js --coverage",
+    "clean:typedoc": "node ./tasks/clean.js --typedoc",
+    "clean:test": "node ./tasks/clean.js --test",
+    "clean:built": "node ./tasks/clean.js --built",
+    "clean:pkg": "node ./tasks/clean.js --pkg",
+    "clean:deploy": "node ./tasks/clean.js --built --test --temp",
+    "build": "run-s compile bundle minify",
+    "compile": "tsc -p ./tsconfig.json",
+    "bundle": "node ./tasks/bundle.js",
+    "minify": "uglifyjs dist/cdp.core.js -o dist/cdp.core.min.js --comments /^!/ --source-map includeSources,url=cdp.core.min.js.map",
+    "lint": "run-p -l lint:*",
+    "lint:js": "eslint tasks/**/*.js src/**/*.js -c tests/eslint/eslintrc.json",
+    "lint:ts": "tslint --type-check -p ./tsconfig.json -c ./tests/tslint/tslint.json -e src/**/*.d.ts exports/**/*.ts",
+    "unit-test": "npm run coverage:exec",
+    "unit-test:ci": "testem ci -f ./tests/runner/testem-ci.js",
+    "coverage": "run-s clean:coverage compile:ts coverage:exec",
+    "coverage:exec": "run-s coverage:instrument unit-test:ci coverage:remap coverage:report",
+    "coverage:instrument": "nyc instrument ./dist ./dist --source-map=false",
+    "coverage:remap": "node ./tasks/coverage.js",
+    "coverage:report": "nyc report --reporter=lcov --reporter=html --reporter=text --report-dir=docs/reports/coverage --temp-directory=docs/reports/coverage",
+    "metrics": "plato -r -d docs/reports/metrics -e ./tests/eslint/eslintrc.json src/**/*.js"
   },
   "devDependencies": {
     "@types/jasmine": "^2.5.52",
-    "convert-source-map": "^1.5.0",
+    "@types/requirejs": "^2.1.29",
     "del": "^3.0.0",
     "eslint": "^4.0.0",
     "npm-run-all": "^4.0.2",
     "nyc": "^11.0.2",
     "plato": "^1.7.0",
     "requirejs": "^2.3.3",
-    "source-map": "^0.5.6",
-    "source-map-loader": "^0.2.1",
     "tslint": "^5.4.3",
-    "typedoc": "^0.7.1",
     "typescript": "^2.4.0",
     "uglify-js": "^3.0.15"
   }

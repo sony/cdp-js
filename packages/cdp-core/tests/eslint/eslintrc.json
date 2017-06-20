@@ -2,15 +2,16 @@
   "extends": "eslint:recommended",
   "env": {
     "es6": false,
+    "browser": true,
     "node": false
   },
   "globals": {
-    "$": true,
-    "_": true,
-    "Backbone": true,
     "console": true,
+    "global": true,
     "location": true,
     "module": true,
+    "Node": true,
+    "MSApp": true,
     "require": true,
     "define": true,
     "exports": true

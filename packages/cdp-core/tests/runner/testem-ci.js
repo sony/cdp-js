@@ -2,7 +2,6 @@ const path      = require('path');
 const fs        = require('fs');
 const http      = require('http');
 const shell     = require('shelljs');
-const generator = require('./config-generator');
 const proj      = require('../../project.config');
 
 const DOC_DIR       = path.join(__dirname, '../../', proj.dir.doc);
@@ -33,8 +32,6 @@ const config = {
     },
 
     before_tests: function (config, data, callback) {
-        // setup test-config
-        generator.setup();
         // start the server
         server = http.createServer(function (req, res) {
             console.log('... Received coverage of', req.headers['content-length'], 'length');

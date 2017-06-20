@@ -21,7 +21,7 @@
      * システムの global オブジェクトにアクセス
      * 通常は Window オブジェクトとなる
      */
-    var global: any;
+    const global: any;
 
     /**
      * \~english
@@ -43,7 +43,7 @@
      * \~japanese
      * Web root location にアクセス
      */
-    var webRoot: string;
+    const webRoot: string;
 
     /**
      * \~english
@@ -52,7 +52,7 @@
      * \~japanese
      * Config オブジェクトにアクセス
      */
-    var Config: any;
+    const Config: any;
 }
 
 declare module "cdp.core" {
