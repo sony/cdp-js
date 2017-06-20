@@ -1,0 +1,24 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Test'em</title>
+    <link rel="shortcut icon" type="image/png" href="//cdnjs.cloudflare.com/ajax/libs/jasmine/2.4.1/jasmine_favicon.png">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jasmine/2.4.1/jasmine.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jasmine/2.4.1/jasmine.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jasmine/2.4.1/jasmine-html.js"></script>
+</head>
+<body>
+    <div class="dummy" data-role="page" style="display:none;"></div>
+    <h1>Test Page</h1>
+    <div id="jasmine_content"></div>
+    <script type="text/javascript" charset="utf-8">
+        window.specFiles = [];
+        {{#serve_files}}
+        window.specFiles.push("{{{src}}}".replace(/.js$/i, ''));
+        {{/serve_files}}
+    </script>
+    <script src="test-config.js"></script>
+    <script data-main="test-main" src="../../node_modules/requirejs/require.js"></script>
+</body>
+</html>
