@@ -68,10 +68,7 @@
     </PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>cd $(ProjectDir)/assets/lib/stylesheets
-call compass compile -c config.rb
-cd $(ProjectDir)/assets/stylesheets
-call compass compile -c config.rb
+    <PostBuildEvent>
 </PostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
@@ -101,7 +98,6 @@ call compass compile -c config.rb
     <Content Include="tasks\clean.js" />
     <Content Include="tasks\coverage.js" />
     <Content Include="tasks\external-rearrange.js" />
-    <Content Include="tests\runner\config-generator.js" />
     <Content Include="tests\runner\test-main.js" />
     <Content Include="tests\runner\testem-amd.js" />
     <Content Include="tests\runner\testem-ci.js" />
@@ -111,6 +107,7 @@ call compass compile -c config.rb
     <TypeScriptCompile Include="dist\%40types\cdp.lazyload.d.ts" />
     <TypeScriptCompile Include="src\scripts\cdp.lazyload.d.ts" />
     <TypeScriptCompile Include="tests\unit\cdp.lazyload.spec.ts" />
+    <TypeScriptCompile Include="tests\unit\_dev.dependencies.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include=".npmignore" />

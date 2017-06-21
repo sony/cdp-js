@@ -25,10 +25,11 @@ const dir = {
 const main = {
     basename: 'cdp.core',
     bundle_d_ts: 'cdp.core.d.ts',
+    namespace: 'cdp',
 };
 
 const built_cleanee = {
-    ts: ['**/*.js', '**/*.d.ts', '**/*.map'],
+    ts: ['**/*.js', '**/*.d.ts', '!**/_dev.dependencies.d.ts', '**/*.map'],
 };
 
 const banner = {

@@ -1,40 +1,13 @@
 {
-  "compileOnSave": true,
+  "extends": "./tsconfig.base.json",
+  "compileOnSave": false,
   "compilerOptions": {
-    "module": "amd",
-    "moduleResolution": "node",
-    "target": "es5",
-    "emitBOM": true,
-    "inlineSourceMap": true,
-    "inlineSources": true,
-    "pretty": true,
-    "lib": [
-      "dom",
-      "es5",
-      "scripthost",
-      "es2015.iterable"
-    ],
-    "typeRoots": [
-      "./node_modules/@types",
-      "src/scripts/@types"
-    ],
-    "types": [
-      "jquery",
-      "requirejs",
-      "jasmine"
-    ]
+    "inlineSourceMap": false,
+    "inlineSources": false,
+    "declaration": false,
+    "outDir": "built/CDP"
   },
   "include": [
-    "exports/**/*.ts",
-    "tests/unit/**/*.ts"
-  ],
-  "exclude": [
-    "bin",
-    "dist",
-    "docs",
-    "external",
-    "src",
-    "tasks",
-    "obj"
+    "src/scripts/CDP/**/*.ts"
   ]
 }

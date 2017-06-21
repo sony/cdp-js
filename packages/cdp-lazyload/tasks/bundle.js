@@ -8,6 +8,14 @@ const config    = require('../project.config');
 
 const DST_PATH = path.join(__dirname, '..', config.dir.pkg);
 
+const SOURCE_MAP_NAMESPACE = (() => {
+    if (config.main.namespace) {
+        return config.main.namespace + ':///';
+    } else {
+        return config.pkg.name + ':///';
+    }
+})();
+
 function queryOptions() {
     const argv = process.argv.slice(2);
 
@@ -90,7 +98,14 @@ function bundleEmbed() {
     node.prepend(banner('.js', config.main.basename));
     node.add('\n' + wrap[2] + '\n');
 
-    const bundleSrc = srcmap.getCodeFromNode(node);
+    const bundleSrc = srcmap.getCodeFromNode(node, (srcPath) => {
+        const regex_src = new RegExp(`${config.dir.src}\\/${config.dir.script}\\/`);
+        return srcPath
+            .replace(/\.\.\//g, '')
+            .replace(regex_src, SOURCE_MAP_NAMESPACE)
+        ;
+    });
+    fs.writeFileSync(path.join(BUILT_PATH, config.main.basename + '.js'), bundleSrc, 'utf-8');
     fs.writeFileSync(path.join(DST_PATH, config.main.basename + '.js'), bundleSrc, 'utf-8');
 
     // d.ts

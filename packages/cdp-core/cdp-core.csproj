@@ -118,11 +118,11 @@
     <TypeScriptCompile Include="src\scripts\cdp.core.d.ts" />
     <TypeScriptCompile Include="tests\unit\cdp.core.spec.ts" />
     <TypeScriptCompile Include="tests\unit\preload\test.prologue.ts" />
+    <TypeScriptCompile Include="tests\unit\_dev.dependencies.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="tasks\banner.js" />
     <Content Include="tasks\clean.js" />
-    <Content Include="tests\runner\config-generator.js" />
     <Content Include="tests\runner\test-main.js" />
     <Content Include="tests\runner\testem-amd.js" />
     <Content Include="tests\runner\testem-ci.js" />

@@ -24,9 +24,9 @@
   "scripts": {
     "postinstall": "npm run rearrange",
     "test": "run-s -l clean compile lint unit-test",
-    "ci": "run-s -l clean build lint unit-test build metrics",
-    "deploy": "run-s ci clean:deploy",
-    "update": "npm update --save-dev && npm update --save && npm run deploy",
+    "ci": "run-s -l clean build lint unit-test metrics document",
+    "package": "run-s ci && node ./tasks/clean.js --built --test --temp",
+    "update": "npm update --save-dev && npm update --save && npm run package",
     "depends": "npm list --depth=1",
     "depends:prod": "npm list --depth=0 --only=prod",
     "depends:dev": "npm list --depth=0 --only=dev",
@@ -38,13 +38,12 @@
     "clean:test": "node ./tasks/clean.js --test",
     "clean:built": "node ./tasks/clean.js --built",
     "clean:pkg": "node ./tasks/clean.js --pkg",
-    "clean:deploy": "node ./tasks/clean.js --built --test --temp",
-    "build": "run-s compile bundle minify",
-    "compile": "run-s compile:*",
-    "compile:src": "tsc -p ./src/tsconfig.json && tsc -p ./src/tsconfig.entry.json",
-    "compile:etc": "tsc -p ./tsconfig.json",
+    "build": "run-s compile:bundle bundle minify compile:module",
+    "compile:bundle": "tsc -p ./src/tsconfig.all.json && tsc -p ./src/tsconfig.entry.json",
+    "compile:module": "tsc -p ./tsconfig.module.json",
+    "compile:metrics": "tsc -p ./tsconfig.json",
     "bundle": "node ./tasks/bundle.js",
-    "minify": "uglifyjs dist/cdp.lazyload.js -o dist/cdp.lazyload.min.js --comments /^!/ --source-map includeSources,url=cdp.lazyload.min.js.map",
+    "minify": "uglifyjs dist/cdp.promise.js -o dist/cdp.promise.min.js --comments /^!/ --source-map includeSources,url=cdp.promise.min.js.map",
     "lint": "run-p -l lint:*",
     "lint:js": "eslint tasks/**/*.js src/**/*.js -c tests/eslint/eslintrc.json",
     "lint:ts": "tslint --type-check -p ./tsconfig.json -c ./tests/tslint/tslint.json -e src/**/*.d.ts",
@@ -52,11 +51,12 @@
     "unit-test:ci": "testem ci -f ./tests/runner/testem-ci.js",
     "coverage": "run-s clean:coverage compile:ts coverage:exec",
     "coverage:exec": "run-s coverage:instrument unit-test:ci coverage:remap coverage:report",
-    "coverage:instrument": "nyc instrument ./dist ./dist --source-map=false",
-    "coverage:remap": "node ./tasks/coverage.js",
+    "coverage:instrument": "nyc instrument ./built ./built --source-map=false",
+    "coverage:remap": "node ./tasks/remap-coverage.js",
     "coverage:report": "nyc report --reporter=lcov --reporter=html --reporter=text --report-dir=docs/reports/coverage --temp-directory=docs/reports/coverage",
     "rearrange": "node ./tasks/external-rearrange.js",
-    "metrics": "plato -r -d docs/reports/metrics -e ./tests/eslint/eslintrc.json src/**/*.js"
+    "document": "typedoc --out docs/typedoc/ src/scripts/tsconfig.json",
+    "metrics": "npm run compile:metrics && plato -r -d docs/reports/metrics -e ./tests/eslint/eslintrc.json built/CDP/**/*.js"
   },
   "dependencies": {
     "jquery": ">=1.8.3"
@@ -75,6 +75,7 @@
     "requirejs": "^2.3.3",
     "source-map": "^0.5.6",
     "tslint": "^5.4.3",
+    "typedoc": "^0.7.1",
     "typescript": "^2.4.0",
     "uglify-js": "^3.0.15"
   }

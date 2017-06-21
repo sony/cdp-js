@@ -24,7 +24,7 @@
     "test": "run-s -l clean compile lint unit-test",
     "ci": "run-s -l clean build lint unit-test build metrics",
     "package": "run-s ci && node ./tasks/clean.js --built --test --temp",
-    "update": "npm update --save-dev && npm update --save && npm run deploy",
+    "update": "npm update --save-dev && npm update --save && npm run package",
     "depends": "npm list --depth=1",
     "depends:prod": "npm list --depth=0 --only=prod",
     "depends:dev": "npm list --depth=0 --only=dev",

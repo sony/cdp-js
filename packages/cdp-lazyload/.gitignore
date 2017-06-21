@@ -11,8 +11,6 @@ npm-debug.log
 # project ignores
 !.gitkeep
 .vs/
-.sass-cache/
-.tscache/
 bin/
 external/
 node_modules/

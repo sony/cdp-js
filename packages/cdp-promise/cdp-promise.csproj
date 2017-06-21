@@ -50,7 +50,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties src_4tsconfig_1entry_1json__JSONSchema="http://json.schemastore.org/tsconfig" />
+      <UserProperties tsconfig_1module_1json__JSONSchema="http://json.schemastore.org/tsconfig" />
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
@@ -85,10 +85,33 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
+    <Content Include="built\cdp.promise-all.js">
+      <DependentUpon>cdp.promise.js</DependentUpon>
+    </Content>
+    <Content Include="built\cdp.promise-entry.js">
+      <DependentUpon>cdp.promise.js</DependentUpon>
+    </Content>
+    <Content Include="built\cdp.promise.js" />
     <Content Include="dist\cdp.promise.js" />
+    <Content Include="dist\cdp.promise.min.js">
+      <DependentUpon>cdp.promise.js</DependentUpon>
+    </Content>
+    <Content Include="docs\reports\coverage\index.html" />
+    <Content Include="docs\reports\metrics\display.html" />
+    <Content Include="docs\reports\metrics\index.html" />
+    <Content Include="docs\typedoc\index.html" />
+    <Content Include="exports\cdp\core\promise.js">
+      <DependentUpon>promise.ts</DependentUpon>
+    </Content>
     <Content Include="external\jquery\scripts\jquery.js" />
     <Content Include="project.config.js" />
-    <Content Include="src\scripts\CDP\_module.scripts.html" />
+    <Content Include="tasks\remap-coverage.js" />
+    <Content Include="tests\unit\cdp.promise.spec.js">
+      <DependentUpon>cdp.promise.spec.ts</DependentUpon>
+    </Content>
+    <Content Include="tsconfig.base.json">
+      <DependentUpon>tsconfig.json</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="BANNER" />
@@ -102,33 +125,30 @@
     <Content Include="tasks\banner.js" />
     <Content Include="tasks\bundle.js" />
     <Content Include="tasks\clean.js" />
-    <Content Include="tasks\coverage.js" />
     <Content Include="tasks\external-rearrange.js" />
     <Content Include="tasks\srcmap.js" />
-    <Content Include="tests\runner\config-generator.js" />
     <Content Include="tests\runner\test-main.js" />
     <Content Include="tests\runner\testem-amd.js" />
     <Content Include="tests\runner\testem-ci.js" />
     <Content Include="tests\tslint\tslint.json" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="built\cdp.promise-all.d.ts">
+      <DependentUpon>cdp.promise.js</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="dist\%40types\cdp.promise.d.ts" />
     <TypeScriptCompile Include="exports\cdp\core\promise.ts" />
     <TypeScriptCompile Include="src\scripts\%40types\dev.dependencies\index.d.ts" />
-    <TypeScriptCompile Include="src\scripts\cdp.promise.d.ts" />
     <TypeScriptCompile Include="src\scripts\cdp.promise.ts" />
     <TypeScriptCompile Include="src\scripts\CDP\Promise.ts" />
-    <TypeScriptCompile Include="src\scripts\_dev.dependencies.d.ts" />
     <TypeScriptCompile Include="tests\unit\cdp.promise.spec.ts" />
+    <TypeScriptCompile Include="tests\unit\_dev.dependencies.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include=".npmignore" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="built\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="src\tsconfig.json" />
+    <Content Include="src\tsconfig.all.json" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="tests\eslint\eslintrc.json" />
@@ -142,5 +162,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="src\tsconfig.entry.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="dist\cdp.promise.min.js.map">
+      <DependentUpon>cdp.promise.js</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="tsconfig.module.json" />
   </ItemGroup>
 </Project>

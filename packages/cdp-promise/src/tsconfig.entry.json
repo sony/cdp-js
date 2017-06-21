@@ -1,5 +1,6 @@
 {
-  "extends": "./tsconfig.json",
+  "extends": "../tsconfig.base.json",
+  "compileOnSave": true,
   "compilerOptions": {
     "declaration": false,
     "sourceMap": false,

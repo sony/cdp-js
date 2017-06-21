@@ -35,11 +35,11 @@ const external_rearrange = {
 const main = {
     basename: 'cdp.promise',
     bundle_d_ts: 'cdp.promise.d.ts',
-    bundle_type: 'embed-entry',
+    namespace: 'cdp',
 };
 
 const built_cleanee = {
-    ts: ['**/*.js', '**/*.d.ts', '**/*.map'],
+    ts: ['**/*.js', '**/*.d.ts', '!**/_dev.dependencies.d.ts', '**/*.map'],
 };
 
 const banner = {

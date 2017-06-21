@@ -414,12 +414,14 @@
         ///////////////////////////////////////////////////////////////////////
         // mixin: native JQueryDeferred
 
+        /* tslint:disable:no-unused-variable */
         private notify: (value?: any, ...args: any[]) => JQueryDeferred<T>;
         private notifyWith: (context: any, value?: any[]) => JQueryDeferred<T>;
         private reject: (value?: any, ...args: any[]) => JQueryDeferred<T>;
         private rejectWith: (context: any, value?: any[]) => JQueryDeferred<T>;
         private resolve: (value?: T, ...args: any[]) => JQueryDeferred<T>;
         private resolveWith: (context: any, value?: T[]) => JQueryDeferred<T>;
+        /* tslint:enable:no-unused-variable */
 
         ///////////////////////////////////////////////////////////////////////
         // mixin: native IProimise

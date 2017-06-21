@@ -35,10 +35,11 @@ const external_rearrange = {
 const main = {
     basename: 'cdp.lazyload',
     bundle_d_ts: 'cdp.lazyload.d.ts',
+    namespace: 'cdp',
 };
 
 const built_cleanee = {
-    ts: ['**/*.js', '**/*.d.ts', '**/*.map'],
+    ts: ['**/*.js', '**/*.d.ts', '!**/_dev.dependencies.d.ts', '**/*.map'],
 };
 
 const banner = {
