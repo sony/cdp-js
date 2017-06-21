@@ -19,12 +19,22 @@ const dir = {
     test: 'tests',
     types: '@types',
     temp: '.temp',
+    external: 'external',
     script: 'scripts',
 };
 
+const external_rearrange = {
+    root: `${dir.external}`,
+    ignore_modules: [
+        '^@types',
+    ],
+    module_adjuster: {
+    },
+};
+
 const main = {
-    basename: 'cdp.core',
-    bundle_d_ts: 'cdp.core.d.ts',
+    basename: 'cdp.lazyload',
+    bundle_d_ts: 'cdp.lazyload.d.ts',
 };
 
 const built_cleanee = {
@@ -41,6 +51,7 @@ module.exports = {
     target: target,
     pkg: pkg,
     dir: dir,
+    external_rearrange: external_rearrange,
     main: main,
     built_cleanee: built_cleanee,
     banner: banner,

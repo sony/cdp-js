@@ -1,0 +1,88 @@
+{
+  "rules": {
+    "ban": [
+      true,
+      [ "_", "extend" ],
+      [ "_", "isNull" ],
+      [ "_", "isDefined" ]
+    ],
+    "class-name": true,
+    "comment-format": [
+      false,
+      "check-space",
+      "check-lowercase"
+    ],
+    "curly": true,
+    "eofline": false,
+    "forin": true,
+    "indent": [ true, 4 ],
+    "interface-name": false,
+    "jsdoc-format": true,
+    "label-position": true,
+    "max-line-length": [ true, 140 ],
+    "no-arg": true,
+    "no-bitwise": true,
+    "no-console": [
+      true,
+      "debug",
+      "info",
+      "time",
+      "timeEnd",
+      "trace"
+    ],
+    "no-construct": true,
+    "no-debugger": true,
+    "no-duplicate-variable": true,
+    "no-empty": true,
+    "no-eval": true,
+    "no-string-literal": true,
+    "no-trailing-whitespace": true,
+    "no-unused-variable": [
+      true,
+      { "ignore-pattern": "^TAG|^__" }
+    ],
+    "no-unused-expression": true,
+    "no-use-before-declare": true,
+    "one-line": [
+      true,
+      "check-open-brace",
+      "check-catch",
+      "check-else",
+      "check-whitespace"
+    ],
+    "quotemark": [ true, "double" ],
+    "radix": true,
+    "semicolon": true,
+    "trailing-comma": true,
+    "triple-equals": [ true, "allow-null-check" ],
+    "typedef": [
+      true,
+      "callSignature",
+      "indexSignature",
+      "parameter",
+      "propertySignature",
+      "variableDeclarator"
+    ],
+    "prefer-const": [
+      true,
+      { "destructuring": "all" }
+    ],
+    "no-var-keyword": true,
+    "variable-name": false,
+    "no-shadowed-variable": true,
+    "typedef-whitespace": [
+      true,
+      [ "callSignature", "noSpace" ],
+      [ "catchClause", "noSpace" ],
+      [ "indexSignature", "space" ]
+    ],
+    "whitespace": [
+      false,
+      "check-branch",
+      "check-decl",
+      "check-operator",
+      "check-separator",
+      "check-type"
+    ]
+  }
+}
