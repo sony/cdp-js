@@ -1,0 +1,13 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "declaration": false,
+    "sourceMap": false,
+    "inlineSourceMap": false,
+    "inlineSources": false,
+    "outFile": "../built/cdp.promise-entry.js"
+  },
+  "files": [
+    "scripts/cdp.promise.ts"
+  ]
+}

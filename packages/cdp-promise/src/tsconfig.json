@@ -1,0 +1,33 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "module": "none",
+    "moduleResolution": "node",
+    "target": "es5",
+    "emitBOM": true,
+    "inlineSourceMap": true,
+    "inlineSources": true,
+    "declaration": true,
+    "pretty": true,
+    "outFile": "../built/cdp.promise-all.js",
+    "lib": [
+      "dom",
+      "es5",
+      "scripthost",
+      "es2015.iterable"
+    ],
+    "typeRoots": [
+      "../node_modules/@types",
+      "scripts/@types"
+    ],
+    "types": [
+      "dev.dependencies",
+      "jquery",
+      "requirejs",
+      "jasmine"
+    ]
+  },
+  "files": [
+    "scripts/CDP/Promise.ts"
+  ]
+}

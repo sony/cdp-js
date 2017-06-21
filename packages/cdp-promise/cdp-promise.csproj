@@ -3,7 +3,7 @@
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <ProjectGuid>{FE81BA2A-3302-40DB-8C1E-496EEB80F81E}</ProjectGuid>
+    <ProjectGuid>{2F33231F-8246-47C8-9ECF-2A1C75E8FB30}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <OutputPath>bin</OutputPath>
@@ -50,12 +50,24 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
+      <UserProperties src_4tsconfig_1entry_1json__JSONSchema="http://json.schemastore.org/tsconfig" />
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
     <TypeScriptTarget>ES5</TypeScriptTarget>
     <TypeScriptIncludeComments>true</TypeScriptIncludeComments>
     <TypeScriptSourceMap>true</TypeScriptSourceMap>
+    <TypeScriptJSXEmit>None</TypeScriptJSXEmit>
+    <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
+    <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
+    <TypeScriptModuleKind>AMD</TypeScriptModuleKind>
+    <TypeScriptRemoveComments>False</TypeScriptRemoveComments>
+    <TypeScriptOutFile />
+    <TypeScriptOutDir />
+    <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
+    <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
+    <TypeScriptMapRoot />
+    <TypeScriptSourceRoot />
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Release'">
     <TypeScriptTarget>ES5</TypeScriptTarget>
@@ -68,24 +80,15 @@
     </PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>cd $(ProjectDir)/assets/lib/stylesheets
-call compass compile -c config.rb
-cd $(ProjectDir)/assets/stylesheets
-call compass compile -c config.rb
-</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
-    <Content Include="dist\cdp.lazyload.js" />
-    <Content Include="dist\cdp.lazyload.min.js">
-      <DependentUpon>cdp.lazyload.js</DependentUpon>
-    </Content>
-    <Content Include="docs\reports\coverage\index.html" />
-    <Content Include="docs\reports\metrics\display.html" />
-    <Content Include="docs\reports\metrics\index.html" />
+    <Content Include="dist\cdp.promise.js" />
     <Content Include="external\jquery\scripts\jquery.js" />
     <Content Include="project.config.js" />
-    <Content Include="src\scripts\cdp.lazyload.js" />
+    <Content Include="src\scripts\CDP\_module.scripts.html" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="BANNER" />
@@ -101,6 +104,7 @@ call compass compile -c config.rb
     <Content Include="tasks\clean.js" />
     <Content Include="tasks\coverage.js" />
     <Content Include="tasks\external-rearrange.js" />
+    <Content Include="tasks\srcmap.js" />
     <Content Include="tests\runner\config-generator.js" />
     <Content Include="tests\runner\test-main.js" />
     <Content Include="tests\runner\testem-amd.js" />
@@ -108,15 +112,28 @@ call compass compile -c config.rb
     <Content Include="tests\tslint\tslint.json" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="dist\%40types\cdp.lazyload.d.ts" />
-    <TypeScriptCompile Include="src\scripts\cdp.lazyload.d.ts" />
-    <TypeScriptCompile Include="tests\unit\cdp.lazyload.spec.ts" />
+    <TypeScriptCompile Include="dist\%40types\cdp.promise.d.ts" />
+    <TypeScriptCompile Include="exports\cdp\core\promise.ts" />
+    <TypeScriptCompile Include="src\scripts\%40types\dev.dependencies\index.d.ts" />
+    <TypeScriptCompile Include="src\scripts\cdp.promise.d.ts" />
+    <TypeScriptCompile Include="src\scripts\cdp.promise.ts" />
+    <TypeScriptCompile Include="src\scripts\CDP\Promise.ts" />
+    <TypeScriptCompile Include="src\scripts\_dev.dependencies.d.ts" />
+    <TypeScriptCompile Include="tests\unit\cdp.promise.spec.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include=".npmignore" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="built\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="src\tsconfig.json" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="tests\eslint\eslintrc.json" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="tests\runner\index.mustache" />
     <Content Include="tests\runner\testem.json" />
   </ItemGroup>
@@ -124,8 +141,6 @@ call compass compile -c config.rb
     <Content Include="tsconfig.json" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="dist\cdp.lazyload.min.js.map">
-      <DependentUpon>cdp.lazyload.js</DependentUpon>
-    </Content>
+    <Content Include="src\tsconfig.entry.json" />
   </ItemGroup>
 </Project>

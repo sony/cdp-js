@@ -1,0 +1,40 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "module": "amd",
+    "moduleResolution": "node",
+    "target": "es5",
+    "emitBOM": true,
+    "inlineSourceMap": true,
+    "inlineSources": true,
+    "pretty": true,
+    "lib": [
+      "dom",
+      "es5",
+      "scripthost",
+      "es2015.iterable"
+    ],
+    "typeRoots": [
+      "./node_modules/@types",
+      "src/scripts/@types"
+    ],
+    "types": [
+      "jquery",
+      "requirejs",
+      "jasmine"
+    ]
+  },
+  "include": [
+    "exports/**/*.ts",
+    "tests/unit/**/*.ts"
+  ],
+  "exclude": [
+    "bin",
+    "dist",
+    "docs",
+    "external",
+    "src",
+    "tasks",
+    "obj"
+  ]
+}

@@ -1,9 +1,9 @@
 {
-  "name": "@cdp/lazyload",
-  "description": "CDP script delay load assistant module",
+  "name": "@cdp/promise",
+  "description": "CDP promise utility module",
   "version": "2.0.0",
-  "main": "dist/cdp.lazyload.js",
-  "types": "dist/@types/cdp.lazyload.d.ts",
+  "main": "dist/cdp.promise.js",
+  "types": "dist/@types/cdp.promise.d.ts",
   "author": {
     "name": "Shin Ogata",
     "email": "Shin.Ogata@jp.sony.com"
@@ -18,13 +18,14 @@
   "license": "Apache-2.0",
   "keywords": [
     "CDP",
-    "TypeScript"
+    "TypeScript",
+    "jquery"
   ],
   "scripts": {
     "postinstall": "npm run rearrange",
     "test": "run-s -l clean compile lint unit-test",
     "ci": "run-s -l clean build lint unit-test build metrics",
-    "package": "run-s ci && node ./tasks/clean.js --built --test --temp",
+    "deploy": "run-s ci clean:deploy",
     "update": "npm update --save-dev && npm update --save && npm run deploy",
     "depends": "npm list --depth=1",
     "depends:prod": "npm list --depth=0 --only=prod",
@@ -37,9 +38,12 @@
     "clean:test": "node ./tasks/clean.js --test",
     "clean:built": "node ./tasks/clean.js --built",
     "clean:pkg": "node ./tasks/clean.js --pkg",
+    "clean:deploy": "node ./tasks/clean.js --built --test --temp",
     "build": "run-s compile bundle minify",
-    "compile": "tsc -p ./tsconfig.json",
-    "bundle": "node ./tasks/bundle.js --target=pure-js",
+    "compile": "run-s compile:*",
+    "compile:src": "tsc -p ./src/tsconfig.json && tsc -p ./src/tsconfig.entry.json",
+    "compile:etc": "tsc -p ./tsconfig.json",
+    "bundle": "node ./tasks/bundle.js",
     "minify": "uglifyjs dist/cdp.lazyload.js -o dist/cdp.lazyload.min.js --comments /^!/ --source-map includeSources,url=cdp.lazyload.min.js.map",
     "lint": "run-p -l lint:*",
     "lint:js": "eslint tasks/**/*.js src/**/*.js -c tests/eslint/eslintrc.json",
@@ -61,6 +65,7 @@
     "@types/jasmine": "^2.5.52",
     "@types/jquery": "^3.2.3",
     "@types/requirejs": "^2.1.29",
+    "convert-source-map": "^1.5.0",
     "del": "^3.0.0",
     "eslint": "^4.0.0",
     "fs-extra": "^3.0.1",
@@ -68,6 +73,7 @@
     "nyc": "^11.0.2",
     "plato": "^1.7.0",
     "requirejs": "^2.3.3",
+    "source-map": "^0.5.6",
     "tslint": "^5.4.3",
     "typescript": "^2.4.0",
     "uglify-js": "^3.0.15"
