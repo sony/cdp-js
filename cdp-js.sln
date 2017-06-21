@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cdp-core", "packages\cdp-co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cdp-lazyload", "packages\cdp-lazyload\cdp-lazyload.csproj", "{FE81BA2A-3302-40DB-8C1E-496EEB80F81E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cdp-promise", "packages\cdp-promise\cdp-promise.csproj", "{2F33231F-8246-47C8-9ECF-2A1C75E8FB30}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{FE81BA2A-3302-40DB-8C1E-496EEB80F81E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE81BA2A-3302-40DB-8C1E-496EEB80F81E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE81BA2A-3302-40DB-8C1E-496EEB80F81E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F33231F-8246-47C8-9ECF-2A1C75E8FB30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F33231F-8246-47C8-9ECF-2A1C75E8FB30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F33231F-8246-47C8-9ECF-2A1C75E8FB30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F33231F-8246-47C8-9ECF-2A1C75E8FB30}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

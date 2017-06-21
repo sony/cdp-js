@@ -83,6 +83,7 @@
     </PostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include=".gitignore" />
     <Content Include="dist\cdp.core.js" />
     <Content Include="dist\cdp.core.min.js">
       <DependentUpon>cdp.core.js</DependentUpon>
