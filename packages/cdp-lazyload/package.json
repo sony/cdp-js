@@ -21,6 +21,7 @@
     "TypeScript"
   ],
   "scripts": {
+    "setup:tasks": "node ../master-tasks/provider.js",
     "postinstall": "npm run rearrange",
     "test": "run-s -l clean compile lint unit-test",
     "ci": "run-s -l clean build lint unit-test build metrics",

@@ -1,0 +1,29 @@
+{
+  "name": "master-task",
+  "description": "CDP common npm scripts tasks",
+  "version": "1.0.0",
+  "private": true,
+  "author": {
+    "name": "Shin Ogata",
+    "email": "Shin.Ogata@jp.sony.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CDP-Tokyo/cdp-js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/CDP-Tokyo/cdp-js/issues"
+  },
+  "license": "Apache-2.0",
+  "keywords": [
+    "CDP",
+    "TypeScript",
+    "jquery"
+  ],
+  "scripts": {
+    "test": "eslint tasks/**/*.js ./provider.js -c eslintrc.json"
+  },
+  "devDependencies": {
+    "eslint": "^4.0.0"
+  }
+}

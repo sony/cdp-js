@@ -1,0 +1,8 @@
+bin/
+obj/
+*.sln
+*.csproj
+*.csproj.user
+*.suo
+eslintrc.json
+.npmignore
