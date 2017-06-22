@@ -25,9 +25,9 @@ function main() {
         // restore namespace to path
         const prefix = `../${config.dir.src}/` + (config.dir.script ? `${config.dir.script}/` : '');
         for (let i = 0, n = map.sources.length; i < n; i++) {
-            const match = map.sources[i].match(/(^[a-zA-Z0-9\/@._-]+:\/\/\/)([a-zA-Z0-9\/@._-]+$)/);
+            const match = map.sources[i].match(/(^[a-zA-Z0-9/@._-]+:\/\/\/)([a-zA-Z0-9/@._-]+$)/);
             if (match && match[2]) {
-                map.sources[i] = prefix + match[2]
+                map.sources[i] = prefix + match[2];
             }
         }
 
