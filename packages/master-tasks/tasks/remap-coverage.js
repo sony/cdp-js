@@ -15,11 +15,25 @@ function main() {
     const nyc = new NYC();
 
     const detectMapFile = (srcPath) => {
+        let map;
         if (fs.existsSync(srcPath + '.map')) {
-            return JSON.parse(fs.readFileSync(srcPath + '.map').toString());
+            map = JSON.parse(fs.readFileSync(srcPath + '.map').toString());
         } else {
-            return convert.fromComment(fs.readFileSync(srcPath).toString()).toObject();
+            map = convert.fromComment(fs.readFileSync(srcPath).toString()).toObject();
         }
+
+        // restore namespace to path
+        const prefix = `../${config.dir.src}/` + (config.dir.script ? `${config.dir.script}/` : '');
+        for (let i = 0, n = map.sources.length; i < n; i++) {
+            const match = map.sources[i].match(/(^[a-zA-Z0-9\/@._-]+:\/\/\/)([a-zA-Z0-9\/@._-]+$)/);
+            if (match && match[2]) {
+                map.sources[i] = prefix + match[2]
+            }
+        }
+
+        // test
+        fs.writeFileSync("fuga.json", JSON.stringify(map, null, 4), 'utf-8');
+        return map;
     };
 
     console.log('remap coverage info...');
