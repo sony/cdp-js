@@ -21,7 +21,8 @@
     "jquery"
   ],
   "scripts": {
-    "test": "eslint tasks/**/*.js ./provider.js -c eslintrc.json"
+    "test": "eslint tasks/**/*.js ./provider.js -c eslintrc.json",
+    "dev-link": "node provider.js --link"
   },
   "devDependencies": {
     "eslint": "^4.0.0"
