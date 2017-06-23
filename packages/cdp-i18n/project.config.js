@@ -4,7 +4,7 @@ const path  = require('path');
 const pkg   = require('./package.json');
 
 const target = {
-    type: 'library',
+    type: 'legacy-module',
     es: 'es5',
     module: 'none',
     env: 'web',
@@ -28,13 +28,52 @@ const external_rearrange = {
     ignore_modules: [
         '^@types',
     ],
+    specified_modules: [
+        'i18next',
+        'i18next-browser-languagedetector',
+        'i18next-localstorage-cache',
+        'i18next-sprintf-postprocessor',
+        'i18next-xhr-backend',
+        'jquery-i18next',
+    ],
     module_adjuster: {
+        'i18next': {
+            vender: 'i18next',
+            cwd: "./dist/umd",
+            dev: "*.js"
+
+        },
+        'i18next-browser-languagedetector': {
+            vender: 'i18next',
+            cwd: "./dist/umd",
+            dev: "*.js"
+        },
+        'i18next-localstorage-cache': {
+            vender: 'i18next',
+            cwd: "./dist/umd",
+            dev: "*.js"
+        },
+        'i18next-sprintf-postprocessor': {
+            vender: 'i18next',
+            cwd: "./dist/umd",
+            dev: "*.js"
+        },
+        'i18next-xhr-backend': {
+            vender: 'i18next',
+            cwd: "./dist/umd",
+            dev: "*.js"
+        },
+        'jquery-i18next': {
+            vender: 'i18next',
+            cwd: "./dist/umd",
+            dev: "*.js"
+        },
     },
 };
 
 const main = {
-    basename: 'cdp.promise',
-    bundle_d_ts: 'cdp.promise.d.ts',
+    basename: 'cdp.i18n',
+    bundle_d_ts: 'cdp.i18n.d.ts',
     namespace: 'cdp',
 };
 
@@ -50,6 +89,8 @@ const banner = {
 const required_tasks = [
     'banner.js',
     'bundle.js',
+    'bundle-adjuster.js',
+    'bundle-finalizer.js',
     'clean.js',
     'external-rearrange.js',
     'remap-coverage.js',

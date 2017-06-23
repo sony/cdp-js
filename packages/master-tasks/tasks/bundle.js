@@ -21,6 +21,7 @@ function queryOptions() {
 
     let settings = {
         target: 'embed',    // "embed" | "pure-js"
+        banner: true,
     };
 
     if (0 < argv.length) {
@@ -30,6 +31,8 @@ function queryOptions() {
                 const name = option.split('=')[0];
                 if ('target' === name) {
                     settings.target = option.split('=')[1] || 'embed';
+                } else if ('no-banner' === name) {
+                    settings.banner = false;
                 } else if (name === key) {
                     settings[key] = true;
                 }
@@ -65,7 +68,7 @@ function bundlePureJS() {
 }
 
 // for legacy module structure
-function bundleEmbed() {
+function bundleEmbed(options) {
     const srcmap = require('./srcmap');
     const BUILT_PATH = path.join(__dirname, '..', config.dir.built);
 
@@ -95,7 +98,9 @@ function bundleEmbed() {
     const node = srcmap.getNodeFromCode(imple);
 
     node.prepend(wrap[0] + '\n');
-    node.prepend(banner('.js', config.main.basename));
+    if (options.banner) {
+        node.prepend(banner('.js', config.main.basename));
+    }
     node.add('\n' + wrap[2] + '\n');
 
     const bundleSrc = srcmap.getCodeFromNode(node, (srcPath) => {
@@ -125,7 +130,7 @@ function main() {
 
     switch (options.target) {
         case 'embed':
-            bundleEmbed();
+            bundleEmbed(options);
             break;
         case 'pure-js':
             bundlePureJS();

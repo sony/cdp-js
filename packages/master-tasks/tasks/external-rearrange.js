@@ -358,6 +358,11 @@ function main() {
         }
         rearrange(external, options);
     });
+    if (config.external_rearrange && config.external_rearrange.specified_modules) {
+        config.external_rearrange.specified_modules.forEach((external) => {
+            rearrange(external, options);
+        });
+    }
 }
 
 main();

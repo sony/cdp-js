@@ -17,6 +17,7 @@
     ],
     "types": [
       "dev.dependencies",
+      "i18next",
       "jquery",
       "requirejs",
       "jasmine"

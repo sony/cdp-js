@@ -83,15 +83,30 @@
     </PostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="built\cdp.i18n-all.js">
+      <DependentUpon>cdp.i18n.js</DependentUpon>
+    </Content>
+    <Content Include="built\cdp.i18n-entry.js">
+      <DependentUpon>cdp.i18n.js</DependentUpon>
+    </Content>
+    <Content Include="built\cdp.i18n.js" />
     <Content Include="dist\cdp.i18n.js" />
-    <Content Include="external\cdp\scripts\cdp.core.js" />
-    <Content Include="external\cdp\scripts\cdp.lazyload.js" />
-    <Content Include="external\cdp\scripts\cdp.promise.js" />
-    <Content Include="project.config.js" />
-    <Content Include="src\scripts\CDP\i18n.js">
+    <Content Include="exports\cdp\core\i18n.js">
       <DependentUpon>i18n.ts</DependentUpon>
     </Content>
-    <Content Include="src\scripts\CDP\_module.scripts.html" />
+    <Content Include="external\i18next\scripts\i18next.js" />
+    <Content Include="external\i18next\scripts\i18nextBrowserLanguageDetector.js" />
+    <Content Include="external\i18next\scripts\i18nextLocalStorageCache.js" />
+    <Content Include="external\i18next\scripts\i18nextSprintfPostProcessor.js" />
+    <Content Include="external\i18next\scripts\i18nextXHRBackend.js" />
+    <Content Include="external\i18next\scripts\jquery-i18next.js" />
+    <Content Include="external\jquery\scripts\jquery.js" />
+    <Content Include="project.config.js" />
+    <Content Include="tasks\bundle-adjuster.js" />
+    <Content Include="tasks\bundle-finalizer.js" />
+    <Content Include="tsconfig.base.json">
+      <DependentUpon>tsconfig.json</DependentUpon>
+    </Content>
     <Content Include="webpack.config.js" />
   </ItemGroup>
   <ItemGroup>
@@ -115,8 +130,14 @@
     <Content Include="tests\tslint\tslint.json" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="built\cdp.i18n-all.d.ts">
+      <DependentUpon>cdp.i18n.js</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="dist\%40types\cdp.i18n.d.ts" />
+    <TypeScriptCompile Include="dist\%40types\i18next.d.ts" />
     <TypeScriptCompile Include="exports\cdp\core\i18n.ts" />
     <TypeScriptCompile Include="src\scripts\%40types\dev.dependencies\index.d.ts" />
+    <TypeScriptCompile Include="src\scripts\%40types\i18next.d.ts" />
     <TypeScriptCompile Include="src\scripts\cdp.i18n.ts" />
     <TypeScriptCompile Include="src\scripts\CDP\i18n.ts" />
     <TypeScriptCompile Include="tests\unit\cdp.i18n.spec.ts" />
@@ -124,11 +145,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include=".npmignore" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="src\scripts\CDP\i18n.js.map">
-      <DependentUpon>i18n.ts</DependentUpon>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="src\tsconfig.all.json" />
@@ -143,8 +159,8 @@
     <Content Include="tests\runner\testem.json" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="tsconfig.base.json" />
     <Content Include="tsconfig.json" />
     <Content Include="tsconfig.module.json" />
   </ItemGroup>
+  <ItemGroup />
 </Project>

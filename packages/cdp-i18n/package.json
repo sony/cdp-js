@@ -1,9 +1,9 @@
 {
-  "name": "@cdp/promise",
-  "description": "CDP promise utility module",
+  "name": "@cdp/i18n",
+  "description": "CDP i18n utility module",
   "version": "2.0.0",
-  "main": "dist/cdp.promise.js",
-  "types": "dist/@types/cdp.promise.d.ts",
+  "main": "dist/cdp.i18n.js",
+  "types": "dist/@types/cdp.i18n.d.ts",
   "author": {
     "name": "Shin Ogata",
     "email": "Shin.Ogata@jp.sony.com"
@@ -43,8 +43,10 @@
     "compile:ts:src": "tsc -p ./src/tsconfig.all.json && tsc -p ./src/tsconfig.entry.json",
     "compile:ts:module": "tsc -p ./tsconfig.module.json",
     "compile:ts:metrics": "tsc -p ./tsconfig.json",
-    "bundle": "node ./tasks/bundle.js",
-    "minify": "uglifyjs dist/cdp.promise.js -o dist/cdp.promise.min.js --comments /^!/ --source-map includeSources,url=cdp.promise.min.js.map",
+    "bundle": "run-s bundle:*",
+    "bundle:embed": "node ./tasks/bundle.js --no-banner",
+    "bundle:external": "node ./tasks/bundle-adjuster.js && webpack --config ./webpack.config.js && node ./tasks/bundle-finalizer.js",
+    "minify": "uglifyjs dist/cdp.i18n.js -o dist/cdp.i18n.min.js --comments /^!/ --source-map includeSources,url=cdp.i18n.min.js.map",
     "lint": "run-p -l lint:*",
     "lint:js": "eslint tasks/**/*.js src/**/*.js -c tests/eslint/eslintrc.json",
     "lint:ts": "tslint --type-check -p ./tsconfig.json -c ./tests/tslint/tslint.json -e src/**/*.d.ts",
@@ -55,7 +57,7 @@
     "coverage:instrument": "nyc instrument ./built ./built --source-map=false",
     "coverage:remap": "node ./tasks/remap-coverage.js",
     "coverage:report": "nyc report --reporter=lcov --reporter=html --reporter=text --report-dir=docs/reports/coverage --temp-directory=docs/reports/coverage",
-    "rearrange": "node ./tasks/external-rearrange.js",
+    "rearrange": "node ./tasks/external-rearrange.js --no-map",
     "document": "typedoc --out docs/typedoc/ src/scripts/tsconfig.json",
     "metrics": "npm run compile:ts:metrics && plato -r -d docs/reports/metrics -e ./tests/eslint/eslintrc.json built/CDP/**/*.js"
   },
@@ -63,6 +65,7 @@
     "jquery": ">=1.8.3"
   },
   "devDependencies": {
+    "@types/i18next": "^2.3.38",
     "@types/jasmine": "^2.5.52",
     "@types/jquery": "^3.2.3",
     "@types/requirejs": "^2.1.29",
@@ -70,14 +73,22 @@
     "del": "^3.0.0",
     "eslint": "^4.0.0",
     "fs-extra": "^3.0.1",
+    "i18next": "^8.4.2",
+    "i18next-browser-languagedetector": "^1.0.1",
+    "i18next-localstorage-cache": "^1.1.1",
+    "i18next-sprintf-postprocessor": "^0.2.2",
+    "i18next-xhr-backend": "^1.4.2",
+    "jquery-i18next": "^1.2.0",
     "npm-run-all": "^4.0.2",
     "nyc": "^11.0.2",
     "plato": "^1.7.0",
     "requirejs": "^2.3.3",
     "source-map": "^0.5.6",
+    "source-map-loader": "^0.2.1",
     "tslint": "^5.4.3",
     "typedoc": "^0.7.1",
     "typescript": "^2.4.0",
-    "uglify-js": "^3.0.15"
+    "uglify-js": "^3.0.19",
+    "webpack": "^3.0.0"
   }
 }

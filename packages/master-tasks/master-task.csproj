@@ -79,6 +79,7 @@ call compass compile -c config.rb
     <Content Include="provider.js" />
     <Content Include="tasks\banner.js" />
     <Content Include="tasks\bundle-finalizer.js" />
+    <Content Include="tasks\bundle-adjuster.js" />
     <Content Include="tasks\bundle.js" />
     <Content Include="tasks\clean.js" />
     <Content Include="tasks\command.js" />

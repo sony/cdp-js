@@ -1,7 +1,4 @@
-﻿/// <reference path="_dev.dependencies.d.ts" />
-
-/* tslint:disable:typedef */
-
+﻿/* tslint:disable:typedef */
 (function (root, factory) {
     if (typeof define === "function" && define.amd) {
         // AMD

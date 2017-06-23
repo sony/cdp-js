@@ -112,9 +112,9 @@
     /**
      * Cancel 可能オブジェクトの作成
      *
-     * @param df       {JQueryDeferred}    [in] jQueryDeferred instance を指定
-     * @param options? {Object | Function} [in] jQueryPromise を拡張するオブジェクト or キャンセル時に呼び出される関数を指定
-     * @return {Object} Cancelable property
+     * @param df       [in] jQueryDeferred instance を指定
+     * @param options? [in] jQueryPromise を拡張するオブジェクト or キャンセル時に呼び出される関数を指定
+     * @returns {Object} Cancelable property
      */
     function makeCancelable<T>(
         df: JQueryDeferred<T>,
@@ -181,9 +181,9 @@
      * Promise オブジェクトの作成
      * jQueryDeferred オブジェクトから、Tools.Promise オブジェクトを作成する
      *
-     * @param df       {JQueryDeferred}    [in] jQueryDeferred instance を指定
-     * @param options? {Object | Function} [in] jQueryPromise を拡張するオブジェクト or キャンセル時に呼び出される関数を指定
-     * @return {IPromise} IPromise オブジェクト
+     * @param df       [in] jQueryDeferred instance を指定
+     * @param options? [in] jQueryPromise を拡張するオブジェクト or キャンセル時に呼び出される関数を指定
+     * @returns IPromise オブジェクト
      */
     export function makePromise<T>(df: JQueryDeferred<T>, options?: MakePromiseOptions | cancelCallback): IPromise<T> {
         const cancelable = makeCancelable(df, options);
@@ -203,8 +203,8 @@
      * Promise オブジェクトの終了を待つ
      * $.when() は失敗するとすぐに制御を返すのに対し、失敗も含めて待つ Promise オブジェクトを返却
      *
-     * @param deferreds {Promise<T>|JQueryGenericPromise<T>[]} [in] Promise オブジェクト(可変引数, 配列)
-     * @return {IPromiseBase<T>} Promise オブジェクト
+     * @param deferreds [in] Promise オブジェクト(可変引数, 配列)
+     * @returns Promise オブジェクト
      */
     export function wait<T>(...deferreds: Promise<T>[]): IPromiseBase<T>;
     export function wait<T>(...deferreds: JQueryGenericPromise<T>[]): IPromiseBase<T>;
@@ -260,8 +260,8 @@
     /**
      * Promise オブジェクトの最初の完了を待つ
      *
-     * @param deferreds {Promise<T>|JQueryGenericPromise<T>[]} [in] Promise オブジェクト(可変引数, 配列)
-     * @return {IPromiseBase<T>} Promise オブジェクト
+     * @param deferreds [in] Promise オブジェクト(可変引数, 配列)
+     * @returns Promise オブジェクト
      */
     export function race<T>(...deferreds: Promise<T>[]): IPromiseBase<T>;
     export function race<T>(...deferreds: JQueryGenericPromise<T>[]): IPromiseBase<T>;
@@ -303,8 +303,8 @@
         /**
          * Promise を管理下に追加
          *
-         * @param promise {Promise} [in] 管理対象のオブジェクト
-         * @return {Promise} 引数に渡したオブジェクト
+         * @param promise [in] 管理対象のオブジェクト
+         * @returns 引数に渡したオブジェクト
          */
         public add<T>(promise: IPromise<T> | JQueryXHR): IPromise<T> {
             if (promise == null) {
@@ -342,7 +342,7 @@
          * 管理対象の Promise に対して abort を発行
          * キャンセル処理に対するキャンセルは不可
          *
-         * @return {IPromiseBase}
+         * @returns Promise オブジェクト
          */
         public cancel(info?: any): IPromiseBase<any> {
             const promises = this.promises();
@@ -357,7 +357,7 @@
         /**
          * 管理対象の Promise を配列で返す
          *
-         * @return {Promise[]}
+         * @returns Promise オブジェクト配列
          */
         public promises(): IPromise<any>[] {
             return this._pool.map((element) => {
@@ -391,7 +391,7 @@
         ) => IPromiseBase<TResult>;
 
         ///////////////////////////////////////////////////////////////////////
-        // mixin: native JQueryPromise
+        // mixin: JQueryPromise
 
         state: () => string;
         always: (
@@ -412,7 +412,7 @@
         ) => IPromise<T>;
 
         ///////////////////////////////////////////////////////////////////////
-        // mixin: native JQueryDeferred
+        // mixin: JQueryDeferred
 
         /* tslint:disable:no-unused-variable */
         private notify: (value?: any, ...args: any[]) => JQueryDeferred<T>;
@@ -424,7 +424,7 @@
         /* tslint:enable:no-unused-variable */
 
         ///////////////////////////////////////////////////////////////////////
-        // mixin: native IProimise
+        // mixin: IProimise
 
         abort: (info?: any) => void;
         dependOn: <U>(promise: IPromise<U> | JQueryXHR) => IPromise<U>;
@@ -432,9 +432,9 @@
         /**
          * constructor
          *
-         * @param executor {Object}            [in] ES6 Promise 互換引数. (dependOn を第3引数に渡す)
-         * @param options? {Object | Function} [in] jQueryPromise を拡張するオブジェクト or キャンセル時に呼び出される関数を指定
-         * @return {IPromise} IPromise オブジェクト
+         * @param executor [in] ES6 Promise 互換引数. (dependOn を第3引数に渡す)
+         * @param options? [in] jQueryPromise を拡張するオブジェクト or キャンセル時に呼び出される関数を指定
+         * @return IPromise オブジェクト
          */
         constructor(
             executor: (

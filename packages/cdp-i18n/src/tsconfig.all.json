@@ -5,9 +5,9 @@
     "inlineSourceMap": true,
     "inlineSources": true,
     "declaration": true,
-    "outFile": "../built/cdp.promise-all.js"
+    "outFile": "../built/cdp.i18n-all.js"
   },
   "files": [
-    "scripts/CDP/Promise.ts"
+    "scripts/CDP/i18n.ts"
   ]
 }
