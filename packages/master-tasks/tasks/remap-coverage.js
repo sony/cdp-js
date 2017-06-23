@@ -31,8 +31,6 @@ function main() {
             }
         }
 
-        // test
-        fs.writeFileSync("fuga.json", JSON.stringify(map, null, 4), 'utf-8');
         return map;
     };
 
