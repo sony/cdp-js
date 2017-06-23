@@ -57,7 +57,7 @@
     "coverage:instrument": "nyc instrument ./built ./built --source-map=false",
     "coverage:remap": "node ./tasks/remap-coverage.js",
     "coverage:report": "nyc report --reporter=lcov --reporter=html --reporter=text --report-dir=docs/reports/coverage --temp-directory=docs/reports/coverage",
-    "rearrange": "node ./tasks/external-rearrange.js --no-map",
+    "rearrange": "node ./tasks/external-rearrange.js --no-map && node ./tasks/internal-rearrange.js",
     "document": "typedoc --out docs/typedoc/ src/scripts/tsconfig.json",
     "metrics": "npm run compile:ts:metrics && plato -r -d docs/reports/metrics -e ./tests/eslint/eslintrc.json built/CDP/**/*.js"
   },
@@ -74,7 +74,7 @@
     "eslint": "^4.0.0",
     "fs-extra": "^3.0.1",
     "i18next": "^8.4.2",
-    "i18next-browser-languagedetector": "^1.0.1",
+    "i18next-browser-languagedetector": "^2.0.0",
     "i18next-localstorage-cache": "^1.1.1",
     "i18next-sprintf-postprocessor": "^0.2.2",
     "i18next-xhr-backend": "^1.4.2",

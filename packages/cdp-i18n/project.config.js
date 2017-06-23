@@ -71,6 +71,11 @@ const external_rearrange = {
     },
 };
 
+const internal_rearrange = [
+    'cdp-core',
+    'cdp-promise',
+];
+
 const main = {
     basename: 'cdp.i18n',
     bundle_d_ts: 'cdp.i18n.d.ts',
@@ -93,6 +98,7 @@ const required_tasks = [
     'bundle-finalizer.js',
     'clean.js',
     'external-rearrange.js',
+    'internal-rearrange.js',
     'remap-coverage.js',
     'srcmap.js',
 ];
@@ -103,6 +109,7 @@ module.exports = {
     pkg: pkg,
     dir: dir,
     external_rearrange: external_rearrange,
+    internal_rearrange: internal_rearrange,
     main: main,
     built_cleanee: built_cleanee,
     banner: banner,

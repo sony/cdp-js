@@ -29,6 +29,12 @@ function update_srcmap_namespace(code, options) {
 ///////////////////////////////////////////////////////////////////////
 // legacy module:
 
+function normalize_legacy_module_src_copy() {
+    const src = path.join(__dirname, '..', config.dir.built, config.main.basename + '.js');
+    const dst = path.join(__dirname, '..', config.dir.pkg, config.main.basename + '.js');
+    fs.writeFileSync(dst, fs.readFileSync(src).toString(), 'utf8');
+}
+
 function normalize_legacy_module_d_ts() {
     const TYPE_DEF_FILE = path.join(__dirname, '..', config.dir.pkg, config.dir.types, config.main.bundle_d_ts);
     const SRC_DEF_FILE  = path.join(__dirname, '..', config.dir.built, config.main.basename + '-all.d.ts');
@@ -167,6 +173,7 @@ function main() {
     switch (config.target.type) {
         case 'legacy-module':
             normalize_lib_src(config.dir.built);
+            normalize_legacy_module_src_copy();
             normalize_legacy_module_d_ts();
             return;
         case 'library':

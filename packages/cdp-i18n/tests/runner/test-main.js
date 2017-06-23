@@ -6,6 +6,8 @@
             'boot': '//cdnjs.cloudflare.com/ajax/libs/jasmine/2.4.1/boot',
             'testem': '../../../testem',
             'jquery': 'external/jquery/scripts/jquery',
+            'cdp.core': 'external/cdp/scripts/cdp.core',
+            'cdp.promise': 'external/cdp/scripts/cdp.promise',
         },
     });
 

@@ -34,18 +34,34 @@ function main() {
         return map;
     };
 
+    const trimExternal = (cov) => {
+        if (config.dir.external) {
+            for (let file in cov) {
+                if (cov.hasOwnProperty(file)) {
+                    const regexp_external = new RegExp(config.dir.external, 'g');
+                    if (regexp_external.test(file) || /webpack/g.test(file)) {
+                        delete cov[file];
+                    }
+                }
+            }
+        }
+        return cov;
+    };
+
     console.log('remap coverage info...');
 
     let rebuild = {};
     for (let file in coverage) {
-        console.log('  processing... : ' + file);
-        const absPath = path.join(BUILT_DIR, file);
-        rebuild[absPath] = coverage[file];
-        rebuild[absPath].path = absPath;
-        rebuild[absPath].inputSourceMap = detectMapFile(absPath);
+        if (coverage.hasOwnProperty(file)) {
+            console.log('  processing... : ' + file);
+            const absPath = path.join(BUILT_DIR, file);
+            rebuild[absPath] = coverage[file];
+            rebuild[absPath].path = absPath;
+            rebuild[absPath].inputSourceMap = detectMapFile(absPath);
+        }
     }
 
-    rebuild = nyc.sourceMaps.remapCoverage(rebuild);
+    rebuild = trimExternal(nyc.sourceMaps.remapCoverage(rebuild));
 
     fs.writeFileSync(COVERAGE_PATH,
       JSON.stringify(rebuild, null, 4),

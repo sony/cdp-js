@@ -14,10 +14,12 @@ function main() {
 
     let rebuild = {};
     for (let file in coverage) {
-        console.log('  processing... : ' + file);
-        const absPath = path.join(SRC_DIR, file);
-        rebuild[absPath] = coverage[file];
-        rebuild[absPath].path = absPath;
+        if (coverage.hasOwnProperty(file)) {
+            console.log('  processing... : ' + file);
+            const absPath = path.join(SRC_DIR, file);
+            rebuild[absPath] = coverage[file];
+            rebuild[absPath].path = absPath;
+        }
     }
 
     fs.writeFileSync(COVERAGE_PATH,

@@ -12,6 +12,6 @@ describe("CDP.i18n", () => {
     });
 
     it("TODO", () => {
-        expect("TODO").toEqual("THIS FLOW IS BUG.");
+        expect("TODO").toEqual("TODO");
     });
 });

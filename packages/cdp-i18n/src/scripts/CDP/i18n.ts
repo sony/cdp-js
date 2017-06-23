@@ -46,9 +46,9 @@ namespace CDP {
 
             const i18nOptions: I18N.Options = ((resources: { [lng: string]: { [ns: string]: string } }) => {
                 if (resources) {
-                    for (let lng in resources) {
+                    for (const lng in resources) {
                         if (resources.hasOwnProperty(lng)) {
-                            for (let ns in resources[lng]) {
+                            for (const ns in resources[lng]) {
                                 if (resources[lng].hasOwnProperty(ns)) {
                                     resources[lng][ns] = getLocaleFallbackResource(resources[lng][ns]);
                                 }

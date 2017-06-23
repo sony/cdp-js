@@ -91,9 +91,15 @@
     </Content>
     <Content Include="built\cdp.i18n.js" />
     <Content Include="dist\cdp.i18n.js" />
+    <Content Include="docs\reports\coverage\index.html" />
+    <Content Include="docs\reports\metrics\display.html" />
+    <Content Include="docs\reports\metrics\index.html" />
+    <Content Include="docs\typedoc\index.html" />
     <Content Include="exports\cdp\core\i18n.js">
       <DependentUpon>i18n.ts</DependentUpon>
     </Content>
+    <Content Include="external\cdp\scripts\cdp.core.js" />
+    <Content Include="external\cdp\scripts\cdp.promise.js" />
     <Content Include="external\i18next\scripts\i18next.js" />
     <Content Include="external\i18next\scripts\i18nextBrowserLanguageDetector.js" />
     <Content Include="external\i18next\scripts\i18nextLocalStorageCache.js" />
@@ -104,6 +110,7 @@
     <Content Include="project.config.js" />
     <Content Include="tasks\bundle-adjuster.js" />
     <Content Include="tasks\bundle-finalizer.js" />
+    <Content Include="tasks\internal-rearrange.js" />
     <Content Include="tsconfig.base.json">
       <DependentUpon>tsconfig.json</DependentUpon>
     </Content>
