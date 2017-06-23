@@ -1,0 +1,13 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compileOnSave": false,
+  "compilerOptions": {
+    "inlineSourceMap": false,
+    "inlineSources": false,
+    "declaration": false,
+    "outDir": "built/CDP"
+  },
+  "include": [
+    "src/scripts/CDP/**/*.ts"
+  ]
+}
