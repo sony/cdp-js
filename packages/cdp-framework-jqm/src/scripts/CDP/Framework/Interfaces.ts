@@ -1,6 +1,4 @@
-﻿/// <reference path="Orientation.ts" />
-
-namespace CDP.Framework {
+﻿namespace CDP.Framework {
 
     /**
      * \~english
@@ -216,7 +214,9 @@ namespace CDP.Framework {
      * @interface RouterOptions
      * @brief Router.start() に指定するオプションインターフェイス
      */
-    export interface RouterOptions extends Backbone.HistoryOptions { }
+    export interface RouterOptions extends Backbone.HistoryOptions {
+        pageConstruct?: boolean;    // 登録済みページを構築する場合 true. default: true
+    }
 
     /**
      * \~english
@@ -623,6 +623,5 @@ namespace CDP.Framework {
 }
 
 declare module "cdp.framework.jqm" {
-    let Framework: typeof CDP.Framework;
-    export = Framework;
+    export = CDP.Framework;
 }

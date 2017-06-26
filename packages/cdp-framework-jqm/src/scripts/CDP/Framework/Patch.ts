@@ -1,6 +1,4 @@
-﻿/// <reference path="Platform.ts" />
-
-/* tslint:disable:typedef */
+﻿/* tslint:disable:typedef */
 
 namespace CDP.Framework {
 

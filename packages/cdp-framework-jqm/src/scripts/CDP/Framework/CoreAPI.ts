@@ -1,8 +1,4 @@
 ﻿/// <reference path="../../@types/jquery.mobile.d.ts" />
-/// <reference path="Patch.ts" />
-/// <reference path="Orientation.ts" />
-/// <reference path="Router.ts" />
-
 /* tslint:disable:max-line-length forin no-bitwise */
 
 namespace CDP {
@@ -111,9 +107,6 @@ namespace CDP {
         const TAG = "[CDP.Framework] ";
 
         let _dfInitialize: JQueryDeferred<void> = $.Deferred<void>();
-        let _activePage: IPage = null;
-        let _lastOrientation: Orientation = null;
-        const _orientationListenerHolder: OrientationListenerHolder = {};
 
         /**
          * \~english
@@ -228,6 +221,8 @@ namespace CDP {
             return <any>_dfInitialize.promise();
         }
 
+        const _orientationListenerHolder: OrientationListenerHolder = {};
+
         /**
          * \~english
          * Register IOrientationChangedListener to framework.
@@ -259,6 +254,8 @@ namespace CDP {
         export function unregisterOrientationChangedListener(key: string): void {
             delete _orientationListenerHolder[key];
         }
+
+        let _activePage: IPage = null;
 
         /**
          * \~english
@@ -297,6 +294,8 @@ namespace CDP {
             })();
         }
 
+        let _lastOrientation: Orientation = null;
+
         /**
          * \~english
          * Setup active IPage instance.
@@ -331,6 +330,36 @@ namespace CDP {
          */
         export function getDefaultClickEvent(): string {
             return Patch.s_vclickEvent;
+        }
+
+        let _pageConstructors: (new () => IPage)[] = [];
+        let _pageInstances: IPage[] = [];
+
+        /**
+         * Page の登録
+         * constructor を指定する. 引数がある場合は、bind を行うこと
+         *
+         * @param {constructor} ctor [in] コンストラクタを指定
+         */
+        export function registerPages(ctor: new () => IPage): void {
+            _pageConstructors.push(ctor);
+        }
+
+        /**
+         * 予約されたコンストラクタからPage インスタンスを生成
+         */
+        export function constructPages(): void {
+            _pageConstructors.forEach((ctor: any) => {
+                _pageInstances.push(new ctor());
+            });
+            _pageConstructors = [];
+        }
+
+        /**
+         * Page インスタンスの参照を破棄
+         */
+        export function disposePages(): void {
+            _pageInstances = [];
         }
 
         /**

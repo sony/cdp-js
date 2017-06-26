@@ -27,15 +27,15 @@ function update_srcmap_namespace(code, options) {
 }
 
 ///////////////////////////////////////////////////////////////////////
-// traditional module:
+// classical module:
 
-function normalize_traditional_module_src_copy() {
+function normalize_classical_module_src_copy() {
     const src = path.join(__dirname, '..', config.dir.built, config.main.basename + '.js');
     const dst = path.join(__dirname, '..', config.dir.pkg, config.main.basename + '.js');
     fs.writeFileSync(dst, fs.readFileSync(src).toString(), 'utf8');
 }
 
-function normalize_traditional_module_d_ts() {
+function normalize_classical_module_d_ts() {
     const TYPE_DEF_FILE = path.join(__dirname, '..', config.dir.pkg, config.dir.types, config.main.bundle_d_ts);
     const SRC_DEF_FILE  = path.join(__dirname, '..', config.dir.built, config.main.basename + '-all.d.ts');
 
@@ -171,10 +171,10 @@ function normalize_package_src() {
 
 function main() {
     switch (config.target.type) {
-        case 'traditional-module':
+        case 'classical-module':
             normalize_lib_src(config.dir.built);
-            normalize_traditional_module_src_copy();
-            normalize_traditional_module_d_ts();
+            normalize_classical_module_src_copy();
+            normalize_classical_module_d_ts();
             return;
         case 'library':
             normalize_lib_src(config.dir.pkg);

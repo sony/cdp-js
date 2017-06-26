@@ -4,7 +4,7 @@ const path  = require('path');
 const pkg   = require('./package.json');
 
 const target = {
-    type: 'traditional-module',
+    type: 'classical-module',
     es: 'es5',
     module: 'none',
     env: 'web',

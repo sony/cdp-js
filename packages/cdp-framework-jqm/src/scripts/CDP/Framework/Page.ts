@@ -1,6 +1,4 @@
-﻿/// <reference path="Router.ts" />
-
-namespace CDP.Framework {
+﻿namespace CDP.Framework {
 
     import Promise = CDP.Promise;
 

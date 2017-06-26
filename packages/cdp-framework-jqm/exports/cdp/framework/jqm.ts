@@ -22,9 +22,10 @@ export const isInitialized                          = _framework.isInitialized;
 export const waitForInitialize                      = _framework.waitForInitialize;
 export const registerOrientationChangedListener     = _framework.registerOrientationChangedListener;
 export const unregisterOrientationChangedListener   = _framework.unregisterOrientationChangedListener;
-export const setupEventHandlers                     = _framework.setupEventHandlers;
-export const setActivePage                          = _framework.setActivePage;
 export const getDefaultClickEvent                   = _framework.getDefaultClickEvent;
+export const registerPages                          = _framework.registerPages;
+export const constructPages                         = _framework.constructPages;
+export const disposePages                           = _framework.disposePages;
 
 // @class Page
 export type  Page = CDP.Framework.Page;

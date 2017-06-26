@@ -1,8 +1,4 @@
 ﻿/// <reference path="../../@types/jquery.mobile.d.ts" />
-/// <reference path="Interfaces.ts" />
-/// <reference path="CoreAPI.ts" />
-/// <reference path="Patch.ts" />
-
 /* tslint:disable:max-line-length no-string-literal */
 
 namespace CDP.Framework {
@@ -333,6 +329,9 @@ namespace CDP.Framework {
          * @param options {Object} [in] Backbone.History にわたるオプション
          */
         public static start(options?: RouterOptions): boolean {
+            if (false !== options.pageConstruct) {
+                Framework.constructPages();
+            }
             if ($.mobile.hashListeningEnabled) {
                 console.log("setting error. confict: $.mobile.hashListeningEnabled = true, cannot start.");
                 return false;
