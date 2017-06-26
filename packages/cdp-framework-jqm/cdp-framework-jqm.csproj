@@ -1,0 +1,236 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <ProjectGuid>{CF57BFAF-B0B9-4F91-BD9B-521B1EE7B4DE}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <OutputPath>bin</OutputPath>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UpgradeBackupLocation />
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>WebView</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>60454</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:60455/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <TypeScriptTarget>ES5</TypeScriptTarget>
+    <TypeScriptIncludeComments>true</TypeScriptIncludeComments>
+    <TypeScriptSourceMap>true</TypeScriptSourceMap>
+    <TypeScriptJSXEmit>None</TypeScriptJSXEmit>
+    <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
+    <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
+    <TypeScriptModuleKind>AMD</TypeScriptModuleKind>
+    <TypeScriptRemoveComments>False</TypeScriptRemoveComments>
+    <TypeScriptOutFile />
+    <TypeScriptOutDir />
+    <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
+    <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
+    <TypeScriptMapRoot />
+    <TypeScriptSourceRoot />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <TypeScriptTarget>ES5</TypeScriptTarget>
+    <TypeScriptIncludeComments>false</TypeScriptIncludeComments>
+    <TypeScriptSourceMap>false</TypeScriptSourceMap>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>cd $(ProjectDir)/tests/app/stylesheets
+call compass compile -c config.rb
+</PostBuildEvent>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include=".gitignore" />
+    <Content Include="dist\cdp.framework.jqm.js" />
+    <Content Include="exports\cdp\core\framework.jqm.js">
+      <DependentUpon>framework.jqm.ts</DependentUpon>
+    </Content>
+    <Content Include="exports\cdp\framework\jqm.js">
+      <DependentUpon>jqm.ts</DependentUpon>
+    </Content>
+    <Content Include="external\backbone\scripts\backbone.js" />
+    <Content Include="external\cdp\scripts\cdp.core.js" />
+    <Content Include="external\cdp\scripts\cdp.i18n.js" />
+    <Content Include="external\cdp\scripts\cdp.lazyload.js" />
+    <Content Include="external\cdp\scripts\cdp.promise.js" />
+    <Content Include="external\jquery\scripts\jquery-migrate.js" />
+    <Content Include="external\jquery\scripts\jquery.js" />
+    <Content Include="external\jquery\scripts\jquery.mobile.js" />
+    <Content Include="external\jquery\stylesheets\images\ajax-loader.gif" />
+    <Content Include="external\jquery\stylesheets\jquery.mobile.css" />
+    <Content Include="external\requirejs\scripts\require.js" />
+    <Content Include="external\underscore\scripts\underscore.js" />
+    <Content Include="project.config.js" />
+    <Content Include="src\scripts\CDP\Framework\CoreAPI.js">
+      <DependentUpon>CoreAPI.ts</DependentUpon>
+    </Content>
+    <Content Include="src\scripts\CDP\Framework\Interfaces.js">
+      <DependentUpon>Interfaces.ts</DependentUpon>
+    </Content>
+    <Content Include="src\scripts\CDP\Framework\Orientation.js">
+      <DependentUpon>Orientation.ts</DependentUpon>
+    </Content>
+    <Content Include="src\scripts\CDP\Framework\Page.js">
+      <DependentUpon>Page.ts</DependentUpon>
+    </Content>
+    <Content Include="src\scripts\CDP\Framework\Patch.js">
+      <DependentUpon>Patch.ts</DependentUpon>
+    </Content>
+    <Content Include="src\scripts\CDP\Framework\Platform.js">
+      <DependentUpon>Platform.ts</DependentUpon>
+    </Content>
+    <Content Include="src\scripts\CDP\Framework\Router.js">
+      <DependentUpon>Router.ts</DependentUpon>
+    </Content>
+    <Content Include="src\scripts\CDP\Framework\_module.scripts.html" />
+    <Content Include="tsconfig.base.json">
+      <DependentUpon>tsconfig.json</DependentUpon>
+    </Content>
+    <Content Include="webpack.config.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="BANNER" />
+    <Content Include="docs\en\README.md" />
+    <Content Include="docs\images\.gitkeep" />
+    <Content Include="docs\jp\README.md" />
+    <Content Include="LICENSE" />
+    <Content Include="NOTICE" />
+    <Content Include="package.json" />
+    <Content Include="README.md" />
+    <Content Include="tests\runner\test-main.js" />
+    <Content Include="tests\runner\testem-amd.js" />
+    <Content Include="tests\runner\testem-ci.js" />
+    <Content Include="tests\tslint\tslint.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="exports\cdp\core\framework.jqm.ts" />
+    <TypeScriptCompile Include="exports\cdp\framework\jqm.ts" />
+    <TypeScriptCompile Include="external\include\backbone.d.ts" />
+    <TypeScriptCompile Include="external\include\cdp.core.d.ts" />
+    <TypeScriptCompile Include="external\include\cdp.i18n.d.ts" />
+    <TypeScriptCompile Include="external\include\cdp.lazyload.d.ts" />
+    <TypeScriptCompile Include="external\include\cdp.promise.d.ts" />
+    <TypeScriptCompile Include="external\include\external.d.ts" />
+    <TypeScriptCompile Include="external\include\frameworks.d.ts" />
+    <TypeScriptCompile Include="external\include\i18next.d.ts" />
+    <TypeScriptCompile Include="external\include\jasmine.d.ts" />
+    <TypeScriptCompile Include="external\include\jquery.d.ts" />
+    <TypeScriptCompile Include="external\include\jquery.mobile.d.ts" />
+    <TypeScriptCompile Include="external\include\require.d.ts" />
+    <TypeScriptCompile Include="external\include\underscore.d.ts" />
+    <TypeScriptCompile Include="src\scripts\%40types\dev.dependencies\index.d.ts" />
+    <TypeScriptCompile Include="src\scripts\%40types\jquery.mobile.d.ts" />
+    <TypeScriptCompile Include="src\scripts\cdp.framework.jqm.ts" />
+    <TypeScriptCompile Include="src\scripts\CDP\Framework\CoreAPI.ts" />
+    <TypeScriptCompile Include="src\scripts\CDP\Framework\Interfaces.ts" />
+    <TypeScriptCompile Include="src\scripts\CDP\Framework\Orientation.ts" />
+    <TypeScriptCompile Include="src\scripts\CDP\Framework\Page.ts" />
+    <TypeScriptCompile Include="src\scripts\CDP\Framework\Patch.ts" />
+    <TypeScriptCompile Include="src\scripts\CDP\Framework\Platform.ts" />
+    <TypeScriptCompile Include="src\scripts\CDP\Framework\Router.ts" />
+    <TypeScriptCompile Include="tests\unit\Router.spec.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="src\scripts\CDP\Framework\CoreAPI.js.map">
+      <DependentUpon>CoreAPI.ts</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="src\scripts\CDP\Framework\Interfaces.js.map">
+      <DependentUpon>Interfaces.ts</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="src\scripts\CDP\Framework\Orientation.js.map">
+      <DependentUpon>Orientation.ts</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="src\scripts\CDP\Framework\Page.js.map">
+      <DependentUpon>Page.ts</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="src\scripts\CDP\Framework\Patch.js.map">
+      <DependentUpon>Patch.ts</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="src\scripts\CDP\Framework\Platform.js.map">
+      <DependentUpon>Platform.ts</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="src\scripts\CDP\Framework\Router.js.map">
+      <DependentUpon>Router.ts</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include=".npmignore" />
+    <Content Include="exports\cdp\core\framework.jqm.js.map">
+      <DependentUpon>framework.jqm.ts</DependentUpon>
+    </Content>
+    <Content Include="exports\cdp\framework\jqm.js.map">
+      <DependentUpon>jqm.ts</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="tests\eslint\eslintrc.json" />
+    <Content Include="tests\runner\index.mustache" />
+    <Content Include="tests\runner\testem.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="tsconfig.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="src\tsconfig.all.json" />
+    <Content Include="src\tsconfig.entry.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="tasks\" />
+  </ItemGroup>
+</Project>

@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "master-task", "packages\mas
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cdp-i18n", "packages\cdp-i18n\cdp-i18n.csproj", "{307702C9-D79B-4703-992C-9564975CB142}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cdp-framework-jqm", "packages\cdp-framework-jqm\cdp-framework-jqm.csproj", "{CF57BFAF-B0B9-4F91-BD9B-521B1EE7B4DE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{307702C9-D79B-4703-992C-9564975CB142}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{307702C9-D79B-4703-992C-9564975CB142}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{307702C9-D79B-4703-992C-9564975CB142}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF57BFAF-B0B9-4F91-BD9B-521B1EE7B4DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF57BFAF-B0B9-4F91-BD9B-521B1EE7B4DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF57BFAF-B0B9-4F91-BD9B-521B1EE7B4DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF57BFAF-B0B9-4F91-BD9B-521B1EE7B4DE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

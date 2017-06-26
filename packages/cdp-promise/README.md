@@ -19,7 +19,7 @@ Folder and file structure of this repository is the following list.
 
 * npm
 
-        $ npm install git+http://scm.sm.sony.co.jp/gitlab/cdp-jp/cdp-promise.git
+        $ npm install @cdp/promise
 
 
 ### How to build the module
@@ -29,7 +29,7 @@ If you want to use newest version, you can build the modules yourself as follow 
 1. build the modules
 
         $ npm install
-        $ grunt deploy
+        $ npm run package
 
 2. pick up from the `release` directory.
 
@@ -41,8 +41,6 @@ If you want to use newest version, you can build the modules yourself as follow 
                 @types/
                      cdp.promise.d.ts      d.ts file for this module.
 
-3. setup bower module manualy to your project.
-
 ### How to test the module
 
 CI command as following.
@@ -50,13 +48,13 @@ CI command as following.
         $ npm install -g testem
         $ npm install
         
-        $ grunt ci
+        $ npm run ci
 
 LINT command as following.
-
+        
         $ npm install
         
-        $ grunt lint
+        $ npm run lint
 
 
 ### How to use

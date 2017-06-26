@@ -1,4 +1,4 @@
-﻿# cdp-i18n
+﻿# cdp-framework-jqm
 
 ## What is this module
 
@@ -19,7 +19,7 @@ Folder and file structure of this repository is the following list.
 
 * npm
 
-        $ npm install @cdp/i18n
+        $ npm install @cdp/framework-jqm
 
 
 ### How to build the module
@@ -35,11 +35,11 @@ If you want to use newest version, you can build the modules yourself as follow 
 
         root/
             dist/
-                cdp.i18n.js             js modules for dev.
-                cdp.i18n.min.js         js modules for release with versioned.
-                cdp.i18n.min.js.map     js map file.
+                cdp.framework.jqm.js             js modules for dev.
+                cdp.framework.jqm.min.js         js modules for release with versioned.
+                cdp.framework.jqm.min.js.map     js map file.
                 @types/
-                     cdp.i18n.d.ts      d.ts file for this module.
+                     cdp.framework.jqm.d.ts      d.ts file for this module.
 
 ### How to test the module
 

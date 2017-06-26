@@ -13,19 +13,13 @@ Folder and file structure of this repository is the following list.
         external/                                   // 3rd party library modules
         src/                                        // development sources for this libraries
         tests/                                      // test scripts for this libraries
-        bower.json                                  // [Bower module] the bower module settings file
 
 
 ### How to install
 
 * npm
 
-        $ npm install git+http://scm.sm.sony.co.jp/gitlab/cdp-jp/cdp-lazyload.git
-
-* bower
-
-        $ npm install -g bower
-        $ bower install git+http://scm.sm.sony.co.jp/gitlab/cdp-jp/cdp-lazyload.git
+        $ npm install @cdp/lazyload
 
 
 ### How to build the module
@@ -35,20 +29,17 @@ If you want to use newest version, you can build the modules yourself as follow 
 1. build the modules
 
         $ npm install
-        $ grunt deploy
+        $ npm run package
 
 2. pick up from the `release` directory.
 
         root/
             dist/
                 cdp.lazyload.js             js modules for dev.
-                cdp.lazyload-x.y.z.js       js modules for dev with versioned.
-                cdp.lazyload-x.y.z.min.js   js modules for release with versioned.
-                cdp.lazyload-x.y.z.min.map  js map file.
-                include/
+                cdp.lazyload.min.js         js modules for release with versioned.
+                cdp.lazyload.min.js.map     js map file.
+                @types/
                      cdp.lazyload.d.ts      d.ts file for this module.
-
-3. setup bower module manualy to your project.
 
 ### How to test the module
 
@@ -57,13 +48,13 @@ CI command as following.
         $ npm install -g testem
         $ npm install
         
-        $ grunt ci
+        $ npm run ci
 
 LINT command as following.
-
+        
         $ npm install
         
-        $ grunt lint
+        $ npm run lint
 
 
 ### How to use
