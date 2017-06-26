@@ -50,7 +50,6 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties tsconfig_1module_1json__JSONSchema="http://json.schemastore.org/tsconfig" />
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
@@ -103,8 +102,16 @@
     <Content Include="exports\cdp\core\promise.js">
       <DependentUpon>promise.ts</DependentUpon>
     </Content>
+    <Content Include="external\cdp\scripts\cdp.lazyload.js" />
     <Content Include="external\jquery\scripts\jquery.js" />
     <Content Include="project.config.js" />
+    <Content Include="src\scripts\cdp.promise.js">
+      <DependentUpon>cdp.promise.ts</DependentUpon>
+    </Content>
+    <Content Include="src\scripts\CDP\Promise.js">
+      <DependentUpon>Promise.ts</DependentUpon>
+    </Content>
+    <Content Include="tasks\internal-rearrange.js" />
     <Content Include="tasks\remap-coverage.js" />
     <Content Include="tests\unit\cdp.promise.spec.js">
       <DependentUpon>cdp.promise.spec.ts</DependentUpon>
@@ -142,7 +149,6 @@
     <TypeScriptCompile Include="src\scripts\cdp.promise.ts" />
     <TypeScriptCompile Include="src\scripts\CDP\Promise.ts" />
     <TypeScriptCompile Include="tests\unit\cdp.promise.spec.ts" />
-    <TypeScriptCompile Include="tests\unit\_dev.dependencies.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include=".npmignore" />
@@ -167,8 +173,5 @@
     <Content Include="dist\cdp.promise.min.js.map">
       <DependentUpon>cdp.promise.js</DependentUpon>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="tsconfig.module.json" />
   </ItemGroup>
 </Project>

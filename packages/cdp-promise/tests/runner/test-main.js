@@ -6,6 +6,7 @@
             'boot': '//cdnjs.cloudflare.com/ajax/libs/jasmine/2.4.1/boot',
             'testem': '../../../testem',
             'jquery': 'external/jquery/scripts/jquery',
+            'cdp.lazyload': 'external/cdp/scripts/cdp.lazyload',
         },
     });
 
@@ -34,7 +35,7 @@
 
     setupJasmine = function (callback) {
         require(['boot'], function () {
-            require(['testem'], function (CDP) {
+            require(['testem', 'cdp.lazyload'], function () {
                 setupTestem();
                 callback(onload);
             });

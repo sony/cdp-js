@@ -6,7 +6,14 @@ const NYC       = require('nyc');
 const convert   = require('convert-source-map');
 const config    = require('../project.config');
 
-const BUILT_DIR     = path.join(__dirname, '..', config.dir.built);
+const BUILT_DIR = (() => {
+    switch (config.target.type) {
+        case 'traditional-module':
+            return path.join(__dirname, '..', config.dir.src, config.dir.script);
+        default:
+            return path.join(__dirname, '..', config.dir.built);
+    }
+})();
 const COVERAGE_PATH = path.join(__dirname, '..', config.dir.doc, 'reports/coverage', 'coverage.json');
 
 const coverage = require(COVERAGE_PATH);

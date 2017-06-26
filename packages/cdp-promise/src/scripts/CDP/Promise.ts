@@ -439,7 +439,7 @@
         constructor(
             executor: (
                 resolve: (value?: T | PromiseLike<T>) => void,
-                reject: (reason?: any) => void,
+                reject?: (reason?: any) => void,
                 dependOn?: <U>(promise: IPromise<U> | JQueryXHR) => IPromise<U>,
             ) => void,
             options?: MakePromiseOptions | cancelCallback

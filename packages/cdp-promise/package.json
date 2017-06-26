@@ -24,7 +24,7 @@
   "scripts": {
     "setup:tasks": "node ../master-tasks/provider.js",
     "postinstall": "npm run rearrange",
-    "test": "run-s -l clean build lint unit-test",
+    "test": "run-s -l clean compile:ts lint unit-test",
     "ci": "run-s -l clean build lint unit-test metrics document",
     "package": "run-s ci && node ./tasks/clean.js --built --test --temp",
     "update": "npm update --save-dev && npm update --save && npm run package",
@@ -39,10 +39,10 @@
     "clean:test": "node ./tasks/clean.js --test",
     "clean:built": "node ./tasks/clean.js --built",
     "clean:pkg": "node ./tasks/clean.js --pkg",
-    "build": "run-s compile:ts:src bundle minify compile:ts:module",
-    "compile:ts:src": "tsc -p ./src/tsconfig.all.json && tsc -p ./src/tsconfig.entry.json",
-    "compile:ts:module": "tsc -p ./tsconfig.module.json",
-    "compile:ts:metrics": "tsc -p ./tsconfig.json",
+    "build": "run-s compile:ts bundle minify",
+    "compile:ts": "run-s compile:ts:* ",
+    "compile:ts:src": "tsc -p ./tsconfig.json",
+    "compile:ts:module": "tsc -p ./src/tsconfig.all.json && tsc -p ./src/tsconfig.entry.json",
     "bundle": "node ./tasks/bundle.js",
     "minify": "uglifyjs dist/cdp.promise.js -o dist/cdp.promise.min.js --comments /^!/ --source-map includeSources,url=cdp.promise.min.js.map",
     "lint": "run-p -l lint:*",
@@ -52,23 +52,23 @@
     "unit-test:ci": "testem ci -f ./tests/runner/testem-ci.js",
     "coverage": "run-s clean:coverage build coverage:exec",
     "coverage:exec": "run-s coverage:instrument unit-test:ci coverage:remap coverage:report",
-    "coverage:instrument": "nyc instrument ./built ./built --source-map=false",
+    "coverage:instrument": "nyc instrument ./src/scripts ./src/scripts --source-map=false",
     "coverage:remap": "node ./tasks/remap-coverage.js",
     "coverage:report": "nyc report --reporter=lcov --reporter=html --reporter=text --report-dir=docs/reports/coverage --temp-directory=docs/reports/coverage",
-    "rearrange": "node ./tasks/external-rearrange.js",
-    "document": "typedoc --out docs/typedoc/ src/scripts/tsconfig.json",
-    "metrics": "npm run compile:ts:metrics && plato -r -d docs/reports/metrics -e ./tests/eslint/eslintrc.json built/CDP/**/*.js"
+    "rearrange": "node ./tasks/external-rearrange.js --no-map && node ./tasks/internal-rearrange.js",
+    "document": "typedoc --out docs/typedoc/ --exclude **/*.spec.ts src/scripts/",
+    "metrics": "npm run compile:ts && plato -r -d docs/reports/metrics -e ./tests/eslint/eslintrc.json src/scripts/**/*.js"
   },
   "dependencies": {
     "jquery": ">=1.8.3"
   },
   "devDependencies": {
-    "@types/jasmine": "^2.5.52",
-    "@types/jquery": "^3.2.3",
+    "@types/jasmine": "^2.5.53",
+    "@types/jquery": "^3.2.4",
     "@types/requirejs": "^2.1.29",
     "convert-source-map": "^1.5.0",
     "del": "^3.0.0",
-    "eslint": "^4.0.0",
+    "eslint": "^4.1.1",
     "fs-extra": "^3.0.1",
     "npm-run-all": "^4.0.2",
     "nyc": "^11.0.2",
@@ -78,6 +78,6 @@
     "tslint": "^5.4.3",
     "typedoc": "^0.7.1",
     "typescript": "^2.4.0",
-    "uglify-js": "^3.0.15"
+    "uglify-js": "^3.0.20"
   }
 }

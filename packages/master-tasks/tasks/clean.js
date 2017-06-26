@@ -78,7 +78,16 @@ function main() {
     }
     if (options.all || options.built) {
         Object.keys(config.built_cleanee).forEach((key) => {
-            del.sync(config.built_cleanee[key], { cwd: BUILT_DIR });
+            if ('roots' !== key) {
+                del.sync(config.built_cleanee[key], { cwd: BUILT_DIR });
+                if (config.built_cleanee.roots) {
+                    config.built_cleanee.roots.forEach((additional) => {
+                        del.sync(config.built_cleanee[key], {
+                            cwd: path.join(__dirname, '..', additional),
+                        });
+                    });
+                }
+            }
         });
         cleanEmptyDir(BUILT_DIR);
     }

@@ -1,12 +1,10 @@
-﻿/// <reference path="_dev.dependencies.d.ts" />
-
-import "../../built/cdp.promise";
+﻿import "../../src/scripts/cdp.promise";
 
 import IPromise     = CDP.IPromise;
 import makePromise  = CDP.makePromise;
 import Promise      = CDP.Promise;
 
-let EXPECT_APPROXIMATION = 199; // 200 msec の 1つ手前
+const EXPECT_APPROXIMATION = 199; // 200 msec の 1つ手前
 
 function resolve200(): IPromise<any> {
     const df = $.Deferred();
@@ -58,7 +56,7 @@ describe("CDP.wait", () => {
         const promise = resolve200();
         CDP.wait(promise)
             .done((result: any[]) => {
-                let duration = new Date().getTime() - startTime.getTime();
+                const duration = new Date().getTime() - startTime.getTime();
                 expect(duration).toBeGreaterThan(EXPECT_APPROXIMATION);
                 expect(result.length).toBe(1);
                 expect(result[0].status).toEqual("resolved");
@@ -75,7 +73,7 @@ describe("CDP.wait", () => {
         const promise = reject200();
         CDP.wait(promise)
             .done((result: any[]) => {
-                let duration = new Date().getTime() - startTime.getTime();
+                const duration = new Date().getTime() - startTime.getTime();
                 expect(duration).toBeGreaterThan(EXPECT_APPROXIMATION);
                 expect(result.length).toBe(1);
                 expect(result[0].status).toEqual("rejected");
@@ -93,7 +91,7 @@ describe("CDP.wait", () => {
         const promise2 = reject200();
         CDP.wait(promise1, promise2)
             .done((result: any[]) => {
-                let duration = new Date().getTime() - startTime.getTime();
+                const duration = new Date().getTime() - startTime.getTime();
                 expect(duration).toBeGreaterThan(EXPECT_APPROXIMATION);
                 expect(result.length).toBe(2);
                 expect(result[0].status).toEqual("resolved");

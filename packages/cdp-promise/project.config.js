@@ -4,7 +4,7 @@ const path  = require('path');
 const pkg   = require('./package.json');
 
 const target = {
-    type: 'legacy-module',
+    type: 'traditional-module',
     es: 'es5',
     module: 'none',
     env: 'web',
@@ -32,6 +32,10 @@ const external_rearrange = {
     },
 };
 
+const internal_rearrange = [
+    'cdp-lazyload',
+];
+
 const main = {
     basename: 'cdp.promise',
     bundle_d_ts: 'cdp.promise.d.ts',
@@ -39,7 +43,11 @@ const main = {
 };
 
 const built_cleanee = {
-    ts: ['**/*.js', '**/*.d.ts', '!**/_dev.dependencies.d.ts', '**/*.map'],
+    ts: ['**/*.js', '**/*.d.ts', '!**/index.d.ts', '**/*.map'],
+    roots: [
+        'exports',
+        `${dir.src}/${dir.script}`,
+    ],
 };
 
 const banner = {
@@ -52,6 +60,7 @@ const required_tasks = [
     'bundle.js',
     'clean.js',
     'external-rearrange.js',
+    'internal-rearrange.js',
     'remap-coverage.js',
     'srcmap.js',
 ];
@@ -62,6 +71,7 @@ module.exports = {
     pkg: pkg,
     dir: dir,
     external_rearrange: external_rearrange,
+    internal_rearrange: internal_rearrange,
     main: main,
     built_cleanee: built_cleanee,
     banner: banner,
