@@ -29,45 +29,8 @@ const external_rearrange = {
         '^@types',
     ],
     specified_modules: [
-        'i18next',
-        'i18next-browser-languagedetector',
-        'i18next-localstorage-cache',
-        'i18next-sprintf-postprocessor',
-        'i18next-xhr-backend',
-        'jquery-i18next',
     ],
     module_adjuster: {
-        'i18next': {
-            vender: 'i18next',
-            cwd: "./dist/umd",
-            dev: "*.js"
-
-        },
-        'i18next-browser-languagedetector': {
-            vender: 'i18next',
-            cwd: "./dist/umd",
-            dev: "*.js"
-        },
-        'i18next-localstorage-cache': {
-            vender: 'i18next',
-            cwd: "./dist/umd",
-            dev: "*.js"
-        },
-        'i18next-sprintf-postprocessor': {
-            vender: 'i18next',
-            cwd: "./dist/umd",
-            dev: "*.js"
-        },
-        'i18next-xhr-backend': {
-            vender: 'i18next',
-            cwd: "./dist/umd",
-            dev: "*.js"
-        },
-        'jquery-i18next': {
-            vender: 'i18next',
-            cwd: "./dist/umd",
-            dev: "*.js"
-        },
     },
 };
 
@@ -75,16 +38,17 @@ const internal_rearrange = [
     'cdp-core',
     'cdp-lazyload',
     'cdp-promise',
+    'cdp-i18n',
 ];
 
 const main = {
-    basename: 'cdp.i18n',
-    bundle_d_ts: 'cdp.i18n.d.ts',
+    basename: 'cdp.framework.jqm',
+    bundle_d_ts: 'cdp.framework.jqm.d.ts',
     namespace: 'cdp',
 };
 
 const built_cleanee = {
-    ts: ['**/*.js', '**/*.d.ts', '!**/index.d.ts', '!**/i18next.d.ts', '**/*.map'],
+    ts: ['**/*.js', '**/*.d.ts', '!**/index.d.ts', '!**/jquery.mobile.d.ts', '**/*.map'],
     roots: [
         'exports',
         `${dir.src}/${dir.script}`,

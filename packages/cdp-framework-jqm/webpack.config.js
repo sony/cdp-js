@@ -4,11 +4,11 @@ const banner    = require('./tasks/banner');
 
 module.exports = {
     entry: {
-        index: './built/cdp.i18n-lib.js',
+        index: './built/cdp.framework.jqm-lib.js',
     },
     output: {
         path: path.resolve(__dirname, 'built'),
-        filename: 'cdp.i18n.js',
+        filename: 'cdp.framework.jqm.js',
         library: 'CDP',
         libraryTarget: 'umd',
     },
@@ -20,20 +20,23 @@ module.exports = {
                 use: ["source-map-loader"],
                 enforce: "pre",
             },
+            {
+                use: ["imports-loader?this=>window"],
+            },
         ],
     },
     externals: {
+        'backbone': {
+            root: 'Backbone',
+            commonjs: 'backbone',
+            commonjs2: 'backbone',
+            amd: 'backbone'
+        },
         'jquery': {
             root: 'jQuery',
             commonjs: 'jquery',
             commonjs2: 'jquery',
             amd: 'jquery'
-        },
-        'cdp.core': {
-            root: 'CDP',
-            commonjs: 'cdp.core',
-            commonjs2: 'cdp.core',
-            amd: 'cdp.core'
         },
         'cdp.promise': {
             root: 'CDP',
@@ -41,15 +44,17 @@ module.exports = {
             commonjs2: 'cdp.promise',
             amd: 'cdp.promise'
         },
+        'cdp.i18n': {
+            root: 'CDP',
+            commonjs: 'cdp.i18n',
+            commonjs2: 'cdp.i18n',
+            amd: 'cdp.i18n'
+        },
     },
     resolve: {
         alias: {
-            jqueryI18next: path.resolve(__dirname, 'external/i18next/scripts/jquery-i18next.js'),
-            i18next: path.resolve(__dirname, 'external/i18next/scripts/i18next.js'),
-            i18nextXHRBackend: path.resolve(__dirname, 'external/i18next/scripts/i18nextXHRBackend.js'),
-            i18nextLocalStorageCache: path.resolve(__dirname, 'external/i18next/scripts/i18nextLocalStorageCache.js'),
-            i18nextSprintfPostProcessor: path.resolve(__dirname, 'external/i18next/scripts/i18nextSprintfPostProcessor.js'),
-            i18nextBrowserLanguageDetector: path.resolve(__dirname, 'external/i18next/scripts/i18nextBrowserLanguageDetector.js'),
+            'jquery-migrate': path.resolve(__dirname, 'external/jquery/scripts/jquery-migrate.js'),
+            'jquery.mobile': path.resolve(__dirname, 'external/jquery/scripts/jquery.mobile.js'),
         },
     },
     plugins: [

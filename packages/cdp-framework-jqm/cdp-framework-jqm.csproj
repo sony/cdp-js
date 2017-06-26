@@ -127,6 +127,15 @@ call compass compile -c config.rb
       <DependentUpon>Router.ts</DependentUpon>
     </Content>
     <Content Include="src\scripts\CDP\Framework\_module.scripts.html" />
+    <Content Include="tasks\banner.js" />
+    <Content Include="tasks\bundle-adjuster.js" />
+    <Content Include="tasks\bundle-finalizer.js" />
+    <Content Include="tasks\bundle.js" />
+    <Content Include="tasks\clean.js" />
+    <Content Include="tasks\external-rearrange.js" />
+    <Content Include="tasks\internal-rearrange.js" />
+    <Content Include="tasks\remap-coverage.js" />
+    <Content Include="tasks\srcmap.js" />
     <Content Include="tsconfig.base.json">
       <DependentUpon>tsconfig.json</DependentUpon>
     </Content>
@@ -230,7 +239,5 @@ call compass compile -c config.rb
     <Content Include="src\tsconfig.all.json" />
     <Content Include="src\tsconfig.entry.json" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="tasks\" />
-  </ItemGroup>
+  <ItemGroup />
 </Project>
