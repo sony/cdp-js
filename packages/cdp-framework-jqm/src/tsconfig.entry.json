@@ -6,9 +6,9 @@
     "sourceMap": false,
     "inlineSourceMap": false,
     "inlineSources": false,
-    "outFile": "../built/cdp.i18n-entry.js"
+    "outFile": "../built/cdp.framework.jqm-entry.js"
   },
   "files": [
-    "scripts/cdp.i18n.ts"
+    "scripts/cdp.framework.jqm.ts"
   ]
 }

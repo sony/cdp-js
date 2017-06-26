@@ -161,7 +161,7 @@ function deleteOldFiles(info, dir) {
             cwd: cwd,
             nodir: true,
         }).forEach((file) => {
-            const regexp = new RegExp(target + '(-[0-9]+.[0-9]+.[A-Za-z0-9_-]+)?([.-]min)?(.[.a-zA-Z]+$)');
+            const regexp = new RegExp(target + '(-[0-9]+.[0-9]+.[A-Za-z0-9_-]+)?([.-]min)?(.[a-zA-Z]+$)');
             if (regexp.exec(file)) {
                 fs.unlinkSync(path.join(cwd, file));
                 console.log('  removed: ' + file);
@@ -189,7 +189,7 @@ function resolveProdSourceFile(basename, info, ext) {
             srcFile = info.files[info.files.indexOf(info.prod.replace('*', info.version))];
         }
         if (!srcFile) {
-            const regexp = new RegExp(basename + '(-[0-9]+.[0-9]+.[A-Za-z0-9_-]+)?([.-]min.[.a-zA-Z]+$)');
+            const regexp = new RegExp(basename + '(-[0-9]+.[0-9]+.[A-Za-z0-9_-]+)?([.-]min.[a-zA-Z]+$)');
             for (let i = 0, n = info.files.length; i < n; i++) {
                 if (regexp.test(info.files[i])) {
                     srcFile = info.files[i];

@@ -1,6 +1,4 @@
-﻿/// <reference path="../../../../external/include/jquery.d.ts" />
-
-namespace CDP.Framework {
+﻿namespace CDP.Framework {
     /**
      * @enum Orientation
      */

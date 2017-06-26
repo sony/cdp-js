@@ -1,8 +1,4 @@
-﻿/// <reference path="../../../../external/include/jquery.d.ts" />
-/// <reference path="../../../../external/include/backbone.d.ts" />
-/// <reference path="../../../../external/include/i18next.d.ts" />
-/// <reference path="../../../../external/include/cdp.promise.d.ts" />
-/// <reference path="Orientation.ts" />
+﻿/// <reference path="Orientation.ts" />
 
 namespace CDP.Framework {
 
@@ -629,14 +625,4 @@ namespace CDP.Framework {
 declare module "cdp.framework.jqm" {
     let Framework: typeof CDP.Framework;
     export = Framework;
-}
-
-// i18next jQuery extensions
-interface JQueryStatic {
-    i18n: I18next.I18n;
-    t: (key: string, options?: any) => string;
-}
-
-interface JQuery {
-    localize: (options?: I18next.TranslationOptions) => void;
 }

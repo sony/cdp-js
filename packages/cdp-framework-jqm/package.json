@@ -46,7 +46,7 @@
     "bundle": "run-s bundle:*",
     "bundle:embed": "node ./tasks/bundle.js --no-banner",
     "bundle:external": "node ./tasks/bundle-adjuster.js && webpack --config ./webpack.config.js && node ./tasks/bundle-finalizer.js",
-    "minify": "uglifyjs dist/cdp.framework.jqm.js -o dist/cdp.framework.jqm.min.js --comments /^!/ --source-map includeSources,url=cdp.framework.jqm.min.js.map",
+    "minify": "uglifyjs dist/cdp.framework.jqm.js -o dist/cdp.framework.jqm.min.js --comments /^!\\s\\s\\*\\s@cdp/ --source-map includeSources,url=cdp.framework.jqm.min.js.map",
     "lint": "run-p -l lint:*",
     "lint:js": "eslint tasks/**/*.js src/**/*.js -c tests/eslint/eslintrc.json",
     "lint:ts": "tslint --type-check -p ./tsconfig.json -c ./tests/tslint/tslint.json -e src/**/*.d.ts",

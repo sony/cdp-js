@@ -1,6 +1,4 @@
-﻿/// <reference path="../../../../external/include/jquery.d.ts" />
-/// <reference path="../../../../external/include/underscore.d.ts" />
-/// <reference path="Platform.ts" />
+﻿/// <reference path="Platform.ts" />
 
 /* tslint:disable:typedef */
 
@@ -28,8 +26,8 @@ namespace CDP.Framework {
         };
 
         // replace functions.
-        $.fn.on = custom_on;
-        $.fn.off = custom_off;
+        (<any>$.fn).on = custom_on;
+        (<any>$.fn).off = custom_off;
     };
 
 

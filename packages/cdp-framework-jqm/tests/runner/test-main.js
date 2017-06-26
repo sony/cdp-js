@@ -5,16 +5,15 @@
         paths: {
             'boot': '//cdnjs.cloudflare.com/ajax/libs/jasmine/2.4.1/boot',
             'testem': '../../../testem',
+            'backbone': 'external/backbone/scripts/backbone',
+            'underscore': 'external/underscore/scripts/underscore',
             'jquery': 'external/jquery/scripts/jquery',
-            'jqueryI18next': 'external/i18next/scripts/jquery-i18next',
-            'i18next': 'external/i18next/scripts/i18next',
-            'i18nextXHRBackend': 'external/i18next/scripts/i18nextXHRBackend',
-            'i18nextLocalStorageCache': 'external/i18next/scripts/i18nextLocalStorageCache',
-            'i18nextSprintfPostProcessor': 'external/i18next/scripts/i18nextSprintfPostProcessor',
-            'i18nextBrowserLanguageDetector': 'external/i18next/scripts/i18nextBrowserLanguageDetector',
+            'jquery.mobile': 'external/jquery/scripts/jquery.mobile',
+            'jquery-migrate': 'external/jquery/scripts/jquery-migrate',
             'cdp.core': 'external/cdp/scripts/cdp.core',
             'cdp.lazyload': 'external/cdp/scripts/cdp.lazyload',
             'cdp.promise': 'external/cdp/scripts/cdp.promise',
+            'cdp.i18n': 'external/cdp/scripts/cdp.i18n',
         },
     });
 

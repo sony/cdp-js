@@ -1,10 +1,4 @@
-﻿/// <reference path="../../../../external/include/require.d.ts" />
-/// <reference path="../../../../external/include/jquery.d.ts" />
-/// <reference path="../../../../external/include/i18next.d.ts" />
-/// <reference path="../../../../external/include/jquery.mobile.d.ts" />
-/// <reference path="../../../../external/include/cdp.core.d.ts" />
-/// <reference path="../../../../external/include/cdp.promise.d.ts" />
-/// <reference path="../../../../external/include/cdp.i18n.d.ts" />
+﻿/// <reference path="../../@types/jquery.mobile.d.ts" />
 /// <reference path="Patch.ts" />
 /// <reference path="Orientation.ts" />
 /// <reference path="Router.ts" />
@@ -87,7 +81,7 @@ namespace CDP {
         export interface FrameworkOptions {
             jquery?: () => void;
             jquerymobile?: () => void;
-            i18n?: CDP.I18NOptions;
+            i18n?: CDP.I18NSettings;
             applyPatch?: boolean;
             anchorVclick?: boolean;
         }

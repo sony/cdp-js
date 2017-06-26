@@ -85,7 +85,17 @@ call compass compile -c config.rb
   </PropertyGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
+    <Content Include="built\cdp.framework.jqm-all.js">
+      <DependentUpon>cdp.framework.jqm.js</DependentUpon>
+    </Content>
+    <Content Include="built\cdp.framework.jqm-entry.js">
+      <DependentUpon>cdp.framework.jqm.js</DependentUpon>
+    </Content>
+    <Content Include="built\cdp.framework.jqm.js" />
     <Content Include="dist\cdp.framework.jqm.js" />
+    <Content Include="dist\cdp.framework.jqm.min.js">
+      <DependentUpon>cdp.framework.jqm.js</DependentUpon>
+    </Content>
     <Content Include="exports\cdp\core\framework.jqm.js">
       <DependentUpon>framework.jqm.ts</DependentUpon>
     </Content>
@@ -102,9 +112,11 @@ call compass compile -c config.rb
     <Content Include="external\jquery\scripts\jquery.mobile.js" />
     <Content Include="external\jquery\stylesheets\images\ajax-loader.gif" />
     <Content Include="external\jquery\stylesheets\jquery.mobile.css" />
-    <Content Include="external\requirejs\scripts\require.js" />
     <Content Include="external\underscore\scripts\underscore.js" />
     <Content Include="project.config.js" />
+    <Content Include="src\scripts\cdp.framework.jqm.js">
+      <DependentUpon>cdp.framework.jqm.ts</DependentUpon>
+    </Content>
     <Content Include="src\scripts\CDP\Framework\CoreAPI.js">
       <DependentUpon>CoreAPI.ts</DependentUpon>
     </Content>
@@ -126,7 +138,6 @@ call compass compile -c config.rb
     <Content Include="src\scripts\CDP\Framework\Router.js">
       <DependentUpon>Router.ts</DependentUpon>
     </Content>
-    <Content Include="src\scripts\CDP\Framework\_module.scripts.html" />
     <Content Include="tasks\banner.js" />
     <Content Include="tasks\bundle-adjuster.js" />
     <Content Include="tasks\bundle-finalizer.js" />
@@ -136,6 +147,9 @@ call compass compile -c config.rb
     <Content Include="tasks\internal-rearrange.js" />
     <Content Include="tasks\remap-coverage.js" />
     <Content Include="tasks\srcmap.js" />
+    <Content Include="tests\unit\Router.spec.js">
+      <DependentUpon>Router.spec.ts</DependentUpon>
+    </Content>
     <Content Include="tsconfig.base.json">
       <DependentUpon>tsconfig.json</DependentUpon>
     </Content>
@@ -156,21 +170,13 @@ call compass compile -c config.rb
     <Content Include="tests\tslint\tslint.json" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="built\cdp.framework.jqm-all.d.ts">
+      <DependentUpon>cdp.framework.jqm.js</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="dist\%40types\cdp.framework.jqm.d.ts" />
+    <TypeScriptCompile Include="dist\%40types\jquery.mobile.d.ts" />
     <TypeScriptCompile Include="exports\cdp\core\framework.jqm.ts" />
     <TypeScriptCompile Include="exports\cdp\framework\jqm.ts" />
-    <TypeScriptCompile Include="external\include\backbone.d.ts" />
-    <TypeScriptCompile Include="external\include\cdp.core.d.ts" />
-    <TypeScriptCompile Include="external\include\cdp.i18n.d.ts" />
-    <TypeScriptCompile Include="external\include\cdp.lazyload.d.ts" />
-    <TypeScriptCompile Include="external\include\cdp.promise.d.ts" />
-    <TypeScriptCompile Include="external\include\external.d.ts" />
-    <TypeScriptCompile Include="external\include\frameworks.d.ts" />
-    <TypeScriptCompile Include="external\include\i18next.d.ts" />
-    <TypeScriptCompile Include="external\include\jasmine.d.ts" />
-    <TypeScriptCompile Include="external\include\jquery.d.ts" />
-    <TypeScriptCompile Include="external\include\jquery.mobile.d.ts" />
-    <TypeScriptCompile Include="external\include\require.d.ts" />
-    <TypeScriptCompile Include="external\include\underscore.d.ts" />
     <TypeScriptCompile Include="src\scripts\%40types\dev.dependencies\index.d.ts" />
     <TypeScriptCompile Include="src\scripts\%40types\jquery.mobile.d.ts" />
     <TypeScriptCompile Include="src\scripts\cdp.framework.jqm.ts" />
@@ -184,48 +190,7 @@ call compass compile -c config.rb
     <TypeScriptCompile Include="tests\unit\Router.spec.ts" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="src\scripts\CDP\Framework\CoreAPI.js.map">
-      <DependentUpon>CoreAPI.ts</DependentUpon>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="src\scripts\CDP\Framework\Interfaces.js.map">
-      <DependentUpon>Interfaces.ts</DependentUpon>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="src\scripts\CDP\Framework\Orientation.js.map">
-      <DependentUpon>Orientation.ts</DependentUpon>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="src\scripts\CDP\Framework\Page.js.map">
-      <DependentUpon>Page.ts</DependentUpon>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="src\scripts\CDP\Framework\Patch.js.map">
-      <DependentUpon>Patch.ts</DependentUpon>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="src\scripts\CDP\Framework\Platform.js.map">
-      <DependentUpon>Platform.ts</DependentUpon>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="src\scripts\CDP\Framework\Router.js.map">
-      <DependentUpon>Router.ts</DependentUpon>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include=".npmignore" />
-    <Content Include="exports\cdp\core\framework.jqm.js.map">
-      <DependentUpon>framework.jqm.ts</DependentUpon>
-    </Content>
-    <Content Include="exports\cdp\framework\jqm.js.map">
-      <DependentUpon>jqm.ts</DependentUpon>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="tests\eslint\eslintrc.json" />
@@ -239,5 +204,9 @@ call compass compile -c config.rb
     <Content Include="src\tsconfig.all.json" />
     <Content Include="src\tsconfig.entry.json" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="dist\cdp.framework.jqm.min.js.map">
+      <DependentUpon>cdp.framework.jqm.js</DependentUpon>
+    </Content>
+  </ItemGroup>
 </Project>

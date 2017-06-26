@@ -1,6 +1,4 @@
-﻿/// <reference path="../../../../external/include/jquery.d.ts" />
-/// <reference path="../../../../external/include/underscore.d.ts" />
-/// <reference path="Router.ts" />
+﻿/// <reference path="Router.ts" />
 
 namespace CDP.Framework {
 
