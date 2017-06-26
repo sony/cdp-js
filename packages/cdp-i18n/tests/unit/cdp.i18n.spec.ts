@@ -1,6 +1,4 @@
-﻿/// <reference path="_dev.dependencies.d.ts" />
-
-import "../../built/cdp.i18n";
+﻿import "../../src/scripts/cdp.i18n";
 
 describe("CDP.i18n", () => {
     beforeEach(() => {
@@ -9,6 +7,20 @@ describe("CDP.i18n", () => {
 
     afterEach(() => {
         // noop.
+    });
+
+    it("can initializeI18N", (done) => {
+        expect(CDP).toBeDefined();
+        CDP.initializeI18N({
+            fallbackResources: {
+            },
+            options: {
+            },
+        })
+            .then(() => {
+                expect("OK").toBe("OK");
+                done();
+            });
     });
 
     it("TODO", () => {

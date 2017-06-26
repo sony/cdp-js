@@ -1,4 +1,4 @@
-﻿# cdp-promise
+﻿# cdp-i18n
 
 ## What is this module
 
@@ -13,19 +13,13 @@ Folder and file structure of this repository is the following list.
         external/                                   // 3rd party library modules
         src/                                        // development sources for this libraries
         tests/                                      // test scripts for this libraries
-        bower.json                                  // [Bower module] the bower module settings file
 
 
 ### How to install
 
 * npm
 
-        $ npm install git+http://scm.sm.sony.co.jp/gitlab/cdp-jp/cdp-promise.git
-
-* bower
-
-        $ npm install -g bower
-        $ bower install git+http://scm.sm.sony.co.jp/gitlab/cdp-jp/cdp-promise.git
+        $ npm install git+http://scm.sm.sony.co.jp/gitlab/cdp-jp/cdp-i18n.git
 
 
 ### How to build the module
@@ -41,12 +35,12 @@ If you want to use newest version, you can build the modules yourself as follow 
 
         root/
             dist/
-                cdp.promise.js             js modules for dev.
-                cdp.promise-x.y.z.js       js modules for dev with versioned.
-                cdp.promise-x.y.z.min.js   js modules for release with versioned.
-                cdp.promise-x.y.z.min.map  js map file.
-                include/
-                     cdp.promise.d.ts      d.ts file for this module.
+                cdp.i18n.js             js modules for dev.
+                cdp.i18n.min.js         js modules for release with versioned.
+                cdp.i18n.min.js.map     js map file.
+                @types/
+                     cdp.i18n.d.ts      d.ts file for this module.
+                     i18next.d.ts       d.ts file for utilize i18next.
 
 3. setup bower module manualy to your project.
 

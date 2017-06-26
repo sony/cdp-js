@@ -13,7 +13,6 @@ Folder and file structure of this repository is the following list.
         external/                                   // 3rd party library modules
         src/                                        // development sources for this libraries
         tests/                                      // test scripts for this libraries
-        bower.json                                  // [Bower module] the bower module settings file
 
 
 ### How to install
@@ -21,11 +20,6 @@ Folder and file structure of this repository is the following list.
 * npm
 
         $ npm install git+http://scm.sm.sony.co.jp/gitlab/cdp-jp/cdp-promise.git
-
-* bower
-
-        $ npm install -g bower
-        $ bower install git+http://scm.sm.sony.co.jp/gitlab/cdp-jp/cdp-promise.git
 
 
 ### How to build the module
@@ -42,10 +36,9 @@ If you want to use newest version, you can build the modules yourself as follow 
         root/
             dist/
                 cdp.promise.js             js modules for dev.
-                cdp.promise-x.y.z.js       js modules for dev with versioned.
-                cdp.promise-x.y.z.min.js   js modules for release with versioned.
-                cdp.promise-x.y.z.min.map  js map file.
-                include/
+                cdp.promise.min.js         js modules for release with versioned.
+                cdp.promise.min.js.map     js map file.
+                @types/
                      cdp.promise.d.ts      d.ts file for this module.
 
 3. setup bower module manualy to your project.

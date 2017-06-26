@@ -6,7 +6,14 @@
             'boot': '//cdnjs.cloudflare.com/ajax/libs/jasmine/2.4.1/boot',
             'testem': '../../../testem',
             'jquery': 'external/jquery/scripts/jquery',
+            'jqueryI18next': 'external/i18next/scripts/jquery-i18next',
+            'i18next': 'external/i18next/scripts/i18next',
+            'i18nextXHRBackend': 'external/i18next/scripts/i18nextXHRBackend',
+            'i18nextLocalStorageCache': 'external/i18next/scripts/i18nextLocalStorageCache',
+            'i18nextSprintfPostProcessor': 'external/i18next/scripts/i18nextSprintfPostProcessor',
+            'i18nextBrowserLanguageDetector': 'external/i18next/scripts/i18nextBrowserLanguageDetector',
             'cdp.core': 'external/cdp/scripts/cdp.core',
+            'cdp.lazyload': 'external/cdp/scripts/cdp.lazyload',
             'cdp.promise': 'external/cdp/scripts/cdp.promise',
         },
     });
@@ -36,7 +43,7 @@
 
     setupJasmine = function (callback) {
         require(['boot'], function () {
-            require(['testem'], function (CDP) {
+            require(['testem', 'cdp.lazyload'], function () {
                 setupTestem();
                 callback(onload);
             });

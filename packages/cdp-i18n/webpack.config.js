@@ -47,9 +47,9 @@ module.exports = {
             jqueryI18next: path.resolve(__dirname, 'external/i18next/scripts/jquery-i18next.js'),
             i18next: path.resolve(__dirname, 'external/i18next/scripts/i18next.js'),
             i18nextXHRBackend: path.resolve(__dirname, 'external/i18next/scripts/i18nextXHRBackend.js'),
-                i18nextLocalStorageCache: path.resolve(__dirname, 'external/i18next/scripts/i18nextLocalStorageCache.js'),
-                i18nextSprintfPostProcessor: path.resolve(__dirname, 'external/i18next/scripts/i18nextSprintfPostProcessor.js'),
-                i18nextBrowserLanguageDetector: path.resolve(__dirname, 'external/i18next/scripts/i18nextBrowserLanguageDetector'),
+            i18nextLocalStorageCache: path.resolve(__dirname, 'external/i18next/scripts/i18nextLocalStorageCache.js'),
+            i18nextSprintfPostProcessor: path.resolve(__dirname, 'external/i18next/scripts/i18nextSprintfPostProcessor.js'),
+            i18nextBrowserLanguageDetector: path.resolve(__dirname, 'external/i18next/scripts/i18nextBrowserLanguageDetector.js'),
         },
     },
     plugins: [

@@ -1,13 +1,22 @@
 {
   "extends": "./tsconfig.base.json",
-  "compileOnSave": false,
+  "compileOnSave": true,
   "compilerOptions": {
-    "inlineSourceMap": false,
-    "inlineSources": false,
-    "declaration": false,
-    "outDir": "built/CDP"
+    "module": "amd",
+    "inlineSourceMap": true,
+    "inlineSources": true,
+    "declaration": false
   },
   "include": [
-    "src/scripts/CDP/**/*.ts"
+    "src/scripts/**/*.ts",
+    "exports/**/*.ts",
+    "tests/unit/**/*.ts"
+  ],
+  "exclude": [
+    "built",
+    "dist",
+    "docs",
+    "external",
+    "tasks"
   ]
 }

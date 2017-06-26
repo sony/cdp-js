@@ -11,6 +11,7 @@
     "--ignore-ssl-errors=true"
   ],
   "src_files": [
+    "src/scripts/CDP/*.ts",
     "tests/unit/*.js"
   ]
 }

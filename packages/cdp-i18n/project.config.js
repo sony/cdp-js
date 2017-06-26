@@ -73,6 +73,7 @@ const external_rearrange = {
 
 const internal_rearrange = [
     'cdp-core',
+    'cdp-lazyload',
     'cdp-promise',
 ];
 
@@ -83,7 +84,11 @@ const main = {
 };
 
 const built_cleanee = {
-    ts: ['**/*.js', '**/*.d.ts', '!**/_dev.dependencies.d.ts', '**/*.map'],
+    ts: ['**/*.js', '**/*.d.ts', '!**/index.d.ts', '!**/i18next.d.ts', '**/*.map'],
+    roots: [
+        'exports',
+        `${dir.src}/${dir.script}`,
+    ],
 };
 
 const banner = {

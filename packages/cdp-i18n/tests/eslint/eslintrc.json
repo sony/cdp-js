@@ -11,6 +11,7 @@
     "location": true,
     "module": true,
     "requirejs": true,
+    "$": true,
     "MSApp": true,
     "require": true,
     "define": true,
