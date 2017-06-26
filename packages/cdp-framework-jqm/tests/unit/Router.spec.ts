@@ -1,6 +1,6 @@
 ﻿import "../../src/scripts/cdp.framework.jqm";
 
-describe("TODO: suite", () => {
+describe("Router spec", () => {
     beforeEach(() => {
         // noop.
     });

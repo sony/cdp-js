@@ -75,13 +75,31 @@ namespace CDP {
     export namespace Framework {
 
         /**
+         * @interface PlainSettings
+         * @brief jQuery に設定可能なオプション
+         */
+        export interface PlainSettings<T = any> {
+            [key: string]: T;                   // ajaxSetup 以外のオプション
+        }
+
+        /**
+         * @interface JQuerySettings
+         * @brief jQuery に設定可能なオプション
+         */
+        export interface JQuerySettings extends PlainSettings {
+            ajaxSetup?: JQuery.AjaxSettings;    // $.ajax の既定オプション
+        }
+
+        /**
          * @interface FrameworkOptions
          * @brief Framework に設定可能なオプション
          */
         export interface FrameworkOptions {
-            jquery?: () => void;
-            jquerymobile?: () => void;
+            jquery?: JQuerySettings;
+            jquerymobile?: PlainSettings;
             i18n?: CDP.I18NSettings;
+            applyJQueryConfig?: () => void;
+            applyJQueryMobileConfig?: () => void;
             applyPatch?: boolean;
             anchorVclick?: boolean;
         }
@@ -123,12 +141,12 @@ namespace CDP {
                     }
 
                     // jQuery の共通設定
-                    config.jquery();
+                    config.applyJQueryConfig();
 
                     // jQuery Mobile の初期化
                     $(document).on("mobileinit", (): void => {
                         // config の反映
-                        config.jquerymobile();
+                        config.applyJQueryMobileConfig();
 
                         // cdp.i18n の初期化
                         CDP.initializeI18N(config.i18n)
@@ -331,24 +349,43 @@ namespace CDP {
         function getConfig(options: FrameworkOptions): FrameworkOptions {
             const defConfig = {
                 // for fail safe, default settings.
-                jquery: (): void => {
-                    $.support.cors = true;
-                    $.ajaxSetup({ cache: false });
-                    $.migrateMute = true;
+                jquery: {
+                    ajaxSetup: { cache: false },
+                    migrateMute: true,
                 },
 
-                jquerymobile: (): void => {
-                    $.mobile.allowCrossDomainPages = true;
-                    $.mobile.defaultPageTransition = "none";
-                    $.mobile.hashListeningEnabled = false;
-                    $.mobile.pushStateEnabled = false;
+                jquerymobile: {
+                    allowCrossDomainPages: true,
+                    defaultPageTransition: "none",
+                    hashListeningEnabled: false,
+                    pushStateEnabled: false,
                 },
 
                 i18n: {
+                    fallbackResources: {},
+                    options: {},
                 },
 
                 applyPatch: true,
                 anchorVclick: true,
+
+                applyJQueryConfig: function () {
+                    $.ajaxSetup(this.jquery.ajaxSetup);
+                    Object.keys(this.jquery).forEach((key) => {
+                        if ("ajaxSetup" !== key) {
+                            $[key] = this.jquery[key];
+                        }
+                    });
+                },
+
+                applyJQueryMobileConfig: function () {
+                    $.mobile.loader.prototype.options.text = undefined;
+                    Object.keys(this.jquerymobile).forEach((key) => {
+                        if ("ajaxSetup" !== key) {
+                            $.mobile[key] = this.jquerymobile[key];
+                        }
+                    });
+                },
             };
 
             return $.extend({}, defConfig, CDP.Config, options);

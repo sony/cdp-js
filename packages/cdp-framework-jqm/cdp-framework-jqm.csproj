@@ -147,6 +147,9 @@ call compass compile -c config.rb
     <Content Include="tasks\internal-rearrange.js" />
     <Content Include="tasks\remap-coverage.js" />
     <Content Include="tasks\srcmap.js" />
+    <Content Include="tests\unit\CoreAPI.spec.js">
+      <DependentUpon>CoreAPI.spec.ts</DependentUpon>
+    </Content>
     <Content Include="tests\unit\Router.spec.js">
       <DependentUpon>Router.spec.ts</DependentUpon>
     </Content>
@@ -187,6 +190,7 @@ call compass compile -c config.rb
     <TypeScriptCompile Include="src\scripts\CDP\Framework\Patch.ts" />
     <TypeScriptCompile Include="src\scripts\CDP\Framework\Platform.ts" />
     <TypeScriptCompile Include="src\scripts\CDP\Framework\Router.ts" />
+    <TypeScriptCompile Include="tests\unit\CoreAPI.spec.ts" />
     <TypeScriptCompile Include="tests\unit\Router.spec.ts" />
   </ItemGroup>
   <ItemGroup>
