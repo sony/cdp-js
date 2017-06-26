@@ -183,7 +183,7 @@ namespace CDP.Framework {
             this._intent = null;
 
             // イベントバインド
-            let selector: string = "#" + this._id;
+            const selector: string = "#" + this._id;
             $(document)
                 .off("pagebeforecreate", selector)
                 .on("pagebeforecreate", selector, (event: JQueryEventObject) => {
@@ -191,25 +191,25 @@ namespace CDP.Framework {
                     this._$header = this._$page.children(":jqmData(role=header)").first();
                     this._$footer = this._$page.children(":jqmData(role=footer)").first();
                     this._$page
-                        .on("pagecreate", (event: JQueryEventObject) => {
-                            this.pageInit(event);
+                        .on("pagecreate", (ev: JQueryEventObject) => {
+                            this.pageInit(ev);
                         })
-                        .on("pagebeforeshow", (event: JQueryEventObject, data: ShowEventData) => {
-                            this.pageBeforeShow(event, data);
+                        .on("pagebeforeshow", (ev: JQueryEventObject, data: ShowEventData) => {
+                            this.pageBeforeShow(ev, data);
                         })
                         // [Note]instead future version "pagecontainershow".
-                        .on("pageshow", (event: JQueryEventObject, data: ShowEventData) => {
-                            this.pageShow(event, data);
+                        .on("pageshow", (ev: JQueryEventObject, data: ShowEventData) => {
+                            this.pageShow(ev, data);
                         })
-                        .on("pagebeforehide", (event: JQueryEventObject, data: HideEventData) => {
-                            this.pageBeforeHide(event, data);
+                        .on("pagebeforehide", (ev: JQueryEventObject, data: HideEventData) => {
+                            this.pageBeforeHide(ev, data);
                         })
                         // [Note]instead future version "pagecontainerhide".
-                        .on("pagehide", (event: JQueryEventObject, data: HideEventData) => {
-                            this.pageHide(event, data);
+                        .on("pagehide", (ev: JQueryEventObject, data: HideEventData) => {
+                            this.pageHide(ev, data);
                         })
-                        .on("pageremove", (event: JQueryEventObject) => {
-                            this.pageRemove(event);
+                        .on("pageremove", (ev: JQueryEventObject) => {
+                            this.pageRemove(ev);
                         });
                     this.pageBeforeCreate(event);
                 });
@@ -230,8 +230,8 @@ namespace CDP.Framework {
 
         //! PageTransitionDirection の判定
         private getDirection(): PageTransitionDirection {
-            let activeIndex = Router.getJqmHistory().activeIndex;
-            let prevIndex = Router.getJqmHistory().previousIndex;
+            const activeIndex = Router.getJqmHistory().activeIndex;
+            const prevIndex = Router.getJqmHistory().previousIndex;
 
             if (null == activeIndex || null == prevIndex) {
                 return "unknown";

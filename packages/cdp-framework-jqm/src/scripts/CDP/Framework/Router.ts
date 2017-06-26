@@ -48,13 +48,13 @@ namespace CDP.Framework {
      * @private
      */
     function getCurrentDocumentUrl(): string {
-        let $activePage = (<any>$("body")).pagecontainer("getActivePage");
+        const $activePage = (<any>$("body")).pagecontainer("getActivePage");
         if (null == $activePage) {
             return $.mobile.path.documentBase.hrefNoHash;
         }
 
-        let url = $.mobile.activePage.closest(".ui-page").jqmData("url"),
-            base = $.mobile.path.documentBase.hrefNoHash;
+        const base = $.mobile.path.documentBase.hrefNoHash;
+        let url = $.mobile.activePage.closest(".ui-page").jqmData("url");
 
         if (!url || !$.mobile.path.isPath(url)) {
             url = base;
@@ -79,7 +79,7 @@ namespace CDP.Framework {
     };
 
     // default "before route change" hanndler
-    let _defaultBeforeRouteChange = _beforeRouteChange;
+    const _defaultBeforeRouteChange = _beforeRouteChange;
 
     /**
      * \~english
@@ -98,7 +98,7 @@ namespace CDP.Framework {
         if (null == handler) {
             return _beforeRouteChange;
         } else {
-            let oldHandler = _beforeRouteChange;
+            const oldHandler = _beforeRouteChange;
             _beforeRouteChange = handler;
             return oldHandler;
         }
@@ -241,7 +241,7 @@ namespace CDP.Framework {
          * @return {Boolean} 成否
          */
         public static initialize(options: any): boolean {
-            let $body = $("body");
+            const $body = $("body");
             if (!!Router.s_router) {
                 console.warn("logic error. initialize call twice.");
                 return false;
@@ -263,8 +263,8 @@ namespace CDP.Framework {
 
             // changePage をサポート
             if (null == $.mobile.changePage) {
-                $.mobile.changePage = (to: any, options?: ChangePageOptions): void => {
-                    (<any>$body).pagecontainer("change", to, options);
+                $.mobile.changePage = (to: any, opt?: ChangePageOptions): void => {
+                    (<any>$body).pagecontainer("change", to, opt);
                 };
             }
 
@@ -296,10 +296,10 @@ namespace CDP.Framework {
          */
         public static register(route: string, page: string, top: boolean = false, callback?: (...args: any[]) => boolean): Router {
             // Backbone.Router への登録は history の停止が必要
-            let restart = Router.stop();
+            const restart = Router.stop();
 
-            let name = route + page;
-            let context: RouteContext = {
+            const name = route + page;
+            const context: RouteContext = {
                 route: route,
                 regexp: (<any>Router.s_router)._routeToRegExp(route),
                 page: page,
@@ -352,7 +352,7 @@ namespace CDP.Framework {
          * @return {Boolean} 以前の開始状態を返却
          */
         public static stop(): boolean {
-            let prevState = (<any>Backbone.History).started;
+            const prevState = (<any>Backbone.History).started;
             Backbone.history.stop();
             return prevState;
         }
@@ -398,10 +398,10 @@ namespace CDP.Framework {
                 return;
             }
 
-            let navOptions: NavigateOptions = $.extend({}, Router.s_defaultNavigateOptions, options);
+            const navOptions: NavigateOptions = $.extend({}, Router.s_defaultNavigateOptions, options);
 
             // ページ遷移開始通知. Sub Flow にてすでにコールされている場合は既定の何もしないコールバックを使用する.
-            let notifyBeforeRouteChange = Router.s_lastNavigateInfo.calledBeforeRouteChange ? _defaultBeforeRouteChange : _beforeRouteChange;
+            const notifyBeforeRouteChange = Router.s_lastNavigateInfo.calledBeforeRouteChange ? _defaultBeforeRouteChange : _beforeRouteChange;
 
             Router.s_lastNavigateInfo = {
                 url: url,
@@ -441,22 +441,20 @@ namespace CDP.Framework {
                         if (navOptions.subFlow) {
                             console.warn("subFlow only supported under routing and hash change condition.");
                         }
-                        (() => {
-                            let fragment = Backbone.history.getFragment(url);
-                            let context: RouteContext;
-                            if (Router.s_lastNavigateInfo.noHashChange) {
-                                // noHashChange が指定されたとき
-                                context = <RouteContext>_.find(<any>Router.s_rootContexts, (context: any) => {
-                                    return context.regexp.test(fragment);
-                                });
-                            } else {
-                                // Backbone.Router が有効でないとき
-                                context = <RouteContext>_.findWhere(<any>Router.s_rootContexts, { route: fragment });
-                            }
-                            if (context) {
-                                url = context.page;
-                            }
-                        })();
+                        const fragment = Backbone.history.getFragment(url);
+                        let context: RouteContext;
+                        if (Router.s_lastNavigateInfo.noHashChange) {
+                            // noHashChange が指定されたとき
+                            context = <RouteContext>_.find(<any>Router.s_rootContexts, (ctx: any) => {
+                                return ctx.regexp.test(fragment);
+                            });
+                        } else {
+                            // Backbone.Router が有効でないとき
+                            context = <RouteContext>_.findWhere(<any>Router.s_rootContexts, { route: fragment });
+                        }
+                        if (context) {
+                            url = context.page;
+                        }
                         Router.changePage(url);
                     }
                 });
@@ -487,11 +485,11 @@ namespace CDP.Framework {
             reverse?: boolean,
             options?: NavigateOptions
         ): void {
-            let stack = Router.getJqmHistory().stack;
-            let currentPage = stack[Router.getJqmHistory().activeIndex];
-            let _transition = transition || currentPage.transition;
-            let _reverse = (null != reverse) ? reverse : true;
-            let destStacks: PageStack[] = ((): PageStack[] => {
+            const stack = Router.getJqmHistory().stack;
+            const currentPage = stack[Router.getJqmHistory().activeIndex];
+            const _transition = transition || currentPage.transition;
+            const _reverse = (null != reverse) ? reverse : true;
+            const destStacks: PageStack[] = ((): PageStack[] => {
                 if (!to) {
                     return null;
                 } else if ("string" === typeof to) {
@@ -541,7 +539,7 @@ namespace CDP.Framework {
                 return;
             } else if (Router.isTopPage()) {
                 // Top ページに指定されていれば終了
-                let app = (<any>navigator).app || {};
+                const app = (<any>navigator).app || {};
                 if (!!app.exitApp) {
                     app.exitApp();    // note: never exit on iOS
                     return;
@@ -583,7 +581,7 @@ namespace CDP.Framework {
          * Intent を取得
          */
         public static popIntent(): Intent {
-            let intent = Router.s_lastIntent;
+            const intent = Router.s_lastIntent;
             Router.s_lastIntent = {};
             return intent;
         }
@@ -623,7 +621,7 @@ namespace CDP.Framework {
          * @param reverse    {Boolean}         [in] transition に使用する direction を指定 true:reverse/false:通常 (任意)
          */
         public static beginSubFlow(url: string, options: NavigateOptions, transition?: string, reverse?: boolean): void {
-            let opt: NavigateOptions = $.extend({}, options);
+            const opt: NavigateOptions = $.extend({}, options);
             opt.subFlow = opt.subFlow || { operation: "begin" };
             if ("begin" !== opt.subFlow.operation) {
                 console.error("logic error. invalid subflow operation. [operation: " + opt.subFlow.operation + "]");
@@ -670,7 +668,7 @@ namespace CDP.Framework {
          */
         public static cancelSubFlow(transition?: string, reverse?: boolean): void {
             // 起点のページに戻る
-            let baseInfo = Router.detectSubFlowBaseInfo();
+            const baseInfo = Router.detectSubFlowBaseInfo();
             baseInfo.subFlowParam.additionalDistance = 0;
             Router.navigate(null, transition,
                 (null != reverse) ? reverse : true,
@@ -690,8 +688,8 @@ namespace CDP.Framework {
          * sub flow 内であるか判定
          */
         public static isInSubFlow(): boolean {
-            let stack = Router.getJqmHistory().stack;
-            let has = _.some(stack, (value) => {
+            const stack = Router.getJqmHistory().stack;
+            const has = _.some(stack, (value) => {
                 return !!value[Router.SUBFLOW_PARAM];
             });
             return has;
@@ -732,20 +730,19 @@ namespace CDP.Framework {
         public static registerPageStack(pageStack: PageStack, withNavigate?: boolean, options?: NavigateOptions): boolean;
         public static registerPageStack(pageStack: PageStack[], withNavigate?: boolean, options?: NavigateOptions): boolean;
         public static registerPageStack(pageStack: any, withNavigate?: boolean, options?: NavigateOptions): boolean {
-            let newStacks = [];
+            const newStacks = [];
             let failed = false;
 
             pageStack = (pageStack instanceof Array) ? pageStack : [pageStack];
             withNavigate = (null == withNavigate) ? false : withNavigate;
 
             (() => {
-                let makeStack = (info: PageStack): any => {
+                const makeStack = (info: PageStack): any => {
                     let url: string;
-                    let stack: Object;
 
-                    let fragment = Backbone.history.getFragment(info.route);
-                    let context = <RouteContext>_.find(<any>Router.s_rootContexts, (context: any) => {
-                        return context.regexp.test(fragment);
+                    const fragment = Backbone.history.getFragment(info.route);
+                    const context = <RouteContext>_.find(<any>Router.s_rootContexts, (ctx: any) => {
+                        return ctx.regexp.test(fragment);
                     });
                     if (!context) {
                         console.warn("route is not registered. route: " + info.route);
@@ -754,7 +751,7 @@ namespace CDP.Framework {
                         url = Router.pathToJqmDataUrl(context.page);
                     }
 
-                    stack = {
+                    const stack = {
                         route: info.route,
                         pageUrl: url,
                         title: info.title,
@@ -765,7 +762,7 @@ namespace CDP.Framework {
                 };
 
                 for (let i = 0, n = pageStack.length; i < n; i++) {
-                    let stack = makeStack(pageStack[i]);
+                    const stack = makeStack(pageStack[i]);
                     if (!stack) {
                         failed = true;
                         break;
@@ -782,8 +779,8 @@ namespace CDP.Framework {
             (() => {
                 // Router の停止
                 let restart = Router.stop();
-                let silentLength = newStacks.length - 1;
-                let finalIndex = newStacks.length - 1;
+                const silentLength = newStacks.length - 1;
+                const finalIndex = newStacks.length - 1;
 
                 Router.getJqmHistory().clearForward();
 
@@ -795,7 +792,7 @@ namespace CDP.Framework {
 
                 // final stack with navigate
                 if (withNavigate) {
-                    let transition = (() => {
+                    const transition = (() => {
                         if (null != Router.s_lastNavigateInfo.transition) {
                             return Router.s_lastNavigateInfo.transition;
                         } else {
@@ -803,7 +800,7 @@ namespace CDP.Framework {
                         }
                     })();
 
-                    let reverse = (() => {
+                    const reverse = (() => {
                         if (null != Router.s_lastNavigateInfo.reverse) {
                             return Router.s_lastNavigateInfo.reverse;
                         } else {
@@ -856,7 +853,7 @@ namespace CDP.Framework {
          * @private
          */
         private static customLoadUrl(fragment: string): boolean {
-            let handled = Router.s_loadUrl(fragment);
+            const handled = Router.s_loadUrl(fragment);
             if (!handled) {
                 Router.onRouteFailed(fragment);
             }
@@ -917,12 +914,12 @@ namespace CDP.Framework {
                 .on("pagebeforeshow", (event: JQueryEventObject) => {
                     // "data-back-dst" を page に設定
                     if (null != Router.s_lastNavigateInfo.backDestination) {
-                        let active: Object = Router.getJqmHistory().getActive();
+                        const active: Object = Router.getJqmHistory().getActive();
                         active[Router.BACK_DESTINATION_URL] = Router.s_lastNavigateInfo.backDestination;
                     }
                 })
                 .on("pageshow", (event: JQueryEventObject) => {
-                    let active: Object = Router.getJqmHistory().getActive();
+                    const active: Object = Router.getJqmHistory().getActive();
                     if (active[Router.SUBFLOW_PARAM]) {
                         delete active[Router.SUBFLOW_PARAM];
                     }
@@ -1001,9 +998,9 @@ namespace CDP.Framework {
          * @return true: top 指定 / false: top ではない
          */
         private static isTopPage(): boolean {
-            let fragment = Backbone.history.getFragment($.mobile.path.parseUrl(location.href).hash);
-            let context = <RouteContext>_.find(<any>Router.s_rootContexts, (context: any) => {
-                return context.regexp.test(fragment);
+            const fragment = Backbone.history.getFragment($.mobile.path.parseUrl(location.href).hash);
+            const context = <RouteContext>_.find(<any>Router.s_rootContexts, (ctx: any) => {
+                return ctx.regexp.test(fragment);
             });
             return (null == context) ? false : context.top;
         }
@@ -1041,14 +1038,14 @@ namespace CDP.Framework {
          * @private
          */
         private static followAnchor(event: JQueryEventObject): boolean {
-            let $target = $(event.currentTarget);
-            let url: string = $target.jqmData("href") || $target.attr("href");
-            let transition: string = $target.jqmData("transition");
-            let direction: string = $target.jqmData("direction");
-            let backDst: any = $target.attr(Router.DATA_BACK_DESTINATION);
-            let noHashChange: boolean = $target.attr(Router.DATA_NO_HASH_CHANGE) ?
+            const $target = $(event.currentTarget);
+            const url: string = $target.jqmData("href") || $target.attr("href");
+            const transition: string = $target.jqmData("transition");
+            const direction: string = $target.jqmData("direction");
+            const backDst: any = $target.attr(Router.DATA_BACK_DESTINATION);
+            const noHashChange: boolean = $target.attr(Router.DATA_NO_HASH_CHANGE) ?
                 $target.attr(Router.DATA_NO_HASH_CHANGE) === "true" : false;
-            let noHrefHandle: boolean = $target.attr(Router.DATA_NO_VCLICK_HANDLE) ?
+            const noHrefHandle: boolean = $target.attr(Router.DATA_NO_VCLICK_HANDLE) ?
                 $target.attr(Router.DATA_NO_VCLICK_HANDLE) === "true" : false;
 
             /*
@@ -1113,7 +1110,7 @@ namespace CDP.Framework {
          * @return true: 解決可能 / false: 解決不可
          */
         private static canResolveRoute(url: string): boolean {
-            let fragment = Backbone.history.getFragment(url);
+            const fragment = Backbone.history.getFragment(url);
             return _.any(Backbone.history.handlers, function (handler: any) {
                 if (handler.route.test(fragment)) {
                     return true;
@@ -1133,7 +1130,7 @@ namespace CDP.Framework {
          * @private
          */
         private static isJustBeforeVclicked(): boolean {
-            let isBefore = (Date.now() - Router.s_lastClickedTime) < Router.DELAY_TIME * 2;
+            const isBefore = (Date.now() - Router.s_lastClickedTime) < Router.DELAY_TIME * 2;
             Router.s_lastClickedTime = Date.now();
             return isBefore;
         }
@@ -1173,15 +1170,15 @@ namespace CDP.Framework {
          * @param args {Array}  [in] パラメータ配列。
          */
         private static onRouteSucceeded(name: string, ...args: any[]): void {
-            let context = <RouteContext>Router.s_rootContexts[name];
+            const context = <RouteContext>Router.s_rootContexts[name];
             if (!!context) {
-                let intent = { params: { queryParams: args } };
+                const intent = { params: { queryParams: args } };
                 Router.s_lastNavigateInfo.inNavigation = true;
                 if (null != Router.s_lastNavigateInfo.intent) {
                     intent.params = $.extend({}, intent.params, Router.s_lastNavigateInfo.intent.params || {});
                 }
                 Router.s_lastNavigateInfo.intent = $.extend({}, Router.s_lastNavigateInfo.intent, intent);
-                let handled = context.callback(args);
+                const handled = context.callback(args);
                 if (!handled) {
                     Router.changePage(context.page);
                 }
@@ -1256,7 +1253,7 @@ namespace CDP.Framework {
                 } else {
                     Router.decideDirection(path);
                     // 指定先に戻るか判定
-                    let additional = Router.detectAdditionalBackDistance();
+                    const additional = Router.detectAdditionalBackDistance();
                     if (0 < additional) {
                         // 2回目以降の hash change には反応させない.
                         Router.s_lastNavigateInfo.inAdditionalBack = true;
@@ -1267,7 +1264,7 @@ namespace CDP.Framework {
                 }
 
                 // 遷移先が subflow 開始点である場合、param を削除
-                let subFlowInfo = Router.detectSubFlowBaseInfo();
+                const subFlowInfo = Router.detectSubFlowBaseInfo();
                 if (subFlowInfo.isCurrent) {
                     delete subFlowInfo.stack[Router.SUBFLOW_PARAM];
                 }
@@ -1319,7 +1316,7 @@ namespace CDP.Framework {
          * @param path {String} [in] 遷移先パスを指定
          */
         private static decideDirection(path: string): void {
-            let url = $.mobile.path.convertUrlToDataUrl(Framework.toUrl(path));
+            const url = $.mobile.path.convertUrlToDataUrl(Framework.toUrl(path));
 
             if (null == Router.s_lastNavigateInfo.transition) {
                 Router.s_lastNavigateInfo.transition = Router.getJqmHistory().getActive().transition;
@@ -1375,9 +1372,9 @@ namespace CDP.Framework {
          * @return {String} 追加で Back に必要な距離.
          */
         private static detectAdditionalBackDistance(): number {
-            let stack = Router.getJqmHistory().stack;
-            let historyActiveIndex = Router.getJqmHistory().activeIndex;    // decideDirection() の Router.getJqmHistory().direct() によって、history の activeIndex はすでに変わっている
-            let previousIndex = Router.getJqmHistory().previousIndex;       // [戻る]が押下された場合に値が入る
+            const stack = Router.getJqmHistory().stack;
+            const historyActiveIndex = Router.getJqmHistory().activeIndex;    // decideDirection() の Router.getJqmHistory().direct() によって、history の activeIndex はすでに変わっている
+            const previousIndex = Router.getJqmHistory().previousIndex;       // [戻る]が押下された場合に値が入る
             let i, backDst, distance, fragment, context, jqmDataUrl;
 
             // check "operation". [戻る]および clearForward() されていない状況をチェック
@@ -1399,8 +1396,8 @@ namespace CDP.Framework {
             }
 
             // rootContext から path を逆引き
-            context = <RouteContext>_.find(<any>Router.s_rootContexts, (context: any) => {
-                return context.regexp.test(fragment);
+            context = <RouteContext>_.find(<any>Router.s_rootContexts, (ctx: any) => {
+                return ctx.regexp.test(fragment);
             });
             if (null == context) {
                 console.warn("back destination is not registered. back-dst: " + backDst);
@@ -1436,30 +1433,28 @@ namespace CDP.Framework {
          * @param subFlowParam {SubFlowParam} [in] Sub Flow パラメータ
          */
         private static startSubFlow(subFlowParam: SubFlowParam): void {
-            let active = Router.getJqmHistory().getActive();
-            let param = <SubFlowParamEx>subFlowParam;
+            const active = Router.getJqmHistory().getActive();
+            const param = <SubFlowParamEx>subFlowParam;
             if (subFlowParam.destBase) {
-                (() => {
-                    let distance = 0;
-                    let fragment = Backbone.history.getFragment(subFlowParam.destBase);
-                    let context = <RouteContext>_.find(<any>Router.s_rootContexts, (context: any) => {
-                        return context.regexp.test(fragment);
-                    });
-                    if (null == context) {
-                        console.warn("base destination is not registered. destBase: " + subFlowParam.destBase);
-                        return;
-                    }
+                let distance = 0;
+                const fragment = Backbone.history.getFragment(subFlowParam.destBase);
+                const context = <RouteContext>_.find(<any>Router.s_rootContexts, (ctx: any) => {
+                    return ctx.regexp.test(fragment);
+                });
+                if (null == context) {
+                    console.warn("base destination is not registered. destBase: " + subFlowParam.destBase);
+                    return;
+                }
 
-                    // dataUrl を元に jQM History を検索
-                    let jqmDataUrl = Router.pathToJqmDataUrl(context.page);
-                    let stack = Router.getJqmHistory().stack;
-                    for (let i = Router.getJqmHistory().activeIndex; 0 <= i; i-- , distance++) {
-                        if (jqmDataUrl === stack[i].pageUrl) {
-                            param.additionalDistance = distance;
-                            break;
-                        }
+                // dataUrl を元に jQM History を検索
+                const jqmDataUrl = Router.pathToJqmDataUrl(context.page);
+                const stack = Router.getJqmHistory().stack;
+                for (let i = Router.getJqmHistory().activeIndex; 0 <= i; i-- , distance++) {
+                    if (jqmDataUrl === stack[i].pageUrl) {
+                        param.additionalDistance = distance;
+                        break;
                     }
-                })();
+                }
             } else {
                 param.destBase = location.hash;
                 param.additionalDistance = 0;
@@ -1482,18 +1477,18 @@ namespace CDP.Framework {
          * @param navOptions {NavigateOptions} [in] Sub Flow パラメータ
          */
         private static finishSubFlow(options: NavigateOptions): void {
-            let navOptions: NavigateOptions = $.extend(true, {}, options);
-            let baseInfo = Router.detectSubFlowBaseInfo();
+            const navOptions: NavigateOptions = $.extend(true, {}, options);
+            const baseInfo = Router.detectSubFlowBaseInfo();
             // "end" 時に更新されたものを上書き
-            let param: SubFlowParam = $.extend({}, baseInfo.subFlowParam, navOptions.subFlow);
-            let distance = baseInfo.distance;
-            let stack = baseInfo.stack;
+            const param: SubFlowParam = $.extend({}, baseInfo.subFlowParam, navOptions.subFlow);
+            const distance = baseInfo.distance;
+            const stack = baseInfo.stack;
             let retry = 0;
             const NAVIGATE_INTERVAL = 100;
             const MAX_RETRY_COUNT = 10;
 
             // hash 変更が完了した後に navigate を実行
-            let _navigate = () => {
+            const _navigate = () => {
                 if (MAX_RETRY_COUNT <= retry) {
                     console.error("reached navigate max retry count.");
                     Router.s_lastNavigateInfo = {};
@@ -1547,8 +1542,8 @@ namespace CDP.Framework {
          * @return {Object} Sub Flow 情報.
          */
         private static detectSubFlowBaseInfo(): any {
-            let stack = Router.getJqmHistory().stack;
-            let historyActiveIndex = Router.getJqmHistory().activeIndex;
+            const stack = Router.getJqmHistory().stack;
+            const historyActiveIndex = Router.getJqmHistory().activeIndex;
             let i: number, distance: number;
             let param: SubFlowParamEx = <SubFlowParamEx>{};
             let target: Object;
@@ -1593,8 +1588,8 @@ namespace CDP.Framework {
          * @return {String} jQM data url.
          */
         private static pathToJqmDataUrl(path: string): string {
-            let url = Framework.toUrl(path);
-            let dataUrl = $.mobile.path.convertUrlToDataUrl(url);
+            const url = Framework.toUrl(path);
+            const dataUrl = $.mobile.path.convertUrlToDataUrl(url);
             return dataUrl;
         }
 

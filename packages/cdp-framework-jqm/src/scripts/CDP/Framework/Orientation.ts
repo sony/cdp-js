@@ -19,7 +19,7 @@
      * @return {Number} Orientation Code.
      */
     export function getOrientation(): Orientation {
-        let $window = $(window);
+        const $window = $(window);
         return ($window.width() < $window.height()) ? Orientation.PORTRAIT : Orientation.LANDSCAPE;
     }
 }

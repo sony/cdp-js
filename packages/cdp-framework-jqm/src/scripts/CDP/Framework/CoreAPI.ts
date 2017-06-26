@@ -94,8 +94,8 @@ namespace CDP {
 
         let _dfInitialize: JQueryDeferred<void> = $.Deferred<void>();
         let _activePage: IPage = null;
-        let _orientationListenerHolder: OrientationListenerHolder = {};
         let _lastOrientation: Orientation = null;
+        const _orientationListenerHolder: OrientationListenerHolder = {};
 
         /**
          * \~english
@@ -361,7 +361,7 @@ namespace CDP {
         $(window).on("resize", (event: JQueryEventObject): void => {
             const newOrientation = getOrientation();
             if (_lastOrientation !== newOrientation) {
-                for (let key in _orientationListenerHolder) {
+                for (const key in _orientationListenerHolder) {
                     _orientationListenerHolder[key].onOrientationChanged(newOrientation);
                 }
                 if (_activePage) {

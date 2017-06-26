@@ -7,18 +7,18 @@ namespace CDP.Framework {
     /**
      * vclick patch
      */
-    let _vclickPatch = (): void => {
-        let jquery_on = $.fn.on,
+    const _vclickPatch = (): void => {
+        const jquery_on = $.fn.on,
             jquery_off = $.fn.off;
 
-        let custom_on = function (types, selector, data, fn, /*INTERNAL*/ one) {
+        const custom_on = function (types, selector, data, fn, /*INTERNAL*/ one) {
             if (typeof types === "string") {
                 types = types.replace(/vclick/g, "click");
             }
             return (<any>_.bind(jquery_on, this))(types, selector, data, fn, one);
         };
 
-        let custom_off = function (types, selector, fn) {
+        const custom_off = function (types, selector, fn) {
             if (typeof types === "string") {
                 types = types.replace(/vclick/g, "click");
             }

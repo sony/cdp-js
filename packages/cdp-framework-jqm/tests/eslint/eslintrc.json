@@ -11,6 +11,8 @@
     "location": true,
     "module": true,
     "requirejs": true,
+    "Backbone": true,
+    "_": true,
     "$": true,
     "MSApp": true,
     "require": true,
@@ -25,7 +27,7 @@
 
     "comma-dangle": "off",
     "no-cond-assign": ["error", "always"],
-    "no-unused-vars": ["error", {"args": "none", "varsIgnorePattern": "^TAG|^__" }],
+    "no-unused-vars": ["error", {"args": "none", "varsIgnorePattern": "^TAG|^__|Framework" }],
     "no-extra-boolean-cast": "off",
     "no-constant-condition": "off",
     "no-console": "off"

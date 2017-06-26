@@ -6,11 +6,11 @@ namespace CDP.Framework {
      * platform 判定オブジェクト
      * [参考] https://w3g.jp/blog/tools/js_browser_sniffing
      */
-    export let Platform = (() => {
-        let ua = navigator.userAgent.toLowerCase();
+    export const Platform = (() => {
+        const ua = navigator.userAgent.toLowerCase();
 
-        let majorVersion = function (browser: string): number {
-            let version = ua.match(new RegExp("(" + browser + ")( |/)([0-9]+)"));
+        const majorVersion = function (browser: string): number {
+            const version = ua.match(new RegExp("(" + browser + ")( |/)([0-9]+)"));
             if (!version || version.length < 4) {
                 return 0;
             }
@@ -29,7 +29,7 @@ namespace CDP.Framework {
             Blink: global.chrome,
             Webkit: typeof global.chrome === "undefined" && "WebkitAppearance" in (<any>document.documentElement).style,
             Touch: typeof global.ontouchstart !== "undefined",
-            Mobile: typeof global.orientation !== "undefined",
+            Mobile: (typeof global.orientation !== "undefined") || (ua.indexOf("Windows Phone") !== -1),
             ltAd4_4: typeof global.orientation !== "undefined" && (typeof global.EventSource === "undefined" || 30 > majorVersion("chrome")),
             Pointer: global.navigator.pointerEnabled,
             MSPoniter: global.navigator.msPointerEnabled,
