@@ -6,7 +6,7 @@
      * @interface GroupListItemViewOptions
      * @brief GroupListItemView のオプション
      */
-    export interface GroupListItemViewOptions<TModel extends Backbone.Model> extends ListItemViewOptions<TModel> {
+    export interface GroupListItemViewOptions<TModel extends Backbone.Model = Backbone.Model> extends ListItemViewOptions<TModel> {
         groupProfile?: GroupProfile;    //!< GroupProfile インスタンス
     }
 
@@ -14,7 +14,7 @@
      * @class GroupListItemView
      * @brief ExpandableListView が扱う ListItem コンテナクラス
      */
-    export class GroupListItemView<TModel extends Backbone.Model> extends ListItemView<TModel> {
+    export class GroupListItemView<TModel extends Backbone.Model = Backbone.Model> extends ListItemView<TModel> {
 
         private _groupProfile: GroupProfile = null;    //!< 管轄の GroupProfile
 

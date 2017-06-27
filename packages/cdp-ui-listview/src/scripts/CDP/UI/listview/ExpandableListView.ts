@@ -6,7 +6,8 @@
      * @class ExpandableListView
      * @brief 開閉機能を備えた仮想リストビュークラス
      */
-    export class ExpandableListView<TModel extends Backbone.Model> extends ListView<TModel> implements IExpandableListView {
+    export class ExpandableListView<TModel extends Backbone.Model = Backbone.Model>
+        extends ListView<TModel> implements IExpandableListView {
 
         private _statusMgr: StatusManager = null;
         private _expandManager: ExpandManager = null;

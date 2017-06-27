@@ -6,7 +6,8 @@
      * @interface ListViewConstructOptions
      * @brief ListView への初期化情報を格納するインターフェイスクラス
      */
-    export interface ListViewConstructOptions<TModel extends Backbone.Model> extends ListViewOptions, Backbone.ViewOptions<TModel> {
+    export interface ListViewConstructOptions<TModel extends Backbone.Model = Backbone.Model>
+        extends ListViewOptions, Backbone.ViewOptions<TModel> {
         $el?: JQuery;
         initialHeight?: number;    //!< 高さの初期値
     }
@@ -15,7 +16,8 @@
      * @class ListView
      * @brief メモリ管理機能を提供する仮想リストビュークラス
      */
-    export class ListView<TModel extends Backbone.Model> extends Backbone.View<TModel> implements IListView, IComposableView {
+    export class ListView<TModel extends Backbone.Model = Backbone.Model>
+        extends Backbone.View<TModel> implements IListView, IComposableView {
 
         private _scrollMgr: ScrollManager = null;    //!< scroll コアロジック
 

@@ -6,7 +6,8 @@
      * @interface ListItemViewOptions
      * @brief ListItemView のオプション
      */
-    export interface ListItemViewOptions<TModel extends Backbone.Model> extends Backbone.ViewOptions<TModel> {
+    export interface ListItemViewOptions<TModel extends Backbone.Model = Backbone.Model>
+        extends Backbone.ViewOptions<TModel> {
         owner: BaseListView;
         $el?: JQuery;
         lineProfile: LineProfile;
@@ -16,7 +17,8 @@
      * @class ListItemView
      * @brief ListView が扱う ListItem コンテナクラス
      */
-    export class ListItemView<TModel extends Backbone.Model> extends Backbone.View<TModel> implements IListItemView, IComposableView {
+    export class ListItemView<TModel extends Backbone.Model = Backbone.Model>
+        extends Backbone.View<TModel> implements IListItemView, IComposableView {
 
         private _owner: BaseListView = null;
         private _lineProfile: LineProfile = null;
