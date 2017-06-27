@@ -28,7 +28,7 @@
             super(options);
             this._owner = options.owner;
             if (options.$el) {
-                let delegates = (<any>this).events ? true : false;
+                const delegates = (<any>this).events ? true : false;
                 this.setElement(options.$el, delegates);
             }
             this._lineProfile = options.lineProfile;
@@ -91,7 +91,7 @@
          * @return {Backbone.View|Backbone.View[]} 新規に生成された View のコンストラクタ
          */
         static compose(derives: ViewConstructor | ViewConstructor[], properties: any, classProperties?: any): ViewConstructor {
-            let composed: any = composeViews(ListItemView, derives);
+            const composed: any = composeViews(ListItemView, derives);
             return composed.extend(properties, classProperties);
         }
 

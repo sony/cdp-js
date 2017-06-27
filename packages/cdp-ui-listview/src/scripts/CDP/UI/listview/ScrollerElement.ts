@@ -104,7 +104,7 @@
 
         //! factory 取得
         public static getFactory(): (element: any, options: ListViewOptions) => IScroller {
-            let factory = (element: any, options: ListViewOptions): IScroller => {
+            const factory = (element: any, options: ListViewOptions): IScroller => {
                 return new ScrollerElement(element, options);
             };
             // set type signature.

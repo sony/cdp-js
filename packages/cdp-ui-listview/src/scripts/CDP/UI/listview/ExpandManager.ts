@@ -178,7 +178,7 @@ namespace CDP.UI {
          * @return {Boolean} true: 成功 / false: 失敗
          */
         backup(key: string): boolean {
-            let _backup = this.backupData;
+            const _backup = this.backupData;
             if (null == _backup[key]) {
                 _backup[key] = {
                     map: this._mapGroups,
@@ -196,7 +196,7 @@ namespace CDP.UI {
          * @return {Boolean} true: 成功 / false: 失敗
          */
         restore(key: string, rebuild: boolean = true): boolean {
-            let _backup = this.backupData;
+            const _backup = this.backupData;
 
             if (null == _backup[key]) {
                 return false;

@@ -85,6 +85,13 @@
   <ItemGroup>
     <Content Include=".gitignore" />
     <Content Include="dist\cdp.ui.listview.js" />
+    <Content Include="dist\cdp.ui.listview.min.js">
+      <DependentUpon>cdp.ui.listview.js</DependentUpon>
+    </Content>
+    <Content Include="docs\reports\coverage\index.html" />
+    <Content Include="docs\reports\metrics\display.html" />
+    <Content Include="docs\reports\metrics\index.html" />
+    <Content Include="docs\typedoc\index.html" />
     <Content Include="exports\cdp\ui\listview.js">
       <DependentUpon>listview.ts</DependentUpon>
     </Content>
@@ -174,6 +181,7 @@
     <Content Include="tests\tslint\tslint.json" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="dist\%40types\cdp.ui.listview.d.ts" />
     <TypeScriptCompile Include="exports\cdp\ui\listview.ts" />
     <TypeScriptCompile Include="src\scripts\%40types\dev.dependencies\index.d.ts" />
     <TypeScriptCompile Include="src\scripts\cdp.ui.listview.ts" />
@@ -183,7 +191,6 @@
     <TypeScriptCompile Include="src\scripts\CDP\UI\listview\GroupListItemView.ts" />
     <TypeScriptCompile Include="src\scripts\CDP\UI\listview\GroupProfile.ts" />
     <TypeScriptCompile Include="src\scripts\CDP\UI\listview\Interfaces.ts" />
-    <TypeScriptCompile Include="src\scripts\CDP\UI\listview\InternalIF.d.ts" />
     <TypeScriptCompile Include="src\scripts\CDP\UI\listview\LineProfile.ts" />
     <TypeScriptCompile Include="src\scripts\CDP\UI\listview\ListItemView.ts" />
     <TypeScriptCompile Include="src\scripts\CDP\UI\listview\ListView.ts" />
@@ -215,5 +222,10 @@
     <Content Include="tests\eslint\eslintrc.json" />
     <Content Include="tests\runner\index.mustache" />
     <Content Include="tests\runner\testem.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="dist\cdp.ui.listview.min.js.map">
+      <DependentUpon>cdp.ui.listview.js</DependentUpon>
+    </Content>
   </ItemGroup>
 </Project>

@@ -56,7 +56,7 @@
 
         //! 配下の LineProfile すべてが有効でない場合、Page ステータスを無効にする
         public normalize(): void {
-            let enableAll = _.every(this._lines, (line: LineProfile) => {
+            const enableAll = _.every(this._lines, (line: LineProfile) => {
                 return line.isActive();
             });
             if (!enableAll) {

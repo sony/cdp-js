@@ -95,7 +95,7 @@
 
         //! 高さ情報の更新. ListItemView からコールされる。
         public updateHeight(newHeight: number, options?: UpdateHeightOptions): void {
-            let delta = newHeight - this._height;
+            const delta = newHeight - this._height;
             this._height = newHeight;
             this._owner.updateScrollMapHeight(delta);
             if (null != options && options.reflectAll) {
@@ -168,9 +168,9 @@
         //! Base jQuery オブジェクトの生成
         private prepareBaseElement(): JQuery {
             let $base: JQuery;
-            let $map = this._owner.getScrollMapElement();
-            let $recycle = this._owner.findRecycleElements().first();
-            let itemTagName = this._owner.getListViewOptions().itemTagName;
+            const $map = this._owner.getScrollMapElement();
+            const $recycle = this._owner.findRecycleElements().first();
+            const itemTagName = this._owner.getListViewOptions().itemTagName;
 
             if (null != this._$base) {
                 console.warn(TAG + "this._$base is not null.");
@@ -216,7 +216,7 @@
 
         //! offset の更新
         private updateOffset($base: JQuery): void {
-            let transform = {};
+            const transform = {};
             if (this._owner.getListViewOptions().enableTransformOffset) {
                 if (_ToolCSS.getCssMatrixValue($base, "translateY") !== this._offset) {
                     for (let i = 0; i < _ToolCSS.cssPrefixes.length; i++) {

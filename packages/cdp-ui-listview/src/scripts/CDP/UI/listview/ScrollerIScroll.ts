@@ -115,7 +115,7 @@ namespace CDP.UI {
             if (this._$owner) {
                 // update wrapper
                 (() => {
-                    let ownerHeight = this._$owner.height();
+                    const ownerHeight = this._$owner.height();
                     if (ownerHeight !== this._$wrapper.height()) {
                         this._$wrapper.height(ownerHeight);
                     }
@@ -125,7 +125,7 @@ namespace CDP.UI {
                     clearTimeout(this._refreshTimerId);
                 }
 
-                let proc = () => {
+                const proc = () => {
                     if (this._$scroller && this._$scroller.height() !== this._iscroll.scrollerHeight) {
                         this._iscroll.refresh();
                         this._refreshTimerId = setTimeout(proc, this._listviewOptions.scrollMapRefreshInterval);
@@ -154,7 +154,7 @@ namespace CDP.UI {
 
         //! factory 取得
         public static getFactory(options?: IScrollOptions): (element: any, options: ListViewOptions) => IScroller {
-            let defaultOpt = {
+            const defaultOpt = {
                 scrollX: false,
                 bounce: false,
                 tap: true,
@@ -172,12 +172,12 @@ namespace CDP.UI {
 //               eventPassthrough: true,
             };
 
-            let iscrollOptions = $.extend({}, defaultOpt, options);
+            const iscrollOptions = $.extend({}, defaultOpt, options);
 
-            let factory = (element: any, listviewOptions: ListViewOptions): IScroller => {
-                let $owner = $(element);
-                let $map = $owner.find(_Config.SCROLL_MAP_SELECTOR);
-                let $wrapper = $("<div class='" + _Config.WRAPPER_CLASS + "'></div>")
+            const factory = (element: any, listviewOptions: ListViewOptions): IScroller => {
+                const $owner = $(element);
+                const $map = $owner.find(_Config.SCROLL_MAP_SELECTOR);
+                const $wrapper = $("<div class='" + _Config.WRAPPER_CLASS + "'></div>")
                     .css({
                         position: "absolute",
                         width: "100%",

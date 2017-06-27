@@ -14,9 +14,8 @@
     "$": true,
     "jQuery": true,
     "_": true,
-    "Hogan": true,
-    "ArrayBuffer": true,
-    "Uint8Array": true,
+    "Backbone": true,
+    "IScroll": true,
     "require": true,
     "define": true,
     "exports": true
@@ -29,7 +28,7 @@
 
     "comma-dangle": "off",
     "no-cond-assign": ["error", "always"],
-    "no-unused-vars": ["error", {"args": "none", "varsIgnorePattern": "^TAG|^__|Tools|Blob" }],
+    "no-unused-vars": ["error", {"args": "none", "varsIgnorePattern": "^TAG|^__|UI|ListViewGlobalConfig|_ListViewUtils" }],
     "no-extra-boolean-cast": "off",
     "no-constant-condition": "off",
     "no-console": "off"

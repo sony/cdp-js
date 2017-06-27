@@ -14,9 +14,9 @@
      */
     export function composeViews(base: ViewConstructor, derives: ViewConstructor | ViewConstructor[]): ViewConstructor {
         let _composed = base;
-        let _derives = <ViewConstructor[]>(derives instanceof Array ? derives : [derives]);
+        const _derives = <ViewConstructor[]>(derives instanceof Array ? derives : [derives]);
         _derives.forEach((derive) => {
-            let seed = {};
+            const seed = {};
             _.extendOwn(seed, derive.prototype);
             delete seed.constructor;
             _composed = (<any>_composed).extend(seed);
@@ -33,7 +33,7 @@
      */
     export function deriveViews(derived: ViewConstructor, bases: ViewConstructor | ViewConstructor[]): void {
         let _composed: ViewConstructor;
-        let _bases = <ViewConstructor[]>(bases instanceof Array ? bases : [bases]);
+        const _bases = <ViewConstructor[]>(bases instanceof Array ? bases : [bases]);
         if (2 <= _bases.length) {
             _composed = composeViews(_bases[0], _bases.slice(1));
         } else {
@@ -50,7 +50,7 @@
      * @param bases   {Backbone.View|Backbone.View[]} [in] 合成元のView クラス
      */
     export function mixinViews(derived: ViewConstructor, bases: ViewConstructor | ViewConstructor[]): void {
-        let _bases = <ViewConstructor[]>(bases instanceof Array ? bases : [bases]);
+        const _bases = <ViewConstructor[]>(bases instanceof Array ? bases : [bases]);
         _bases.forEach((base) => {
             Object.getOwnPropertyNames(base.prototype).forEach(name => {
                 derived.prototype[name] = base.prototype[name];
@@ -72,7 +72,7 @@
          *
          * @return {Array} prefix
          */
-        export let cssPrefixes = ["-webkit-", "-moz-", "-ms-", "-o-", ""];
+        export const cssPrefixes = ["-webkit-", "-moz-", "-ms-", "-o-", ""];
 
         /**
          * css の matrix の値を取得.
@@ -81,7 +81,7 @@
          * @param type    {String} [in] matrix type string [translateX | translateY | scaleX | scaleY]
          * @return {Number} value
          */
-        export let getCssMatrixValue = (element: JQuery, type: string): number => {
+        export const getCssMatrixValue = (element: JQuery, type: string): number => {
             let transX = 0;
             let transY = 0;
             let scaleX = 0;
@@ -89,9 +89,9 @@
             for (let i = 0; i < cssPrefixes.length; i++) {
                 let matrix = $(element).css(cssPrefixes[i] + "transform");
                 if (matrix) {
-                    let is3dMatrix = matrix.indexOf("3d") !== -1 ? true : false;
+                    const is3dMatrix = matrix.indexOf("3d") !== -1 ? true : false;
                     matrix = matrix.replace("matrix3d", "").replace("matrix", "").replace(/[^\d.,-]/g, "");
-                    let arr = matrix.split(",");
+                    const arr = matrix.split(",");
                     transX = Number(arr[is3dMatrix ? 12 : 4]);
                     transY = Number(arr[is3dMatrix ? 13 : 5]);
                     scaleX = Number(arr[0]);
@@ -118,7 +118,7 @@
          *
          * @return {Array} transitionend イベント名
          */
-        export let transitionEnd = "transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd";
+        export const transitionEnd = "transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd";
 
         /**
          * transition 設定
@@ -126,12 +126,12 @@
          * @private
          * @param {Object} element
          */
-        export let setTransformsTransitions = (element: JQuery, prop: string, msec: number, timingFunction: string): void => {
-            let $element = $(element);
-            let transitions = {};
-            let second = (msec / 1000) + "s";
-            let animation = " " + second + " " + timingFunction;
-            let transform = ", transform" + animation;
+        export const setTransformsTransitions = (element: JQuery, prop: string, msec: number, timingFunction: string): void => {
+            const $element = $(element);
+            const transitions = {};
+            const second = (msec / 1000) + "s";
+            const animation = " " + second + " " + timingFunction;
+            const transform = ", transform" + animation;
 
             for (let i = 0; i < cssPrefixes.length; i++) {
                 transitions[cssPrefixes[i] + "transition"] = prop + animation + transform;
@@ -147,11 +147,11 @@
          * @private
          * @param {Object} element
          */
-        export let clearTransitions = (element: JQuery): void => {
-            let $element = $(element);
+        export const clearTransitions = (element: JQuery): void => {
+            const $element = $(element);
 
             $element.off(transitionEnd);
-            let transitions = {};
+            const transitions = {};
             for (let i = 0; i < cssPrefixes.length; i++) {
                 transitions[cssPrefixes[i] + "transition"] = "";
             }
@@ -162,14 +162,14 @@
         /**
          * Math.abs よりも高速な abs
          */
-        export let abs = (x: number): number => {
+        export const abs = (x: number): number => {
             return x >= 0 ? x : -x;
         };
 
         /**
          * Math.max よりも高速な max
          */
-        export let max = (lhs: number, rhs: number): number => {
+        export const max = (lhs: number, rhs: number): number => {
             return lhs >= rhs ? lhs : rhs;
         };
     }

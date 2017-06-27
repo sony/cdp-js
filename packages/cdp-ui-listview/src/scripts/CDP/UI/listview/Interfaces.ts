@@ -383,6 +383,15 @@ namespace CDP.UI {
         core: IListViewFramework;
     }
 
+    /**
+     * @interface IListView
+     * @brief ListView のインターフェイス
+     */
+    export interface IListView {
+        //! 登録 framework が使用する
+        _addLine?(_line: LineProfile, insertTo?: number): void;
+        _addLine?(_line: LineProfile[], insertTo?: number): void;
+    }
 
     /**
      * @interface BaseListView
@@ -501,6 +510,5 @@ namespace CDP.UI {
 }
 
 declare module "cdp.ui.listview" {
-    let UI: typeof CDP.UI;
-    export = UI;
+    export = CDP.UI;
 }

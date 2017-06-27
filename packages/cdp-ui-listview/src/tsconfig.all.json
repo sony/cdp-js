@@ -9,7 +9,6 @@
   },
   "files": [
     "scripts/CDP/UI/listview/Interfaces.ts",
-    "scripts/CDP/UI/listview/InternalIF.d.ts",
     "scripts/CDP/UI/listview/Config.ts",
     "scripts/CDP/UI/listview/Utils.ts",
     "scripts/CDP/UI/listview/StatusManager.ts",

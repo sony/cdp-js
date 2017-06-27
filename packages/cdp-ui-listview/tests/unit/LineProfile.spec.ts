@@ -1,23 +1,14 @@
 ﻿import "../../src/scripts/cdp.ui.listview";
 
 describe("TODO: suite", () => {
-    let _testCaseFinished = false;
     beforeEach(() => {
-        _testCaseFinished = false;
+        // noop.
     });
-
     afterEach(() => {
         // noop.
     });
 
-    it("TODO: case", () => {
-        runs(() => {
-            _testCaseFinished = true;
-        });
-
-        waitsFor(() => {
-            return _testCaseFinished;
-        }, "TODO: case", Infinity);
+    it("TODO", () => {
+        expect("TODO").toEqual("TODO");
     });
-
 });

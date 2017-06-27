@@ -26,13 +26,13 @@
          */
         constructor(options?: ListViewConstructOptions<TModel>) {
             super(options);
-            let opt = options || {};
+            const opt = options || {};
             this._scrollMgr = new ScrollManager(options);
             if (opt.$el) {
-                let delegates = (<any>this).events ? true : false;
+                const delegates = (<any>this).events ? true : false;
                 this.setElement(opt.$el, delegates);
             } else {
-                let height = opt.initialHeight || this.$el.height();
+                const height = opt.initialHeight || this.$el.height();
                 this._scrollMgr.initialize(this.$el, height);
             }
         }
@@ -45,7 +45,7 @@
         setElement(element: JQuery, delegate?: boolean): Backbone.View<TModel>;
         setElement(element: any, delegate?: boolean): Backbone.View<TModel> {
             if (this._scrollMgr) {
-                let $el = $(element);
+                const $el = $(element);
                 this._scrollMgr.destroy();
                 this._scrollMgr.initialize($el, $el.height());
             }
@@ -199,7 +199,7 @@
          * @return {Backbone.View|Backbone.View[]} 新規に生成された View のコンストラクタ
          */
         static compose(derives: ViewConstructor | ViewConstructor[], properties: any, classProperties?: any): ViewConstructor {
-            let composed: any = composeViews(ListView, derives);
+            const composed: any = composeViews(ListView, derives);
             return composed.extend(properties, classProperties);
         }
     }

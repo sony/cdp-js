@@ -43,7 +43,7 @@
             layoutKey?: string
         ): GroupProfile {
             let line: LineProfile;
-            let options = $.extend({}, { groupProfile: this }, info);
+            const options = $.extend({}, { groupProfile: this }, info);
 
             if (null == layoutKey) {
                 layoutKey = GroupProfile.LAYOUT_KEY_DEFAULT;
@@ -73,7 +73,7 @@
         public addChildren(target: GroupProfile): GroupProfile;
         public addChildren(target: GroupProfile[]): GroupProfile;
         public addChildren(target: any): GroupProfile {
-            let children: GroupProfile[] = (target instanceof Array) ? target : [target];
+            const children: GroupProfile[] = (target instanceof Array) ? target : [target];
             children.forEach((child) => {
                 child.setParent(this);
             });
@@ -261,15 +261,15 @@
          * @return {Number} index. エラーの場合は null.
          */
         public getLastLineIndex(withActiveChildren: boolean = false): number {
-            let lines: LineProfile[] = (() => {
-                let lines: LineProfile[];
+            const lines: LineProfile[] = (() => {
+                let _lines: LineProfile[];
                 if (withActiveChildren) {
-                    lines = this.queryOperationTarget("active");
+                    _lines = this.queryOperationTarget("active");
                 }
                 if (null == lines || lines.length <= 0) {
-                    lines = this._lines;
+                    _lines = this._lines;
                 }
-                return lines;
+                return _lines;
             })();
 
             if (lines.length <= 0) {
@@ -336,27 +336,27 @@
          * @return {LineProfile[]} 操作対象の LineProfile の配列
          */
         private queryOperationTarget(operation: string): LineProfile[] {
-            let findTargets = (group: GroupProfile): LineProfile[] => {
+            const findTargets = (group: GroupProfile): LineProfile[] => {
                 let lines: LineProfile[] = [];
-                group._children.forEach((group: GroupProfile) => {
+                group._children.forEach((child: GroupProfile) => {
                     switch (operation) {
                         case "registered":
-                            lines = lines.concat(group.preprocess(operation));
+                            lines = lines.concat(child.preprocess(operation));
                             break;
                         case "unregistered":
-                            lines = lines.concat(group.preprocess(operation));
+                            lines = lines.concat(child.preprocess(operation));
                             break;
                         case "active":
-                            if (null != group._lines) {
-                                lines = lines.concat(group._lines);
+                            if (null != child._lines) {
+                                lines = lines.concat(child._lines);
                             }
                             break;
                         default:
                             console.warn(TAG + "unknown operation: " + operation);
                             return;
                     }
-                    if (group.isExpanded()) {
-                        lines = lines.concat(findTargets(group));
+                    if (child.isExpanded()) {
+                        lines = lines.concat(findTargets(child));
                     }
                 });
                 return lines;
@@ -370,7 +370,7 @@
          * @return {LineProfile[]} LineProfie 配列
          */
         private get _lines(): LineProfile[] {
-            let key = this._owner.layoutKey;
+            const key = this._owner.layoutKey;
             if (null != key) {
                 return this._mapLines[key];
             } else {

@@ -43,7 +43,7 @@ namespace CDP.UI {
          */
         constructor(options?: ListViewOptions) {
             // ListViewOptions 既定値
-            let defOptions: ListViewOptions = {
+            const defOptions: ListViewOptions = {
                 scrollerFactory: ScrollerNative.getFactory(),
                 enableHiddenPage: false,
                 enableTransformOffset: false,
@@ -143,9 +143,9 @@ namespace CDP.UI {
          */
         public treatScrollPosition(): void {
             let i: number;
-            let transform = {};
+            const transform = {};
 
-            let updateOffset = ($target: JQuery, offset?: number): JQuery => {
+            const updateOffset = ($target: JQuery, offset?: number): JQuery => {
                 offset = offset || (this._scroller.getPos() - this._lastActivePageContext.pos);
                 if (_Utils.getCssMatrixValue($target, "translateY") !== offset) {
                     for (i = 0; i < _Utils.cssPrefixes.length; i++) {
@@ -156,7 +156,7 @@ namespace CDP.UI {
                 }
             };
 
-            let clearOffset = ($target: JQuery): JQuery => {
+            const clearOffset = ($target: JQuery): JQuery => {
                 for (i = 0; i < _Utils.cssPrefixes.length; i++) {
                     transform[_Utils.cssPrefixes[i] + "transform"] = "";
                 }
@@ -186,12 +186,12 @@ namespace CDP.UI {
 
         //! inactive 用 Map の生成
         private prepareInactiveMap(): JQuery {
-            let $parent = this._$map.parent();
+            const $parent = this._$map.parent();
             let $inactiveMap = $parent.find(_Config.INACTIVE_CLASS_SELECTOR);
             if ($inactiveMap.length <= 0) {
-                let currentPageIndex = this.getPageIndex();
-                let $listItemViews = this._$map.clone().children().filter((index: number, element: HTMLElement) => {
-                    let pageIndex = ~~$(element).attr(_Config.DATA_PAGE_INDEX);
+                const currentPageIndex = this.getPageIndex();
+                const $listItemViews = this._$map.clone().children().filter((index: number, element: HTMLElement) => {
+                    const pageIndex = ~~$(element).attr(_Config.DATA_PAGE_INDEX);
                     if (currentPageIndex - 1 <= pageIndex || pageIndex <= currentPageIndex + 1) {
                         return true;
                     } else {
@@ -227,9 +227,9 @@ namespace CDP.UI {
 
         //! プロパティを指定して、LineProfile を管理. 登録 framework が使用する
         public _addLine(_line: any, insertTo?: number): void {
-            let i, n;
+            const lines: LineProfile[] = (_line instanceof Array) ? <LineProfile[]>_line : [_line];
+            let i: number, n: number;
             let deltaHeight = 0;
-            let lines: LineProfile[] = (_line instanceof Array) ? <LineProfile[]>_line : [_line];
             let addTail = false;
 
             if (null == insertTo) {
@@ -287,8 +287,8 @@ namespace CDP.UI {
 
             delay = (null != delay) ? delay : 0;
 
+            const removed: LineProfile[] = [];
             let delta = 0;
-            let removed: LineProfile[] = [];
             let mapTransition = false;
 
             // 削除候補と変化量の算出
@@ -303,8 +303,8 @@ namespace CDP.UI {
                 }
                 // 自動設定・削除遅延時間が設定されかつ、スクロールポジションに変更がある場合は transition 設定
                 if (this._settings.removeItemWithTransition && (0 < delay)) {
-                    let current = this.getScrollPos();
-                    let posMax = this.getScrollPosMax() - delta;
+                    const current = this.getScrollPos();
+                    const posMax = this.getScrollPosMax() - delta;
                     mapTransition = (posMax < current);
                 }
             })();
@@ -345,8 +345,8 @@ namespace CDP.UI {
                 }
             }
 
+            const removed: LineProfile[] = [];
             let delta = 0;
-            let removed: LineProfile[] = [];
             let mapTransition = false;
 
             // 削除候補と変化量の算出
@@ -361,8 +361,8 @@ namespace CDP.UI {
                 });
                 // 自動設定・削除遅延時間が設定されかつ、スクロールポジションに変更がある場合は transition 設定
                 if (this._settings.removeItemWithTransition && (0 < delay)) {
-                    let current = this.getScrollPos();
-                    let posMax = this.getScrollPosMax() - delta;
+                    const current = this.getScrollPos();
+                    const posMax = this.getScrollPosMax() - delta;
                     mapTransition = (posMax < current);
                 }
             })();
@@ -396,7 +396,7 @@ namespace CDP.UI {
 
         //! scroll map のトランジション設定
         private setupScrollMapTransition($map: JQuery, delay: number): void {
-            let transitionEndHandler = (event: JQuery.Event) => {
+            const transitionEndHandler = (event: JQuery.Event) => {
                 $map.off(_Utils.transitionEnd);
                 _Utils.clearTransitions($map);
             };
@@ -410,7 +410,7 @@ namespace CDP.UI {
         getItemInfo(target: any): any {
             let index: number;
 
-            let parser = ($target: JQuery): number => {
+            const parser = ($target: JQuery): number => {
                 if ($target.hasClass(_Config.LISTITEM_BASE_CLASS)) {
                     return ~~$target.attr(_Config.DATA_CONTAINER_INDEX);
                 } else if ($target.hasClass(_Config.SCROLL_MAP_CLASS) || $target.length <= 0) {
@@ -440,16 +440,16 @@ namespace CDP.UI {
 
         //! アクティブページを更新
         refresh(): void {
-            let targets: any = {};
-            let searchCount = this._settings.pagePrepareCount + this._settings.pagePreloadCount;
-            let currentPageIndex = this.getPageIndex();
-            let highPriorityIndex: number[] = [];
+            const targets: any = {};
+            const searchCount = this._settings.pagePrepareCount + this._settings.pagePreloadCount;
+            const currentPageIndex = this.getPageIndex();
+            const highPriorityIndex: number[] = [];
 
-            let oldExsistPage = _.filter(this._pages, (page: PageProfile) => {
+            const oldExsistPage = _.filter(this._pages, (page: PageProfile) => {
                 return "inactive" !== page.status;
             });
 
-            let changeState = (index: number): void => {
+            const changeState = (index: number): void => {
                 if (index === currentPageIndex) {
                     targets[index] = "activate";
                     highPriorityIndex.push(index);
@@ -477,8 +477,8 @@ namespace CDP.UI {
                 let i = 0;
                 let pageIndex = 0;
                 let overflowPrev = 0, overflowNext = 0;
-                let beginIndex = currentPageIndex - searchCount;
-                let endIndex = currentPageIndex + searchCount;
+                const beginIndex = currentPageIndex - searchCount;
+                const endIndex = currentPageIndex + searchCount;
                 for (pageIndex = beginIndex; pageIndex <= endIndex; pageIndex++) {
                     if (pageIndex < 0) {
                         overflowPrev++;
@@ -512,7 +512,7 @@ namespace CDP.UI {
 
             // 不要になった page の inactivate
             oldExsistPage.forEach((page: PageProfile) => {
-                let index = page.index;
+                const index = page.index;
                 if (null == targets[index]) {
                     page.inactivate();
                 }
@@ -541,7 +541,7 @@ namespace CDP.UI {
             _.each(targets, (action: string, key: string) => {
                 setTimeout(() => {
                     if (this.isInitialized()) {
-                        let index = ~~key;
+                        const index = ~~key;
                         switch (action) {
                             case "activate":
                                 this._pages[index] && this._pages[index].activate();
@@ -572,7 +572,7 @@ namespace CDP.UI {
 
         //! 未アサインページを構築
         update(): void {
-            let index = this._pages.length;
+            const index = this._pages.length;
             this.assignPage(index);
             this.refresh();
         }
@@ -719,27 +719,27 @@ namespace CDP.UI {
             }
 
             (() => {
-                let target = this._lines[index];
+                const target = this._lines[index];
 
-                let defaultOptions: EnsureVisibleOptions = {
+                const defaultOptions: EnsureVisibleOptions = {
                     partialOK: true,
                     setTop: false,
                     animate: this._settings.enableAnimation,
                     time: this._settings.animationDuration,
                     callback: (): void => { /* noop */ },
                 };
-                let operation: EnsureVisibleOptions = $.extend({}, defaultOptions, options);
+                const operation: EnsureVisibleOptions = $.extend({}, defaultOptions, options);
 
-                let currentScope = {
+                const currentScope = {
                     from: this._scroller.getPos(),
                     to: this._scroller.getPos() + this._baseHeight,
                 };
-                let targetScope = {
+                const targetScope = {
                     from: target.offset,
                     to: target.offset + target.height,
                 };
 
-                let isInScope = (): boolean => {
+                const isInScope = (): boolean => {
                     if (operation.partialOK) {
                         if (targetScope.from <= currentScope.from) {
                             if (currentScope.from <= targetScope.to) {
@@ -763,7 +763,7 @@ namespace CDP.UI {
                     }
                 };
 
-                let detectPosition = (): number => {
+                const detectPosition = (): number => {
                     if (targetScope.from < currentScope.from) {
                         return targetScope.from;
                     } else if (currentScope.from < targetScope.from) {
@@ -820,7 +820,7 @@ namespace CDP.UI {
 
         //! 内部 Profile の更新. framework が使用する.
         updateProfiles(from: number): void {
-            let i, n;
+            let i: number, n: number;
             let last: LineProfile;
             for (i = from, n = this._lines.length; i < n; i++) {
                 if (0 < i) {
@@ -875,10 +875,10 @@ namespace CDP.UI {
             let page: PageProfile;
             let candidate: number;
 
-            let scrollPos = this._scroller ? this._scroller.getPos() : 0;
-            let scrollPosMax = this._scroller ? this._scroller.getPosMax() : 0;
-            let scrollMapSize = (() => {
-                let lastPage = this.getLastPage();
+            const scrollPos = this._scroller ? this._scroller.getPos() : 0;
+            const scrollPosMax = this._scroller ? this._scroller.getPosMax() : 0;
+            const scrollMapSize = (() => {
+                const lastPage = this.getLastPage();
                 if (null != lastPage) {
                     return lastPage.offset + lastPage.height;
                 } else {
@@ -886,7 +886,7 @@ namespace CDP.UI {
                 }
             })();
 
-            let pos = (() => {
+            const pos = (() => {
                 if (0 === scrollPosMax || scrollPosMax <= this._baseHeight) {
                     return 0;
                 } else {
@@ -894,10 +894,10 @@ namespace CDP.UI {
                 }
             })();
 
-            let validRange = (page: PageProfile): boolean => {
-                if (null == page) {
+            const validRange = (_page: PageProfile): boolean => {
+                if (null == _page) {
                     return false;
-                } else if (page.offset <= pos && pos <= page.offset + page.height) {
+                } else if (_page.offset <= pos && pos <= _page.offset + _page.height) {
                     return true;
                 } else {
                     return false;
@@ -945,7 +945,7 @@ namespace CDP.UI {
          */
         private onScroll(pos: number): void {
             if (this._active && 0 < this._pages.length) {
-                let currentPageIndex = this.getPageIndex();
+                const currentPageIndex = this.getPageIndex();
                 // TODO: 調整
                 if (_Utils.abs(pos - this._lastActivePageContext.pos) < this._settings.scrollRefreshDistance) {
                     if (this._lastActivePageContext.index !== currentPageIndex) {
@@ -963,7 +963,7 @@ namespace CDP.UI {
          */
         private onScrollStop(pos: number): void {
             if (this._active && 0 < this._pages.length) {
-                let currentPageIndex = this.getPageIndex();
+                const currentPageIndex = this.getPageIndex();
                 if (this._lastActivePageContext.index !== currentPageIndex) {
                     this.refresh();
                 }
@@ -986,7 +986,7 @@ namespace CDP.UI {
          * @param from {Number} [in] page index を指定
          */
         private assignPage(from?: number): void {
-            let i, n;
+            let i: number, n: number;
             if (null == from) {
                 from = 0;
             } else {
@@ -1008,7 +1008,7 @@ namespace CDP.UI {
                     }
                 }
 
-                let asignee = this._lines.slice(lineIndex);
+                const asignee = this._lines.slice(lineIndex);
                 for (i = 0, n = asignee.length; i < n; i++) {
                     if (this._baseHeight <= lastPage.height) {
                         lastPage.normalize();
