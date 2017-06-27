@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cdp-framework-jqm", "packag
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cdp-tools", "packages\cdp-tools\cdp-tools.csproj", "{9BED1C84-5B74-4C8A-819F-DE8D50F3CAFF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cdp-ui-listview", "packages\cdp-ui-listview\cdp-ui-listview.csproj", "{2A4BB77E-1894-485F-8B14-44CA80B761EF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{9BED1C84-5B74-4C8A-819F-DE8D50F3CAFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9BED1C84-5B74-4C8A-819F-DE8D50F3CAFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9BED1C84-5B74-4C8A-819F-DE8D50F3CAFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A4BB77E-1894-485F-8B14-44CA80B761EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A4BB77E-1894-485F-8B14-44CA80B761EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A4BB77E-1894-485F-8B14-44CA80B761EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A4BB77E-1894-485F-8B14-44CA80B761EF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

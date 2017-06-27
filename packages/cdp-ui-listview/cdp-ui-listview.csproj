@@ -1,0 +1,219 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <ProjectGuid>{2A4BB77E-1894-485F-8B14-44CA80B761EF}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <OutputPath>bin</OutputPath>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UpgradeBackupLocation />
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>WebView</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>60454</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:60455/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <TypeScriptTarget>ES5</TypeScriptTarget>
+    <TypeScriptIncludeComments>true</TypeScriptIncludeComments>
+    <TypeScriptSourceMap>true</TypeScriptSourceMap>
+    <TypeScriptJSXEmit>None</TypeScriptJSXEmit>
+    <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
+    <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
+    <TypeScriptModuleKind>AMD</TypeScriptModuleKind>
+    <TypeScriptRemoveComments>False</TypeScriptRemoveComments>
+    <TypeScriptOutFile />
+    <TypeScriptOutDir />
+    <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
+    <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
+    <TypeScriptMapRoot />
+    <TypeScriptSourceRoot />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <TypeScriptTarget>ES5</TypeScriptTarget>
+    <TypeScriptIncludeComments>false</TypeScriptIncludeComments>
+    <TypeScriptSourceMap>false</TypeScriptSourceMap>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include=".gitignore" />
+    <Content Include="dist\cdp.ui.listview.js" />
+    <Content Include="exports\cdp\ui\listview.js">
+      <DependentUpon>listview.ts</DependentUpon>
+    </Content>
+    <Content Include="external\backbone\scripts\backbone.js" />
+    <Content Include="external\cdp\scripts\cdp.core.js" />
+    <Content Include="external\cdp\scripts\cdp.framework.jqm.js" />
+    <Content Include="external\cdp\scripts\cdp.i18n.js" />
+    <Content Include="external\cdp\scripts\cdp.lazyload.js" />
+    <Content Include="external\cdp\scripts\cdp.promise.js" />
+    <Content Include="external\cdp\scripts\cdp.tools.js" />
+    <Content Include="external\hogan\scripts\hogan.js" />
+    <Content Include="external\iscroll\scripts\iscroll-probe.js" />
+    <Content Include="external\jquery\scripts\jquery.js" />
+    <Content Include="external\underscore\scripts\underscore.js" />
+    <Content Include="project.config.js" />
+    <Content Include="src\scripts\cdp.ui.listview.js">
+      <DependentUpon>cdp.ui.listview.ts</DependentUpon>
+    </Content>
+    <Content Include="src\scripts\CDP\UI\listview\Config.js">
+      <DependentUpon>Config.ts</DependentUpon>
+    </Content>
+    <Content Include="src\scripts\CDP\UI\listview\ExpandableListView.js">
+      <DependentUpon>ExpandableListView.ts</DependentUpon>
+    </Content>
+    <Content Include="src\scripts\CDP\UI\listview\ExpandManager.js">
+      <DependentUpon>ExpandManager.ts</DependentUpon>
+    </Content>
+    <Content Include="src\scripts\CDP\UI\listview\GroupListItemView.js">
+      <DependentUpon>GroupListItemView.ts</DependentUpon>
+    </Content>
+    <Content Include="src\scripts\CDP\UI\listview\GroupProfile.js">
+      <DependentUpon>GroupProfile.ts</DependentUpon>
+    </Content>
+    <Content Include="src\scripts\CDP\UI\listview\Interfaces.js">
+      <DependentUpon>Interfaces.ts</DependentUpon>
+    </Content>
+    <Content Include="src\scripts\CDP\UI\listview\LineProfile.js">
+      <DependentUpon>LineProfile.ts</DependentUpon>
+    </Content>
+    <Content Include="src\scripts\CDP\UI\listview\ListItemView.js">
+      <DependentUpon>ListItemView.ts</DependentUpon>
+    </Content>
+    <Content Include="src\scripts\CDP\UI\listview\ListView.js">
+      <DependentUpon>ListView.ts</DependentUpon>
+    </Content>
+    <Content Include="src\scripts\CDP\UI\listview\PageProfile.js">
+      <DependentUpon>PageProfile.ts</DependentUpon>
+    </Content>
+    <Content Include="src\scripts\CDP\UI\listview\ScrollerElement.js">
+      <DependentUpon>ScrollerElement.ts</DependentUpon>
+    </Content>
+    <Content Include="src\scripts\CDP\UI\listview\ScrollerIScroll.js">
+      <DependentUpon>ScrollerIScroll.ts</DependentUpon>
+    </Content>
+    <Content Include="src\scripts\CDP\UI\listview\ScrollerNative.js">
+      <DependentUpon>ScrollerNative.ts</DependentUpon>
+    </Content>
+    <Content Include="src\scripts\CDP\UI\listview\ScrollManager.js">
+      <DependentUpon>ScrollManager.ts</DependentUpon>
+    </Content>
+    <Content Include="src\scripts\CDP\UI\listview\StatusManager.js">
+      <DependentUpon>StatusManager.ts</DependentUpon>
+    </Content>
+    <Content Include="src\scripts\CDP\UI\listview\Utils.js">
+      <DependentUpon>Utils.ts</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="BANNER" />
+    <Content Include="docs\en\README.md" />
+    <Content Include="docs\images\.gitkeep" />
+    <Content Include="docs\jp\README.md" />
+    <Content Include="LICENSE" />
+    <Content Include="NOTICE" />
+    <Content Include="package.json" />
+    <Content Include="README.md" />
+    <Content Include="tasks\banner.js" />
+    <Content Include="tasks\bundle.js" />
+    <Content Include="tasks\clean.js" />
+    <Content Include="tasks\external-rearrange.js" />
+    <Content Include="tasks\internal-rearrange.js" />
+    <Content Include="tasks\remap-coverage.js" />
+    <Content Include="tasks\srcmap.js" />
+    <Content Include="tests\runner\test-main.js" />
+    <Content Include="tests\runner\testem-amd.js" />
+    <Content Include="tests\runner\testem-ci.js" />
+    <Content Include="tests\tslint\tslint.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="exports\cdp\ui\listview.ts" />
+    <TypeScriptCompile Include="src\scripts\%40types\dev.dependencies\index.d.ts" />
+    <TypeScriptCompile Include="src\scripts\cdp.ui.listview.ts" />
+    <TypeScriptCompile Include="src\scripts\CDP\UI\listview\Config.ts" />
+    <TypeScriptCompile Include="src\scripts\CDP\UI\listview\ExpandableListView.ts" />
+    <TypeScriptCompile Include="src\scripts\CDP\UI\listview\ExpandManager.ts" />
+    <TypeScriptCompile Include="src\scripts\CDP\UI\listview\GroupListItemView.ts" />
+    <TypeScriptCompile Include="src\scripts\CDP\UI\listview\GroupProfile.ts" />
+    <TypeScriptCompile Include="src\scripts\CDP\UI\listview\Interfaces.ts" />
+    <TypeScriptCompile Include="src\scripts\CDP\UI\listview\InternalIF.d.ts" />
+    <TypeScriptCompile Include="src\scripts\CDP\UI\listview\LineProfile.ts" />
+    <TypeScriptCompile Include="src\scripts\CDP\UI\listview\ListItemView.ts" />
+    <TypeScriptCompile Include="src\scripts\CDP\UI\listview\ListView.ts" />
+    <TypeScriptCompile Include="src\scripts\CDP\UI\listview\PageProfile.ts" />
+    <TypeScriptCompile Include="src\scripts\CDP\UI\listview\ScrollerElement.ts" />
+    <TypeScriptCompile Include="src\scripts\CDP\UI\listview\ScrollerIScroll.ts" />
+    <TypeScriptCompile Include="src\scripts\CDP\UI\listview\ScrollerNative.ts" />
+    <TypeScriptCompile Include="src\scripts\CDP\UI\listview\ScrollManager.ts" />
+    <TypeScriptCompile Include="src\scripts\CDP\UI\listview\StatusManager.ts" />
+    <TypeScriptCompile Include="src\scripts\CDP\UI\listview\Utils.ts" />
+    <TypeScriptCompile Include="tests\unit\LineProfile.spec.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include=".npmignore" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="tsconfig.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="tsconfig.base.json">
+      <DependentUpon>tsconfig.json</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="src\tsconfig.all.json" />
+    <Content Include="src\tsconfig.entry.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="tests\eslint\eslintrc.json" />
+    <Content Include="tests\runner\index.mustache" />
+    <Content Include="tests\runner\testem.json" />
+  </ItemGroup>
+</Project>
