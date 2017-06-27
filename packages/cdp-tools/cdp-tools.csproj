@@ -3,7 +3,7 @@
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <ProjectGuid>{CF57BFAF-B0B9-4F91-BD9B-521B1EE7B4DE}</ProjectGuid>
+    <ProjectGuid>{9BED1C84-5B74-4C8A-819F-DE8D50F3CAFF}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <OutputPath>bin</OutputPath>
@@ -38,11 +38,11 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>60454</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:60455/</IISUrl>
+          <IISUrl>http://localhost:51731/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
@@ -80,86 +80,63 @@
   </PropertyGroup>
   <PropertyGroup>
     <PostBuildEvent>
-</PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
-    <Content Include="built\cdp.framework.jqm-all.js">
-      <DependentUpon>cdp.framework.jqm.js</DependentUpon>
+    <Content Include="built\cdp.tools-all.js">
+      <DependentUpon>cdp.tools.js</DependentUpon>
     </Content>
-    <Content Include="built\cdp.framework.jqm-entry.js">
-      <DependentUpon>cdp.framework.jqm.js</DependentUpon>
+    <Content Include="built\cdp.tools-entry.js">
+      <DependentUpon>cdp.tools.js</DependentUpon>
     </Content>
-    <Content Include="built\cdp.framework.jqm.js" />
-    <Content Include="dist\cdp.framework.jqm.js" />
-    <Content Include="dist\cdp.framework.jqm.min.js">
-      <DependentUpon>cdp.framework.jqm.js</DependentUpon>
+    <Content Include="built\cdp.tools.js" />
+    <Content Include="dist\cdp.tools.js" />
+    <Content Include="dist\cdp.tools.min.js">
+      <DependentUpon>cdp.tools.js</DependentUpon>
     </Content>
     <Content Include="docs\reports\coverage\index.html" />
     <Content Include="docs\reports\metrics\display.html" />
     <Content Include="docs\reports\metrics\index.html" />
     <Content Include="docs\typedoc\index.html" />
-    <Content Include="exports\cdp\core\framework.jqm.js">
-      <DependentUpon>framework.jqm.ts</DependentUpon>
+    <Content Include="exports\cdp\tools\tools.js">
+      <DependentUpon>tools.ts</DependentUpon>
     </Content>
-    <Content Include="exports\cdp\framework\jqm.js">
-      <DependentUpon>jqm.ts</DependentUpon>
-    </Content>
-    <Content Include="external\backbone\scripts\backbone.js" />
-    <Content Include="external\cdp\scripts\cdp.core.js" />
-    <Content Include="external\cdp\scripts\cdp.i18n.js" />
-    <Content Include="external\cdp\scripts\cdp.lazyload.js" />
-    <Content Include="external\cdp\scripts\cdp.promise.js" />
-    <Content Include="external\jquery\scripts\jquery-migrate.js" />
+    <Content Include="external\hogan\scripts\hogan.js" />
     <Content Include="external\jquery\scripts\jquery.js" />
-    <Content Include="external\jquery\scripts\jquery.mobile.js" />
-    <Content Include="external\jquery\stylesheets\images\ajax-loader.gif" />
-    <Content Include="external\jquery\stylesheets\jquery.mobile.css" />
     <Content Include="external\underscore\scripts\underscore.js" />
     <Content Include="project.config.js" />
-    <Content Include="src\scripts\cdp.framework.jqm.js">
-      <DependentUpon>cdp.framework.jqm.ts</DependentUpon>
+    <Content Include="src\scripts\cdp.tools.js">
+      <DependentUpon>cdp.tools.ts</DependentUpon>
     </Content>
-    <Content Include="src\scripts\CDP\Framework\CoreAPI.js">
-      <DependentUpon>CoreAPI.ts</DependentUpon>
+    <Content Include="src\scripts\CDP\Tools\Blob.js">
+      <DependentUpon>Blob.ts</DependentUpon>
     </Content>
-    <Content Include="src\scripts\CDP\Framework\Interfaces.js">
+    <Content Include="src\scripts\CDP\Tools\DateTime.js">
+      <DependentUpon>DateTime.ts</DependentUpon>
+    </Content>
+    <Content Include="src\scripts\CDP\Tools\Functions.js">
+      <DependentUpon>Functions.ts</DependentUpon>
+    </Content>
+    <Content Include="src\scripts\CDP\Tools\Interfaces.js">
       <DependentUpon>Interfaces.ts</DependentUpon>
     </Content>
-    <Content Include="src\scripts\CDP\Framework\Orientation.js">
-      <DependentUpon>Orientation.ts</DependentUpon>
+    <Content Include="src\scripts\CDP\Tools\Template.js">
+      <DependentUpon>Template.ts</DependentUpon>
     </Content>
-    <Content Include="src\scripts\CDP\Framework\Page.js">
-      <DependentUpon>Page.ts</DependentUpon>
-    </Content>
-    <Content Include="src\scripts\CDP\Framework\Patch.js">
-      <DependentUpon>Patch.ts</DependentUpon>
-    </Content>
-    <Content Include="src\scripts\CDP\Framework\Platform.js">
-      <DependentUpon>Platform.ts</DependentUpon>
-    </Content>
-    <Content Include="src\scripts\CDP\Framework\Router.js">
-      <DependentUpon>Router.ts</DependentUpon>
+    <Content Include="src\scripts\CDP\Tools\Utils.js">
+      <DependentUpon>Utils.ts</DependentUpon>
     </Content>
     <Content Include="tasks\banner.js" />
-    <Content Include="tasks\bundle-adjuster.js" />
-    <Content Include="tasks\bundle-finalizer.js" />
     <Content Include="tasks\bundle.js" />
     <Content Include="tasks\clean.js" />
     <Content Include="tasks\external-rearrange.js" />
     <Content Include="tasks\internal-rearrange.js" />
     <Content Include="tasks\remap-coverage.js" />
     <Content Include="tasks\srcmap.js" />
-    <Content Include="tests\unit\CoreAPI.spec.js">
-      <DependentUpon>CoreAPI.spec.ts</DependentUpon>
-    </Content>
-    <Content Include="tests\unit\Router.spec.js">
-      <DependentUpon>Router.spec.ts</DependentUpon>
-    </Content>
     <Content Include="tsconfig.base.json">
       <DependentUpon>tsconfig.json</DependentUpon>
     </Content>
-    <Content Include="webpack.config.js" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="BANNER" />
@@ -176,25 +153,21 @@
     <Content Include="tests\tslint\tslint.json" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="built\cdp.framework.jqm-all.d.ts">
-      <DependentUpon>cdp.framework.jqm.js</DependentUpon>
+    <TypeScriptCompile Include="built\cdp.tools-all.d.ts">
+      <DependentUpon>cdp.tools.js</DependentUpon>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="dist\%40types\cdp.framework.jqm.d.ts" />
-    <TypeScriptCompile Include="dist\%40types\jquery.mobile.d.ts" />
-    <TypeScriptCompile Include="exports\cdp\core\framework.jqm.ts" />
-    <TypeScriptCompile Include="exports\cdp\framework\jqm.ts" />
+    <TypeScriptCompile Include="dist\%40types\cdp.tools.d.ts" />
+    <TypeScriptCompile Include="exports\cdp\tools\tools.ts" />
     <TypeScriptCompile Include="src\scripts\%40types\dev.dependencies\index.d.ts" />
-    <TypeScriptCompile Include="src\scripts\%40types\jquery.mobile.d.ts" />
-    <TypeScriptCompile Include="src\scripts\cdp.framework.jqm.ts" />
-    <TypeScriptCompile Include="src\scripts\CDP\Framework\CoreAPI.ts" />
-    <TypeScriptCompile Include="src\scripts\CDP\Framework\Interfaces.ts" />
-    <TypeScriptCompile Include="src\scripts\CDP\Framework\Orientation.ts" />
-    <TypeScriptCompile Include="src\scripts\CDP\Framework\Page.ts" />
-    <TypeScriptCompile Include="src\scripts\CDP\Framework\Patch.ts" />
-    <TypeScriptCompile Include="src\scripts\CDP\Framework\Platform.ts" />
-    <TypeScriptCompile Include="src\scripts\CDP\Framework\Router.ts" />
-    <TypeScriptCompile Include="tests\unit\CoreAPI.spec.ts" />
-    <TypeScriptCompile Include="tests\unit\Router.spec.ts" />
+    <TypeScriptCompile Include="src\scripts\cdp.tools.ts" />
+    <TypeScriptCompile Include="src\scripts\CDP\Tools\Blob.ts" />
+    <TypeScriptCompile Include="src\scripts\CDP\Tools\DateTime.ts" />
+    <TypeScriptCompile Include="src\scripts\CDP\Tools\Functions.ts" />
+    <TypeScriptCompile Include="src\scripts\CDP\Tools\Interfaces.ts" />
+    <TypeScriptCompile Include="src\scripts\CDP\Tools\Template.ts" />
+    <TypeScriptCompile Include="src\scripts\CDP\Tools\Utils.ts" />
+    <TypeScriptCompile Include="tests\unit\DateTime.spec.ts" />
+    <TypeScriptCompile Include="tests\unit\Functions.spec.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include=".npmignore" />
@@ -212,8 +185,8 @@
     <Content Include="src\tsconfig.entry.json" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="dist\cdp.framework.jqm.min.js.map">
-      <DependentUpon>cdp.framework.jqm.js</DependentUpon>
+    <Content Include="dist\cdp.tools.min.js.map">
+      <DependentUpon>cdp.tools.js</DependentUpon>
     </Content>
   </ItemGroup>
 </Project>
