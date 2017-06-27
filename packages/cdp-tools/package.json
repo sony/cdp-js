@@ -44,7 +44,7 @@
     "compile:ts:src": "tsc -p ./tsconfig.json",
     "compile:ts:module": "tsc -p ./src/tsconfig.all.json && tsc -p ./src/tsconfig.entry.json",
     "bundle": "node ./tasks/bundle.js",
-    "minify": "uglifyjs dist/cdp.tools.js -o dist/cdp.tools.min.js --comments /^!/ --source-map includeSources,url=cdp.tools.min.js.map",
+    "minify": "uglifyjs dist/cdp.tools.js -o dist/cdp.tools.min.js --comments /^!\\s\\s\\*\\scdp/ --source-map includeSources,url=cdp.tools.min.js.map",
     "lint": "run-p -l lint:*",
     "lint:js": "eslint tasks/**/*.js src/**/*.js -c tests/eslint/eslintrc.json",
     "lint:ts": "tslint --type-check -p ./tsconfig.json -c ./tests/tslint/tslint.json -e src/**/*.d.ts",

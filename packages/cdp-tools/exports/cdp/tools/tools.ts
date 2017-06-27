@@ -21,7 +21,6 @@ export const DateTime = _tools.DateTime;
 export const abs                    = _tools.abs;
 export const max                    = _tools.max;
 export const min                    = _tools.min;
-//export const await                = _tools.await;
 export const toZeroPadding          = _tools.toZeroPadding;
 export const inherit                = _tools.inherit;
 export const mixin                  = _tools.mixin;

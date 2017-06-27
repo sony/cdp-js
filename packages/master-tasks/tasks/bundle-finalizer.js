@@ -39,7 +39,7 @@ function normalize_classical_module_d_ts() {
     const TYPE_DEF_FILE = path.join(__dirname, '..', config.dir.pkg, config.dir.types, config.main.bundle_d_ts);
     const SRC_DEF_FILE  = path.join(__dirname, '..', config.dir.built, config.main.basename + '-all.d.ts');
 
-    let src = '\ufeff' + banner('.d.ts') + fs.readFileSync(SRC_DEF_FILE).toString()
+    let src = '\ufeff' + banner('.d.ts', config.main.basename) + fs.readFileSync(SRC_DEF_FILE).toString()
             .replace(/^\ufeff/gm, '')
             .replace(/\r\n/gm, '\n')
     ;

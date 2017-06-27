@@ -46,7 +46,7 @@
     "bundle": "run-s bundle:*",
     "bundle:embed": "node ./tasks/bundle.js --no-banner",
     "bundle:external": "node ./tasks/bundle-adjuster.js && webpack --config ./webpack.config.js && node ./tasks/bundle-finalizer.js",
-    "minify": "uglifyjs dist/cdp.i18n.js -o dist/cdp.i18n.min.js --comments /^!/ --source-map includeSources,url=cdp.i18n.min.js.map",
+    "minify": "uglifyjs dist/cdp.i18n.js -o dist/cdp.i18n.min.js --comments /^!\\s\\s\\*\\scdp/ --source-map includeSources,url=cdp.i18n.min.js.map",
     "lint": "run-p -l lint:*",
     "lint:js": "eslint tasks/**/*.js src/**/*.js -c tests/eslint/eslintrc.json",
     "lint:ts": "tslint --type-check -p ./tsconfig.json -c ./tests/tslint/tslint.json -e src/**/*.d.ts",

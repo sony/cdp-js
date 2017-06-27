@@ -109,6 +109,9 @@
     <Content Include="src\scripts\cdp.tools.js">
       <DependentUpon>cdp.tools.ts</DependentUpon>
     </Content>
+    <Content Include="src\scripts\CDP\Tools\BinaryTransport.js">
+      <DependentUpon>BinaryTransport.ts</DependentUpon>
+    </Content>
     <Content Include="src\scripts\CDP\Tools\Blob.js">
       <DependentUpon>Blob.ts</DependentUpon>
     </Content>
@@ -160,6 +163,7 @@
     <TypeScriptCompile Include="exports\cdp\tools\tools.ts" />
     <TypeScriptCompile Include="src\scripts\%40types\dev.dependencies\index.d.ts" />
     <TypeScriptCompile Include="src\scripts\cdp.tools.ts" />
+    <TypeScriptCompile Include="src\scripts\CDP\Tools\BinaryTransport.ts" />
     <TypeScriptCompile Include="src\scripts\CDP\Tools\Blob.ts" />
     <TypeScriptCompile Include="src\scripts\CDP\Tools\DateTime.ts" />
     <TypeScriptCompile Include="src\scripts\CDP\Tools\Functions.ts" />

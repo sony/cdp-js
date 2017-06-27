@@ -1,6 +1,7 @@
 const path      = require('path');
 const webpack   = require('webpack');
 const banner    = require('./tasks/banner');
+const config    = require('./project.config');
 
 module.exports = {
     entry: {
@@ -62,7 +63,7 @@ module.exports = {
             maxChunks: 1,
         }),
         new webpack.BannerPlugin({
-            banner: banner('.js'),
+            banner: banner('.js', config.main.basename),
             raw: true,
             ntryOnly: true,
         }),

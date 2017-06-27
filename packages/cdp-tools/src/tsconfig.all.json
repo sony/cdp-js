@@ -11,6 +11,7 @@
     "scripts/CDP/Tools/Interfaces.ts",
     "scripts/CDP/Tools/Utils.ts",
     "scripts/CDP/Tools/Blob.ts",
+    "scripts/CDP/Tools/BinaryTransport.ts",
     "scripts/CDP/Tools/DateTime.ts",
     "scripts/CDP/Tools/Functions.ts",
     "scripts/CDP/Tools/Template.ts"
