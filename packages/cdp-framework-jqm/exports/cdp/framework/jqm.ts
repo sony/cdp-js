@@ -1,9 +1,5 @@
 ﻿import _framework = require("cdp.framework.jqm");
 
-// @class Patch
-export type  Patch = CDP.Framework.Patch;
-export const Patch = _framework.Patch;
-
 // @module Platform
 export const Platform = _framework.Platform;
 
@@ -32,8 +28,26 @@ export type  Page = CDP.Framework.Page;
 export const Page = _framework.Page;
 
 // interfaces
-export type Orientation         = CDP.Framework.Orientation;
-export type IPage               = CDP.Framework.IPage;
-export type ShowEventData       = CDP.Framework.ShowEventData;
-export type HideEventData       = CDP.Framework.HideEventData;
-export type FrameworkOptions    = CDP.Framework.FrameworkOptions;
+export type  Model                                  = CDP.Framework.Model;
+export const Model                                  = _framework.Model;
+export type  Collection<TModel extends Model>       = CDP.Framework.Collection<TModel>;
+export const Collection                             = _framework.Collection;
+export type  View<TModel extends Model = Model>     = CDP.Framework.View<TModel>;
+export const View                                   = _framework.View;
+export type  Events                                 = CDP.Framework.Events;
+export const Events                                 = _framework.Events;
+export type  Orientation                            = CDP.Framework.Orientation;
+export type  PageTransitionDirection                = CDP.Framework.PageTransitionDirection;
+export type  Intent                                 = CDP.Framework.Intent;
+export type  PageStack                              = CDP.Framework.PageStack;
+export type  SubFlowParam                           = CDP.Framework.SubFlowParam;
+export type  RouterOptions                          = CDP.Framework.RouterOptions;
+export type  NavigateOptions                        = CDP.Framework.NavigateOptions;
+export type  IOrientationChangedListener            = CDP.Framework.IOrientationChangedListener;
+export type  IBackButtonEventListener               = CDP.Framework.IBackButtonEventListener;
+export type  ICommandListener                       = CDP.Framework.ICommandListener;
+export type  PageConstructOptions                   = CDP.Framework.PageConstructOptions;
+export type  IPage                                  = CDP.Framework.IPage;
+export type  ShowEventData                          = CDP.Framework.ShowEventData;
+export type  HideEventData                          = CDP.Framework.HideEventData;
+export type  FrameworkOptions                       = CDP.Framework.FrameworkOptions;

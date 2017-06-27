@@ -1,4 +1,16 @@
-﻿namespace CDP.Framework {
+﻿/// <reference types="backbone" />
+
+namespace CDP.Framework {
+
+    // Backbone short cut
+    export type  Model                              = Backbone.Model;
+    export const Model                              = Backbone.Model;
+    export type  Collection<TModel extends Model>   = Backbone.Collection<TModel>;
+    export const Collection                         = Backbone.Collection;
+    export type  View<TModel extends Model = Model> = Backbone.View<TModel>;
+    export const View                               = Backbone.View;
+    export type  Events                             = Backbone.Events;
+    export const Events                             = Backbone.Events;
 
     /**
      * \~english
@@ -117,7 +129,7 @@
          * 任意のパラメータ
          * params["queryParams"] には、query parameter がフレームワークにより格納される。
          */
-        params?: Object;
+        params?: object;
         //! any
         [key: string]: any;
     }
@@ -312,16 +324,16 @@
          * \~english
          * Received H/W Back Button event
          *
-         * @param  event {JQueryEventObject} [in] event object
+         * @param  event {JQuery.Event} [in] event object
          * @return {Boolean} true: continue default operation / false: stop default operation
          *
          * \~japanese
          * H/W Back Button ハンドラ
          *
-         * @param  event {JQueryEventObject} [in] event object
+         * @param  event {JQuery.Event} [in] event object
          * @return {Boolean} true: 既定の処理を行わない / false: 既定の処理を行う
          */
-        onHardwareBackButton(event?: JQueryEventObject): boolean;
+        onHardwareBackButton(event?: JQuery.Event): boolean;
     }
 
     /**
@@ -338,18 +350,18 @@
          * \~english
          * Received generic command
          *
-         * @param  event {JQueryEventObject} [in] event object
+         * @param  event {JQuery.Event} [in] event object
          * @param  event {kind}              [in] command kind string
          * @return {Boolean} true: continue default operation / false: stop default operation
          *
          * \~japanese
          * 汎用コマンドを受信
          *
-         * @param  event {JQueryEventObject} [in] event object
+         * @param  event {JQuery.Event} [in] event object
          * @param  event {kind}              [in] command kind string
          * @return {Boolean} true: 既定の処理を行わない / false: 既定の処理を行う
          */
-        onCommand(event?: JQueryEventObject, kind?: string): boolean;
+        onCommand(event?: JQuery.Event, kind?: string): boolean;
     }
 
     /**
@@ -501,125 +513,114 @@
          * \~english
          * It's called only when before the first OnPageInit().
          *
-         * @param event {JQueryEventObject} [in] event object
+         * @param event {JQuery.Event} [in] event object
          *
          * \~japanese
          * 最初の OnPageInit() のときにのみコールされる
          *
-         * @param event {JQueryEventObject} [in] イベントオブジェクト
+         * @param event {JQuery.Event} [in] イベントオブジェクト
          */
-        onInitialize(event: JQueryEventObject): void;
+        onInitialize(event: JQuery.Event): void;
 
         /**
          * \~english
          * Event handler of jQM event: "pagebeforecreate".
          *
-         * @param event {JQueryEventObject} [in] event object
+         * @param event {JQuery.Event} [in] event object
          *
          * \~japanese
          * jQM event: "pagebeforecreate" に対応
          *
-         * @param event {JQueryEventObject} [in] イベントオブジェクト
+         * @param event {JQuery.Event} [in] イベントオブジェクト
          */
-        onPageBeforeCreate(event: JQueryEventObject): void;
+        onPageBeforeCreate(event: JQuery.Event): void;
 
         /**
          * \~english
          * Event handler of jQM event: "pagecreate" (previous version defined "pageinit").
          *
-         * @param event {JQueryEventObject} [in] event object
+         * @param event {JQuery.Event} [in] event object
          *
          * \~japanese
          * jQM event: "pagecreate" (旧:"pageinit") に対応
          *
-         * @param event {JQueryEventObject} [in] イベントオブジェクト
+         * @param event {JQuery.Event} [in] イベントオブジェクト
          */
-        onPageInit(event: JQueryEventObject): void;
+        onPageInit(event: JQuery.Event): void;
 
         /**
          * \~english
          * Event handler of jQM event: "pagebeforeshow"
          *
-         * @param event {JQueryEventObject} [in] event object
+         * @param event {JQuery.Event} [in] event object
          * @param data  {ShowEventData}     [in] additional info
          *
          * \~japanese
          * jQM event: "pagebeforeshow" に対応
          *
-         * @param event {JQueryEventObject} [in] イベントオブジェクト
+         * @param event {JQuery.Event} [in] イベントオブジェクト
          * @param data  {ShowEventData}     [in] 付加情報
          */
-        onPageBeforeShow(event: JQueryEventObject, data?: ShowEventData): void;
+        onPageBeforeShow(event: JQuery.Event, data?: ShowEventData): void;
 
         /**
          * \~english
          * Event handler of jQM event: "pagecontainershow" (previous version defined "pageshow").
          *
-         * @param event {JQueryEventObject} [in] event object
+         * @param event {JQuery.Event} [in] event object
          * @param data  {ShowEventData}     [in] additional info
          *
          * \~japanese
          * jQM event: "pagecontainershow" (旧:"pageshow") に対応
          *
-         * @param event {JQueryEventObject} [in] イベントオブジェクト
+         * @param event {JQuery.Event} [in] イベントオブジェクト
          * @param data  {ShowEventData}     [in] 付加情報
          */
-        onPageShow(event: JQueryEventObject, data?: ShowEventData): void;
+        onPageShow(event: JQuery.Event, data?: ShowEventData): void;
 
         /**
          * \~english
          * Event handler of jQM event: "pagebeforehide".
          *
-         * @param event {JQueryEventObject} [in] event object
+         * @param event {JQuery.Event} [in] event object
          * @param data  {HideEventData}     [in] additional info
          *
          * \~japanese
          * jQM event: "pagebeforehide" に対応
          *
-         * @param event {JQueryEventObject} [in] イベントオブジェクト
+         * @param event {JQuery.Event} [in] イベントオブジェクト
          * @param data  {HideEventData}     [in] 付加情報
          */
-        onPageBeforeHide(event: JQueryEventObject, data?: HideEventData): void;
+        onPageBeforeHide(event: JQuery.Event, data?: HideEventData): void;
 
         /**
          * \~english
          * Event handler of jQM event: "pagecontainerhide" (previous version defined "pagehide").
          *
-         * @param event {JQueryEventObject} [in] event object
+         * @param event {JQuery.Event} [in] event object
          * @param data  {HideEventData}     [in] additional info
          *
          * \~japanese
          * jQM event: "pagecontainerhide" (旧:"pagehide") に対応
          *
-         * @param event {JQueryEventObject} [in] イベントオブジェクト
+         * @param event {JQuery.Event} [in] イベントオブジェクト
          * @param data  {HideEventData}     [in] 付加情報
          */
-        onPageHide(event: JQueryEventObject, data?: HideEventData): void;
+        onPageHide(event: JQuery.Event, data?: HideEventData): void;
 
         /**
          * \~english
          * Event handler of jQM event: "pageremove".
          *
-         * @param event {JQueryEventObject} [in] event object
+         * @param event {JQuery.Event} [in] event object
          *
          * \~japanese
          * jQM event: "pageremove" に対応
          *
-         * @param event {JQueryEventObject} [in] イベントオブジェクト
+         * @param event {JQuery.Event} [in] イベントオブジェクト
          */
-        onPageRemove(event: JQueryEventObject): void;
+        onPageRemove(event: JQuery.Event): void;
     }
-
-    /**
-     * \~english
-     * @interface BaseView
-     * @brief     alias for Backbone.View<Backbone.Model>.
-     *
-     * \~japanese
-     * @interface BaseView
-     * @brief     Backbone.View<Backbone.Model> の alias
-     */
-    export interface BaseView extends Backbone.View<Backbone.Model> { }
 }
 
 declare module "cdp.framework.jqm" {

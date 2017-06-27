@@ -79,8 +79,7 @@
     </PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>cd $(ProjectDir)/tests/app/stylesheets
-call compass compile -c config.rb
+    <PostBuildEvent>
 </PostBuildEvent>
   </PropertyGroup>
   <ItemGroup>

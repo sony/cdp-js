@@ -905,25 +905,25 @@ namespace CDP.Framework {
                 .one("pagechange", () => {
                     if (Router.s_initOptions.anchorVclick) {
                         // anchor vclick
-                        $(document).on("vclick", "[href]", (event: JQueryEventObject) => {
+                        $(document).on("vclick", "[href]", (event: JQuery.Event) => {
                             Router.onAnchorVclicked(event);
                         });
                     }
                 })
-                .on("pagebeforeshow", (event: JQueryEventObject) => {
+                .on("pagebeforeshow", (event: JQuery.Event) => {
                     // "data-back-dst" を page に設定
                     if (null != Router.s_lastNavigateInfo.backDestination) {
                         const active: Object = Router.getJqmHistory().getActive();
                         active[Router.BACK_DESTINATION_URL] = Router.s_lastNavigateInfo.backDestination;
                     }
                 })
-                .on("pageshow", (event: JQueryEventObject) => {
+                .on("pageshow", (event: JQuery.Event) => {
                     const active: Object = Router.getJqmHistory().getActive();
                     if (active[Router.SUBFLOW_PARAM]) {
                         delete active[Router.SUBFLOW_PARAM];
                     }
                 })
-                .on("pagechange pagecontainerloadfailed", (event: JQueryEventObject) => {
+                .on("pagechange pagecontainerloadfailed", (event: JQuery.Event) => {
                     Router.s_lastNavigateInfo = {};
                 })
                 ;
@@ -973,7 +973,7 @@ namespace CDP.Framework {
          */
         private static initFirstPageIfNeeded(url: string): boolean {
             if (!$.mobile.autoInitializePage) {
-                $(document).one("pagebeforechange", (event: JQueryEventObject, data: any) => {
+                $(document).one("pagebeforechange", (event: JQuery.Event, data: any) => {
                     data.toPage = Framework.toUrl(url);
                 });
                 $.mobile.initializePage();
@@ -1017,7 +1017,7 @@ namespace CDP.Framework {
          * @private
          * @return true: default 処理 / false: カスタム処理
          */
-        private static onAnchorVclicked(event: JQueryEventObject): boolean {
+        private static onAnchorVclicked(event: JQuery.Event): boolean {
             if (Router.isJustBeforeVclicked()) {
                 event.preventDefault();
                 return false;
@@ -1036,7 +1036,7 @@ namespace CDP.Framework {
          *
          * @private
          */
-        private static followAnchor(event: JQueryEventObject): boolean {
+        private static followAnchor(event: JQuery.Event): boolean {
             const $target = $(event.currentTarget);
             const url: string = $target.jqmData("href") || $target.attr("href");
             const transition: string = $target.jqmData("transition");
@@ -1145,7 +1145,7 @@ namespace CDP.Framework {
          *
          * @private
          */
-        private static isBackButtonClicked(event: JQueryEventObject): boolean {
+        private static isBackButtonClicked(event: JQuery.Event): boolean {
             if ($(event.currentTarget).jqmData("rel") === "back") {
                 return true;
             } else {

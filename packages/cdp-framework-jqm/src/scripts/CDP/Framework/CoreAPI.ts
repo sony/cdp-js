@@ -32,7 +32,7 @@ namespace CDP {
         });
     }
 
-    let _defaultBackButtonHandler: (event?: JQueryEventObject) => void = null;
+    let _defaultBackButtonHandler: (event?: JQuery.Event) => void = null;
 
     /**
      * \~english
@@ -46,7 +46,7 @@ namespace CDP {
      * @param  {Function} handler 指定.
      * @return {Function} 以前の handler.
      */
-    export function setBackButtonHandler(handler: (event?: JQueryEventObject) => void): (event?: JQueryEventObject) => void {
+    export function setBackButtonHandler(handler: (event?: JQuery.Event) => void): (event?: JQuery.Event) => void {
         const oldHandler = _defaultBackButtonHandler;
         _defaultBackButtonHandler = handler;
         return oldHandler;
@@ -56,7 +56,7 @@ namespace CDP {
     (() => {
         waitForDeviceReady()
             .then(() => {
-                $(document).on("backbutton", (event: JQueryEventObject) => {
+                $(document).on("backbutton", (event: JQuery.Event) => {
                     if (_defaultBackButtonHandler) {
                         _defaultBackButtonHandler(event);
                     }
@@ -146,10 +146,10 @@ namespace CDP {
                             .always((info) => {
                                 // i18next の初期化時のエラーは無視する. info が array の場合、エラー情報が格納されている.
                                 $(document)
-                                    .one("pagebeforechange", (event: JQueryEventObject, data: any) => {
+                                    .one("pagebeforechange", (event: JQuery.Event, data: any) => {
                                         (<ChangePageOptions>data.options).showLoadMsg = false;
                                     })
-                                    .on("pagebeforecreate", (event: JQueryEventObject) => {
+                                    .on("pagebeforecreate", (event: JQuery.Event) => {
                                         // i18nextライブラリによるhtml fragmentの翻訳処理
                                         (<any>$(event.target)).localize();
                                     })
@@ -271,7 +271,7 @@ namespace CDP {
         export function setupEventHandlers(): void {
             (() => {
                 const oldBackButtonHandler = CDP.setBackButtonHandler(null);
-                const baseBackButtonHandler = (event?: JQueryEventObject): void => {
+                const baseBackButtonHandler = (event?: JQuery.Event): void => {
                     if (_activePage && _activePage.onHardwareBackButton(event)) {
                         // クライアント側でハンドリング済みと指定された場合、既定の処理を行わない
                         return;
@@ -424,7 +424,7 @@ namespace CDP {
         // closure methods
 
         // resize handler
-        $(window).on("resize", (event: JQueryEventObject): void => {
+        $(window).on("resize", (event: JQuery.Event): void => {
             const newOrientation = getOrientation();
             if (_lastOrientation !== newOrientation) {
                 for (const key in _orientationListenerHolder) {

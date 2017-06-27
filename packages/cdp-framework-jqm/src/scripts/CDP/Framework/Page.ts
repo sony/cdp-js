@@ -89,7 +89,7 @@
         }
 
         //! H/W Back Button ハンドラ
-        public onHardwareBackButton(event?: JQueryEventObject): boolean {
+        public onHardwareBackButton(event?: JQuery.Event): boolean {
             if (this._owner) {
                 return this._owner.onHardwareBackButton(event);
             } else {
@@ -107,7 +107,7 @@
         }
 
         //! 汎用コマンドを受信
-        public onCommand(event?: JQueryEventObject, kind?: string): boolean {
+        public onCommand(event?: JQuery.Event, kind?: string): boolean {
             if (this._owner) {
                 return this._owner.onCommand(event, kind);
             } else {
@@ -116,56 +116,56 @@
         }
 
         //! 最初の OnPageInit() のときにのみコールされる
-        public onInitialize(event: JQueryEventObject): void {
+        public onInitialize(event: JQuery.Event): void {
             if (this._owner) {
                 this._owner.onInitialize(event);
             }
         }
 
         //! jQM event: "pagebeforecreate" に対応
-        public onPageBeforeCreate(event: JQueryEventObject): void {
+        public onPageBeforeCreate(event: JQuery.Event): void {
             if (this._owner) {
                 this._owner.onPageBeforeCreate(event);
             }
         }
 
         //! jQM event: "pagecreate" (旧:"pageinit") に対応
-        public onPageInit(event: JQueryEventObject): void {
+        public onPageInit(event: JQuery.Event): void {
             if (this._owner) {
                 this._owner.onPageInit(event);
             }
         }
 
         //! jQM event: "pagebeforeshow" に対応
-        public onPageBeforeShow(event: JQueryEventObject, data?: ShowEventData): void {
+        public onPageBeforeShow(event: JQuery.Event, data?: ShowEventData): void {
             if (this._owner) {
                 this._owner.onPageBeforeShow(event, data);
             }
         }
 
         //! jQM event: "pagecontainershow" (旧:"pageshow") に対応
-        public onPageShow(event: JQueryEventObject, data?: ShowEventData): void {
+        public onPageShow(event: JQuery.Event, data?: ShowEventData): void {
             if (this._owner) {
                 this._owner.onPageShow(event, data);
             }
         }
 
         //! jQM event: "pagebeforehide" に対応
-        public onPageBeforeHide(event: JQueryEventObject, data?: HideEventData): void {
+        public onPageBeforeHide(event: JQuery.Event, data?: HideEventData): void {
             if (this._owner) {
                 this._owner.onPageBeforeHide(event, data);
             }
         }
 
         //! jQM event: "pagecontainerhide" (旧:"pagehide") に対応
-        public onPageHide(event: JQueryEventObject, data?: HideEventData): void {
+        public onPageHide(event: JQuery.Event, data?: HideEventData): void {
             if (this._owner) {
                 this._owner.onPageHide(event, data);
             }
         }
 
         //! jQM event: "pageremove" に対応
-        public onPageRemove(event: JQueryEventObject): void {
+        public onPageRemove(event: JQuery.Event): void {
             if (this._owner) {
                 this._owner.onPageRemove(event);
             }
@@ -184,29 +184,29 @@
             const selector: string = "#" + this._id;
             $(document)
                 .off("pagebeforecreate", selector)
-                .on("pagebeforecreate", selector, (event: JQueryEventObject) => {
+                .on("pagebeforecreate", selector, (event: JQuery.Event) => {
                     this._$page = $(selector).first();
                     this._$header = this._$page.children(":jqmData(role=header)").first();
                     this._$footer = this._$page.children(":jqmData(role=footer)").first();
                     this._$page
-                        .on("pagecreate", (ev: JQueryEventObject) => {
+                        .on("pagecreate", (ev: JQuery.Event) => {
                             this.pageInit(ev);
                         })
-                        .on("pagebeforeshow", (ev: JQueryEventObject, data: ShowEventData) => {
+                        .on("pagebeforeshow", (ev: JQuery.Event, data: ShowEventData) => {
                             this.pageBeforeShow(ev, data);
                         })
                         // [Note]instead future version "pagecontainershow".
-                        .on("pageshow", (ev: JQueryEventObject, data: ShowEventData) => {
+                        .on("pageshow", (ev: JQuery.Event, data: ShowEventData) => {
                             this.pageShow(ev, data);
                         })
-                        .on("pagebeforehide", (ev: JQueryEventObject, data: HideEventData) => {
+                        .on("pagebeforehide", (ev: JQuery.Event, data: HideEventData) => {
                             this.pageBeforeHide(ev, data);
                         })
                         // [Note]instead future version "pagecontainerhide".
-                        .on("pagehide", (ev: JQueryEventObject, data: HideEventData) => {
+                        .on("pagehide", (ev: JQuery.Event, data: HideEventData) => {
                             this.pageHide(ev, data);
                         })
-                        .on("pageremove", (ev: JQueryEventObject) => {
+                        .on("pageremove", (ev: JQuery.Event) => {
                             this.pageRemove(ev);
                         });
                     this.pageBeforeCreate(event);
@@ -242,11 +242,11 @@
             }
         }
 
-        private pageBeforeCreate(event: JQueryEventObject): void {
+        private pageBeforeCreate(event: JQuery.Event): void {
             this.onPageBeforeCreate(event);
         }
 
-        private pageInit(event: JQueryEventObject): void {
+        private pageInit(event: JQuery.Event): void {
             if (!this._initialized) {
                 this.onInitialize(event);
                 this._initialized = true;
@@ -254,17 +254,17 @@
             this.onPageInit(event);
         }
 
-        private pageBeforeShow(event: JQueryEventObject, data: ShowEventData): void {
+        private pageBeforeShow(event: JQuery.Event, data: ShowEventData): void {
             Framework.setActivePage(this);
             this._intent = <ManagedIntent>Router.popIntent();
             this.onPageBeforeShow(event, $.extend(data, { direction: this.getDirection() }));
         }
 
-        private pageShow(event: JQueryEventObject, data: ShowEventData): void {
+        private pageShow(event: JQuery.Event, data: ShowEventData): void {
             this.onPageShow(event, $.extend(data, { direction: this.getDirection() }));
         }
 
-        private pageBeforeHide(event: JQueryEventObject, data: HideEventData): void {
+        private pageBeforeHide(event: JQuery.Event, data: HideEventData): void {
             this.onPageBeforeHide(event, $.extend(data, { direction: this.getDirection() }));
             if (null != this._intent && (this._keepIntent || this._intent._update)) {    // intent に更新があった場合
                 delete this._intent._update;
@@ -276,11 +276,11 @@
             Framework.setActivePage(null);
         }
 
-        private pageHide(event: JQueryEventObject, data: HideEventData): void {
+        private pageHide(event: JQuery.Event, data: HideEventData): void {
             this.onPageHide(event, $.extend(data, { direction: this.getDirection() }));
         }
 
-        private pageRemove(event: JQueryEventObject): void {
+        private pageRemove(event: JQuery.Event): void {
             this.onPageRemove(event);
             this._$page.off();
             this._$page = null;
@@ -327,7 +327,7 @@
     (() => {
         let $body: any = $("body");
         $(document)
-            .on("pagecontainershow", (event: JQueryEventObject, data: ShowEventData) => {
+            .on("pagecontainershow", (event: JQuery.Event, data: ShowEventData) => {
                 if (0 < data.prevPage.length) {
                     // "pagecontainershow" は "pagecontainerhide" よりも遅いので、やはり DOM にはアクセスできない
                     let $prevpage = $("#" + data.prevPage[0].id);
@@ -338,13 +338,13 @@
                 let $page = $("#" + pageId);
                 $page.trigger("_pageshow", data);
             })
-            .on("pagecontainerhide", (event: JQueryEventObject, data: HideEventData) => {
+            .on("pagecontainerhide", (event: JQuery.Event, data: HideEventData) => {
                 // "pagecontainerhide" を受けたときは既に DOM から消えているため、page は特定できない。
                 //let pageId = $body.pagecontainer('getActivePage').prop("id");
                 //let $page = $("#" + pageId);
                 //$page.trigger("_pagehide", data);
             })
-            .on("pagecontainertransition", (event: JQueryEventObject, data: any) => {
+            .on("pagecontainertransition", (event: JQuery.Event, data: any) => {
                 // "pagecontainertransition" には toPage にしかアクセスはできない
             })
         ;

@@ -34,8 +34,8 @@ interface PopupOptions {
     x?: number|string;
     y?: number | string;
     dismissible?: boolean;
-    create?: (event: JQueryEventObject, ui: any) => any;
-    afterclose?: (event: JQueryEventObject, ui: any) => any;
+    create?: (event: JQuery.Event | JQueryEventObject, ui: any) => any;
+    afterclose?: (event: JQuery.Event | JQueryEventObject, ui: any) => any;
 }
 
 interface PopupEvents {
@@ -507,9 +507,11 @@ interface JQuery {
     jqmData(key: string): any;
     jqmData(key: string, value: any): JQuery;
     jqmRemoveData(key: string): JQuery;
-    one(events: string, handler: (eventObject: JQueryEventObject, data: any) => any): JQuery;
+    // [CDP modified]: for backword compatible.
+    on(events: string, handler: (eventObject: JQueryEventObject, data?: any) => any): JQuery;
+    on(events: string, selector: JQuery.Selector, handler: (eventObject: JQueryEventObject, data?: any) => any): JQuery;
+    one(events: string, handler: (eventObject: JQueryEventObject, data?: any) => any): JQuery;
 }
-
 
 interface JQueryStatic {
     mobile: JQueryMobile;
