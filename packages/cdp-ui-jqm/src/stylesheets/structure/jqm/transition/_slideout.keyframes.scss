@@ -1,20 +1,18 @@
-﻿@import "../../_mixins.scss";
-
-/* keyframes for slideout to sides */
-@include keyframes(slideouttoleft) {
+﻿/* keyframes for slideout to sides */
+@keyframes slideouttoleft {
     from {
-        @include experimental-property(transform, translateX(0));
+        transform: translateX(0);
     }
     to {
-        @include experimental-property(transform, translateX(-100%));
+        transform: translateX(-100%);
     }
 }
 
-@include keyframes(slideouttoright) {
+@keyframes slideouttoright {
     from {
-        @include experimental-property(transform, translateX(0));
+        transform: translateX(0);
     }
     to {
-        @include experimental-property(transform, translateX(100%));
+        transform: translateX(100%);
     }
 }

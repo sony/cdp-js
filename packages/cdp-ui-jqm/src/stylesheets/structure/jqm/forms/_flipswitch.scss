@@ -1,6 +1,4 @@
-﻿@import "../../_mixins.scss";
-
-.ui-flipswitch {
+﻿.ui-flipswitch {
     display: inline-block;
     vertical-align: middle;
     width: 5.875em; /* Override this and padding-left in next rule if you use labels other than "on/off" and need more space */
@@ -9,10 +7,10 @@
     border-style: solid;
     margin: .5em 0;
     overflow: hidden;
-    @include transition-property(padding, width, background-color, color, border-color);
-    @include transition-duration(100ms);
+    transition-property: padding, width, background-color, color, border-color;
+    transition-duration: 100ms;
     -webkit-touch-callout: none;
-    @include user-select(none);
+    user-select: none;
     cursor: pointer;
 }
 
@@ -48,7 +46,7 @@
     text-align: left;
     border-width: 1px;
     border-style: solid;
-    @include box-sizing(border-box);
+    box-sizing: border-box;
     border-radius: inherit;
     overflow: visible;
     color: inherit;
@@ -64,7 +62,7 @@ html .ui-field-contain > label + .ui-flipswitch,
 html .ui-popup .ui-field-contain > label + .ui-flipswitch {
     display: inline-block;
     width: 5.875em; /* If you override the width for .ui-flipswitch you should repeat the same value here */
-    @include box-sizing(content-box);
+    box-sizing: content-box;
 }
 
 .ui-field-contain .ui-flipswitch.ui-flipswitch-active,

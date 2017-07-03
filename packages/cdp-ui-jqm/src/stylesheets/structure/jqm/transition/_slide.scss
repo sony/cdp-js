@@ -1,28 +1,27 @@
-﻿@import "../../_mixins.scss";
-@import "_slidein.keyframes.scss";
+﻿@import "_slidein.keyframes.scss";
 @import "_slideout.keyframes.scss";
 
 .slide.out, .slide.in {
-    @include animation-timing-function(ease-out);
-    @include animation-duration(350ms);
+    animation-timing-function: ease-out;
+    animation-duration: 350ms;
 }
 
 .slide.out {
-    @include transform(translate3d(-100%,0,0));
-    @include animation-name(slideouttoleft);
+    transform: translate3d(-100%,0,0);
+    animation-name: slideouttoleft);
 }
 
 .slide.in {
-    @include transform(translate3d(0,0,0));
-    @include animation-name(slideinfromright);
+    transform: translate3d(0,0,0);
+    animation-name: slideinfromright;
 }
 
 .slide.out.reverse {
-    @include transform(translate3d(100%,0,0));
-    @include animation-name(slideouttoright);
+    transform: translate3d(100%,0,0);
+    animation-name: slideouttoright;
 }
 
 .slide.in.reverse {
-    @include transform(translate3d(0,0,0));
-    @include animation-name(slideinfromleft);
+    transform: translate3d(0,0,0);
+    animation-name: slideinfromleft;
 }

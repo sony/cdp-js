@@ -1,6 +1,4 @@
-﻿@import "../../_mixins.scss";
-
-/* The properties in this rule are only necessary for the 'flip' transition.
+﻿/* The properties in this rule are only necessary for the 'flip' transition.
  * We need specify the perspective to create a projection matrix. This will add
  * some depth as the element flips. The depth number represents the distance of
  * the viewer from the z-plane. According to the CSS3 spec, 1000 is a moderate
@@ -8,67 +6,67 @@
  */
 
 .viewport-flip {
-    @include perspective(1000);
+    perspective: 1000;
     position: absolute;
 }
 
 .flip {
-    @include backface-visibility(hidden);
-    @include transform(translateX(0));  /* Needed to work around an iOS 3.1 bug that causes listview thumbs to disappear when -webkit-visibility:hidden is used. */
+    backface-visibility: hidden;
+    transform: translateX(0);  /* Needed to work around an iOS 3.1 bug that causes listview thumbs to disappear when -webkit-visibility:hidden is used. */
 }
 
 .flip.out {
-    @include transform(rotateY(-90deg) scale(.9));
-    @include animation-name(flipouttoleft);
-    @include animation-duration(175ms);
+    transform: rotateY(-90deg) scale(.9);
+    animation-name: flipouttoleft;
+    animation-duration: 175ms;
 }
 
 .flip.in {
-    @include animation-name(flipintoright);
-    @include animation-duration(225ms);
+    animation-name: flipintoright;
+    animation-duration: 225ms;
 }
 
 .flip.out.reverse {
-    @include transform(rotateY(90deg) scale(.9));
-    @include animation-name(flipouttoright);
+    transform: rotateY(90deg) scale(.9);
+    animation-name: flipouttoright;
 }
 
 .flip.in.reverse {
-    @include animation-name(flipintoleft);
+    animation-name: flipintoleft;
 }
 
-@include keyframes(flipouttoleft) {
+@keyframes flipouttoleft {
     from {
-        @include experimental-property(transform, rotateY(0));
+        transform: rotateY(0);
     }
     to {
-        @include experimental-property(transform, rotateY(-90deg) scale(.9));
-    }
-}
-
-@include keyframes(flipouttoright) {
-    from {
-        @include experimental-property(transform, rotateY(0));
-    }
-    to {
-        @include experimental-property(transform, rotateY(90deg) scale(.9));
+        transform: rotateY(-90deg) scale(.9);
     }
 }
 
-@include keyframes(flipintoleft) {
+@keyframes flipouttoright {
     from {
-        @include experimental-property(transform, rotateY(-90deg) scale(.9));
+        transform: rotateY(0);
     }
     to {
-        @include experimental-property(transform, rotateY(0));
+        transform: rotateY(90deg) scale(.9);
     }
 }
 
-@include keyframes(flipintoright) {
+@keyframes flipintoleft {
     from {
-        @include experimental-property(transform, rotateY(90deg) scale(.9));
+        transform: rotateY(-90deg) scale(.9);
     }
     to {
-        @include experimental-property(transform, rotateY(0));
+        transform: rotateY(0);
+    }
+}
+
+@keyframes flipintoright {
+    from {
+        transform: rotateY(90deg) scale(.9);
+    }
+    to {
+        transform: rotateY(0);
     }
 }

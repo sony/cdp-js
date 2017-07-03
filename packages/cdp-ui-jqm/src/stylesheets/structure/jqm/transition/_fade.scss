@@ -1,6 +1,4 @@
-﻿@import "../../_mixins.scss";
-
-@include keyframes(fadein) {
+﻿@keyframes fadein {
     from {
         opacity: 0;
     }
@@ -9,7 +7,7 @@
     }
 }
 
-@include keyframes(fadeout) {
+@keyframes fadeout {
     from {
         opacity: 1;
     }
@@ -20,12 +18,12 @@
 
 .fade.out {
     opacity: 0;
-    @include animation-duration(125ms);
-    @include animation-name(fadeout);
+    animation-duration: 125ms;
+    animation-name: fadeout;
 }
 
 .fade.in {
     opacity: 1;
-    @include animation-duration(225ms);
-    @include animation-name(fadein);
+    animation-duration: 225ms;
+    animation-name: fadein;
 }

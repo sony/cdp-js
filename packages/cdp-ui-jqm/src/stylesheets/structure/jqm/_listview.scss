@@ -1,6 +1,4 @@
-﻿@import "../_mixins.scss";
-
-.ui-listview,
+﻿.ui-listview,
 .ui-listview > li {
     margin: 0;
     padding: 0;
@@ -79,41 +77,41 @@
 
 .ui-listview > li.ui-first-child,
 .ui-listview > li.ui-first-child > a.ui-btn {
-    @include border-top-right-radius(inherit);
-    @include border-top-left-radius(inherit);
+    border-top-right-radius: inherit;
+    border-top-left-radius: inherit;
 }
 
 .ui-listview > li.ui-last-child,
 .ui-listview > li.ui-last-child > a.ui-btn {
-    @include border-bottom-right-radius(inherit);
-    @include border-bottom-left-radius(inherit);
+    border-bottom-right-radius: inherit;
+    border-bottom-left-radius: inherit;
 }
 
 .ui-listview > li.ui-li-has-alt > a.ui-btn {
-    @include border-top-right-radius(0);
-    @include border-bottom-right-radius(0);
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
 }
 
 .ui-listview > li.ui-first-child > a.ui-btn + a.ui-btn {
-    @include border-top-left-radius(0);
-    @include border-top-right-radius(inherit);
+    border-top-left-radius: 0;
+    border-top-right-radius: inherit;
 }
 
 .ui-listview > li.ui-last-child > a.ui-btn + a.ui-btn {
-    @include border-bottom-left-radius(0);
-    @include border-bottom-right-radius(inherit);
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: inherit;
 }
 
 .ui-listview > li.ui-first-child img:first-child:not(.ui-li-icon) {
-    @include border-top-left-radius(inherit);
+    border-top-left-radius: inherit;
 }
 
 .ui-listview > li.ui-last-child img:first-child:not(.ui-li-icon) {
-    @include border-bottom-left-radius(inherit);
+    border-bottom-left-radius: inherit;
 }
 
 .ui-collapsible-content > .ui-listview:not(.ui-listview-inset) {
-    @include border-radius(inherit);
+    border-radius: inherit;
 }
 
 .ui-listview > .ui-li-static {
@@ -231,8 +229,8 @@
     position: absolute;
     width: 2.5em;
     height: 100%;
-    min-height: auto;
-    @include box-sizing(border-box);
+    min-height: initial;
+    box-sizing: border-box;
     border-left-width: 1px;
     top: 0;
     right: 0;

@@ -1,6 +1,4 @@
-﻿@import "../_mixins.scss";
-
-.ui-collapsible {
+﻿.ui-collapsible {
     margin: 0 -1em;
 }
 
@@ -77,28 +75,28 @@
 }
 
 .ui-collapsible-set > .ui-collapsible.ui-corner-all {
-    @include border-radius(0);
+    border-radius: 0;
 }
 
 .ui-collapsible-heading,
 .ui-collapsible-heading > .ui-btn {
-    @include border-radius(inherit);
+    border-radius: inherit;
 }
 
 .ui-collapsible-set .ui-collapsible.ui-first-child {
-    @include border-top-right-radius(inherit);
-    @include border-top-left-radius(inherit);
+    border-top-right-radius: inherit;
+    border-top-left-radius: inherit;
 }
 
 .ui-collapsible-content,
 .ui-collapsible-set .ui-collapsible.ui-last-child {
-    @include border-bottom-right-radius(inherit);
-    @include border-bottom-left-radius(inherit);
+    border-bottom-right-radius: inherit;
+    border-bottom-left-radius: inherit;
 }
 
 .ui-collapsible-themed-content:not(.ui-collapsible-collapsed) > .ui-collapsible-heading {
-    @include border-bottom-right-radius(0);
-    @include border-bottom-left-radius(0);
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
 }
 
 .ui-collapsible-set .ui-collapsible {

@@ -1,6 +1,4 @@
-﻿@import "../_mixins.scss";
-
-/* Some unsets */
+﻿/* Some unsets */
 .ui-mobile,
 .ui-mobile body {
     height: 99.9%;
@@ -143,7 +141,7 @@ div.ui-mobile-viewport {
     width: 2.75em;
     height: 2.75em;
     padding: .0625em;
-    @include border-radius(2.25em);
+    border-radius: 2.25em;
 }
 
 .ui-loader-verbose .ui-icon-loading {
@@ -226,15 +224,15 @@ div.ui-mobile-viewport {
 .ui-corner-all > .ui-header:first-child,
 .ui-corner-all > .ui-content:first-child,
 .ui-corner-all > .ui-footer:first-child {
-    @include border-top-left-radius(inherit);
-    @include border-top-right-radius(inherit);
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
 }
 
 .ui-corner-all > .ui-header:last-child,
 .ui-corner-all > .ui-content:last-child,
 .ui-corner-all > .ui-footer:last-child {
-    @include border-bottom-left-radius(inherit);
-    @include border-bottom-right-radius(inherit);
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
 }
 
 /* Buttons and icons */
@@ -249,7 +247,7 @@ div.ui-mobile-viewport {
     overflow: hidden;
     white-space: nowrap;
     cursor: pointer;
-    @include user-select(none);
+    user-select: none;
 }
 
 .ui-btn-icon-notext,
@@ -417,8 +415,8 @@ div.ui-mobile-viewport {
 /* Button elements */
 button.ui-btn,
 .ui-controlgroup-controls button.ui-btn-icon-notext {
-    @include box-sizing(border-box);
-    @include appearance(none);
+    box-sizing: border-box;
+    -webkit-appearance: none;
     width: 100%;
 }
 
@@ -434,7 +432,7 @@ button.ui-btn::-moz-focus-inner {
 
 button.ui-btn-icon-notext,
 .ui-controlgroup-horizontal .ui-controlgroup-controls button.ui-btn {
-    @include box-sizing(content-box);
+    box-sizing: content-box;
     width: 1.75em;
 }
 

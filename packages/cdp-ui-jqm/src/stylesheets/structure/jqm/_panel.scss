@@ -1,6 +1,4 @@
-﻿@import "../_mixins.scss";
-
-/* Panel */
+﻿/* Panel */
 .ui-panel {
     width: 17em;
     min-height: 100%;
@@ -81,7 +79,7 @@
 
 /* Animate class is added to panel, wrapper and fixed toolbars */
 .ui-panel-animate {
-    @include transition(transform 300ms ease);
+    transition: transform 300ms ease;
 }
 
 /* Fix for Windows Phone issue #6349: unset the transition for transforms in case of fixed toolbars. */
@@ -113,7 +111,7 @@
 .ui-panel-animate.ui-panel-position-left.ui-panel-display-overlay,
 .ui-panel-animate.ui-panel-position-left.ui-panel-display-push {
     left: 0;
-    @include transform(translate3d(-17em,0,0));
+    transform: translate3d(-17em,0,0);
 }
 /* Panel left open */
 .ui-panel-position-left.ui-panel-display-reveal, /* Unset "panel left closed" for reveal */
@@ -123,7 +121,7 @@
 /* Panel left open animated */
 .ui-panel-animate.ui-panel-open.ui-panel-position-left.ui-panel-display-overlay,
 .ui-panel-animate.ui-panel-open.ui-panel-position-left.ui-panel-display-push {
-    @include transform(translate3d(0,0,0));
+    transform: translate3d(0,0,0);
 }
 /* Panel right closed */
 .ui-panel-position-right {
@@ -133,7 +131,7 @@
 .ui-panel-animate.ui-panel-position-right.ui-panel-display-overlay,
 .ui-panel-animate.ui-panel-position-right.ui-panel-display-push {
     right: 0;
-    @include transform(translate3d(17em,0,0));
+    transform: translate3d(17em,0,0);
 }
 /* Panel right open */
 .ui-panel-position-right.ui-panel-display-reveal, /* Unset "panel right closed" for reveal */
@@ -143,7 +141,7 @@
 /* Panel right open animated */
 .ui-panel-animate.ui-panel-open.ui-panel-position-right.ui-panel-display-overlay,
 .ui-panel-animate.ui-panel-open.ui-panel-position-right.ui-panel-display-push {
-    @include transform(translate3d(0,0,0));
+    transform: translate3d(0,0,0);
 }
 
 /* Wrapper and fixed toolbars positioning (for reveal and push) */
@@ -156,7 +154,7 @@
 .ui-panel-animate.ui-panel-page-content-position-left {
     left: 0;
     right: 0;
-    @include transform(translate3d(17em,0,0));
+    transform: translate3d(17em,0,0);
 }
 /* Panel right open */
 .ui-panel-page-content-position-right {
@@ -167,7 +165,7 @@
 .ui-panel-animate.ui-panel-page-content-position-right {
     left: 0;
     right: 0;
-    @include transform(translate3d(-17em,0,0));
+    transform: translate3d(-17em,0,0);
 }
 
 /* Dismiss model open */
@@ -181,19 +179,19 @@
 
 /* Shadows and borders */
 .ui-panel-display-reveal {
-    @include box-shadow(inset -5px 0 5px rgba(0,0,0,.15));
+    box-shadow: inset -5px 0 5px rgba(0,0,0,.15);
 }
 
 .ui-panel-position-right.ui-panel-display-reveal {
-    @include box-shadow(inset 5px 0 5px rgba(0,0,0,.15));
+    box-shadow: inset 5px 0 5px rgba(0,0,0,.15);
 }
 
 .ui-panel-display-overlay {
-    @include box-shadow(5px 0 5px rgba(0,0,0,.15));
+    box-shadow: 5px 0 5px rgba(0,0,0,.15);
 }
 
 .ui-panel-position-right.ui-panel-display-overlay {
-    @include box-shadow(-5px 0 5px rgba(0,0,0,.15));
+    box-shadow: -5px 0 5px rgba(0,0,0,.15);
 }
 
 .ui-panel-open.ui-panel-position-left.ui-panel-display-push {

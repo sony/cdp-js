@@ -1,42 +1,40 @@
-﻿@import "../../_mixins.scss";
-
-/* slide up */
+﻿/* slide up */
 .slideup.out {
-    @include animation-name(fadeout);
-    @include animation-duration(100ms);
+    animation-name: fadeout;
+    animation-duration: 100ms;
 }
 
 .slideup.in {
-    @include transform(translateY(0));
-    @include animation-name(slideinfrombottom);
-    @include animation-duration(250ms);
+    transform: translateY(0);
+    animation-name: slideinfrombottom;
+    animation-duration: 250ms;
 }
 
 .slideup.in.reverse {
-    @include animation-name(fadein);
-    @include animation-duration(150ms);
+    animation-name: fadein;
+    animation-duration: 150ms;
 }
 
 .slideup.out.reverse {
-    @include transform(translateY(100%));
-    @include animation-name(slideouttobottom);
-    @include animation-duration(200ms);
+    transform: translateY(100%);
+    animation-name: slideouttobottom;
+    animation-duration: 200ms;
 }
 
-@include keyframes(slideinfrombottom) {
+@keyframes slideinfrombottom {
     from {
-        @include experimental-property(transform, translateY(100%));
+        transform: translateY(100%);
     }
     to {
-        @include experimental-property(transform, translateY(0));
+        transform: translateY(0);
     }
 }
 
-@include keyframes(slideouttobottom) {
+@keyframes slideouttobottom {
     from {
-        @include experimental-property(transform, translateY(0));
+        transform: translateY(0);
     }
     to {
-        @include experimental-property(transform, translateY(100%));
+        transform: translateY(100%);
     }
 }

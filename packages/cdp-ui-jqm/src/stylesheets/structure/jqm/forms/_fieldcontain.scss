@@ -1,6 +1,4 @@
-﻿@import "../../_mixins.scss";
-
-.ui-field-contain,
+﻿.ui-field-contain,
 .ui-mobile fieldset.ui-field-contain {
     display: block;
     position: relative;
@@ -56,7 +54,7 @@
     .ui-field-contain .ui-controlgroup-controls {
         float: left;
         width: 78%;
-        @include box-sizing(border-box);
+        box-sizing: border-box;
     }
     /* ui-hide-label deprecated in 1.4. TODO: Remove in 1.5 */
     .ui-hide-label > label ~ [class*="ui-"],

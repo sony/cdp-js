@@ -1,6 +1,4 @@
-﻿@import "../../_mixins.scss";
-
-/* Dimensions related to the popup arrow
+﻿/* Dimensions related to the popup arrow
 -----------------------------------------------------------------------------------------------------------*/
 /* desired triangle height: 10px */
 
@@ -155,10 +153,10 @@
 }
 
 .ui-popup-arrow {
-    @include transform(rotate(45deg));
+    transform: rotate(45deg);
     position: absolute;
     overflow: hidden;
-    @include box-sizing(border-box);
+    box-sizing: border-box;
 }
 
 .ui-popup-arrow-container.ie .ui-popup-arrow {

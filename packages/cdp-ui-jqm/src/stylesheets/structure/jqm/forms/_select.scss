@@ -1,6 +1,4 @@
-﻿@import "../../_mixins.scss";
-
-.ui-select {
+﻿.ui-select {
     margin-top: .5em;
     margin-bottom: .5em; /* no shorthand for margin because it would override margin-right for inline selects */
     position: relative;
@@ -29,8 +27,8 @@
     height: 3em;
     max-height: 100%;
     outline: 0;
-    @include border-radius(inherit);
-    @include appearance(none);
+    border-radius: inherit;
+    -webkit-appearance: none;
     cursor: pointer;
     opacity: 0;
     z-index: 2;
@@ -100,8 +98,8 @@
 }
 
 .ui-selectmenu.ui-popup .ui-header {
-    @include border-bottom-right-radius(0);
-    @include border-bottom-left-radius(0);
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
 }
 /* when no placeholder is defined in a multiple select, the header height doesn't even extend past the close button.  this shim's content in there */
 .ui-selectmenu.ui-popup .ui-header h1:after {
@@ -120,12 +118,12 @@
 
 .ui-selectmenu .ui-selectmenu-list {
     margin: 0;
-    @include border-radius(inherit);
+    border-radius: inherit;
 }
 
 .ui-header:not(.ui-screen-hidden) + .ui-selectmenu-list {
-    @include border-top-right-radius(0);
-    @include border-top-left-radius(0);
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
 }
 
 .ui-header.ui-screen-hidden + .ui-selectmenu-list li.ui-first-child .ui-btn {

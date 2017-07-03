@@ -1,20 +1,18 @@
-﻿@import "../../_mixins.scss";
-
-/* keyframes for slidein from sides */
-@include keyframes(slideinfromright) {
+﻿/* keyframes for slidein from sides */
+@keyframes slideinfromright {
     from {
-        @include experimental-property(transform, translateX(100%));
+        transform: translateX(100%);
     }
     to {
-        @include experimental-property(transform, translateX(0));
+        transform: translateX(0);
     }
 }
 
-@include keyframes(slideinfromleft) {
+@keyframes slideinfromleft {
     from {
-        @include experimental-property(transform, translateX(-100%));
+        transform: translateX(-100%);
     }
     to {
-        @include experimental-property(transform, translateX(0));
+        transform: translateX(0);
     }
 }

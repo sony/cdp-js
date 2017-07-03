@@ -1,6 +1,4 @@
-﻿@import "../../_mixins.scss";
-
-div.ui-slider {
+﻿div.ui-slider {
     height: 30px;
     margin: .5em 0;
     padding: 0;
@@ -32,8 +30,8 @@ input.ui-slider-input {
     outline: 0;
     text-align: center;
     vertical-align: text-bottom;
-    @include appearance(none);
-    @include box-sizing(content-box);
+    -webkit-appearance: none;
+    box-sizing: content-box;
 }
 
 .ui-slider-input::-webkit-outer-spin-button,
@@ -126,7 +124,7 @@ div.ui-slider-switch.ui-mini {
 }
 
 .ui-slider-handle-snapping {
-    @include transition(left 70ms linear);
+    transition: left 70ms linear;
 }
 
 .ui-slider-switch .ui-slider-label {
@@ -162,7 +160,7 @@ div.ui-slider-switch.ui-mini {
 .ui-slider-switch .ui-slider-label,
 .ui-slider-switch .ui-slider-inneroffset,
 .ui-slider-handle {
-    @include border-radius(inherit);
+    border-radius: inherit;
 }
 
 .ui-field-contain div.ui-slider-switch {

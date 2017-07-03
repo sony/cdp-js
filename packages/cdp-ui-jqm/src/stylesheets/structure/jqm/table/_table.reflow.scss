@@ -1,6 +1,4 @@
-﻿@import "../../_mixins.scss";
-
-/*
+﻿/*
  Styles for the table columntoggle mode
 */
 .ui-table-reflow td .ui-table-cell-label,
@@ -74,7 +72,7 @@
     .ui-table-reflow.ui-responsive td,
     .ui-table-reflow.ui-responsive th {
         width: 100%;
-        @include box-sizing(border-box);
+        box-sizing: border-box;
         float: left;
         clear: left;
     }

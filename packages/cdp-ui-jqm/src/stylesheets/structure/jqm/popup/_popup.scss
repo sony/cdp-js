@@ -1,6 +1,4 @@
-﻿@import "../../_mixins.scss";
-
-.ui-popup-open .ui-header-fixed,
+﻿.ui-popup-open .ui-header-fixed,
 .ui-popup-open .ui-footer-fixed {
     position: absolute !important; /* See issues #4816, #4844 and #4874 and popup.js */
 }
@@ -127,7 +125,7 @@
 .ui-popup:not(.ui-content) > img:only-child,
 .ui-popup:not(.ui-content) > .ui-btn-left:first-child + img:last-child,
 .ui-popup:not(.ui-content) > .ui-btn-right:first-child + img:last-child {
-    @include border-radius(inherit);
+    border-radius: inherit;
 }
 
 .ui-popup iframe {

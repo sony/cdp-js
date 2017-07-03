@@ -1,6 +1,4 @@
-﻿@import "../../_mixins.scss";
-
-.ui-input-text,
+﻿.ui-input-text,
 .ui-input-search {
     margin: .5em 0;
     border-width: 1px;
@@ -18,7 +16,7 @@ textarea.ui-input-text {
     line-height: 1.4em;
     display: block;
     width: 100%;
-    @include box-sizing(border-box);
+    box-sizing: border-box;
     outline: 0;
 }
 
@@ -30,7 +28,7 @@ textarea.ui-input-text {
     border: 0;
     background: transparent none;
     -webkit-appearance: none;
-    @include border-radius(inherit);
+    border-radius: inherit;
 }
 
 textarea.ui-input-text {
@@ -68,8 +66,8 @@ textarea.ui-mini {
 .ui-input-has-clear input {
     padding-right: 0;
     /* Autofill on Chrome has bg color so we unset corners right as well. */
-    @include border-top-right-radius(0);
-    @include border-bottom-right-radius(0);
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
 }
 /* Search icon */
 .ui-input-search input {
@@ -129,5 +127,5 @@ for Android 4.1 */
 
 .ui-input-text input:focus,
 .ui-input-search input:focus {
-    @include box-shadow(none);
+    box-shadow: none;
 }
