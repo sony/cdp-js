@@ -15,7 +15,7 @@ namespace CDP {
      * PC 環境ではエミュレートされる。
      */
     export function waitForDeviceReady(): Promise<void> {
-        return new Promise((resolve) => {
+        return new Promise<void>((resolve) => {
             if (!CDP.Framework.Platform.Mobile) {
                 setTimeout(() => {
                     resolve();

@@ -77,7 +77,7 @@
     "source-map": "^0.5.6",
     "tslint": "^5.4.3",
     "typedoc": "^0.7.1",
-    "typescript": "^2.4.0",
-    "uglify-js": "^3.0.20"
+    "typescript": "^2.4.1",
+    "uglify-js": "^3.0.23"
   }
 }

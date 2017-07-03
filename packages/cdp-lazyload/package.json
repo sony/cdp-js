@@ -70,7 +70,7 @@
     "plato": "^1.7.0",
     "requirejs": "^2.3.3",
     "tslint": "^5.4.3",
-    "typescript": "^2.4.0",
-    "uglify-js": "^3.0.20"
+    "typescript": "^2.4.1",
+    "uglify-js": "^3.0.23"
   }
 }

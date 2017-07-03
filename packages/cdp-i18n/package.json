@@ -65,7 +65,7 @@
     "jquery": ">=1.8.3"
   },
   "devDependencies": {
-    "@types/i18next": "^2.3.38",
+    "@types/i18next": "^8.4.0",
     "@types/jasmine": "^2.5.53",
     "@types/jquery": "^3.2.5",
     "@types/requirejs": "^2.1.29",
@@ -87,8 +87,8 @@
     "source-map-loader": "^0.2.1",
     "tslint": "^5.4.3",
     "typedoc": "^0.7.1",
-    "typescript": "^2.4.0",
-    "uglify-js": "^3.0.20",
+    "typescript": "^2.4.1",
+    "uglify-js": "^3.0.23",
     "webpack": "^3.0.0"
   }
 }

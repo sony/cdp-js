@@ -12,14 +12,15 @@
         ///////////////////////////////////////////////////////////////////////
         // Promise extends:
 
-        then: <TResult1, TResult2 = never>(
+        then<TResult1 = T, TResult2 = never>(
             onfulfilled?: (
-                (value?: TResult1, ...values: any[]) => TResult1 | PromiseLike<TResult1> | void
+                (value: T) => TResult1 | PromiseLike<TResult1>
             ) | undefined | null,
             onrejected?: (
-                (reason?: any, ...values: any[]) => TResult2 | PromiseLike<TResult2> | void
+                (reason: any) => TResult2 | PromiseLike<TResult2>
             ) | undefined | null
-        ) => IPromiseBase<TResult1 | TResult2>;
+        ): IPromiseBase<TResult1 | TResult2>;
+
 
         ///////////////////////////////////////////////////////////////////////
         // JQueryPromise stuff:
@@ -60,14 +61,14 @@
         ///////////////////////////////////////////////////////////////////////
         // Promise extends:
 
-        then: <TResult1, TResult2 = never>(
+        then<TResult1 = T, TResult2 = never>(
             onfulfilled?: (
-                (value?: TResult1, ...values: any[]) => TResult1 | PromiseLike<TResult1> | void
+                (value: T) => TResult1 | PromiseLike<TResult1>
             ) | undefined | null,
             onrejected?: (
-                (reason?: any, ...values: any[]) => TResult2 | PromiseLike<TResult2> | void
+                (reason: any) => TResult2 | PromiseLike<TResult2>
             ) | undefined | null
-        ) => IPromise<TResult1 | TResult2>;
+        ): IPromise<TResult1 | TResult2>;
 
         ///////////////////////////////////////////////////////////////////////
         // JQueryPromise stuff:
@@ -377,12 +378,12 @@
         ///////////////////////////////////////////////////////////////////////
         // mixin: native Promise
 
-        then: <TResult1, TResult2 = never>(
+        then: <TResult1 = T, TResult2 = never>(
             onfulfilled?: (
-                (value?: TResult1, ...values: any[]) => TResult1 | PromiseLike<TResult1> | void
+                (value: T) => TResult1 | PromiseLike<TResult1>
             ) | undefined | null,
             onrejected?: (
-                (reason?: any, ...values: any[]) => TResult2 | PromiseLike<TResult2> | void
+                (reason: any) => TResult2 | PromiseLike<TResult2>
             ) | undefined | null
         ) => IPromise<TResult1 | TResult2>;
 
