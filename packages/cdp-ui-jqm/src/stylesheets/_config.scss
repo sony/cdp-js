@@ -1,0 +1,21 @@
+﻿// common settings definitions
+
+// resource root
+$images-root:  "../res/images";
+
+//___________________________________________________________________________________________________________//
+
+// compass support
+$legacy-support-for-ie6: false;
+$legacy-support-for-ie7: false;
+
+$experimental-support-for-webkit:       true;
+$experimental-support-for-mozilla:      false;
+$experimental-support-for-opera:        false;
+$experimental-support-for-microsoft:    false;
+$experimental-support-for-khtml:        false;
+
+// font-base
+$metrics-font-base-size: 16px;
+
+@import "cdp/utils/_utils.scss";

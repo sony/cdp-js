@@ -1,0 +1,25 @@
+﻿/*** android swatch: radio buttons ***************************************************/
+
+@import "../_theme.scss";
+
+.ui-platform-android {
+    .ui-page-theme-#{$theme} .ui-radio .ui-btn,
+    .ui-bar-#{$theme} .ui-radio .ui-btn,
+    .ui-body-#{$theme} .ui-radio .ui-btn,
+    .ui-group-theme-#{$theme} .ui-radio .ui-btn,
+    .ui-radio .ui-btn-#{$theme} {
+        &:after {
+            background-color: $color-android-radio-mark-on;
+        }
+        &.ui-radio-off {
+            &:before {
+                border-color: $color-android-radio-mark-off;
+            }
+        }
+        &.ui-radio-on {
+            &:before {
+                border-color: $color-android-radio-mark-on;
+            }
+        }
+    }
+}

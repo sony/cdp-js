@@ -1,0 +1,127 @@
+﻿/* android: text input */
+
+@import "../../_mixins.scss";
+@import "../_metrics.scss";
+
+.ui-platform-android {
+    .ui-input-text, .ui-input-search, input.ui-slider-input {
+        border-width: 0 0 1px;
+        @include border-radius(0);
+
+        // focus under line
+        &:before {
+            content:        "";
+            position:       absolute;
+            top:            0;
+            left:           0;
+            right:          0;
+            bottom:         0;
+            border-style:   solid;
+            border-width:   0 0 2px;
+            margin-bottom:  -1px;
+            pointer-events: none;
+            @include transform(scale3d(0, 1, 1));
+        }
+        &:focus, &.ui-focus {
+            &:before {
+                @include transform(none);
+                @include transition(transform 0.24s);
+            }
+        }
+    }
+
+    textarea.ui-input-text,
+    input.ui-slider-input {
+        &:focus, &.ui-focus {
+            border-width: 0 0 2px;
+        }
+    }
+
+    .ui-input-text, .ui-input-search  {
+        .ui-input-clear {
+            overflow:           visible;
+            border-style:       none;
+            @include box-shadow(none);
+            @include transition(background-color 0.32s ease-out);
+            &:before {
+                content:        "";
+                position:       absolute;
+                display:        block;
+                left:           50%;
+                margin-left:    -24px;
+                @include declare-effect-repple-center-structure("&", 48px);
+            }
+            @include declare-effect-repple-center-swatch-activate("&:active:before");
+        }
+    }
+
+    label.ui-float-label,
+    .ui-float-label label {
+        position:       relative;
+        top:            12px;
+        margin-left:    7px;
+        font-size:      $metrics-font-base-size * 1;
+        @include transform-origin(left, null);
+        @include transform(translate3d(0, 24px, 0));
+        @include transition(transform 0.25s ease, color 0.25s ease);
+        &.ui-float-label-has-icon {
+            margin-left: 1px;
+            @include transform(translate3d(28px, 24px, 0));
+        }
+        &.ui-float-label-floating, .ui-float-label-has-icon.ui-float-label-floating {
+            @include transform(scale(0.75) translate3d(0, 0, 0));
+        }
+    }
+
+    label.ui-float-label.ui-mini,
+    .ui-float-label label.ui-mini,
+    .ui-float-label .ui-mini label,
+    .ui-mini .ui-float-label label {
+        font-size: $metrics-font-base-size * 0.875;
+        @include transform(translate3d(0, 18px, 0));
+        @include transition(transform 0.25s ease, color 0.25s ease);
+        &.ui-float-label-has-icon {
+            margin-left: 1px;
+            @include transform(translate3d(28px, 18px, 0));
+        }
+        &.ui-float-label-floating, .ui-float-label-has-icon.ui-float-label-floating {
+            @include transform(scale(0.857) translate3d(0, 0, 0));
+        }
+    }
+
+    .ui-float-label .ui-field-contain > label,
+    .ui-field-contain > label.ui-float-label {
+        top: 10px;
+    }
+
+    @media (min-width: 28em) {
+        .ui-float-label .ui-field-contain > label,
+        .ui-field-contain > label.ui-float-label {
+            top:    12px;
+            margin: 0 2% 0 0 !important;
+            @include transform(#{"initial !important"});
+        }
+    }
+
+    [placeholder]::-webkit-input-placeholder {
+        font-size:  1 * $metrics-font-base-size;   // 16px
+    }
+    .ui-mini {
+        [placeholder]::-webkit-input-placeholder {
+            font-size:  $metrics-font-base-size * 0.875;   // ui-min: 14px
+        }
+    }
+
+    .ui-modal {
+       .ui-input-text, .ui-input-search, input.ui-slider-input {
+            margin: 0;
+            input {
+                height:         36px;
+                min-height:     initial;
+                padding:        0 5px;
+                margin:         15px 0 0;
+                box-sizing:     border-box;
+            }
+        }
+    }
+}

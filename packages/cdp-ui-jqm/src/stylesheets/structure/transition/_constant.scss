@@ -1,0 +1,17 @@
+﻿/*** transition : constant values ***************************************************/
+
+// for slide
+$transition-slide-duration:                 350ms !default;
+$transition-slide-timing-function:          ease !default;
+$transition-slide-placement-range:          100% !default;
+$transition-slide-placement-range-small:    20% !default;
+
+// for floatup
+$transition-floatup-duration:           300ms !default;
+$transition-floatup-new-page-offset:    56px !default;
+
+// for crosszoom
+$transition-crosszoom-duration: 400ms !default;
+
+// for popzoom
+$transition-popzoom-duration: 400ms !default;

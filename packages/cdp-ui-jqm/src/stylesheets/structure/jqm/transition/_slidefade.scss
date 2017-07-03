@@ -1,0 +1,25 @@
+﻿@import "../../_mixins.scss";
+
+.slidefade.out {
+    @include transform(translateX(-100%));
+    @include animation-name(slideouttoleft);
+    @include animation-duration(225ms);
+}
+
+.slidefade.in {
+    @include transform(translateX(0));
+    @include animation-name(fadein);
+    @include animation-duration(200ms);
+}
+
+.slidefade.out.reverse {
+    @include transform(translateX(100%));
+    @include animation-name(slideouttoright);
+    @include animation-duration(200ms);
+}
+
+.slidefade.in.reverse {
+    @include transform(translateX(0));
+    @include animation-name(fadein);
+    @include animation-duration(200ms);
+}

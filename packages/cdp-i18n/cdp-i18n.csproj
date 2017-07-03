@@ -83,6 +83,7 @@
     </PostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include=".gitignore" />
     <Content Include="built\cdp.i18n-all.js">
       <DependentUpon>cdp.i18n.js</DependentUpon>
     </Content>

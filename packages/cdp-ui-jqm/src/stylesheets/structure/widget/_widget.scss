@@ -1,0 +1,51 @@
+﻿// widgets entry
+// system metrics
+@import "_metrics.scss";
+
+// for base
+@import "base/_global.scss";
+@import "base/_button.scss";
+@import "base/_ripple.scss";
+@import "base/_header.scss";
+@import "base/_page.scss";
+@import "base/_radio-button.scss";
+@import "base/_checkbox.scss";
+@import "base/_segmented-ctrl.scss";
+@import "base/_text-input.scss";
+@import "base/_switch.scss";
+@import "base/_slider.scss";
+@import "base/_spinner.scss";
+@import "base/_list-ctrl.scss";
+@import "base/_dialog.scss";
+
+// for android
+@import "android/_global.scss";
+@import "android/_button.scss";
+@import "android/_ripple.scss";
+@import "android/_header.scss";
+@import "android/_page.scss";
+@import "android/_radio-button.scss";
+@import "android/_checkbox.scss";
+@import "android/_segmented-ctrl.scss";
+@import "android/_text-input.scss";
+@import "android/_switch.scss";
+@import "android/_slider.scss";
+@import "android/_spinner.scss";
+@import "android/_list-ctrl.scss";
+@import "android/_dialog.scss";
+
+// for ios
+@import "ios/_global.scss";
+@import "ios/_button.scss";
+@import "ios/_ripple.scss";
+@import "ios/_header.scss";
+@import "ios/_page.scss";
+@import "ios/_radio-button.scss";
+@import "ios/_checkbox.scss";
+@import "ios/_segmented-ctrl.scss";
+@import "ios/_text-input.scss";
+@import "ios/_switch.scss";
+@import "ios/_slider.scss";
+@import "ios/_spinner.scss";
+@import "ios/_list-ctrl.scss";
+@import "ios/_dialog.scss";

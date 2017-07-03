@@ -1,0 +1,33 @@
+﻿/*** base structure: buttons ***************************************************/
+
+@import "../../_mixins.scss";
+@import "../_metrics.scss";
+
+// すべての ui-btn の基本設定
+
+.ui-btn.ui-btn-inline:not(.ui-btn-icon-notext) {
+    min-width: 4 * $metrics-font-base-size;
+}
+
+$button-base: (
+    normal: (
+        text-shadow: none,
+    ),
+    hover: (
+        // noop
+    ),
+    pushed: (
+        // noop
+    ),
+    selected: (
+        // noop
+    ),
+    focus: (
+        box-shadow: none,
+        outline:    none,
+    ),
+    disabled: (
+        // noop
+    ),
+);
+@include declare-button-states($button-base, null);

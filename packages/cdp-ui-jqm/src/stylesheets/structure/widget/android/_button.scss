@@ -1,0 +1,137 @@
+﻿/*** android structure: buttons ***************************************************/
+
+@import "../../_mixins.scss";
+@import "../_metrics.scss";
+
+@include keyframes(android-animation-button-active) {
+    0% {
+        @include experimental-property(transform, scale(0.96));
+    }
+    50% {
+        @include experimental-property(transform, scale(0.9));
+    }
+    100% {
+        @include experimental-property(transform, scale(0.96));
+    }
+}
+
+%placeholder-button-effect-selected {
+    &:before {
+        content:        "";
+        position:       absolute;
+        width:          100%;
+        top:            50%;
+        left:           50%;
+        margin-left:    -50%;
+        z-index:        -1;
+        @include border-radius(50%);
+        @include transform(scale(0.96));
+        @include animation(android-animation-button-active 4s ease-in-out infinite);
+        @include transition(background-color 1s);
+    }
+}
+
+.ui-platform-android {
+
+    $android-button-font-size:              14px;
+    $android-button-height:                 36px;
+    $android-button-height-big:             48px;
+    $android-button-border-radius:          2px;
+    $android-button-border-radius-big:      3px;
+    $android-button-padding-horizontal:     16px;
+    $android-button-padding-vertical:       ceil(($android-button-height - ($android-button-font-size * $metrics-normal-line-height)) / 2);
+    $android-button-padding-vertical-big:   ceil(($android-button-height-big - ($android-button-font-size * $metrics-normal-line-height)) / 2);
+
+    /* android regular button: flat design */
+    $button-regular: (
+        normal: (
+            font-size:          $android-button-font-size,
+            padding:            "#{$android-button-padding-vertical $android-button-padding-horizontal}",
+            border:             none,
+            border-radius:      $android-button-border-radius,
+            background-color:   initial,
+        ),
+        selected: (
+            z-index:            2,
+            predefined:        "%placeholder-button-effect-selected",
+        ),
+    );
+    @include declare-button-states($button-regular, null);
+
+    /* android alternative button: rised design */
+    $button-alternative: (
+        normal: (
+            font-size:          $android-button-font-size,
+            padding:            "#{$android-button-padding-vertical $android-button-padding-horizontal}",
+            border:             none,
+            border-radius:      $android-button-border-radius,
+            background-color:   initial,
+            box-shadow:         "#{0 1px 3px rgba(0,0,0,.12), 0 1px 2px rgba(0,0,0,.24)}",
+        ),
+        pushed: (
+            box-shadow:         "#{0 3px 6px rgba(0,0,0,.16), 0 3px 6px rgba(0,0,0,.23)}",
+        ),
+        selected: (
+            predefined:        "%placeholder-button-effect-selected",
+        ),
+    );
+    @include declare-button-states($button-alternative, null, ui-alt);
+    .ui-alt {
+        @include declare-button-states($button-alternative, null);
+    }
+
+    /* android selected effect */
+    $grid-list: solo, a, b, c, d;
+    @each $grid-id in $grid-list {
+        .ui-block-#{$grid-id} {
+            .ui-state-selected:before {
+                @if solo == $grid-id {
+                    height:     calc(100vw - 2em);
+                    margin-top: calc(-1 * (100vw - 2em) / 2);
+                } @elseif a == $grid-id {
+                    height:     calc((100vw / 2) - 3em);
+                    margin-top: calc(-1 * ((100vw / 2) - 3em) / 2);
+                } @elseif b == $grid-id {
+                    height:     calc((100vw / 2) - 4em);
+                    margin-top: calc(-1 * ((100vw / 2) - 4em) / 2);
+                } @elseif c == $grid-id {
+                    height:     calc((100vw / 2) - 5em);
+                    margin-top: calc(-1 * ((100vw / 2) - 5em) / 2);
+                } @elseif d == $grid-id {
+                    height:     calc((100vw / 2) - 6em);
+                    margin-top: calc(-1 * ((100vw / 2) - 6em) / 2);
+                }
+            }
+        }
+    }
+
+    /* android big button */
+    .ui-big {
+        .ui-btn, &.ui-btn {
+            padding: {
+                top:    $android-button-padding-vertical-big;
+                bottom: $android-button-padding-vertical-big;
+            }
+            @include border-radius($android-button-border-radius-big);
+        }
+    }
+
+    /* icon postions */
+    .ui-btn {
+        &.ui-btn-icon-left {
+            padding-left: $metrics-font-base-size * 2.5;
+        }
+        &.ui-btn-icon-right {
+            padding-right: $metrics-font-base-size * 2.5;
+        }
+        &.ui-btn-icon-top {
+            padding-top: $metrics-font-base-size * 2.5;
+        }
+        &.ui-btn-icon-bottom {
+            padding-bottom: $metrics-font-base-size * 2.5;
+        }
+        &.ui-btn-icon-notext {
+            padding: 0;
+        }
+    }
+}

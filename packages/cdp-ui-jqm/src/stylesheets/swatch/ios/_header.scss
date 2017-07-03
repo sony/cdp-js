@@ -1,0 +1,51 @@
+﻿/*** ios swatch: header ***************************************************/
+
+@import "../_theme.scss";
+@import "../_mixins.scss";
+
+.ui-platform-ios {
+
+    ///////////////////////////////////////////////////////////////////////
+    // header base: 拡張部品
+
+    // transition に影響を受けない indicator の定義
+    .ui-header-base.ui-body-#{$theme} {
+        .ui-fixed-back-indicator {
+            border-color: $color-ios-header-button;
+        }
+    }
+
+    ///////////////////////////////////////////////////////////////////////
+    // structure
+
+    .ui-page-theme-#{$theme} {
+        .ui-header {
+            &.ui-bar-inherit {
+                background-color:   $color-ios-header;
+                border-color:       $color-ios-header-border;
+                color:              $color-ios-header-font;
+            }
+            .ui-btn {
+                color: $color-ios-header-button;
+                @include box-shadow(initial);
+                &:active {
+                    background-color: inherit;
+                }
+            }
+            [class*=ui-icon-] {
+                &:after {
+                    background-color: $color-ios-header-icon;
+                }
+            }
+            .ui-icon-back,
+            .ui-icon-arrow-l,
+            .ui-back-indicator {
+                &:after {
+                    background-color:   initial;
+                    border-color:       $color-ios-header-button;
+                    @include mask(initial);
+                }
+            }
+        }
+    }
+}

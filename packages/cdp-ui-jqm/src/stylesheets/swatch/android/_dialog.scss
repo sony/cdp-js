@@ -1,0 +1,43 @@
+﻿/*** android swatch: dialog ***************************************************/
+
+@import "../_theme.scss";
+@import "../_mixins.scss";
+
+.ui-platform-android {
+    .ui-modal.ui-body-#{$theme} {
+        background-color: $color-android-dialog-background;
+        @include box-shadow(0 19px 38px $color-android-dialog-shadow, 0 15px 12px $color-android-dialog-shadow-alt);
+
+        .ui-content {
+            .ui-title {
+                color: $color-android-dialog-font-title;
+            }
+
+            .ui-message {
+                color: $color-android-dialog-font-message;
+            }
+        }
+
+        .ui-modal-footer {
+            button, .ui-btn {
+                color: $color-android-dialog-button-font;
+                &:active {
+                    background-color: $color-android-dialog-button-pushed;
+                }
+            }
+        }
+
+        // test input
+       .ui-input-text, .ui-input-search, input.ui-slider-input {
+            border-color: $color-android-dialog-text-input-border;
+            input {
+                color:               $color-android-dialog-text-input-font;
+                background-color:    $color-android-dialog-text-input-background;
+                border-color:        $color-android-dialog-text-input-border;
+                &:before {
+                    border-color: $color-android-dialog-text-input-active;
+                }
+            }
+        }
+    }
+}

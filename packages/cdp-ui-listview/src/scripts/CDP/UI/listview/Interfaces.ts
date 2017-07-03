@@ -510,5 +510,6 @@ namespace CDP.UI {
 }
 
 declare module "cdp.ui.listview" {
-    export = CDP.UI;
+    const UI: typeof CDP.UI;
+    export = UI;
 }

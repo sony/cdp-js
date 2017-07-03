@@ -1,0 +1,22 @@
+﻿/*** ios structure: page ***************************************************/
+
+@import "../_metrics.scss";
+
+$metrics-ios-status-bar-header: $metrics-header-height + $metrics-ios-status-bar-revise;
+
+.ui-platform-ios {
+
+    // iOS7+: status bar の分だけ補正をかける.
+    @media screen and (orientation: portrait) {
+        .ui-page {
+            &:not(.ui-header-no-fix) {
+                padding-top: $metrics-ios-status-bar-header !important;
+            }
+            .ui-content {
+                &:not(.ui-screen-no-fix) {
+                    top: $metrics-ios-status-bar-header + $metrics-common-border-width;
+                }
+            }
+        }
+    }
+}

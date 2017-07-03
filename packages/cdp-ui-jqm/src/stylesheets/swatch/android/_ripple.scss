@@ -1,0 +1,22 @@
+﻿/*** android swatch: ripple effect ***************************************************/
+
+@import "../_theme.scss";
+
+.ui-platform-android {
+    .ui-page-theme-#{$theme},
+    .ui-bar-#{$theme},
+    .ui-body-#{$theme},
+    .ui-group-theme-#{$theme} {
+        // regular button (swatch)
+        .ui-ripple-ink {
+            background: $color-android-ripple;
+        }
+
+        // alternative button (swatch)
+        .ui-ui-emphasis {
+            .ui-ripple-ink {
+                background: $color-android-ripple-emphasis;
+            }
+        }
+    }
+}

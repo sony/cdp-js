@@ -1,0 +1,31 @@
+﻿/*** android structure: global ***************************************************/
+
+@import "../../_mixins.scss";
+@import "../_metrics.scss";
+
+.ui-platform-android {
+
+    ///////////////////////////////////////////////////////////////////////
+    // font:
+
+    body,
+    input,
+    select,
+    textarea,
+    .ui-listview .ui-btn, .ui-controlgroup-controls .ui-btn,
+    .ui-listview .ui-listitem-title, .ui-controlgroup-controls .ui-listitem-title {
+        font-size: $metrics-font-base-size * 1;         // 16px
+    }
+    .ui-header, .ui-footer {
+        font-size: $metrics-font-base-size * 1.25;      // 20px
+        .ui-title {
+            font-size: $metrics-font-base-size * 1.25;  // 20px
+        }
+    }
+
+    ///////////////////////////////////////////////////////////////////////
+    // structure:
+
+    // checkbox, radio ボタンの共通 effect 定義
+    @include declare-effect-repple-center-structure-checkbox-radio(".ui-checkbox, .ui-radio");
+}

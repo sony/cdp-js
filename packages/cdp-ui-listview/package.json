@@ -1,6 +1,6 @@
 {
   "name": "@cdp/ui-listview",
-  "description": "CDP misc utility module",
+  "description": "CDP virtual listview component module",
   "version": "2.0.0",
   "main": "dist/cdp.ui.listview.js",
   "types": "dist/@types/cdp.ui.listview.d.ts",

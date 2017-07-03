@@ -1,0 +1,44 @@
+﻿/*** base structure: radio buttons ***************************************************/
+
+[class*=ui-platform-] {
+    .ui-radio {
+        .ui-btn {
+            z-index:    auto;
+            overflow:   visible;
+            &:after {
+                z-index:            auto;
+                background-image:   none !important;
+            }
+
+            // icon structure overwrite
+            &.ui-btn-icon-notext {
+                padding: 0;
+                &:active {
+                    background-color: initial;
+                }
+                &:after {
+                    left: 50%;
+                }
+            }
+            &.ui-btn-icon-notext, &.ui-btn-icon-left, &.ui-btn-icon-right {
+                &:before {
+                    margin-top: -8px;
+                }
+                &:after {
+                    margin-top: -4px;
+                }
+            }
+            &.ui-btn-icon-notext, &.ui-btn-icon-top, &.ui-btn-icon-bottom {
+                &:before {
+                    margin-left: -8px;
+                }
+                &:after {
+                    margin-left: -4px;
+                }
+            }
+        }
+        .ui-btn + input {
+            visibility: hidden;
+        }
+    }
+}

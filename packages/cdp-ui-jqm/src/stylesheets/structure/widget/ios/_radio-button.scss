@@ -1,0 +1,32 @@
+﻿/*** ios structure: radio buttons ***************************************************/
+
+@import "../../_mixins.scss";
+
+.ui-platform-ios {
+    .ui-radio {
+        .ui-btn {
+            &:after {
+                @include declare-check-mark-structure();
+            }
+            &.ui-radio-off {
+                &:after {
+                    margin:  -4px 4px 0 4px;
+                    opacity: 0;
+                }
+            }
+            &.ui-radio-on {
+                &:after {
+                    margin:     -7px 1px 0 0;
+                    opacity:    1;
+                    @include transform(rotate(45deg));
+                }
+            }
+            &.ui-btn-icon-notext {
+                border: none;
+                &:after {
+                    margin-left: -4px;
+                }
+            }
+        }
+    }
+}

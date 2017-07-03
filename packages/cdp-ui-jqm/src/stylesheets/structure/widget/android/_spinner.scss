@@ -1,0 +1,151 @@
+﻿/*** android structure: spinner ***************************************************/
+
+@import "../../_mixins.scss";
+
+@include keyframes(ui-spinner-outer-animation) {
+    0% {
+        @include experimental-property(transform, rotate(0));
+    }
+    100% {
+        @include experimental-property(transform, rotate(360deg));
+    }
+}
+
+@include keyframes(ui-spinner-left-rotate-animation) {
+    0%, 100% {
+        @include experimental-property(transform, rotate(130deg));
+    }
+    50% {
+        @include experimental-property(transform, rotate(-5deg));
+    }
+}
+
+@include keyframes(ui-spinner-right-rotate-animation) {
+    0%, 100% {
+        @include experimental-property(transform, rotate(-130deg));
+    }
+    50% {
+        @include experimental-property(transform, rotate(5deg));
+    }
+}
+
+@include keyframes(ui-spinner-inner-rotate-animation) {
+    12.5% {
+        @include experimental-property(transform, rotate(135deg));
+    }
+    25% {
+        @include experimental-property(transform, rotate(270deg));
+    }
+    37.5% {
+        @include experimental-property(transform, rotate(405deg));
+    }
+    50% {
+        @include experimental-property(transform, rotate(540deg));
+    }
+    62.5% {
+        @include experimental-property(transform, rotate(675deg));
+    }
+    75% {
+        @include experimental-property(transform, rotate(810deg));
+    }
+    87.5% {
+        @include experimental-property(transform, rotate(945deg));
+    }
+    100% {
+        @include experimental-property(transform, rotate(1080deg));
+    }
+}
+
+.ui-platform-android {
+    .ui-spinner, .ui-icon-loading {
+        background-color: initial !important;
+    }
+    // disable loading icon
+    .ui-icon-loading {
+        &:after {
+            content: none;
+        }
+    }
+    .ui-spinner-base {
+        $spinner-speed: 1320ms;
+        $spinner-loops: 5;
+
+        position:   absolute;
+        display:    block;
+        font-size:  0;
+        width:      100%;
+        height:     100%;
+        @include animation(ui-spinner-outer-animation #{$spinner-speed * $spinner-loops / 2} linear infinite);
+    }
+
+    .ui-spinner-inner {
+        $spinner-inner-ease:            cubic-bezier(0.35, 0, 0.25, 1);
+        $spinner-inner-duration:        5.25s;
+        $spinner-inner-circle-duration: $spinner-inner-duration * 0.25;
+        $spinner-inner-outer-duration:  $spinner-inner-duration * (5/9);
+
+        position:   relative;
+        display:    block;
+        width:      100%;
+        height:     100%;
+        @include animation(ui-spinner-inner-rotate-animation #{$spinner-inner-duration} #{$spinner-inner-ease} infinite);
+
+        .ui-spinner-inner-gap {
+            position:       absolute;
+            width:          2px;
+            left:           50%;
+            margin-left:    -1px;
+            top:            0;
+            bottom:         0;
+            border-top:     3px solid;
+            @include box-sizing(border-box);
+        }
+
+        .ui-spinner-inner-left, .ui-spinner-inner-right {
+            position:   absolute;
+            top:        0;
+            height:     100%;
+            width:      50%;
+            overflow:   hidden;
+        }
+
+        .ui-spinner-inner-half-circle {
+            position:               absolute;
+            top:                    0;
+            height:                 100%;
+            width:                  200%;
+            border:                 3px solid;
+            border-bottom-color:    transparent !important;
+            border-radius:          50%;
+            @include box-sizing(border-box);
+            @include animation-iteration-count(infinite);
+            @include animation-duration($spinner-inner-duration * 0.25);
+            @include animation-timing-function($spinner-inner-ease);
+        }
+
+        .ui-spinner-inner-left {
+            left: 0;
+            .ui-spinner-inner-half-circle {
+                left:               0;
+                border-right-color: transparent !important;
+                @include animation-name(ui-spinner-left-rotate-animation);
+            }
+        }
+
+        .ui-spinner-inner-right {
+            right: 0;
+            .ui-spinner-inner-half-circle {
+                right:              0;
+                border-left-color:  transparent !important;
+                @include animation-name(ui-spinner-right-rotate-animation);
+            }
+        }
+    }
+
+    // big
+    .ui-big .ui-spinner-inner {
+        .ui-spinner-inner-half-circle {
+            border-width: 4px;
+        }
+    }
+}

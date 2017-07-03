@@ -1,0 +1,49 @@
+﻿@import "../../_mixins.scss";
+
+.pop {
+    @include transform-origin(50%, 50%);
+}
+
+.pop.in {
+    @include transform(scale(1));
+    @include animation-name(popin);
+    @include animation-duration(350ms);
+    opacity: 1;
+}
+
+.pop.out {
+    @include animation-name(fadeout);
+    @include animation-duration(100ms);
+    opacity: 0;
+}
+
+.pop.in.reverse {
+    @include animation-name(fadein);
+}
+
+.pop.out.reverse {
+    @include transform(scale(.8));
+    @include animation-name(popout);
+}
+
+@include keyframes(popin) {
+    from {
+        @include experimental-property(transform, scale(.8));
+        opacity: 0;
+    }
+    to {
+        @include experimental-property(transform, scale(1));
+        opacity: 1;
+    }
+}
+
+@include keyframes(popout) {
+    from {
+        @include experimental-property(transform, scale(1));
+        opacity: 1;
+    }
+    to {
+        @include experimental-property(transform, scale(.8));
+        opacity: 0;
+    }
+}

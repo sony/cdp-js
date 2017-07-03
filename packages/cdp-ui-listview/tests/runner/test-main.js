@@ -39,7 +39,7 @@
 
     setupJasmine = function (callback) {
         require(['boot'], function () {
-            require(['iscroll', , 'hogan', 'testem', 'cdp.lazyload'], function (_iscroll) {
+            require(['iscroll', 'hogan', 'testem', 'cdp.lazyload'], function (_iscroll) {
                 window.IScroll = _iscroll;
                 setupTestem();
                 callback(onload);

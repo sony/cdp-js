@@ -1,0 +1,145 @@
+﻿/*** android swatch: global ***************************************************/
+
+@import "../_theme.scss";
+@import "../_mixins.scss";
+
+.ui-platform-android {
+    .ui-page-theme-#{$theme},
+    .ui-bar-#{$theme},
+    .ui-body-#{$theme},
+    .ui-group-theme-#{$theme} {
+
+        ///////////////////////////////////////////////////////////////////////
+        // separators:
+
+        .ui-separator {
+            border-bottom-color: $color-android-control-separator;
+        }
+        .ui-field-contain {
+            border-bottom-color: transparent;
+        }
+
+        ///////////////////////////////////////////////////////////////////////
+        // table opt-in classes: strokes between each row, and alternating row stripes
+        // classes table-stroke and table-stripe are deprecated in 1.4.
+
+        .table-stroke thead th,
+        .table-stripe thead th,
+        .table-stripe tbody tr:last-child {
+            border-bottom: 1px solid $color-android-theme-300;
+        }
+        .table-stroke tbody th,
+        .table-stroke tbody td {
+            border-bottom: 1px solid $color-android-theme-100;
+        }
+        .table-stripe.table-stroke tbody tr:last-child th,
+        .table-stripe.table-stroke tbody tr:last-child td {
+            border-bottom: 0;
+        }
+        .table-stripe tbody tr:nth-child(odd) td,
+        .table-stripe tbody tr:nth-child(odd) th {
+            background-color: $color-android-theme-200;
+        }
+
+        ///////////////////////////////////////////////////////////////////////
+        // icons:
+
+        [class*=ui-icon-],
+        .ui-back-indicator {
+            &:after {
+                background-color: $color-android-icon;
+            }
+        }
+
+        .ui-alt-icon [class*=ui-icon-],
+        [class*=ui-alt-icon-],
+        .ui-back-indicator.ui-alt {
+            &:after {
+                background-color: $color-android-alt-icon;
+            }
+        }
+
+        // no disc
+        .ui-nodisc-icon.ui-btn:after,
+        .ui-nodisc-icon .ui-btn:after {
+            background-color: initial;
+        }
+
+        ///////////////////////////////////////////////////////////////////////
+        // shadow:
+
+        .ui-shadow {
+            @include box-shadow(0 1px 3px $color-common-accent-transparent-light, 0 1px 2px $color-common-accent-transparent-dark);
+        }
+        .ui-shadow-inset {
+            // none
+        }
+        .ui-overlay-shadow {
+            @include box-shadow(0 0 12px $color-common-accent-transparent-dark-super);
+        }
+
+        // icon shadow
+        .ui-shadow-icon.ui-btn:after,
+        .ui-shadow-icon .ui-btn:after {
+            @include box-shadow(0 1px 0 $color-common-accent-transparent-light-super);  // {global-icon-shadow}
+        }
+    }
+
+    ///////////////////////////////////////////////////////////////////////
+    // page and overlay:
+
+    .ui-overlay-#{$theme},
+    .ui-page-theme-#{$theme}.slide.out:after {
+        background-color:   $color-android-overlay-theme;
+    }
+
+    .ui-page-theme-#{$theme} .ui-panel-wrapper {
+        background-color:   $color-android-page-theme;
+        border-color:       transparent;
+        color:              $color-android-control-font-label;
+    }
+
+    ///////////////////////////////////////////////////////////////////////
+    // label:
+
+    .ui-page-theme-#{$theme} label,
+    .ui-page-theme-#{$theme} legend,
+    .ui-bar-#{$theme} label,
+    .ui-bar-#{$theme} legend,
+    .ui-body-#{$theme} label,
+    .ui-body-#{$theme} legend,
+    .ui-group-theme-#{$theme} label,
+    .ui-group-theme-#{$theme} legend {
+        color: $color-android-control-font-label;
+    }
+
+    ///////////////////////////////////////////////////////////////////////
+    // checkbox, radio
+
+    .ui-page-theme-#{$theme}, .ui-bar-#{$theme}, .ui-body-#{$theme}, .ui-group-theme-#{$theme} {
+        .ui-checkbox, .ui-radio {
+            .ui-btn {
+                @include declare-effect-repple-center-swatch-initial(".ui-ripple-center", $color-android-ripple-center-off);
+                &:active, &:focus {
+                    @include declare-effect-repple-center-swatch-activate(".ui-ripple-center");
+                }
+            }
+            .ui-checkbox-on, .ui-radio-on {
+                @include declare-effect-repple-center-swatch-deactivate(".ui-ripple-center", $color-android-ripple-center-on);
+            }
+        }
+    }
+    .ui-checkbox, .ui-radio {
+        .ui-btn-#{$theme} {
+            @include declare-effect-repple-center-swatch-initial(".ui-ripple-center", $color-android-ripple-center-off);
+            &:active, &:focus {
+                @include declare-effect-repple-center-swatch-activate(".ui-ripple-center");
+            }
+        }
+    }
+    .ui-checkbox-on, ui-radio-on {
+        &.ui-btn-cdp {
+            @include declare-effect-repple-center-swatch-deactivate(".ui-ripple-center", $color-android-ripple-center-on);
+        }
+    }
+}

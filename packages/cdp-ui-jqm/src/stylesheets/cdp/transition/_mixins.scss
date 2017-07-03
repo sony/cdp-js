@@ -1,0 +1,15 @@
+﻿/* transition mixin */
+
+// no-reaction transition
+//
+// out の animation は不要だが、jQuery Mobile の画面遷移の挙動が、
+//   1. in の animation が out の animationend 完了後に開始される
+//   2. out の animation (の duration) が指定されていない場合、
+//      1000ms 後に Timeout して in の animation が開始される
+// となっているため、
+// out の animation を設定しない場合、in の animation 開始が 1000ms 遅れる。
+// これを回避するために、何もしないダミーのアニメーションを設定する。
+@mixin transition-no-reaction() {
+    animation-name:     transition-no-effect;
+    animation-duration: 1ms;
+}

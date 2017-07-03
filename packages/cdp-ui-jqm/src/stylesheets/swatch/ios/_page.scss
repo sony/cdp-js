@@ -1,0 +1,9 @@
+﻿/*** ios swatch: page ***************************************************/
+
+@import "../_theme.scss";
+
+.ui-platform-ios {
+    .ui-page-theme-#{$theme} {
+        background-color: $color-ios-page;
+    }
+}

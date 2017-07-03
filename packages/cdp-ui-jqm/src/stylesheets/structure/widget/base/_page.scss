@@ -1,0 +1,56 @@
+﻿/*** base structure: page ***************************************************/
+
+@import "../_metrics.scss";
+
+///////////////////////////////////////////////////////////////////////
+// 共通設定
+
+.ui-page {
+    // ワイド設定: padding なし
+    .ui-content {
+        &.ui-screen-wide {
+            padding: 0;
+        }
+        // フルスクリーン設定: ヘッダ領域まで配置
+        &.ui-screen-full {
+            position:   absolute;
+            top:        0 !important;
+            right:      0;
+            bottom:     0;
+            left:       0;
+            padding:    0;
+            margin:     0;
+        }
+    }
+}
+
+///////////////////////////////////////////////////////////////////////
+// プラットフォーム専用
+
+[class*=ui-platform-] {
+    .ui-page {
+        // fixed header 使用時にスクリプトからのオフセット設定による
+        // がたつきの回避のためヘッダの高さの自動計算は無効化
+        // fixed header を使用しないときは、".ui-page-no-fix" の指定が必須
+        &:not(.ui-header-no-fix) {
+            padding-top: $metrics-header-height !important;
+        }
+        // transition 時に ページのスクロール位置を変更させない設定
+        // body の WebView native scrollbar を使用する PageListView クラス 使用時には
+        // ".ui-page-no-fix" の指定が必須
+        &:not(.ui-page-no-fix) {
+            height: initial !important;
+            bottom: 0 !important;
+        }
+
+        // 基本スクリーン設定. (body スクロールバーなし)
+        // jqm default を使用したい場合は ".ui-screen-no-fix" を使用
+        .ui-content:not(.ui-screen-no-fix) {
+            position:   absolute;
+            top:        $metrics-header-height + $metrics-common-border-width; // default header height + border
+            right:      0;
+            bottom:     0;
+            left:       0;
+        }
+    }
+}

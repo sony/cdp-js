@@ -1,0 +1,74 @@
+﻿@import "../../_mixins.scss";
+
+/* The properties in this rule are only necessary for the 'flip' transition.
+ * We need specify the perspective to create a projection matrix. This will add
+ * some depth as the element flips. The depth number represents the distance of
+ * the viewer from the z-plane. According to the CSS3 spec, 1000 is a moderate
+ * value.
+ */
+
+.viewport-flip {
+    @include perspective(1000);
+    position: absolute;
+}
+
+.flip {
+    @include backface-visibility(hidden);
+    @include transform(translateX(0));  /* Needed to work around an iOS 3.1 bug that causes listview thumbs to disappear when -webkit-visibility:hidden is used. */
+}
+
+.flip.out {
+    @include transform(rotateY(-90deg) scale(.9));
+    @include animation-name(flipouttoleft);
+    @include animation-duration(175ms);
+}
+
+.flip.in {
+    @include animation-name(flipintoright);
+    @include animation-duration(225ms);
+}
+
+.flip.out.reverse {
+    @include transform(rotateY(90deg) scale(.9));
+    @include animation-name(flipouttoright);
+}
+
+.flip.in.reverse {
+    @include animation-name(flipintoleft);
+}
+
+@include keyframes(flipouttoleft) {
+    from {
+        @include experimental-property(transform, rotateY(0));
+    }
+    to {
+        @include experimental-property(transform, rotateY(-90deg) scale(.9));
+    }
+}
+
+@include keyframes(flipouttoright) {
+    from {
+        @include experimental-property(transform, rotateY(0));
+    }
+    to {
+        @include experimental-property(transform, rotateY(90deg) scale(.9));
+    }
+}
+
+@include keyframes(flipintoleft) {
+    from {
+        @include experimental-property(transform, rotateY(-90deg) scale(.9));
+    }
+    to {
+        @include experimental-property(transform, rotateY(0));
+    }
+}
+
+@include keyframes(flipintoright) {
+    from {
+        @include experimental-property(transform, rotateY(90deg) scale(.9));
+    }
+    to {
+        @include experimental-property(transform, rotateY(0));
+    }
+}

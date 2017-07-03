@@ -1,0 +1,83 @@
+﻿@import "../../_mixins.scss";
+
+/* flow transition */
+.flow {
+    @include transform-origin(50%, 30%);
+    @include box-shadow(0 0 20px rgba(0,0,0,.4));
+}
+
+.ui-dialog.flow {
+    @include transform-origin(initial, null);
+    @include box-shadow(none);
+}
+
+.flow.out {
+    @include transform(translateX(-100%) scale(.7));
+    @include animation-name(flowouttoleft);
+    @include animation-timing-function(ease);
+    @include animation-duration(350ms);
+}
+
+.flow.in {
+    @include transform(translateX(0) scale(1));
+    @include animation-name(flowinfromright);
+    @include animation-timing-function(ease);
+    @include animation-duration(350ms);
+}
+
+.flow.out.reverse {
+    @include transform(translateX(100%));
+    @include animation-name(flowouttoright);
+}
+
+.flow.in.reverse {
+    @include animation-name(flowinfromleft);
+}
+
+@include keyframes(flowouttoleft) {
+    0% {
+        @include experimental-property(transform, translateX(0) scale(1));
+    }
+    60%, 70% {
+        @include experimental-property(transform, translateX(0) scale(.7));
+    }
+    100% {
+        @include experimental-property(transform, translateX(-100%) scale(.7));
+    }
+}
+
+@include keyframes(flowouttoright) {
+    0% {
+        @include experimental-property(transform, translateX(0) scale(1));
+    }
+    60%, 70% {
+        @include experimental-property(transform, translateX(0) scale(.7));
+    }
+    100% {
+        @include experimental-property(transform, translateX(100%) scale(.7));
+    }
+}
+
+@include keyframes(flowinfromleft) {
+    0% {
+        @include experimental-property(transform, translateX(-100%) scale(.7));
+    }
+    30%, 40% {
+        @include experimental-property(transform, translateX(0) scale(.7));
+    }
+    100% {
+        @include experimental-property(transform, translateX(0) scale(1));
+    }
+}
+
+@include keyframes(flowinfromright) {
+    0% {
+        @include experimental-property(transform, translateX(100%) scale(.7));
+    }
+    30%, 40% {
+        @include experimental-property(transform, translateX(0) scale(.7));
+    }
+    100% {
+        @include experimental-property(transform, translateX(0) scale(1));
+    }
+}

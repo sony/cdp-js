@@ -1,0 +1,26 @@
+﻿/* base structure: metrics */
+
+// font settings
+$font-family:           "San Francisco", Roboto, Noto, Helvetica, Neue, Arial, sans-serif !default;
+$font-weight-regular:   400;    // nomal
+$font-weight-medium:    500;
+$font-weight-semi-bold: 600;
+$font-weight-bold:      700;    // bold
+
+// global
+$metrics-common-border-width: 1px;
+
+// header
+$metrics-header-height:         44px;
+$metrics-ios-status-bar-revise: 22px;
+$metrics-android-header-revise: 12px;
+
+// list
+$metrics-list-font-weight: normal;
+
+// threshold
+$metrics-small-device-short-side-threshold: 359px;
+
+// font base
+$metrics-font-base-size:        16px !default;
+$metrics-normal-line-height:    1.3 !default;

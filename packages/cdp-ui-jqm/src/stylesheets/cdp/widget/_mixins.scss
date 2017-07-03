@@ -1,0 +1,423 @@
+﻿/* base structure declaration mixins */
+
+@import "../utils/_utils.scss";
+
+///////////////////////////////////////////////////////////////////////
+// widget utility: button 作成に使用
+
+// 文字列置換
+@function str-replace($string, $old-substr, $new-substr, $all: false) {
+    $position-found: str-index($string, $old-substr);
+
+    @while ($position-found and 0 < $position-found) {
+        $length-substr: str-length($old-substr);
+        $string-pre:    str-slice($string, 0, $position-found - 1);
+        $string-post:   str-slice($string, $position-found + $length-substr);
+        $string:        $string-pre + $new-substr + $string-post;
+
+        @if ($all) {
+            $position-found: str-index($string, $old-substr);
+        } @else {
+            $position-found: 0;
+        }
+    }
+
+    @return $string;
+}
+
+// 文字列検出
+@function has-substr($string, $substr) {
+    @if null == $string or null == $substr {
+        @return false;
+    }
+    $position-found: str-index($string, $substr);
+    @if $position-found and 0 < $position-found {
+        @return true;
+    } @else {
+        @return false;
+    }
+}
+
+// 安全に map から値を取得
+@function get-props($map, $name) {
+    @if $map {
+        @return map-get($map, $name);
+    } @else {
+        @return null;
+    }
+}
+
+@mixin declare-with-class-if-exist($class) {
+    @if $class {
+        &.#{$class} {
+            @content;
+        }
+    } @else {
+        @content;
+    }
+}
+
+@mixin declare-css-from-predefined($predefined) {
+    @extend #{$predefined};
+}
+
+@mixin set-css-prop($name, $props) {
+    @if $name {
+        @if predefined == $name {
+            @include declare-css-from-predefined(#{get-props($props, $name)});
+        } @elseif background-clip == $name {
+            @include background-clip(get-props($props, $name));
+        } @elseif background-size == $name {
+            @include background-size(get-props($props, $name));
+        } @elseif border-radius == $name {
+            @include border-radius(get-props($props, $name));
+        } @elseif box-shadow == $name {
+            @include box-shadow(#{get-props($props, $name)});   // interpolation for null input.
+        } @elseif box-sizing == $name {
+            @include box-sizing(get-props($props, $name));
+        } @elseif transform == $name {
+            @include transform(get-props($props, $name));
+        } @elseif transform-origin == $name {
+            @include transform-origin(get-props($props, $name));
+        } @elseif transition == $name {
+            @include transition(get-props($props, $name));
+        } @elseif animation == $name {
+            @include animation(get-props($props, $name));
+        } @else {
+            @if selector            != $name
+                and layout          != $name
+                and base-props      != $name
+                and extend-props    != $name
+                and swatch-props    != $name
+            {
+                #{$name}: #{get-props($props, $name)};
+            }
+        }
+    }
+}
+
+@mixin declare-css-from-props($props, $black-list: null) {
+    @if list != type-of($black-list) {
+        $black-list: ($black-list);
+    }
+
+    @if $props {
+        $prop-names: map-keys($props);
+        @each $prop in $prop-names {
+            $valid: true;
+            @each $ignore-prop in $black-list {
+                @if $prop == $ignore-prop {
+                    $valid: false;
+                }
+            }
+            @if $valid {
+                @include set-css-prop($prop, $props);
+            }
+        }
+    }
+}
+
+///////////////////////////////////////////////////////////////////////
+// indicator
+
+@mixin declare-indicator($size, $width, $color, $degree, $adjust-margin-top) {
+    $margin-top: floor(-($size + $width) / 2);
+    @if $adjust-margin-top {
+        $margin-top: $adjust-margin-top;
+    }
+    position:               absolute;
+    width:                  $size;
+    height:                 $size;
+    top:                    50%;
+    margin-top:             $margin-top;
+    background-color:       transparent;
+    border-bottom:          $width solid $color;
+    border-left:            $width solid $color;
+    @include border-radius(initial);
+    @include transform(rotate($degree));
+}
+
+@mixin declare-indicator-u($size, $width, $color, $adjust-margin-top: null) {
+    @include declare-indicator($size, $width, $color, 135deg, $adjust-margin-top);
+}
+
+@mixin declare-indicator-r($size, $width, $color, $adjust-margin-top: null) {
+    @include declare-indicator($size, $width, $color, -135deg, $adjust-margin-top);
+}
+
+@mixin declare-indicator-d($size, $width, $color, $adjust-margin-top: null) {
+    @include declare-indicator($size, $width, $color, -45deg, $adjust-margin-top);
+}
+
+@mixin declare-indicator-l($size, $width, $color, $adjust-margin-top: null) {
+    @include declare-indicator($size, $width, $color, 45deg, $adjust-margin-top);
+}
+
+///////////////////////////////////////////////////////////////////////
+// check mark
+
+@mixin declare-check-mark-structure() {
+    width:              5px !important;
+    height:             10px !important;
+    border-width:       0 2px 2px 0;
+    border-style:       solid;
+    background-color:   initial;
+    background-image:   none !important;
+    @include border-radius(initial);
+}
+
+///////////////////////////////////////////////////////////////////////
+// effect ripple center
+
+@mixin declare-effect-repple-center-structure($selector, $size: 48px) {
+    #{$selector} {
+        position:       absolute;
+        display:        block;
+        width:          $size;
+        height:         $size;
+        top:            50%;
+        margin-top:     -($size / 2);
+        z-index:        10;
+        opacity:        0;
+        pointer-events: none;
+        @include border-radius(50%);
+        @include transition(background-color 0.28s ease-out);
+    }
+}
+
+@mixin declare-effect-repple-center-structure-revise($selector, $size, $frame-size, $offset) {
+    @if (null != $frame-size) and (null != $offset) {
+        $revise-margin: -(($size / 2) - ($offset + $frame-size / 2));  // px
+        .ui-btn-icon-left #{$selector} {
+            left:           0;
+            margin-left:    $revise-margin;
+        }
+        .ui-btn-icon-notext #{$selector} {
+            left:           50%;
+            margin-left:    -($size / 2);
+        }
+        .ui-btn-icon-right #{$selector} {
+            right:          0;
+            margin-right:   $revise-margin;
+        }
+    }
+}
+
+// checkbox, radio 共通の effect ripple 定義. リストコントロール内での補正
+@mixin declare-effect-repple-center-structure-checkbox-radio($control) {
+    #{$control} {
+        $frame-size:    16px;
+        $offset:        16px * 0.5625;
+        @include declare-effect-repple-center-structure(".ui-ripple-center", 48px);
+        @include declare-effect-repple-center-structure-revise(".ui-ripple-center", 48px, $frame-size, $offset);
+    }
+    .ui-listview, .ui-controlgroup:not(.ui-controlgroup-horizontal) .ui-controlgroup-controls {
+        #{$control} {
+            $frame-size:    16px;
+            $offset:        16px;
+            @include declare-effect-repple-center-structure-revise(".ui-ripple-center", 48px, $frame-size, $offset);
+        }
+    }
+}
+
+@mixin declare-effect-repple-center-swatch-initial($selector, $inactive-color) {
+    #{$selector} {
+        background-color: $inactive-color;
+    }
+}
+
+@mixin declare-effect-repple-center-swatch-activate($selector) {
+    #{$selector} {
+        @include animation(effect-ripple-center-activate 0.2s ease-out);
+    }
+}
+
+@mixin declare-effect-repple-center-swatch-deactivate($selector, $active-color) {
+    #{$selector} {
+        background-color: $active-color;
+        @include animation(effect-ripple-center-deactivate 0.4s ease-out);
+    }
+}
+
+///////////////////////////////////////////////////////////////////////
+// button
+
+// button 共通テーマ
+@mixin declare-button-theme($theme, $class) {
+    $nested-theme: has-substr($theme, " ");
+    @if $theme and $nested-theme {
+        .ui-page-theme-#{$theme} .ui-btn,
+        .ui-bar-#{$theme} .ui-btn,
+        .ui-body-#{$theme} .ui-btn,
+        .ui-group-theme-#{$theme} .ui-btn {
+            @include declare-with-class-if-exist($class) {
+                @content;
+            }
+        }
+    } @elseif $theme {
+        .ui-page-theme-#{$theme} .ui-btn,
+        .ui-bar-#{$theme} .ui-btn,
+        .ui-body-#{$theme} .ui-btn,
+        .ui-group-theme-#{$theme} .ui-btn,
+        .ui-btn.ui-btn-#{$theme} {
+            @include declare-with-class-if-exist($class) {
+                @content;
+            }
+        }
+    } @else {
+        .ui-btn {
+            @include declare-with-class-if-exist($class) {
+                @content;
+            }
+        }
+    }
+}
+
+// button state: normal
+@mixin declare-button-state-normal($theme, $class) {
+    @include declare-button-theme($theme, $class) {
+        &, &:visited {
+            @content;
+        }
+    }
+}
+
+// button state: hover
+@mixin declare-button-state-hover($theme, $class) {
+    @include declare-button-theme($theme, $class) {
+        &:hover {
+            @content;
+        }
+    }
+}
+
+// button state: pushed
+@mixin declare-button-state-pushed($theme, $class) {
+    @include declare-button-theme($theme, $class) {
+        &:active {
+            @content;
+        }
+    }
+}
+
+// button state: selected
+@mixin declare-button-state-selected($theme, $class) {
+    @include declare-button-theme($theme, $class) {
+        &.ui-state-selected {
+            @content;
+        }
+    }
+}
+
+// button state: active (obsolete)
+// anchor に対して jqm が自動で付加するため、意図しないデザインになる可能性がある
+@mixin declare-button-state-active($theme, $class) {
+    @warn active property is obsolete;
+    @include declare-button-theme($theme, $class) {
+        &.ui-btn-active {
+            @content;
+        }
+    }
+}
+
+// button state: focus
+@mixin declare-button-state-focus($theme, $class) {
+    @include declare-button-theme($theme, $class) {
+        &:focus, &.ui-focus {
+            @content;
+        }
+    }
+}
+
+// button state: disabled
+@mixin declare-button-state-disabled($theme, $class) {
+    $nested-theme: has-substr($theme, " ");
+    @if $class {
+        @if $theme and $nested-theme {
+            .ui-page-theme-#{$theme} .ui-btn.#{$class}.ui-state-disabled,
+            .ui-page-theme-#{$theme} button.#{$class}[disabled],
+            .ui-bar-#{$theme} .ui-btn.#{$class}.ui-state-disabled,
+            .ui-bar-#{$theme} button.#{$class}[disabled],
+            .ui-body-#{$theme} .ui-btn.#{$class}.ui-state-disabled,
+            .ui-body-#{$theme} button.#{$class}[disabled],
+            .ui-group-theme-#{$theme} .ui-btn.#{$class}.ui-state-disabled,
+            .ui-group-theme-#{$theme} button.#{$class}[disabled] {
+                @content;
+            }
+        } @elseif $theme {
+            .ui-page-theme-#{$theme} .ui-btn.#{$class}.ui-state-disabled,
+            .ui-page-theme-#{$theme} button.#{$class}[disabled],
+            .ui-bar-#{$theme} .ui-btn.#{$class}.ui-state-disabled,
+            .ui-bar-#{$theme} button.#{$class}[disabled],
+            .ui-body-#{$theme} .ui-btn.#{$class}.ui-state-disabled,
+            .ui-body-#{$theme} button.#{$class}[disabled],
+            .ui-group-theme-#{$theme} .ui-btn.#{$class}.ui-state-disabled,
+            .ui-group-theme-#{$theme} button.#{$class}[disabled],
+            .ui-btn.ui-btn-#{$theme}.#{$class}.ui-state-disabled {
+                @content;
+            }
+        } @else {
+            .ui-btn.#{$class}.ui-state-disabled,
+            button.#{$class}[disabled] {
+                @content;
+            }
+        }
+    } @else {
+        @if $theme and $nested-theme {
+            .ui-page-theme-#{$theme} .ui-btn.ui-state-disabled,
+            .ui-page-theme-#{$theme} button[disabled],
+            .ui-bar-#{$theme} .ui-btn.ui-state-disabled,
+            .ui-bar-#{$theme} button[disabled],
+            .ui-body-#{$theme} .ui-btn.ui-state-disabled,
+            .ui-body-#{$theme} button[disabled],
+            .ui-group-theme-#{$theme} .ui-btn.ui-state-disabled,
+            .ui-group-theme-#{$theme} button[disabled] {
+                @content;
+            }
+        } @elseif $theme {
+            .ui-page-theme-#{$theme} .ui-btn.ui-state-disabled,
+            .ui-page-theme-#{$theme} button[disabled],
+            .ui-bar-#{$theme} .ui-btn.ui-state-disabled,
+            .ui-bar-#{$theme} button[disabled],
+            .ui-body-#{$theme} .ui-btn.ui-state-disabled,
+            .ui-body-#{$theme} button[disabled],
+            .ui-group-theme-#{$theme} .ui-btn.ui-state-disabled,
+            .ui-group-theme-#{$theme} button[disabled],
+            .ui-btn.ui-btn-#{$theme}.ui-state-disabled {
+                @content;
+            }
+        } @else {
+            .ui-btn.ui-state-disabled,
+            button[disabled] {
+                @content;
+            }
+        }
+    }
+}
+
+// button の状態を一括定義
+@mixin declare-button-states($swatch-props, $theme, $class: null) {
+    @include declare-button-state-normal($theme, $class) {
+        @include declare-css-from-props(get-props($swatch-props, normal));
+    }
+    @include declare-button-state-hover($theme, $class) {
+        @include declare-css-from-props(get-props($swatch-props, hover));
+    }
+    @include declare-button-state-pushed($theme, $class) {
+        @include declare-css-from-props(get-props($swatch-props, pushed));
+    }
+    @include declare-button-state-selected($theme, $class) {
+        @include declare-css-from-props(get-props($swatch-props, selected));
+    }
+    @if null != get-props($swatch-props, active) {
+        @include declare-button-state-active($theme, $class) {
+            @include declare-css-from-props(get-props($swatch-props, active));
+        }
+    }
+    @include declare-button-state-focus($theme, $class) {
+        @include declare-css-from-props(get-props($swatch-props, focus));
+    }
+    @include declare-button-state-disabled($theme, $class) {
+        @include declare-css-from-props(get-props($swatch-props, disabled));
+    }
+}

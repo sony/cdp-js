@@ -1,0 +1,23 @@
+﻿/*** android swatch: segmented control ***************************************************/
+
+@import "../_theme.scss";
+
+.ui-platform-android {
+    .ui-page-theme-#{$theme},
+    .ui-bar-#{$theme},
+    .ui-body-#{$theme},
+    .ui-group-theme-#{$theme} {
+        .ui-controlgroup-horizontal .ui-controlgroup-controls {
+            .ui-radio, .ui-checkbox {
+                .ui-btn {
+                    // selected
+                    &.ui-btn-active {
+                        background-color:   $color-android-segmented-ctrl-active;
+                        border-color:       $color-android-segmented-ctrl-active;
+                        color:              $color-android-segmented-ctrl-font-active;
+                    }
+                }
+            }
+        }
+    }
+}

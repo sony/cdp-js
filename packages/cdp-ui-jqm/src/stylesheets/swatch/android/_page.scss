@@ -1,0 +1,9 @@
+﻿/*** android swatch: page ***************************************************/
+
+@import "../_theme.scss";
+
+.ui-platform-android {
+    .ui-page-theme-#{$theme} {
+        background-color: $color-android-page;
+    }
+}

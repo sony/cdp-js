@@ -1,0 +1,349 @@
+﻿/* theme color definitions: default */
+
+$theme: a !default;
+
+////////////////////////////////////////////////////////////////////////////////////////////
+// platform common
+
+$color-common-white:    white !default;
+$color-common-gray:     #C6C6C6 !default;
+$color-common-black:    black !default;
+
+$color-common-accent-light-super:   #EEEEEE !default;
+$color-common-accent-light:         #E0E0E0 !default;
+$color-common-accent-dark:          #BDBDBD !default;
+$color-common-accent-dark-super:    #616161 !default;
+
+$color-common-accent-transparent-light-super:   rgba(255,255,255,.3) !default;
+$color-common-accent-transparent-light:         rgba(0,0,0,.12) !default;
+$color-common-accent-transparent-dark:          rgba(0,0,0,.24) !default;
+$color-common-accent-transparent-dark-super:    rgba(0,0,0,.6) !default;
+
+////////////////////////////////////////////////////////////////////////////////////////////
+// android
+// https://material.io/guidelines/style/color.html
+
+// Grey
+$color-android-theme-50:    #FAFAFA !default;
+$color-android-theme-100:   #F5F5F5 !default;
+$color-android-theme-200:   #EEEEEE !default;
+$color-android-theme-300:   #E0E0E0 !default;
+$color-android-theme-400:   #BDBDBD !default;
+$color-android-theme-500:   #9E9E9E !default;
+$color-android-theme-600:   #757575 !default;
+$color-android-theme-700:   #616161 !default;
+$color-android-theme-800:   #424242 !default;
+$color-android-theme-900:   #212121 !default;
+$color-android-theme-A100:  transparent !default;
+$color-android-theme-A200:  transparent !default;
+$color-android-theme-A400:  transparent !default;
+$color-android-theme-A700:  transparent !default;
+
+$color-android-main-theme:                  $color-android-theme-500 !default;
+$color-android-page-theme:                  rgb(244, 244, 244) !default;
+$color-android-overlay-theme:               rgba(0, 0, 0, 0.4) !default;
+$color-android-list-theme:                  $color-common-white !default;
+$color-android-control-theme:               $color-android-theme-500 !default;
+$color-android-alt-control-theme:           $color-android-theme-500 !default;
+
+$color-android-accent-transparent-dark:     rgba(0, 0, 0, 0.1) !default;
+$color-android-accent-transparent-light:    rgba(255, 255, 255, .3) !default;
+
+$color-android-icon:                        white !default;
+$color-android-alt-icon:                    rgb(33, 33, 33) !default;
+
+$color-android-control-edge:                $color-android-theme-500 !default;
+$color-android-control-separator:           $color-common-accent-dark !default;
+$color-android-control-alt-separator:       rgb(196, 196, 196) !default;
+$color-android-control-font-label:          rgba(0, 0, 0, .54) !default;
+$color-android-control-font:                rgb(33, 33, 33) !default;
+$color-android-control-font-alt:            $color-android-main-theme !default;
+$color-android-control-font-prop:           rgb(117, 117, 117) !default;
+$color-android-control-font-selected:       white !default;
+$color-android-control-inactive:            rgb(109, 109, 109) !default;
+$color-android-control-alt-inactive:        rgb(145, 145, 145) !default;
+$color-android-control-off:                 rgb(250, 250, 250) !default;
+$color-android-control-disabled:            rgb(45, 45, 45) !default;
+$color-android-control-alt-disabled:        rgba(45, 45, 45, .5) !default;
+$color-android-control-shadow:              $color-android-overlay-theme !default;
+
+$color-android-popup-shadow:                rgba(0,0,0,.3) !default;
+$color-android-popup-shadow-alt:            rgba(0,0,0,.22) !default;
+
+$color-android-input-text:                  $color-common-black !default;
+$color-android-input-placeholder:           rgba(0,0,0,.35) !default;
+
+$color-android-emphasis:                    $color-android-main-theme !default;
+$color-android-alt-emphasis:                invert($color-android-main-theme) !default;
+
+//__________________________________________________________________________________________
+
+// button
+$color-android-button-font:             $color-android-main-theme !default;
+$color-android-button-font-selected:    null !default;
+$color-android-button-edge:             null !default;
+$color-android-button-normal:           null !default;
+$color-android-button-hover:            null !default;
+$color-android-button-pushed:           $color-android-accent-transparent-dark !default;
+$color-android-button-selected:         darken($color-android-page-theme, 20%) !default;
+$color-android-button-focus:            null !default;
+$color-android-button-disabled:         null !default;
+
+// button: emphasis
+$color-android-button-emphasis-font:             $color-android-control-font-selected !default;
+$color-android-button-emphasis-font-selected:    null !default;
+$color-android-button-emphasis-edge:             null !default;
+$color-android-button-emphasis-normal:           $color-android-emphasis !default;
+$color-android-button-emphasis-hover:            null !default;
+$color-android-button-emphasis-pushed:           lighten($color-android-emphasis, 10%) !default;
+$color-android-button-emphasis-selected:         lighten($color-android-emphasis, 5%) !default;
+$color-android-button-emphasis-focus:            null !default;
+$color-android-button-emphasis-disabled:         null !default;
+
+// button: emphasis alternative
+$color-android-button-alt-emphasis-font:             $color-android-control-font-selected !default;
+$color-android-button-alt-emphasis-font-selected:    null !default;
+$color-android-button-alt-emphasis-edge:             null !default;
+$color-android-button-alt-emphasis-normal:           $color-android-alt-emphasis !default;
+$color-android-button-alt-emphasis-hover:            null !default;
+$color-android-button-alt-emphasis-pushed:           lighten($color-android-alt-emphasis, 10%) !default;
+$color-android-button-alt-emphasis-selected:         lighten($color-android-alt-emphasis, 5%) !default;
+$color-android-button-alt-emphasis-focus:            null !default;
+$color-android-button-alt-emphasis-disabled:         null !default;
+
+// ripple
+$color-android-ripple:              $color-common-accent-dark !default;
+$color-android-ripple-emphasis:     $color-common-accent-light !default;
+$color-android-ripple-center-on:    $color-common-accent-dark !default;
+$color-android-ripple-center-off:   $color-common-accent-light !default;
+
+// header
+$color-android-header:                  $color-android-main-theme !default;
+$color-android-header-border:           $color-android-main-theme !default;
+$color-android-header-font:             $color-common-white !default;
+$color-android-header-icon:             $color-common-white !default;
+$color-android-header-ripple-center:    $color-common-accent-light !default;
+
+// page
+$color-android-page: $color-android-page-theme !default;
+
+// radio
+$color-android-radio-mark-on:   $color-android-main-theme !default;
+$color-android-radio-mark-off:  $color-android-control-inactive !default;
+
+// checkbox
+$color-android-checkbox-on:   $color-android-main-theme !default;
+$color-android-checkbox-off:  $color-android-control-inactive !default;
+
+// segmented control
+$color-android-segmented-ctrl-active:       $color-android-main-theme !default;
+$color-android-segmented-ctrl-font-active:  $color-android-control-font-selected !default;
+
+// text input
+$color-android-text-input-font:       $color-android-input-text !default;
+$color-android-text-input-active:     $color-android-main-theme !default;
+$color-android-text-input-inactive:   $color-android-input-placeholder !default;
+$color-android-text-input-icon:       $color-android-main-theme !default;
+$color-android-text-input-ripple:     $color-android-ripple-center-on !default;
+$color-android-text-input-border:     $color-common-accent-transparent-light !default;
+
+// switch
+$color-android-switch-button-on:        $color-android-main-theme !default;
+$color-android-switch-bar-on:           rgba($color-android-main-theme, 0.5) !default;
+$color-android-switch-button-off:       $color-android-control-off !default;
+$color-android-switch-bar-off:          rgba($color-common-black, 0.38) !default;
+$color-android-switch-button-disabled:  $color-android-control-disabled !default;
+$color-android-switch-bar-disabled:     $color-android-control-alt-disabled !default;
+$color-android-switch-shadow:           $color-android-control-shadow !default;
+
+// slider
+$color-android-slider-active:                   $color-android-main-theme !default;
+$color-android-slider-inactive:                 $color-android-control-alt-inactive !default;
+$color-android-slider-handle-text:              $color-android-control-font-selected !default;
+$color-android-slider-background:               $color-android-page-theme !default;
+$color-android-slider-alt-background:           $color-android-list-theme !default;
+$color-android-slider-tooltip-text:             $color-android-control-font-selected !default;
+$color-android-slider-tooltip-balloon:          $color-android-main-theme !default;
+
+// spinner
+$color-android-spinner: $color-android-main-theme !default;
+
+// list control
+$color-android-listctrl-background:             $color-common-white !default;
+$color-android-listctrl-listitem-title-font:    $color-android-control-font !default;
+$color-android-listctrl-listitem-property-font: $color-android-control-font-prop !default;
+$color-android-listctrl-listitem-pushed:        $color-android-accent-transparent-dark !default;
+$color-android-listctrl-divider-background:     $color-common-white !default;
+$color-android-listctrl-divider-font:           $color-android-control-font-alt !default;
+$color-android-listctrl-separator:              $color-android-control-alt-separator !default;
+$color-android-listctrl-indicator:              $color-android-control-alt-separator !default;
+$color-android-listctrl-static-font:            $color-android-control-font-label !default;
+$color-android-listctrl-static-background:      transparent !default;
+$color-android-listctrl-static-border:          transparent !default;
+
+// dialog
+$color-android-dialog-background:               $color-common-white !default;
+$color-android-dialog-font-title:               $color-android-control-font !default;
+$color-android-dialog-font-message:             $color-android-control-font-prop !default;
+$color-android-dialog-button-font:              $color-android-main-theme !default;
+$color-android-dialog-button-pushed:            $color-android-accent-transparent-dark !default;
+$color-android-dialog-shadow:                   $color-android-popup-shadow !default;
+$color-android-dialog-shadow-alt:               $color-android-popup-shadow-alt !default;
+$color-android-dialog-text-input-background:    null !default;
+$color-android-dialog-text-input-font:          $color-android-input-text !default;
+$color-android-dialog-text-input-border:        null !default;
+$color-android-dialog-text-input-active:        null !default;
+
+////////////////////////////////////////////////////////////////////////////////////////////
+// iOS
+
+$color-ios-main-theme:                      rgb(0, 122, 255) !default;
+$color-ios-page-theme:                      rgb(239, 239, 244) !default;
+$color-ios-overlay-theme:                   rgba(0, 0, 0, 0.4) !default;
+$color-ios-list-theme:                      $color-common-white !default;
+$color-ios-control-theme:                   $color-common-white !default;
+$color-ios-alt-control-theme:               rgb(247, 247, 248) !default;
+$color-ios-dialog-modal-theme:              rgba(255, 255, 255, .95) !default;
+
+$color-ios-accent-transparent-light:        rgba(0, 122, 255, 0.15) !default;
+$color-ios-accent-transparent-dark:         rgba(0, 0, 0, 0.2) !default;
+
+$color-ios-icon:                            rgb(33, 33, 33) !default;
+$color-ios-alt-icon:                        $color-common-white !default;
+
+$color-ios-control-edge:                    $color-ios-main-theme !default;
+$color-ios-control-separator:               $color-common-accent-dark !default;
+$color-ios-control-alt-separator:           rgb(196, 196, 196) !default;
+$color-ios-control-font-label:              rgb(109, 109, 114) !default;
+$color-ios-control-font:                    rgb(33, 33, 33) !default;
+$color-ios-control-font-alt:                rgb(142, 142, 147) !default;
+$color-ios-control-font-prop:               rgb(117, 117, 117) !default;
+$color-ios-control-font-selected:           $color-common-white !default;
+$color-ios-control-inactive:                rgb(199, 199, 204) !default;
+$color-ios-control-alt-inactive:            null !default;
+$color-ios-control-off:                     rgb(229, 229, 229) !default;
+$color-ios-control-disabled:                null !default;
+$color-ios-control-alt-disabled:            null !default;
+$color-ios-control-shadow:                  $color-ios-overlay-theme !default;
+
+$color-ios-input-text:                      $color-common-black !default;
+$color-ios-input-placeholder:               rgb(147, 147, 152) !default;
+
+$color-ios-emphasis:                        rgb(76, 217, 100) !default;
+$color-ios-alt-emphasis:                    rgb(255, 59, 48) !default;
+
+//__________________________________________________________________________________________
+
+// button
+$color-ios-button-font:             $color-ios-main-theme !default;
+$color-ios-button-font-selected:    $color-ios-control-font-selected !default;
+$color-ios-button-edge:             $color-ios-control-edge !default;
+$color-ios-button-normal:           null !default;
+$color-ios-button-hover:            null !default;
+$color-ios-button-pushed:           $color-ios-accent-transparent-light !default;
+$color-ios-button-selected:         $color-ios-main-theme !default;
+$color-ios-button-focus:            null !default;
+$color-ios-button-disabled:         null !default;
+
+// button: emphasis
+$color-ios-button-emphasis-font:             $color-ios-control-font-selected !default;
+$color-ios-button-emphasis-font-selected:    null !default;
+$color-ios-button-emphasis-edge:             $color-ios-emphasis !default;
+$color-ios-button-emphasis-normal:           $color-ios-emphasis !default;
+$color-ios-button-emphasis-hover:            null !default;
+$color-ios-button-emphasis-pushed:           lighten($color-ios-emphasis, 10%) !default;
+$color-ios-button-emphasis-selected:         $color-ios-emphasis !default;
+$color-ios-button-emphasis-focus:            null !default;
+$color-ios-button-emphasis-disabled:         null !default;
+
+// button: emphasis alternative
+$color-ios-button-alt-emphasis-font:             $color-ios-control-font-selected !default;
+$color-ios-button-alt-emphasis-font-selected:    null !default;
+$color-ios-button-alt-emphasis-edge:             $color-ios-alt-emphasis !default;
+$color-ios-button-alt-emphasis-normal:           $color-ios-alt-emphasis !default;
+$color-ios-button-alt-emphasis-hover:            null !default;
+$color-ios-button-alt-emphasis-pushed:           lighten($color-ios-alt-emphasis, 10%) !default;
+$color-ios-button-alt-emphasis-selected:         $color-ios-alt-emphasis !default;
+$color-ios-button-alt-emphasis-focus:            null !default;
+$color-ios-button-alt-emphasis-disabled:         null !default;
+
+// button: accordion
+$color-ios-button-accordion-font:             $color-ios-control-font-selected !default;
+$color-ios-button-accordion-font-selected:    null !default;
+$color-ios-button-accordion-edge:             $color-ios-control-edge !default;
+$color-ios-button-accordion-normal:           $color-ios-main-theme !default;
+$color-ios-button-accordion-hover:            null !default;
+$color-ios-button-accordion-pushed:           lighten($color-ios-main-theme, 10%) !default;
+$color-ios-button-accordion-selected:         null !default;
+$color-ios-button-accordion-focus:            null !default;
+$color-ios-button-accordion-disabled:         null !default;
+
+// header
+$color-ios-header:          $color-ios-alt-control-theme !default;
+$color-ios-header-border:   $color-ios-control-alt-separator !default;
+$color-ios-header-font:     $color-common-black !default;
+$color-ios-header-icon:     $color-ios-main-theme !default;
+$color-ios-header-button:   $color-ios-main-theme !default;
+
+// page
+$color-ios-page: $color-ios-page-theme !default;
+
+// radio
+$color-ios-radio-mark-on: $color-ios-main-theme !default;
+
+// checkbox
+$color-ios-checkbox-on-check:   $color-ios-control-theme !default;
+$color-ios-checkbox-on:         $color-ios-main-theme !default;
+$color-ios-checkbox-off:        $color-ios-control-inactive !default;
+
+// segmented control
+$color-ios-segmented-ctrl-active:       $color-ios-main-theme !default;
+$color-ios-segmented-ctrl-font-active:  $color-ios-control-font-selected !default;
+
+// text input
+$color-ios-text-input-font:         $color-ios-input-text !default;
+$color-ios-text-input-placeholder:  $color-ios-input-placeholder !default;
+$color-ios-text-input-icon:         $color-ios-input-placeholder !default;
+$color-ios-text-input-background:   $color-ios-control-theme !default;
+
+// switch
+$color-ios-switch-edge:             $color-ios-control-off !default;
+$color-ios-switch-button:           $color-ios-control-theme !default;
+$color-ios-switch-background-off:   $color-ios-control-theme !default;
+$color-ios-switch-background-on:    $color-ios-emphasis !default;
+$color-ios-switch-button-shadow:    $color-ios-control-shadow !default;
+
+// slider
+$color-ios-slider-bar:              $color-ios-control-alt-separator !default;
+$color-ios-slider-highlight:        $color-ios-main-theme !default;
+$color-ios-slider-handle:           $color-ios-control-theme !default;
+$color-ios-slider-handle-shadow:    $color-ios-control-shadow !default;
+$color-ios-slider-tooltip-text:     $color-ios-control-font-selected !default;
+$color-ios-slider-tooltip-balloon:  $color-ios-main-theme !default;
+
+// spinner
+$color-ios-spinner: $color-ios-control-font-label !default;
+
+// list control
+$color-ios-listctrl-background:             $color-common-white !default;
+$color-ios-listctrl-listitem-title-font:    $color-ios-control-font !default;
+$color-ios-listctrl-listitem-property-font: $color-ios-control-font-prop !default;
+$color-ios-listctrl-listitem-pushed:        $color-ios-accent-transparent-dark !default;
+$color-ios-listctrl-divider-background:     $color-ios-alt-control-theme !default;
+$color-ios-listctrl-divider-font:           $color-ios-control-font-alt !default;
+$color-ios-listctrl-separator:              $color-ios-control-alt-separator !default;
+$color-ios-listctrl-separator:              $color-ios-control-alt-separator !default;
+$color-ios-listctrl-indicator:              $color-ios-control-alt-separator !default;
+$color-ios-listctrl-static-font:            $color-ios-control-font-label !default;
+$color-ios-listctrl-static-background:      transparent !default;
+$color-ios-listctrl-static-border:          transparent !default;
+
+// dialog
+$color-ios-dialog-background:               $color-ios-dialog-modal-theme !default;
+$color-ios-dialog-font:                     $color-ios-input-text !default;
+$color-ios-dialog-separator:                $color-ios-control-separator !default;
+$color-ios-dialog-button-font:              $color-ios-main-theme !default;
+$color-ios-dialog-button-pushed:            $color-ios-control-off !default;
+$color-ios-dialog-text-input-background:    $color-common-white !default;
+$color-ios-dialog-text-input-font:          $color-ios-input-text !default;
+$color-ios-dialog-text-input-border:        $color-ios-control-separator !default;

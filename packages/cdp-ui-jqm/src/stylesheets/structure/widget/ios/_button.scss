@@ -1,0 +1,76 @@
+﻿/*** ios structure: buttons ***************************************************/
+
+@import "../../_mixins.scss";
+@import "../_metrics.scss";
+
+.ui-platform-ios {
+
+    $ios-button-font-size:                  14px;
+    $ios-button-font-size-big:              17px;
+    $ios-button-height:                     29px;
+    $ios-button-height-big:                 44px;
+    $ios-button-border-radius:              5px;
+    $ios-button-border-radius-alternative:  27px;
+    $ios-button-padding-horizontal:         16px;
+    $ios-button-padding-vertical:           floor(($ios-button-height - ($ios-button-font-size * $metrics-normal-line-height)) / 2);
+    $ios-button-padding-vertical-big:       floor(($ios-button-height-big - ($ios-button-font-size-big * $metrics-normal-line-height)) / 2);
+
+    /* ios regular button: flat design */
+    $button-regular: (
+        normal: (
+            font-size:          $ios-button-font-size,
+            padding:            "#{$ios-button-padding-vertical $ios-button-padding-horizontal}",
+            border:             1px solid,
+            border-radius:      $ios-button-border-radius,
+            box-sizing:         border-box,
+            background-color:   initial,
+        ),
+    );
+    @include declare-button-states($button-regular, null);
+
+    /* ios alternative button: rised design */
+    $button-alternative: (
+        normal: (
+            font-size:          $ios-button-font-size,
+            padding:            "#{$ios-button-padding-vertical $ios-button-padding-horizontal}",
+            border:             1px solid,
+            border-radius:      $ios-button-border-radius-alternative,
+            box-sizing:         border-box,
+            background-color:   initial,
+        ),
+    );
+    @include declare-button-states($button-alternative, null, ui-alt);
+    .ui-alt {
+        @include declare-button-states($button-alternative, null);
+    }
+
+    /* ios big button */
+    .ui-big {
+        .ui-btn, &.ui-btn {
+            font-size: $ios-button-font-size-big;
+            padding: {
+                top:    $ios-button-padding-vertical-big;
+                bottom: $ios-button-padding-vertical-big;
+            }
+        }
+    }
+
+    /* icon postions */
+    .ui-btn {
+        &.ui-btn-icon-left {
+            padding-left: $metrics-font-base-size * 2.5;
+        }
+        &.ui-btn-icon-right {
+            padding-right: $metrics-font-base-size * 2.5;
+        }
+        &.ui-btn-icon-top {
+            padding-top: $metrics-font-base-size * 2.5;
+        }
+        &.ui-btn-icon-bottom {
+            padding-bottom: $metrics-font-base-size * 2.5;
+        }
+        &.ui-btn-icon-notext {
+            padding: 0;
+        }
+    }
+}

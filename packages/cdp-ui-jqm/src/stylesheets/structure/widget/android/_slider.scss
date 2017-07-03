@@ -1,0 +1,54 @@
+﻿/*** android structure: slider ***************************************************/
+
+@import "../../_mixins.scss";
+@import "../_metrics.scss";
+
+.ui-platform-android {
+    .ui-slider-track {
+        .ui-btn.ui-slider-handle {
+            margin: -14px 0 0 -14px !important;
+            @include box-shadow(initial);
+            @include transition(transform 0.24s ease);
+            &:focus {
+                @include transform(scale(2));
+                @include box-shadow(initial);
+            }
+            &:after {
+                width:  12px;
+                height: 12px;
+                margin: -8px 0 0 -8px;
+            }
+        }
+
+        // disabled
+        &.ui-state-disabled {
+            opacity: 1;
+            .ui-btn-active {
+                &:after {
+                    background-color: transparent;
+                }
+            }
+            .ui-btn.ui-slider-handle {
+                @include transform(scale(0.75));
+            }
+        }
+    }
+
+    // no focus zoom
+    .ui-slider-no-scale .ui-slider-track,
+    .ui-slider-popup ~ .ui-slider-track {   // has tooltip
+        .ui-btn.ui-slider-handle {
+            &:focus {
+                @include transform(scale(1));
+            }
+        }
+    }
+
+    .ui-control-inline {
+        .ui-slider {
+            $padding-base:      $metrics-font-base-size * 0.5625;
+            $padding-adjust:    $metrics-font-base-size * 0.125;      // for vertical centering
+            padding: ($padding-base + $padding-adjust) ($metrics-font-base-size) ($padding-base - $padding-adjust);
+        }
+    }
+}

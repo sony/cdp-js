@@ -1,0 +1,70 @@
+﻿/*** android swatch: text input ***************************************************/
+
+@import "../_theme.scss";
+
+.ui-platform-android {
+    .ui-page-theme-#{$theme},
+    .ui-bar-#{$theme},
+    .ui-body-#{$theme},
+    .ui-group-theme-#{$theme} {
+        .ui-input-text, .ui-input-search, input.ui-slider-input {
+            background-color:   transparent;
+            border-color:       $color-android-text-input-border;
+            &:before {
+                border-color: $color-android-text-input-active;
+            }
+            input {
+                color: $color-android-text-input-font;
+            }
+            .ui-input-clear {
+                &:active {
+                    background-color: initial;
+                    &:before {
+                        background-color: $color-android-text-input-ripple;
+                    }
+                }
+            }
+        }
+
+        // TODO: textarea border animation
+        textarea.ui-input-text,
+        input.ui-slider-input {
+            border-color: $color-android-text-input-border;
+            &:focus, &.ui-focus {
+                border-color: $color-android-text-input-active;
+            }
+        }
+
+        [placeholder]::-webkit-input-placeholder {
+            color: $color-android-text-input-inactive;
+        }
+
+        label.ui-float-label,
+        .ui-float-label label {
+            color: $color-android-text-input-inactive;
+            &.ui-float-label-floating {
+                color: $color-android-text-input-active;
+            }
+            & + .ui-input-text, & + .ui-input-search, & + input.ui-slider-input {
+                [placeholder]::-webkit-input-placeholder, &[placeholder]::-webkit-input-placeholder {
+                    color: transparent;
+                }
+            }
+        }
+
+        @media (min-width: 28em) {
+            .ui-float-label .ui-field-contain > label,
+            .ui-field-contain > label.ui-float-label {
+                & + .ui-input-text, & + .ui-input-search, & + input.ui-slider-input {
+                    [placeholder]::-webkit-input-placeholder, &[placeholder]::-webkit-input-placeholder {
+                        color: $color-android-text-input-inactive;
+                    }
+                }
+            }
+        }
+
+        .ui-input-search:after, .ui-icon-delete:after {
+            background-color: $color-android-text-input-icon;
+        }
+    }
+}

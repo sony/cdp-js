@@ -1,0 +1,30 @@
+﻿/*** ios swatch: switch ***************************************************/
+
+@import "../_theme.scss";
+@import "../_mixins.scss";
+
+.ui-platform-ios {
+    .ui-page-theme-#{$theme},
+    .ui-bar-#{$theme},
+    .ui-body-#{$theme},
+    .ui-group-theme-#{$theme} {
+        .ui-flipswitch {
+            background-color:   $color-ios-switch-edge;
+            border-color:       $color-ios-switch-edge;
+
+            &:before {
+                background-color: $color-ios-switch-background-off;
+            }
+
+            &.ui-flipswitch-active {
+                background-color:   $color-ios-switch-background-on;
+                border-color:       $color-ios-switch-background-on;
+            }
+
+            .ui-btn {
+                background-color: $color-ios-switch-button;
+                @include box-shadow(#{"0 1px 5px 0 #{$color-ios-switch-button-shadow} !important"});
+            }
+        }
+    }
+}

@@ -10,7 +10,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'built'),
         filename: 'cdp.framework.jqm.js',
-        library: 'CDP',
+        library: ['CDP', 'Framework'],
         libraryTarget: 'umd',
     },
     devtool: 'inline-source-map',

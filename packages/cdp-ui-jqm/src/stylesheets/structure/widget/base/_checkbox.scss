@@ -1,0 +1,32 @@
+﻿/*** base structure: checkbox ***************************************************/
+
+@import "../../_mixins.scss";
+
+[class*=ui-platform-] {
+    .ui-checkbox {
+        .ui-btn {
+            z-index:    auto;
+            overflow:   visible;
+            &:after {
+                z-index:            auto;
+                background-color:   initial;
+                @include mask(#{"initial !important"});
+            }
+
+            // icon structure overwrite
+            &.ui-btn-icon-notext {
+                padding: 0;
+                &:active {
+                    background-color: initial;
+                }
+                &:after {
+                    left: 50%;
+                }
+            }
+        }
+
+        .ui-btn + input {
+            visibility: hidden;
+        }
+    }
+}

@@ -1,0 +1,53 @@
+﻿/*** ios structure: switch ***************************************************/
+
+@import "../../_mixins.scss";
+
+.ui-platform-ios {
+    .ui-flipswitch {
+        width:          52px;
+        height:         32px;
+        border-width:   2px;
+        @include border-radius(30px);
+        @include box-shadow(initial);
+        @include box-sizing(border-box);
+
+        &:before {
+            content:        "";
+            position:       absolute;
+            pointer-events: none;
+            top:            0;
+            right:          0;
+            bottom:         0;
+            left:           0;
+            @include border-radius(30px);
+            @include transition(transform 0.2s ease-in);
+            @include transform(scale(1));
+        }
+
+        &.ui-flipswitch-active {
+            width: 52px;
+
+            &:before {
+                @include transform(scale(0));
+            }
+
+            .ui-btn {
+                @include transform(translate3d(20px, 0, 0));
+            }
+        }
+
+        .ui-btn.ui-flipswitch-on {
+            width:  28px;
+            height: 28px;
+            margin: -14px 0 0;
+            @include transition(transform 0.3s);
+            @include transition-timing-function(cubic-bezier(0.5, 1.6, 0.5, 1));
+        }
+    }
+
+    .ui-control-right, .ui-control-inline {
+        .ui-flipswitch {
+            margin-top: -16px;
+        }
+    }
+}

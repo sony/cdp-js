@@ -1,0 +1,54 @@
+﻿/*** android structure: dialog ***************************************************/
+
+@import "../../_mixins.scss";
+@import "../_metrics.scss";
+
+.ui-platform-android {
+    .ui-modal {
+        width: 280px;
+        @include border-radius(3px);
+
+        .ui-content {
+            padding: 24px 24px 20px;
+
+            .ui-title {
+                margin-bottom:  20px;
+                font-size:      20px;
+                font-weight:    $font-weight-medium;
+                text-align:     left;
+            }
+
+            .ui-message {
+                font-size:      16px;
+                font-weight:    $font-weight-regular;
+                text-align:     left;
+            }
+        }
+
+        .ui-modal-footer {
+            display:    flex;
+            padding:    6px 8px;
+            border:     none;
+            @include box-pack(end);
+            @include experimental-property(justify-content, flex-end);
+
+            button, .ui-btn {
+                width:      auto;
+                height:     36px;
+                min-width:  64px;
+                font-size:  14px;
+                border:     none;
+                @include border-radius(0);
+                &.ui-text-emphasis {
+                    font-weight: $font-weight-bold; // 強調ボタンは bold
+                }
+                &:first-child {
+                    @include border-bottom-left-radius(3px);
+                }
+                &:last-child {
+                    @include border-bottom-right-radius(3px);
+                }
+            }
+        }
+    }
+}

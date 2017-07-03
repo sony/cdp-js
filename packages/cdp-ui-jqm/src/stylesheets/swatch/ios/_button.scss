@@ -1,0 +1,115 @@
+﻿/*** ios swatch: buttons ***************************************************/
+
+@import "../_theme.scss";
+@import "../_mixins.scss";
+
+.ui-platform-ios {
+
+    // theme commmon
+    $button-base: (
+        normal: (
+            color:              $color-ios-button-font,
+            background-color:   $color-ios-button-normal,
+            border-color:       $color-ios-button-edge,
+        ),
+        hover: (
+            background-color:   $color-ios-button-hover,
+        ),
+        pushed: (
+            background-color:   $color-ios-button-pushed,
+        ),
+        selected: (
+            color:              $color-ios-button-font-selected,
+            background-color:   $color-ios-button-selected,
+        ),
+        focus: (
+            background-color:   $color-ios-button-focus,
+        ),
+        disabled: (
+            background-color:   $color-ios-button-disabled,
+        ),
+    );
+    @include declare-button-states($button-base, $theme);
+    @include declare-button-states($button-base, $theme, ui-alt);
+    @include declare-button-states($button-base, "#{$theme} .ui-alt");
+
+    // emphasis
+    $button-emphasis: (
+        normal: (
+            color:              $color-ios-button-emphasis-font,
+            background-color:   $color-ios-button-emphasis-normal,
+            border-color:       $color-ios-button-emphasis-edge,
+        ),
+        hover: (
+            background-color:   $color-ios-button-emphasis-hover,
+        ),
+        pushed: (
+            opacity:            1,
+            background-color:   $color-ios-button-emphasis-pushed,
+        ),
+        selected: (
+            color:              $color-ios-button-emphasis-font-selected,
+            background-color:   $color-ios-button-emphasis-selected,
+        ),
+        focus: (
+            background-color:   $color-ios-button-emphasis-focus,
+        ),
+        disabled: (
+            background-color:   $color-ios-button-emphasis-disabled,
+        ),
+    );
+    @include declare-button-states($button-emphasis, $theme, ui-emphasis);
+
+    // emphasis alternative
+    $button-emphasis: (
+        normal: (
+            color:              $color-ios-button-alt-emphasis-font,
+            background-color:   $color-ios-button-alt-emphasis-normal,
+            border-color:       $color-ios-button-alt-emphasis-edge,
+        ),
+        hover: (
+            background-color:   $color-ios-button-alt-emphasis-hover,
+        ),
+        pushed: (
+            opacity:            1,
+            background-color:   $color-ios-button-alt-emphasis-pushed,
+        ),
+        selected: (
+            color:              $color-ios-button-alt-emphasis-font-selected,
+            background-color:   $color-ios-button-alt-emphasis-selected,
+        ),
+        focus: (
+            background-color:   $color-ios-button-alt-emphasis-focus,
+        ),
+        disabled: (
+            background-color:   $color-ios-button-alt-emphasis-disabled,
+        ),
+    );
+    @include declare-button-states($button-emphasis, $theme, ui-alt-emphasis);
+
+    // accordion
+    $button-accordion: (
+        normal: (
+            color:              $color-ios-button-accordion-font,
+            background-color:   $color-ios-button-accordion-normal,
+            border-color:       $color-ios-button-accordion-edge,
+        ),
+        hover: (
+            background-color:   $color-ios-button-accordion-hover,
+        ),
+        pushed: (
+            background-color:   $color-ios-button-accordion-pushed,
+        ),
+        selected: (
+            color:              $color-ios-button-accordion-font-selected,
+            background-color:   $color-ios-button-accordion-selected,
+        ),
+        focus: (
+            background-color:   $color-ios-button-accordion-focus,
+        ),
+        disabled: (
+            background-color:   $color-ios-button-accordion-disabled,
+        ),
+    );
+    @include declare-button-states($button-accordion, "#{$theme} .ui-collapsible", ui-collapsible-heading-toggle);
+}

@@ -1,0 +1,12 @@
+﻿/*** ios swatch: ripple effect ***************************************************/
+
+@import "../_theme.scss";
+
+.ui-platform-ios {
+    .ui-page-theme-#{$theme},
+    .ui-bar-#{$theme},
+    .ui-body-#{$theme},
+    .ui-group-theme-#{$theme} {
+        // noop
+    }
+}

@@ -1,0 +1,44 @@
+﻿/*** ios structure: text input ***************************************************/
+
+@import "../../_mixins.scss";
+@import "../_metrics.scss";
+
+.ui-platform-ios {
+   .ui-input-text, .ui-input-search, input.ui-slider-input {
+        border:         none;
+        @include border-radius(5px);
+        input {
+            min-height:     28px;
+            padding-top:    5px;
+            padding-bottom: 5px;
+        }
+    }
+
+    [placeholder]::-webkit-input-placeholder {
+        font-size:  $metrics-font-base-size * 1.0625;       // 17px
+    }
+
+    .ui-modal,
+    .ui-mini {
+        [placeholder]::-webkit-input-placeholder {
+            font-size:  $metrics-font-base-size * 0.875;    // ui-min: 14px
+        }
+    }
+
+    .ui-modal {
+       .ui-input-text, .ui-input-search, input.ui-slider-input {
+            margin: 0;
+            input {
+                height:         26px;
+                min-height:     initial;
+                padding:        0 5px;
+                margin:         15px 0 0;
+                border-style:   solid;
+                border-width:   1px;
+                box-sizing:     border-box;
+                font-size:      $metrics-font-base-size * 0.875;    // 14px
+                @include border-radius(0);
+            }
+        }
+    }
+}

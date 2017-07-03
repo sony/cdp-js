@@ -1,0 +1,15 @@
+﻿/*** ios swatch: radio buttons ***************************************************/
+
+@import "../_theme.scss";
+
+.ui-platform-ios {
+    .ui-page-theme-#{$theme} .ui-radio .ui-btn,
+    .ui-bar-#{$theme} .ui-radio .ui-btn,
+    .ui-body-#{$theme} .ui-radio .ui-btn,
+    .ui-group-theme-#{$theme} .ui-radio .ui-btn,
+    .ui-radio .ui-btn-#{$theme} {
+        &:after {
+            border-color: $color-ios-radio-mark-on;
+        }
+    }
+}

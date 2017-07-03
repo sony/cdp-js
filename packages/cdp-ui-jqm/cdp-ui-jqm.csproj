@@ -1,0 +1,409 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <ProjectGuid>{94F8B755-75F9-42A4-B02F-CB4F9C678AA6}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <OutputPath>bin</OutputPath>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UpgradeBackupLocation />
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>WebView</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>60454</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:60455/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <TypeScriptTarget>ES5</TypeScriptTarget>
+    <TypeScriptIncludeComments>true</TypeScriptIncludeComments>
+    <TypeScriptSourceMap>true</TypeScriptSourceMap>
+    <TypeScriptModuleKind>AMD</TypeScriptModuleKind>
+    <TypeScriptJSXEmit>None</TypeScriptJSXEmit>
+    <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
+    <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
+    <TypeScriptRemoveComments>False</TypeScriptRemoveComments>
+    <TypeScriptOutFile />
+    <TypeScriptOutDir />
+    <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
+    <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
+    <TypeScriptMapRoot />
+    <TypeScriptSourceRoot />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <TypeScriptTarget>ES5</TypeScriptTarget>
+    <TypeScriptIncludeComments>false</TypeScriptIncludeComments>
+    <TypeScriptSourceMap>false</TypeScriptSourceMap>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>cd $(ProjectDir)/src/stylesheets
+call compass compile -c config.rb
+cd $(ProjectDir)/tests/app/stylesheets
+call compass compile -c config.rb
+</PostBuildEvent>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include=".gitignore" />
+    <Content Include="dist\cdp.ui.jqm.css" />
+    <Content Include="dist\cdp.ui.jqm.icons.css" />
+    <Content Include="dist\cdp.ui.jqm.js" />
+    <Content Include="dist\cdp.ui.jqm.min.js">
+      <DependentUpon>cdp.ui.jqm.js</DependentUpon>
+    </Content>
+    <Content Include="dist\cdp.ui.jqm.structure.css" />
+    <Content Include="dist\cdp.ui.jqm.swatch.css" />
+    <Content Include="docs\reports\coverage\index.html" />
+    <Content Include="docs\reports\metrics\display.html" />
+    <Content Include="docs\reports\metrics\index.html" />
+    <Content Include="docs\typedoc\index.html" />
+    <Content Include="exports\cdp\ui\jqm.js">
+      <DependentUpon>jqm.ts</DependentUpon>
+    </Content>
+    <Content Include="external\backbone\scripts\backbone.js" />
+    <Content Include="external\cdp\scripts\cdp.core.js" />
+    <Content Include="external\cdp\scripts\cdp.framework.jqm.js" />
+    <Content Include="external\cdp\scripts\cdp.i18n.js" />
+    <Content Include="external\cdp\scripts\cdp.lazyload.js" />
+    <Content Include="external\cdp\scripts\cdp.promise.js" />
+    <Content Include="external\cdp\scripts\cdp.tools.js" />
+    <Content Include="external\cdp\scripts\cdp.ui.listview.js" />
+    <Content Include="external\hogan\scripts\hogan.js" />
+    <Content Include="external\iscroll\scripts\iscroll-probe.js" />
+    <Content Include="external\jquery\scripts\jquery.js" />
+    <Content Include="external\jquery\stylesheets\images\ajax-loader.gif" />
+    <Content Include="external\jquery\stylesheets\jquery.mobile.css" />
+    <Content Include="external\jquery\stylesheets\jquery.mobile.default-theme.css" />
+    <Content Include="external\jquery\stylesheets\jquery.mobile.icons.css" />
+    <Content Include="external\jquery\stylesheets\jquery.mobile.structure.css" />
+    <Content Include="external\underscore\scripts\underscore.js" />
+    <Content Include="project.config.js" />
+    <Content Include="src\scripts\cdp.ui.jqm.js">
+      <DependentUpon>cdp.ui.jqm.ts</DependentUpon>
+    </Content>
+    <Content Include="src\scripts\CDP\UI\jqm\BaseHeaderView.js">
+      <DependentUpon>BaseHeaderView.ts</DependentUpon>
+    </Content>
+    <Content Include="src\scripts\CDP\UI\jqm\BasePage.js">
+      <DependentUpon>BasePage.ts</DependentUpon>
+    </Content>
+    <Content Include="src\scripts\CDP\UI\jqm\Dialog.js">
+      <DependentUpon>Dialog.ts</DependentUpon>
+    </Content>
+    <Content Include="src\scripts\CDP\UI\jqm\DialogCommons.js">
+      <DependentUpon>DialogCommons.ts</DependentUpon>
+    </Content>
+    <Content Include="src\scripts\CDP\UI\jqm\ExtensionManager.js">
+      <DependentUpon>ExtensionManager.ts</DependentUpon>
+    </Content>
+    <Content Include="src\scripts\CDP\UI\jqm\Extension\FlipSwitch.js">
+      <DependentUpon>FlipSwitch.ts</DependentUpon>
+    </Content>
+    <Content Include="src\scripts\CDP\UI\jqm\Extension\FloatLabel.js">
+      <DependentUpon>FloatLabel.ts</DependentUpon>
+    </Content>
+    <Content Include="src\scripts\CDP\UI\jqm\Extension\IScroll.js">
+      <DependentUpon>IScroll.ts</DependentUpon>
+    </Content>
+    <Content Include="src\scripts\CDP\UI\jqm\Extension\Ripple.js">
+      <DependentUpon>Ripple.ts</DependentUpon>
+    </Content>
+    <Content Include="src\scripts\CDP\UI\jqm\Extension\Slider.js">
+      <DependentUpon>Slider.ts</DependentUpon>
+    </Content>
+    <Content Include="src\scripts\CDP\UI\jqm\Extension\Spinner.js">
+      <DependentUpon>Spinner.ts</DependentUpon>
+    </Content>
+    <Content Include="src\scripts\CDP\UI\jqm\Interfaces.js">
+      <DependentUpon>Interfaces.ts</DependentUpon>
+    </Content>
+    <Content Include="src\scripts\CDP\UI\jqm\PageExpandableListView.js">
+      <DependentUpon>PageExpandableListView.ts</DependentUpon>
+    </Content>
+    <Content Include="src\scripts\CDP\UI\jqm\PageListView.js">
+      <DependentUpon>PageListView.ts</DependentUpon>
+    </Content>
+    <Content Include="src\scripts\CDP\UI\jqm\PageView.js">
+      <DependentUpon>PageView.ts</DependentUpon>
+    </Content>
+    <Content Include="src\scripts\CDP\UI\jqm\Theme.js">
+      <DependentUpon>Theme.ts</DependentUpon>
+    </Content>
+    <Content Include="src\scripts\CDP\UI\jqm\Toast.js">
+      <DependentUpon>Toast.ts</DependentUpon>
+    </Content>
+    <Content Include="src\stylesheets\cdp.ui.jqm.css">
+      <DependentUpon>cdp.ui.jqm.scss</DependentUpon>
+    </Content>
+    <Content Include="src\stylesheets\cdp.ui.jqm.icons.css">
+      <DependentUpon>cdp.ui.jqm.icons.scss</DependentUpon>
+    </Content>
+    <Content Include="src\stylesheets\cdp.ui.jqm.structure.css">
+      <DependentUpon>cdp.ui.jqm.structure.scss</DependentUpon>
+    </Content>
+    <Content Include="src\stylesheets\cdp.ui.jqm.swatch.css">
+      <DependentUpon>cdp.ui.jqm.swatch.scss</DependentUpon>
+    </Content>
+    <Content Include="src\stylesheets\icons\android\images\arrow_back.svg" />
+    <Content Include="src\stylesheets\icons\android\images\check_circle.svg" />
+    <Content Include="src\stylesheets\icons\android\images\close.svg" />
+    <Content Include="src\stylesheets\icons\android\images\delete.svg" />
+    <Content Include="src\stylesheets\icons\ios\images\add.svg" />
+    <Content Include="src\stylesheets\icons\ios\images\add_round_fill.svg" />
+    <Content Include="src\stylesheets\icons\ios\images\delete_round_fill.svg" />
+    <Content Include="src\stylesheets\icons\ios\images\spinner.svg" />
+    <Content Include="tasks\banner.js" />
+    <Content Include="tasks\bundle.js" />
+    <Content Include="tasks\clean.js" />
+    <Content Include="tasks\external-rearrange.js" />
+    <Content Include="tasks\internal-rearrange.js" />
+    <Content Include="tasks\remap-coverage.js" />
+    <Content Include="tasks\srcmap.js" />
+    <Content Include="tests\runner\test-main.js" />
+    <Content Include="tests\runner\testem-amd.js" />
+    <Content Include="tests\runner\testem-ci.js" />
+    <Content Include="tests\unit\Toast.spec.js">
+      <DependentUpon>Toast.spec.ts</DependentUpon>
+    </Content>
+    <Content Include="tsconfig.base.json">
+      <DependentUpon>tsconfig.json</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="BANNER" />
+    <Content Include="docs\en\README.md" />
+    <Content Include="docs\images\.gitkeep" />
+    <Content Include="docs\jp\README.md" />
+    <Content Include="LICENSE" />
+    <Content Include="NOTICE" />
+    <Content Include="package.json" />
+    <Content Include="README.md" />
+    <Content Include="tests\tslint\tslint.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="dist\%40types\cdp.ui.jqm.d.ts" />
+    <TypeScriptCompile Include="exports\cdp\ui\jqm.ts" />
+    <TypeScriptCompile Include="src\scripts\%40types\dev.dependencies\index.d.ts" />
+    <TypeScriptCompile Include="src\scripts\cdp.ui.jqm.ts" />
+    <TypeScriptCompile Include="src\scripts\CDP\UI\jqm\DialogCommons.ts" />
+    <TypeScriptCompile Include="src\scripts\CDP\UI\jqm\BaseHeaderView.ts" />
+    <TypeScriptCompile Include="src\scripts\CDP\UI\jqm\BasePage.ts" />
+    <TypeScriptCompile Include="src\scripts\CDP\UI\jqm\Dialog.ts" />
+    <TypeScriptCompile Include="src\scripts\CDP\UI\jqm\ExtensionManager.ts" />
+    <TypeScriptCompile Include="src\scripts\CDP\UI\jqm\Extension\FlipSwitch.ts" />
+    <TypeScriptCompile Include="src\scripts\CDP\UI\jqm\Extension\FloatLabel.ts" />
+    <TypeScriptCompile Include="src\scripts\CDP\UI\jqm\Extension\IScroll.ts" />
+    <TypeScriptCompile Include="src\scripts\CDP\UI\jqm\Extension\Ripple.ts" />
+    <TypeScriptCompile Include="src\scripts\CDP\UI\jqm\Extension\Slider.ts" />
+    <TypeScriptCompile Include="src\scripts\CDP\UI\jqm\Extension\Spinner.ts" />
+    <TypeScriptCompile Include="src\scripts\CDP\UI\jqm\Interfaces.ts" />
+    <TypeScriptCompile Include="src\scripts\CDP\UI\jqm\PageExpandableListView.ts" />
+    <TypeScriptCompile Include="src\scripts\CDP\UI\jqm\PageListView.ts" />
+    <TypeScriptCompile Include="src\scripts\CDP\UI\jqm\Theme.ts" />
+    <TypeScriptCompile Include="src\scripts\CDP\UI\jqm\PageView.ts" />
+    <TypeScriptCompile Include="src\scripts\CDP\UI\jqm\Toast.ts" />
+    <TypeScriptCompile Include="tests\unit\Toast.spec.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include=".npmignore" />
+    <Content Include="src\stylesheets\cdp.ui.jqm.structure.scss" />
+    <Content Include="src\stylesheets\cdp.ui.jqm.swatch.scss" />
+    <Content Include="src\stylesheets\cdp\utils\_utils.scss" />
+    <Content Include="src\stylesheets\structure\jqm\forms\_button.scss" />
+    <Content Include="src\stylesheets\structure\jqm\forms\_checkboxradio.scss" />
+    <Content Include="src\stylesheets\structure\jqm\forms\_fieldcontain.scss" />
+    <Content Include="src\stylesheets\structure\jqm\forms\_flipswitch.scss" />
+    <Content Include="src\stylesheets\structure\jqm\forms\_rangeslider.scss" />
+    <Content Include="src\stylesheets\structure\jqm\forms\_select.scss" />
+    <Content Include="src\stylesheets\structure\jqm\forms\_slider.scss" />
+    <Content Include="src\stylesheets\structure\jqm\forms\_slider.tooltip.scss" />
+    <Content Include="src\stylesheets\structure\jqm\forms\_textinput.autogrow.scss" />
+    <Content Include="src\stylesheets\structure\jqm\forms\_textinput.scss" />
+    <Content Include="src\stylesheets\structure\jqm\popup\_popup.arrow.scss" />
+    <Content Include="src\stylesheets\structure\jqm\popup\_popup.scss" />
+    <Content Include="src\stylesheets\structure\jqm\table\_table.columntoggle.scss" />
+    <Content Include="src\stylesheets\structure\jqm\table\_table.reflow.scss" />
+    <Content Include="src\stylesheets\structure\jqm\table\_table.scss" />
+    <Content Include="src\stylesheets\structure\jqm\transition\_fade.scss" />
+    <Content Include="src\stylesheets\structure\jqm\transition\_flip.scss" />
+    <Content Include="src\stylesheets\structure\jqm\transition\_flow.scss" />
+    <Content Include="src\stylesheets\structure\jqm\transition\_pop.scss" />
+    <Content Include="src\stylesheets\structure\jqm\transition\_slide.scss" />
+    <Content Include="src\stylesheets\structure\jqm\transition\_slidedown.scss" />
+    <Content Include="src\stylesheets\structure\jqm\transition\_slidefade.scss" />
+    <Content Include="src\stylesheets\structure\jqm\transition\_slidein.keyframes.scss" />
+    <Content Include="src\stylesheets\structure\jqm\transition\_slideout.keyframes.scss" />
+    <Content Include="src\stylesheets\structure\jqm\transition\_slideup.scss" />
+    <Content Include="src\stylesheets\structure\jqm\transition\_transition.scss" />
+    <Content Include="src\stylesheets\structure\jqm\transition\_turn.scss" />
+    <Content Include="src\stylesheets\structure\jqm\transition\_transition.visuals.scss" />
+    <Content Include="src\stylesheets\structure\jqm\_collapsible.scss" />
+    <Content Include="src\stylesheets\structure\jqm\_controlgroup.scss" />
+    <Content Include="src\stylesheets\structure\jqm\_core.scss" />
+    <Content Include="src\stylesheets\structure\jqm\_dialog.scss" />
+    <Content Include="src\stylesheets\structure\jqm\_filterable.scss" />
+    <Content Include="src\stylesheets\structure\jqm\_fixedToolbar.scss" />
+    <Content Include="src\stylesheets\structure\jqm\_grid.scss" />
+    <Content Include="src\stylesheets\structure\jqm\_listview.scss" />
+    <Content Include="src\stylesheets\structure\jqm\_navbar.scss" />
+    <Content Include="src\stylesheets\structure\jqm\_panel.scss" />
+    <Content Include="src\stylesheets\structure\jqm\_structure.scss" />
+    <Content Include="src\stylesheets\structure\jqm\_tabs.scss" />
+    <Content Include="src\stylesheets\structure\widget\_widget.scss" />
+    <Content Include="src\stylesheets\_config.scss" />
+    <Content Include="src\stylesheets\structure\_mixins.scss" />
+    <Content Include="src\stylesheets\structure\widget\base\_button.scss" />
+    <Content Include="src\stylesheets\structure\widget\base\_checkbox.scss" />
+    <Content Include="src\stylesheets\structure\widget\base\_dialog.scss" />
+    <Content Include="src\stylesheets\structure\widget\base\_global.scss" />
+    <Content Include="src\stylesheets\structure\widget\base\_header.scss" />
+    <Content Include="src\stylesheets\structure\widget\base\_list-ctrl.scss" />
+    <Content Include="src\stylesheets\structure\widget\base\_page.scss" />
+    <Content Include="src\stylesheets\structure\widget\base\_radio-button.scss" />
+    <Content Include="src\stylesheets\structure\widget\base\_segmented-ctrl.scss" />
+    <Content Include="src\stylesheets\structure\widget\base\_slider.scss" />
+    <Content Include="src\stylesheets\structure\widget\base\_switch.scss" />
+    <Content Include="src\stylesheets\structure\widget\base\_text-input.scss" />
+    <Content Include="src\stylesheets\structure\widget\android\_button.scss" />
+    <Content Include="src\stylesheets\structure\widget\android\_checkbox.scss" />
+    <Content Include="src\stylesheets\structure\widget\android\_dialog.scss" />
+    <Content Include="src\stylesheets\structure\widget\android\_global.scss" />
+    <Content Include="src\stylesheets\structure\widget\android\_header.scss" />
+    <Content Include="src\stylesheets\structure\widget\android\_list-ctrl.scss" />
+    <Content Include="src\stylesheets\structure\widget\android\_page.scss" />
+    <Content Include="src\stylesheets\structure\widget\android\_radio-button.scss" />
+    <Content Include="src\stylesheets\structure\widget\android\_ripple.scss" />
+    <Content Include="src\stylesheets\structure\widget\android\_segmented-ctrl.scss" />
+    <Content Include="src\stylesheets\structure\widget\android\_slider.scss" />
+    <Content Include="src\stylesheets\structure\widget\android\_spinner.scss" />
+    <Content Include="src\stylesheets\structure\widget\android\_switch.scss" />
+    <Content Include="src\stylesheets\structure\widget\android\_text-input.scss" />
+    <Content Include="src\stylesheets\structure\widget\ios\_button.scss" />
+    <Content Include="src\stylesheets\structure\widget\ios\_checkbox.scss" />
+    <Content Include="src\stylesheets\structure\widget\ios\_dialog.scss" />
+    <Content Include="src\stylesheets\structure\widget\ios\_global.scss" />
+    <Content Include="src\stylesheets\structure\widget\ios\_header.scss" />
+    <Content Include="src\stylesheets\structure\widget\ios\_list-ctrl.scss" />
+    <Content Include="src\stylesheets\structure\widget\ios\_page.scss" />
+    <Content Include="src\stylesheets\structure\widget\ios\_radio-button.scss" />
+    <Content Include="src\stylesheets\structure\widget\ios\_ripple.scss" />
+    <Content Include="src\stylesheets\structure\widget\ios\_segmented-ctrl.scss" />
+    <Content Include="src\stylesheets\structure\widget\ios\_slider.scss" />
+    <Content Include="src\stylesheets\structure\widget\ios\_spinner.scss" />
+    <Content Include="src\stylesheets\structure\widget\ios\_switch.scss" />
+    <Content Include="src\stylesheets\structure\widget\ios\_text-input.scss" />
+    <Content Include="src\stylesheets\structure\transition\_common.scss" />
+    <Content Include="src\stylesheets\structure\transition\_constant.scss" />
+    <Content Include="src\stylesheets\structure\transition\_floatup.scss" />
+    <Content Include="src\stylesheets\structure\transition\_slide.scss" />
+    <Content Include="src\stylesheets\structure\transition\_slideup.scss" />
+    <Content Include="src\stylesheets\structure\transition\_transitions.scss" />
+    <Content Include="src\stylesheets\cdp.ui.jqm.icons.scss" />
+    <Content Include="src\stylesheets\cdp.ui.jqm.scss" />
+    <Content Include="src\stylesheets\icons\android\_icons.scss" />
+    <Content Include="src\stylesheets\icons\common\_icons.scss" />
+    <Content Include="src\stylesheets\icons\ios\_icons.scss" />
+    <Content Include="src\stylesheets\swatch\android\_button.scss" />
+    <Content Include="src\stylesheets\swatch\android\_checkbox.scss" />
+    <Content Include="src\stylesheets\swatch\android\_dialog.scss" />
+    <Content Include="src\stylesheets\swatch\android\_global.scss" />
+    <Content Include="src\stylesheets\swatch\android\_header.scss" />
+    <Content Include="src\stylesheets\swatch\android\_list-ctrl.scss" />
+    <Content Include="src\stylesheets\swatch\android\_page.scss" />
+    <Content Include="src\stylesheets\swatch\android\_radio-button.scss" />
+    <Content Include="src\stylesheets\swatch\android\_ripple.scss" />
+    <Content Include="src\stylesheets\swatch\android\_segmented-ctrl.scss" />
+    <Content Include="src\stylesheets\swatch\android\_slider.scss" />
+    <Content Include="src\stylesheets\swatch\android\_spinner.scss" />
+    <Content Include="src\stylesheets\swatch\android\_switch.scss" />
+    <Content Include="src\stylesheets\swatch\android\_text-input.scss" />
+    <Content Include="src\stylesheets\swatch\ios\_button.scss" />
+    <Content Include="src\stylesheets\swatch\ios\_checkbox.scss" />
+    <Content Include="src\stylesheets\swatch\ios\_dialog.scss" />
+    <Content Include="src\stylesheets\swatch\ios\_global.scss" />
+    <Content Include="src\stylesheets\swatch\ios\_header.scss" />
+    <Content Include="src\stylesheets\swatch\ios\_list-ctrl.scss" />
+    <Content Include="src\stylesheets\swatch\ios\_page.scss" />
+    <Content Include="src\stylesheets\swatch\ios\_radio-button.scss" />
+    <Content Include="src\stylesheets\swatch\ios\_ripple.scss" />
+    <Content Include="src\stylesheets\swatch\ios\_segmented-ctrl.scss" />
+    <Content Include="src\stylesheets\swatch\ios\_slider.scss" />
+    <Content Include="src\stylesheets\swatch\ios\_spinner.scss" />
+    <Content Include="src\stylesheets\swatch\ios\_switch.scss" />
+    <Content Include="src\stylesheets\swatch\ios\_text-input.scss" />
+    <Content Include="src\stylesheets\swatch\_theme.cdp.scss" />
+    <Content Include="src\stylesheets\swatch\_theme.scss" />
+    <Content Include="src\stylesheets\_icons.scss" />
+    <Content Include="src\stylesheets\_structure.scss" />
+    <Content Include="src\stylesheets\_swatch.scss" />
+    <Content Include="src\stylesheets\swatch\_mixins.scss" />
+    <Content Include="src\stylesheets\cdp\transition\_mixins.scss" />
+    <Content Include="src\stylesheets\cdp\widget\_mixins.scss" />
+    <Content Include="src\stylesheets\cdp\_mixins.scss" />
+    <Content Include="src\stylesheets\structure\widget\_metrics.scss" />
+    <Content Include="src\stylesheets\icons\_mixins.scss" />
+    <Content Include="src\stylesheets\structure\widget\base\_ripple.scss" />
+    <Content Include="src\stylesheets\structure\widget\base\_spinner.scss" />
+    <Content Include="src\stylesheets\structure\transition\_crosszoom.scss" />
+    <Content Include="src\stylesheets\structure\transition\_popzoom.scss" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="tsconfig.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="tests\eslint\eslintrc.json" />
+    <Content Include="tests\runner\index.mustache" />
+    <Content Include="tests\runner\testem.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="src\tsconfig.all.json" />
+    <Content Include="src\tsconfig.entry.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="dist\cdp.ui.jqm.min.js.map">
+      <DependentUpon>cdp.ui.jqm.js</DependentUpon>
+    </Content>
+  </ItemGroup>
+</Project>

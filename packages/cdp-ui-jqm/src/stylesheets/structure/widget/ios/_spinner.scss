@@ -1,0 +1,11 @@
+﻿/*** ios structure: spinner ***************************************************/
+
+@import "../../_mixins.scss";
+
+.ui-platform-ios {
+    .ui-spinner {
+        @include mask-position(center center);
+        @include mask-repeat(no-repeat);
+        @include mask-size(cover);
+    }
+}

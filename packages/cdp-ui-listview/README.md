@@ -39,7 +39,7 @@ If you want to use newest version, you can build the modules yourself as follow 
                 cdp.ui.listview.min.js         js modules for release with versioned.
                 cdp.ui.listview.min.js.map     js map file.
                 @types/
-                     cdp.tools.d.ts      d.ts file for this module.
+                     cdp.ui.listview.d.ts      d.ts file for this module.
 
 ### How to test the module
 

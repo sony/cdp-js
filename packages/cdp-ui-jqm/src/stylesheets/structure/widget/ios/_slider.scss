@@ -1,0 +1,24 @@
+﻿/*** ios structure: slider ***************************************************/
+
+@import "../_metrics.scss";
+
+.ui-platform-ios {
+    .ui-slider-track {
+        .ui-btn.ui-slider-handle {
+            margin: -15px 0 0 -15px !important;
+            &:after {
+                width:  28px;
+                height: 28px;
+                margin: -14px 0 0 -14px;
+            }
+        }
+    }
+
+    .ui-control-inline {
+        .ui-slider {
+            $padding-base:      $metrics-font-base-size * 0.4375;
+            $padding-adjust:    $metrics-font-base-size * 0.125;      // for vertical centering
+            padding: ($padding-base + $padding-adjust) ($metrics-font-base-size) ($padding-base - $padding-adjust);
+        }
+    }
+}

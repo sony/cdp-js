@@ -1,0 +1,54 @@
+﻿/*** transition : floatup ***************************************************/
+
+@import "../_mixins.scss";
+@import "_constant.scss";
+
+// keyframes for floatup in
+@include keyframes(floatupin) {
+    from {
+        opacity: 0;
+        @include experimental-property(transform, translate3d(0,#{$transition-floatup-new-page-offset},0));
+    }
+    to {
+        opacity: 1;
+        @include experimental-property(transform, translate3d(0,0,0));
+    }
+}
+
+// keyframes for floatup out
+@include keyframes(floatupout) {
+    from {
+        opacity: 1;
+        @include experimental-property(transform, translate3d(0,0,0));
+    }
+    to {
+        opacity: 0;
+        @include experimental-property(transform, translate3d(0,#{$transition-floatup-new-page-offset},0));
+    }
+}
+
+.floatup.out {
+    @include transition-no-reaction;
+}
+
+.floatup.in {
+    @include animation(floatupin #{$transition-floatup-duration} forwards);
+}
+
+.floatup.in.reverse {
+    @include transition-no-reaction;
+}
+
+.floatup.out.reverse {
+    @include animation(floatupout #{$transition-floatup-duration} forwards);
+}
+
+.ui-mobile-viewport-transitioning.viewport-floatup {
+    .ui-page {
+        display: block;
+        z-index: 0;
+        &.ui-page-active {
+            z-index: 1000;
+        }
+    }
+}

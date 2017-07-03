@@ -1,0 +1,14 @@
+﻿/*** ios swatch: spinner ***************************************************/
+
+@import "../_theme.scss";
+
+.ui-platform-ios {
+    .ui-page-theme-#{$theme},
+    .ui-bar-#{$theme},
+    .ui-body-#{$theme},
+    .ui-group-theme-#{$theme} {
+        .ui-spinner, .ui-icon-loading:after {
+            background-color: $color-ios-spinner;
+        }
+    }
+}

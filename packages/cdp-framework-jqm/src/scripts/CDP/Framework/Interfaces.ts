@@ -3,14 +3,19 @@
 namespace CDP.Framework {
 
     // Backbone short cut
-    export type  Model                              = Backbone.Model;
-    export const Model                              = Backbone.Model;
-    export type  Collection<TModel extends Model>   = Backbone.Collection<TModel>;
-    export const Collection                         = Backbone.Collection;
-    export type  View<TModel extends Model = Model> = Backbone.View<TModel>;
-    export const View                               = Backbone.View;
-    export type  Events                             = Backbone.Events;
-    export const Events                             = Backbone.Events;
+    export type  Model                                      = Backbone.Model;
+    export const Model                                      = Backbone.Model;
+    export type  Collection<TModel extends Model>           = Backbone.Collection<TModel>;
+    export const Collection                                 = Backbone.Collection;
+    export type  View<TModel extends Model = Model>         = Backbone.View<TModel>;
+    export const View                                       = Backbone.View;
+    export type  Events                                     = Backbone.Events;
+    export const Events                                     = Backbone.Events;
+    export type ModelSetOptions                             = Backbone.ModelSetOptions;
+    export type ModelFetchOptions                           = Backbone.ModelFetchOptions;
+    export type ModelSaveOptions                            = Backbone.ModelSaveOptions;
+    export type ModelDestroyOptions                         = Backbone.ModelDestroyOptions;
+    export type ViewOptions<TModel extends Model = Model>   = Backbone.ViewOptions<TModel>;
 
     /**
      * \~english
@@ -624,5 +629,6 @@ namespace CDP.Framework {
 }
 
 declare module "cdp.framework.jqm" {
-    export = CDP.Framework;
+    const Framework: typeof CDP.Framework;
+    export = Framework;
 }

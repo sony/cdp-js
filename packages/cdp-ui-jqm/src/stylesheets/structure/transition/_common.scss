@@ -1,0 +1,20 @@
+﻿/*** transition : common settings ***************************************************/
+
+@import "../_mixins.scss";
+
+// 何も影響を与えない keyframe 定義. 既存の定義を打ち消すために必要
+@include keyframes(transition-no-effect) {
+    from {
+        visibility: visible;
+    }
+    to {
+        visibility: visible;
+    }
+}
+
+// transition 対象 page のちらつきを抑止する
+.ui-mobile-viewport-transitioning {
+    .ui-page {
+        position: fixed;
+    }
+}
