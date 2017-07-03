@@ -4,26 +4,26 @@
 @import "_constant.scss";
 
 // keyframes for floatup in
-@include keyframes(floatupin) {
+@keyframes floatupin {
     from {
         opacity: 0;
-        @include experimental-property(transform, translate3d(0,#{$transition-floatup-new-page-offset},0));
+        transform: translate3d(0,#{$transition-floatup-new-page-offset},0);
     }
     to {
         opacity: 1;
-        @include experimental-property(transform, translate3d(0,0,0));
+        transform: translate3d(0,0,0);
     }
 }
 
 // keyframes for floatup out
-@include keyframes(floatupout) {
+@keyframes floatupout {
     from {
         opacity: 1;
-        @include experimental-property(transform, translate3d(0,0,0));
+        transform: translate3d(0,0,0);
     }
     to {
         opacity: 0;
-        @include experimental-property(transform, translate3d(0,#{$transition-floatup-new-page-offset},0));
+        transform: translate3d(0,#{$transition-floatup-new-page-offset},0);
     }
 }
 
@@ -32,7 +32,7 @@
 }
 
 .floatup.in {
-    @include animation(floatupin #{$transition-floatup-duration} forwards);
+    animation: floatupin #{$transition-floatup-duration} forwards;
 }
 
 .floatup.in.reverse {
@@ -40,7 +40,7 @@
 }
 
 .floatup.out.reverse {
-    @include animation(floatupout #{$transition-floatup-duration} forwards);
+    animation: floatupout #{$transition-floatup-duration} forwards;
 }
 
 .ui-mobile-viewport-transitioning.viewport-floatup {

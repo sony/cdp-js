@@ -65,24 +65,6 @@
     @if $name {
         @if predefined == $name {
             @include declare-css-from-predefined(#{get-props($props, $name)});
-        } @elseif background-clip == $name {
-            @include background-clip(get-props($props, $name));
-        } @elseif background-size == $name {
-            @include background-size(get-props($props, $name));
-        } @elseif border-radius == $name {
-            @include border-radius(get-props($props, $name));
-        } @elseif box-shadow == $name {
-            @include box-shadow(#{get-props($props, $name)});   // interpolation for null input.
-        } @elseif box-sizing == $name {
-            @include box-sizing(get-props($props, $name));
-        } @elseif transform == $name {
-            @include transform(get-props($props, $name));
-        } @elseif transform-origin == $name {
-            @include transform-origin(get-props($props, $name));
-        } @elseif transition == $name {
-            @include transition(get-props($props, $name));
-        } @elseif animation == $name {
-            @include animation(get-props($props, $name));
         } @else {
             @if selector            != $name
                 and layout          != $name
@@ -133,8 +115,8 @@
     background-color:       transparent;
     border-bottom:          $width solid $color;
     border-left:            $width solid $color;
-    @include border-radius(initial);
-    @include transform(rotate($degree));
+    border-radius:          initial;
+    transform:              rotate($degree);
 }
 
 @mixin declare-indicator-u($size, $width, $color, $adjust-margin-top: null) {
@@ -163,7 +145,7 @@
     border-style:       solid;
     background-color:   initial;
     background-image:   none !important;
-    @include border-radius(initial);
+    border-radius:      initial;
 }
 
 ///////////////////////////////////////////////////////////////////////
@@ -180,8 +162,8 @@
         z-index:        10;
         opacity:        0;
         pointer-events: none;
-        @include border-radius(50%);
-        @include transition(background-color 0.28s ease-out);
+        border-radius:  50%;
+        transition:     background-color 0.28s ease-out;
     }
 }
 
@@ -228,14 +210,14 @@
 
 @mixin declare-effect-repple-center-swatch-activate($selector) {
     #{$selector} {
-        @include animation(effect-ripple-center-activate 0.2s ease-out);
+        animation: effect-ripple-center-activate 0.2s ease-out;
     }
 }
 
 @mixin declare-effect-repple-center-swatch-deactivate($selector, $active-color) {
     #{$selector} {
         background-color: $active-color;
-        @include animation(effect-ripple-center-deactivate 0.4s ease-out);
+        animation: effect-ripple-center-deactivate 0.4s ease-out;
     }
 }
 

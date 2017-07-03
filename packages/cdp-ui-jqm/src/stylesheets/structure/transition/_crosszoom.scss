@@ -4,35 +4,35 @@
 @import "_constant.scss";
 
 // keyframes for crosszoom in
-@include keyframes(crosszoomin) {
+@keyframes crosszoomin {
     from {
         opacity: 0;
-        @include experimental-property(transform, translate3d(0,0,0) scale(1.185));
+        transform: translate3d(0,0,0) scale(1.185);
     }
     to {
         opacity: 1;
-        @include experimental-property(transform, translate3d(0,0,0) scale(1));
+        transform: translate3d(0,0,0) scale(1);
     }
 }
 
 // keyframes for crosszoom out
-@include keyframes(crosszoomout) {
+@keyframes crosszoomout {
     from {
         opacity: 1;
-        @include experimental-property(transform, translate3d(0,0,0) scale(1));
+        transform: translate3d(0,0,0) scale(1);
     }
     to {
         opacity: 0;
-        @include experimental-property(transform, translate3d(0,0,0) scale(.815));
+        transform: translate3d(0,0,0) scale(.815);
     }
 }
 
 .crosszoom.out {
-    @include animation(crosszoomout #{$transition-crosszoom-duration} forwards);
+    animation: crosszoomout #{$transition-crosszoom-duration} forwards;
 }
 
 .crosszoom.in {
-    @include animation(crosszoomin #{$transition-crosszoom-duration} forwards);
+    animation: crosszoomin #{$transition-crosszoom-duration} forwards;
 }
 
 .crosszoom.in.reverse {
@@ -40,7 +40,7 @@
 }
 
 .crosszoom.out.reverse {
-    @include animation(crosszoomout #{$transition-crosszoom-duration} forwards);
+    animation: crosszoomout #{$transition-crosszoom-duration} forwards;
 }
 
 .ui-mobile-viewport-transitioning.viewport-crosszoom {

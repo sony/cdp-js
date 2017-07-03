@@ -5,46 +5,46 @@
 
 
 // keyframes for slidein from sides
-@include keyframes(slideinfromright) {
+@keyframes slideinfromright {
     from {
-        @include experimental-property(transform, translate3d($transition-slide-placement-range,0,0));
+        transform: translate3d($transition-slide-placement-range,0,0);
     }
     to {
-        @include experimental-property(transform, translate3d(0,0,0));
+        transform: translate3d(0,0,0);
     }
 }
 
-@include keyframes(slideinfromleft) {
+@keyframes slideinfromleft {
     from {
-        @include experimental-property(transform, translate3d(-$transition-slide-placement-range-small,0,0));
+        transform: translate3d(-$transition-slide-placement-range-small,0,0);
     }
     to {
-        @include experimental-property(transform, translate3d(0,0,0));
+        transform: translate3d(0,0,0);
     }
 }
 
 // keyframes for slideout to sides
-@include keyframes(slideouttoleft) {
+@keyframes slideouttoleft {
     from {
-        @include experimental-property(transform, translate3d(0,0,0));
+        transform: translate3d(0,0,0);
     }
     to {
-        @include experimental-property(transform, translate3d(-$transition-slide-placement-range-small,0,0));
+        transform: translate3d(-$transition-slide-placement-range-small,0,0);
     }
 }
 
-@include keyframes(slideouttoright) {
+@keyframes slideouttoright {
     from {
-        @include experimental-property(transform, translate3d(0,0,0));
+        transform: translate3d(0,0,0);
     }
     to {
-        @include experimental-property(transform, translate3d($transition-slide-placement-range,0,0));
+        transform: translate3d($transition-slide-placement-range,0,0);
     }
 }
 
 .slide.out, .slide.in {
-    @include animation-timing-function($transition-slide-timing-function);
-    @include animation-duration($transition-slide-duration);
+    animation-timing-function: $transition-slide-timing-function;
+    animation-duration: $transition-slide-duration;
 }
 
 .slide.out.reverse {

@@ -3,7 +3,7 @@
 @import "../_mixins.scss";
 
 // 何も影響を与えない keyframe 定義. 既存の定義を打ち消すために必要
-@include keyframes(transition-no-effect) {
+@keyframes transition-no-effect {
     from {
         visibility: visible;
     }

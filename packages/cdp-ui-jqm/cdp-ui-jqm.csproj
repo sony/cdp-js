@@ -406,4 +406,7 @@ call compass compile -c config.rb
       <DependentUpon>cdp.ui.jqm.js</DependentUpon>
     </Content>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="src\stylesheets\cdp\utils\_reset.scss" />
+  </ItemGroup>
 </Project>
