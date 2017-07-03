@@ -74,7 +74,7 @@ label.ui-btn {
 // corner rounding:
 
 .ui-corner-all {
-    @include border-radius(#{$metrics-font-base-size * 0.3125});    // {global-radii-blocks}
+    border-radius: $metrics-font-base-size * 0.3125;    // {global-radii-blocks}
 }
 // buttons
 .ui-btn.ui-corner-all,
@@ -84,19 +84,19 @@ label.ui-btn {
 .ui-flipswitch.ui-corner-all,
 // count bubble
 .ui-li-count {
-    @include border-radius(#{$metrics-font-base-size * 0.3125});    // {global-radii-buttons}
+    border-radius: $metrics-font-base-size * 0.3125;    // {global-radii-buttons}
 }
 
 // icon-only buttons
 .ui-btn-icon-notext.ui-btn-corner-all,
 .ui-btn-icon-notext.ui-corner-all {
-    @include border-radius($metrics-font-base-size);
+    border-radius: $metrics-font-base-size;
 }
 
 // radius clip workaround for cleaning up corner trapping
 .ui-btn-corner-all, // Class ui-btn-corner-all deprecated in 1.4
 .ui-corner-all {
-    @include background-clip(padding-box);
+    background-clip: padding-box;
 }
 
 // popup arrow
@@ -187,9 +187,9 @@ label.ui-btn {
 
 [class*=ui-platform-] [class*=ui-btn-icon-] {
     &:after, &:before {
-        @include mask-position(center center);
-        @include mask-repeat(no-repeat);
-        @include mask-size(cover);
+        mask-position:  center center;
+        mask-repeat:    no-repeat;
+        mask-size:      cover;
     }
 }
 
@@ -200,8 +200,8 @@ $indicator-list: l, r, u, d;
         &:after {
             background-image: none !important;
             background-color: initial !important;
-            @include mask(#{"initial !important"});
-            @include border-radius(initial);
+            mask:             initial !important;
+            border-radius:    initial;
             @if l == $indicator-id {
                 @include declare-indicator-l(8px, 2px, null);
             } @elseif r == $indicator-id {
@@ -246,18 +246,18 @@ button[disabled],
 ///////////////////////////////////////////////////////////////////////
 // animation: effect icon ripple
 
-@include keyframes(effect-ripple-center-activate) {
+@keyframes effect-ripple-center-activate {
     from {
         opacity: 0;
-        @include experimental-property(transform, scale(0));
+        transform: scale(0);
     }
     to {
         opacity: 0.3;
-        @include experimental-property(transform, scale(1));
+        transform: scale(1);
     }
 }
 
-@include keyframes(effect-ripple-center-deactivate) {
+@keyframes effect-ripple-center-deactivate {
     from {
         opacity: 0.3;
     }

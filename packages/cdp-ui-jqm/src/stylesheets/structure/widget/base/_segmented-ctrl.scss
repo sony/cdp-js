@@ -16,16 +16,16 @@
                 border-right-width: 0;
                 font-weight:        normal;
                 text-align:         center;
-                @include background-clip(border-box);
-                @include transition(background-color 0.32s ease-in-out);
-                @include transform(scale3d(1, 1, 1));
+                background-clip:    border-box;
+                transition:         background-color 0.32s ease-in-out;
+                transform:          scale3d(1, 1, 1);
                 &:not(.ui-first-child) {
-                    @include border-top-left-radius(initial);
-                    @include border-bottom-left-radius(initial);
+                    border-top-left-radius:     initial;
+                    border-bottom-left-radius:  initial;
                 }
                 &:not(.ui-last-child) {
-                    @include border-top-right-radius(initial);
-                    @include border-bottom-right-radius(initial);
+                    border-top-right-radius:    initial;
+                    border-bottom-right-radius: initial;
                 }
                 &.ui-last-child {
                     border-right-width: 1px;

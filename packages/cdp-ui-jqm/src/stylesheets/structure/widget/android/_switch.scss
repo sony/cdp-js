@@ -8,22 +8,22 @@
         height:         14px;
         top:            50%;
         border-width:   0;
-        @include border-radius(8px);
-        @include transition(background-color 0.24s ease-in);
+        border-radius:  8px;
+        transition:     background-color 0.24s ease-in;
 
         &.ui-flipswitch-active {
             width: 36px;
             .ui-btn {
-                @include transform(translate3d(16px, 0, 0));
+                transform: translate3d(16px, 0, 0);
             }
         }
 
         .ui-btn.ui-flipswitch-on {
-            width:  20px;
-            height: 20px;
-            margin: -10px 0 0;
-            @include transition(transform 0.24s);
-            @include transition-timing-function(cubic-bezier(0.5, 1.6, 0.5, 1));
+            width:                      20px;
+            height:                     20px;
+            margin:                     -10px 0 0;
+            transition:                 transform 0.24s;
+            transition-timing-function: cubic-bezier(0.5, 1.6, 0.5, 1);
             &:before {
                 content:        "";
                 position:       absolute;
@@ -37,8 +37,8 @@
                 z-index:        10;
                 opacity:        0;
                 pointer-events: none;
-                @include border-radius(50%);
-                @include transition(background-color 0.28s ease-out);
+                border-radius:  50%;
+                transition:     background-color 0.28s ease-out;
             }
         }
     }

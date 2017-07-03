@@ -5,8 +5,8 @@
 
 .ui-platform-ios {
     .ui-modal {
-        width: 270px;
-        @include border-radius(13px);
+        width:          270px;
+        border-radius:  13px;
 
         .ui-content {
             padding: 15px;
@@ -29,14 +29,14 @@
             border-style:       solid;
             border-top-width:   1px;
             button, .ui-btn {
-                height:     44px;
-                font-size:  17px;
-                @include border-radius(0);
+                height:         44px;
+                font-size:      17px;
+                border-radius:  0;
                 &:first-child {
-                    @include border-bottom-left-radius(13px);
+                    border-bottom-left-radius: 13px;
                 }
                 &:last-child {
-                    @include border-bottom-right-radius(13px);
+                    border-bottom-right-radius: 13px;
                 }
             }
         }

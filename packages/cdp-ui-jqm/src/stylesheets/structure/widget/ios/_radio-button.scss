@@ -18,7 +18,7 @@
                 &:after {
                     margin:     -7px 1px 0 0;
                     opacity:    1;
-                    @include transform(rotate(45deg));
+                    transform:  rotate(45deg);
                 }
             }
             &.ui-btn-icon-notext {

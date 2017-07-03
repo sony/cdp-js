@@ -6,12 +6,12 @@
 .ui-platform-android {
     .ui-slider-track {
         .ui-btn.ui-slider-handle {
-            margin: -14px 0 0 -14px !important;
-            @include box-shadow(initial);
-            @include transition(transform 0.24s ease);
+            margin:     -14px 0 0 -14px !important;
+            box-shadow: initial;
+            transition: transform 0.24s ease;
             &:focus {
-                @include transform(scale(2));
-                @include box-shadow(initial);
+                transform:  scale(2);
+                box-shadow: initial;
             }
             &:after {
                 width:  12px;
@@ -29,7 +29,7 @@
                 }
             }
             .ui-btn.ui-slider-handle {
-                @include transform(scale(0.75));
+                transform: scale(0.75);
             }
         }
     }
@@ -39,7 +39,7 @@
     .ui-slider-popup ~ .ui-slider-track {   // has tooltip
         .ui-btn.ui-slider-handle {
             &:focus {
-                @include transform(scale(1));
+                transform: scale(1);
             }
         }
     }

@@ -22,7 +22,7 @@
         .ui-message {
             line-height:    $metrics-normal-line-height;
             white-space:    pre-wrap;
-            @include word-break(break-word);
+            word-break:     break-word;
         }
     }
 

@@ -42,10 +42,10 @@
 
 [class*="ui-platform-"] {
     .ui-flipswitch {
-        position: relative;
-        top:      50%;
-        overflow: visible;
-        @include background-clip(initial);
+        position:           relative;
+        top:                50%;
+        overflow:           visible;
+        background-clip:    initial;
 
         &.ui-flipswitch-active {
             padding-left: 0;
@@ -60,7 +60,7 @@
                 color:          transparent !important;
                 text-shadow:    none;
                 text-indent:    initial;
-                @include border-radius(50%);
+                border-radius:  50%;
             }
         }
         .ui-flipswitch-off {

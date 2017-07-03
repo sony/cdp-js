@@ -4,8 +4,8 @@
 
 .ui-platform-ios {
     .ui-spinner {
-        @include mask-position(center center);
-        @include mask-repeat(no-repeat);
-        @include mask-size(cover);
+        mask-position:  center center;
+        mask-repeat:    no-repeat;
+        mask-size:      cover;
     }
 }

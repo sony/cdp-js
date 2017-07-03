@@ -5,9 +5,9 @@
 .ui-platform-android {
 
     .ui-ripple {
-        overflow:   hidden !important;
-        cursor:     pointer;
-        @include user-select(none);
+        overflow:       hidden !important;
+        cursor:         pointer;
+        user-select:    none;
     }
 
     .ui-ripple-ink {
@@ -15,18 +15,18 @@
         display:        block;
         border-radius:  50%;
         opacity:        0.4;
-        @include transform(scale(0));
+        transform:      scale(0);
     }
 
     /* animation effect */
     .ui-ripple-ink.ui-ripple-animate {
-        @include animation(ripple 0.6s linear);
+        animation: ripple 0.6s linear;
     }
 
-    @include keyframes(ripple) {
+    @keyframes ripple {
         100% {
-            opacity: 0;
-            @include experimental-property(transform, scale(2.5));
+            opacity:    0;
+            transform:  scale(2.5);
         }
     }
 }

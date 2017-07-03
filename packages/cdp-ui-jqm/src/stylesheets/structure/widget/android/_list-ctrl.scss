@@ -39,10 +39,10 @@
 
     // inset radius
     .ui-listview-inset {
-        @include border-radius(0 0 2px 2px);
+        border-radius: 0 0 2px 2px;
         > li.ui-last-child {
             &, &.ui-control-inline > label.ui-btn, label.ui-btn.ui-last-child, a.ui-btn {
-                @include border-radius(0 0 2px 2px);
+                border-radius: 0 0 2px 2px;
             }
         }
     }

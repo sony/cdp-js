@@ -91,7 +91,7 @@
         &,
         &.ui-control-inline > label.ui-btn,
         a.ui-btn {
-            @include border-radius(initial);
+            border-radius: initial;
         }
     }
 

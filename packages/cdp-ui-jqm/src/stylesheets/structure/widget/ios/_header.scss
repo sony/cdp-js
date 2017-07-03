@@ -5,7 +5,7 @@
 @import "../../transition/_constant.scss";
 
 // 各ページのヘッダに定義される back-navigator の keyframes
-@include keyframes(ui-back-indicator-out) {
+@keyframes ui-back-indicator-out {
     0% {
         opacity: 1;
     }
@@ -17,7 +17,7 @@
     }
 }
 
-@include keyframes(ui-back-indicator-in) {
+@keyframes ui-back-indicator-in {
     0% {
         opacity: 0;
     }
@@ -41,8 +41,8 @@
         margin-left:    8px;
         left:           8px;
         padding-top:    0;
+        transition:     opacity $transition-slide-duration ease-in;
         @include declare-indicator-l(12px, 3px, null, -7px);
-        @include transition(opacity $transition-slide-duration ease-in);
         &.show {
             opacity: 1;
         }
@@ -101,7 +101,7 @@
             text-shadow:    none;
             font-size:      $metrics-font-base-size;
             font-weight:    normal;
-            @include transition(color $transition-slide-duration $transition-slide-timing-function);
+            transition:     color $transition-slide-duration $transition-slide-timing-function;
             &:active, &:focus {
                 opacity: 0.5;
             }
@@ -112,7 +112,7 @@
         }
 
         .ui-title {
-            @include transition(opacity $transition-slide-duration $transition-slide-timing-function);
+            transition: opacity $transition-slide-duration $transition-slide-timing-function;
         }
     }
 
@@ -130,7 +130,7 @@
     .slide.out {
         .ui-header {
             .ui-back-indicator {
-                @include animation(ui-back-indicator-out $transition-slide-duration $transition-slide-timing-function);
+                animation: ui-back-indicator-out $transition-slide-duration $transition-slide-timing-function;
             }
             .ui-title {
                 opacity: 0;
@@ -141,7 +141,7 @@
     .slide.in {
         .ui-header {
             .ui-back-indicator {
-                @include animation(ui-back-indicator-in $transition-slide-duration $transition-slide-timing-function);
+                animation: ui-back-indicator-in $transition-slide-duration $transition-slide-timing-function;
             }
         }
     }

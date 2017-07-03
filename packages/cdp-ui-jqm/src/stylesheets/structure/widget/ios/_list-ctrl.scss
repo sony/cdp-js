@@ -40,18 +40,18 @@
 
     // inset radius
     .ui-listview-inset {
-        @include border-radius(7px);
-        @include box-shadow(initial);
+        border-radius:  7px;
+        box-shadow:     initial;
         > li.ui-first-child {
             &, &.ui-control-inline > label.ui-btn, label.ui-btn.ui-first-child, a.ui-btn {
-                @include border-top-left-radius(7px);
-                @include border-top-right-radius(7px);
+                border-top-left-radius:     7px;
+                border-top-right-radius:    7px;
             }
         }
         > li.ui-last-child {
             &, &.ui-control-inline > label.ui-btn, label.ui-btn.ui-last-child, a.ui-btn {
-                @include border-bottom-left-radius(7px);
-                @include border-bottom-right-radius(7px);
+                border-bottom-left-radius:  7px;
+                border-bottom-right-radius: 7px;
             }
         }
     }

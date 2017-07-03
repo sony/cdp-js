@@ -35,7 +35,7 @@
     .ui-slider-track {
         background-color:   initial;
         border:             initial;
-        @include box-shadow(initial);
+        box-shadow:         initial;
         &:after {
             content:        "";
             position:       absolute;
@@ -68,7 +68,7 @@
             overflow:           visible;
             font-size:          $metrics-font-base-size * 0.625;    // default: 10px
             line-height:        30px;       // 28 + (1 * 2)
-            @include border-radius(50%);
+            border-radius:      50%;
 
             &:after {
                 content:        "";
@@ -77,7 +77,7 @@
                 z-index:        -1;
                 top:            50%;
                 left:           50%;
-                @include border-radius(50%);
+                border-radius:  50%;
             }
         }
 
@@ -108,8 +108,8 @@
         pointer-events:     none;
         font-size:          $metrics-font-base-size * 0.625;    // default: 10px
         line-height:        105px;
-        @include box-shadow(#{"initial !important"});
-        @include transition(line-height 0.24s ease, color 0.24s ease);
+        box-shadow:         initial !important;
+        transition:         line-height 0.24s ease, color 0.24s ease;
 
         &:after {
             content:        "";
@@ -123,8 +123,8 @@
             z-index:        -1;
             visibility:     visible;
             pointer-events: none;
-            @include transform(rotate(-45deg) scale(1) translate(17px, -17px));
-            @include transition(transform 0.24s ease);
+            transform:      rotate(-45deg) scale(1) translate(17px, -17px);
+            transition:     transform 0.24s ease;
         }
     }
     .ui-slider-popup[style*=none] {
@@ -133,7 +133,7 @@
         color:          transparent;
         line-height:    160px;
         &:after {
-            @include transform(rotate(-45deg) scale(0) translate(0));
+            transform:  rotate(-45deg) scale(0) translate(0);
         }
     }
 }

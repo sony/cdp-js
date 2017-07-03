@@ -7,19 +7,19 @@
         .ui-radio, .ui-checkbox {
             .ui-btn {
                 &.ui-first-child {
-                    @include border-top-left-radius(5px);
-                    @include border-bottom-left-radius(5px);
+                    border-top-left-radius:     5px;
+                    border-bottom-left-radius:  5px;
                     &.ui-alt {
-                        @include border-top-left-radius(27px);
-                        @include border-bottom-left-radius(27px);
+                        border-top-left-radius:     27px;
+                        border-bottom-left-radius:  27px;
                     }
                 }
                 &.ui-last-child {
-                    @include border-top-right-radius(5px);
-                    @include border-bottom-right-radius(5px);
+                    border-top-right-radius:    5px;
+                    border-bottom-right-radius: 5px;
                     &.ui-alt {
-                        @include border-top-right-radius(27px);
-                        @include border-bottom-right-radius(27px);
+                        border-top-right-radius:    27px;
+                        border-bottom-right-radius: 27px;
                     }
                 }
             }
@@ -28,12 +28,12 @@
             .ui-radio, .ui-checkbox {
                 .ui-btn {
                     &.ui-first-child {
-                        @include border-top-left-radius(27px);
-                        @include border-bottom-left-radius(27px);
+                        border-top-left-radius:     27px;
+                        border-bottom-left-radius:  27px;
                     }
                     &.ui-last-child {
-                        @include border-top-right-radius(27px);
-                        @include border-bottom-right-radius(27px);
+                        border-top-right-radius:    27px;
+                        border-bottom-right-radius: 27px;
                     }
                 }
             }

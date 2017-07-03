@@ -7,9 +7,9 @@
         width:          52px;
         height:         32px;
         border-width:   2px;
-        @include border-radius(30px);
-        @include box-shadow(initial);
-        @include box-sizing(border-box);
+        border-radius:  30px;
+        box-shadow:     initial;
+        box-sizing:     border-box;
 
         &:before {
             content:        "";
@@ -19,29 +19,29 @@
             right:          0;
             bottom:         0;
             left:           0;
-            @include border-radius(30px);
-            @include transition(transform 0.2s ease-in);
-            @include transform(scale(1));
+            border-radius:  30px;
+            transition:     transform 0.2s ease-in;
+            transform:      scale(1);
         }
 
         &.ui-flipswitch-active {
             width: 52px;
 
             &:before {
-                @include transform(scale(0));
+                transform: scale(0);
             }
 
             .ui-btn {
-                @include transform(translate3d(20px, 0, 0));
+                transform: translate3d(20px, 0, 0);
             }
         }
 
         .ui-btn.ui-flipswitch-on {
-            width:  28px;
-            height: 28px;
-            margin: -14px 0 0;
-            @include transition(transform 0.3s);
-            @include transition-timing-function(cubic-bezier(0.5, 1.6, 0.5, 1));
+            width:                      28px;
+            height:                     28px;
+            margin:                     -14px 0 0;
+            transition:                 transform 0.3s;
+            transition-timing-function: cubic-bezier(0.5, 1.6, 0.5, 1);
         }
     }
 

@@ -10,7 +10,7 @@
             &:after {
                 z-index:            auto;
                 background-color:   initial;
-                @include mask(#{"initial !important"});
+                mask:               initial !important;
             }
 
             // icon structure overwrite

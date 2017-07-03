@@ -19,9 +19,9 @@
                     style: solid;
                     width: 1px;
                 }
-                @include border-radius(50%);
-                @include box-sizing(border-box);
-                @include mask(#{"initial !important"});
+                border-radius:  50%;
+                box-sizing:     border-box;
+                mask:           initial !important;
             }
             &:after {
                 @include declare-check-mark-structure();
@@ -36,7 +36,7 @@
                 &:after {
                     margin:     -7px 1px 0 0;
                     opacity:    1;
-                    @include transform(rotate(45deg));
+                    transform:  rotate(45deg);
                 }
             }
             &.ui-btn-icon-notext {

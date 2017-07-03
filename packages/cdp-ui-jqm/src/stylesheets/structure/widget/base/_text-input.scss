@@ -12,7 +12,7 @@
         &.ui-input-has-clear .ui-btn.ui-input-clear {
             margin-top:     -11px;
             border-style:   none;
-            @include box-shadow(none);
+            box-shadow:     none;
         }
 
         [placeholder]::-webkit-input-placeholder {

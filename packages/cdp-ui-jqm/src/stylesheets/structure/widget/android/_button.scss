@@ -3,15 +3,15 @@
 @import "../../_mixins.scss";
 @import "../_metrics.scss";
 
-@include keyframes(android-animation-button-active) {
+@keyframes android-animation-button-active {
     0% {
-        @include experimental-property(transform, scale(0.96));
+        transform: scale(0.96);
     }
     50% {
-        @include experimental-property(transform, scale(0.9));
+        transform: scale(0.9);
     }
     100% {
-        @include experimental-property(transform, scale(0.96));
+        transform: scale(0.96);
     }
 }
 
@@ -24,10 +24,10 @@
         left:           50%;
         margin-left:    -50%;
         z-index:        -1;
-        @include border-radius(50%);
-        @include transform(scale(0.96));
-        @include animation(android-animation-button-active 4s ease-in-out infinite);
-        @include transition(background-color 1s);
+        border-radius:  50%;
+        transform:      scale(0.96);
+        animation:      android-animation-button-active 4s ease-in-out infinite;
+        transition:     background-color 1s;
     }
 }
 
@@ -112,7 +112,7 @@
                 top:    $android-button-padding-vertical-big;
                 bottom: $android-button-padding-vertical-big;
             }
-            @include border-radius($android-button-border-radius-big);
+            border-radius: $android-button-border-radius-big;
         }
     }
 

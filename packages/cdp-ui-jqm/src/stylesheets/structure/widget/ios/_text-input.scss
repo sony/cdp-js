@@ -6,7 +6,7 @@
 .ui-platform-ios {
    .ui-input-text, .ui-input-search, input.ui-slider-input {
         border:         none;
-        @include border-radius(5px);
+        border-radius:  5px;
         input {
             min-height:     28px;
             padding-top:    5px;
@@ -37,7 +37,7 @@
                 border-width:   1px;
                 box-sizing:     border-box;
                 font-size:      $metrics-font-base-size * 0.875;    // 14px
-                @include border-radius(0);
+                border-radius:  0;
             }
         }
     }

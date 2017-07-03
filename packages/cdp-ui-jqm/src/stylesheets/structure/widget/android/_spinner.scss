@@ -2,57 +2,57 @@
 
 @import "../../_mixins.scss";
 
-@include keyframes(ui-spinner-outer-animation) {
+@keyframes ui-spinner-outer-animation {
     0% {
-        @include experimental-property(transform, rotate(0));
+        transform: rotate(0);
     }
     100% {
-        @include experimental-property(transform, rotate(360deg));
+        transform: rotate(360deg);
     }
 }
 
-@include keyframes(ui-spinner-left-rotate-animation) {
+@keyframes ui-spinner-left-rotate-animation {
     0%, 100% {
-        @include experimental-property(transform, rotate(130deg));
+        transform: rotate(130deg);
     }
     50% {
-        @include experimental-property(transform, rotate(-5deg));
+        transform: rotate(-5deg);
     }
 }
 
-@include keyframes(ui-spinner-right-rotate-animation) {
+@keyframes ui-spinner-right-rotate-animation {
     0%, 100% {
-        @include experimental-property(transform, rotate(-130deg));
+        transform: rotate(-130deg);
     }
     50% {
-        @include experimental-property(transform, rotate(5deg));
+        transform: rotate(5deg);
     }
 }
 
-@include keyframes(ui-spinner-inner-rotate-animation) {
+@keyframes ui-spinner-inner-rotate-animation {
     12.5% {
-        @include experimental-property(transform, rotate(135deg));
+        transform: rotate(135deg);
     }
     25% {
-        @include experimental-property(transform, rotate(270deg));
+        transform: rotate(270deg);
     }
     37.5% {
-        @include experimental-property(transform, rotate(405deg));
+        transform: rotate(405deg);
     }
     50% {
-        @include experimental-property(transform, rotate(540deg));
+        transform: rotate(540deg);
     }
     62.5% {
-        @include experimental-property(transform, rotate(675deg));
+        transform: rotate(675deg);
     }
     75% {
-        @include experimental-property(transform, rotate(810deg));
+        transform: rotate(810deg);
     }
     87.5% {
-        @include experimental-property(transform, rotate(945deg));
+        transform: rotate(945deg);
     }
     100% {
-        @include experimental-property(transform, rotate(1080deg));
+        transform: rotate(1080deg);
     }
 }
 
@@ -75,7 +75,7 @@
         font-size:  0;
         width:      100%;
         height:     100%;
-        @include animation(ui-spinner-outer-animation #{$spinner-speed * $spinner-loops / 2} linear infinite);
+        animation:  ui-spinner-outer-animation #{$spinner-speed * $spinner-loops / 2} linear infinite;
     }
 
     .ui-spinner-inner {
@@ -88,7 +88,7 @@
         display:    block;
         width:      100%;
         height:     100%;
-        @include animation(ui-spinner-inner-rotate-animation #{$spinner-inner-duration} #{$spinner-inner-ease} infinite);
+        animation:  ui-spinner-inner-rotate-animation #{$spinner-inner-duration} #{$spinner-inner-ease} infinite;
 
         .ui-spinner-inner-gap {
             position:       absolute;
@@ -98,7 +98,7 @@
             top:            0;
             bottom:         0;
             border-top:     3px solid;
-            @include box-sizing(border-box);
+            box-sizing:     border-box;
         }
 
         .ui-spinner-inner-left, .ui-spinner-inner-right {
@@ -110,17 +110,17 @@
         }
 
         .ui-spinner-inner-half-circle {
-            position:               absolute;
-            top:                    0;
-            height:                 100%;
-            width:                  200%;
-            border:                 3px solid;
-            border-bottom-color:    transparent !important;
-            border-radius:          50%;
-            @include box-sizing(border-box);
-            @include animation-iteration-count(infinite);
-            @include animation-duration($spinner-inner-duration * 0.25);
-            @include animation-timing-function($spinner-inner-ease);
+            position:                   absolute;
+            top:                        0;
+            height:                     100%;
+            width:                      200%;
+            border:                     3px solid;
+            border-bottom-color:        transparent !important;
+            border-radius:              50%;
+            box-sizing:                 border-box;
+            animation-iteration-count:  infinite;
+            animation-duration:         $spinner-inner-duration * 0.25;
+            animation-timing-function:  $spinner-inner-ease;
         }
 
         .ui-spinner-inner-left {
@@ -128,7 +128,7 @@
             .ui-spinner-inner-half-circle {
                 left:               0;
                 border-right-color: transparent !important;
-                @include animation-name(ui-spinner-left-rotate-animation);
+                animation-name:     ui-spinner-left-rotate-animation;
             }
         }
 
@@ -137,7 +137,7 @@
             .ui-spinner-inner-half-circle {
                 right:              0;
                 border-left-color:  transparent !important;
-                @include animation-name(ui-spinner-right-rotate-animation);
+                animation-name:     ui-spinner-right-rotate-animation;
             }
         }
     }

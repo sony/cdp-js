@@ -35,10 +35,10 @@
                 box-shadow: none;
             }
             &:after {
-                content:  "";
-                display:  block;
-                position: absolute;
-                @include border-radius(initial);
+                content:        "";
+                display:        block;
+                position:       absolute;
+                border-radius:  initial;
             }
             &.ui-btn-left {
                 left:       0;
