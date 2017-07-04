@@ -1,4 +1,4 @@
-﻿import "../../src/scripts/cdp.ui.listview";
+﻿import "../../src/scripts/cdp.nativebridge";
 
 describe("TODO: suite", () => {
     beforeEach(() => {

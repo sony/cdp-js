@@ -5,12 +5,9 @@
         paths: {
             'boot': '//cdnjs.cloudflare.com/ajax/libs/jasmine/2.4.1/boot',
             'testem': '../../../testem',
-            'backbone': 'external/backbone/scripts/backbone',
             'jquery': 'external/jquery/scripts/jquery',
-            'underscore': 'external/underscore/scripts/underscore',
-            'hogan': 'external/hogan/scripts/hogan',
-            'iscroll': 'external/iscroll/scripts/iscroll-probe',
             'cdp.lazyload': 'external/cdp/scripts/cdp.lazyload',
+            'cdp.promise': 'external/cdp/scripts/cdp.promise',
         },
     });
 
@@ -39,8 +36,7 @@
 
     setupJasmine = function (callback) {
         require(['boot'], function () {
-            require(['iscroll', 'hogan', 'testem', 'cdp.lazyload'], function (_iscroll) {
-                window.IScroll = _iscroll;
+            require(['testem', 'cdp.lazyload'], function () {
                 setupTestem();
                 callback(onload);
             });

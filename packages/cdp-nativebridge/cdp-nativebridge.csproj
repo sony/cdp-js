@@ -90,6 +90,10 @@ call compass compile -c config.rb
     <Content Include="docs\en\README.md" />
     <Content Include="docs\images\.gitkeep" />
     <Content Include="docs\jp\README.md" />
+    <Content Include="docs\reports\coverage\index.html" />
+    <Content Include="docs\reports\metrics\display.html" />
+    <Content Include="docs\reports\metrics\index.html" />
+    <Content Include="docs\typedoc\index.html" />
     <Content Include="exports\cdp\bridge\nativebridge.js">
       <DependentUpon>nativebridge.ts</DependentUpon>
     </Content>
