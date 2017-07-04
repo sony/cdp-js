@@ -10,6 +10,6 @@
   "files": [
     "scripts/CDP/NativeBridge/Interfaces.ts",
     "scripts/CDP/NativeBridge/Utils.ts",
-    "scripts/CDP/UI/listview/Gate.ts"
+    "scripts/CDP/NativeBridge/Gate.ts"
   ]
 }

@@ -1,4 +1,6 @@
-﻿namespace CDP.NativeBridge {
+﻿/// <reference path="../../@types/cdp.plugin.nativebridge.d.ts" />
+
+namespace CDP.NativeBridge {
 
     import Plugin   = CDP.Plugin.NativeBridge;
 
@@ -22,7 +24,9 @@
      * @interface ConstructOptions
      * @brief 初期化に指定するオプション
      */
-    export interface ConstructOptions extends Plugin.ConstructOptions { }
+    export interface ConstructOptions extends Plugin.ConstructOptions {
+        receiveParams?: boolean; // exec 成功時に, ...params, IResult で返却する場合 true (既定値)
+    }
 
     /**
      * \~english
@@ -44,5 +48,12 @@
      * @interface ExecOptions
      * @brief exec() に渡すオプション
      */
-    export interface ExecOptions extends Plugin.ExecOptions { }
+    export interface ExecOptions extends Plugin.ExecOptions {
+        receiveParams?: boolean; // exec 成功時に, ...params, IResult で返却する場合 true
+    }
+}
+
+declare module "cdp.nativebridge" {
+    const NativeBridge: typeof CDP.NativeBridge;
+    export = NativeBridge;
 }

@@ -66,13 +66,11 @@
                         Utils.s_pluginReady = true;
                         df.resolve();
                     } else {
-                        console.error(TAG + "'cordova-plugin-cdp-nativebridge' cordova plugin required.");
-                        df.reject();
+                        df.reject(TAG + "'cordova-plugin-cdp-nativebridge' cordova plugin required.");
                     }
                 });
             } catch (error) {
-                console.error(TAG + "cordova required.");
-                df.reject();
+                df.reject(TAG + "cordova required.");
             }
 
             return df.promise();

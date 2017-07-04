@@ -76,13 +76,39 @@ call compass compile -c config.rb
   </PropertyGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
+    <Content Include="built\cdp.nativebridge-all.js">
+      <DependentUpon>cdp.nativebridge.js</DependentUpon>
+    </Content>
+    <Content Include="built\cdp.nativebridge-entry.js">
+      <DependentUpon>cdp.nativebridge.js</DependentUpon>
+    </Content>
+    <Content Include="built\cdp.nativebridge.js" />
+    <Content Include="dist\cdp.nativebridge.js" />
+    <Content Include="dist\cdp.nativebridge.min.js">
+      <DependentUpon>cdp.nativebridge.js</DependentUpon>
+    </Content>
     <Content Include="docs\en\README.md" />
     <Content Include="docs\images\.gitkeep" />
     <Content Include="docs\jp\README.md" />
+    <Content Include="exports\cdp\bridge\nativebridge.js">
+      <DependentUpon>nativebridge.ts</DependentUpon>
+    </Content>
     <Content Include="external\cdp\scripts\cdp.lazyload.js" />
     <Content Include="external\cdp\scripts\cdp.promise.js" />
     <Content Include="external\jquery\scripts\jquery.js" />
     <Content Include="project.config.js" />
+    <Content Include="src\scripts\cdp.nativebridge.js">
+      <DependentUpon>cdp.nativebridge.ts</DependentUpon>
+    </Content>
+    <Content Include="src\scripts\CDP\NativeBridge\Gate.js">
+      <DependentUpon>Gate.ts</DependentUpon>
+    </Content>
+    <Content Include="src\scripts\CDP\NativeBridge\Interfaces.js">
+      <DependentUpon>Interfaces.ts</DependentUpon>
+    </Content>
+    <Content Include="src\scripts\CDP\NativeBridge\Utils.js">
+      <DependentUpon>Utils.ts</DependentUpon>
+    </Content>
     <Content Include="tasks\banner.js" />
     <Content Include="tasks\bundle.js" />
     <Content Include="tasks\clean.js" />
@@ -99,12 +125,17 @@ call compass compile -c config.rb
     <Content Include="src\tsconfig.entry.json" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="built\cdp.nativebridge-all.d.ts">
+      <DependentUpon>cdp.nativebridge.js</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="dist\%40types\cdp.nativebridge.d.ts" />
+    <TypeScriptCompile Include="dist\%40types\cdp.plugin.nativebridge.d.ts" />
+    <TypeScriptCompile Include="exports\cdp\bridge\nativebridge.ts" />
     <TypeScriptCompile Include="src\scripts\%40types\cdp.plugin.nativebridge.d.ts" />
     <TypeScriptCompile Include="src\scripts\%40types\dev.dependencies\index.d.ts" />
     <TypeScriptCompile Include="src\scripts\cdp.nativebridge.ts" />
     <TypeScriptCompile Include="src\scripts\CDP\NativeBridge\Gate.ts" />
     <TypeScriptCompile Include="src\scripts\CDP\NativeBridge\Interfaces.ts" />
-    <TypeScriptCompile Include="src\scripts\CDP\NativeBridge\Patch.ts" />
     <TypeScriptCompile Include="src\scripts\CDP\NativeBridge\Utils.ts" />
     <TypeScriptCompile Include="tests\unit\Gate.spec.ts" />
   </ItemGroup>
@@ -125,5 +156,10 @@ call compass compile -c config.rb
       <DependentUpon>tsconfig.json</DependentUpon>
     </Content>
     <Content Include="tsconfig.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="dist\cdp.nativebridge.min.js.map">
+      <DependentUpon>cdp.nativebridge.js</DependentUpon>
+    </Content>
   </ItemGroup>
 </Project>

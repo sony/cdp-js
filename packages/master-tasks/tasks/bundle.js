@@ -112,17 +112,62 @@ function bundleEmbedJS(options) {
     });
     fs.writeFileSync(path.join(BUILT_PATH, config.main.basename + '.js'), bundleSrc, 'utf-8');
     fs.writeFileSync(path.join(DST_PATH, config.main.basename + '.js'), bundleSrc, 'utf-8');
+}
 
-    // d.ts
-    const dts = fs.readFileSync(path.join(BUILT_PATH, config.main.basename + '-all.d.ts')).toString();
-    const bundleDTS = '\ufeff' + banner('.d.ts', config.main.basename) + dts
+// for d.ts
+function bundleDTS() {
+    const DST_PATH = path.join(__dirname, '..', config.dir.pkg);
+    const TYPE_DEF_FILE = path.join(DST_PATH, config.dir.types, config.main.bundle_d_ts);
+    const SRC_DEF_FILE = path.join(__dirname, '..', config.dir.built, config.main.basename + '-all.d.ts');
+
+    let src = '\ufeff' + banner('.d.ts', config.main.basename) + fs.readFileSync(SRC_DEF_FILE).toString()
             .replace(/^\ufeff/gm, '')
             .replace(/\r\n/gm, '\n')
     ;
+
+    const refPathInfo = [];
+    const refPathDefs = src.match(/<reference path="[\s\S]*?"/g);
+
+    if (null != refPathDefs) {
+        refPathDefs.forEach((refpath) => {
+            const filePath = refpath.match(/("|')[\s\S]*?("|')/)[0].replace(/("|')/g, '');
+            const fileName = path.basename(filePath);
+            refPathInfo.push({
+                refpath: refpath,
+                path: filePath,
+                file: fileName,
+            });
+        });
+        refPathInfo.forEach((target) => {
+            src = src.replace(target.refpath, '<reference path="' + target.file + '"');
+        });
+        // remove '_dev.dependencies.d.ts' reference.
+        src = src.replace(/\/\/\/ <reference path="_dev.dependencies.d.ts"[\s\S]*?\n/g, '');
+    }
+
     if (!fs.existsSync(path.join(DST_PATH, config.dir.types))) {
         fs.mkdirSync(path.join(DST_PATH, config.dir.types));
     }
-    fs.writeFileSync(path.join(DST_PATH, config.dir.types, config.main.bundle_d_ts), bundleDTS, 'utf-8');
+    fs.writeFileSync(TYPE_DEF_FILE, src);
+}
+
+function copyExtraDTS() {
+    // copy d.ts
+    const SRC_TYPES_DIR = path.join(__dirname, '..', `${config.dir.src}/${config.dir.script}`, config.dir.types);
+    const DST_TYPES_DIR = path.join(__dirname, '..', config.dir.pkg, config.dir.types);
+
+    if (!fs.existsSync(DST_TYPES_DIR)) {
+        fs.mkdirSync(DST_TYPES_DIR);
+    }
+
+    fs.readdirSync(SRC_TYPES_DIR)
+    .forEach((filePath) => {
+        const src = path.join(SRC_TYPES_DIR, filePath);
+        const dst = path.join(DST_TYPES_DIR, filePath);
+        if (fs.statSync(src).isFile()) {
+            fs.writeFileSync(dst, fs.readFileSync(src).toString(), 'utf8');
+        }
+    });
 }
 
 // for post processed css
@@ -158,6 +203,8 @@ function main() {
     switch (options.target) {
         case 'embed-js':
             bundleEmbedJS(options);
+            bundleDTS();
+            copyExtraDTS();
             break;
         case 'pure-js':
             bundlePureJS();

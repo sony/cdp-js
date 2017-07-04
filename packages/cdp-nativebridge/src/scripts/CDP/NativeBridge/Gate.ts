@@ -34,6 +34,7 @@
     export class Gate {
 
         private _bridge: Plugin.NativeBridge;
+        private _options: ConstructOptions;
 
         /* tslint:disable:no-unused-variable */
         // For pure javascript extend helper.
@@ -57,9 +58,10 @@
             Utils.waitForPluginReady()
                 .then(() => {
                     this._bridge = new Plugin.NativeBridge(feature, options);
+                    this._options = $.extend({ receiveParams: true }, options);
                 })
-                .catch(() => {
-                    throw Error(TAG + "'cordova-plugin-cdp-nativebridge' required.");
+                .catch((reason) => {
+                    throw Error(reason);
                 });
         }
 
@@ -88,15 +90,24 @@
         public exec(method: string, args?: any[], options?: ExecOptions): IPromise<any> {
             const df = $.Deferred();
             const promise = Utils.makePromise(df);
+            const opt = $.extend({}, this._options, options);
 
             Utils.waitForPluginReady()
                 .then(() => {
                     const taskId = this._bridge.exec(
                         (result: IResult) => {
                             if (SUCCESS_PROGRESS === result.code) {
-                                df.notify(result);
+                                if (opt.receiveParams) {
+                                    df.notify(...[...result.params, result]);
+                                } else {
+                                    df.notify(result);
+                                }
                             } else {
-                                df.resolve(result);
+                                if (opt.receiveParams) {
+                                    df.resolve(...[...result.params, result]);
+                                } else {
+                                    df.resolve(result);
+                                }
                             }
                         },
                         (error: IResult) => {

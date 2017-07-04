@@ -46,7 +46,7 @@ const main = {
 };
 
 const built_cleanee = {
-    ts: ['**/*.js', '**/*.d.ts', '!**/index.d.ts', '**/*.map'],
+    ts: ['**/*.js', '**/*.d.ts', '!**/index.d.ts', '!**/cdp.plugin.nativebridge.d.ts', '**/*.map'],
     roots: [
         'exports',
         `${dir.src}/${dir.script}`,

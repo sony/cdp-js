@@ -35,38 +35,6 @@ function normalize_classical_module_src_copy() {
     fs.writeFileSync(dst, fs.readFileSync(src).toString(), 'utf8');
 }
 
-function normalize_classical_module_d_ts() {
-    const TYPE_DEF_FILE = path.join(__dirname, '..', config.dir.pkg, config.dir.types, config.main.bundle_d_ts);
-    const SRC_DEF_FILE  = path.join(__dirname, '..', config.dir.built, config.main.basename + '-all.d.ts');
-
-    let src = '\ufeff' + banner('.d.ts', config.main.basename) + fs.readFileSync(SRC_DEF_FILE).toString()
-            .replace(/^\ufeff/gm, '')
-            .replace(/\r\n/gm, '\n')
-    ;
-
-    const refPathInfo = [];
-    const refPathDefs = src.match(/<reference path="[\s\S]*?"/g);
-
-    if (null != refPathDefs) {
-        refPathDefs.forEach((refpath) => {
-            const filePath = refpath.match(/("|')[\s\S]*?("|')/)[0].replace(/("|')/g, '');
-            const fileName = path.basename(filePath);
-            refPathInfo.push({
-                refpath: refpath,
-                path: filePath,
-                file: fileName,
-            });
-        });
-        refPathInfo.forEach((target) => {
-            src = src.replace(target.refpath, '<reference path="' + target.file + '"');
-        });
-        // remove '_dev.dependencies.d.ts' reference.
-        src = src.replace(/\/\/\/ <reference path="_dev.dependencies.d.ts"[\s\S]*?\n/g, '');
-    }
-
-    fs.writeFileSync(TYPE_DEF_FILE, src);
-}
-
 ///////////////////////////////////////////////////////////////////////
 // library:
 
@@ -174,7 +142,6 @@ function main() {
         case 'classical-module':
             normalize_lib_src(config.dir.built);
             normalize_classical_module_src_copy();
-            normalize_classical_module_d_ts();
             return;
         case 'library':
             normalize_lib_src(config.dir.pkg);
