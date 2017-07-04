@@ -27,7 +27,7 @@
             }
             .ui-btn {
                 color: $color-ios-header-button;
-                @include box-shadow(initial);
+                box-shadow: initial;
                 &:active {
                     background-color: inherit;
                 }
@@ -43,7 +43,7 @@
                 &:after {
                     background-color:   initial;
                     border-color:       $color-ios-header-button;
-                    @include mask(initial);
+                    mask:               initial;
                 }
             }
         }

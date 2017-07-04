@@ -1,7 +1,6 @@
 ﻿/*** ios swatch: switch ***************************************************/
 
 @import "../_theme.scss";
-@import "../_mixins.scss";
 
 .ui-platform-ios {
     .ui-page-theme-#{$theme},
@@ -23,7 +22,7 @@
 
             .ui-btn {
                 background-color: $color-ios-switch-button;
-                @include box-shadow(#{"0 1px 5px 0 #{$color-ios-switch-button-shadow} !important"});
+                box-shadow: 0 1px 5px 0 $color-ios-switch-button-shadow !important;
             }
         }
     }

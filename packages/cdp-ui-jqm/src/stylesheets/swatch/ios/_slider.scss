@@ -1,7 +1,6 @@
 ﻿/*** ios swatch: slider ***************************************************/
 
 @import "../_theme.scss";
-@import "../_mixins.scss";
 
 .ui-platform-ios {
     .ui-page-theme-#{$theme},
@@ -23,7 +22,7 @@
             .ui-btn.ui-slider-handle {
                 &:after {
                     background-color: $color-ios-slider-handle;
-                    @include box-shadow(0 1px 5px 0 #{$color-ios-slider-handle-shadow});
+                    box-shadow: 0 1px 5px 0 $color-ios-slider-handle-shadow;
                 }
             }
         }

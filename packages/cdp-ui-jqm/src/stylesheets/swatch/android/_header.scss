@@ -1,7 +1,6 @@
 ﻿/*** android swatch: header ***************************************************/
 
 @import "../_theme.scss";
-@import "../_mixins.scss";
 
 .ui-platform-android {
     .ui-page-theme-#{$theme} {
@@ -12,7 +11,7 @@
                 color:              $color-android-header-font;
             }
             .ui-btn {
-                @include box-shadow(initial);
+                box-shadow: initial;
                 &:before {
                     background-color: $color-android-header-ripple-center;
                 }

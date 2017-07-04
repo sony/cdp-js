@@ -1,12 +1,11 @@
 ﻿/*** android swatch: dialog ***************************************************/
 
 @import "../_theme.scss";
-@import "../_mixins.scss";
 
 .ui-platform-android {
     .ui-modal.ui-body-#{$theme} {
-        background-color: $color-android-dialog-background;
-        @include box-shadow(0 19px 38px $color-android-dialog-shadow, 0 15px 12px $color-android-dialog-shadow-alt);
+        background-color:   $color-android-dialog-background;
+        box-shadow:         0 19px 38px $color-android-dialog-shadow, 0 15px 12px $color-android-dialog-shadow-alt;
 
         .ui-content {
             .ui-title {

@@ -1,7 +1,6 @@
 ﻿/*** ios swatch: dialog ***************************************************/
 
 @import "../_theme.scss";
-@import "../_mixins.scss";
 
 .ui-platform-ios {
     .ui-modal.ui-body-#{$theme} {

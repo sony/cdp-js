@@ -1,7 +1,6 @@
 ﻿/*** ios swatch: list control ***************************************************/
 
 @import "../_theme.scss";
-@import "../_mixins.scss";
 
 .ui-platform-ios {
     .ui-page-theme-#{$theme},
@@ -52,7 +51,7 @@
 
         // disable inset shadow
         .ui-listview-inset {
-            @include box-shadow(initial);
+            box-shadow: initial;
         }
 
         // list item buttons

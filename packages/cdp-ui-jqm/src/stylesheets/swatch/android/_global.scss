@@ -69,19 +69,19 @@
         // shadow:
 
         .ui-shadow {
-            @include box-shadow(0 1px 3px $color-common-accent-transparent-light, 0 1px 2px $color-common-accent-transparent-dark);
+            box-shadow: 0 1px 3px $color-common-accent-transparent-light, 0 1px 2px $color-common-accent-transparent-dark;
         }
         .ui-shadow-inset {
             // none
         }
         .ui-overlay-shadow {
-            @include box-shadow(0 0 12px $color-common-accent-transparent-dark-super);
+            box-shadow: 0 0 12px $color-common-accent-transparent-dark-super;
         }
 
         // icon shadow
         .ui-shadow-icon.ui-btn:after,
         .ui-shadow-icon .ui-btn:after {
-            @include box-shadow(0 1px 0 $color-common-accent-transparent-light-super);  // {global-icon-shadow}
+            box-shadow: 0 1px 0 $color-common-accent-transparent-light-super;  // {global-icon-shadow}
         }
     }
 

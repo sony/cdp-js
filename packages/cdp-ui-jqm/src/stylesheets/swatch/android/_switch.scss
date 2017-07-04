@@ -11,8 +11,8 @@
         .ui-flipswitch {
             background-color: $color-android-switch-bar-off;
             .ui-btn {
-                background-color: $color-android-switch-button-off;
-                @include box-shadow(#{"0 2px 5px 0 #{$color-android-switch-shadow} !important"});
+                background-color:   $color-android-switch-button-off;
+                box-shadow:         0 2px 5px 0 $color-android-switch-shadow !important;
                 @include declare-effect-repple-center-swatch-deactivate("&:before", $color-android-switch-button-off);
                 @include declare-effect-repple-center-swatch-activate("&:active:before");
             }
