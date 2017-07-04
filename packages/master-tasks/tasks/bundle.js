@@ -20,7 +20,7 @@ function queryOptions() {
     const argv = process.argv.slice(2);
 
     let settings = {
-        target: 'embed',    // "embed" | "pure-js"
+        target: 'embed-js',    // "embed-js" | "pure-js" | "css"
         banner: true,
     };
 
@@ -30,7 +30,7 @@ function queryOptions() {
                 const option = arg.replace(/^--/, '');
                 const name = option.split('=')[0];
                 if ('target' === name) {
-                    settings.target = option.split('=')[1] || 'embed';
+                    settings.target = option.split('=')[1] || 'embed-js';
                 } else if ('no-banner' === name) {
                     settings.banner = false;
                 } else if (name === key) {
@@ -67,8 +67,8 @@ function bundlePureJS() {
     fs.writeFileSync(path.join(DST_PATH, config.dir.types, config.main.bundle_d_ts), bundleDTS, 'utf-8');
 }
 
-// for legacy module structure
-function bundleEmbed(options) {
+// for classical module structure
+function bundleEmbedJS(options) {
     const srcmap = require('./srcmap');
     const BUILT_PATH = path.join(__dirname, '..', config.dir.built);
 
@@ -103,7 +103,7 @@ function bundleEmbed(options) {
     }
     node.add('\n' + wrap[2] + '\n');
 
-    const bundleSrc = srcmap.getCodeFromNode(node, (srcPath) => {
+    const bundleSrc = '\ufeff' + srcmap.getCodeFromNode(node, (srcPath) => {
         const regex_src = new RegExp(`${config.dir.src}\\/${config.dir.script}\\/`);
         return srcPath
             .replace(/\.\.\//g, '')
@@ -125,15 +125,45 @@ function bundleEmbed(options) {
     fs.writeFileSync(path.join(DST_PATH, config.dir.types, config.main.bundle_d_ts), bundleDTS, 'utf-8');
 }
 
+// for post processed css
+function bundleCSS() {
+    const glob      = require('glob');
+    const srcmap    = require('./srcmap');
+    const BUILT_PATH = path.join(__dirname, '..', config.dir.built);
+
+    glob.sync('**/*.css', {
+        cwd: BUILT_PATH
+    }).forEach((file) => {
+        const src = fs.readFileSync(path.join(BUILT_PATH, file)).toString()
+            .replace(/^\ufeff/gm, '')
+            .replace(/\r\n/gm, '\n')
+        ;
+        const node = srcmap.getNodeFromCode(src);
+        node.prepend(banner('.css', path.basename(file, '.css')));
+        const bundleSrc = '\ufeff' + srcmap.getCodeFromNode(node, (srcPath) => {
+            const regex_src = new RegExp(`${config.dir.src}\\/${config.dir.stylesheet}\\/`);
+            return srcPath
+                .replace(/\.\.\//g, '')
+                .replace(regex_src, SOURCE_MAP_NAMESPACE)
+            ;
+        }, { multiline: true });
+        fs.writeFileSync(path.join(BUILT_PATH, file), bundleSrc, 'utf-8');
+        fs.writeFileSync(path.join(DST_PATH, file), bundleSrc, 'utf-8');
+    });
+}
+
 function main() {
     const options = queryOptions();
 
     switch (options.target) {
-        case 'embed':
-            bundleEmbed(options);
+        case 'embed-js':
+            bundleEmbedJS(options);
             break;
         case 'pure-js':
             bundlePureJS();
+            break;
+        case 'css':
+            bundleCSS();
             break;
         default:
             break;

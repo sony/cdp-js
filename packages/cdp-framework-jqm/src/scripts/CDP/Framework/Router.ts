@@ -329,7 +329,7 @@ namespace CDP.Framework {
          * @param options {Object} [in] Backbone.History にわたるオプション
          */
         public static start(options?: RouterOptions): boolean {
-            if (false !== options.pageConstruct) {
+            if (null != options && false !== options.pageConstruct) {
                 Framework.constructPages();
             }
             if ($.mobile.hashListeningEnabled) {

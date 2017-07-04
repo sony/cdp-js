@@ -66,7 +66,7 @@ const main = {
 };
 
 const built_cleanee = {
-    ts: ['**/*.js', '**/*.d.ts', '!**/index.d.ts', '**/*.map'],
+    ts: ['**/*.js', '**/*.css', '**/*.d.ts', '!**/index.d.ts', '**/*.map'],
     roots: [
         'exports',
         `${dir.src}/${dir.script}`,
@@ -84,6 +84,7 @@ const required_tasks = [
     'clean.js',
     'external-rearrange.js',
     'internal-rearrange.js',
+    'minify.js',
     'remap-coverage.js',
     'srcmap.js',
 ];

@@ -6,14 +6,6 @@ namespace CDP.UI {
 
     const TAG = "[CDP.UI.PageView] ";
 
-    /* tslint:disable:no-use-before-declare */
-    /**
-     * @interface BasePageView
-     * @brief     PageView<Framework.Model> の alias
-     */
-    export interface BasePageView extends PageView<Framework.Model> { }
-    /* tslint:enable:no-use-before-declare */
-
     /**
      * @interface PageViewConstructOptions
      * @brief Router への登録情報と Backbone.View への初期化情報を格納するインターフェイスクラス
@@ -22,12 +14,13 @@ namespace CDP.UI {
         basePage?: new (url: string, id: string, options?: Framework.PageConstructOptions) => Framework.Page;    //!< Page 機能を提供する基底インスタンス
     }
 
+    /* tslint:disable:no-use-before-declare */
     /**
      * @interface PageContainerOptions
      * @brief PageContainer のオプション
      */
     export interface PageContainerOptions<TModel extends Framework.Model = Framework.Model> extends Framework.ViewOptions<TModel> {
-        owner: BasePageView;
+        owner: PageView;
         $el?: JQuery;
     }
 
@@ -37,7 +30,7 @@ namespace CDP.UI {
      */
     export class PageContainerView<TModel extends Framework.Model = Framework.Model> extends Framework.View<TModel> {
 
-        private _owner: BasePageView = null;
+        private _owner: PageView = null;
 
         /**
          * constructor
@@ -55,10 +48,11 @@ namespace CDP.UI {
         // short cut methods
 
         //! Owner 取得
-        get owner(): BasePageView {
+        get owner(): PageView {
             return this._owner;
         }
     }
+    /* tslint:enable:no-use-before-declare */
 
     //___________________________________________________________________________________________________________________//
 

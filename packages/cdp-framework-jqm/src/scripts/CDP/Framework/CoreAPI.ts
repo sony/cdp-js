@@ -410,9 +410,7 @@ namespace CDP {
                 applyJQueryMobileConfig: function () {
                     $.mobile.loader.prototype.options.text = undefined;
                     Object.keys(this.jquerymobile).forEach((key) => {
-                        if ("ajaxSetup" !== key) {
-                            $.mobile[key] = this.jquerymobile[key];
-                        }
+                        $.mobile[key] = this.jquerymobile[key];
                     });
                 },
             };

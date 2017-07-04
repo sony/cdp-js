@@ -84,6 +84,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
+    <Content Include="built\cdp.ui.listview-all.js">
+      <DependentUpon>cdp.ui.listview.js</DependentUpon>
+    </Content>
+    <Content Include="built\cdp.ui.listview-entry.js">
+      <DependentUpon>cdp.ui.listview.js</DependentUpon>
+    </Content>
+    <Content Include="built\cdp.ui.listview.js" />
     <Content Include="dist\cdp.ui.listview.js" />
     <Content Include="dist\cdp.ui.listview.min.js">
       <DependentUpon>cdp.ui.listview.js</DependentUpon>
@@ -181,6 +188,9 @@
     <Content Include="tests\tslint\tslint.json" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="built\cdp.ui.listview-all.d.ts">
+      <DependentUpon>cdp.ui.listview.js</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="dist\%40types\cdp.ui.listview.d.ts" />
     <TypeScriptCompile Include="exports\cdp\ui\listview.ts" />
     <TypeScriptCompile Include="src\scripts\%40types\dev.dependencies\index.d.ts" />

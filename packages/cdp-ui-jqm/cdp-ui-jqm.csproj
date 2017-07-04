@@ -87,14 +87,37 @@ call compass compile -c config.rb
   </PropertyGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
+    <Content Include="built\cdp.ui.jqm-all.js">
+      <DependentUpon>cdp.ui.jqm.js</DependentUpon>
+    </Content>
+    <Content Include="built\cdp.ui.jqm-entry.js">
+      <DependentUpon>cdp.ui.jqm.js</DependentUpon>
+    </Content>
+    <Content Include="built\cdp.ui.jqm.css" />
+    <Content Include="built\cdp.ui.jqm.icons.css" />
+    <Content Include="built\cdp.ui.jqm.js" />
+    <Content Include="built\cdp.ui.jqm.structure.css" />
+    <Content Include="built\cdp.ui.jqm.swatch.css" />
     <Content Include="dist\cdp.ui.jqm.css" />
     <Content Include="dist\cdp.ui.jqm.icons.css" />
+    <Content Include="dist\cdp.ui.jqm.icons.min.css">
+      <DependentUpon>cdp.ui.jqm.icons.css</DependentUpon>
+    </Content>
     <Content Include="dist\cdp.ui.jqm.js" />
+    <Content Include="dist\cdp.ui.jqm.min.css">
+      <DependentUpon>cdp.ui.jqm.css</DependentUpon>
+    </Content>
     <Content Include="dist\cdp.ui.jqm.min.js">
       <DependentUpon>cdp.ui.jqm.js</DependentUpon>
     </Content>
     <Content Include="dist\cdp.ui.jqm.structure.css" />
+    <Content Include="dist\cdp.ui.jqm.structure.min.css">
+      <DependentUpon>cdp.ui.jqm.structure.css</DependentUpon>
+    </Content>
     <Content Include="dist\cdp.ui.jqm.swatch.css" />
+    <Content Include="dist\cdp.ui.jqm.swatch.min.css">
+      <DependentUpon>cdp.ui.jqm.swatch.css</DependentUpon>
+    </Content>
     <Content Include="docs\reports\coverage\index.html" />
     <Content Include="docs\reports\metrics\display.html" />
     <Content Include="docs\reports\metrics\index.html" />
@@ -174,18 +197,6 @@ call compass compile -c config.rb
     <Content Include="src\scripts\CDP\UI\jqm\Toast.js">
       <DependentUpon>Toast.ts</DependentUpon>
     </Content>
-    <Content Include="src\stylesheets\cdp.ui.jqm.css">
-      <DependentUpon>cdp.ui.jqm.scss</DependentUpon>
-    </Content>
-    <Content Include="src\stylesheets\cdp.ui.jqm.icons.css">
-      <DependentUpon>cdp.ui.jqm.icons.scss</DependentUpon>
-    </Content>
-    <Content Include="src\stylesheets\cdp.ui.jqm.structure.css">
-      <DependentUpon>cdp.ui.jqm.structure.scss</DependentUpon>
-    </Content>
-    <Content Include="src\stylesheets\cdp.ui.jqm.swatch.css">
-      <DependentUpon>cdp.ui.jqm.swatch.scss</DependentUpon>
-    </Content>
     <Content Include="src\stylesheets\icons\android\images\arrow_back.svg" />
     <Content Include="src\stylesheets\icons\android\images\check_circle.svg" />
     <Content Include="src\stylesheets\icons\android\images\close.svg" />
@@ -199,6 +210,7 @@ call compass compile -c config.rb
     <Content Include="tasks\clean.js" />
     <Content Include="tasks\external-rearrange.js" />
     <Content Include="tasks\internal-rearrange.js" />
+    <Content Include="tasks\minify.js" />
     <Content Include="tasks\remap-coverage.js" />
     <Content Include="tasks\srcmap.js" />
     <Content Include="tests\runner\test-main.js" />
@@ -223,6 +235,9 @@ call compass compile -c config.rb
     <Content Include="tests\tslint\tslint.json" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="built\cdp.ui.jqm-all.d.ts">
+      <DependentUpon>cdp.ui.jqm.js</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="dist\%40types\cdp.ui.jqm.d.ts" />
     <TypeScriptCompile Include="exports\cdp\ui\jqm.ts" />
     <TypeScriptCompile Include="src\scripts\%40types\dev.dependencies\index.d.ts" />
@@ -408,5 +423,25 @@ call compass compile -c config.rb
   </ItemGroup>
   <ItemGroup>
     <Content Include="src\stylesheets\cdp\utils\_reset.scss" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="dist\cdp.ui.jqm.icons.min.css.map">
+      <DependentUpon>cdp.ui.jqm.icons.css</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="dist\cdp.ui.jqm.min.css.map">
+      <DependentUpon>cdp.ui.jqm.css</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="dist\cdp.ui.jqm.structure.min.css.map">
+      <DependentUpon>cdp.ui.jqm.structure.css</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="dist\cdp.ui.jqm.swatch.min.css.map">
+      <DependentUpon>cdp.ui.jqm.swatch.css</DependentUpon>
+    </Content>
   </ItemGroup>
 </Project>
