@@ -1,0 +1,15 @@
+{
+  "extends": "../tsconfig.base.json",
+  "compileOnSave": true,
+  "compilerOptions": {
+    "inlineSourceMap": true,
+    "inlineSources": true,
+    "declaration": true,
+    "outFile": "../built/cdp.nativebridge-all.js"
+  },
+  "files": [
+    "scripts/CDP/NativeBridge/Interfaces.ts",
+    "scripts/CDP/NativeBridge/Utils.ts",
+    "scripts/CDP/UI/listview/Gate.ts"
+  ]
+}
