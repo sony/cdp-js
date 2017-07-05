@@ -1,23 +1,10 @@
-﻿/*!
+var cov_esm2zt3n8=function(){var path="cdp.lazyload.js",hash="9fba11051812b3c023b73aa2cb5cb80b2efd517a",global=new Function('return this')(),gcv="__coverage__",coverageData={path:"cdp.lazyload.js",statementMap:{"0":{start:{line:6,column:0},end:{line:204,column:4}},"1":{start:{line:7,column:4},end:{line:15,column:5}},"2":{start:{line:9,column:8},end:{line:11,column:11}},"3":{start:{line:10,column:12},end:{line:10,column:78}},"4":{start:{line:14,column:8},end:{line:14,column:87}},"5":{start:{line:18,column:14},end:{line:18,column:22}},"6":{start:{line:37,column:8},end:{line:45,column:9}},"7":{start:{line:38,column:28},end:{line:38,column:43}},"8":{start:{line:39,column:22},end:{line:39,column:38}},"9":{start:{line:40,column:12},end:{line:42,column:13}},"10":{start:{line:41,column:16},end:{line:41,column:27}},"11":{start:{line:43,column:12},end:{line:43,column:37}},"12":{start:{line:44,column:12},end:{line:44,column:23}},"13":{start:{line:65,column:18},end:{line:65,column:39}},"14":{start:{line:66,column:8},end:{line:68,column:9}},"15":{start:{line:67,column:12},end:{line:67,column:40}},"16":{start:{line:69,column:8},end:{line:88,column:9}},"17":{start:{line:70,column:12},end:{line:70,column:29}},"18":{start:{line:72,column:12},end:{line:74,column:13}},"19":{start:{line:73,column:16},end:{line:73,column:43}},"20":{start:{line:75,column:12},end:{line:86,column:15}},"21":{start:{line:81,column:20},end:{line:81,column:35}},"22":{start:{line:84,column:20},end:{line:84,column:118}},"23":{start:{line:87,column:12},end:{line:87,column:45}},"24":{start:{line:105,column:19},end:{line:105,column:38}},"25":{start:{line:106,column:8},end:{line:108,column:9}},"26":{start:{line:107,column:12},end:{line:107,column:39}},"27":{start:{line:110,column:19},end:{line:117,column:18}},"28":{start:{line:111,column:22},end:{line:111,column:26}},"29":{start:{line:112,column:12},end:{line:115,column:13}},"30":{start:{line:113,column:16},end:{line:113,column:43}},"31":{start:{line:114,column:16},end:{line:114,column:39}},"32":{start:{line:116,column:12},end:{line:116,column:23}},"33":{start:{line:120,column:25},end:{line:133,column:9}},"34":{start:{line:122,column:12},end:{line:132,column:13}},"35":{start:{line:123,column:16},end:{line:123,column:28}},"36":{start:{line:125,column:26},end:{line:125,column:40}},"37":{start:{line:127,column:16},end:{line:131,column:17}},"38":{start:{line:128,column:20},end:{line:128,column:31}},"39":{start:{line:130,column:20},end:{line:130,column:34}},"40":{start:{line:137,column:8},end:{line:148,column:11}},"41":{start:{line:143,column:16},end:{line:143,column:28}},"42":{start:{line:146,column:16},end:{line:146,column:115}},"43":{start:{line:149,column:8},end:{line:162,column:9}},"44":{start:{line:151,column:12},end:{line:153,column:13}},"45":{start:{line:152,column:16},end:{line:152,column:73}},"46":{start:{line:156,column:12},end:{line:156,column:31}},"47":{start:{line:159,column:12},end:{line:159,column:42}},"48":{start:{line:160,column:12},end:{line:160,column:50}},"49":{start:{line:161,column:12},end:{line:161,column:39}},"50":{start:{line:177,column:8},end:{line:183,column:15}},"51":{start:{line:179,column:16},end:{line:182,column:23}},"52":{start:{line:181,column:24},end:{line:181,column:45}},"53":{start:{line:197,column:8},end:{line:197,column:60}},"54":{start:{line:200,column:4},end:{line:200,column:29}},"55":{start:{line:201,column:4},end:{line:201,column:23}},"56":{start:{line:203,column:4},end:{line:203,column:15}}},fnMap:{"0":{name:"(anonymous_0)",decl:{start:{line:6,column:2},end:{line:6,column:3}},loc:{start:{line:6,column:27},end:{line:16,column:1}},line:6},"1":{name:"(anonymous_1)",decl:{start:{line:9,column:27},end:{line:9,column:28}},loc:{start:{line:9,column:40},end:{line:11,column:9}},line:9},"2":{name:"(anonymous_2)",decl:{start:{line:16,column:9},end:{line:16,column:10}},loc:{start:{line:16,column:35},end:{line:204,column:1}},line:16},"3":{name:"_getExtension",decl:{start:{line:35,column:13},end:{line:35,column:26}},loc:{start:{line:35,column:33},end:{line:46,column:5}},line:35},"4":{name:"_getScriptElements",decl:{start:{line:63,column:13},end:{line:63,column:31}},loc:{start:{line:63,column:43},end:{line:89,column:5}},line:63},"5":{name:"(anonymous_5)",decl:{start:{line:80,column:25},end:{line:80,column:26}},loc:{start:{line:80,column:40},end:{line:82,column:17}},line:80},"6":{name:"(anonymous_6)",decl:{start:{line:83,column:23},end:{line:83,column:24}},loc:{start:{line:83,column:47},end:{line:85,column:17}},line:83},"7":{name:"_appendSync",decl:{start:{line:104,column:13},end:{line:104,column:24}},loc:{start:{line:104,column:34},end:{line:163,column:5}},line:104},"8":{name:"(anonymous_8)",decl:{start:{line:110,column:19},end:{line:110,column:20}},loc:{start:{line:110,column:36},end:{line:117,column:9}},line:110},"9":{name:"(anonymous_9)",decl:{start:{line:120,column:25},end:{line:120,column:26}},loc:{start:{line:120,column:40},end:{line:133,column:9}},line:120},"10":{name:"(anonymous_10)",decl:{start:{line:142,column:21},end:{line:142,column:22}},loc:{start:{line:142,column:37},end:{line:144,column:13}},line:142},"11":{name:"(anonymous_11)",decl:{start:{line:145,column:19},end:{line:145,column:20}},loc:{start:{line:145,column:43},end:{line:147,column:13}},line:145},"12":{name:"_lazyLoad",decl:{start:{line:176,column:13},end:{line:176,column:22}},loc:{start:{line:176,column:29},end:{line:184,column:5}},line:176},"13":{name:"(anonymous_13)",decl:{start:{line:178,column:18},end:{line:178,column:19}},loc:{start:{line:178,column:30},end:{line:183,column:13}},line:178},"14":{name:"(anonymous_14)",decl:{start:{line:180,column:26},end:{line:180,column:27}},loc:{start:{line:180,column:38},end:{line:182,column:21}},line:180},"15":{name:"_isAMD",decl:{start:{line:196,column:13},end:{line:196,column:19}},loc:{start:{line:196,column:22},end:{line:198,column:5}},line:196}},branchMap:{"0":{loc:{start:{line:7,column:4},end:{line:15,column:5}},type:"if",locations:[{start:{line:7,column:4},end:{line:15,column:5}},{start:{line:7,column:4},end:{line:15,column:5}}],line:7},"1":{loc:{start:{line:7,column:8},end:{line:7,column:50}},type:"binary-expr",locations:[{start:{line:7,column:8},end:{line:7,column:36}},{start:{line:7,column:40},end:{line:7,column:50}}],line:7},"2":{loc:{start:{line:10,column:30},end:{line:10,column:47}},type:"binary-expr",locations:[{start:{line:10,column:30},end:{line:10,column:41}},{start:{line:10,column:45},end:{line:10,column:47}}],line:10},"3":{loc:{start:{line:10,column:49},end:{line:10,column:76}},type:"binary-expr",locations:[{start:{line:10,column:49},end:{line:10,column:57}},{start:{line:10,column:62},end:{line:10,column:75}}],line:10},"4":{loc:{start:{line:14,column:16},end:{line:14,column:37}},type:"binary-expr",locations:[{start:{line:14,column:16},end:{line:14,column:27}},{start:{line:14,column:31},end:{line:14,column:37}}],line:14},"5":{loc:{start:{line:14,column:39},end:{line:14,column:56}},type:"binary-expr",locations:[{start:{line:14,column:39},end:{line:14,column:50}},{start:{line:14,column:54},end:{line:14,column:56}}],line:14},"6":{loc:{start:{line:14,column:58},end:{line:14,column:85}},type:"binary-expr",locations:[{start:{line:14,column:58},end:{line:14,column:66}},{start:{line:14,column:71},end:{line:14,column:84}}],line:14},"7":{loc:{start:{line:37,column:8},end:{line:45,column:9}},type:"if",locations:[{start:{line:37,column:8},end:{line:45,column:9}},{start:{line:37,column:8},end:{line:45,column:9}}],line:37},"8":{loc:{start:{line:40,column:12},end:{line:42,column:13}},type:"if",locations:[{start:{line:40,column:12},end:{line:42,column:13}},{start:{line:40,column:12},end:{line:42,column:13}}],line:40},"9":{loc:{start:{line:66,column:8},end:{line:68,column:9}},type:"if",locations:[{start:{line:66,column:8},end:{line:68,column:9}},{start:{line:66,column:8},end:{line:68,column:9}}],line:66},"10":{loc:{start:{line:69,column:8},end:{line:88,column:9}},type:"if",locations:[{start:{line:69,column:8},end:{line:88,column:9}},{start:{line:69,column:8},end:{line:88,column:9}}],line:69},"11":{loc:{start:{line:72,column:12},end:{line:74,column:13}},type:"if",locations:[{start:{line:72,column:12},end:{line:74,column:13}},{start:{line:72,column:12},end:{line:74,column:13}}],line:72},"12":{loc:{start:{line:72,column:16},end:{line:72,column:66}},type:"binary-expr",locations:[{start:{line:72,column:16},end:{line:72,column:25}},{start:{line:72,column:29},end:{line:72,column:66}}],line:72},"13":{loc:{start:{line:106,column:8},end:{line:108,column:9}},type:"if",locations:[{start:{line:106,column:8},end:{line:108,column:9}},{start:{line:106,column:8},end:{line:108,column:9}}],line:106},"14":{loc:{start:{line:112,column:12},end:{line:115,column:13}},type:"if",locations:[{start:{line:112,column:12},end:{line:115,column:13}},{start:{line:112,column:12},end:{line:115,column:13}}],line:112},"15":{loc:{start:{line:112,column:16},end:{line:112,column:66}},type:"binary-expr",locations:[{start:{line:112,column:16},end:{line:112,column:25}},{start:{line:112,column:29},end:{line:112,column:66}}],line:112},"16":{loc:{start:{line:122,column:12},end:{line:132,column:13}},type:"if",locations:[{start:{line:122,column:12},end:{line:132,column:13}},{start:{line:122,column:12},end:{line:132,column:13}}],line:122},"17":{loc:{start:{line:127,column:16},end:{line:131,column:17}},type:"if",locations:[{start:{line:127,column:16},end:{line:131,column:17}},{start:{line:127,column:16},end:{line:131,column:17}}],line:127},"18":{loc:{start:{line:127,column:20},end:{line:127,column:44}},type:"binary-expr",locations:[{start:{line:127,column:20},end:{line:127,column:24}},{start:{line:127,column:28},end:{line:127,column:44}}],line:127},"19":{loc:{start:{line:149,column:8},end:{line:162,column:9}},type:"if",locations:[{start:{line:149,column:8},end:{line:162,column:9}},{start:{line:149,column:8},end:{line:162,column:9}}],line:149},"20":{loc:{start:{line:151,column:12},end:{line:153,column:13}},type:"if",locations:[{start:{line:151,column:12},end:{line:153,column:13}},{start:{line:151,column:12},end:{line:153,column:13}}],line:151},"21":{loc:{start:{line:151,column:16},end:{line:151,column:104}},type:"binary-expr",locations:[{start:{line:151,column:16},end:{line:151,column:58}},{start:{line:151,column:62},end:{line:151,column:104}}],line:151},"22":{loc:{start:{line:197,column:16},end:{line:197,column:58}},type:"binary-expr",locations:[{start:{line:197,column:16},end:{line:197,column:44}},{start:{line:197,column:48},end:{line:197,column:58}}],line:197}},s:{"0":0,"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0,"13":0,"14":0,"15":0,"16":0,"17":0,"18":0,"19":0,"20":0,"21":0,"22":0,"23":0,"24":0,"25":0,"26":0,"27":0,"28":0,"29":0,"30":0,"31":0,"32":0,"33":0,"34":0,"35":0,"36":0,"37":0,"38":0,"39":0,"40":0,"41":0,"42":0,"43":0,"44":0,"45":0,"46":0,"47":0,"48":0,"49":0,"50":0,"51":0,"52":0,"53":0,"54":0,"55":0,"56":0},f:{"0":0,"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0,"13":0,"14":0,"15":0},b:{"0":[0,0],"1":[0,0],"2":[0,0],"3":[0,0],"4":[0,0],"5":[0,0],"6":[0,0],"7":[0,0],"8":[0,0],"9":[0,0],"10":[0,0],"11":[0,0],"12":[0,0],"13":[0,0],"14":[0,0],"15":[0,0],"16":[0,0],"17":[0,0],"18":[0,0],"19":[0,0],"20":[0,0],"21":[0,0],"22":[0,0]},_coverageSchema:"332fd63041d2c1bcb487cc26dd0d5f7d97098a6c"},coverage=global[gcv]||(global[gcv]={});if(coverage[path]&&coverage[path].hash===hash){return coverage[path];}coverageData.hash=hash;return coverage[path]=coverageData;}();++cov_esm2zt3n8.s[0];/*!
  * cdp.lazyload.js 2.0.0
  *
  * Date: 2017-07-04T08:57:38.912Z
- */
-((function (root, factory) {
-    if (typeof define === "function" && define.amd) {
-        // AMD
-        define(["jquery"], function ($) {
-            return factory($, root.Config || {}, root.CDP || (root.CDP = {}));
-        });
-    } else {
-        // Browser globals
-        factory(root.jQuery || root.$, root.Config || {}, root.CDP || (root.CDP = {}));
-    }
-})(this, function ($, Config, CDP) {
-
-    var TAG = "[CDP] ";
-
-    /**
+ */(function(root,factory){++cov_esm2zt3n8.f[0];++cov_esm2zt3n8.s[1];if((++cov_esm2zt3n8.b[1][0],typeof define==="function")&&(++cov_esm2zt3n8.b[1][1],define.amd)){++cov_esm2zt3n8.b[0][0];++cov_esm2zt3n8.s[2];// AMD
+define(["jquery"],function($){++cov_esm2zt3n8.f[1];++cov_esm2zt3n8.s[3];return factory($,(++cov_esm2zt3n8.b[2][0],root.Config)||(++cov_esm2zt3n8.b[2][1],{}),(++cov_esm2zt3n8.b[3][0],root.CDP)||(++cov_esm2zt3n8.b[3][1],root.CDP={}));});}else{++cov_esm2zt3n8.b[0][1];++cov_esm2zt3n8.s[4];// Browser globals
+factory((++cov_esm2zt3n8.b[4][0],root.jQuery)||(++cov_esm2zt3n8.b[4][1],root.$),(++cov_esm2zt3n8.b[5][0],root.Config)||(++cov_esm2zt3n8.b[5][1],{}),(++cov_esm2zt3n8.b[6][0],root.CDP)||(++cov_esm2zt3n8.b[6][1],root.CDP={}));}})(this,function($,Config,CDP){++cov_esm2zt3n8.f[2];var TAG=(++cov_esm2zt3n8.s[5],"[CDP] ");/**
      * \~english
      * Get file extension by file name.
      *
@@ -31,21 +18,7 @@
      * @private
      * @param  file {String} [in] file path / file name
      * @return {String} file extension
-     */
-    function _getExtension(file) {
-        var ret;
-        if (file) {
-            var fileTypes = file.split(".");
-            var len = fileTypes.length;
-            if (0 === len) {
-                return ret;
-            }
-            ret = fileTypes[len - 1];
-            return ret;
-        }
-    }
-
-    /**
+     */function _getExtension(file){++cov_esm2zt3n8.f[3];var ret;++cov_esm2zt3n8.s[6];if(file){++cov_esm2zt3n8.b[7][0];var fileTypes=(++cov_esm2zt3n8.s[7],file.split("."));var len=(++cov_esm2zt3n8.s[8],fileTypes.length);++cov_esm2zt3n8.s[9];if(0===len){++cov_esm2zt3n8.b[8][0];++cov_esm2zt3n8.s[10];return ret;}else{++cov_esm2zt3n8.b[8][1];}++cov_esm2zt3n8.s[11];ret=fileTypes[len-1];++cov_esm2zt3n8.s[12];return ret;}else{++cov_esm2zt3n8.b[7][1];}}/**
      * \~english
      * Get script elements.
      *
@@ -59,36 +32,7 @@
      * @private
      * @param  file {jQuery} [in] type lazy elements
      * @return {jQuery} script elements
-     */
-    function _getScriptElements($typeLazy) {
-        var scripts;
-        var src = $typeLazy.attr("src");
-        if (!src) {
-            src = $typeLazy.data("src");
-        }
-        if ("js" === _getExtension(src).toLowerCase()) {
-            return $typeLazy;
-        } else {
-            if (requirejs && typeof requirejs.toUrl === "function") {
-                src = requirejs.toUrl(src);
-            }
-            $.ajax({
-                url: src,
-                method: "GET",
-                async: false,
-                dataType: "html",
-                success: function (data){
-                    scripts = data;
-                },
-                error: function (data, status) {
-                    console.error(TAG + "lazyLoad() ajax request failed. [status: " + status + "][src: " + src + "]");
-                }
-            });
-            return $(scripts).find("script");
-        }
-    }
-
-    /**
+     */function _getScriptElements($typeLazy){++cov_esm2zt3n8.f[4];var scripts;var src=(++cov_esm2zt3n8.s[13],$typeLazy.attr("src"));++cov_esm2zt3n8.s[14];if(!src){++cov_esm2zt3n8.b[9][0];++cov_esm2zt3n8.s[15];src=$typeLazy.data("src");}else{++cov_esm2zt3n8.b[9][1];}++cov_esm2zt3n8.s[16];if("js"===_getExtension(src).toLowerCase()){++cov_esm2zt3n8.b[10][0];++cov_esm2zt3n8.s[17];return $typeLazy;}else{++cov_esm2zt3n8.b[10][1];++cov_esm2zt3n8.s[18];if((++cov_esm2zt3n8.b[12][0],requirejs)&&(++cov_esm2zt3n8.b[12][1],typeof requirejs.toUrl==="function")){++cov_esm2zt3n8.b[11][0];++cov_esm2zt3n8.s[19];src=requirejs.toUrl(src);}else{++cov_esm2zt3n8.b[11][1];}++cov_esm2zt3n8.s[20];$.ajax({url:src,method:"GET",async:false,dataType:"html",success:function(data){++cov_esm2zt3n8.f[5];++cov_esm2zt3n8.s[21];scripts=data;},error:function(data,status){++cov_esm2zt3n8.f[6];++cov_esm2zt3n8.s[22];console.error(TAG+"lazyLoad() ajax request failed. [status: "+status+"][src: "+src+"]");}});++cov_esm2zt3n8.s[23];return $(scripts).find("script");}}/**
      * \~english
      * Load script and append to head with "sourceURL".
      *
@@ -100,69 +44,11 @@
      * Developer Tool の Source Tree 上に表示するため、sourceURL が無ければ埋め込む
      *
      * @param $script {JQuery} [in] script の jQuery object
-     */
-    function _appendSync($script) {
-        var _src = $script.attr("src");
-        if (!_src) {
-            _src = $script.data("src");
-        }
-
-        var _url = function ($elem) {
-            var ret = _src;
-            if (requirejs && typeof requirejs.toUrl === "function") {
-                ret = requirejs.toUrl(ret);
-                $elem.attr("src", ret);
-            }
-            return ret;
-        }($script);
-
-
-        var toLocation = function (url) {
-            // 明示的に autoDomainAssign = false が指定されているときは、_src を返す
-            if (false === Config.autoDomainAssign) {
-                return _src;
-            } else {
-                var ret = url.split("?");
-
-                if (!ret || 0 === ret.length) {
-                    return url;
-                } else {
-                    return ret[0];
-                }
-            }
-        };
-
-        var code;
-
-        $.ajax({
-            url: _url,
-            method: "GET",
-            async: false,
-            dataType: "text",
-            success: function (data) {
-                code = data;
-            },
-            error: function (data, status) {
-                console.error(TAG + "lazyLoad() ajax request failed. [status: " + status + "][src: " + _url + "]");
-            }
-        });
-        if (code) {
-            // sourceURL が指定されていなければ追加
-            if (!code.match(/\/\/@ sourceURL=[\s\S]*?\n/g) && !code.match(/\/\/# sourceURL=[\s\S]*?\n/g)) {
-                code = code + "\n//# " + "sourceURL=" + toLocation(_url);
-            }
-
-            // script を有効化
-            $.globalEval(code);
-
-            // <head> に <script> として追加
-            $script.attr("type", "false");
-            document.head.appendChild($script[0]);
-            $script.removeAttr("type");
-        }
-    }
-
-    /**
+     */function _appendSync($script){++cov_esm2zt3n8.f[7];var _src=(++cov_esm2zt3n8.s[24],$script.attr("src"));++cov_esm2zt3n8.s[25];if(!_src){++cov_esm2zt3n8.b[13][0];++cov_esm2zt3n8.s[26];_src=$script.data("src");}else{++cov_esm2zt3n8.b[13][1];}var _url=(++cov_esm2zt3n8.s[27],function($elem){++cov_esm2zt3n8.f[8];var ret=(++cov_esm2zt3n8.s[28],_src);++cov_esm2zt3n8.s[29];if((++cov_esm2zt3n8.b[15][0],requirejs)&&(++cov_esm2zt3n8.b[15][1],typeof requirejs.toUrl==="function")){++cov_esm2zt3n8.b[14][0];++cov_esm2zt3n8.s[30];ret=requirejs.toUrl(ret);++cov_esm2zt3n8.s[31];$elem.attr("src",ret);}else{++cov_esm2zt3n8.b[14][1];}++cov_esm2zt3n8.s[32];return ret;}($script));++cov_esm2zt3n8.s[33];var toLocation=function(url){++cov_esm2zt3n8.f[9];++cov_esm2zt3n8.s[34];// 明示的に autoDomainAssign = false が指定されているときは、_src を返す
+if(false===Config.autoDomainAssign){++cov_esm2zt3n8.b[16][0];++cov_esm2zt3n8.s[35];return _src;}else{++cov_esm2zt3n8.b[16][1];var ret=(++cov_esm2zt3n8.s[36],url.split("?"));++cov_esm2zt3n8.s[37];if((++cov_esm2zt3n8.b[18][0],!ret)||(++cov_esm2zt3n8.b[18][1],0===ret.length)){++cov_esm2zt3n8.b[17][0];++cov_esm2zt3n8.s[38];return url;}else{++cov_esm2zt3n8.b[17][1];++cov_esm2zt3n8.s[39];return ret[0];}}};var code;++cov_esm2zt3n8.s[40];$.ajax({url:_url,method:"GET",async:false,dataType:"text",success:function(data){++cov_esm2zt3n8.f[10];++cov_esm2zt3n8.s[41];code=data;},error:function(data,status){++cov_esm2zt3n8.f[11];++cov_esm2zt3n8.s[42];console.error(TAG+"lazyLoad() ajax request failed. [status: "+status+"][src: "+_url+"]");}});++cov_esm2zt3n8.s[43];if(code){++cov_esm2zt3n8.b[19][0];++cov_esm2zt3n8.s[44];// sourceURL が指定されていなければ追加
+if((++cov_esm2zt3n8.b[21][0],!code.match(/\/\/@ sourceURL=[\s\S]*?\n/g))&&(++cov_esm2zt3n8.b[21][1],!code.match(/\/\/# sourceURL=[\s\S]*?\n/g))){++cov_esm2zt3n8.b[20][0];++cov_esm2zt3n8.s[45];code=code+"\n//# "+"sourceURL="+toLocation(_url);}else{++cov_esm2zt3n8.b[20][1];}// script を有効化
+++cov_esm2zt3n8.s[46];$.globalEval(code);// <head> に <script> として追加
+++cov_esm2zt3n8.s[47];$script.attr("type","false");++cov_esm2zt3n8.s[48];document.head.appendChild($script[0]);++cov_esm2zt3n8.s[49];$script.removeAttr("type");}else{++cov_esm2zt3n8.b[19][1];}}/**
      * \~english
      * Script lazy loading.
      *
@@ -172,18 +58,7 @@
      * 遅延スクリプトロード
      *
      * @param type {String} [in] script タグに指定されたタイプを指定
-     */
-    function _lazyLoad(type) {
-        $("script[type='" + type + "']")
-            .each(function () {
-                _getScriptElements($(this).remove())
-                    .each(function () {
-                        _appendSync($(this));
-                    });
-            });
-    }
-
-    /**
+     */function _lazyLoad(type){++cov_esm2zt3n8.f[12];++cov_esm2zt3n8.s[50];$("script[type='"+type+"']").each(function(){++cov_esm2zt3n8.f[13];++cov_esm2zt3n8.s[51];_getScriptElements($(this).remove()).each(function(){++cov_esm2zt3n8.f[14];++cov_esm2zt3n8.s[52];_appendSync($(this));});});}/**
      * \~english
      * Check for AMD is available.
      *
@@ -192,13 +67,4 @@
      *
      * @private
      * @return {Boolean} true: AMD 対応環境 / false: AMD 非対応
-     */
-    function _isAMD() {
-        return (typeof define === "function" && define.amd);
-    }
-
-    CDP.lazyLoad = _lazyLoad;
-    CDP.isAMD = _isAMD;
-
-    return CDP;
-}));
+     */function _isAMD(){++cov_esm2zt3n8.f[15];++cov_esm2zt3n8.s[53];return(++cov_esm2zt3n8.b[22][0],typeof define==="function")&&(++cov_esm2zt3n8.b[22][1],define.amd);}++cov_esm2zt3n8.s[54];CDP.lazyLoad=_lazyLoad;++cov_esm2zt3n8.s[55];CDP.isAMD=_isAMD;++cov_esm2zt3n8.s[56];return CDP;});

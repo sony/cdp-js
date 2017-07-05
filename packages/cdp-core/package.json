@@ -46,7 +46,7 @@
     "lint:ts": "tslint --type-check -p ./tsconfig.json -c ./tests/tslint/tslint.json -e src/**/*.d.ts exports/**/*.ts",
     "unit-test": "npm run coverage:exec",
     "unit-test:ci": "testem ci -f ./tests/runner/testem-ci.js",
-    "coverage": "run-s clean:coverage compile:ts coverage:exec",
+    "coverage": "run-s clean:coverage compile coverage:exec",
     "coverage:exec": "run-s coverage:instrument unit-test:ci coverage:remap coverage:report",
     "coverage:instrument": "nyc instrument ./dist ./dist --source-map=false",
     "coverage:remap": "node ./tasks/coverage.js",

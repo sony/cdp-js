@@ -101,6 +101,7 @@
     <Content Include="dist\cdp.swatch.min.css">
       <DependentUpon>cdp.swatch.css</DependentUpon>
     </Content>
+    <Content Include="docs\typedoc\index.html" />
     <Content Include="external\backbone\scripts\backbone.js" />
     <Content Include="external\cdp\scripts\cdp.core.js" />
     <Content Include="external\cdp\scripts\cdp.framework.jqm.js" />
