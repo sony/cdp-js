@@ -7,7 +7,7 @@
     "inlineSources": true,
     "declaration": true,
     "removeComments": true,
-    "outFile": "./built/cdp-exports.js"
+    "outFile": "./built/cdp-all.js"
   },
   "include": [
     "src/scripts/**/*.ts"

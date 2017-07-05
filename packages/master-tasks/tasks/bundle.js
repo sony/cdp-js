@@ -20,7 +20,7 @@ function queryOptions() {
     const argv = process.argv.slice(2);
 
     let settings = {
-        target: 'embed-js',    // "embed-js" | "pure-js" | "css"
+        target: 'embed',    // "embed" | "amd" | "pure-js" | "css"
         banner: true,
     };
 
@@ -30,7 +30,7 @@ function queryOptions() {
                 const option = arg.replace(/^--/, '');
                 const name = option.split('=')[0];
                 if ('target' === name) {
-                    settings.target = option.split('=')[1] || 'embed-js';
+                    settings.target = option.split('=')[1] || 'embed';
                 } else if ('no-banner' === name) {
                     settings.banner = false;
                 } else if (name === key) {
@@ -201,8 +201,13 @@ function main() {
     const options = queryOptions();
 
     switch (options.target) {
-        case 'embed-js':
+        case 'embed':
             bundleEmbedJS(options);
+            bundleDTS();
+            copyExtraDTS();
+            break;
+        case 'amd':
+//            bundleEmbedJS(options);
             bundleDTS();
             copyExtraDTS();
             break;
