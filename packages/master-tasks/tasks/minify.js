@@ -77,9 +77,9 @@ function minifyJS(options) {
             },
         });
 
-        fs.outputFileSync(dstPath, result.code, 'utf8');
+        fs.outputFileSync(dstPath, result.code);
         if (options.map) {
-            fs.outputFileSync(mapPath, result.map, 'utf8');
+            fs.outputFileSync(mapPath, result.map);
         }
     });
 }
@@ -116,9 +116,9 @@ function minifyCSS(options) {
         if (options.map) {
             result.styles += '\n/*# sourceMappingURL=' + path.basename(outFile) + '.map */';
         }
-        fs.outputFileSync(dstPath, result.styles, 'utf8');
+        fs.outputFileSync(dstPath, result.styles);
         if (options.map) {
-            fs.outputFileSync(mapPath, result.sourceMap, 'utf8');
+            fs.outputFileSync(mapPath, result.sourceMap);
         }
     });
 }
@@ -142,7 +142,7 @@ function minifyHTML() {
             removeComments: true,
             collapseWhitespace: true,
         });
-        fs.outputFileSync(srcPath, result, 'utf8');
+        fs.outputFileSync(srcPath, result);
     });
 }
 

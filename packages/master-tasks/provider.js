@@ -60,7 +60,7 @@ function setupByCopy() {
             if (fs.existsSync(dst)) {
                 fs.unlinkSync(dst);
             }
-            fs.writeFileSync(dst, fs.readFileSync(src).toString(), 'utf8');
+            fs.writeFileSync(dst, fs.readFileSync(src).toString());
         } else {
             console.error('task not found: ' + task);
             process.exit(1);
@@ -175,7 +175,7 @@ function makeLinkFile() {
     });
 
     // write link.bat
-    fs.writeFileSync('link.bat', link_bat.join('\r\n'), 'utf8');
+    fs.writeFileSync('link.bat', link_bat.join('\r\n'));
 }
 
 function main() {

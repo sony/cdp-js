@@ -22,9 +22,9 @@ function main() {
         }
     }
 
-    fs.writeFileSync(COVERAGE_PATH,
-      JSON.stringify(rebuild, null, 4),
-      'utf-8'
+    fs.writeFileSync(
+        COVERAGE_PATH,
+        JSON.stringify(rebuild, null, 4)
     );
 }
 

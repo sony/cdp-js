@@ -43,7 +43,7 @@
     "build": "run-s compile:ts bundle minify",
     "compile:ts": "tsc -p ./tsconfig.json",
     "bundle": "node ./tasks/bundle.js --target=amd",
-    "minify": "uglifyjs dist/cdp.js -o dist/cdp.min.js --comments /^!/ --source-map includeSources,url=cdp.min.js.map",
+    "minify": "uglifyjs dist/cdp.js -o dist/cdp.min.js --comments /^!\\s\\s\\*\\s@cdp/ --source-map includeSources,url=cdp.min.js.map",
     "lint": "run-p -l lint:*",
     "lint:js": "eslint tasks/**/*.js src/**/*.js -c tests/eslint/eslintrc.json",
     "lint:ts": "tslint --type-check -p ./tsconfig.json -c ./tests/tslint/tslint.json -e src/**/*.d.ts",

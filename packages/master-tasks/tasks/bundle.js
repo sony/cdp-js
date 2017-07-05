@@ -43,7 +43,9 @@ function queryOptions() {
     return settings;
 }
 
+///////////////////////////////////////////////////////////////////////
 // for pure javascript project
+
 function bundlePureJS() {
     const SRC_PATH = path.join(__dirname, '..', config.dir.src, config.dir.script);
 
@@ -53,7 +55,7 @@ function bundlePureJS() {
             .replace(/^\ufeff/gm, '')
             .replace(/\r\n/gm, '\n')
     ;
-    fs.writeFileSync(path.join(DST_PATH, config.main.basename + '.js'), bundleSrc, 'utf-8');
+    fs.writeFileSync(path.join(DST_PATH, config.main.basename + '.js'), bundleSrc);
 
     // d.ts
     const dts = fs.readFileSync(path.join(SRC_PATH, config.main.bundle_d_ts)).toString();
@@ -64,10 +66,12 @@ function bundlePureJS() {
     if (!fs.existsSync(path.join(DST_PATH, config.dir.types))) {
         fs.mkdirSync(path.join(DST_PATH, config.dir.types));
     }
-    fs.writeFileSync(path.join(DST_PATH, config.dir.types, config.main.bundle_d_ts), bundleDTS, 'utf-8');
+    fs.writeFileSync(path.join(DST_PATH, config.dir.types, config.main.bundle_d_ts), bundleDTS);
 }
 
+///////////////////////////////////////////////////////////////////////
 // for classical module structure
+
 function bundleEmbedJS(options) {
     const srcmap = require('./srcmap');
     const BUILT_PATH = path.join(__dirname, '..', config.dir.built);
@@ -110,11 +114,153 @@ function bundleEmbedJS(options) {
             .replace(regex_src, SOURCE_MAP_NAMESPACE)
         ;
     });
-    fs.writeFileSync(path.join(BUILT_PATH, config.main.basename + '.js'), bundleSrc, 'utf-8');
-    fs.writeFileSync(path.join(DST_PATH, config.main.basename + '.js'), bundleSrc, 'utf-8');
+    fs.writeFileSync(path.join(BUILT_PATH, config.main.basename + '.js'), bundleSrc);
+    fs.writeFileSync(path.join(DST_PATH, config.main.basename + '.js'), bundleSrc);
 }
 
+///////////////////////////////////////////////////////////////////////
+// for cdp module
+
+// bunner
+function generateBannerNode() {
+    const _ = require('lodash');
+    const srcmap = require('./srcmap');
+
+    const dependencies = (() => {
+        var modules = [];
+        config.include_modules.forEach(function (target) {
+            const pkgPath = path.join(__dirname, '../..', target, 'package.json');
+            const pkg = require(pkgPath);
+            modules.push({
+                name: pkg.name,
+                version: pkg.version,
+            });
+        });
+
+        const include = fs.readFileSync(path.join(__dirname, '..', 'BANNER-INCLUDES')).toString();
+        return _.template(include)({ modules: modules });
+    })();
+
+    const bannerText = banner('', null)
+        .replace(' */', dependencies)
+        .replace(/\ufeff/gm, '')
+    ;
+
+    return srcmap.getNodeFromCode(bannerText);
+}
+
+// bundle entry
+function bundleAMD() {
+    if (null == config.include_modules) {
+        return;
+    }
+
+    const rjs    = require('requirejs');
+    const srcmap = require('./srcmap');
+    const BUILT_PATH = path.join(__dirname, '..', config.dir.built);
+
+    const sourceNodes = [];
+
+    const setSourceNode = (name, path, code) => {
+        // ensure module name
+        code = code
+            .replace('define([', `define("${name}", [`)
+            .replace(`define('${name}'`, `define("${name}"`)
+            .replace(`define("${config.main.basename}",`, 'define(')
+            .replace('define( [', 'define([')
+        ;
+
+        // create sourceNode from code.
+        const node = srcmap.getNodeFromCode(code);
+
+        // add shim chunk if special case.
+        if (config.main.basename === name) {
+            const shim = `// amd define function shim
+(function (root) {
+    if (!(typeof define === "function" && define.amd)) {
+        root.define = function () { /* noop */ };
+    }
+})(this);
+`;
+            node.prepend(shim + '\n');
+        }
+
+        // cache node
+        sourceNodes.push(node);
+        return node.toString();
+    };
+
+    const options = {
+        preserveLicenseComments: true,
+        baseUrl: config.dir.built,
+        name: config.main.basename,
+        include: (() => {
+            const modules = [];
+            config.include_modules.forEach(function (target) {
+                modules.push(target.replace(/-/g, '.'));
+            });
+            return modules;
+        })(),
+        paths: {
+            'jquery': 'empty:',
+            'underscore': 'empty:',
+            'backbone': 'empty:',
+        },
+        out: `${config.dir.built}/${config.main.basename}-all.js`,
+        optimize: 'none',
+        onBuildWrite: function (name, path, contents) {
+            return setSourceNode(name, path, contents);
+        }
+    };
+
+    // rename: {basename}-all.js -> {basename}.js
+    fs.writeFileSync(
+        path.join(BUILT_PATH, `${config.main.basename}.js`),
+        fs.readFileSync(path.join(BUILT_PATH, `${config.main.basename}-all.js`)).toString()
+    );
+
+    // copy modules
+    const srcPath = path.join(__dirname, '..', config.dir.external, 'cdp', config.dir.script);
+    fs.readdirSync(srcPath)
+    .forEach((file) => {
+        const src = path.join(srcPath, file);
+        if (fs.statSync(src).isFile()) {
+            const dst = path.join(BUILT_PATH, file);
+            fs.writeFileSync(dst, fs.readFileSync(src).toString());
+        }
+    });
+
+    // bundle
+    rjs.optimize(
+        options,
+        () => {
+            const node = generateBannerNode();
+            sourceNodes.forEach((srcnode) => {
+                node.add(srcnode);
+            });
+
+            const script = srcmap.getCodeFromNode(node, (source) => {
+                return source
+                    .replace(`../${config.dir.src}/${config.dir.script}`, `${config.main.namespace}:///exports:/`)
+                    .replace('webpack:/webpack', 'webpack:///webpack')
+                    .replace('webpack:/external', 'webpack:///external')
+                ;
+            });
+            fs.writeFileSync(
+                path.join(BUILT_PATH, `${config.main.basename}.js`),
+                script
+            );
+            fs.writeFileSync(
+                path.join(DST_PATH, `${config.main.basename}.js`),
+                script
+            );
+        }
+    );
+}
+
+///////////////////////////////////////////////////////////////////////
 // for d.ts
+
 function bundleDTS() {
     const DST_PATH = path.join(__dirname, '..', config.dir.pkg);
     const TYPE_DEF_FILE = path.join(DST_PATH, config.dir.types, config.main.bundle_d_ts);
@@ -165,12 +311,14 @@ function copyExtraDTS() {
         const src = path.join(SRC_TYPES_DIR, filePath);
         const dst = path.join(DST_TYPES_DIR, filePath);
         if (fs.statSync(src).isFile()) {
-            fs.writeFileSync(dst, fs.readFileSync(src).toString(), 'utf8');
+            fs.writeFileSync(dst, fs.readFileSync(src).toString());
         }
     });
 }
 
+///////////////////////////////////////////////////////////////////////
 // for post processed css
+
 function bundleCSS() {
     const glob      = require('glob');
     const srcmap    = require('./srcmap');
@@ -192,8 +340,8 @@ function bundleCSS() {
                 .replace(regex_src, SOURCE_MAP_NAMESPACE)
             ;
         }, { multiline: true });
-        fs.writeFileSync(path.join(BUILT_PATH, file), bundleSrc, 'utf-8');
-        fs.writeFileSync(path.join(DST_PATH, file), bundleSrc, 'utf-8');
+        fs.writeFileSync(path.join(BUILT_PATH, file), bundleSrc);
+        fs.writeFileSync(path.join(DST_PATH, file), bundleSrc);
     });
 }
 
@@ -207,7 +355,7 @@ function main() {
             copyExtraDTS();
             break;
         case 'amd':
-//            bundleEmbedJS(options);
+            bundleAMD();
             bundleDTS();
             copyExtraDTS();
             break;

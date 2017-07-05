@@ -1,5 +1,5 @@
 {
-  "name": "@cdp/native-bridge",
+  "name": "@cdp/nativebridge",
   "description": "CDP native bridge module for mobile",
   "version": "2.0.0",
   "main": "dist/cdp.nativebridge.js",

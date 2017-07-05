@@ -265,9 +265,9 @@ function rearrangeCore(extension, info, minifyFunc, options) {
             } else if (options.minify) {
                 const srcText = fs.readFileSync(src).toString();
                 const result = minifyFunc(srcText, dstBaseName);
-                fs.outputFileSync(path.join(DST_DIR, fileName), result.code, 'utf8');
+                fs.outputFileSync(path.join(DST_DIR, fileName), result.code);
                 if (options.map) {
-                    fs.outputFileSync(path.join(DST_DIR, dstBaseName + '.min' + extension + '.map'), result.map, 'utf8');
+                    fs.outputFileSync(path.join(DST_DIR, dstBaseName + '.min' + extension + '.map'), result.map);
                 }
                 console.log('  generate... ' + fileName);
             }

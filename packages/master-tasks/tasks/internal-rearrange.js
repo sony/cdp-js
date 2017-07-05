@@ -23,7 +23,7 @@ function rearrange_scripts() {
             );
             const dst = path.join(DST_PATH, fileName);
             console.log('  update...   ' + fileName);
-            fs.writeFileSync(dst, fs.readFileSync(src).toString(), 'utf8');
+            fs.writeFileSync(dst, fs.readFileSync(src).toString());
         });
     }
 }

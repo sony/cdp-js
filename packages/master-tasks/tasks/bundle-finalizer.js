@@ -32,7 +32,7 @@ function update_srcmap_namespace(code, options) {
 function normalize_classical_module_src_copy() {
     const src = path.join(__dirname, '..', config.dir.built, config.main.basename + '.js');
     const dst = path.join(__dirname, '..', config.dir.pkg, config.main.basename + '.js');
-    fs.writeFileSync(dst, fs.readFileSync(src).toString(), 'utf8');
+    fs.writeFileSync(dst, fs.readFileSync(src).toString());
 }
 
 ///////////////////////////////////////////////////////////////////////
@@ -61,7 +61,7 @@ function normalize_lib_src(location) {
         },
         multiline: false,
     });
-    fs.writeFileSync(MAIN_FILE, src, 'utf8');
+    fs.writeFileSync(MAIN_FILE, src);
 }
 
 function normalize_lib_d_ts() {
@@ -133,7 +133,7 @@ function normalize_package_src() {
             },
             multiline: 'css' === basename[1].toLowerCase(),
         });
-        fs.writeFileSync(srcPath, src, 'utf8');
+        fs.writeFileSync(srcPath, src);
     });
 }
 

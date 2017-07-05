@@ -69,13 +69,19 @@
     </PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>cd $(ProjectDir)/tests/app/stylesheets
-call compass compile -c config.rb</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
-    <Content Include="built\cdp-all.js" />
+    <Content Include="built\cdp-all.js">
+      <DependentUpon>cdp.js</DependentUpon>
+    </Content>
+    <Content Include="built\cdp.js" />
     <Content Include="dist\cdp.js" />
+    <Content Include="dist\cdp.min.js">
+      <DependentUpon>cdp.js</DependentUpon>
+    </Content>
     <Content Include="dist\cdp.structure.css" />
     <Content Include="dist\cdp.swatch.css" />
     <Content Include="external\backbone\scripts\backbone.js" />
@@ -120,7 +126,7 @@ call compass compile -c config.rb</PostBuildEvent>
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="built\cdp-all.d.ts">
-      <DependentUpon>cdp-all.js</DependentUpon>
+      <DependentUpon>cdp.js</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="dist\%40types\cdp.core.d.ts" />
     <TypeScriptCompile Include="dist\%40types\cdp.d.ts" />
@@ -167,11 +173,18 @@ call compass compile -c config.rb</PostBuildEvent>
   <ItemGroup>
     <Content Include=".npmignore" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="BANNER-INCLUDES" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="tsconfig.json" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="tests\eslint\eslintrc.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="dist\cdp.min.js.map">
+      <DependentUpon>cdp.js</DependentUpon>
+    </Content>
   </ItemGroup>
 </Project>
