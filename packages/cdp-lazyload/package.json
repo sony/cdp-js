@@ -21,8 +21,8 @@
     "TypeScript"
   ],
   "scripts": {
+    "setup": "npm run setup:tasks && npm install && npm run rearrange",
     "setup:tasks": "node ../master-tasks/provider.js",
-    "postinstall": "npm run rearrange",
     "test": "run-s -l clean compile lint unit-test",
     "ci": "run-s -l clean build lint unit-test build metrics",
     "package": "run-s ci && node ./tasks/clean.js --built --test --temp",
