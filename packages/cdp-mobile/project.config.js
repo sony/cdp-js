@@ -19,8 +19,10 @@ const dir = {
     test: 'tests',
     types: '@types',
     temp: '.temp',
+    exports: 'exports',
     external: 'external',
     script: 'scripts',
+    stylesheet: 'stylesheets',
 };
 
 const external_rearrange = {
@@ -32,7 +34,7 @@ const external_rearrange = {
     },
 };
 
-const internal_rearrange = [
+const include_modules = [
     'cdp-core',
     'cdp-promise',
     'cdp-nativebridge',
@@ -61,6 +63,8 @@ const banner = {
 const required_tasks = [
     'banner.js',
     'clean.js',
+    'command.js',
+    'exports-setup.js',
     'external-rearrange.js',
     'internal-rearrange.js',
     'remap-coverage.js',
@@ -73,7 +77,8 @@ module.exports = {
     pkg: pkg,
     dir: dir,
     external_rearrange: external_rearrange,
-    internal_rearrange: internal_rearrange,
+    internal_rearrange: include_modules,
+    include_modules: include_modules,
     main: main,
     built_cleanee: built_cleanee,
     banner: banner,

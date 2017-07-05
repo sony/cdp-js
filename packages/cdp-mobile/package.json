@@ -22,7 +22,9 @@
     "jquery"
   ],
   "scripts": {
+    "setup": "npm run setup:tasks && npm run setup:exports",
     "setup:tasks": "node ../master-tasks/provider.js",
+    "setup:exports": "node ./tasks/exports-setup.js",
     "postinstall": "npm run rearrange",
     "test": "run-s -l clean compile:ts lint unit-test",
     "ci": "run-s -l clean build lint unit-test metrics document",

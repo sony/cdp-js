@@ -86,11 +86,17 @@ call compass compile -c config.rb</PostBuildEvent>
     <Content Include="external\cdp\scripts\cdp.tools.js" />
     <Content Include="external\cdp\scripts\cdp.ui.jqm.js" />
     <Content Include="external\cdp\scripts\cdp.ui.listview.js" />
+    <Content Include="external\cdp\stylesheets\cdp.ui.jqm.css" />
+    <Content Include="external\cdp\stylesheets\cdp.ui.jqm.icons.css" />
+    <Content Include="external\cdp\stylesheets\cdp.ui.jqm.structure.css" />
+    <Content Include="external\cdp\stylesheets\cdp.ui.jqm.swatch.css" />
     <Content Include="external\jquery\scripts\jquery.js" />
     <Content Include="external\underscore\scripts\underscore.js" />
     <Content Include="project.config.js" />
     <Content Include="tasks\banner.js" />
     <Content Include="tasks\clean.js" />
+    <Content Include="tasks\command.js" />
+    <Content Include="tasks\exports-setup.js" />
     <Content Include="tasks\external-rearrange.js" />
     <Content Include="tasks\internal-rearrange.js" />
     <Content Include="tasks\remap-coverage.js" />
@@ -111,22 +117,38 @@ call compass compile -c config.rb</PostBuildEvent>
     <Content Include="tests\tslint\tslint.json" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="src\scripts\%40types\cdp.core.d.ts" />
+    <TypeScriptCompile Include="src\scripts\%40types\cdp.framework.jqm.d.ts" />
+    <TypeScriptCompile Include="src\scripts\%40types\cdp.i18n.d.ts" />
+    <TypeScriptCompile Include="src\scripts\%40types\cdp.nativebridge.d.ts" />
+    <TypeScriptCompile Include="src\scripts\%40types\cdp.plugin.nativebridge.d.ts" />
+    <TypeScriptCompile Include="src\scripts\%40types\cdp.promise.d.ts" />
+    <TypeScriptCompile Include="src\scripts\%40types\cdp.tools.d.ts" />
+    <TypeScriptCompile Include="src\scripts\%40types\cdp.ui.jqm.d.ts" />
+    <TypeScriptCompile Include="src\scripts\%40types\cdp.ui.listview.d.ts" />
+    <TypeScriptCompile Include="src\scripts\%40types\dev.dependencies\index.d.ts" />
+    <TypeScriptCompile Include="src\scripts\%40types\i18next.d.ts" />
+    <TypeScriptCompile Include="src\scripts\%40types\jquery.mobile.d.ts" />
+    <TypeScriptCompile Include="src\scripts\cdp.ts" />
     <TypeScriptCompile Include="src\scripts\cdp\bridge.ts" />
+    <TypeScriptCompile Include="src\scripts\cdp\bridge\nativebridge.ts" />
     <TypeScriptCompile Include="src\scripts\cdp\core.ts" />
+    <TypeScriptCompile Include="src\scripts\cdp\core\core.ts" />
+    <TypeScriptCompile Include="src\scripts\cdp\core\framework.jqm.ts" />
+    <TypeScriptCompile Include="src\scripts\cdp\core\i18n.ts" />
+    <TypeScriptCompile Include="src\scripts\cdp\core\promise.ts" />
     <TypeScriptCompile Include="src\scripts\cdp\framework.ts" />
+    <TypeScriptCompile Include="src\scripts\cdp\framework\jqm.ts" />
     <TypeScriptCompile Include="src\scripts\cdp\tools.ts" />
+    <TypeScriptCompile Include="src\scripts\cdp\tools\tools.ts" />
     <TypeScriptCompile Include="src\scripts\cdp\ui.ts" />
+    <TypeScriptCompile Include="src\scripts\cdp\ui\jqm.ts" />
+    <TypeScriptCompile Include="src\scripts\cdp\ui\listview.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include=".npmignore" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="src\scripts\cdp\bridge\" />
-    <Folder Include="src\scripts\cdp\core\" />
-    <Folder Include="src\scripts\cdp\framework\" />
-    <Folder Include="src\scripts\cdp\tools\" />
-    <Folder Include="src\scripts\cdp\ui\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="tsconfig.json" />
   </ItemGroup>
