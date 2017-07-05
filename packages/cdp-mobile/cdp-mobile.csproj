@@ -78,12 +78,29 @@
       <DependentUpon>cdp.js</DependentUpon>
     </Content>
     <Content Include="built\cdp.js" />
+    <Content Include="dist\cdp.css" />
+    <Content Include="dist\cdp.icons.css" />
+    <Content Include="dist\cdp.icons.min.css">
+      <DependentUpon>cdp.icons.css</DependentUpon>
+    </Content>
+    <Content Include="dist\cdp.icons.min.css.map">
+      <DependentUpon>cdp.icons.css</DependentUpon>
+    </Content>
     <Content Include="dist\cdp.js" />
+    <Content Include="dist\cdp.min.css">
+      <DependentUpon>cdp.css</DependentUpon>
+    </Content>
     <Content Include="dist\cdp.min.js">
       <DependentUpon>cdp.js</DependentUpon>
     </Content>
     <Content Include="dist\cdp.structure.css" />
+    <Content Include="dist\cdp.structure.min.css">
+      <DependentUpon>cdp.structure.css</DependentUpon>
+    </Content>
     <Content Include="dist\cdp.swatch.css" />
+    <Content Include="dist\cdp.swatch.min.css">
+      <DependentUpon>cdp.swatch.css</DependentUpon>
+    </Content>
     <Content Include="external\backbone\scripts\backbone.js" />
     <Content Include="external\cdp\scripts\cdp.core.js" />
     <Content Include="external\cdp\scripts\cdp.framework.jqm.js" />
@@ -103,11 +120,12 @@
     <Content Include="tasks\banner.js" />
     <Content Include="tasks\bundle.js" />
     <Content Include="tasks\clean.js" />
+    <Content Include="tasks\collect-coverage.js" />
     <Content Include="tasks\command.js" />
     <Content Include="tasks\exports-setup.js" />
     <Content Include="tasks\external-rearrange.js" />
     <Content Include="tasks\internal-rearrange.js" />
-    <Content Include="tasks\remap-coverage.js" />
+    <Content Include="tasks\packager.js" />
     <Content Include="tasks\srcmap.js" />
     <Content Include="tsconfig.base.json">
       <DependentUpon>tsconfig.json</DependentUpon>
@@ -185,6 +203,21 @@
   <ItemGroup>
     <Content Include="dist\cdp.min.js.map">
       <DependentUpon>cdp.js</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="dist\cdp.min.css.map">
+      <DependentUpon>cdp.css</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="dist\cdp.structure.min.css.map">
+      <DependentUpon>cdp.structure.css</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="dist\cdp.swatch.min.css.map">
+      <DependentUpon>cdp.swatch.css</DependentUpon>
     </Content>
   </ItemGroup>
 </Project>

@@ -116,6 +116,9 @@ function minifyCSS(options) {
         if (options.map) {
             result.styles += '\n/*# sourceMappingURL=' + path.basename(outFile) + '.map */';
         }
+
+        result.styles = result.styles.replace(/\r\n/gm, '\n');
+
         fs.outputFileSync(dstPath, result.styles);
         if (options.map) {
             fs.outputFileSync(mapPath, result.sourceMap);

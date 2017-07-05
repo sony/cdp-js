@@ -39,9 +39,8 @@ function rearrange_stylesheets() {
     if (config.internal_rearrange) {
         config.internal_rearrange.forEach((internal) => {
             const cwd = path.join(__dirname, '../..', internal, config.dir.pkg);
-            glob.sync('**/*.css', {
+            glob.sync('**/?(*.css|*.map)', {
                 cwd: cwd,
-                ignore: ['**/*.min.css'],
                 nodir: true,
             }).forEach((file) => {
                 const src = path.join(cwd, file);

@@ -68,11 +68,12 @@ const required_tasks = [
     'banner.js',
     'bundle.js',
     'clean.js',
+    'collect-coverage.js',
     'command.js',
     'exports-setup.js',
     'external-rearrange.js',
     'internal-rearrange.js',
-    'remap-coverage.js',
+    'packager.js',
     'srcmap.js',
 ];
 
