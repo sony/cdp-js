@@ -38,7 +38,7 @@
     "clean:test": "node ./tasks/clean.js --test",
     "clean:built": "node ./tasks/clean.js --built",
     "clean:pkg": "node ./tasks/clean.js --pkg",
-    "build": "run-s compile bundle minify",
+    "build": "run-s -l compile bundle minify",
     "compile": "tsc -p ./tsconfig.json",
     "bundle": "node ./tasks/bundle.js --target=pure-js",
     "minify": "uglifyjs dist/cdp.lazyload.js -o dist/cdp.lazyload.min.js --comments /^!/ --source-map includeSources,url=cdp.lazyload.min.js.map",

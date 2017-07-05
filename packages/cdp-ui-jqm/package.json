@@ -39,7 +39,7 @@
     "clean:test": "node ./tasks/clean.js --test",
     "clean:built": "node ./tasks/clean.js --built",
     "clean:pkg": "node ./tasks/clean.js --pkg",
-    "build": "run-s compile bundle minify",
+    "build": "run-s -l compile bundle minify",
     "compile": "run-p compile:ts compile:scss",
     "compile:ts": "run-s compile:ts:*",
     "compile:ts:src": "tsc -p ./tsconfig.json",

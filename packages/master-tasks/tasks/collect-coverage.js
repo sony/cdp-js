@@ -4,11 +4,6 @@ const path      = require('path');
 const fs        = require('fs-extra');
 const config    = require('../project.config');
 
-//const SRC_DIR = path.join(__dirname, '..', config.dir.src, config.dir.script);
-//const COVERAGE_PATH = path.join(__dirname, '..', config.dir.doc, 'reports/coverage', 'coverage.json');
-
-//const coverage = require(COVERAGE_PATH);
-
 function queryOptions() {
     const argv = process.argv.slice(2);
 
@@ -39,8 +34,29 @@ function exec(options) {
         return Promise.resolve();
     }
     return new Promise((resolve, reject) => {
-        // TODO
-        resolve();
+        const command = require('./command');
+        const cwdBackup = process.cwd();
+        let targets = config.include_modules.slice();
+
+        const proc = () => {
+            const target = targets.shift();
+            if (!target) {
+                resolve();
+                return;
+            }
+
+            process.chdir(`../${target}`);
+            command.exec('npm', 'run coverage')
+            .then(() => {
+                process.chdir(cwdBackup);
+                setTimeout(proc);
+            })
+            .catch((reason) => {
+                reject(reason);
+            });
+
+        };
+        setTimeout(proc);
     });
 }
 
