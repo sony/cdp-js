@@ -74,9 +74,29 @@ call compass compile -c config.rb</PostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
+    <Content Include="dist\cdp.css" />
+    <Content Include="dist\cdp.icons.css" />
+    <Content Include="dist\cdp.icons.min.css">
+      <DependentUpon>cdp.icons.css</DependentUpon>
+    </Content>
     <Content Include="dist\cdp.js" />
+    <Content Include="dist\cdp.min.css">
+      <DependentUpon>cdp.css</DependentUpon>
+    </Content>
+    <Content Include="dist\cdp.min.css.map">
+      <DependentUpon>cdp.css</DependentUpon>
+    </Content>
+    <Content Include="dist\cdp.min.js">
+      <DependentUpon>cdp.js</DependentUpon>
+    </Content>
     <Content Include="dist\cdp.structure.css" />
+    <Content Include="dist\cdp.structure.min.css">
+      <DependentUpon>cdp.structure.css</DependentUpon>
+    </Content>
     <Content Include="dist\cdp.swatch.css" />
+    <Content Include="dist\cdp.swatch.min.css">
+      <DependentUpon>cdp.swatch.css</DependentUpon>
+    </Content>
     <Content Include="tasks\command.js" />
     <Content Include="tasks\setup.js" />
     <Content Include="tasks\update.js" />
@@ -95,5 +115,43 @@ call compass compile -c config.rb</PostBuildEvent>
   </ItemGroup>
   <ItemGroup>
     <Content Include="eslintrc.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="dist\%40types\cdp.core.d.ts" />
+    <TypeScriptCompile Include="dist\%40types\cdp.d.ts" />
+    <TypeScriptCompile Include="dist\%40types\cdp.framework.jqm.d.ts" />
+    <TypeScriptCompile Include="dist\%40types\cdp.i18n.d.ts" />
+    <TypeScriptCompile Include="dist\%40types\cdp.nativebridge.d.ts" />
+    <TypeScriptCompile Include="dist\%40types\cdp.plugin.nativebridge.d.ts" />
+    <TypeScriptCompile Include="dist\%40types\cdp.promise.d.ts" />
+    <TypeScriptCompile Include="dist\%40types\cdp.tools.d.ts" />
+    <TypeScriptCompile Include="dist\%40types\cdp.ui.jqm.d.ts" />
+    <TypeScriptCompile Include="dist\%40types\cdp.ui.listview.d.ts" />
+    <TypeScriptCompile Include="dist\%40types\i18next.d.ts" />
+    <TypeScriptCompile Include="dist\%40types\index.d.ts" />
+    <TypeScriptCompile Include="dist\%40types\jquery.mobile.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="dist\cdp.icons.min.css.map">
+      <DependentUpon>cdp.icons.css</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="dist\cdp.min.js.map">
+      <DependentUpon>cdp.js</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="dist\cdp.structure.min.css.map">
+      <DependentUpon>cdp.structure.css</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="dist\cdp.swatch.min.css.map">
+      <DependentUpon>cdp.swatch.css</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="circle.yml" />
   </ItemGroup>
 </Project>

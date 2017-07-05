@@ -1,6 +1,5 @@
 ﻿/* eslint-env node, es6 */
 'use strict';
-const fs    = require('fs');
 const path  = require('path');
 
 function queryOptions() {
@@ -11,12 +10,11 @@ function queryOptions() {
     };
 
     if (0 < argv.length) {
-        settings.all = false;
         Object.keys(settings).forEach((key) => {
             argv.forEach((arg) => {
                 const option = arg.replace(/^--/, '');
                 const name = option.split('=')[0];
-                if ('target' === key) {
+                if ('target' === name) {
                     settings.target = option.split('=')[1] || null;
                 } else if (name === key) {
                     settings[key] = true;
@@ -38,15 +36,14 @@ function setup(options) {
                 return options.target.split(',');
             } else {
                 const pkg = require(path.join(__dirname, '../package.json'));
-                return pkg.moduleList;
+                return pkg.projectConfig.modules;
             }
         })();
 
         const proc = () => {
             const target = targets.shift();
             if (!target) {
-                resolve();
-                return;
+                return resolve();
             }
 
             process.chdir(`./packages/${target}`);
@@ -66,10 +63,10 @@ function setup(options) {
 
 function main() {
     setup(queryOptions())
-    .catch((reason) => {
-        console.error(reason);
-        process.exit(1);
-    });
+        .catch((reason) => {
+            console.error(reason);
+            process.exit(1);
+        });
 }
 
 main();

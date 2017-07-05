@@ -1,6 +1,6 @@
 {
   "name": "@cdp/mobile",
-  "description": "CDP promise utility module",
+  "description": "CDP SDK module for mobile",
   "version": "2.0.0",
   "main": "dist/cdp.js",
   "types": "dist/@types/index.d.ts",
@@ -26,7 +26,7 @@
     "setup:tasks": "node ../master-tasks/provider.js",
     "setup:exports": "node ./tasks/exports-setup.js",
     "test": "run-s clean compile:ts lint",
-    "ci": "run-s -l clean build lint document coverage",
+    "ci": "run-s -l clean build lint document coverage:collect",
     "package": "run-s -l clean build lint document && node ./tasks/clean.js --built --test --temp",
     "update": "npm update --save-dev && npm update --save && npm run rearrange && npm run package",
     "depends": "npm list --depth=1",
