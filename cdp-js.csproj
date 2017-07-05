@@ -78,6 +78,8 @@ call compass compile -c config.rb</PostBuildEvent>
     <Content Include="dist\cdp.structure.css" />
     <Content Include="dist\cdp.swatch.css" />
     <Content Include="tasks\command.js" />
+    <Content Include="tasks\setup.js" />
+    <Content Include="tasks\update.js" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="docs\en\README.md" />

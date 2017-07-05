@@ -30,7 +30,7 @@ If you want to use newest version, you can build the modules yourself as follow 
 
 2. build the modules
 
-        $ npm install
+        $ npm run setup
         $ npm run update
 
 2. pick up from the `release` directory.
