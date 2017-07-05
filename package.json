@@ -1,9 +1,10 @@
 {
   "name": "@cdp/mobile",
-  "description": "CDP application foundation script",
-  "version": "1.0.0",
-  "main": "./dist/cdp.js",
-  "types": "./dist/@types/index.d.ts",
+  "description": "CDP promise utility module",
+  "version": "2.0.0",
+  "private": true,
+  "main": "dist/cdp.js",
+  "types": "dist/@types/index.d.ts",
   "author": {
     "name": "Shin Ogata",
     "email": "Shin.Ogata@jp.sony.com"
@@ -22,46 +23,22 @@
     "jquery"
   ],
   "scripts": {
-    "postinstall": "node postinstall.js",
     "build": "npm install && grunt",
-    "test": "grunt ci",
-    "lint": "grunt lint"
+    "test": "eslint tasks/**/*.js -c eslintrc.json"
   },
-  "includeLibraries": [
-    "cdp-core",
-    "cdp-promise",
-    "cdp-i18n",
-    "cdp-framework-jqm",
-    "cdp-tools",
-    "cdp-ui-listview",
-    "cdp-ui-jqm"
-  ],
   "dependencies": {
-    "@types/backbone":"*",
-    "@types/jquery":"*",
-    "@types/underscore":"*",
+    "@types/backbone": "^1.3.34",
+    "@types/i18next": "^8.4.0",
+    "@types/jquery": "^3.2.5",
+    "@types/underscore": "^1.8.1",
     "backbone": ">=1.3.3",
     "jquery": ">=1.8.3",
     "underscore": ">=1.8.3"
   },
   "devDependencies": {
-    "cdp-core": "git+ssh://git@github.com/CDP-Tokyo/cdp-core.git#dev",
-    "cdp-external-module-deployer": "git+ssh://git@github.com/CDP-Tokyo/cdp-external-module-deployer.git#dev",
-    "cdp-framework-jqm": "git+ssh://git@github.com/CDP-Tokyo/cdp-framework-jqm.git#dev",
-    "cdp-i18n": "git+ssh://git@github.com/CDP-Tokyo/cdp-i18n.git#dev",
-    "cdp-lazyload": "git+ssh://git@github.com/CDP-Tokyo/cdp-lazyload.git#dev",
-    "cdp-promise": "git+ssh://git@github.com/CDP-Tokyo/cdp-promise.git#dev",
-    "cdp-tools": "git+ssh://git@github.com/CDP-Tokyo/cdp-tools.git#dev",
-    "cdp-ui-jqm": "git+ssh://git@github.com/CDP-Tokyo/cdp-ui-jqm.git#dev",
-    "cdp-ui-listview": "git+ssh://git@github.com/CDP-Tokyo/cdp-ui-listview.git#dev",
-    "flipsnap": "^0.6.3",
-    "grunt": "^1.0.1",
-    "grunt-cdp-tasks": "git+ssh://git@github.com/CDP-Tokyo/grunt-cdp-tasks.git#dev",
-    "grunt-contrib-requirejs": "^1.0.0",
-    "grunt-ts": "^5.4.0",
-    "hogan.js": "^3.0.2",
-    "iscroll": "^5.2.0",
-    "requirejs": "^2.3.3",
-    "typescript": "^2.3.4"
+    "del": "^3.0.0",
+    "eslint": "^4.1.1",
+    "fs-extra": "^3.0.1",
+    "npm-run-all": "^4.0.2"
   }
 }

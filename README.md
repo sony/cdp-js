@@ -1,69 +1,49 @@
 ﻿# cdp-js
 
-## What is this module
+## What is cdp-js
 
-* TODO:
+This monorepo contains cdp library modules.
 
 
 ### Repository structure
+
 Folder and file structure of this repository is the following list.
 
     root/
+        dist/                                       // for internal release modules directory
         docs/                                       // specification documents for this libraries
-        external/                                   // 3rd party library modules
-        src/                                        // development sources for this libraries
-        tests/                                      // test scripts for this libraries
-        bower.json                                  // [Bower module] the bower module settings file
+        packages/                                   // 3rd party library modules
+        tests/                                      // test for task scripts
 
 
-### How to install
+### How to install (for internal release)
 
 * npm
 
         $ npm install git+http://scm.sm.sony.co.jp/gitlab/cdp-jp/cdp-js.git
 
-* bower
-
-        $ npm install -g bower
-        $ bower install git+http://scm.sm.sony.co.jp/gitlab/cdp-jp/cdp-js.git
-
-
-### How to build the module
+### How to setup
 
 If you want to use newest version, you can build the modules yourself as follow steps.
 
-1. build the modules
+1. clone this repository
+
+2. build the modules
 
         $ npm install
-        $ grunt deploy
+        $ npm run update
 
 2. pick up from the `release` directory.
 
         root/
             dist/
                 cdp.js             js modules for dev.
-                cdp-x.y.z.js       js modules for dev with versioned.
-                cdp-x.y.z.min.js   js modules for release with versioned.
-                cdp-x.y.z.min.map  js map file.
-                include/
+                cdp.min.js         js modules for release with versioned.
+                cdp.min.map        js map file.
+                @types/
                      cdp.d.ts      d.ts file for this module.
 
 3. setup bower module manualy to your project.
-
-### How to test the module
-
-CI command as following.
-
-        $ npm install -g testem
-        $ npm install
-        
-        $ grunt ci
-
-LINT command as following.
-
-        $ npm install
-        
-        $ grunt lint
 
 
 ### How to use
