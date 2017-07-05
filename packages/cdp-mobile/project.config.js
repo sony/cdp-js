@@ -52,7 +52,11 @@ const main = {
 };
 
 const built_cleanee = {
-    ts: ['**/*.js', '**/*.d.ts', '!**/index.d.ts', '**/*.map'],
+    ts: ['**/*.js', '**/*.d.ts', '!**/@types/**/*.d.ts', '**/*.map'],
+    roots: [
+        `${dir.built}`,
+        `${dir.src}/${dir.script}`,
+    ],
 };
 
 const banner = {
@@ -62,6 +66,7 @@ const banner = {
 
 const required_tasks = [
     'banner.js',
+    'bundle.js',
     'clean.js',
     'command.js',
     'exports-setup.js',

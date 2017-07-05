@@ -5,14 +5,15 @@
     "module": "amd",
     "inlineSourceMap": true,
     "inlineSources": true,
-    "declaration": false
+    "declaration": true,
+    "removeComments": true,
+    "outFile": "./built/cdp-exports.js"
   },
   "include": [
-    "src/scripts/**/*.ts",
-    "exports/**/*.ts",
-    "tests/unit/**/*.ts"
+    "src/scripts/**/*.ts"
   ],
   "exclude": [
+    "src/scripts/@types/index.d.ts",
     "built",
     "dist",
     "docs",

@@ -1,4 +1,12 @@
-﻿/// <amd-module name="cdp" />
+﻿/// <reference path="@types/cdp.core.d.ts" />
+/// <reference path="@types/cdp.promise.d.ts" />
+/// <reference path="@types/cdp.nativebridge.d.ts" />
+/// <reference path="@types/cdp.i18n.d.ts" />
+/// <reference path="@types/cdp.framework.jqm.d.ts" />
+/// <reference path="@types/cdp.tools.d.ts" />
+/// <reference path="@types/cdp.ui.listview.d.ts" />
+/// <reference path="@types/cdp.ui.jqm.d.ts" />
+/// <amd-module name="cdp" />
 
 export * from "./cdp/core";
 

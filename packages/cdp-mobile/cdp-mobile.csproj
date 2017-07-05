@@ -74,6 +74,7 @@ call compass compile -c config.rb</PostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
+    <Content Include="built\cdp-exports.js" />
     <Content Include="dist\cdp.js" />
     <Content Include="dist\cdp.structure.css" />
     <Content Include="dist\cdp.swatch.css" />
@@ -94,6 +95,7 @@ call compass compile -c config.rb</PostBuildEvent>
     <Content Include="external\underscore\scripts\underscore.js" />
     <Content Include="project.config.js" />
     <Content Include="tasks\banner.js" />
+    <Content Include="tasks\bundle.js" />
     <Content Include="tasks\clean.js" />
     <Content Include="tasks\command.js" />
     <Content Include="tasks\exports-setup.js" />
@@ -117,6 +119,9 @@ call compass compile -c config.rb</PostBuildEvent>
     <Content Include="tests\tslint\tslint.json" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="built\cdp-exports.d.ts">
+      <DependentUpon>cdp-exports.js</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="src\scripts\%40types\cdp.core.d.ts" />
     <TypeScriptCompile Include="src\scripts\%40types\cdp.framework.jqm.d.ts" />
     <TypeScriptCompile Include="src\scripts\%40types\cdp.i18n.d.ts" />
@@ -128,6 +133,7 @@ call compass compile -c config.rb</PostBuildEvent>
     <TypeScriptCompile Include="src\scripts\%40types\cdp.ui.listview.d.ts" />
     <TypeScriptCompile Include="src\scripts\%40types\dev.dependencies\index.d.ts" />
     <TypeScriptCompile Include="src\scripts\%40types\i18next.d.ts" />
+    <TypeScriptCompile Include="src\scripts\%40types\index.d.ts" />
     <TypeScriptCompile Include="src\scripts\%40types\jquery.mobile.d.ts" />
     <TypeScriptCompile Include="src\scripts\cdp.ts" />
     <TypeScriptCompile Include="src\scripts\cdp\bridge.ts" />
