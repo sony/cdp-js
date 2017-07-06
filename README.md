@@ -22,7 +22,7 @@ Folder and file structure of this repository is the following list.
 
 * npm
 
-        $ npm install git+http://scm.sm.sony.co.jp/gitlab/cdp-jp/cdp-js.git
+        $ npm install git+ssh://git@github.com/CDP-Tokyo/cdp-js.git
 
 ### How to setup
 

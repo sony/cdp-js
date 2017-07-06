@@ -1,7 +1,10 @@
 bin/
 obj/
 packages/
-tesks/
+tasks/
+circle.yml
+eslintrc.json
+project.config.js
 *.sln
 *.csproj
 *.csproj.user
