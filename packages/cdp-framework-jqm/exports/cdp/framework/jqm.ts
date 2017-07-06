@@ -19,7 +19,7 @@ export const waitForInitialize                      = _framework.waitForInitiali
 export const registerOrientationChangedListener     = _framework.registerOrientationChangedListener;
 export const unregisterOrientationChangedListener   = _framework.unregisterOrientationChangedListener;
 export const getDefaultClickEvent                   = _framework.getDefaultClickEvent;
-export const registerPages                          = _framework.registerPages;
+export const registerPage                           = _framework.registerPage;
 export const constructPages                         = _framework.constructPages;
 export const disposePages                           = _framework.disposePages;
 

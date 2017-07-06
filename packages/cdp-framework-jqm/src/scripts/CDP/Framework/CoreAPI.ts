@@ -341,7 +341,7 @@ namespace CDP {
          *
          * @param {constructor} ctor [in] コンストラクタを指定
          */
-        export function registerPages(ctor: new () => IPage): void {
+        export function registerPage(ctor: new () => IPage): void {
             _pageConstructors.push(ctor);
         }
 

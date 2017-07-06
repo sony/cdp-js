@@ -309,7 +309,7 @@ namespace CDP.Framework {
 
             if (restart) {
                 // 再開時は再読み込みしない。
-                Router.start({ silent: true });
+                Router.start({ silent: true, pageConstruct: false });
             }
 
             return Router;
@@ -329,14 +329,15 @@ namespace CDP.Framework {
          * @param options {Object} [in] Backbone.History にわたるオプション
          */
         public static start(options?: RouterOptions): boolean {
-            if (null != options && false !== options.pageConstruct) {
+            const opt = $.extend({ pageConstruct: true }, options);
+            if (opt.pageConstruct) {
                 Framework.constructPages();
             }
             if ($.mobile.hashListeningEnabled) {
                 console.log("setting error. confict: $.mobile.hashListeningEnabled = true, cannot start.");
                 return false;
             }
-            return Backbone.history.start(options);
+            return Backbone.history.start(opt);
         }
 
         /**

@@ -9,3 +9,10 @@ export type Page            = _framework.Page;
 export type Orientation     = _framework.Orientation;
 export type ShowEventData   = _framework.ShowEventData;
 export type HideEventData   = _framework.HideEventData;
+
+// framework ui utils
+export const toUrl          = _framework.toUrl;
+export const registerPage   = _framework.registerPage;
+export const getOrientation = _framework.getOrientation;
+export const registerOrientationChangedListener     = _framework.registerOrientationChangedListener;
+export const unregisterOrientationChangedListener   = _framework.unregisterOrientationChangedListener;
