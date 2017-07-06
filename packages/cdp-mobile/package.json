@@ -26,7 +26,7 @@
     "setup:tasks": "node ../master-tasks/provider.js",
     "setup:exports": "node ./tasks/exports-setup.js",
     "test": "run-s clean compile:ts lint",
-    "ci": "run-s -l clean build lint document coverage:collect",
+    "ci": "run-s -l clean build lint document coverage:collect coverage:report",
     "package": "run-s -l clean build lint document && node ./tasks/clean.js --built --test --temp",
     "update": "npm update --save-dev && npm update --save && npm run rearrange && npm run package",
     "check:update": "npm outdated",

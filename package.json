@@ -26,11 +26,12 @@
     "setup": "npm install && node ./tasks/command-delegator.js --command=setup",
     "update": "npm update --save-dev && npm update --save && node ./tasks/command-delegator.js --command=update && npm run update:package",
     "update:package": "node ./tasks/update-package.js",
+    "update:reports": "node ./tasks/update-package.js --operation=reports",
     "check:update": "node ./tasks/command-delegator.js",
     "check:coverage": "node ./tasks/command-delegator.js --command=check:coverage",
     "build": "node ./tasks/command-delegator.js --command=build",
     "coverage": "node ./tasks/command-delegator.js --command=coverage --target=cdp-mobile",
-    "ci": "npm run setup && npm test && node ./tasks/command-delegator.js --command=ci",
+    "ci": "npm run setup && npm test && node ./tasks/command-delegator.js --command=ci && npm run update:reports",
     "test": "eslint tasks/**/*.js -c eslintrc.json"
   },
   "dependencies": {

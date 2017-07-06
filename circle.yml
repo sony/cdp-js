@@ -17,7 +17,6 @@ test:
 
 general:
     artifacts:
-        - "docs/typedoc"            # typedoc document
-#        - "docs/reports/metrics"    # metrics reports
-        - "packages/cdp-mobile/docs/reports/coverage"   # coverage reports
+#        - "docs/typedoc"    # typedoc document
+        - "docs/reports"    # metrics, coverage reports
 #        - "docs/reports/bugspots.txt" # bugspots report
