@@ -98,9 +98,9 @@ call compass compile -c config.rb</PostBuildEvent>
       <DependentUpon>cdp.swatch.css</DependentUpon>
     </Content>
     <Content Include="project.config.js" />
+    <Content Include="tasks\command-delegator.js" />
     <Content Include="tasks\command.js" />
-    <Content Include="tasks\setup.js" />
-    <Content Include="tasks\update.js" />
+    <Content Include="tasks\update-package.js" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="docs\en\README.md" />

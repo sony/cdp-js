@@ -23,10 +23,11 @@
     "jquery"
   ],
   "scripts": {
-    "setup": "npm install && node ./tasks/setup.js",
-    "update": "npm update --save-dev && npm update --save && node ./tasks/update.js",
-    "update:dist": "node ./tasks/update.js --no-build",
-    "ci": "npm install && node ./tasks/setup.js && npm test && node ./tasks/update.js --command=ci",
+    "setup": "npm install && node ./tasks/command-delegator.js --command=setup",
+    "update": "npm update --save-dev && npm update --save && node ./tasks/command-delegator.js --command=update && npm run update:package",
+    "update:package": "node ./tasks/update-package.js",
+    "check:update": "node ./tasks/command-delegator.js",
+    "ci": "npm run setup && npm test && node ./tasks/command-delegator.js --command=ci",
     "test": "eslint tasks/**/*.js -c eslintrc.json"
   },
   "dependencies": {

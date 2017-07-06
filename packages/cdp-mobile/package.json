@@ -29,6 +29,7 @@
     "ci": "run-s -l clean build lint document coverage:collect",
     "package": "run-s -l clean build lint document && node ./tasks/clean.js --built --test --temp",
     "update": "npm update --save-dev && npm update --save && npm run rearrange && npm run package",
+    "check:update": "npm outdated",
     "depends": "npm list --depth=1",
     "depends:prod": "npm list --depth=0 --only=prod",
     "depends:dev": "npm list --depth=0 --only=dev",

@@ -1,13 +1,13 @@
 ﻿/* eslint-env node, es6 */
 'use strict';
-const path      = require('path');
-const config    = require('../project.config');
+const config = require('../project.config');
 
 function queryOptions() {
     const argv = process.argv.slice(2);
 
     let settings = {
         target: null,
+        command: 'check:update',
     };
 
     if (0 < argv.length) {
@@ -16,7 +16,9 @@ function queryOptions() {
                 const option = arg.replace(/^--/, '');
                 const name = option.split('=')[0];
                 if ('target' === name) {
-                    settings.target = option.split('=')[1] || null;
+                    settings.target = option.split('=')[1];
+                } else if ('command' === name) {
+                    settings.command = option.split('=')[1] || 'check:update';
                 } else if (name === key) {
                     settings[key] = true;
                 }
@@ -27,7 +29,7 @@ function queryOptions() {
     return settings;
 }
 
-function setup(options) {
+function delegate(options) {
     return new Promise((resolve, reject) => {
         const command = require('./command');
         const cwdBackup = process.cwd();
@@ -47,7 +49,7 @@ function setup(options) {
             }
 
             process.chdir(`./packages/${target}`);
-            command.exec('npm', 'run setup')
+            command.exec('npm', `run ${options.command}`)
                 .then(() => {
                     process.chdir(cwdBackup);
                     setTimeout(proc);
@@ -62,7 +64,7 @@ function setup(options) {
 }
 
 function main() {
-    setup(queryOptions())
+    delegate(queryOptions())
         .catch((reason) => {
             console.error(reason);
             process.exit(1);
