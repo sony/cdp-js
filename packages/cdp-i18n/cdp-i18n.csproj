@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <ProjectGuid>{307702C9-D79B-4703-992C-9564975CB142}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <OutputPath>bin</OutputPath>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UpgradeBackupLocation />
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>WebView</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>60454</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:51731/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <TypeScriptTarget>ES5</TypeScriptTarget>
+    <TypeScriptIncludeComments>true</TypeScriptIncludeComments>
+    <TypeScriptSourceMap>true</TypeScriptSourceMap>
+    <TypeScriptJSXEmit>None</TypeScriptJSXEmit>
+    <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
+    <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
+    <TypeScriptModuleKind>AMD</TypeScriptModuleKind>
+    <TypeScriptRemoveComments>False</TypeScriptRemoveComments>
+    <TypeScriptOutFile />
+    <TypeScriptOutDir />
+    <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
+    <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
+    <TypeScriptMapRoot />
+    <TypeScriptSourceRoot />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <TypeScriptTarget>ES5</TypeScriptTarget>
+    <TypeScriptIncludeComments>false</TypeScriptIncludeComments>
+    <TypeScriptSourceMap>false</TypeScriptSourceMap>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include=".gitignore" />
+    <Content Include="built\cdp.i18n-all.js">
+      <DependentUpon>cdp.i18n.js</DependentUpon>
+    </Content>
+    <Content Include="built\cdp.i18n-entry.js">
+      <DependentUpon>cdp.i18n.js</DependentUpon>
+    </Content>
+    <Content Include="built\cdp.i18n.js" />
+    <Content Include="dist\cdp.i18n.js" />
+    <Content Include="dist\cdp.i18n.min.js">
+      <DependentUpon>cdp.i18n.js</DependentUpon>
+    </Content>
+    <Content Include="docs\reports\coverage\index.html" />
+    <Content Include="docs\reports\metrics\display.html" />
+    <Content Include="docs\reports\metrics\index.html" />
+    <Content Include="docs\typedoc\index.html" />
+    <Content Include="exports\cdp\core\i18n.js">
+      <DependentUpon>i18n.ts</DependentUpon>
+    </Content>
+    <Content Include="external\cdp\scripts\cdp.core.js" />
+    <Content Include="external\cdp\scripts\cdp.lazyload.js" />
+    <Content Include="external\cdp\scripts\cdp.promise.js" />
+    <Content Include="external\i18next\scripts\i18next.js" />
+    <Content Include="external\i18next\scripts\i18nextBrowserLanguageDetector.js" />
+    <Content Include="external\i18next\scripts\i18nextLocalStorageCache.js" />
+    <Content Include="external\i18next\scripts\i18nextSprintfPostProcessor.js" />
+    <Content Include="external\i18next\scripts\i18nextXHRBackend.js" />
+    <Content Include="external\i18next\scripts\jquery-i18next.js" />
+    <Content Include="external\jquery\scripts\jquery.js" />
+    <Content Include="project.config.js" />
+    <Content Include="src\scripts\cdp.i18n.js">
+      <DependentUpon>cdp.i18n.ts</DependentUpon>
+    </Content>
+    <Content Include="src\scripts\CDP\i18n.js">
+      <DependentUpon>i18n.ts</DependentUpon>
+    </Content>
+    <Content Include="tasks\bundle-adjuster.js" />
+    <Content Include="tasks\bundle-finalizer.js" />
+    <Content Include="tasks\internal-rearrange.js" />
+    <Content Include="tsconfig.base.json">
+      <DependentUpon>tsconfig.json</DependentUpon>
+    </Content>
+    <Content Include="webpack.config.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="BANNER" />
+    <Content Include="docs\en\README.md" />
+    <Content Include="docs\images\.gitkeep" />
+    <Content Include="docs\jp\README.md" />
+    <Content Include="LICENSE" />
+    <Content Include="NOTICE" />
+    <Content Include="package.json" />
+    <Content Include="README.md" />
+    <Content Include="tasks\banner.js" />
+    <Content Include="tasks\bundle.js" />
+    <Content Include="tasks\clean.js" />
+    <Content Include="tasks\external-rearrange.js" />
+    <Content Include="tasks\remap-coverage.js" />
+    <Content Include="tasks\srcmap.js" />
+    <Content Include="tests\runner\test-main.js" />
+    <Content Include="tests\runner\testem-amd.js" />
+    <Content Include="tests\runner\testem-ci.js" />
+    <Content Include="tests\tslint\tslint.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="built\cdp.i18n-all.d.ts">
+      <DependentUpon>cdp.i18n.js</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="dist\%40types\cdp.i18n.d.ts" />
+    <TypeScriptCompile Include="dist\%40types\i18next.d.ts" />
+    <TypeScriptCompile Include="exports\cdp\core\i18n.ts" />
+    <TypeScriptCompile Include="src\scripts\%40types\dev.dependencies\index.d.ts" />
+    <TypeScriptCompile Include="src\scripts\%40types\i18next.d.ts" />
+    <TypeScriptCompile Include="src\scripts\cdp.i18n.ts" />
+    <TypeScriptCompile Include="src\scripts\CDP\i18n.ts" />
+    <TypeScriptCompile Include="tests\unit\cdp.i18n.spec.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include=".npmignore" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="src\tsconfig.all.json" />
+    <Content Include="src\tsconfig.entry.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="tasks\.gitkeep" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="tests\eslint\eslintrc.json" />
+    <Content Include="tests\runner\index.mustache" />
+    <Content Include="tests\runner\testem.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="tsconfig.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="dist\cdp.i18n.min.js.map">
+      <DependentUpon>cdp.i18n.js</DependentUpon>
+    </Content>
+  </ItemGroup>
+</Project>

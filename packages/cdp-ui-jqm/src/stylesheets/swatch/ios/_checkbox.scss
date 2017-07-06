@@ -1,0 +1,50 @@
+﻿/*** ios swatch: checkbox ***************************************************/
+
+@import "../_theme.scss";
+
+.ui-platform-ios {
+
+    ///////////////////////////////////////////////////////////////////////
+    // regular-icon: circle fill
+
+    .ui-page-theme-#{$theme} .ui-checkbox .ui-btn,
+    .ui-bar-#{$theme} .ui-checkbox .ui-btn,
+    .ui-body-#{$theme} .ui-checkbox .ui-btn,
+    .ui-group-theme-#{$theme} .ui-checkbox .ui-btn,
+    .ui-checkbox .ui-btn-#{$theme} {
+        &:before {
+            border-color:       $color-ios-checkbox-on;
+            background-color:   $color-ios-checkbox-on;
+        }
+        &:after {
+            border-color: $color-ios-checkbox-on-check;
+        }
+        &.ui-checkbox-off {
+            &:before {
+                border-color:       $color-ios-checkbox-off;
+                background-color:   transparent;
+            }
+        }
+    }
+
+    ///////////////////////////////////////////////////////////////////////
+    // alt-icon: check
+
+    .ui-page-theme-#{$theme},
+    .ui-bar-#{$theme},
+    .ui-body-#{$theme},
+    .ui-group-theme-#{$theme} {
+        .ui-alt-icon .ui-checkbox .ui-btn,
+        .ui-checkbox .ui-btn.ui-alt-icon {
+            &:after {
+                border-color: $color-ios-checkbox-on;
+            }
+        }
+    }
+    .ui-alt-icon .ui-checkbox .ui-btn-#{$theme},
+    .ui-checkbox .ui-btn-#{$theme}.ui-alt-icon {
+        &:after {
+            border-color: $color-ios-checkbox-on;
+        }
+    }
+}

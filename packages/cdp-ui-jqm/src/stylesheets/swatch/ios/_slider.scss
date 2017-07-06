@@ -1,0 +1,37 @@
+﻿/*** ios swatch: slider ***************************************************/
+
+@import "../_theme.scss";
+
+.ui-platform-ios {
+    .ui-page-theme-#{$theme},
+    .ui-bar-#{$theme},
+    .ui-body-#{$theme},
+    .ui-group-theme-#{$theme} {
+        .ui-slider-track {
+            // bar
+            &:after {
+                background-color: $color-ios-slider-bar;
+            }
+            // bar: highlight
+            .ui-btn-active {
+                &:after {
+                    background-color: $color-ios-slider-highlight;
+                }
+            }            
+            // handle
+            .ui-btn.ui-slider-handle {
+                &:after {
+                    background-color: $color-ios-slider-handle;
+                    box-shadow: 0 1px 5px 0 $color-ios-slider-handle-shadow;
+                }
+            }
+        }
+
+        .ui-slider-popup {
+            color: $color-ios-slider-tooltip-text;
+            &:after {
+                background-color: $color-ios-slider-tooltip-balloon;
+            }
+        }
+    }
+}

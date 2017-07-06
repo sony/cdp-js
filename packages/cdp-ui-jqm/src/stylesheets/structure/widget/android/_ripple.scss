@@ -1,0 +1,32 @@
+﻿/*** android structure: ripple effect ***************************************************/
+
+@import "../../_mixins.scss";
+
+.ui-platform-android {
+
+    .ui-ripple {
+        overflow:       hidden !important;
+        cursor:         pointer;
+        user-select:    none;
+    }
+
+    .ui-ripple-ink {
+        position:       absolute;
+        display:        block;
+        border-radius:  50%;
+        opacity:        0.4;
+        transform:      scale(0);
+    }
+
+    /* animation effect */
+    .ui-ripple-ink.ui-ripple-animate {
+        animation: ripple 0.6s linear;
+    }
+
+    @keyframes ripple {
+        100% {
+            opacity:    0;
+            transform:  scale(2.5);
+        }
+    }
+}

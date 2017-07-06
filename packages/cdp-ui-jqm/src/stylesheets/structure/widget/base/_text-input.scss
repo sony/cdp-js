@@ -1,0 +1,43 @@
+﻿/*** base structure: text input ***************************************************/
+
+@import "../../_mixins.scss";
+@import "../_metrics.scss";
+
+[class*=ui-platform-] {
+    .ui-input-text, .ui-input-search, input.ui-slider-input {
+        position:       relative;
+        overflow:       visible;
+        box-shadow:     none;
+        text-shadow:    none;
+        &.ui-input-has-clear .ui-btn.ui-input-clear {
+            margin-top:     -11px;
+            border-style:   none;
+            box-shadow:     none;
+        }
+
+        [placeholder]::-webkit-input-placeholder {
+            position:   relative;
+        }
+    }
+
+    .ui-mini .ui-input-text, .ui-mini .ui-input-search, .ui-mini input.ui-slider-input,
+    .ui-input-text.ui-mini , .ui-input-search.ui-mini , input.ui-slider-input.ui-mini {
+        font-size: $metrics-font-base-size * 0.875;
+    }
+
+    .ui-input-search {
+        &:after {
+            position:   absolute;
+            content:    "";
+            top:        50%;
+            left:       8px;
+            margin-top: -7px;
+            width:      14px;
+            height:     14px;
+            opacity:    initial;
+        }
+        input {
+            padding-left: 28px;
+        }
+    }
+}

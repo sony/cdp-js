@@ -1,0 +1,59 @@
+﻿/*** android structure: header ***************************************************/
+
+@import "../../_mixins.scss";
+@import "../_metrics.scss";
+
+.ui-platform-android {
+
+    .ui-header {
+        padding: ($metrics-android-header-revise / 2) 0;
+
+        .ui-btn {
+            height:     48px;
+            top:        50%;
+            margin-top: -24px;
+            &.ui-back-indicator, &.ui-btn-icon-left, &.ui-btn-icon-right, &.ui-btn-icon-notext {
+                width:      48px;
+                min-width:  initial;
+                padding:    0;
+                color:      transparent;
+                overflow:   visible;
+                &.ui-btn-left {
+                    left: 3px;
+                }
+                &.ui-btn-right {
+                    right: 3px;
+                }
+                &:active, &:focus {
+                    opacity:            1;
+                    background-color:   inherit;
+                }
+                &:after {
+                    width:          24px;
+                    height:         24px;
+                    top:            50%;
+                    left:           50%;
+                    margin-top:     -12px;
+                    margin-left:    -12px;
+                }
+                &:before {
+                    content:    "";
+                    position:   absolute;
+                    display:    block;
+                    top:        0;
+                    left:       0;
+                    @include declare-effect-repple-center-structure("&", 48px);
+                }
+                @include declare-effect-repple-center-swatch-activate("&:active:before");
+            }
+        }
+
+        .ui-title {
+            text-align:     left;
+            text-indent:    16px;
+        }
+        .ui-btn + .ui-title {
+            text-indent:    74px;
+        }
+    }
+}

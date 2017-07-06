@@ -1,0 +1,58 @@
+﻿/*** ios structure: list control ***************************************************/
+
+@import "../../_mixins.scss";
+@import "../_metrics.scss";
+
+.ui-platform-ios {
+    .ui-listview {
+        // divider
+        > .ui-li-divider {
+            $chara-height:  $metrics-font-base-size * 1.0625;
+            padding:        ((31px - $chara-height) / 2) ($metrics-font-base-size * 1);
+            font-size:      $metrics-font-base-size * 1.0625;
+            border-width:   1px 0 0 0;
+        }
+        &.ui-listview-inset > .ui-li-divider.ui-first-child {
+            border-width: 0;
+        }
+        > li + .ui-li-divider { // 直前の要素にラインを重ねる
+            margin-top:         -1px;
+            border-top-width:    1px;
+        }
+    }
+
+    // border adjust (text)
+    .ui-listview > li:not(.ui-li-divider),
+    .ui-controlgroup-vertical.ui-controlgroup-controls > *,
+    .ui-controlgroup-vertical .ui-controlgroup-controls > * {
+        &:after {
+            margin-left: $metrics-font-base-size;
+        }
+    }
+    // icon offset adjust
+    .ui-listview > li.ui-listitem-border-offset-icon,
+    .ui-controlgroup-vertical.ui-listitem-border-offset-icon .ui-controlgroup-controls > *,
+    .ui-listitem-border-offset-icon .ui-controlgroup-vertical .ui-controlgroup-controls > * {
+        &:after {
+            margin-left: 48px;
+        }
+    }
+
+    // inset radius
+    .ui-listview-inset {
+        border-radius:  7px;
+        box-shadow:     initial;
+        > li.ui-first-child {
+            &, &.ui-control-inline > label.ui-btn, label.ui-btn.ui-first-child, a.ui-btn {
+                border-top-left-radius:     7px;
+                border-top-right-radius:    7px;
+            }
+        }
+        > li.ui-last-child {
+            &, &.ui-control-inline > label.ui-btn, label.ui-btn.ui-last-child, a.ui-btn {
+                border-bottom-left-radius:  7px;
+                border-bottom-right-radius: 7px;
+            }
+        }
+    }
+}

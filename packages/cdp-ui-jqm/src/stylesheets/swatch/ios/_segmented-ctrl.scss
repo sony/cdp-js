@@ -1,0 +1,22 @@
+﻿/*** ios swatch: segmented control ***************************************************/
+
+@import "../_theme.scss";
+
+.ui-platform-ios {
+    .ui-page-theme-#{$theme},
+    .ui-bar-#{$theme},
+    .ui-body-#{$theme},
+    .ui-group-theme-#{$theme} {
+        .ui-controlgroup-horizontal .ui-controlgroup-controls {
+            .ui-radio, .ui-checkbox {
+                .ui-btn {
+                    // selected
+                    &.ui-btn-active {
+                        background-color:   $color-ios-segmented-ctrl-active;
+                        color:              $color-ios-segmented-ctrl-font-active;
+                    }
+                }
+            }
+        }
+    }
+}

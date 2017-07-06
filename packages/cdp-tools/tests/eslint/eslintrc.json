@@ -1,0 +1,37 @@
+{
+  "extends": "eslint:recommended",
+  "env": {
+    "es6": false,
+    "browser": true,
+    "node": false
+  },
+  "globals": {
+    "console": true,
+    "global": true,
+    "location": true,
+    "module": true,
+    "requirejs": true,
+    "$": true,
+    "jQuery": true,
+    "_": true,
+    "Hogan": true,
+    "ArrayBuffer": true,
+    "Uint8Array": true,
+    "require": true,
+    "define": true,
+    "exports": true
+  },
+  "rules": {
+    "indent": "off",
+    "semi": ["error", "always"],
+
+    "require-yield": "off",
+
+    "comma-dangle": "off",
+    "no-cond-assign": ["error", "always"],
+    "no-unused-vars": ["error", {"args": "none", "varsIgnorePattern": "^TAG|^__|Tools|Blob" }],
+    "no-extra-boolean-cast": "off",
+    "no-constant-condition": "off",
+    "no-console": "off"
+  }
+}

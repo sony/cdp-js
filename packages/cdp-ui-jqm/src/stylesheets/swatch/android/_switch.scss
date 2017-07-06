@@ -1,0 +1,38 @@
+﻿/*** android swatch: switch ***************************************************/
+
+@import "../_theme.scss";
+@import "../_mixins.scss";
+
+.ui-platform-android {
+    .ui-page-theme-#{$theme},
+    .ui-bar-#{$theme},
+    .ui-body-#{$theme},
+    .ui-group-theme-#{$theme} {
+        .ui-flipswitch {
+            background-color: $color-android-switch-bar-off;
+            .ui-btn {
+                background-color:   $color-android-switch-button-off;
+                box-shadow:         0 2px 5px 0 $color-android-switch-shadow !important;
+                @include declare-effect-repple-center-swatch-deactivate("&:before", $color-android-switch-button-off);
+                @include declare-effect-repple-center-swatch-activate("&:active:before");
+            }
+            &.ui-flipswitch-active {
+                background-color: $color-android-switch-bar-on;
+                .ui-btn {
+                    background-color: $color-android-switch-button-on;
+                    @include declare-effect-repple-center-swatch-deactivate("&:before", $color-android-switch-button-on);
+                    @include declare-effect-repple-center-swatch-activate("&:active:before");
+                }
+            }
+        }
+
+        // disabled
+        .ui-state-disabled .ui-flipswitch,
+        .ui-flipswitch.ui-state-disabled {
+            background-color: $color-android-switch-bar-disabled;
+            .ui-btn {
+                background-color: $color-android-switch-button-disabled;
+            }
+        }
+    }
+}

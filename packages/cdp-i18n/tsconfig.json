@@ -1,0 +1,22 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compileOnSave": true,
+  "compilerOptions": {
+    "module": "amd",
+    "inlineSourceMap": true,
+    "inlineSources": true,
+    "declaration": false
+  },
+  "include": [
+    "src/scripts/**/*.ts",
+    "exports/**/*.ts",
+    "tests/unit/**/*.ts"
+  ],
+  "exclude": [
+    "built",
+    "dist",
+    "docs",
+    "external",
+    "tasks"
+  ]
+}

@@ -1,0 +1,9 @@
+﻿// common settings definitions
+
+// resource root
+$images-root:  "../res/images";
+
+// font-base
+$metrics-font-base-size: 16px;
+
+@import "cdp/utils/_utils.scss";

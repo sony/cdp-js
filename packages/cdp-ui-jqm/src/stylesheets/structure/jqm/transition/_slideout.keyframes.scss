@@ -1,0 +1,18 @@
+﻿/* keyframes for slideout to sides */
+@keyframes slideouttoleft {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes slideouttoright {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(100%);
+    }
+}

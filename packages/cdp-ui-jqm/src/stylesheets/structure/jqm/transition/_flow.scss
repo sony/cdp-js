@@ -1,0 +1,81 @@
+﻿/* flow transition */
+.flow {
+    transform-origin: 50% 30%;
+    box-shadow: 0 0 20px rgba(0,0,0,.4);
+}
+
+.ui-dialog.flow {
+    transform-origin: unset;
+    box-shadow: none;
+}
+
+.flow.out {
+    transform: translateX(-100%) scale(.7);
+    animation-name: flowouttoleft;
+    animation-timing-function: ease;
+    animation-duration: 350ms;
+}
+
+.flow.in {
+    transform: translateX(0) scale(1);
+    animation-name: flowinfromright;
+    animation-timing-function: ease;
+    animation-duration: 350ms;
+}
+
+.flow.out.reverse {
+    transform: translateX(100%);
+    animation-name: flowouttoright;
+}
+
+.flow.in.reverse {
+    animation-name: flowinfromleft;
+}
+
+@keyframes flowouttoleft {
+    0% {
+        transform: translateX(0) scale(1);
+    }
+    60%, 70% {
+        transform: translateX(0) scale(.7);
+    }
+    100% {
+        transform: translateX(-100%) scale(.7);
+    }
+}
+
+@keyframes flowouttoright {
+    0% {
+        transform: translateX(0) scale(1);
+    }
+    60%, 70% {
+        transform: translateX(0) scale(.7);
+    }
+    100% {
+        transform: translateX(100%) scale(.7);
+    }
+}
+
+@keyframes flowinfromleft {
+    0% {
+        transform: translateX(-100%) scale(.7);
+    }
+    30%, 40% {
+        transform: translateX(0) scale(.7);
+    }
+    100% {
+        transform: translateX(0) scale(1);
+    }
+}
+
+@keyframes flowinfromright {
+    0% {
+        transform: translateX(100%) scale(.7);
+    }
+    30%, 40% {
+        transform: translateX(0) scale(.7);
+    }
+    100% {
+        transform: translateX(0) scale(1);
+    }
+}

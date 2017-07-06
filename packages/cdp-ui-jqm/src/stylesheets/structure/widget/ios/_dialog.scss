@@ -1,0 +1,44 @@
+﻿/*** ios structure: dialog ***************************************************/
+
+@import "../../_mixins.scss";
+@import "../_metrics.scss";
+
+.ui-platform-ios {
+    .ui-modal {
+        width:          270px;
+        border-radius:  13px;
+
+        .ui-content {
+            padding: 15px;
+
+            .ui-title {
+                margin-bottom:  5px;
+                font-size:      18px;
+                font-weight:    $font-weight-medium;
+                text-align:     center;
+            }
+
+            .ui-message {
+                font-size:      14px;
+                font-weight:    $font-weight-regular;
+                text-align:     center;
+            }
+        }
+
+        .ui-modal-footer {
+            border-style:       solid;
+            border-top-width:   1px;
+            button, .ui-btn {
+                height:         44px;
+                font-size:      17px;
+                border-radius:  0;
+                &:first-child {
+                    border-bottom-left-radius: 13px;
+                }
+                &:last-child {
+                    border-bottom-right-radius: 13px;
+                }
+            }
+        }
+    }
+}

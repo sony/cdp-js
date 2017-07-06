@@ -3,7 +3,7 @@
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <ProjectGuid>{42EE06C3-5B68-402C-B505-9D12AE198669}</ProjectGuid>
+    <ProjectGuid>{A355ACF1-28EB-468B-9684-322D9F14B0EB}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <OutputPath>bin</OutputPath>
@@ -19,6 +19,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UpgradeBackupLocation />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -72,74 +73,37 @@
 call compass compile -c config.rb</PostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="build\build.cdp.js" />
-    <Content Include="build\build.config.js" />
-    <Content Include="external\backbone\scripts\backbone.js" />
-    <Content Include="external\cdp\scripts\cdp.core.js" />
-    <Content Include="external\cdp\scripts\cdp.framework.jqm.js" />
-    <Content Include="external\cdp\scripts\cdp.lazyload.js" />
-    <Content Include="external\cdp\scripts\cdp.promise.js" />
-    <Content Include="external\cdp\scripts\cdp.tools.js" />
-    <Content Include="external\cdp\scripts\cdp.ui.jqm.js" />
-    <Content Include="external\cdp\scripts\cdp.ui.listview.js" />
-    <Content Include="external\flipsnap\scripts\flipsnap.js" />
-    <Content Include="external\hogan\scripts\hogan.js" />
-    <Content Include="external\i18next\scripts\i18next.js" />
-    <Content Include="external\i18next\scripts\i18nextBrowserLanguageDetector.js" />
-    <Content Include="external\i18next\scripts\i18nextLocalStorageCache.js" />
-    <Content Include="external\i18next\scripts\i18nextSprintfPostProcessor.js" />
-    <Content Include="external\i18next\scripts\i18nextXHRBackend.js" />
-    <Content Include="external\i18next\scripts\jquery-i18next.js" />
-    <Content Include="external\iscroll\scripts\iscroll-probe.js" />
-    <Content Include="external\jquery\scripts\jquery.js" />
-    <Content Include="external\jquery\scripts\jquery.mobile.js" />
-    <Content Include="external\jquery\stylesheets\images\ajax-loader.gif" />
-    <Content Include="external\jquery\stylesheets\jquery.mobile.css" />
-    <Content Include="external\requirejs\scripts\require.js" />
-    <Content Include="external\underscore\scripts\underscore.js" />
-    <Content Include="Gruntfile.js" />
-    <Content Include="postinstall.js" />
-    <Content Include="src\cdp.js">
-      <DependentUpon>cdp.ts</DependentUpon>
+    <Content Include=".gitignore" />
+    <Content Include="dist\cdp.css" />
+    <Content Include="dist\cdp.icons.css" />
+    <Content Include="dist\cdp.icons.min.css">
+      <DependentUpon>cdp.icons.css</DependentUpon>
     </Content>
-    <Content Include="src\cdp\core.js">
-      <DependentUpon>core.ts</DependentUpon>
+    <Content Include="dist\cdp.js" />
+    <Content Include="dist\cdp.min.css">
+      <DependentUpon>cdp.css</DependentUpon>
     </Content>
-    <Content Include="src\cdp\core\core.js">
-      <DependentUpon>core.ts</DependentUpon>
+    <Content Include="dist\cdp.min.css.map">
+      <DependentUpon>cdp.css</DependentUpon>
     </Content>
-    <Content Include="src\cdp\core\framework.jqm.js">
-      <DependentUpon>framework.jqm.ts</DependentUpon>
+    <Content Include="dist\cdp.min.js">
+      <DependentUpon>cdp.js</DependentUpon>
     </Content>
-    <Content Include="src\cdp\core\promise.js">
-      <DependentUpon>promise.ts</DependentUpon>
+    <Content Include="dist\cdp.structure.css" />
+    <Content Include="dist\cdp.structure.min.css">
+      <DependentUpon>cdp.structure.css</DependentUpon>
     </Content>
-    <Content Include="src\cdp\framework.js">
-      <DependentUpon>framework.ts</DependentUpon>
+    <Content Include="dist\cdp.swatch.css" />
+    <Content Include="dist\cdp.swatch.min.css">
+      <DependentUpon>cdp.swatch.css</DependentUpon>
     </Content>
-    <Content Include="src\cdp\framework\jqm.js">
-      <DependentUpon>jqm.ts</DependentUpon>
-    </Content>
-    <Content Include="src\cdp\tools.js">
-      <DependentUpon>tools.ts</DependentUpon>
-    </Content>
-    <Content Include="src\cdp\tools\tools.js">
-      <DependentUpon>tools.ts</DependentUpon>
-    </Content>
-    <Content Include="src\cdp\ui.js">
-      <DependentUpon>ui.ts</DependentUpon>
-    </Content>
-    <Content Include="src\cdp\ui\jqm.js">
-      <DependentUpon>jqm.ts</DependentUpon>
-    </Content>
-    <Content Include="src\cdp\ui\listview.js">
-      <DependentUpon>listview.ts</DependentUpon>
-    </Content>
-    <Content Include="test-runner.js" />
+    <Content Include="docs\reports\coverage\index.html" />
+    <Content Include="project.config.js" />
+    <Content Include="tasks\command-delegator.js" />
+    <Content Include="tasks\command.js" />
+    <Content Include="tasks\update-package.js" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="BANNER" />
-    <Content Include="bower.json" />
     <Content Include="docs\en\README.md" />
     <Content Include="docs\images\.gitkeep" />
     <Content Include="docs\jp\README.md" />
@@ -147,271 +111,49 @@ call compass compile -c config.rb</PostBuildEvent>
     <Content Include="NOTICE" />
     <Content Include="package.json" />
     <Content Include="README.md" />
-    <Content Include="RELEASENOTE.md" />
-    <Content Include="test-runner.bat" />
-    <Content Include="tests\app\index.html" />
-    <Content Include="tests\app\res\images\btn_expand_down.png" />
-    <Content Include="tests\app\res\images\btn_expand_up.png" />
-    <Content Include="tests\app\scripts\app.js">
-      <DependentUpon>app.ts</DependentUpon>
-    </Content>
-    <Content Include="tests\app\scripts\config.js">
-      <DependentUpon>config.ts</DependentUpon>
-    </Content>
-    <Content Include="tests\app\scripts\init.js">
-      <DependentUpon>init.ts</DependentUpon>
-    </Content>
-    <Content Include="tests\app\scripts\Model\ListView\Config.js">
-      <DependentUpon>Config.ts</DependentUpon>
-    </Content>
-    <Content Include="tests\app\scripts\Model\ListView\DataIF.js">
-      <DependentUpon>DataIF.ts</DependentUpon>
-    </Content>
-    <Content Include="tests\app\scripts\Model\ListView\DataModels.js">
-      <DependentUpon>DataModels.ts</DependentUpon>
-    </Content>
-    <Content Include="tests\app\scripts\Model\ListView\DataUtil.js">
-      <DependentUpon>DataUtil.ts</DependentUpon>
-    </Content>
-    <Content Include="tests\app\scripts\Model\ListView\ItemGenerator.js">
-      <DependentUpon>ItemGenerator.ts</DependentUpon>
-    </Content>
-    <Content Include="tests\app\scripts\Model\Settings.js">
-      <DependentUpon>Settings.ts</DependentUpon>
-    </Content>
-    <Content Include="tests\app\scripts\View\ListView\ExpandListItemView.js">
-      <DependentUpon>ExpandListItemView.ts</DependentUpon>
-    </Content>
-    <Content Include="tests\app\scripts\View\ListView\ListViewsRoot.js">
-      <DependentUpon>ListViewsRoot.ts</DependentUpon>
-    </Content>
-    <Content Include="tests\app\scripts\View\ListView\PageExpandListView.js">
-      <DependentUpon>PageExpandListView.ts</DependentUpon>
-    </Content>
-    <Content Include="tests\app\scripts\View\ListView\PageListViewIScroll.js">
-      <DependentUpon>PageListViewIScroll.ts</DependentUpon>
-    </Content>
-    <Content Include="tests\app\scripts\View\ListView\PageListViewNative.js">
-      <DependentUpon>PageListViewNative.ts</DependentUpon>
-    </Content>
-    <Content Include="tests\app\scripts\View\ListView\SimpleListItemView.js">
-      <DependentUpon>SimpleListItemView.ts</DependentUpon>
-    </Content>
-    <Content Include="tests\app\scripts\View\Options.js">
-      <DependentUpon>Options.ts</DependentUpon>
-    </Content>
-    <Content Include="tests\app\scripts\View\Root.js">
-      <DependentUpon>Root.ts</DependentUpon>
-    </Content>
-    <Content Include="tests\app\stylesheets\.gitignore" />
-    <Content Include="tests\app\stylesheets\app.css" />
-    <Content Include="tests\app\stylesheets\startup.css" />
-    <Content Include="tests\app\templates\listviews\listview-root.html" />
-    <Content Include="tests\app\templates\listviews\listview-templates.html" />
-    <Content Include="tests\app\templates\listviews\page-expandable-listview.html" />
-    <Content Include="tests\app\templates\listviews\page-listview-iscroll.html" />
-    <Content Include="tests\app\templates\listviews\page-listview-native.html" />
-    <Content Include="tests\app\templates\main.html" />
-    <Content Include="tests\app\templates\options.html" />
-    <Content Include="tests\jasmine\testem.json" />
-    <Content Include="tests\jshint\jshintrc.json" />
-    <Content Include="tests\tslint\tslint.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <TypeScriptCompile Include="external\include\backbone.d.ts" />
-    <TypeScriptCompile Include="external\include\cdp.core.d.ts" />
-    <TypeScriptCompile Include="external\include\cdp.framework.jqm.d.ts" />
-    <TypeScriptCompile Include="external\include\cdp.lazyload.d.ts" />
-    <TypeScriptCompile Include="external\include\cdp.promise.d.ts" />
-    <TypeScriptCompile Include="external\include\cdp.tools.d.ts" />
-    <TypeScriptCompile Include="external\include\cdp.ui.jqm.d.ts" />
-    <TypeScriptCompile Include="external\include\cdp.ui.listview.d.ts" />
-    <TypeScriptCompile Include="external\include\external.d.ts" />
-    <TypeScriptCompile Include="external\include\flipsnap.d.ts" />
-    <TypeScriptCompile Include="external\include\frameworks.d.ts" />
-    <TypeScriptCompile Include="external\include\hogan.d.ts" />
-    <TypeScriptCompile Include="external\include\i18next.d.ts" />
-    <TypeScriptCompile Include="external\include\iscroll.d.ts" />
-    <TypeScriptCompile Include="external\include\jasmine.d.ts" />
-    <TypeScriptCompile Include="external\include\jquery.d.ts" />
-    <TypeScriptCompile Include="external\include\jquery.mobile.d.ts" />
-    <TypeScriptCompile Include="external\include\modernizr.d.ts" />
-    <TypeScriptCompile Include="external\include\require.d.ts" />
-    <TypeScriptCompile Include="external\include\underscore.d.ts" />
-    <TypeScriptCompile Include="src\cdp.ts" />
-    <TypeScriptCompile Include="src\cdp\core.ts" />
-    <TypeScriptCompile Include="src\cdp\core\core.ts" />
-    <TypeScriptCompile Include="src\cdp\core\framework.jqm.ts" />
-    <TypeScriptCompile Include="src\cdp\core\promise.ts" />
-    <TypeScriptCompile Include="src\cdp\framework.ts" />
-    <TypeScriptCompile Include="src\cdp\framework\jqm.ts" />
-    <TypeScriptCompile Include="src\cdp\tools.ts" />
-    <TypeScriptCompile Include="src\cdp\tools\tools.ts" />
-    <TypeScriptCompile Include="src\cdp\ui.ts" />
-    <TypeScriptCompile Include="src\cdp\ui\jqm.ts" />
-    <TypeScriptCompile Include="src\cdp\ui\listview.ts" />
-    <TypeScriptCompile Include="src\_dev.dependencies.d.ts" />
-    <TypeScriptCompile Include="tests\app\scripts\app.ts" />
-    <TypeScriptCompile Include="tests\app\scripts\config.ts" />
-    <TypeScriptCompile Include="tests\app\scripts\init.ts" />
-    <TypeScriptCompile Include="tests\app\scripts\Model\ListView\Config.ts" />
-    <TypeScriptCompile Include="tests\app\scripts\Model\ListView\DataIF.ts" />
-    <TypeScriptCompile Include="tests\app\scripts\Model\ListView\DataModels.ts" />
-    <TypeScriptCompile Include="tests\app\scripts\Model\ListView\DataUtil.ts" />
-    <TypeScriptCompile Include="tests\app\scripts\Model\ListView\ItemGenerator.ts" />
-    <TypeScriptCompile Include="tests\app\scripts\Model\Settings.ts" />
-    <TypeScriptCompile Include="tests\app\scripts\View\ListView\ExpandListItemView.ts" />
-    <TypeScriptCompile Include="tests\app\scripts\View\ListView\ListViewsRoot.ts" />
-    <TypeScriptCompile Include="tests\app\scripts\View\ListView\PageExpandListView.ts" />
-    <TypeScriptCompile Include="tests\app\scripts\View\ListView\PageListViewIScroll.ts" />
-    <TypeScriptCompile Include="tests\app\scripts\View\ListView\PageListViewNative.ts" />
-    <TypeScriptCompile Include="tests\app\scripts\View\ListView\SimpleListItemView.ts" />
-    <TypeScriptCompile Include="tests\app\scripts\View\Options.ts" />
-    <TypeScriptCompile Include="tests\app\scripts\View\Root.ts" />
-    <TypeScriptCompile Include="tests\app\scripts\_dev.dependencies.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include=".npmignore" />
-    <Content Include="external-modules.json" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="src\cdp\core\core.js.map">
-      <DependentUpon>core.ts</DependentUpon>
-    </Content>
+    <Content Include="eslintrc.json" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="src\cdp\core\framework.jqm.js.map">
-      <DependentUpon>framework.jqm.ts</DependentUpon>
-    </Content>
+    <TypeScriptCompile Include="dist\%40types\cdp.core.d.ts" />
+    <TypeScriptCompile Include="dist\%40types\cdp.d.ts" />
+    <TypeScriptCompile Include="dist\%40types\cdp.framework.jqm.d.ts" />
+    <TypeScriptCompile Include="dist\%40types\cdp.i18n.d.ts" />
+    <TypeScriptCompile Include="dist\%40types\cdp.nativebridge.d.ts" />
+    <TypeScriptCompile Include="dist\%40types\cdp.plugin.nativebridge.d.ts" />
+    <TypeScriptCompile Include="dist\%40types\cdp.promise.d.ts" />
+    <TypeScriptCompile Include="dist\%40types\cdp.tools.d.ts" />
+    <TypeScriptCompile Include="dist\%40types\cdp.ui.jqm.d.ts" />
+    <TypeScriptCompile Include="dist\%40types\cdp.ui.listview.d.ts" />
+    <TypeScriptCompile Include="dist\%40types\i18next.d.ts" />
+    <TypeScriptCompile Include="dist\%40types\index.d.ts" />
+    <TypeScriptCompile Include="dist\%40types\jquery.mobile.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="src\cdp\core\promise.js.map">
-      <DependentUpon>promise.ts</DependentUpon>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="src\cdp\framework\jqm.js.map">
-      <DependentUpon>jqm.ts</DependentUpon>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="src\cdp\tools\tools.js.map">
-      <DependentUpon>tools.ts</DependentUpon>
+    <Content Include="dist\cdp.icons.min.css.map">
+      <DependentUpon>cdp.icons.css</DependentUpon>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="src\cdp\ui\jqm.js.map">
-      <DependentUpon>jqm.ts</DependentUpon>
+    <Content Include="dist\cdp.min.js.map">
+      <DependentUpon>cdp.js</DependentUpon>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="src\cdp\ui\listview.js.map">
-      <DependentUpon>listview.ts</DependentUpon>
+    <Content Include="dist\cdp.structure.min.css.map">
+      <DependentUpon>cdp.structure.css</DependentUpon>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="src\cdp\core.js.map">
-      <DependentUpon>core.ts</DependentUpon>
+    <Content Include="dist\cdp.swatch.min.css.map">
+      <DependentUpon>cdp.swatch.css</DependentUpon>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="src\cdp\framework.js.map">
-      <DependentUpon>framework.ts</DependentUpon>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="src\cdp\tools.js.map">
-      <DependentUpon>tools.ts</DependentUpon>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="src\cdp\ui.js.map">
-      <DependentUpon>ui.ts</DependentUpon>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="src\cdp.js.map">
-      <DependentUpon>cdp.ts</DependentUpon>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="tests\app\res\data\sample\image\image.json" />
-    <Content Include="tests\app\res\data\sample\image\item.json" />
-    <Content Include="tests\app\res\data\sample\image\metadata.json" />
-    <Content Include="tests\app\res\data\sample\image\recallplayback.json" />
-    <Content Include="tests\app\res\data\sample\image\thumbnail.json" />
-    <Content Include="tests\app\res\locales\translation-dev.json" />
-    <Content Include="tests\app\res\locales\translation-ja.json" />
-    <Content Include="tests\app\stylesheets\app.scss" />
-    <Content Include="tests\app\stylesheets\config.rb" />
-    <Content Include="tests\app\stylesheets\startup.scss" />
-    <Content Include="tests\app\stylesheets\_base.scss" />
-    <Content Include="tests\app\stylesheets\_constant.scss" />
-    <Content Include="tests\app\stylesheets\_listview-samples.scss" />
-    <Content Include="tests\app\stylesheets\_listview.scss" />
-    <Content Include="tests\app\stylesheets\_splash.scss" />
-    <Content Include="tests\app\stylesheets\_utils.scss" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="tests\app\scripts\Model\ListView\Config.js.map">
-      <DependentUpon>Config.ts</DependentUpon>
-    </Content>
-    <Content Include="tests\app\scripts\Model\ListView\DataIF.js.map">
-      <DependentUpon>DataIF.ts</DependentUpon>
-    </Content>
-    <Content Include="tests\app\scripts\Model\ListView\DataModels.js.map">
-      <DependentUpon>DataModels.ts</DependentUpon>
-    </Content>
-    <Content Include="tests\app\scripts\Model\ListView\DataUtil.js.map">
-      <DependentUpon>DataUtil.ts</DependentUpon>
-    </Content>
-    <Content Include="tests\app\scripts\Model\ListView\ItemGenerator.js.map">
-      <DependentUpon>ItemGenerator.ts</DependentUpon>
-    </Content>
-    <Content Include="tests\app\scripts\Model\Settings.js.map">
-      <DependentUpon>Settings.ts</DependentUpon>
-    </Content>
-    <Content Include="tests\app\scripts\View\ListView\ExpandListItemView.js.map">
-      <DependentUpon>ExpandListItemView.ts</DependentUpon>
-    </Content>
-    <Content Include="tests\app\scripts\View\ListView\ListViewsRoot.js.map">
-      <DependentUpon>ListViewsRoot.ts</DependentUpon>
-    </Content>
-    <Content Include="tests\app\scripts\View\ListView\PageExpandListView.js.map">
-      <DependentUpon>PageExpandListView.ts</DependentUpon>
-    </Content>
-    <Content Include="tests\app\scripts\View\ListView\PageListViewIScroll.js.map">
-      <DependentUpon>PageListViewIScroll.ts</DependentUpon>
-    </Content>
-    <Content Include="tests\app\scripts\View\ListView\PageListViewNative.js.map">
-      <DependentUpon>PageListViewNative.ts</DependentUpon>
-    </Content>
-    <Content Include="tests\app\scripts\View\ListView\SimpleListItemView.js.map">
-      <DependentUpon>SimpleListItemView.ts</DependentUpon>
-    </Content>
-    <Content Include="tests\app\scripts\View\Options.js.map">
-      <DependentUpon>Options.ts</DependentUpon>
-    </Content>
-    <Content Include="tests\app\scripts\View\Root.js.map">
-      <DependentUpon>Root.ts</DependentUpon>
-    </Content>
-    <Content Include="tests\app\scripts\app.js.map">
-      <DependentUpon>app.ts</DependentUpon>
-    </Content>
-    <Content Include="tests\app\scripts\config.js.map">
-      <DependentUpon>config.ts</DependentUpon>
-    </Content>
-    <Content Include="tests\app\scripts\init.js.map">
-      <DependentUpon>init.ts</DependentUpon>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="web.config" />
-    <None Include="web.Debug.config">
-      <DependentUpon>web.config</DependentUpon>
-    </None>
-    <None Include="web.Release.config">
-      <DependentUpon>web.config</DependentUpon>
-    </None>
+    <Content Include="circle.yml" />
   </ItemGroup>
 </Project>

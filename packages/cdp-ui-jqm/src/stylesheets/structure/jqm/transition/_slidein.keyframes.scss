@@ -1,0 +1,18 @@
+﻿/* keyframes for slidein from sides */
+@keyframes slideinfromright {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideinfromleft {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}

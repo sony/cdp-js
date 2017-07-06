@@ -1,0 +1,11 @@
+﻿// reset.css
+@include global-reset;
+
+// jquery.mobile
+@import "structure/jqm/_structure.scss";
+
+// transition
+@import "structure/transition/_transitions.scss";
+
+// widget
+@import "structure/widget/_widget.scss";

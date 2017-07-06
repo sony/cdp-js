@@ -1,0 +1,23 @@
+﻿.slidefade.out {
+    transform: translateX(-100%);
+    animation-name: slideouttoleft;
+    animation-duration: 225ms;
+}
+
+.slidefade.in {
+    transform: translateX(0);
+    animation-name: fadein;
+    animation-duration: 200ms;
+}
+
+.slidefade.out.reverse {
+    transform: translateX(100%);
+    animation-name: slideouttoright;
+    animation-duration: 200ms;
+}
+
+.slidefade.in.reverse {
+    transform: translateX(0);
+    animation-name: fadein;
+    animation-duration: 200ms;
+}

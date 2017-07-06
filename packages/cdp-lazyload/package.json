@@ -1,0 +1,78 @@
+{
+  "name": "@cdp/lazyload",
+  "description": "CDP script delay load assistant module",
+  "version": "2.0.0",
+  "main": "dist/cdp.lazyload.js",
+  "types": "dist/@types/cdp.lazyload.d.ts",
+  "author": {
+    "name": "Shin Ogata",
+    "email": "Shin.Ogata@jp.sony.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CDP-Tokyo/cdp-js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/CDP-Tokyo/cdp-js/issues"
+  },
+  "license": "Apache-2.0",
+  "keywords": [
+    "CDP",
+    "TypeScript"
+  ],
+  "scripts": {
+    "setup": "npm run setup:tasks && npm install && npm run rearrange",
+    "setup:tasks": "node ../master-tasks/provider.js",
+    "test": "run-s -l clean compile lint unit-test",
+    "ci": "run-s -l clean build lint unit-test build metrics",
+    "package": "run-s ci && node ./tasks/clean.js --built --test --temp",
+    "update": "npm update --save-dev && npm update --save && npm run package",
+    "check:update": "npm outdated",
+    "check:coverage": "npm run coverage:report",
+    "depends": "npm list --depth=1",
+    "depends:prod": "npm list --depth=0 --only=prod",
+    "depends:dev": "npm list --depth=0 --only=dev",
+    "debug": "testem -f ./tests/runner/testem-amd.js",
+    "clean": "node ./tasks/clean.js",
+    "clean:temp": "node ./tasks/clean.js --temp",
+    "clean:coverage": "node ./tasks/clean.js --coverage",
+    "clean:typedoc": "node ./tasks/clean.js --typedoc",
+    "clean:test": "node ./tasks/clean.js --test",
+    "clean:built": "node ./tasks/clean.js --built",
+    "clean:pkg": "node ./tasks/clean.js --pkg",
+    "build": "run-s -l compile bundle minify",
+    "compile": "tsc -p ./tsconfig.json && node ./tasks/normalize-coverage.js --operation=prepare",
+    "bundle": "node ./tasks/bundle.js --target=pure-js",
+    "minify": "uglifyjs dist/cdp.lazyload.js -o dist/cdp.lazyload.min.js --comments /^!/ --source-map includeSources,url=cdp.lazyload.min.js.map",
+    "lint": "run-p -l lint:*",
+    "lint:js": "eslint tasks/**/*.js src/**/*.js -c tests/eslint/eslintrc.json",
+    "lint:ts": "tslint --type-check -p ./tsconfig.json -c ./tests/tslint/tslint.json -e src/**/*.d.ts",
+    "unit-test": "npm run coverage:exec",
+    "unit-test:ci": "testem ci -f ./tests/runner/testem-ci.js",
+    "coverage": "run-s clean:coverage compile coverage:exec",
+    "coverage:exec": "run-s coverage:instrument unit-test:ci coverage:remap coverage:report",
+    "coverage:instrument": "nyc instrument ./built ./built --source-map=false",
+    "coverage:remap": "node ./tasks/normalize-coverage.js",
+    "coverage:report": "nyc report --reporter=lcov --reporter=html --reporter=text --report-dir=docs/reports/coverage --temp-directory=docs/reports/coverage",
+    "rearrange": "node ./tasks/external-rearrange.js",
+    "metrics": "plato -r -d docs/reports/metrics -e ./tests/eslint/eslintrc.json src/**/*.js"
+  },
+  "dependencies": {
+    "jquery": ">=1.8.3"
+  },
+  "devDependencies": {
+    "@types/jasmine": "^2.5.53",
+    "@types/jquery": "^3.2.6",
+    "@types/requirejs": "^2.1.29",
+    "del": "^3.0.0",
+    "eslint": "^4.1.1",
+    "fs-extra": "^3.0.1",
+    "npm-run-all": "^4.0.2",
+    "nyc": "^11.0.3",
+    "plato": "^1.7.0",
+    "requirejs": "^2.3.3",
+    "tslint": "^5.5.0",
+    "typescript": "^2.4.1",
+    "uglify-js": "^3.0.23"
+  }
+}

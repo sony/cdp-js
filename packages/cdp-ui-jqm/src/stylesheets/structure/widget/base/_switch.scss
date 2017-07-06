@@ -1,0 +1,70 @@
+﻿/*** base structure: switch ***************************************************/
+
+@import "../../_mixins.scss";
+@import "../_metrics.scss";
+
+///////////////////////////////////////////////////////////////////////
+// control layout:
+
+// ページ表示時のエフェクト抑止.
+.ui-mobile-viewport-transitioning,
+.ui-popup-container:not(.ui-popup-active) {
+    .ui-flipswitch-on {
+        &:before {
+            background-color: initial !important;
+        }
+    }
+}
+
+// inline コントロール以外の定義
+.ui-control-right:not(.ui-control-inline) {
+    position:   relative;
+    label {
+        display:        initial;
+        line-height:    48px;
+    }
+    .ui-flipswitch {
+        position:   absolute !important;
+        right:      0;
+    }
+}
+
+// inline コントロール定義
+.ui-control-inline {
+    .ui-flipswitch {
+        position:   absolute !important;
+        right:      $metrics-font-base-size;
+    }
+}
+
+///////////////////////////////////////////////////////////////////////
+// プラットフォーム専用
+
+[class*="ui-platform-"] {
+    .ui-flipswitch {
+        position:           relative;
+        top:                50%;
+        overflow:           visible;
+        background-clip:    initial;
+
+        &.ui-flipswitch-active {
+            padding-left: 0;
+        }
+
+        .ui-btn {
+            min-width:      initial;
+            top:            50%;
+            border-width:   0;
+            &.ui-flipswitch-on {
+                padding: 0;
+                color:          transparent !important;
+                text-shadow:    none;
+                text-indent:    initial;
+                border-radius:  50%;
+            }
+        }
+        .ui-flipswitch-off {
+            display: none;
+        }
+    }
+}

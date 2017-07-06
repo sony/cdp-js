@@ -1,0 +1,29 @@
+{
+  "extends": "../tsconfig.base.json",
+  "compileOnSave": true,
+  "compilerOptions": {
+    "inlineSourceMap": true,
+    "inlineSources": true,
+    "declaration": true,
+    "outFile": "../built/cdp.ui.jqm-all.js"
+  },
+  "files": [
+    "scripts/CDP/UI/jqm/Interfaces.ts",
+    "scripts/CDP/UI/jqm/Theme.ts",
+    "scripts/CDP/UI/jqm/ExtensionManager.ts",
+    "scripts/CDP/UI/jqm/Toast.ts",
+    "scripts/CDP/UI/jqm/Dialog.ts",
+    "scripts/CDP/UI/jqm/DialogCommons.ts",
+    "scripts/CDP/UI/jqm/BaseHeaderView.ts",
+    "scripts/CDP/UI/jqm/BasePage.ts",
+    "scripts/CDP/UI/jqm/PageView.ts",
+    "scripts/CDP/UI/jqm/PageListView.ts",
+    "scripts/CDP/UI/jqm/PageExpandableListView.ts",
+    "scripts/CDP/UI/jqm/Extension/Ripple.ts",
+    "scripts/CDP/UI/jqm/Extension/Spinner.ts",
+    "scripts/CDP/UI/jqm/Extension/FloatLabel.ts",
+    "scripts/CDP/UI/jqm/Extension/FlipSwitch.ts",
+    "scripts/CDP/UI/jqm/Extension/Slider.ts",
+    "scripts/CDP/UI/jqm/Extension/IScroll.ts"
+  ]
+}

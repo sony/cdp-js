@@ -1,0 +1,42 @@
+﻿/*** android structure: segmented control ***************************************************/
+
+@import "../../_mixins.scss";
+
+.ui-platform-android {
+    .ui-controlgroup-horizontal .ui-controlgroup-controls {
+        .ui-radio, .ui-checkbox {
+            .ui-btn {
+                &.ui-first-child {
+                    border-top-left-radius:     2px;
+                    border-bottom-left-radius:  2px;
+                    &.ui-big {
+                        border-top-left-radius:     3px;
+                        border-bottom-left-radius:  3px;
+                    }
+                }
+                &.ui-last-child {
+                    border-top-right-radius:    2px;
+                    border-bottom-right-radius: 2px;
+                    &.ui-alt {
+                        border-top-right-radius:    3px;
+                        border-bottom-right-radius: 3px;
+                    }
+                }
+            }
+        }
+        .ui-big {
+            .ui-radio, .ui-checkbox {
+                .ui-btn {
+                    &.ui-first-child {
+                        border-top-left-radius:     3px;
+                        border-bottom-left-radius:  3px;
+                    }
+                    &.ui-last-child {
+                        border-top-right-radius:    3px;
+                        border-bottom-right-radius: 3px;
+                    }
+                }
+            }
+        }
+    }
+}

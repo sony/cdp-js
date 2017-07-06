@@ -1,0 +1,19 @@
+{
+  "extends": "../tsconfig.base.json",
+  "compileOnSave": true,
+  "compilerOptions": {
+    "inlineSourceMap": true,
+    "inlineSources": true,
+    "declaration": true,
+    "outFile": "../built/cdp.framework.jqm-all.js"
+  },
+  "files": [
+    "scripts/CDP/Framework/Interfaces.ts",
+    "scripts/CDP/Framework/Platform.ts",
+    "scripts/CDP/Framework/Patch.ts",
+    "scripts/CDP/Framework/Orientation.ts",
+    "scripts/CDP/Framework/CoreAPI.ts",
+    "scripts/CDP/Framework/Router.ts",
+    "scripts/CDP/Framework/Page.ts"
+  ]
+}

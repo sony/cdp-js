@@ -1,0 +1,284 @@
+﻿/*** base structure: global ***************************************************/
+
+@import "../../_mixins.scss";
+@import "../_metrics.scss";
+
+///////////////////////////////////////////////////////////////////////
+// font:
+
+html {
+    font-size: 100%;
+}
+body {
+    font-family: $font-family;
+}
+
+[class*=ui-platform-] {
+    input, select, textarea, button, label, .ui-btn {
+        line-height: $metrics-normal-line-height;
+        font-family: $font-family;
+        font-weight: $font-weight-regular;
+    }
+    legend,
+    .ui-input-text input,
+    .ui-input-search input {
+        color:          inherit;
+        text-shadow:    inherit;
+    }
+    label,
+    div.ui-controlgroup-label {
+        font-weight: $font-weight-regular;
+    }
+    .ui-header, .ui-footer {
+        .ui-title {
+            font-weight: $font-weight-medium;
+        }
+    }
+    button, .ui-btn,
+    label,
+    div.ui-controlgroup-label {
+        font-size: $metrics-font-base-size * 0.875; // 14px
+    }
+}
+
+///////////////////////////////////////////////////////////////////////
+// separators:
+
+.ui-separator {
+    margin:             2em 0;
+    border-top-width:   0;
+}
+
+.ui-field-contain {
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+}
+
+///////////////////////////////////////////////////////////////////////
+// buttons:
+
+.ui-btn,
+label.ui-btn {
+    font-weight:    bold;
+    border-width:   1px;
+    border-style:   solid;
+}
+.ui-btn {
+    text-decoration: none;
+}
+.ui-btn-active {
+    cursor: pointer;
+}
+
+///////////////////////////////////////////////////////////////////////
+// corner rounding:
+
+.ui-corner-all {
+    border-radius: $metrics-font-base-size * 0.3125;    // {global-radii-blocks}
+}
+// buttons
+.ui-btn.ui-corner-all,
+// slider track
+.ui-slider-track.ui-corner-all,
+// flipswitch
+.ui-flipswitch.ui-corner-all,
+// count bubble
+.ui-li-count {
+    border-radius: $metrics-font-base-size * 0.3125;    // {global-radii-buttons}
+}
+
+// icon-only buttons
+.ui-btn-icon-notext.ui-btn-corner-all,
+.ui-btn-icon-notext.ui-corner-all {
+    border-radius: $metrics-font-base-size;
+}
+
+// radius clip workaround for cleaning up corner trapping
+.ui-btn-corner-all, // Class ui-btn-corner-all deprecated in 1.4
+.ui-corner-all {
+    background-clip: padding-box;
+}
+
+// popup arrow
+.ui-popup.ui-corner-all > .ui-popup-arrow-guide {
+    left:   $metrics-font-base-size * 0.6;   // {global-radii-blocks}
+    right:  $metrics-font-base-size * 0.6;   // {global-radii-blocks}
+    top:    $metrics-font-base-size * 0.6;   // {global-radii-blocks}
+    bottom: $metrics-font-base-size * 0.6;   // {global-radii-blocks}
+}
+
+///////////////////////////////////////////////////////////////////////
+// icons:
+
+.ui-btn-icon-left {
+    padding-left: $metrics-font-base-size * 2.5;
+}
+
+.ui-btn-icon-right {
+    padding-right: $metrics-font-base-size * 2.5;
+}
+
+.ui-btn-icon-top {
+    padding-top: $metrics-font-base-size * 2.5;
+}
+
+.ui-btn-icon-bottom {
+    padding-bottom: $metrics-font-base-size * 2.5;
+}
+
+.ui-btn-icon-notext {
+    padding: 0;
+}
+
+.ui-btn-icon-notext:before,
+.ui-btn-icon-left:before,
+.ui-btn-icon-right:before {
+  top:          50%;
+  margin-top:   -11px;
+}
+
+.ui-btn-icon-left:after,
+.ui-btn-icon-left:before {
+  left: $metrics-font-base-size * 0.5625;
+}
+
+.ui-btn-icon-right:after,
+.ui-btn-icon-right:before {
+  right: $metrics-font-base-size * 0.5625;
+}
+
+.ui-mini.ui-btn-icon-left:before,
+.ui-mini .ui-btn-icon-left:before,
+.ui-header .ui-btn-icon-left:before,
+.ui-footer .ui-btn-icon-left:before {
+  left: $metrics-font-base-size * 0.37;
+}
+
+.ui-mini.ui-btn-icon-right:before,
+.ui-mini .ui-btn-icon-right:before,
+.ui-header .ui-btn-icon-right:before,
+.ui-footer .ui-btn-icon-right:before {
+  right: $metrics-font-base-size * 0.37;
+}
+
+.ui-btn-icon-notext:before,
+.ui-btn-icon-top:before,
+.ui-btn-icon-bottom:before {
+  left:         50%;
+  margin-left:  -11px;
+}
+
+.ui-btn-icon-top:after,
+.ui-btn-icon-top:before {
+  top: $metrics-font-base-size * 0.5625;
+}
+
+.ui-btn-icon-bottom:after,
+.ui-btn-icon-bottom:before {
+  top:      auto;
+  bottom:   $metrics-font-base-size * 0.5625;
+}
+
+.ui-controlgroup-horizontal .ui-checkbox .ui-btn:before,
+.ui-controlgroup-horizontal .ui-radio .ui-btn:before {
+  content: none;
+  display: none;
+}
+
+[class*=ui-platform-] [class*=ui-btn-icon-] {
+    &:after, &:before {
+        mask-position:  center center;
+        mask-repeat:    no-repeat;
+        mask-size:      cover;
+    }
+}
+
+// icon overwrite: .ui-icon-carat-{l,r,u,d}
+$indicator-list: l, r, u, d;
+@each $indicator-id in $indicator-list {
+    [class*=ui-platform-] .ui-icon-carat-#{$indicator-id} {
+        &:after {
+            background-image: none !important;
+            background-color: initial !important;
+            mask:             initial !important;
+            border-radius:    initial;
+            @if l == $indicator-id {
+                @include declare-indicator-l(8px, 2px, null);
+            } @elseif r == $indicator-id {
+                @include declare-indicator-r(8px, 2px, null);
+            } @elseif t == $indicator-id {
+                @include declare-indicator-u(8px, 2px, null);
+            } @elseif b == $indicator-id {
+                @include declare-indicator-d(8px, 2px, null);
+            }
+        }
+    }
+}
+
+///////////////////////////////////////////////////////////////////////
+// bar: Toolbars, dividers, slider track
+
+.ui-bar-inherit {
+    font-weight: normal;
+}
+
+[class*=ui-body-],
+[class*=ui-panel-page-container-],
+.ui-body-inherit {
+    border-color: initial;
+}
+
+// popup screen
+.ui-popup-screen.in {
+    opacity: 0.4;
+}
+
+// disabled
+.ui-disabled,
+.ui-state-disabled,
+button[disabled],
+.ui-select .ui-btn.ui-state-disabled {
+    opacity:        0.3;
+    cursor:         default !important;
+    pointer-events: none;
+}
+
+///////////////////////////////////////////////////////////////////////
+// animation: effect icon ripple
+
+@keyframes effect-ripple-center-activate {
+    from {
+        opacity: 0;
+        transform: scale(0);
+    }
+    to {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+}
+
+@keyframes effect-ripple-center-deactivate {
+    from {
+        opacity: 0.3;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+///////////////////////////////////////////////////////////////////////
+// layout:
+
+// 親幅あわせ
+.ui-layout-match-parent {
+    width: 100%;
+    .ui-controlgroup-controls {
+        width: 100%;
+    }
+}
+
+// 中央あわせ
+.ui-layout-center-container {
+    display: table;
+    margin: 0 auto;
+}

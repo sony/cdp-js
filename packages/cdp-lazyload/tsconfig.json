@@ -1,0 +1,29 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "module": "amd",
+    "moduleResolution": "node",
+    "target": "es5",
+    "emitBOM": true,
+    "inlineSourceMap": true,
+    "inlineSources": true,
+    "pretty": true,
+    "typeRoots": [
+      "./node_modules/@types",
+      "./src"
+    ],
+    "types": [
+      "requirejs",
+      "jasmine"
+    ]
+  },
+  "include": [
+    "tests/unit/**/*.ts"
+  ],
+  "exclude": [
+    "bin",
+    "dist",
+    "docs",
+    "obj"
+  ]
+}

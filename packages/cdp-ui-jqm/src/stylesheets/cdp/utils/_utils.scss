@@ -1,0 +1,173 @@
+﻿@import "_reset.scss";
+
+// media queries break points definitions
+$screen-extralarge-min: 1838px;
+$screen-large-max:      $screen-extralarge-min - 1px;
+$screen-large-min:      1280px;
+$screen-mid-max:        $screen-large-min - 1px;
+$screen-mid-min:        640px;
+$screen-small-max:      $screen-mid-min - 1px;
+$screen-small-min:      320px;
+$screen-extrasmall-min: $screen-small-min - 1px;
+
+$bp-table-threshold: 600px;
+$bp-phone-threshold: $bp-table-threshold - 1px;
+
+@mixin orientation-landscape {
+    @media screen and (orientation: landscape) {
+        @content;
+    }
+}
+
+@mixin orientation-portrait {
+    @media screen and (orientation: portrait) {
+        @content;
+    }
+}
+
+@mixin media($media-type) {
+    @if $media-type == tablet {
+        @media only screen and (min-width: $bp-table-threshold) and (min-height: $bp-table-threshold){
+            @content;
+        }
+    }
+    @else if $media-type == phone {
+        @media only screen and (orientation: landscape) and (max-height: $bp-phone-threshold){
+            @content;
+        }
+        @media only screen and (orientation: portrait) and (max-width: $bp-phone-threshold){
+            @content;
+        }
+    }
+}
+
+// font
+@mixin font-text-overflow($value: ellipsis) {
+    text-overflow: $value;
+}
+
+@mixin font-base($size, $align: left, $overflow: ellipsis) {
+    text-align: $align;
+    vertical-align: middle;
+    @include font-text-overflow($overflow);
+    font-size: $size;
+    font-weight: normal;
+}
+
+@mixin font-base-set($align: left, $overflow: ellipsis, $font-base-size: 16px) {
+    @include font-base($font-base-size, $align, $overflow);
+
+    &.text-s {
+        font-size: $font-base-size * 0.625; // 10px
+    }
+    &.text-m {
+        font-size: $font-base-size * 0.75;  // 12px
+    }
+    &.text-l {
+        font-size: $font-base-size * 0.875; // 14px
+    }
+    &.text-2l {
+        font-size: $font-base-size * 1;     // 16px
+    }
+    &.text-2l-5l {
+        font-size: $font-base-size * 1.125; // 18px
+    }
+    &.text-3l {
+        font-size: $font-base-size * 1.5;   // 24px
+    }
+    &.text-4l {
+        font-size: $font-base-size * 2;     // 32px
+    }
+}
+
+// background image center crop.
+@mixin background-center-crop {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+// get background drawable path with media queries.
+@mixin background-drawable-url($root, $path) {
+    @content;
+    background-image: url("#{$root}mdpi/#{$path}");
+
+    @media screen and (-webkit-min-device-pixel-ratio: 2) {
+        background-image: url("#{$root}xxhdpi/#{$path}");
+    }
+    @media screen and (-webkit-max-device-pixel-ratio: 2) {
+        background-image: url("#{$root}xhdpi/#{$path}");
+    }
+    @media screen and (-webkit-max-device-pixel-ratio: 1.5) {
+        background-image: url("#{$root}hdpi/#{$path}");
+    }
+    @media screen and (-webkit-max-device-pixel-ratio: 1) {
+        background-image: url("#{$root}mdpi/#{$path}");
+    }
+    @media screen and (-webkit-max-device-pixel-ratio: .75) {
+        background-image: url("#{$root}mdpi/#{$path}");
+    }
+}
+
+// shadow
+@mixin linear-gradient-shadow($direction, $colors...) {
+    background-image: linear-gradient($direction, $colors);
+}
+
+// css transition properties
+@mixin hardware-accelerator-props {
+    transform: scale3d(1,1,1) translate3d(0,0,0);
+}
+
+// fade-in
+@mixin transition-fade($animation-interval, $timing-func) {
+    transition: opacity $animation-interval $timing-func,   transform $animation-interval $timing-func;
+}
+
+@mixin fade-in-out($animation-interval, $timing-func) {
+    opacity: 0;
+    @include transition-fade($animation-interval, $timing-func);
+    &.fade-in {
+        opacity: 1;
+    }
+}
+
+// fixed-aspect container
+@mixin fixed-aspect-container($width, $height) {
+    position:   relative;
+    width:      100%;
+    margin:     0;
+    padding:    0;
+    &:before {
+        content:"";
+        display: block;
+        padding-top: ($height / $width) * 100%;
+    }
+}
+
+// declare fixed-aspect layout
+@mixin declare-fixed-aspect-layout($width, $height, $container-selector: ".container", $content-selector: ".content") {
+    #{$container-selector} {
+        @include fixed-aspect-container($width, $height);
+        #{$content-selector} {
+            position:   absolute;
+            top:        0;
+            left:       0;
+            bottom:     0;
+            right:      0;
+            @content;
+        }
+    }
+}
+
+// em to px
+@function to-px($em) {
+    $unitless: $em / 1em;
+    @return $unitless * 16px;
+}
+
+// px to em
+@function to-em($px) {
+    $unitless: $px / 1px;
+    @return $unitless / 16 * 1em;
+}

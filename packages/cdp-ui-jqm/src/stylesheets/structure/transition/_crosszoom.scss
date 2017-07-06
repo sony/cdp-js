@@ -1,0 +1,54 @@
+﻿/*** transition : crosszoom ***************************************************/
+
+@import "../_mixins.scss";
+@import "_constant.scss";
+
+// keyframes for crosszoom in
+@keyframes crosszoomin {
+    from {
+        opacity: 0;
+        transform: translate3d(0,0,0) scale(1.185);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0,0,0) scale(1);
+    }
+}
+
+// keyframes for crosszoom out
+@keyframes crosszoomout {
+    from {
+        opacity: 1;
+        transform: translate3d(0,0,0) scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: translate3d(0,0,0) scale(.815);
+    }
+}
+
+.crosszoom.out {
+    animation: crosszoomout #{$transition-crosszoom-duration} forwards;
+}
+
+.crosszoom.in {
+    animation: crosszoomin #{$transition-crosszoom-duration} forwards;
+}
+
+.crosszoom.in.reverse {
+    @include transition-no-reaction;
+}
+
+.crosszoom.out.reverse {
+    animation: crosszoomout #{$transition-crosszoom-duration} forwards;
+}
+
+.ui-mobile-viewport-transitioning.viewport-crosszoom {
+    .ui-page {
+        display: block;
+        z-index: 0;
+        &.ui-page-active {
+            z-index: 1000;
+        }
+    }
+}

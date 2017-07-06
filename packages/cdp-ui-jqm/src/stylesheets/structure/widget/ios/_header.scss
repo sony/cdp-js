@@ -1,0 +1,148 @@
+﻿/*** ios structure: header ***************************************************/
+
+@import "../../_mixins.scss";
+@import "../_metrics.scss";
+@import "../../transition/_constant.scss";
+
+// 各ページのヘッダに定義される back-navigator の keyframes
+@keyframes ui-back-indicator-out {
+    0% {
+        opacity: 1;
+    }
+    33% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes ui-back-indicator-in {
+    0% {
+        opacity: 0;
+    }
+    33% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.ui-platform-ios {
+
+    ///////////////////////////////////////////////////////////////////////
+    // header base: 拡張部品
+
+    // transition に影響を受けない indicator の定義
+    .ui-header-base .ui-fixed-back-indicator {
+        visibility:     hidden;
+        opacity:        0;
+        margin-left:    8px;
+        left:           8px;
+        padding-top:    0;
+        transition:     opacity $transition-slide-duration ease-in;
+        @include declare-indicator-l(12px, 3px, null, -7px);
+        &.show {
+            opacity: 1;
+        }
+    }
+
+    // fixed-indicator は slide アニメーションのときのみ表示する
+    .ui-mobile-viewport-transitioning.viewport-slide {
+        .ui-header-base {
+            .ui-fixed-back-indicator {
+                visibility: visible;
+            }
+        }
+    }
+
+    ///////////////////////////////////////////////////////////////////////
+    // structure:
+
+    // iOS7+: status bar の分だけ補正をかける.
+    @media screen and (orientation: portrait) {
+        .ui-header {
+            padding-top: $metrics-ios-status-bar-revise;
+            .ui-btn-left, .ui-btn-right {
+                margin-top: $metrics-ios-status-bar-revise;
+            }
+        }
+
+        .ui-header-base {
+            padding-top: $metrics-ios-status-bar-revise;
+            .ui-fixed-back-indicator {
+                margin-top: 3px;
+            }
+        }
+    }
+
+    .ui-header-fixed.ui-fixed-hidden {
+        top: -1px;
+    }
+
+    .ui-header {
+        .ui-btn {
+            top: 0;
+        }
+        .ui-btn-left.ui-btn-icon-notext:after {
+            left: 16px;
+        }
+        .ui-btn-right.ui-btn-icon-notext:after {
+            right: 16px;
+        }
+        .ui-icon-back,
+        .ui-icon-arrow-l,
+        .ui-back-indicator {
+            min-width:      25%;
+            height:         $metrics-header-height;
+            padding:        0 0 0 30px;
+            text-align:     left;
+            text-shadow:    none;
+            font-size:      $metrics-font-base-size;
+            font-weight:    normal;
+            transition:     color $transition-slide-duration $transition-slide-timing-function;
+            &:active, &:focus {
+                opacity: 0.5;
+            }
+            &:after {
+                left: 16px;
+                @include declare-indicator-l(12px, 3px, null);
+            }
+        }
+
+        .ui-title {
+            transition: opacity $transition-slide-duration $transition-slide-timing-function;
+        }
+    }
+
+    // slide transition アニメーション定義
+    .slide.out, .slide.in {
+        .ui-header {
+            .ui-back-indicator {
+                &:after {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    .slide.out {
+        .ui-header {
+            .ui-back-indicator {
+                animation: ui-back-indicator-out $transition-slide-duration $transition-slide-timing-function;
+            }
+            .ui-title {
+                opacity: 0;
+            }
+        }
+    }
+
+    .slide.in {
+        .ui-header {
+            .ui-back-indicator {
+                animation: ui-back-indicator-in $transition-slide-duration $transition-slide-timing-function;
+            }
+        }
+    }
+}

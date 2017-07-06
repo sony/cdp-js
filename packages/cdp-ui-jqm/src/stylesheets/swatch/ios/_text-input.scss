@@ -1,0 +1,28 @@
+﻿/*** ios swatch: text input ***************************************************/
+
+@import "../_theme.scss";
+
+.ui-platform-ios {
+    .ui-page-theme-#{$theme},
+    .ui-bar-#{$theme},
+    .ui-body-#{$theme},
+    .ui-group-theme-#{$theme} {
+        .ui-input-text, .ui-input-search, input.ui-slider-input {
+            background-color: $color-ios-text-input-background;
+            input {
+                color: $color-ios-text-input-font;
+            }
+            .ui-input-clear {
+                &:active {
+                    background-color: initial;
+                }
+            }
+        }
+        [placeholder]::-webkit-input-placeholder {
+            color: $color-ios-text-input-placeholder;
+        }
+        .ui-input-search:after, .ui-icon-delete:after {
+            background-color:   $color-ios-text-input-icon;
+        }
+    }
+}

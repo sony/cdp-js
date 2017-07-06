@@ -1,0 +1,62 @@
+﻿/*** android swatch: list control ***************************************************/
+
+@import "../_theme.scss";
+
+.ui-platform-android {
+    .ui-page-theme-#{$theme},
+    .ui-bar-#{$theme},
+    .ui-body-#{$theme},
+    .ui-group-theme-#{$theme} {
+        .ui-listview {
+            background-color: $color-android-listctrl-background;
+            > .ui-li-divider {
+                color:              $color-android-listctrl-divider-font;
+                background-color:   $color-android-listctrl-divider-background;
+                border-color:       $color-android-listctrl-separator;
+            }
+            > .ui-li-static {
+                background-color:   $color-android-listctrl-static-background;
+                border-color:       $color-android-listctrl-static-border;
+            }
+            > li:not(.ui-li-divider) {
+                &:before, &:after {
+                    background-color: $color-android-listctrl-separator;
+                }
+            }
+            .ui-listitem-title {
+                color: $color-android-listctrl-listitem-title-font;
+            }
+            .ui-listitem-property {
+                color: $color-android-listctrl-listitem-property-font;
+            }
+            .ui-btn.ui-btn-icon-right.ui-icon-carat-r:after {
+                border-color: $color-android-listctrl-indicator;
+            }
+            .ui-controlgroup-vertical .ui-controlgroup-controls {
+                background-color: transparent;
+            }
+        }
+
+        .ui-controlgroup-vertical .ui-controlgroup-controls {
+            background-color: $color-android-listctrl-background;
+            > button, > div {
+                &:before, &:after {
+                    background-color: $color-android-listctrl-separator;
+                }
+            }
+            .ui-listitem-property {
+                color: $color-android-listctrl-listitem-property-font;
+            }
+        }
+
+        // list item buttons
+        .ui-listview, .ui-controlgroup-vertical .ui-controlgroup-controls {
+            .ui-btn:not(.ui-slider-handle):not(.ui-input-clear):not(.ui-flipswitch-on) {
+                color: $color-android-listctrl-listitem-title-font;
+                &:active {
+                    background-color: $color-android-listctrl-listitem-pushed;
+                }
+            }
+        }
+    }
+}

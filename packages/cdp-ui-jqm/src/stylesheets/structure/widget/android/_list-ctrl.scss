@@ -1,0 +1,49 @@
+﻿/*** android structure: list control ***************************************************/
+
+@import "../../_mixins.scss";
+@import "../_metrics.scss";
+
+.ui-platform-android {
+    .ui-listview > .ui-li-static:not(.ui-control-inline):not(.ui-field-contain) {
+        padding: ($metrics-font-base-size * 0.875) ($metrics-font-base-size * 1);
+    }
+    .ui-listview li > .ui-btn, .ui-controlgroup-vertical .ui-controlgroup-controls .ui-btn {
+        padding-top:    ($metrics-font-base-size * 0.875);
+        padding-bottom: ($metrics-font-base-size * 0.875);
+    }
+
+    // border adjust (text)
+    .ui-listview.ui-listitem-border-offset-enable > li:not(.ui-li-divider),
+    .ui-controlgroup-vertical.ui-listitem-border-offset-enable.ui-controlgroup-controls > *,
+    .ui-listitem-border-offset-enable .ui-controlgroup-vertical .ui-controlgroup-controls > * {
+        &:after {
+            margin-left: $metrics-font-base-size;
+        }
+    }
+    // border adjust (icon)
+    .ui-listview.ui-listitem-border-offset-enable > li.ui-listitem-border-offset-icon,
+    .ui-controlgroup-vertical.ui-listitem-border-offset-enable.ui-listitem-border-offset-icon.ui-controlgroup-controls > *,
+    .ui-listitem-border-offset-enable .ui-listitem-border-offset-icon .ui-controlgroup-vertical .ui-controlgroup-controls > * {
+        &:after {
+            margin-left: 48px;
+        }
+    }
+
+    // divider
+    .ui-listview > .ui-li-divider {
+        $chara-height:  $metrics-font-base-size * 0.875;
+        padding:        ((48px - $chara-height) / 2) ($metrics-font-base-size * 1);
+        font-size:      $metrics-font-base-size * 0.875;
+        border-width:   0;
+    }
+
+    // inset radius
+    .ui-listview-inset {
+        border-radius: 0 0 2px 2px;
+        > li.ui-last-child {
+            &, &.ui-control-inline > label.ui-btn, label.ui-btn.ui-last-child, a.ui-btn {
+                border-radius: 0 0 2px 2px;
+            }
+        }
+    }
+}

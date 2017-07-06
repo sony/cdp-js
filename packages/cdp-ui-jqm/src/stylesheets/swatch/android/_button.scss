@@ -1,0 +1,95 @@
+﻿/*** android swatch: buttons ***************************************************/
+
+@import "../_theme.scss";
+@import "../_mixins.scss";
+
+.ui-platform-android {
+
+    %placeholder-button-effect-selected-color {
+        &:before {
+            background-color: $color-android-accent-transparent-light;
+        }
+    }
+
+    // theme commmon
+    $button-base: (
+        normal: (
+            color:              $color-android-button-font,
+            background-color:   $color-android-button-normal,
+        ),
+        hover: (
+            background-color:   $color-android-button-hover,
+        ),
+        pushed: (
+            background-color:   $color-android-button-pushed,
+        ),
+        selected: (
+            color:              $color-android-button-font-selected,
+            background-color:   $color-android-button-selected,
+            predefined:        "%placeholder-button-effect-selected-color",
+        ),
+        focus: (
+            background-color:   $color-android-button-focus,
+        ),
+        disabled: (
+            background-color:   $color-android-button-disabled,
+        ),
+    );
+    @include declare-button-states($button-base, $theme);
+    @include declare-button-states($button-base, $theme, ui-alt);
+    @include declare-button-states($button-base, "#{$theme} .ui-alt");
+
+    // emphasis
+    $button-emphasis: (
+        normal: (
+            color:              $color-android-button-emphasis-font,
+            background-color:   $color-android-button-emphasis-normal,
+        ),
+        hover: (
+            background-color:   $color-android-button-emphasis-hover,
+        ),
+        pushed: (
+            background-color:   $color-android-button-emphasis-pushed,
+        ),
+        selected: (
+            color:              $color-android-button-emphasis-font-selected,
+            background-color:   $color-android-button-emphasis-selected,
+        ),
+        focus: (
+            background-color:   $color-android-button-emphasis-focus,
+        ),
+        disabled: (
+            background-color:   $color-android-button-emphasis-disabled,
+        ),
+    );
+    @include declare-button-states($button-emphasis, $theme, ui-emphasis);
+
+    // emphasis alternative
+    $button-alt-emphasis: (
+        normal: (
+            color:              $color-android-button-alt-emphasis-font,
+            background-color:   $color-android-button-alt-emphasis-normal,
+        ),
+        hover: (
+            background-color:   $color-android-button-alt-emphasis-hover,
+        ),
+        pushed: (
+            background-color:   $color-android-button-alt-emphasis-pushed,
+        ),
+        selected: (
+            color:              $color-android-button-alt-emphasis-font-selected,
+            background-color:   $color-android-button-alt-emphasis-selected,
+        ),
+        focus: (
+            background-color:   $color-android-button-alt-emphasis-focus,
+        ),
+        disabled: (
+            background-color:   $color-android-button-alt-emphasis-disabled,
+        ),
+    );
+    @include declare-button-states($button-alt-emphasis, $theme, ui-alt-emphasis);
+
+    // accordion
+    @include declare-button-states($button-emphasis, "#{$theme} .ui-collapsible.ui-emphasis", ui-collapsible-heading-toggle);
+    @include declare-button-states($button-alt-emphasis, "#{$theme} .ui-collapsible.ui-alt-emphasis", ui-collapsible-heading-toggle);
+}

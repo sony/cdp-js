@@ -1,0 +1,27 @@
+﻿/*** android swatch: header ***************************************************/
+
+@import "../_theme.scss";
+
+.ui-platform-android {
+    .ui-page-theme-#{$theme} {
+        .ui-header {
+            &.ui-bar-inherit {
+                background-color:   $color-android-header;
+                border-color:       $color-android-header-border;
+                color:              $color-android-header-font;
+            }
+            .ui-btn {
+                box-shadow: initial;
+                &:before {
+                    background-color: $color-android-header-ripple-center;
+                }
+            }
+            [class*=ui-icon-],
+            .ui-back-indicator {
+                &:after {
+                    background-color: $color-android-header-icon;
+                }
+            }
+        }
+    }
+}

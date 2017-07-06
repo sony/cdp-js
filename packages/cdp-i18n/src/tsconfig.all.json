@@ -1,0 +1,13 @@
+{
+  "extends": "../tsconfig.base.json",
+  "compileOnSave": true,
+  "compilerOptions": {
+    "inlineSourceMap": true,
+    "inlineSources": true,
+    "declaration": true,
+    "outFile": "../built/cdp.i18n-all.js"
+  },
+  "files": [
+    "scripts/CDP/i18n.ts"
+  ]
+}

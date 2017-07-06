@@ -1,0 +1,18 @@
+﻿/*** android structure: page ***************************************************/
+
+@import "../_metrics.scss";
+
+$metrics-android-status-bar-header: $metrics-header-height + $metrics-android-header-revise;
+
+.ui-platform-android {
+    .ui-page {
+        &:not(.ui-header-no-fix) {
+            padding-top: $metrics-android-status-bar-header !important;
+        }
+        .ui-content {
+            &:not(.ui-screen-no-fix) {
+                top: $metrics-android-status-bar-header + $metrics-common-border-width;
+            }
+        }
+    }
+}

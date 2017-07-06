@@ -1,0 +1,22 @@
+﻿/*** ios structure: global ***************************************************/
+
+@import "../_metrics.scss";
+
+.ui-platform-ios {
+
+    ///////////////////////////////////////////////////////////////////////
+    // font:
+
+    body,
+    input,
+    select,
+    textarea,
+    .ui-listview .ui-btn, .ui-controlgroup-controls .ui-btn,
+    .ui-listview .ui-listitem-title, .ui-controlgroup-controls .ui-listitem-title,
+    .ui-header, .ui-footer {
+        font-size: $metrics-font-base-size * 1.0625;        // 17px
+        .ui-title {
+            font-size: $metrics-font-base-size * 1.0625;    // 17px
+        }
+    }
+}

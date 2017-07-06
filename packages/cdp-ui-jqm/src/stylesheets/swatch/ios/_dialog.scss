@@ -1,0 +1,40 @@
+﻿/*** ios swatch: dialog ***************************************************/
+
+@import "../_theme.scss";
+
+.ui-platform-ios {
+    .ui-modal.ui-body-#{$theme} {
+        background-color: $color-ios-dialog-background;
+
+        .ui-content {
+            .ui-title {
+                color: $color-ios-dialog-font;
+            }
+
+            .ui-message {
+                color: $color-ios-dialog-font;
+            }
+        }
+
+        .ui-modal-footer {
+            border-top-color: $color-ios-dialog-separator;
+
+            button, .ui-btn {
+                border-left-color:  $color-ios-dialog-separator;
+                color:              $color-ios-dialog-button-font;
+                &:active {
+                    background-color: $color-ios-dialog-button-pushed;
+                }
+            }
+        }
+
+        // test input
+       .ui-input-text, .ui-input-search, input.ui-slider-input {
+           input {
+               color:               $color-ios-dialog-text-input-font;
+               background-color:    $color-ios-dialog-text-input-background;
+               border-color:        $color-ios-dialog-text-input-border;
+           }
+        }
+    }
+}

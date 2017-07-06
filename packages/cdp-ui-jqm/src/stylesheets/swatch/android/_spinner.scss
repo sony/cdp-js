@@ -1,0 +1,19 @@
+﻿/*** android swatch: spinner ***************************************************/
+
+@import "../_theme.scss";
+
+.ui-platform-android {
+    .ui-page-theme-#{$theme},
+    .ui-bar-#{$theme},
+    .ui-body-#{$theme},
+    .ui-group-theme-#{$theme} {
+        .ui-spinner-inner {
+            .ui-spinner-inner-gap {
+                border-top-color: $color-android-spinner;
+            }
+            .ui-spinner-inner-half-circle {
+                border-color: $color-android-spinner;
+            }
+        }
+    }
+}

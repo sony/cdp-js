@@ -1,0 +1,62 @@
+﻿/*** base structure: dialog ***************************************************/
+
+@import "../../_mixins.scss";
+@import "../_metrics.scss";
+
+.ui-modal {
+    pointer-events:     none;
+    border:             none;
+
+    // modal dialog content
+    .ui-content {
+        .ui-title {
+            display:        block;
+            margin:         0;
+            border:         none;
+            pointer-events: none;
+            &.ui-no-title {
+                display: none;
+            }
+        }
+
+        .ui-message {
+            line-height:    $metrics-normal-line-height;
+            white-space:    pre-wrap;
+            word-break:     break-word;
+        }
+    }
+
+    // modal footer
+    .ui-modal-footer {
+        // button separator
+        %declare-button-follow-block-definition {
+            border-left: {
+                width: 1px;
+                style: solid;
+            }
+        }
+        button, .ui-btn {
+            line-height:    $metrics-normal-line-height;
+            font-weight:    $font-weight-regular;
+            border:         none;
+            &.ui-text-emphasis {
+                font-weight: $font-weight-medium; // 強調ボタンは medium
+            }
+
+            $block-list: b, c, d, e;
+            @each $block-id in $block-list {
+                &.ui-block-#{$block-id} {
+                    @extend %declare-button-follow-block-definition;
+                }
+            }
+        }
+    }
+
+    // clickable
+    button, input, .ui-btn {
+        pointer-events: all;
+        &.ui-state-disabled, &[disabled] {
+            pointer-events: none;
+        }
+    }
+}

@@ -1,0 +1,52 @@
+﻿/*** transition : popzoom ***************************************************/
+
+@import "../_mixins.scss";
+@import "_constant.scss";
+
+// keyframes for popzoom in
+@keyframes popzoomin {
+    from {
+        opacity: 0;
+        transform: translate3d(0,0,0) scale(1.185);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0,0,0) scale(1);
+    }
+}
+
+// keyframes for popup out
+@keyframes popzoomout {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+.popzoom.out {
+    animation: popzoomout #{$transition-popzoom-duration} forwards;
+}
+
+.popzoom.in {
+    animation: popzoomin #{$transition-popzoom-duration} forwards;
+}
+
+.popzoom.in.reverse {
+    @include transition-no-reaction;
+}
+
+.popzoom.out.reverse {
+    animation: popzoomout #{$transition-popzoom-duration} forwards;
+}
+
+.ui-mobile-viewport-transitioning.viewport-popzoom {
+    .ui-page {
+        display: block;
+        z-index: 0;
+        &.ui-page-active {
+            z-index: 1000;
+        }
+    }
+}

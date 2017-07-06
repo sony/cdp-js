@@ -1,0 +1,28 @@
+{
+  "extends": "../tsconfig.base.json",
+  "compileOnSave": true,
+  "compilerOptions": {
+    "inlineSourceMap": true,
+    "inlineSources": true,
+    "declaration": true,
+    "outFile": "../built/cdp.ui.listview-all.js"
+  },
+  "files": [
+    "scripts/CDP/UI/listview/Interfaces.ts",
+    "scripts/CDP/UI/listview/Config.ts",
+    "scripts/CDP/UI/listview/Utils.ts",
+    "scripts/CDP/UI/listview/StatusManager.ts",
+    "scripts/CDP/UI/listview/LineProfile.ts",
+    "scripts/CDP/UI/listview/PageProfile.ts",
+    "scripts/CDP/UI/listview/GroupProfile.ts",
+    "scripts/CDP/UI/listview/ScrollerElement.ts",
+    "scripts/CDP/UI/listview/ScrollerNative.ts",
+    "scripts/CDP/UI/listview/ScrollerIScroll.ts",
+    "scripts/CDP/UI/listview/ListItemView.ts",
+    "scripts/CDP/UI/listview/ScrollManager.ts",
+    "scripts/CDP/UI/listview/ListView.ts",
+    "scripts/CDP/UI/listview/GroupListItemView.ts",
+    "scripts/CDP/UI/listview/ExpandManager.ts",
+    "scripts/CDP/UI/listview/ExpandableListView.ts"
+  ]
+}

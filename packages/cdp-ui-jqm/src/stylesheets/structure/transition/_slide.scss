@@ -1,0 +1,73 @@
+﻿/*** transition : jqm slide override ***************************************************/
+
+@import "../_mixins.scss";
+@import "_constant.scss";
+
+
+// keyframes for slidein from sides
+@keyframes slideinfromright {
+    from {
+        transform: translate3d($transition-slide-placement-range,0,0);
+    }
+    to {
+        transform: translate3d(0,0,0);
+    }
+}
+
+@keyframes slideinfromleft {
+    from {
+        transform: translate3d(-$transition-slide-placement-range-small,0,0);
+    }
+    to {
+        transform: translate3d(0,0,0);
+    }
+}
+
+// keyframes for slideout to sides
+@keyframes slideouttoleft {
+    from {
+        transform: translate3d(0,0,0);
+    }
+    to {
+        transform: translate3d(-$transition-slide-placement-range-small,0,0);
+    }
+}
+
+@keyframes slideouttoright {
+    from {
+        transform: translate3d(0,0,0);
+    }
+    to {
+        transform: translate3d($transition-slide-placement-range,0,0);
+    }
+}
+
+.slide.out, .slide.in {
+    animation-timing-function: $transition-slide-timing-function;
+    animation-duration: $transition-slide-duration;
+}
+
+.slide.out.reverse {
+    z-index: 10;
+}
+
+.slide.in.reverse {
+    z-index: 0;
+}
+
+// slide 時の overlay の定義
+// ページ遷移の"進む" に対して、slide out するページにのみ有効
+.slide.out:after {
+    content:            "";
+    position:           fixed;
+    display:            block;
+    top:                0;
+    right:              0;
+    bottom:             0;
+    left:               0;
+    z-index:            999;   // .ui-header が 1000 にアサインされているため 1つ下になるように指定
+}
+
+.slide.out.reverse:after {
+    display: none;
+}

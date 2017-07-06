@@ -1,0 +1,255 @@
+﻿/*** base structure: list control ***************************************************/
+
+@import "../../_mixins.scss";
+@import "../_metrics.scss";
+
+[class*="ui-platform-"] {
+    .ui-listview, .ui-controlgroup-vertical .ui-controlgroup-controls {
+        .ui-btn {
+            padding:        ($metrics-font-base-size * 0.7) ($metrics-font-base-size * 1);
+            font-weight:    $metrics-list-font-weight;
+            text-align:     left;
+            border-width:   0 !important;
+            &.ui-btn-icon-left {
+                padding-left: ($metrics-font-base-size * 2.5) + ($metrics-font-base-size * 1 - $metrics-font-base-size * 0.5625);
+                &:before, &:after {
+                    left: $metrics-font-base-size;
+                }
+            }
+            &.ui-btn-icon-right, &.ui-control-right {
+                padding-right: $metrics-font-base-size * 4.5;
+                &:before, &:after {
+                    right: $metrics-font-base-size;
+                }
+            }
+            &:focus {
+                z-index: auto;
+            }
+        }
+
+        .ui-btn.ui-btn-icon-right.ui-icon-carat-r {
+            &:after {
+                right: $metrics-font-base-size;
+            }
+        }
+
+        .ui-listitem-title {
+            margin:         0;
+            line-height:    $metrics-normal-line-height;
+            font-weight:    $metrics-list-font-weight;
+        }
+
+        .ui-listitem-property {
+            position:       absolute;
+            top:            50%;
+            right:          $metrics-font-base-size;
+            margin-top:     -($metrics-font-base-size * $metrics-normal-line-height / 2);
+            font-size:      $metrics-font-base-size;
+            font-weight:    normal;
+            line-height:    $metrics-normal-line-height;
+            z-index:        10;
+            pointer-events: none;
+            &.ui-text-s {
+                right:          $metrics-font-base-size * 1.6;
+                font-size:      $metrics-font-base-size * 0.625;    // default: 10px
+                margin-top:     -($metrics-font-base-size * $metrics-normal-line-height * 0.625 / 2);
+            }
+            &.ui-text-m {
+                right:          $metrics-font-base-size * 1.33;
+                font-size:      $metrics-font-base-size * 0.75;     // default: 12px
+                margin-top:     -($metrics-font-base-size * $metrics-normal-line-height * 0.75 / 2);
+            }
+            &.ui-text-l {
+                right:          $metrics-font-base-size * 1.14;
+                font-size:      $metrics-font-base-size * 0.875;    // default: 14px
+                margin-top:     -($metrics-font-base-size * $metrics-normal-line-height * 0.875 / 2);
+            }
+        }
+
+        .ui-btn-icon-right .ui-listitem-property,
+        a[class~=ui-btn-icon-right] + .ui-listitem-property {
+            right:          $metrics-font-base-size * 2.4;
+            &.ui-text-s {
+                right:      $metrics-font-base-size * 2.4 + ($metrics-font-base-size * 1.6 - $metrics-font-base-size * 1);
+            }
+            &.ui-text-m {
+                right:      $metrics-font-base-size * 2.4 + ($metrics-font-base-size * 1.33 - $metrics-font-base-size * 1);
+            }
+            &.ui-text-l {
+                right:      $metrics-font-base-size * 2.4 + ($metrics-font-base-size * 1.14 - $metrics-font-base-size * 1);
+            }
+        }
+    }
+
+    // divider
+    .ui-listview > .ui-li-divider {
+        font-weight: $font-weight-regular;
+    }
+
+    // reset radius
+    .ui-listview li {
+        &,
+        &.ui-control-inline > label.ui-btn,
+        a.ui-btn {
+            border-radius: initial;
+        }
+    }
+
+    // control inline
+    .ui-listview > .ui-control-inline {
+        padding:    0;
+        overflow:   visible;
+        .ui-controlgroup-vertical {
+            padding:    0;
+            margin:     0;
+        }
+        .ui-btn {
+            margin: 0;
+        }
+        &.ui-control-right {
+            label.ui-btn {
+                padding-right: $metrics-font-base-size * 4.5;
+                &:before, &:after {
+                    right: $metrics-font-base-size;
+                }
+            }
+        }
+    }
+
+    // multiline text
+    .ui-listitem-multiline {
+        label.ui-btn {
+            line-height: $metrics-normal-line-height;
+        }
+        .ui-listitem-property {
+            position:       initial;
+            top:            auto;
+            left:           $metrics-font-base-size;
+            bottom:         $metrics-font-base-size;
+            margin-top:     auto;
+            white-space:    pre-wrap;
+            &:before {
+                content:        "\A";
+                position:       relative;
+                white-space:    pre-wrap;
+                line-height:    2;
+            }
+            &.ui-text-s {
+                left:       $metrics-font-base-size * 1.6;
+                bottom:     $metrics-font-base-size * 1.6;
+            }
+            &.ui-text-m {
+                left:       $metrics-font-base-size * 1.33;
+                bottom:     $metrics-font-base-size * 1.33;
+            }
+            &.ui-text-l {
+                left:       $metrics-font-base-size * 1.14;
+                bottom:     $metrics-font-base-size * 1.14;
+            }
+        }
+    }
+
+    // border
+    .ui-listview {
+        > .ui-li-static {
+            border-width:   0 0 1px 0;
+        }
+        > li:not(.ui-li-divider) {
+            &:after {
+                content:    "";
+                position:   absolute;
+                height:     1px;
+                right:      0;
+                bottom:     0;
+                left:       0;
+                z-index:    100;
+                border:     none;
+            }
+        }
+        > li:first-child {
+            &:before {
+                content:    "";
+                position:   absolute;
+                display:    none;
+                height:     1px;
+                top:        0;
+                right:      0;
+                left:       0;
+                z-index:    100;
+                border:     none;
+            }
+        }
+        > li:last-child {
+            &:after {
+                display: none;
+            }
+        }
+    }
+
+    .ui-controlgroup-vertical .ui-controlgroup-controls {
+        > button, > div {
+            position: relative;
+            &:after {
+                content:    "";
+                position:   absolute;
+                height:     1px;
+                right:      0;
+                bottom:     0;
+                left:       0;
+                z-index:    10;
+                border:     none;
+            }
+        }
+        > *:first-child {
+            &:before {
+                content:    "";
+                position:   absolute;
+                display:    none;
+                height:     1px;
+                top:        0;
+                right:      0;
+                left:       0;
+                z-index:    10;
+                border:     none;
+            }
+        }
+        > *:last-child {
+            &:after {
+                display: none;
+            }
+        }
+    }
+
+    // 非 inset 表示時の先頭/最終ライン
+    .ui-listview:not(.ui-listview-inset),
+    .ui-screen-wide .ui-controlgroup-vertical .ui-controlgroup-controls,
+    .ui-screen-full .ui-controlgroup-vertical .ui-controlgroup-controls {
+        > *:first-child {
+            &:before {
+                display: block;
+            }
+        }
+        > *:last-child {
+            &:after {
+                display:        block;
+                margin-left:    0 !important;
+            }
+        }
+    }
+
+    // 特定ラインの非表示
+    .ui-listview > li,
+    .ui-controlgroup-vertical.ui-listitem-end-border-disable .ui-controlgroup-controls > button,
+    .ui-controlgroup-vertical.ui-listitem-end-border-disable .ui-controlgroup-controls > div {
+        &.ui-listitem-border-disable {
+            &:after {
+                display: none !important;
+            }
+        }
+        &.ui-listitem-border-first-disable {
+            &:before {
+                display: none !important;
+            }
+        }
+    }
+}

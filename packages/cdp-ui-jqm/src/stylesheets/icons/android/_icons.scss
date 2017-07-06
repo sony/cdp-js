@@ -1,0 +1,58 @@
+﻿/*** android icon: material ***************************************************/
+
+.ui-platform-android {
+
+    // images/arrow_back.svg
+    .ui-back-indicator,
+    .ui-icon-arrow-l, .ui-alt-icon .ui-icon-arrow-l, .ui-alt-icon-arrow-l,
+    .ui-icon-back, .ui-alt-icon .ui-icon-back, .ui-alt-icon-back {
+        &:after {
+            mask-image: url('data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjRkZGRkZGIiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHdpZHRoPSIyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4NCiAgICA8cGF0aCBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIi8+DQogICAgPHBhdGggZD0iTTIwIDExSDcuODNsNS41OS01LjU5TDEyIDRsLTggOCA4IDggMS40MS0xLjQxTDcuODMgMTNIMjB2LTJ6Ii8+DQo8L3N2Zz4=');
+        }
+    }
+    /*images/close.svg*/
+    .ui-icon-delete, .ui-alt-icon .ui-icon-delete, .ui-alt-icon-delete,
+    .ui-icon-close, .ui-alt-icon .ui-icon-close, ui-alt-icon-close {
+        &:after {
+            mask-image: url('data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjRkZGRkZGIiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHdpZHRoPSIyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4NCiAgICA8cGF0aCBkPSJNMTkgNi40MUwxNy41OSA1IDEyIDEwLjU5IDYuNDEgNSA1IDYuNDEgMTAuNTkgMTIgNSAxNy41OSA2LjQxIDE5IDEyIDEzLjQxIDE3LjU5IDE5IDE5IDE3LjU5IDEzLjQxIDEyeiIvPg0KICAgIDxwYXRoIGQ9Ik0wIDBoMjR2MjRIMHoiIGZpbGw9Im5vbmUiLz4NCjwvc3ZnPg==');
+        }
+    }
+    /*images/check_circle.svg*/
+    .ui-icon-check-circle, .ui-alt-icon .ui-icon-check-circle, .ui-alt-icon-check-circle {
+        &:after {
+            mask-image: url('data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjRkZGRkZGIiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHdpZHRoPSIyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4NCiAgICA8cGF0aCBkPSJNMCAwaDI0djI0SDB6IiBmaWxsPSJub25lIi8+DQogICAgPHBhdGggZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bS0yIDE1bC01LTUgMS40MS0xLjQxTDEwIDE0LjE3bDcuNTktNy41OUwxOSA4bC05IDl6Ii8+DQo8L3N2Zz4=');
+        }
+    }
+    /*images/delete.svg*/
+    .ui-icon-trash, .ui-alt-icon .ui-icon-trash, .ui-alt-icon-trash {
+        &:after {
+            mask-image: url('data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjRkZGRkZGIiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHdpZHRoPSIyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4NCiAgICA8cGF0aCBkPSJNNiAxOWMwIDEuMS45IDIgMiAyaDhjMS4xIDAgMi0uOSAyLTJWN0g2djEyek0xOSA0aC0zLjVsLTEtMWgtNWwtMSAxSDV2MmgxNFY0eiIvPg0KICAgIDxwYXRoIGQ9Ik0wIDBoMjR2MjRIMHoiIGZpbGw9Im5vbmUiLz4NCjwvc3ZnPg==');
+        }
+    }
+
+    // spinner
+    .ui-spinner,
+    .ui-icon-loading, .ui-alt-icon .ui-icon-loading, .ui-alt-icon-loading {
+        &:after {
+            // css
+        }
+    }
+    // add
+    .ui-icon-add, .ui-alt-icon .ui-icon-add, .ui-alt-icon-add {
+        &:after {
+            // TODO:
+        }
+    }
+    // add_circle
+    .ui-icon-plus, .ui-alt-icon .ui-icon-plus, .ui-alt-icon-plus {
+        &:after {
+            // TODO:
+        }
+    }
+    // remove_circle
+    .ui-icon-minus, .ui-alt-icon .ui-icon-minus, .ui-alt-icon-minus {
+        &:after {
+            // TODO:
+        }
+    }
+}

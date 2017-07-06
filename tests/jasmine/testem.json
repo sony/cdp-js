@@ -1,7 +1,0 @@
-{
-    "framework" : "jasmine",
-    "launch_in_dev" : ["chrome"],
-    "launch_in_ci": ["phantomjs"],
-    "src_files" : [ "external/jquery/scripts/jquery.js",
-                    "tests/jasmine/*.js" ]
-}

@@ -1,0 +1,42 @@
+﻿/*** ios structure: segmented control ***************************************************/
+
+@import "../../_mixins.scss";
+
+.ui-platform-ios {
+    .ui-controlgroup-horizontal .ui-controlgroup-controls {
+        .ui-radio, .ui-checkbox {
+            .ui-btn {
+                &.ui-first-child {
+                    border-top-left-radius:     5px;
+                    border-bottom-left-radius:  5px;
+                    &.ui-alt {
+                        border-top-left-radius:     27px;
+                        border-bottom-left-radius:  27px;
+                    }
+                }
+                &.ui-last-child {
+                    border-top-right-radius:    5px;
+                    border-bottom-right-radius: 5px;
+                    &.ui-alt {
+                        border-top-right-radius:    27px;
+                        border-bottom-right-radius: 27px;
+                    }
+                }
+            }
+        }
+        .ui-alt {
+            .ui-radio, .ui-checkbox {
+                .ui-btn {
+                    &.ui-first-child {
+                        border-top-left-radius:     27px;
+                        border-bottom-left-radius:  27px;
+                    }
+                    &.ui-last-child {
+                        border-top-right-radius:    27px;
+                        border-bottom-right-radius: 27px;
+                    }
+                }
+            }
+        }
+    }
+}

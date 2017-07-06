@@ -1,0 +1,24 @@
+﻿/*** android swatch: checkbox ***************************************************/
+
+@import "../_theme.scss";
+
+.ui-platform-android {
+    .ui-page-theme-#{$theme} .ui-checkbox .ui-btn,
+    .ui-bar-#{$theme} .ui-checkbox .ui-btn,
+    .ui-body-#{$theme} .ui-checkbox .ui-btn,
+    .ui-group-theme-#{$theme} .ui-checkbox .ui-btn,
+    .ui-checkbox .ui-btn-#{$theme} {
+        &:before, &:after {
+            border-color: $color-android-checkbox-off;
+        }
+        &.ui-checkbox-on {
+            &:before {
+                border-color:       $color-android-checkbox-on;
+                background-color:   $color-android-checkbox-on;
+            }
+            &:after {
+                border-color: $color-common-white;
+            }
+        }
+    }
+}

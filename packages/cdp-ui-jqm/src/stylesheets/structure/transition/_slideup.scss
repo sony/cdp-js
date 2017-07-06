@@ -1,0 +1,21 @@
+﻿/*** transition : jqm slideup override ***************************************************/
+
+@import "../_mixins.scss";
+
+.slideup.out {
+    @include transition-no-reaction;
+}
+
+.slideup.in.reverse {
+    @include transition-no-reaction;
+}
+
+.ui-mobile-viewport-transitioning.viewport-slideup {
+    .ui-page {
+        display: block;
+        z-index: 0;
+        &.ui-page-active {
+            z-index: 1000;
+        }
+    }
+}

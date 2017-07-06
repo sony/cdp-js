@@ -1,0 +1,19 @@
+# temp files
+.DS_Store
+Thumbs.db
+Desktop.ini
+npm-debug.log
+
+# project files
+*.csproj.user
+*.suo
+
+# project ignores
+!.gitkeep
+.vs/
+bin/
+external/
+node_modules/
+obj/
+temp/
+tests/unit/**/*.js

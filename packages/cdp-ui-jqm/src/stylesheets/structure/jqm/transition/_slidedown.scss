@@ -1,0 +1,40 @@
+﻿/* slide down */
+.slidedown.out {
+    animation-name: fadeout;
+    animation-duration: 100ms;
+}
+
+.slidedown.in {
+    transform: translateY(0);
+    animation-name: slideinfromtop;
+    animation-duration: 250ms;
+}
+
+.slidedown.in.reverse {
+    animation-name: fadein;
+    animation-duration: 150ms;
+}
+
+.slidedown.out.reverse {
+    transform: translateY(-100%);
+    animation-name: slideouttotop;
+    animation-duration: 200ms;
+}
+
+@keyframes slideinfromtop {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideouttotop {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-100%);
+    }
+}

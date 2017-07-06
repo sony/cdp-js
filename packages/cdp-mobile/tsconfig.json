@@ -1,0 +1,23 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compileOnSave": true,
+  "compilerOptions": {
+    "module": "amd",
+    "inlineSourceMap": true,
+    "inlineSources": true,
+    "declaration": true,
+    "removeComments": true,
+    "outFile": "./built/cdp-all.js"
+  },
+  "include": [
+    "src/scripts/**/*.ts"
+  ],
+  "exclude": [
+    "src/scripts/@types/index.d.ts",
+    "built",
+    "dist",
+    "docs",
+    "external",
+    "tasks"
+  ]
+}

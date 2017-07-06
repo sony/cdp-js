@@ -1,0 +1,79 @@
+﻿/*** base structure: header ***************************************************/
+
+@import "../../_mixins.scss";
+@import "../_metrics.scss";
+
+[class*=ui-platform-] {
+    // 各ページ内に配置される共通ヘッダ本体
+    .ui-header {
+        height: $metrics-header-height;
+
+        .ui-back-indicator {
+            font-size:          initial;
+            background-color:   initial;
+            border:             none;
+            &:active, &:focus {
+                box-shadow: none;
+            }
+            &:after {
+                content:    "";
+                display:    block;
+                position:   absolute;
+            }
+        }
+
+        .ui-btn {
+            min-width:      25%;
+            height:         $metrics-header-height;
+            padding:        0 15px;
+            border:         none;
+            text-shadow:    none;
+            font-size:      $metrics-font-base-size;
+            font-weight:    normal;
+            &:active, &:focus {
+                opacity:    0.5;
+                box-shadow: none;
+            }
+            &:after {
+                content:        "";
+                display:        block;
+                position:       absolute;
+                border-radius:  initial;
+            }
+            &.ui-btn-left {
+                left:       0;
+                text-align: left;
+            }
+            &.ui-btn-right {
+                right:      0;
+                text-align: right;
+            }
+            &.ui-btn-icon-notext {
+                &:before, &:after {
+                    left:           initial;
+                    right:          initial;
+                    margin-left:    0;
+                    margin-right:   0;
+                }
+            }
+        }
+
+        .ui-title {
+            padding:        0;
+            margin:         0;
+            line-height:    $metrics-header-height;
+        }
+    }
+}
+
+///////////////////////////////////////////////////////////////////////
+// header base: 拡張部品
+
+// ページ外に配置される共通ヘッダのベース部品. transition 中のデザイン対応用定義
+.ui-header-base {
+    position:   fixed;
+    width:      100%;
+    height:     $metrics-header-height;
+    top:        0;
+    border:     none;
+}

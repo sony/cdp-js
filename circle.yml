@@ -1,0 +1,22 @@
+machine:
+    timezone: Asia/Tokyo
+    node:
+        version: 6.11.0
+    pre:
+        - sudo apt-get install cmake
+
+test:
+    pre:
+        - npm install -g testem@1.16.1
+        - npm install -g phantomjs-prebuilt@2.1.14
+    override:
+        - npm run ci -s
+    post:
+#        - bugspots . > docs/reports/bugspots.txt
+
+
+general:
+    artifacts:
+#        - "docs/typedoc"    # typedoc document
+        - "docs/reports"    # metrics, coverage reports
+#        - "docs/reports/bugspots.txt" # bugspots report

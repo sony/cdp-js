@@ -1,0 +1,67 @@
+﻿/*** ios swatch: list control ***************************************************/
+
+@import "../_theme.scss";
+
+.ui-platform-ios {
+    .ui-page-theme-#{$theme},
+    .ui-bar-#{$theme},
+    .ui-body-#{$theme},
+    .ui-group-theme-#{$theme} {
+        .ui-listview {
+            background-color: $color-ios-listctrl-background;
+            > .ui-li-divider {
+                color:              $color-ios-listctrl-divider-font;
+                background-color:   $color-ios-listctrl-divider-background;
+                border-color:       $color-ios-listctrl-separator;
+            }
+            > .ui-li-static {
+                background-color:   $color-ios-listctrl-static-background;
+                border-color:       $color-ios-listctrl-static-border;
+            }
+            > li:not(.ui-li-divider) {
+                &:before, &:after {
+                    background-color: $color-ios-listctrl-separator;
+                }
+            }
+            .ui-listitem-title {
+                color: $color-ios-listctrl-listitem-title-font;
+            }
+            .ui-listitem-property {
+                color: $color-ios-listctrl-listitem-property-font;
+            }
+            .ui-btn.ui-btn-icon-right.ui-icon-carat-r:after {
+                border-color: $color-ios-listctrl-indicator;
+            }
+            .ui-controlgroup-vertical .ui-controlgroup-controls {
+                background-color: transparent;
+            }
+        }
+
+        .ui-controlgroup-vertical .ui-controlgroup-controls {
+            background-color: $color-ios-listctrl-background;
+            > button, > div {
+                &:before, &:after {
+                    background-color: $color-ios-listctrl-separator;
+                }
+            }
+            .ui-listitem-property {
+                color: $color-ios-listctrl-listitem-property-font;
+            }
+        }
+
+        // disable inset shadow
+        .ui-listview-inset {
+            box-shadow: initial;
+        }
+
+        // list item buttons
+        .ui-listview, .ui-controlgroup-vertical .ui-controlgroup-controls {
+            .ui-btn:not(.ui-slider-handle):not(.ui-input-clear):not(.ui-flipswitch-on) {
+                color: $color-ios-listctrl-listitem-title-font;
+                &:active {
+                    background-color: $color-ios-listctrl-listitem-pushed;
+                }
+            }
+        }
+    }
+}

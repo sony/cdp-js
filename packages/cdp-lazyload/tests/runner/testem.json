@@ -1,0 +1,16 @@
+{
+  "framework": "jasmine2",
+  "launch_in_dev": ["chrome"],
+  "launch_in_ci": ["phantomjs"],
+  "browser_args": {
+    "chrome": [
+      "--auto-open-devtools-for-tabs"
+    ]
+  },
+  "phantomjs_args": [
+    "--ignore-ssl-errors=true"
+  ],
+  "src_files": [
+    "tests/unit/*.js"
+  ]
+}
