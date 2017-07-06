@@ -457,23 +457,23 @@
         ///////////////////////////////////////////////////////////////////////
         // static methods:
 
-        static resolve<T>(value?: T | PromiseLike<T>): IPromiseBase<T> {
+        static resolve<U>(value?: U | PromiseLike<U>): IPromiseBase<U> {
             return <any>$.Deferred().resolve(value);
         }
 
-        static reject<T>(reason?: any): Promise<T> {
+        static reject<U>(reason?: any): Promise<U> {
             return <any>$.Deferred().reject(reason);
         }
 
-        static all<T>(...deferreds: Array<T | IPromise<T> | JQueryPromise<T>>): IPromiseBase<T> {
+        static all<U>(...deferreds: Array<U | IPromise<U> | JQueryPromise<U>>): IPromiseBase<U> {
             return <any>$.when(deferreds);
         }
 
-        static wait<T>(...deferreds: Array<T | IPromise<T> | JQueryPromise<T>>): IPromiseBase<T> {
+        static wait<U>(...deferreds: Array<U | IPromise<U> | JQueryPromise<U>>): IPromiseBase<U> {
             return <any>wait(deferreds);
         }
 
-        static race<T>(...deferreds: Array<T | IPromise<T> | JQueryPromise<T>>): IPromiseBase<T> {
+        static race<U>(...deferreds: Array<U | IPromise<U> | JQueryPromise<U>>): IPromiseBase<U> {
             return <any>race(deferreds);
         }
     }

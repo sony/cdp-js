@@ -1,8 +1,9 @@
 ﻿/* eslint-env node, es6 */
 'use strict';
-const path  = require('path');
-const fs    = require('fs-extra');
-const del   = require('del');
+const path      = require('path');
+const fs        = require('fs-extra');
+const del       = require('del');
+const config    = require('../project.config');
 
 function queryOptions() {
     const argv = process.argv.slice(2);
@@ -46,8 +47,7 @@ function updateModules(options) {
             if (options.target) {
                 return options.target.split(',');
             } else {
-                const pkg = require(path.join(__dirname, '../package.json'));
-                return pkg.projectConfig.modules;
+                return config.include_modules;
             }
         })();
 
@@ -59,14 +59,13 @@ function updateModules(options) {
 
             process.chdir(`./packages/${target}`);
             command.exec('npm', `run ${options.command}`)
-            .then(() => {
-                process.chdir(cwdBackup);
-                setTimeout(proc);
-            })
-            .catch((reason) => {
-                reject(reason);
-            });
-
+                .then(() => {
+                    process.chdir(cwdBackup);
+                    setTimeout(proc);
+                })
+                .catch((reason) => {
+                    reject(reason);
+                });
         };
         setTimeout(proc);
     });
@@ -79,7 +78,7 @@ function updateDistribution(options) {
     return new Promise((resolve, reject) => {
         const dir = path.join(__dirname, '..');
         const pkg = require(path.join(dir, 'package.json'));
-        const srcDir = path.join(__dirname, `../packages/${pkg.projectConfig.distributionTarget}`);
+        const srcDir = path.join(__dirname, `../packages/${config.distribution_target}`);
         const srcPackage = require(path.join(srcDir, 'package.json'));
 
         // clean "dist"

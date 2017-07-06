@@ -380,14 +380,14 @@ describe("CDP.IPromise.dependOn", () => {
 
     it("dependOn(IPromise)", (done) => {
         const dependency = (): CDP.IPromise<string> => {
-            const df = $.Deferred();
-            const promise = makePromise(df);
+            const _df = $.Deferred();
+            const _promise = makePromise(_df);
 
             setTimeout(() => {
-                df.resolve("done");
+                _df.resolve("done");
             }, 1000);
 
-            return promise;
+            return _promise;
         };
 
         const df = $.Deferred<void>();

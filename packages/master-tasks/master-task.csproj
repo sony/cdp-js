@@ -84,11 +84,11 @@ call compass compile -c config.rb
     <Content Include="tasks\clean.js" />
     <Content Include="tasks\collect-coverage.js" />
     <Content Include="tasks\command.js" />
-    <Content Include="tasks\coverage.js" />
     <Content Include="tasks\exports-setup.js" />
     <Content Include="tasks\external-rearrange.js" />
     <Content Include="tasks\internal-rearrange.js" />
     <Content Include="tasks\minify.js" />
+    <Content Include="tasks\normalize-coverage.js" />
     <Content Include="tasks\packager.js" />
     <Content Include="tasks\remap-coverage.js" />
     <Content Include="tasks\srcmap.js" />

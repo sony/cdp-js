@@ -65,7 +65,7 @@
   "devDependencies": {
     "@types/cordova": "0.0.34",
     "@types/jasmine": "^2.5.53",
-    "@types/jquery": "^3.2.5",
+    "@types/jquery": "^3.2.6",
     "@types/requirejs": "^2.1.29",
     "convert-source-map": "^1.5.0",
     "del": "^3.0.0",
@@ -78,7 +78,7 @@
     "plato": "^1.7.0",
     "requirejs": "^2.3.3",
     "source-map": "^0.5.6",
-    "tslint": "^5.4.3",
+    "tslint": "^5.5.0",
     "typedoc": "^0.7.1",
     "typescript": "^2.4.1",
     "uglify-js": "^3.0.23"

@@ -1,7 +1,7 @@
 ﻿/*!
  * cdp.i18n.js 2.0.0
  *
- * Date: 2017-07-05T12:36:42.997Z
+ * Date: 2017-07-06T00:37:07.396Z
  */
 
 (function webpackUniversalModuleDefinition(root, factory) {

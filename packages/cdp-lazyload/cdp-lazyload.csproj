@@ -69,7 +69,7 @@
   </PropertyGroup>
   <PropertyGroup>
     <PostBuildEvent>
-</PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
@@ -96,8 +96,8 @@
     <Content Include="tasks\banner.js" />
     <Content Include="tasks\bundle.js" />
     <Content Include="tasks\clean.js" />
-    <Content Include="tasks\coverage.js" />
     <Content Include="tasks\external-rearrange.js" />
+    <Content Include="tasks\normalize-coverage.js" />
     <Content Include="tests\runner\test-main.js" />
     <Content Include="tests\runner\testem-amd.js" />
     <Content Include="tests\runner\testem-ci.js" />

@@ -100,7 +100,7 @@
     <Content Include="project.config.js" />
     <Content Include="src\scripts\cdp.core.js" />
     <Content Include="tasks\bundle.js" />
-    <Content Include="tasks\coverage.js" />
+    <Content Include="tasks\normalize-coverage.js" />
     <Content Include="tests\unit\cdp.core.spec.js">
       <DependentUpon>cdp.core.spec.ts</DependentUpon>
     </Content>

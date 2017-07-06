@@ -41,7 +41,7 @@ const required_tasks = [
     'banner.js',
     'bundle.js',
     'clean.js',
-    'coverage.js',
+    'normalize-coverage.js',
 ];
 
 // project configuration

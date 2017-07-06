@@ -1,6 +1,7 @@
 ﻿/* eslint-env node, es6 */
 'use strict';
-const path  = require('path');
+const path      = require('path');
+const config    = require('../project.config');
 
 function queryOptions() {
     const argv = process.argv.slice(2);
@@ -35,8 +36,7 @@ function setup(options) {
             if (options.target) {
                 return options.target.split(',');
             } else {
-                const pkg = require(path.join(__dirname, '../package.json'));
-                return pkg.projectConfig.modules;
+                return config.include_modules;
             }
         })();
 
@@ -48,13 +48,13 @@ function setup(options) {
 
             process.chdir(`./packages/${target}`);
             command.exec('npm', 'run setup')
-            .then(() => {
-                process.chdir(cwdBackup);
-                setTimeout(proc);
-            })
-            .catch((reason) => {
-                reject(reason);
-            });
+                .then(() => {
+                    process.chdir(cwdBackup);
+                    setTimeout(proc);
+                })
+                .catch((reason) => {
+                    reject(reason);
+                });
 
         };
         setTimeout(proc);

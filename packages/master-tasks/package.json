@@ -22,7 +22,7 @@
   ],
   "scripts": {
     "test": "eslint tasks/**/*.js ./provider.js -c eslintrc.json",
-    "make-link": "node provider.js --mode=make"
+    "mklink": "node provider.js --mode=make"
   },
   "devDependencies": {
     "eslint": "^4.1.1"
