@@ -1,6 +1,6 @@
 ﻿/// <reference path="_dev.dependencies.d.ts" />
 
-import "../../dist/cdp.lazyload";
+import "../../built/cdp.lazyload";
 
 describe("cdp.lazyload spec", () => {
     beforeEach(() => {

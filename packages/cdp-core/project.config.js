@@ -18,7 +18,7 @@ const dir = {
     task: 'tasks',
     test: 'tests',
     types: '@types',
-    temp: '.temp',
+    temp: 'built',  // for coverage
     script: 'scripts',
 };
 

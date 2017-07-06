@@ -1,6 +1,6 @@
 ﻿/// <reference path="_dev.dependencies.d.ts" />
 
-import "../../dist/cdp.core";
+import "../../built/cdp.core";
 
 describe("cdp.core spec", () => {
     beforeEach(() => {
