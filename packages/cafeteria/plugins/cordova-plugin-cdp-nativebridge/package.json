@@ -1,0 +1,97 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "cordova-plugin-cdp-nativebridge",
+        "scope": null,
+        "escapedName": "cordova-plugin-cdp-nativebridge",
+        "name": "cordova-plugin-cdp-nativebridge",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "D:\\Projects\\CDP\\NextTemplate\\cdp-js\\packages\\cafeteria\\node_modules"
+    ]
+  ],
+  "_from": "cordova-plugin-cdp-nativebridge@latest",
+  "_id": "cordova-plugin-cdp-nativebridge@1.1.0",
+  "_inCache": true,
+  "_location": "/cordova-plugin-cdp-nativebridge",
+  "_nodeVersion": "4.3.1",
+  "_npmOperationalInternal": {
+    "host": "packages-13-west.internal.npmjs.com",
+    "tmp": "tmp/cordova-plugin-cdp-nativebridge-1.1.0.tgz_1458737377762_0.11409926158376038"
+  },
+  "_npmUser": {
+    "name": "shin-ogata",
+    "email": "Shin.Ogata@jp.sony.com"
+  },
+  "_npmVersion": "2.14.7",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "cordova-plugin-cdp-nativebridge",
+    "scope": null,
+    "escapedName": "cordova-plugin-cdp-nativebridge",
+    "name": "cordova-plugin-cdp-nativebridge",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-cdp-nativebridge/-/cordova-plugin-cdp-nativebridge-1.1.0.tgz",
+  "_shasum": "8c97c8bb7137f7e5722c016fdba69bc880d781f2",
+  "_shrinkwrap": null,
+  "_spec": "cordova-plugin-cdp-nativebridge",
+  "_where": "D:\\Projects\\CDP\\NextTemplate\\cdp-js\\packages\\cafeteria\\node_modules",
+  "author": {
+    "name": "Shin Ogata",
+    "email": "Shin.Ogata@jp.sony.com"
+  },
+  "bugs": {
+    "url": "https://github.com/sony/cordova-plugin-cdp-nativebridge/issues"
+  },
+  "cordova": {
+    "id": "cordova-plugin-cdp-nativebridge",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "dependencies": {},
+  "description": "Cordova Generic Native Bridge Plugin.",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "8c97c8bb7137f7e5722c016fdba69bc880d781f2",
+    "tarball": "https://registry.npmjs.org/cordova-plugin-cdp-nativebridge/-/cordova-plugin-cdp-nativebridge-1.1.0.tgz"
+  },
+  "homepage": "https://github.com/sony/cordova-plugin-cdp-nativebridge#readme",
+  "keywords": [
+    "CDP",
+    "cordova",
+    "native",
+    "bridge",
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    {
+      "name": "shin-ogata",
+      "email": "Shin.Ogata@jp.sony.com"
+    }
+  ],
+  "name": "cordova-plugin-cdp-nativebridge",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sony/cordova-plugin-cdp-nativebridge.git"
+  },
+  "scripts": {},
+  "version": "1.1.0"
+}
