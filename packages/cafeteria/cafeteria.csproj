@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')"/>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <ProjectGuid>{FD456573-93FF-4EA4-A14D-45CEE6917160}</ProjectGuid>
@@ -14,12 +14,12 @@
     </FileUpgradeFlags>
     <OldToolsVersion>4.0</OldToolsVersion>
     <UseIISExpress>true</UseIISExpress>
-    <IISExpressSSLPort/>
-    <IISExpressAnonymousAuthentication/>
-    <IISExpressWindowsAuthentication/>
-    <IISExpressUseClassicPipelineMode/>
-    <UpgradeBackupLocation/>
-    <UseGlobalApplicationHostFile/>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UpgradeBackupLocation />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -31,9 +31,9 @@
   <PropertyGroup>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
   </PropertyGroup>
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets"/>
-  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''"/>
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false"/>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <ProjectExtensions>
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
@@ -50,7 +50,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties package_1json__JSONSchema="" tsconfig_1base_1json__JSONSchema="http://json.schemastore.org/tsconfig"/>
+      <UserProperties tsconfig_1base_1json__JSONSchema="http://json.schemastore.org/tsconfig" package_1json__JSONSchema="" />
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
@@ -64,7 +64,7 @@
     <TypeScriptIncludeComments>false</TypeScriptIncludeComments>
     <TypeScriptSourceMap>false</TypeScriptSourceMap>
   </PropertyGroup>
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets"/>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" />
   <PropertyGroup>
     <PreBuildEvent>
     </PreBuildEvent>
@@ -73,20 +73,20 @@
     <PostBuildEvent>npm run compile:scss</PostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include=".gitignore"/>
-    <Content Include=".npmignore"/>
-    <Content Include="BANNER"/>
-    <Content Include="config.xml"/>
-    <Content Include="LICENSE"/>
-    <Content Include="NOTICE"/>
-    <Content Include="package.json"/>
-    <Content Include="project.config.js"/>
-    <Content Include="README.md"/>
+    <Content Include=".gitignore" />
+    <Content Include=".npmignore" />
+    <Content Include="BANNER" />
+    <Content Include="config.xml" />
+    <Content Include="LICENSE" />
+    <Content Include="NOTICE" />
+    <Content Include="package.json" />
+    <Content Include="project.config.js" />
+    <Content Include="README.md" />
     <Content Include="tsconfig.base.json">
       <DependentUpon>tsconfig.json</DependentUpon>
     </Content>
-    <Content Include="tsconfig.json"/>
-    <Content Include="web.config"/>
+    <Content Include="tsconfig.json" />
+    <Content Include="web.config" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
@@ -95,141 +95,138 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="app\external\%40types\patch.dependencies\index.d.ts"/>
-    <Content Include="app\external\backbone\scripts\backbone.js"/>
-    <Content Include="app\external\cdp\scripts\cdp.js"/>
-    <Content Include="app\external\cdp\stylesheets\cdp.css"/>
-    <Content Include="app\external\cdp\stylesheets\cdp.icons.css"/>
-    <Content Include="app\external\cdp\stylesheets\cdp.structure.css"/>
-    <Content Include="app\external\cdp\stylesheets\cdp.swatch.css"/>
-    <Content Include="app\external\flipsnap\scripts\flipsnap.js"/>
-    <Content Include="app\external\%40types\patch.dependencies\flipsnap.d.ts"/>
-    <Content Include="app\external\hammerjs\scripts\hammer.js"/>
-    <Content Include="app\external\hammerjs\scripts\jquery.hammer.js"/>
-    <Content Include="app\external\%40types\patch.dependencies\jquery.hammer.d.ts"/>
-    <Content Include="app\external\hogan\scripts\hogan.js"/>
-    <Content Include="app\external\iscroll\scripts\iscroll-probe.js"/>
-    <Content Include="app\external\%40types\patch.dependencies\iscroll.d.ts"/>
-    <Content Include="app\external\jquery\scripts\jquery.js"/>
-    <Content Include="app\external\requirejs\scripts\require.js"/>
-    <Content Include="app\external\underscore\scripts\underscore.js"/>
-    <Content Include="app\res\locales\messages.en-US.json"/>
-    <Content Include="app\res\locales\messages.ja-JP.json"/>
+    <Content Include="app\external\%40types\patch.dependencies\index.d.ts" />
+    <Content Include="app\external\backbone\scripts\backbone.js" />
+    <Content Include="app\external\cdp\scripts\cdp.js" />
+    <Content Include="app\external\cdp\stylesheets\cdp.css" />
+    <Content Include="app\external\cdp\stylesheets\cdp.icons.css" />
+    <Content Include="app\external\cdp\stylesheets\cdp.structure.css" />
+    <Content Include="app\external\cdp\stylesheets\cdp.swatch.css" />
+    <Content Include="app\external\flipsnap\scripts\flipsnap.js" />
+    <Content Include="app\external\%40types\patch.dependencies\flipsnap.d.ts" />
+    <Content Include="app\external\hammerjs\scripts\hammer.js" />
+    <Content Include="app\external\hammerjs\scripts\jquery.hammer.js" />
+    <Content Include="app\external\%40types\patch.dependencies\jquery.hammer.d.ts" />
+    <Content Include="app\external\hogan\scripts\hogan.js" />
+    <Content Include="app\external\iscroll\scripts\iscroll-probe.js" />
+    <Content Include="app\external\%40types\patch.dependencies\iscroll.d.ts" />
+    <Content Include="app\external\jquery\scripts\jquery.js" />
+    <Content Include="app\external\requirejs\scripts\require.js" />
+    <Content Include="app\external\underscore\scripts\underscore.js" />
+    <Content Include="app\res\locales\messages.en-US.json" />
+    <Content Include="app\res\locales\messages.ja-JP.json" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="app\stylesheets\images\"/>
-    <Content Include="app\stylesheets\_gallery.scss"/>
-    <Content Include="app\stylesheets\_splash.scss"/>
-    <Content Include="app\stylesheets\app.scss"/>
+    <Content Include="app\stylesheets\_gallery.scss" />
+    <Content Include="app\stylesheets\_splash.scss" />
+    <Content Include="app\stylesheets\app.scss" />
     <Content Include="app\stylesheets\app.css">
       <DependentUpon>app.scss</DependentUpon>
     </Content>
-    <Content Include="app\stylesheets\splash.scss"/>
+    <Content Include="app\stylesheets\splash.scss" />
     <Content Include="app\stylesheets\splash.css">
       <DependentUpon>splash.scss</DependentUpon>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="app\templates\gallery\listctrl.html"/>
-    <Content Include="app\templates\gallery\theme-switcher.html"/>
-    <Content Include="app\templates\main.html"/>
-    <Content Include="app\index.html"/>
+    <Content Include="app\templates\gallery\listctrl.html" />
+    <Content Include="app\templates\gallery\theme-switcher.html" />
+    <Content Include="app\templates\main.html" />
+    <Content Include="app\index.html" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="app\lib\scripts\"/>
-    <Folder Include="app\lib\stylesheets\"/>
+    <Folder Include="app\lib\scripts\" />
+    <Folder Include="app\lib\stylesheets\" />
+    <Folder Include="app\porting\scripts\%40types\" />
+    <Folder Include="app\porting\stylesheets\" />
+    <Folder Include="app\porting\templates\" />
+    <Folder Include="app\stylesheets\images\" />
+    <Folder Include="docs\images\" />
+    <Folder Include="platforms\android\porting\scripts\" />
+    <Folder Include="platforms\android\porting\stylesheets\" />
+    <Folder Include="platforms\android\porting\templates\" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="docs\en\README.md" />
+    <Content Include="docs\ja\README.md" />
+    <Content Include="docs\reports\coverage\index.html" />
+    <Content Include="docs\reports\metrics\display.html" />
+    <Content Include="docs\reports\metrics\index.html" />
+    <Content Include="docs\typedoc\globals.html" />
+    <Content Include="docs\typedoc\index.html" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="app\porting\scripts\"/>
-    <Folder Include="app\porting\scripts\%40types"/>
-    <Folder Include="app\porting\stylesheets\"/>
-    <Folder Include="app\porting\templates\"/>
+    <Content Include="hooks\before_prepare\cordova-delegater.js" />
+    <Content Include="hooks\README.md" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="platforms\android\porting\scripts\"/>
-    <Folder Include="platforms\android\porting\stylesheets\"/>
-    <Folder Include="platforms\android\porting\templates\"/>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="docs\images\"/>
-    <Content Include="docs\en\README.md"/>
-    <Content Include="docs\ja\README.md"/>
-    <Content Include="docs\reports\coverage\index.html"/>
-    <Content Include="docs\reports\metrics\display.html"/>
-    <Content Include="docs\reports\metrics\index.html"/>
-    <Content Include="docs\typedoc\globals.html"/>
-    <Content Include="docs\typedoc\index.html"/>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="hooks\before_prepare\cordova-delegater.js"/>
-    <Content Include="hooks\README.md"/>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="tasks\banner.js"/>
-    <Content Include="tasks\build-addon.js"/>
-    <Content Include="tasks\bundle-finalizer.js"/>
-    <Content Include="tasks\clean.js"/>
-    <Content Include="tasks\command.js"/>
-    <Content Include="tasks\compile-scss.js"/>
-    <Content Include="tasks\compile-ts.js"/>
-    <Content Include="tasks\copy.js"/>
-    <Content Include="tasks\cordova-receiver.js"/>
-    <Content Include="tasks\external-rearrange.js"/>
-    <Content Include="tasks\instrument.js"/>
-    <Content Include="tasks\minify.js"/>
-    <Content Include="tasks\porting-setup.js"/>
-    <Content Include="tasks\remap-coverage.js"/>
-    <Content Include="tasks\srcmap.js"/>
-    <Content Include="tasks\string-replace.js"/>
-    <Content Include="tasks\tsconfig-templates.js"/>
+    <Content Include="tasks\banner.js" />
+    <Content Include="tasks\build-addon.js" />
+    <Content Include="tasks\bundle-finalizer.js" />
+    <Content Include="tasks\clean.js" />
+    <Content Include="tasks\command.js" />
+    <Content Include="tasks\compile-scss.js" />
+    <Content Include="tasks\compile-ts.js" />
+    <Content Include="tasks\copy.js" />
+    <Content Include="tasks\cordova-receiver.js" />
+    <Content Include="tasks\external-rearrange.js" />
+    <Content Include="tasks\instrument.js" />
+    <Content Include="tasks\minify.js" />
+    <Content Include="tasks\porting-setup.js" />
+    <Content Include="tasks\remap-coverage.js" />
+    <Content Include="tasks\srcmap.js" />
+    <Content Include="tasks\string-replace.js" />
+    <Content Include="tasks\tsconfig-templates.js" />
   </ItemGroup>
   <ItemGroup>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="tests\eslint\eslintrc.json"/>
-    <Content Include="tests\runner\config-generator.js"/>
-    <Content Include="tests\runner\index.mustache"/>
-    <Content Include="tests\runner\test-config.js"/>
-    <Content Include="tests\runner\test-main.js"/>
-    <Content Include="tests\runner\testem-amd.js"/>
-    <Content Include="tests\runner\testem-ci.js"/>
-    <Content Include="tests\runner\testem.json"/>
-    <Content Include="tests\tslint\tslint.json"/>
+    <Content Include="tests\eslint\eslintrc.json" />
+    <Content Include="tests\runner\config-generator.js" />
+    <Content Include="tests\runner\index.mustache" />
+    <Content Include="tests\runner\test-config.js" />
+    <Content Include="tests\runner\test-main.js" />
+    <Content Include="tests\runner\testem-amd.js" />
+    <Content Include="tests\runner\testem-ci.js" />
+    <Content Include="tests\runner\testem.json" />
+    <Content Include="tests\tslint\tslint.json" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="app\scripts\app.ts"/>
+    <TypeScriptCompile Include="app\scripts\app.ts" />
     <Content Include="app\scripts\app.js">
       <DependentUpon>app.ts</DependentUpon>
     </Content>
-    <TypeScriptCompile Include="app\scripts\config.ts"/>
+    <TypeScriptCompile Include="app\scripts\config.ts" />
     <Content Include="app\scripts\config.js">
       <DependentUpon>config.ts</DependentUpon>
     </Content>
-    <TypeScriptCompile Include="app\scripts\index.ts"/>
+    <TypeScriptCompile Include="app\scripts\index.ts" />
     <Content Include="app\scripts\index.js">
       <DependentUpon>index.ts</DependentUpon>
     </Content>
-    <TypeScriptCompile Include="app\scripts\model\sample-model.ts"/>
+    <TypeScriptCompile Include="app\scripts\model\sample-model.ts" />
     <Content Include="app\scripts\model\sample-model.js">
       <DependentUpon>sample-model.ts</DependentUpon>
     </Content>
-    <TypeScriptCompile Include="app\scripts\view\gallery\base-pageview.ts"/>
+    <TypeScriptCompile Include="app\scripts\view\gallery\base-pageview.ts" />
     <Content Include="app\scripts\view\gallery\base-pageview.js">
       <DependentUpon>base-pageview.ts</DependentUpon>
     </Content>
-    <TypeScriptCompile Include="app\scripts\view\gallery\list-control.ts"/>
+    <TypeScriptCompile Include="app\scripts\view\gallery\list-control.ts" />
     <Content Include="app\scripts\view\gallery\list-control.js">
       <DependentUpon>list-control.ts</DependentUpon>
     </Content>
-    <TypeScriptCompile Include="app\scripts\view\loader.ts"/>
+    <TypeScriptCompile Include="app\scripts\view\loader.ts" />
     <Content Include="app\scripts\view\loader.js">
       <DependentUpon>loader.ts</DependentUpon>
     </Content>
-    <TypeScriptCompile Include="app\scripts\view\main-view.ts"/>
+    <TypeScriptCompile Include="app\scripts\view\main-view.ts" />
     <Content Include="app\scripts\view\main-view.js">
       <DependentUpon>main-view.ts</DependentUpon>
     </Content>
-    <TypeScriptCompile Include="tests\unit\sample-model.spec.ts"/>
+    <TypeScriptCompile Include="tests\unit\sample-model.spec.ts" />
     <Content Include="tests\unit\sample-model.spec.js">
       <DependentUpon>sample-model.spec.ts</DependentUpon>
     </Content>
