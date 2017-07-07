@@ -24,7 +24,7 @@
     "setup": "npm run setup:tasks && npm install && npm run rearrange",
     "setup:tasks": "node ../master-tasks/provider.js",
     "test": "run-s -l clean compile lint unit-test",
-    "ci": "run-s -l clean build lint unit-test build metrics",
+    "ci": "run-s -l clean build lint unit-test metrics",
     "package": "run-s ci && node ./tasks/clean.js --built --test --temp",
     "update": "npm update --save-dev && npm update --save && npm run package",
     "check:update": "npm outdated",

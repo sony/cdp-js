@@ -89,7 +89,7 @@ namespace CDP.Tools {
             if (key instanceof jQuery) {
                 $element = key;
             } else {
-                $element = this.getTemplateElement(key, src, cache);
+                $element = Template.getTemplateElement(key, src, cache);
             }
             if (null != global.Hogan) {
                 template = Hogan.compile($element.text());
