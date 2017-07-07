@@ -5,6 +5,8 @@ namespace CDP.Framework {
 
     import Promise = CDP.Promise;
 
+    const TAG = "[CDP.Framework.Router] ";
+
     ///////////////////////////////////////////////////////////////////////
     // closure methods
 
@@ -239,7 +241,7 @@ namespace CDP.Framework {
         public static initialize(options: any): boolean {
             const $body = $("body");
             if (!!Router.s_router) {
-                console.warn("logic error. initialize call twice.");
+                console.warn(TAG + "logic error. initialize call twice.");
                 return false;
             }
 
@@ -328,16 +330,16 @@ namespace CDP.Framework {
          *
          * @param options {Object} [in] Backbone.History にわたるオプション
          */
-        public static start(options?: RouterOptions): boolean {
+        public static start(options?: RouterOptions): void {
             const opt = $.extend({ pageConstruct: true }, options);
             if (opt.pageConstruct) {
                 Framework.constructPages();
             }
             if ($.mobile.hashListeningEnabled) {
-                console.log("setting error. confict: $.mobile.hashListeningEnabled = true, cannot start.");
-                return false;
+                console.error(TAG + "setting error. confict: $.mobile.hashListeningEnabled = true, cannot start.");
+                return;
             }
-            return Backbone.history.start(opt);
+            Backbone.history.start(opt);
         }
 
         /**
@@ -392,7 +394,7 @@ namespace CDP.Framework {
         public static navigate(url: string, transition?: string, reverse?: boolean, options?: NavigateOptions): void {
             if (!!Router.s_lastNavigateInfo.inNavigation) {
                 // すでに Navigation 中であれば抑止
-                console.log("Router.navigate() called in navigation proc.");
+                console.warn(TAG + "Router.navigate() called in navigation proc.");
                 return;
             } else if (Router.initFirstPageIfNeeded(url)) { // autoInitializePage が指定されていないとき
                 return;
@@ -419,7 +421,7 @@ namespace CDP.Framework {
             notifyBeforeRouteChange()
                 .fail(() => {
                     // beforeRouteChange() が失敗した場合、致命的な不具合となるため、error 記録のみにして先に進む。
-                    console.error("before route change call, failed.");
+                    console.error(TAG + "before route change call, failed.");
                 })
                 .always(() => {
                     if (Router.isRouting() && !Router.s_lastNavigateInfo.noHashChange) {
@@ -432,14 +434,18 @@ namespace CDP.Framework {
                                     Router.finishSubFlow(navOptions);
                                     return; // navigation は呼ばない
                                 default:
-                                    console.warn("unknown subFlow.operation. operation: " + navOptions.subFlow.operation);
+                                    console.warn(TAG + "unknown subFlow.operation. operation: " + navOptions.subFlow.operation);
                                     break;
                             }
                         }
-                        Router.s_router.navigate(url, navOptions);
+                        const result = Backbone.history.navigate(url, navOptions);
+                        // Backbone.history.loadUrl() がコールされなかった場合, navigation 終了
+                        if (!result || "string" === typeof result) {
+                            Router.s_lastNavigateInfo.inNavigation = false;
+                        }
                     } else {
                         if (navOptions.subFlow) {
-                            console.warn("subFlow only supported under routing and hash change condition.");
+                            console.warn(TAG + "subFlow only supported under routing and hash change condition.");
                         }
                         const fragment = Backbone.history.getFragment(url);
                         let context: RouteContext;
@@ -535,7 +541,7 @@ namespace CDP.Framework {
         public static back(): void {
             if (!!Router.s_lastNavigateInfo.inNavigation) {
                 // すでに Navigation 中であれば抑止
-                console.log("Router.back() called in navigation proc.");
+                console.warn(TAG + "Router.back() called in navigation proc.");
                 return;
             } else if (Router.isTopPage()) {
                 // Top ページに指定されていれば終了
@@ -624,7 +630,7 @@ namespace CDP.Framework {
             const opt: NavigateOptions = $.extend({}, options);
             opt.subFlow = opt.subFlow || { operation: "begin" };
             if ("begin" !== opt.subFlow.operation) {
-                console.error("logic error. invalid subflow operation. [operation: " + opt.subFlow.operation + "]");
+                console.error(TAG + "logic error. invalid subflow operation. [operation: " + opt.subFlow.operation + "]");
                 return;
             }
             Router.navigate(url, transition, reverse, opt);
@@ -745,7 +751,7 @@ namespace CDP.Framework {
                         return ctx.regexp.test(fragment);
                     });
                     if (!context) {
-                        console.warn("route is not registered. route: " + info.route);
+                        console.warn(TAG + "route is not registered. route: " + info.route);
                         return null;
                     } else {
                         url = Router.pathToJqmDataUrl(context.page);
@@ -857,7 +863,7 @@ namespace CDP.Framework {
             if (!handled) {
                 Router.onRouteFailed(fragment);
             }
-            return handled;
+            return true;
         }
 
         /**
@@ -952,7 +958,7 @@ namespace CDP.Framework {
          */
         private static pushContext(name: string, context: RouteContext): boolean {
             if (!!Router.s_rootContexts[name]) {
-                console.log("logic error. route is already registered. name: " + name);
+                console.error(TAG + "logic error. route is already registered. name: " + name);
                 return false;
             }
             Router.s_rootContexts[name] = context;
@@ -1295,7 +1301,7 @@ namespace CDP.Framework {
                     });
                 })
                 .fail(() => {
-                    console.error("before route change call, failed.");
+                    console.error(TAG + "before route change call, failed.");
                     Router.s_lastNavigateInfo = {};
                 });
         }
@@ -1337,7 +1343,7 @@ namespace CDP.Framework {
                             }
                             break;
                         default:
-                            console.log("unknown direction: " + direction);
+                            console.warn(TAG + "unknown direction: " + direction);
                             break;
                     }
                 },
@@ -1350,7 +1356,7 @@ namespace CDP.Framework {
                             Router.s_lastNavigateInfo.reverse = true;
                         }
                     } else if (0 !== Router.getJqmHistory().activeIndex) {
-                        console.log("unknown direction.");
+                        console.warn(TAG + "unknown direction.");
                     }
                 }
             });
@@ -1400,7 +1406,7 @@ namespace CDP.Framework {
                 return ctx.regexp.test(fragment);
             });
             if (null == context) {
-                console.warn("back destination is not registered. back-dst: " + backDst);
+                console.warn(TAG + "back destination is not registered. back-dst: " + backDst);
                 return 0;
             }
 
@@ -1412,7 +1418,7 @@ namespace CDP.Framework {
                 }
             }
             if (i < 0) {
-                console.warn("back destination does not exist in history. back-dst: " + backDst);
+                console.warn(TAG + "back destination does not exist in history. back-dst: " + backDst);
                 return 0;
             }
 
@@ -1442,7 +1448,7 @@ namespace CDP.Framework {
                     return ctx.regexp.test(fragment);
                 });
                 if (null == context) {
-                    console.warn("base destination is not registered. destBase: " + subFlowParam.destBase);
+                    console.warn(TAG + "base destination is not registered. destBase: " + subFlowParam.destBase);
                     return;
                 }
 
@@ -1490,7 +1496,7 @@ namespace CDP.Framework {
             // hash 変更が完了した後に navigate を実行
             const _navigate = () => {
                 if (MAX_RETRY_COUNT <= retry) {
-                    console.error("reached navigate max retry count.");
+                    console.error(TAG + "reached navigate max retry count.");
                     Router.s_lastNavigateInfo = {};
                 } else if (param.destBase !== location.hash) {
                     retry++;
@@ -1521,7 +1527,7 @@ namespace CDP.Framework {
                     history.go(-distance);
                 }
             } else {
-                console.warn("subFlow begin status does not exist in history.");
+                console.warn(TAG + "subFlow begin status does not exist in history.");
                 Router.s_lastNavigateInfo = {};
             }
         }

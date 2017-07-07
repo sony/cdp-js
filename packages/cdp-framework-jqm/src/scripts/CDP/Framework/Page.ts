@@ -2,6 +2,8 @@
 
     import Promise = CDP.Promise;
 
+    const TAG = "[CDP.Framework.Page] ";
+
     /**
      * \~english
      * @interface ManagedIntent

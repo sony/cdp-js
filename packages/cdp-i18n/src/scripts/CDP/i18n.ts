@@ -13,7 +13,7 @@ namespace CDP {
         export type InterpolationOptions = I18next.InterpolationOptions;
     }
 
-    const TAG: string = "[CDP.i18n] ";
+    const TAG = "[CDP.i18n] ";
 
     /**
      * i18next へのダイレクトアクセス
@@ -136,7 +136,7 @@ namespace CDP {
                 json = data;
             },
             error: (xhr: JQueryXHR, status: string) => {
-                console.log(TAG + "ajax request failed. status: " + status);
+                console.error(TAG + "ajax request failed. status: " + status);
             }
         });
         return json;
