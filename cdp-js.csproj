@@ -156,4 +156,7 @@ call compass compile -c config.rb</PostBuildEvent>
   <ItemGroup>
     <Content Include="circle.yml" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="RELEASENOTE.md" />
+  </ItemGroup>
 </Project>

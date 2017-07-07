@@ -1,7 +1,7 @@
 ﻿/*!
  * cdp.core.js 2.0.0
  *
- * Date: 2017-07-06T12:06:20.550Z
+ * Date: 2017-07-07T00:51:31.483Z
  */
 ((function (root, factory) {
     if (typeof define === "function" && define.amd) {

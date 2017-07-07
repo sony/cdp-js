@@ -75,7 +75,7 @@
     "del": "^3.0.0",
     "eslint": "^4.1.1",
     "fs-extra": "^3.0.1",
-    "i18next": "^8.4.2",
+    "i18next": "^8.4.3",
     "i18next-browser-languagedetector": "^2.0.0",
     "i18next-localstorage-cache": "^1.1.1",
     "i18next-sprintf-postprocessor": "^0.2.2",
@@ -91,6 +91,6 @@
     "typedoc": "^0.7.1",
     "typescript": "^2.4.1",
     "uglify-js": "^3.0.23",
-    "webpack": "^3.0.0"
+    "webpack": "^3.1.0"
   }
 }

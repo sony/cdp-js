@@ -9,10 +9,10 @@
 Folder and file structure of this repository is the following list.
 
     root/
-        docs/                                       // specification documents for this libraries
-        external/                                   // 3rd party library modules
-        src/                                        // development sources for this libraries
-        tests/                                      // test scripts for this libraries
+        docs/           // specification documents for this libraries
+        external/       // 3rd party library modules
+        src/            // development sources for this libraries
+        tests/          // test scripts for this libraries
 
 
 ### How to install
@@ -31,7 +31,7 @@ If you want to use newest version, you can build the modules yourself as follow 
         $ npm install
         $ npm run package
 
-2. pick up from the `release` directory.
+2. pick up from the `dist` directory.
 
         root/
             dist/
@@ -72,6 +72,7 @@ Please see the following link.
 ## License
 
 Copyright 2016 Sony Corporation
+Copyright 2017 Sony Network Communications Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

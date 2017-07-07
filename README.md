@@ -4,7 +4,7 @@
 
 ## What is cdp-js
 
-This monorepo contains cdp library modules.
+This monorepo contains cdp sdk modules.
 
 
 ### Repository structure
@@ -12,10 +12,10 @@ This monorepo contains cdp library modules.
 Folder and file structure of this repository is the following list.
 
     root/
-        dist/                                       // for internal release modules directory
-        docs/                                       // specification documents for this libraries
-        packages/                                   // 3rd party library modules
-        tests/                                      // test for task scripts
+        dist/           // for internal release modules directory
+        docs/           // specification documents for sdk modules
+        packages/       // including monorepo packages
+        tests/          // test for task scripts
 
 
 ### How to install (for internal release)
@@ -33,9 +33,9 @@ If you want to use newest version, you can build the modules yourself as follow 
 2. build the modules
 
         $ npm run setup
-        $ npm run update
+        $ npm run build
 
-2. pick up from the `release` directory.
+3. pick up from the `dist` directory.
 
         root/
             dist/
@@ -45,7 +45,7 @@ If you want to use newest version, you can build the modules yourself as follow 
                 @types/
                      cdp.d.ts      d.ts file for this module.
 
-3. setup bower module manualy to your project.
+4. setup bower module manualy to your project.
 
 
 ### How to use
@@ -63,6 +63,7 @@ Please see the following link.
 ## License
 
 Copyright 2016 Sony Corporation
+Copyright 2017 Sony Network Communications Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
