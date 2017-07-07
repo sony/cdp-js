@@ -415,7 +415,7 @@ namespace CDP {
                 },
             };
 
-            return $.extend({}, defConfig, CDP.Config, options);
+            return $.extend(true, {}, defConfig, CDP.Config, options);
         }
 
         ///////////////////////////////////////////////////////////////////////
