@@ -71,7 +71,8 @@ Please see the following link.
 
 ## License
 
-Copyright 2016 Sony Corporation
+Copyright 2016 Sony 
+
 Copyright 2017 Sony Network Communications Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
