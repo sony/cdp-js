@@ -47,13 +47,13 @@ function exec(options) {
 
             process.chdir(`../${target}`);
             command.exec('npm', 'run coverage')
-            .then(() => {
-                process.chdir(cwdBackup);
-                setTimeout(proc);
-            })
-            .catch((reason) => {
-                reject(reason);
-            });
+                .then(() => {
+                    process.chdir(cwdBackup);
+                    setTimeout(proc);
+                })
+                .catch((reason) => {
+                    reject(reason);
+                });
 
         };
         setTimeout(proc);
@@ -99,10 +99,10 @@ function run(options) {
 
 function main() {
     run(queryOptions())
-    .catch((reason) => {
-        console.error(reason);
-        process.exit(1);
-    });
+        .catch((reason) => {
+            console.error(reason);
+            process.exit(1);
+        });
 }
 
 main();

@@ -42,14 +42,14 @@ function distribution() {
     fs.copySync(path.join(DESTRIBUTION_TARGET_DIR, config.dir.pkg), path.join(ROOT_DIR, config.dir.pkg));
 
     // update package info
-    pkg.name = srcPackage.name;
+    pkg.name        = srcPackage.name;
     pkg.description = srcPackage.description;
-    pkg.version = srcPackage.version;
-    pkg.main = srcPackage.main;
-    pkg.types = srcPackage.types;
-    pkg.author = srcPackage.author;
-    pkg.license = srcPackage.license;
-    pkg.keywords = srcPackage.keywords;
+    pkg.version     = srcPackage.version;
+    pkg.main        = srcPackage.main;
+    pkg.types       = srcPackage.types;
+    pkg.author      = srcPackage.author;
+    pkg.license     = srcPackage.license;
+    pkg.keywords    = srcPackage.keywords;
     fs.writeFileSync(path.join(ROOT_DIR, 'package.json'), JSON.stringify(pkg, null, 2));
 }
 
