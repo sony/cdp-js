@@ -1,5 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.sony.cdp.cafeteria" ios-CFBundleIdentifier="com.sony.cdp.cafeteria" version="2.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <feature name="NativeBridge">
+        <param name="android-package" value="com.sony.cdp.plugin.nativebridge.NativeBridge" />
+    </feature>
     <feature name="Whitelist">
         <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
         <param name="onload" value="true" />
@@ -18,7 +21,4 @@
     <preference name="DisallowOverscroll" value="true" />
     <preference name="KeyboardDisplayRequiresUserAction" value="false" />
     <preference name="BackgroundColor" value="0xff000000" />
-    <feature name="NativeBridge">
-        <param name="android-package" value="com.sony.cdp.plugin.nativebridge.NativeBridge" />
-    </feature>
 </widget>

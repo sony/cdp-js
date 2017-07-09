@@ -7,10 +7,10 @@
         "files": {}
     },
     "installed_plugins": {
-        "cordova-plugin-whitelist": {
+        "cordova-plugin-cdp-nativebridge": {
             "PACKAGE_NAME": "com.sony.cdp.cafeteria"
         },
-        "cordova-plugin-cdp-nativebridge": {
+        "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.sony.cdp.cafeteria"
         }
     },

@@ -50,7 +50,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties tsconfig_1base_1json__JSONSchema="http://json.schemastore.org/tsconfig" package_1json__JSONSchema="" />
+      <UserProperties package_1json__JSONSchema="" tsconfig_1base_1json__JSONSchema="http://json.schemastore.org/tsconfig" />
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
@@ -82,6 +82,7 @@
     <Content Include="package.json" />
     <Content Include="project.config.js" />
     <Content Include="README.md" />
+    <Content Include="tasks\cafeteria.js" />
     <Content Include="tsconfig.base.json">
       <DependentUpon>tsconfig.json</DependentUpon>
     </Content>

@@ -20,6 +20,8 @@ temp/
 www/
 platforms/*/www/
 platforms/*/assets/www/
+!platforms/*/platform_www/plugins/*/www/
+!plugins/*/www/
 platforms/*/porting/**/*.js
 app/**/*.js
 app/**/*.map
