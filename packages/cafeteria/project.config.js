@@ -34,15 +34,6 @@ const external_rearrange = {
         '^@types',
     ],
     module_adjuster: {
-        '@cdp/mobile': {
-            vender: 'cdp',
-            type: 'both',
-            dev: 'cdp*.?(*js|*css)',
-            prod: 'cdp*.min.?(*js|*css)',
-            ignore: {
-                dev: ['*.min.js', '*.min.css'],
-            },
-        },
         'requirejs': {
             cwd: '.',
             dev: 'require.js',
@@ -99,7 +90,7 @@ const banner = {
 
 const required_tasks = [
     'banner.js',
-    'bundle-addon.js',
+    'build-addon.js',
     'bundle-finalizer.js',
     'clean.js',
     'command.js',
@@ -108,7 +99,6 @@ const required_tasks = [
     'copy.js',
     'cordova-receiver.js',
     'external-rearrange.js',
-    'internal-rearrange.js',
     'instrument.js',
     'minify.js',
     'porting-setup.js',

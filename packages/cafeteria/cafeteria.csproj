@@ -146,6 +146,7 @@
     <Folder Include="platforms\android\porting\scripts\" />
     <Folder Include="platforms\android\porting\stylesheets\" />
     <Folder Include="platforms\android\porting\templates\" />
+    <Folder Include="www\" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup />
@@ -195,6 +196,19 @@
     <Content Include="tests\tslint\tslint.json" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="app\external\%40types\%40cdp\mobile\cdp.core.d.ts" />
+    <TypeScriptCompile Include="app\external\%40types\%40cdp\mobile\cdp.d.ts" />
+    <TypeScriptCompile Include="app\external\%40types\%40cdp\mobile\cdp.framework.jqm.d.ts" />
+    <TypeScriptCompile Include="app\external\%40types\%40cdp\mobile\cdp.i18n.d.ts" />
+    <TypeScriptCompile Include="app\external\%40types\%40cdp\mobile\cdp.nativebridge.d.ts" />
+    <TypeScriptCompile Include="app\external\%40types\%40cdp\mobile\cdp.plugin.nativebridge.d.ts" />
+    <TypeScriptCompile Include="app\external\%40types\%40cdp\mobile\cdp.promise.d.ts" />
+    <TypeScriptCompile Include="app\external\%40types\%40cdp\mobile\cdp.tools.d.ts" />
+    <TypeScriptCompile Include="app\external\%40types\%40cdp\mobile\cdp.ui.jqm.d.ts" />
+    <TypeScriptCompile Include="app\external\%40types\%40cdp\mobile\cdp.ui.listview.d.ts" />
+    <TypeScriptCompile Include="app\external\%40types\%40cdp\mobile\i18next.d.ts" />
+    <TypeScriptCompile Include="app\external\%40types\%40cdp\mobile\index.d.ts" />
+    <TypeScriptCompile Include="app\external\%40types\%40cdp\mobile\jquery.mobile.d.ts" />
     <TypeScriptCompile Include="app\scripts\app.ts" />
     <Content Include="app\scripts\app.js">
       <DependentUpon>app.ts</DependentUpon>

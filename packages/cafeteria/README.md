@@ -2,7 +2,7 @@
 
 ## About Cafeteria
 
-[TODO]
+CDP SDK modules development bed.
 
 
 ### Repository structure
