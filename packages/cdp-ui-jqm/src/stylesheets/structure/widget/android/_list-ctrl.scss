@@ -41,7 +41,7 @@
     .ui-listview-inset {
         border-radius: 0 0 2px 2px;
         > li.ui-last-child {
-            &, &.ui-control-inline > label.ui-btn, label.ui-btn.ui-last-child, a.ui-btn {
+            &, &.ui-control-inline > label.ui-btn, label.ui-btn.ui-last-child, a.ui-btn:not(.ui-flipswitch-on):not(.ui-slider-handle) {
                 border-radius: 0 0 2px 2px;
             }
         }

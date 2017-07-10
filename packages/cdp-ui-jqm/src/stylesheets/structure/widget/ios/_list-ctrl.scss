@@ -49,7 +49,7 @@
             }
         }
         > li.ui-last-child {
-            &, &.ui-control-inline > label.ui-btn, label.ui-btn.ui-last-child, a.ui-btn {
+            &, &.ui-control-inline > label.ui-btn, label.ui-btn.ui-last-child, a.ui-btn:not(.ui-flipswitch-on):not(.ui-slider-handle) {
                 border-bottom-left-radius:  7px;
                 border-bottom-right-radius: 7px;
             }

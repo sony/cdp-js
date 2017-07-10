@@ -60,13 +60,13 @@
     "@types/jasmine": "^2.5.53",
     "@types/requirejs": "^2.1.29",
     "del": "^3.0.0",
-    "eslint": "^4.1.1",
+    "eslint": "^4.2.0",
     "npm-run-all": "^4.0.2",
     "nyc": "^11.0.3",
     "plato": "^1.7.0",
     "requirejs": "^2.3.3",
     "tslint": "^5.5.0",
     "typescript": "^2.4.1",
-    "uglify-js": "^3.0.23"
+    "uglify-js": "^3.0.24"
   }
 }

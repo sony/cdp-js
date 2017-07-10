@@ -1,7 +1,7 @@
 /*!
  * @cdp/mobile 2.0.0
  *
- * Date: 2017-07-07T07:58:19.094Z
+ * Date: 2017-07-10T05:23:52.014Z
  *
  * including:
  *     @cdp/core 2.0.0
@@ -19,7 +19,7 @@
 /*!
  * cdp.core.js 2.0.0
  *
- * Date: 2017-07-07T07:52:10.970Z
+ * Date: 2017-07-10T05:17:49.548Z
  */
 ((function (root, factory) {
     if (typeof define === "function" && define.amd) {
@@ -195,9 +195,9 @@
 /*!
  * cdp.promise.js 2.0.0
  *
- * Date: 2017-07-07T07:53:10.791Z
+ * Date: 2017-07-10T05:18:49.626Z
  */
-(function (root, factory) { if (typeof define === "function" && define.amd) { define("cdp.promise",["jquery"], function ($) { return factory(root.CDP || (root.CDP = {}), $); }); } else if (typeof exports === "object") { module.exports = factory(root.CDP || (root.CDP = {}), require("jquery")); } else { factory(root.CDP || (root.CDP = {}), root.jQuery || root.$); } }(((this || 0).self || global), function (CDP, $) {
+(function (root, factory) { if (typeof define === "function" && define.amd) { define("cdp.promise",["jquery"], function ($) { return factory(root.CDP || (root.CDP = {}), $, root); }); } else if (typeof exports === "object") { module.exports = factory(root.CDP || (root.CDP = {}), require("jquery"), root); } else { factory(root.CDP || (root.CDP = {}), root.jQuery || root.$, root); } }(((this || 0).self || global), function (CDP, $, root) {
 var CDP;
 (function (CDP) {
     var TAG = "[CDP.Promise] ";
@@ -501,11 +501,11 @@ var CDP;
     CDP.Promise = PromiseConstructor;
 })(CDP || (CDP = {}));
 
-return CDP; }));
+root.Promise = root.Promise || CDP.Promise; return CDP; }));
 /*!
  * cdp.i18n.js 2.0.0
  *
- * Date: 2017-07-07T07:53:54.651Z
+ * Date: 2017-07-10T05:19:35.406Z
  */
 
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -3978,7 +3978,7 @@ return Cache;
 /*!
  * cdp.framework.jqm.js 2.0.0
  *
- * Date: 2017-07-07T07:54:38.160Z
+ * Date: 2017-07-10T05:20:17.864Z
  */
 
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -22464,7 +22464,7 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_5__;
 /*!
  * cdp.tools.js 2.0.0
  *
- * Date: 2017-07-07T07:55:21.580Z
+ * Date: 2017-07-10T05:21:02.641Z
  */
 (function (root, factory) { if (typeof define === "function" && define.amd) { define("cdp.tools",["jquery", "underscore"], function ($, _) { return factory(root.CDP || (root.CDP = {}), $, _); }); } else if (typeof exports === "object") { module.exports = factory(root.CDP || (root.CDP = {}), require("jquery"), require("underscore")); } else { factory(root.CDP || (root.CDP = {}), root.jQuery || root.$, root._); } }(((this || 0).self || global), function (CDP, $, _) { CDP.Tools = CDP.Tools || {};
 /**
@@ -23197,7 +23197,7 @@ return CDP.Tools; }));
 /*!
  * cdp.ui.listview.js 2.0.0
  *
- * Date: 2017-07-07T07:56:02.338Z
+ * Date: 2017-07-10T05:21:44.025Z
  */
 (function (root, factory) { if (typeof define === "function" && define.amd) { define("cdp.ui.listview",["jquery", "underscore", "backbone"], function ($, _, Backbone) { return factory(root.CDP || (root.CDP = {}), $, _, Backbone); }); } else if (typeof exports === "object") { module.exports = factory(root.CDP || (root.CDP = {}), require("jquery"), require("underscore"), require("backbone")); } else { factory(root.CDP || (root.CDP = {}), root.$, root._, root.Backbone); } }(((this || 0).self || global), function (CDP, $, _, Backbone) { CDP.UI = CDP.UI || {};
 /// <reference types="jquery" />
@@ -26227,7 +26227,7 @@ return CDP.UI; }));
 /*!
  * cdp.ui.jqm.js 2.0.0
  *
- * Date: 2017-07-07T07:56:50.051Z
+ * Date: 2017-07-10T05:22:32.653Z
  */
 (function (root, factory) { if (typeof define === "function" && define.amd) { define("cdp.ui.jqm",["cdp.framework.jqm", "cdp.tools", "cdp.ui.listview"], function () { return factory(root.CDP || (root.CDP = {})); }); } else { factory(root.CDP || (root.CDP = {})); } }(this, function (CDP) { CDP.UI = CDP.UI || {};
 var CDP;
@@ -28089,7 +28089,7 @@ return CDP.UI; }));
 /*!
  * cdp.nativebridge.js 2.0.0
  *
- * Date: 2017-07-07T07:57:34.282Z
+ * Date: 2017-07-10T05:23:16.610Z
  */
 (function (root, factory) { if (typeof define === "function" && define.amd) { define("cdp.nativebridge",["cdp.promise"], function () { return factory(root.CDP || (root.CDP = {}), root.jQuery || root.$); }); } else { factory(root.CDP || (root.CDP = {}), root.jQuery || root.$); } }(((this || 0).self || global), function (CDP, $) { CDP.NativeBridge = CDP.NativeBridge || {};
 

@@ -1,6 +1,7 @@
 ﻿import "hogan";
 import "jquery-hammerjs";
 import { global } from "cdp";
+
 /* tslint:disable:no-string-literal */
 import * as Hammer from "hammerjs";
 global["Hammer"] = Hammer;
