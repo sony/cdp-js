@@ -53,7 +53,7 @@ $ npm run update
 ```
 
 
--  only cdp modules update
+* only cdp modules update
 
 ```
 $ npm run update:cdp
