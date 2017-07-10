@@ -1,22 +1,72 @@
 ﻿import {
     PageView,
-    ShowEventData,
-    HideEventData,
+    PageContainerView,
+    PageContainerOptions,
+    Theme,
     Toast,
     registerPage,
 } from "cdp/ui";
+import { DeviceConsole } from "cdp.device.console";
 
 import { Options } from "../model/options";
 
-import CheckModel from "../model/sample-model";
-
 const TAG = "[view.MainView] ";
+
+/**
+ * @class ThemeSwitcher
+ * @brief テーマ切り替え View
+ */
+class ThemeSwitcher extends PageContainerView {
+
+    /**
+     * constructor
+     */
+    constructor(options: PageContainerOptions) {
+        super(options);
+        switch (Theme.getCurrentUIPlatform()) {
+            case "ios":
+                this.$el.find("#gallery-theme-ios").prop("checked", true);
+                break;
+            case "android":
+                this.$el.find("#gallery-theme-android").prop("checked", true);
+                break;
+            default:
+                Toast.show(TAG + "\n unknown platform.");
+                this.$el.find("#gallery-theme-default").prop("checked", true);
+                break;
+        }
+        this.$el.find("input[name='segmented-control-platform-theme']").checkboxradio("refresh");
+    }
+
+    ///////////////////////////////////////////////////////////////////////
+    // Event Handler:
+
+    //! events binding
+    events(): any {
+        return {
+            "change input[name='segmented-control-platform-theme']": this.onThemeChanged,
+        };
+    }
+
+    //! テーマ切り替え
+    private onThemeChanged(event: JQueryEventObject): void {
+        let platform = <string>this.$el.find("input[name='segmented-control-platform-theme']:checked").val();
+        if ("default" === platform) {
+            platform = null;
+        }
+        Theme.setCurrentUIPlatform(platform);
+    }
+}
+
+//___________________________________________________________________________________________________________________//
 
 /**
  * @class OptionsView
  * @brief メインビュークラス
  */
 export class OptionsView extends PageView {
+
+    private _themeSwitcher: ThemeSwitcher;
 
     /**
      * constructor
@@ -41,17 +91,17 @@ export class OptionsView extends PageView {
 
     private onTransitionChanged(event: JQuery.Event): void {
         const options = Options.getInstance();
-        options.set("transition", $(event.target).val());
+        options.setTransition(<string>$(event.target).val());
     }
 
     private onPerformanceLoggerChanged(event: JQuery.Event): void {
         const options = Options.getInstance();
-        options.set("showLog", ($(event.target).val() === "on") ? true : false);
+        options.set("transitionLogger", $(event.target).prop("checked") ? true : false);
     }
 
     private onDeviceConsoleChanged(event: JQuery.Event): void {
         const options = Options.getInstance();
-        if ($(event.target).val() === "on") {
+        if ($(event.target).prop("checked")) {
             options.showDeviceConsole();
         } else {
             options.hideDeviceConsole();
@@ -60,6 +110,38 @@ export class OptionsView extends PageView {
 
     ///////////////////////////////////////////////////////////////////////
     // Override: UI.PageView
+
+    // 描画更新
+    render(): PageView {
+        this.refreshTransition();
+        this.refreshTransitionLogger();
+        this.refreshUseDeviceConsole();
+        return this;
+    }
+
+    // 既定のトランジション設定
+    private refreshTransition(): void {
+        const options = Options.getInstance();
+        const $transition = $("#option-select-transition");
+        $transition.val(options.get("transition"));
+        $transition.selectmenu("refresh");
+    }
+
+    // パフォーマンスログ使用設定
+    private refreshTransitionLogger(): void {
+        const options = Options.getInstance();
+        const $flipLogger = $("#flip-transition-logger");
+        $flipLogger.prop("checked", options.get("transitionLogger") ? true : false);
+        $flipLogger.flipswitch("refresh");
+    }
+
+    // デバイスコンソール使用設定
+    private refreshUseDeviceConsole(): void {
+        const options = Options.getInstance();
+        const $flipConsole = $("#flip-device-console");
+        $flipConsole.prop("checked", options.isVisibleDeviceConsole() ? true : false);
+        $flipConsole.flipswitch("refresh");
+    }
 
     /**
      * jQM event: "pagecreate" (旧:"pageinit") に対応
@@ -70,20 +152,31 @@ export class OptionsView extends PageView {
         super.onPageInit(event);
         console.log(TAG + "onPageInit()");
 
-        const options = Options.getInstance();
+        this._themeSwitcher = new ThemeSwitcher({
+            owner: this,
+            $el: this.$el.find(".theme-switcher"),
+        });
 
-        const $transition = $("#option-select-transition");
-        $transition.val(options.get("transition"));
-        $transition.selectmenu("refresh");
+        DeviceConsole.on("state-changed:hide", () => {
+            this.refreshUseDeviceConsole();
+        });
 
-        const $flipLogger = $("#flip-transition-logger");
-        $flipLogger.val(options.get("showLog") ? "on" : "off");
-        $flipLogger.flipswitch("refresh");
-
-        const $flipConsole = $("#flip-device-console");
-        $flipConsole.val(options.isVisibleDeviceConsole() ? "on" : "off");
-        $flipConsole.flipswitch("refresh");
+        this.render();
     }
+
+    /**
+     * jQM event: "pageremove" に対応
+     *
+     * @param event {JQuery.Event} [in] イベントオブジェクト
+     */
+    onPageRemove(event: JQuery.Event): void {
+        if (this._themeSwitcher) {
+            this._themeSwitcher.remove();
+            this._themeSwitcher = null;
+        }
+        super.onPageRemove(event);
+    }
+
 }
 
 registerPage(OptionsView);

@@ -52,6 +52,7 @@ function minifyJS(options) {
         cwd: PKG_DIR,
         nodir: true,
         ignore: [
+            '**/*.min.js',
             config.dir.external + '/**/*',
             config.dir.res + '/**/*',
             config.dir.stylesheet + '/**/*',
@@ -90,6 +91,7 @@ function minifyCSS(options) {
         cwd: PKG_DIR,
         nodir: true,
         ignore: [
+            '**/*.min.css',
             config.dir.external + '/**/*',
             config.dir.res + '/**/*',
             config.dir.script + '/**/*',

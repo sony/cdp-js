@@ -51,6 +51,7 @@ $color-android-accent-transparent-light:    rgba(255, 255, 255, .3) !default;
 
 $color-android-icon:                        white !default;
 $color-android-alt-icon:                    rgb(33, 33, 33) !default;
+$color-android-btn-icon:                    rgb(117, 117, 117) !default;
 
 $color-android-control-edge:                $color-android-theme-500 !default;
 $color-android-control-separator:           $color-common-accent-dark !default;
@@ -210,6 +211,7 @@ $color-ios-accent-transparent-dark:         rgba(0, 0, 0, 0.2) !default;
 
 $color-ios-icon:                            rgb(33, 33, 33) !default;
 $color-ios-alt-icon:                        $color-common-white !default;
+$color-ios-btn-icon:                        rgb(109, 109, 114) !default;
 
 $color-ios-control-edge:                    $color-ios-main-theme !default;
 $color-ios-control-separator:               $color-common-accent-dark !default;

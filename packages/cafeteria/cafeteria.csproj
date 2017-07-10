@@ -50,7 +50,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties tsconfig_1base_1json__JSONSchema="http://json.schemastore.org/tsconfig" package_1json__JSONSchema="" />
+      <UserProperties package_1json__JSONSchema="" tsconfig_1base_1json__JSONSchema="http://json.schemastore.org/tsconfig" />
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
@@ -97,6 +97,12 @@
     <Content Include="tsconfig.json" />
     <Content Include="web.config" />
     <Content Include="docs\localize\messages_cafeteria.xlsx" />
+    <Content Include="app\lib\stylesheets\cdp.device.console.scss" />
+    <Content Include="app\lib\stylesheets\cdp.device.console\_device-console.scss" />
+    <Content Include="app\stylesheets\_base.scss" />
+    <Content Include="app\stylesheets\cdp\utils\_utils.scss" />
+    <Content Include="app\stylesheets\cdp\_mixins.scss" />
+    <Content Include="app\stylesheets\_config.scss" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
@@ -145,8 +151,6 @@
     <Content Include="app\index.html" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="app\lib\scripts\" />
-    <Folder Include="app\lib\stylesheets\" />
     <Folder Include="app\porting\scripts\%40types\" />
     <Folder Include="app\porting\stylesheets\" />
     <Folder Include="app\porting\templates\" />
@@ -218,6 +222,10 @@
     <TypeScriptCompile Include="app\external\%40types\%40cdp\mobile\i18next.d.ts" />
     <TypeScriptCompile Include="app\external\%40types\%40cdp\mobile\index.d.ts" />
     <TypeScriptCompile Include="app\external\%40types\%40cdp\mobile\jquery.mobile.d.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\cdp.device.console\device-console.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\cdp.device.console\main.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\cdp.device.console\_declare.d.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\cdp.device.console\_export.d.ts" />
     <TypeScriptCompile Include="app\scripts\app.ts" />
     <Content Include="app\scripts\app.js">
       <DependentUpon>app.ts</DependentUpon>

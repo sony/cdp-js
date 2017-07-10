@@ -43,7 +43,13 @@
         ///////////////////////////////////////////////////////////////////////
         // icon:
 
-        [class*=ui-icon-],
+        // button icon
+        [class*=ui-icon-] {
+            &:after {
+                background-color: $color-ios-btn-icon;
+            }
+        }
+
         .ui-spinner {
             &:after {
                 background-color: $color-ios-icon;
@@ -52,6 +58,8 @@
 
         .ui-alt-icon [class*=ui-icon-],
         [class*=ui-alt-icon-],
+        .ui-emphasis .ui-collapsible-heading [class*=ui-icon-],
+        [class*=ui-icon-].ui-emphasis,
         .ui-back-indicator.ui-alt {
             &:after {
                 background-color: $color-ios-alt-icon;

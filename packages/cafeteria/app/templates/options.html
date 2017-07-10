@@ -4,18 +4,36 @@
         <h1 data-i18n="page-options.title">Options</h1>
     </header>
     <section data-role="content">
+        <div class="theme-switcher">
+            <h3 data-i18n="options.labelPlatformTheme">options.labelPlatformTheme</h3>
+            <form>
+                <fieldset class="ui-layout-match-parent" data-role="controlgroup" data-type="horizontal">
+                    <div class="ui-layout-center-container ui-alt">
+                        <input type="radio" name="segmented-control-platform-theme" id="gallery-theme-ios" value="ios" checked="checked">
+                        <label for="gallery-theme-ios">iOS</label>
+                        <input type="radio" name="segmented-control-platform-theme" id="gallery-theme-android" value="android">
+                        <label for="gallery-theme-android">Android</label>
+                        <input type="radio" name="segmented-control-platform-theme" id="gallery-theme-default" value="default">
+                        <label for="gallery-theme-default">Default</label>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+
         <label for="select-transtion" class="select" data-i18n="options.labelTransition">options.labelTransition</label>
         <select name="select-transtion" id="option-select-transition" data-native-menu="true">
-            <option value="none">None</option>
+            <option value="platform-default" data-i18n="options.transitionDefault">options.transitionDefault</option>
+            <option value="slide">Slide</option>
+            <option value="floatup">Float Up</option>
             <option value="pop">Pop</option>
             <option value="fade">Fade</option>
-            <option value="slide">Slide</option>
             <option value="slideup">Slide Up</option>
             <option value="slidedown">Slide Down</option>
             <option value="slidefade">Slide Fade</option>
             <option value="flip">Flip</option>
             <option value="turn">Turn</option>
             <option value="flow">Flow</option>
+            <option value="none">None</option>
         </select>
 
         <hr class="ui-separator" />

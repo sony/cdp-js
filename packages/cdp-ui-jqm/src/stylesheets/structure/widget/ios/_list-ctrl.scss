@@ -43,7 +43,7 @@
         border-radius:  7px;
         box-shadow:     initial;
         > li.ui-first-child {
-            &, &.ui-control-inline > label.ui-btn, label.ui-btn.ui-first-child, a.ui-btn {
+            &, &.ui-control-inline > label.ui-btn, label.ui-btn.ui-first-child, a.ui-btn:not(.ui-flipswitch-on):not(.ui-slider-handle) {
                 border-top-left-radius:     7px;
                 border-top-right-radius:    7px;
             }

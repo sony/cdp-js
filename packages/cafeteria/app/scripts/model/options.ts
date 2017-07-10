@@ -1,7 +1,16 @@
 ﻿import { Model, ModelSetOptions } from "cdp/framework";
-import { Toast } from "cdp/ui";
+import { Toast, Theme } from "cdp/ui";
+import { DeviceConsole } from "cdp.device.console";
 
 const TAG = "[model.Options] ";
+
+/**
+ * @class OptionsSetOptions
+ * @brief 開発用オプションオブジェクト用内部オプション
+ */
+interface OptionsSetOptions extends ModelSetOptions {
+    noSave?: boolean;   // 永続化不要の場合 true
+}
 
 /**
  * @class Options
@@ -18,36 +27,49 @@ export class Options extends Model {
     }
 
     ///////////////////////////////////////////////////////////////////////
+    // public method: transition
+
+    public setTransition(transition: string): void {
+        {
+            const transitionMap = (<any>Theme).s_pageTransitionMap;
+            if ("platform-default" === transition) {
+                transitionMap["platform-default"] = {
+                    ios: "slide",
+                    android: "floatup",
+                    fallback: "slide",
+                };
+            } else {
+                transitionMap["platform-default"] = {
+                    ios: transition,
+                    android: transition,
+                    fallback: "slide",
+                };
+            }
+            Theme.setPageTransitionMap(transitionMap);
+        }
+        this.set("transition", transition);
+    }
+
+    ///////////////////////////////////////////////////////////////////////
     // public method: DeviceConsole
 
     // check device console visible
     public isVisibleDeviceConsole(): boolean {
-        // TODO:
-        return false;
-        //if (!this.isEnableDeviceConsole()) {
-        //    return false;
-        //}
-        //return CDP.UI.DeviceConsole.visible();
+        return DeviceConsole.visible();
     }
 
     public showDeviceConsole(): void {
-        // TODO:
-        //if (this.isEnableDeviceConsole()) {
-        //    CDP.UI.DeviceConsole.show();
-        //}
+        DeviceConsole.show();
     }
 
     public hideDeviceConsole(): void {
-        // TODO:
-        //if (this.isEnableDeviceConsole()) {
-        //    CDP.UI.DeviceConsole.hide();
-        //}
+        DeviceConsole.hide();
     }
 
     ///////////////////////////////////////////////////////////////////////
     // public static method
 
-    //! get singleton instance
+    // get singleton instance
     public static getInstance(): Options {
         if (!Options.s_instance) {
             Options.s_instance = new Options();
@@ -55,7 +77,7 @@ export class Options extends Model {
         return Options.s_instance;
     }
 
-    //! 値のリセット
+    // 値のリセット
     public static reset(): void {
         localStorage.clear();
         if (Options.s_instance) {
@@ -66,9 +88,9 @@ export class Options extends Model {
     ///////////////////////////////////////////////////////////////////////
     // private method
 
-    //! ローカルストレージからデータ取得
+    // ローカルストレージからデータ取得
     private getStorageData(key: string): any {
-        let value = localStorage.getItem(key);
+        const value = localStorage.getItem(key);
         if (value) {
             return JSON.parse(value);
         } else {
@@ -76,7 +98,7 @@ export class Options extends Model {
         }
     }
 
-    //! ローカルストレージからデータ取得
+    // ローカルストレージからデータ取得
     private setStorageData(key: string, data: any): void {
         localStorage.setItem(key, JSON.stringify(data));
     }
@@ -85,10 +107,11 @@ export class Options extends Model {
     private init(update?: boolean): void {
         const keys = [
             "transition",
+            "transitionLogger",
         ];
 
         const initValue = (key: string) => {
-            let value = this.getStorageData(key);
+            const value = this.getStorageData(key);
             if (null != value) {
                 super.set(key, value);
             } else if (update && null != this.defaults()[key]) {
@@ -99,13 +122,17 @@ export class Options extends Model {
         for (let i = 0, n = keys.length; i < n; i++) {
             initValue(keys[i]);
         }
+
+        // transition の適用
+        this.setTransition(this.get("transition"));
     }
 
     ///////////////////////////////////////////////////////////////////////
     // Override: Framework.Model
 
     set(attributeName: string, value: any, options?: ModelSetOptions): Model {
-        if ("string" === typeof attributeName) {
+        options = options || {};
+        if ("string" === typeof attributeName && !(<OptionsSetOptions>options).noSave) {
             this.setStorageData(attributeName, value);
         }
         return super.set(attributeName, value, options);
@@ -118,7 +145,7 @@ export class Options extends Model {
         return {
             transition: "platform-default",
             lastChangePageTime: null,
-            showLog: false,
+            transitionLogger: false,
         };
     }
 }
@@ -130,14 +157,14 @@ const jqmChangePage: (to: any, options?: ChangePageOptions) => void = $.mobile.c
 
 function customChangePage(to: any, options?: ChangePageOptions): void {
     if ("string" === typeof to) {
-        Options.getInstance().set("lastChangePageTime", new Date);
+        Options.getInstance().set("lastChangePageTime", new Date, <OptionsSetOptions>{ noSave: true });
     }
     jqmChangePage(to, options);
 }
 
 $.mobile.changePage = customChangePage;
 $(document).on("pageshow", (event: JQuery.Event) => {
-    if (Options.getInstance().get("showLog")) {
+    if (Options.getInstance().get("transitionLogger")) {
         const start = Options.getInstance().get("lastChangePageTime");
         const now = new Date();
         const msec = now.getTime() - start.getTime();

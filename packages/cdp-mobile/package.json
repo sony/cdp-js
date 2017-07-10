@@ -42,6 +42,7 @@
     "clean:built": "node ./tasks/clean.js --built",
     "clean:pkg": "node ./tasks/clean.js --pkg",
     "build": "run-s -l compile:ts bundle minify && node ./tasks/packager.js",
+    "rebuild": "run-s -l rearrange clean compile:ts bundle minify && node ./tasks/packager.js",
     "compile:ts": "tsc -p ./tsconfig.json",
     "bundle": "node ./tasks/bundle.js --target=amd",
     "minify": "uglifyjs dist/cdp.js -o dist/cdp.min.js --comments /^!\\s\\s\\*\\s@cdp/ --source-map includeSources,url=cdp.min.js.map",

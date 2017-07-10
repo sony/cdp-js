@@ -45,8 +45,10 @@
     "options": {
         "title": "設定",
         "labelTransition": "トランジション:",
+        "transitionDefault": "プラットフォーム既定値",
         "labelPerfomance": "パフォーマンスログ:",
-        "labelDeviceConsole": "コンソール:"
+        "labelDeviceConsole": "コンソール:",
+        "labelPlatformTheme": "プラットフォームテーマ:"
     },
     "EOF": "EOF"
 }

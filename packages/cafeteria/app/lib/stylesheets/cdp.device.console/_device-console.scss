@@ -1,0 +1,96 @@
+﻿#cdp-device-console {
+    position: fixed;
+    width: 96%;
+    height: 30%;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    bottom: 30px;
+    padding: 10px 10px 10px 10px;
+    opacity: .6;
+    background-color: black;
+    font-size: 14px;
+    color: white;
+    text-shadow: 1px 1px 1px black;
+    text-align: left;
+    overflow: hidden;
+    z-index: 9999;
+
+    &.drag {
+        background-color: darkslategrey;
+    }
+
+    &.reset {
+        transition: transform 240ms ease;
+    }
+
+    .screen {
+        overflow-y: auto;
+        width: 100%;
+        height: 100%;
+
+        p {
+            margin: 0;
+            &.debug {
+                color: #b6ff00;
+            }
+            &.info {
+                color: #00ffff;
+            }
+            &.assert {
+                color: #b200ff;
+            }
+            &.warn {
+                color: #ffd800;
+            }
+            &.error {
+                color: red;
+            }
+        }
+    }
+
+    .clear {
+        position: absolute;
+        top: 4px;
+        right: 38px;
+        width: 30px;
+        height: 30px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwBAMAAAClLOS0AAAAMFBMVEUAAAD///////////////////////////////////////////////////////////87TQQwAAAAEHRSTlMADRomM0BNWWZzgJmms7/MEkaxYQAAALdJREFUeF7Nzb8OAUEQx/HBRZR6L6GjvGJ6rUZ4AgovIBGJzgMoPIBClCT+vIRKr1GsiIrcrj2yxqwpJJdL7ltNfp9iIOPl0SZB29j2AkxiuEhwQ5yJYMeGCFfE3i/U5srYonWf7y3z6cDAfJUQurSfgNXcvOfjCPxyaCv7axCyiyrp1fjVVA040POkUCToMAgIwrSgQFAFFgGkBsrt2oOdg8e/sHBw96DiYAle9W08n4cghAhZ7wnI/yQjRgwHWgAAAABJRU5ErkJggg==') /*clear.png*/;
+        cursor: pointer;
+
+        &:active {
+            background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAuOWwzfk4AAAGJSURBVGhD7ZjdbcJAEITdAA2kADeQBmiAAtIADfCWJ9pAeU8DFJCq8mxm0GA5aIVt7nZjrP2kEWDdzc6KO/81SZIk66Hrujfo/ZE0dHkg3Paz+/odE8Z9a8qyQLC9FdiSpiyLYQNcKoYOL9OADv2BTbxMA/hubebdohpAoBb6gI7QCfq5BRwTxp41h3Pp0crWHxTbQmcrWInoSW+V8cMqXlMq44dVtKZUxg+raE2pjB9Ypzto8oadKnrSW2X84YaD9hDPJrM3NedoLj38N+8UEGQD3Z//77XR8P/jFkY/i6ntNwqKXa+6+OS65TI48NhMcU5/AeQx2fvDYsP1XEPZwBzW0EB/Z1lL9JS9PyjW39vXEj1l7082YCgbmAOKtVaIEtFT9jFYIUok2zisECWSbRxWiBLJNg4rRIlkGwc2XbWnMnrJNg4UPVlhnhG9ZBvHGho4WmGeEb1kGweK8vm3+F+gB71kGw+K8x0pHxH7x8NH4hiN5ZzYq+8cEG74JiLuPidJkiSQprkAi57nH7BAOssAAAAASUVORK5CYII=') /*clear-active.png*/;
+        }
+    }
+
+    .close {
+        position: absolute;
+        top: 4px;
+        right: 8px;
+        width: 30px;
+        height: 30px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAARhJREFUeNrslwEKhCAQRVX2EnW6Otl6ujqGm1AgUWzq/0L1BSkJ6j0bndGGEMydmzM3bxKQgAQkIAEJSOBWAvM8f5ce4tVaaxA9fWcuj80t5uKHkqHv+36smcFpmiL0sI27rrPsEPLJ/bACQOB37+YIrDNeLXEEX/I3ixZxrQQKvmoXKpVAwldvo7kSaHhIHrgqwYCHJbJ/Eiz4ojwQE0/BtngZPpsHKXAiYXJmPpcHXgsdhBM8bFSNFoZQVdnRROBkEXumxIcJv8X88izdiaKEQa0Hx4ZHFoAUgatJiiXhWsAzJVwreJaEawnPkCg5E8MKs6OJWM7EI1vgMYd6SG2zCydPD6HH10ISkIAEJCABCUjgTQI/AQYA+TjwKhVECCMAAAAASUVORK5CYII=') /*close.png*/;
+        cursor: pointer;
+
+        &:active {
+            background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAuOWwzfk4AAAFgSURBVGhD1Y9baoVQEARdd5aSn+zOReTHcMIdkENZjo+fbijCrajds2zbFg3KJFAmgTIJlEmgTAJlEiiTQJkEyiRQJoEyCZTGuq4/X7/f2/i7vJT9N6nTQGmMouKNI2p8MfedgdKYC58cQd+iTgOlcVT8/48LOfoGdRoojcqTI+xd6jRQGvvcOeLsHeo0UBpzrhzReZY6DZQGpTOs88wIdRoojaPYwO74Eeo0UBoWGnpl/Ah1GiiNs8yD95yNH6FOA6XRCR3RGT9CnQZKo5PoA2h80TmCOg2UhmUeP36T+zyOoU4DpXEUG3rlCOo0UBqUzsDuEdRpoDTmdIeNdJ6lTgOlsc+V8ZWzd6jTQGlU7oyv2LvUaaA0Rp6Mrxx9gzoNlMYb4yv0Leo0UBpz4WfL7cxHzH1noDSq8I3xlf03qdNAmQTKJFAmgTIJlEmgTAJlEiiTQJkEyiRQJoEyh235A85k1lOp/mSwAAAAAElFTkSuQmCC') /*close-active.png*/;
+        }
+    }
+}
+
+// Android で drag できないバグの回避
+// https://github.com/hammerjs/hammer.js/issues/1050
+.touch.platform-android {
+    #cdp-device-console {
+        touch-action: none !important;
+        .screen {
+            touch-action: none;
+        }
+    }
+}
