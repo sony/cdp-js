@@ -1,7 +1,7 @@
 /*!
  * @cdp/mobile 2.0.0
  *
- * Date: 2017-07-10T05:23:52.014Z
+ * Date: 2017-07-10T08:04:55.319Z
  *
  * including:
  *     @cdp/core 2.0.0
@@ -26227,7 +26227,7 @@ return CDP.UI; }));
 /*!
  * cdp.ui.jqm.js 2.0.0
  *
- * Date: 2017-07-10T05:22:32.653Z
+ * Date: 2017-07-10T08:03:18.713Z
  */
 (function (root, factory) { if (typeof define === "function" && define.amd) { define("cdp.ui.jqm",["cdp.framework.jqm", "cdp.tools", "cdp.ui.listview"], function () { return factory(root.CDP || (root.CDP = {})); }); } else { factory(root.CDP || (root.CDP = {})); } }(this, function (CDP) { CDP.UI = CDP.UI || {};
 var CDP;

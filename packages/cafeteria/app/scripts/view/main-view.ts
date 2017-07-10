@@ -2,7 +2,6 @@
 import {
 //    Promise,  // async - await を使用する場合、top level に Promise を再配置することは不可
     PageView,
-    IPromiseBase,
     registerPage,
 } from "cdp/ui";
 
@@ -37,8 +36,8 @@ export class MainView extends PageView {
 
     //! ".command-navigate" のイベントハンドラ
     private async onNavigate(event: JQuery.Event): Promise<void> {
-        let url = $(event.currentTarget).data("command");
-        let transition = $(event.currentTarget).data("transition") || "platform-default";
+        const url = $(event.currentTarget).data("command");
+        const transition = $(event.currentTarget).data("transition") || "platform-default";
         event.preventDefault();
 
         await this.loadSubModule();
@@ -47,8 +46,8 @@ export class MainView extends PageView {
 /*
     //! ".command-navigate" のイベントハンドラ
     private onNavigate(event: JQuery.Event): Promise<void> {
-        let url = $(event.currentTarget).data("command");
-        let transition = $(event.currentTarget).data("transition") || "platform-default";
+        const url = $(event.currentTarget).data("command");
+        const transition = $(event.currentTarget).data("transition") || "platform-default";
         event.preventDefault();
         return this.loadSubModule()
             .then(() => {

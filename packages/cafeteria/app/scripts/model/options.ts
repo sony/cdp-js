@@ -4,6 +4,14 @@ import { Toast } from "cdp/ui";
 const TAG = "[model.Options] ";
 
 /**
+ * @class OptionsSetOptions
+ * @brief 開発用オプションオブジェクト用内部オプション
+ */
+interface OptionsSetOptions extends ModelSetOptions {
+    noSave?: boolean;   // 永続化不要の場合 true
+}
+
+/**
  * @class Options
  * @brief 開発用オプションモデル
  */
@@ -47,7 +55,7 @@ export class Options extends Model {
     ///////////////////////////////////////////////////////////////////////
     // public static method
 
-    //! get singleton instance
+    // get singleton instance
     public static getInstance(): Options {
         if (!Options.s_instance) {
             Options.s_instance = new Options();
@@ -55,7 +63,7 @@ export class Options extends Model {
         return Options.s_instance;
     }
 
-    //! 値のリセット
+    // 値のリセット
     public static reset(): void {
         localStorage.clear();
         if (Options.s_instance) {
@@ -66,9 +74,9 @@ export class Options extends Model {
     ///////////////////////////////////////////////////////////////////////
     // private method
 
-    //! ローカルストレージからデータ取得
+    // ローカルストレージからデータ取得
     private getStorageData(key: string): any {
-        let value = localStorage.getItem(key);
+        const value = localStorage.getItem(key);
         if (value) {
             return JSON.parse(value);
         } else {
@@ -76,7 +84,7 @@ export class Options extends Model {
         }
     }
 
-    //! ローカルストレージからデータ取得
+    // ローカルストレージからデータ取得
     private setStorageData(key: string, data: any): void {
         localStorage.setItem(key, JSON.stringify(data));
     }
@@ -85,10 +93,11 @@ export class Options extends Model {
     private init(update?: boolean): void {
         const keys = [
             "transition",
+            "transitionLogger",
         ];
 
         const initValue = (key: string) => {
-            let value = this.getStorageData(key);
+            const value = this.getStorageData(key);
             if (null != value) {
                 super.set(key, value);
             } else if (update && null != this.defaults()[key]) {
@@ -105,7 +114,8 @@ export class Options extends Model {
     // Override: Framework.Model
 
     set(attributeName: string, value: any, options?: ModelSetOptions): Model {
-        if ("string" === typeof attributeName) {
+        options = options || {};
+        if ("string" === typeof attributeName && !(<OptionsSetOptions>options).noSave) {
             this.setStorageData(attributeName, value);
         }
         return super.set(attributeName, value, options);
@@ -118,7 +128,7 @@ export class Options extends Model {
         return {
             transition: "platform-default",
             lastChangePageTime: null,
-            showLog: false,
+            transitionLogger: false,
         };
     }
 }
@@ -130,14 +140,14 @@ const jqmChangePage: (to: any, options?: ChangePageOptions) => void = $.mobile.c
 
 function customChangePage(to: any, options?: ChangePageOptions): void {
     if ("string" === typeof to) {
-        Options.getInstance().set("lastChangePageTime", new Date);
+        Options.getInstance().set("lastChangePageTime", new Date, <OptionsSetOptions>{ noSave: true });
     }
     jqmChangePage(to, options);
 }
 
 $.mobile.changePage = customChangePage;
 $(document).on("pageshow", (event: JQuery.Event) => {
-    if (Options.getInstance().get("showLog")) {
+    if (Options.getInstance().get("transitionLogger")) {
         const start = Options.getInstance().get("lastChangePageTime");
         const now = new Date();
         const msec = now.getTime() - start.getTime();

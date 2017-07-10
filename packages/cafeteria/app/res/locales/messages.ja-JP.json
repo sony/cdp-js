@@ -46,7 +46,8 @@
         "title": "設定",
         "labelTransition": "トランジション:",
         "labelPerfomance": "パフォーマンスログ:",
-        "labelDeviceConsole": "コンソール:"
+        "labelDeviceConsole": "コンソール:",
+        "labelPlatformTheme": "Platform テーマ:"
     },
     "EOF": "EOF"
 }

@@ -46,7 +46,8 @@
         "title": "Options",
         "labelTransition": "Transition:",
         "labelPerfomance": "Performance Log:",
-        "labelDeviceConsole": "Console:"
+        "labelDeviceConsole": "Console:",
+        "labelPlatformTheme": "Platform Theme:"
     },
     "EOF": "EOF"
 }
