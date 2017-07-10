@@ -71,7 +71,7 @@
     "@types/requirejs": "^2.1.29",
     "convert-source-map": "^1.5.0",
     "del": "^3.0.0",
-    "eslint": "^4.1.1",
+    "eslint": "^4.2.0",
     "fs-extra": "^3.0.1",
     "hogan.js": "^3.0.2",
     "iscroll": "^5.2.0",
@@ -83,6 +83,6 @@
     "tslint": "^5.5.0",
     "typedoc": "^0.7.1",
     "typescript": "^2.4.1",
-    "uglify-js": "^3.0.23"
+    "uglify-js": "^3.0.24"
   }
 }

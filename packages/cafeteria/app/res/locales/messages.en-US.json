@@ -1,14 +1,46 @@
 {
-  "pageCommon": {
-    "appName": "Cafeteria",
-    "close": "Close",
-    "goBack": "Back",
-    "on": "On",
-    "off": "Off"
-  },
-  "pageExample": {
-    "description": "Sample Implementation Entries:",
-    "showToast": "Show Sample Toast",
-    "toGallery": "To UI Gallery"
-  }
+    "app": {
+        "name": "Cafeteria",
+        "common": {
+            "ok": "OK",
+            "back": "Back",
+            "next": "Next",
+            "done": "Done",
+            "skip": "Skip",
+            "cancel": "Cancel",
+            "close": "Close",
+            "transfer": "Send",
+            "save": "Save",
+            "delete": "Delete",
+            "remove": "Remove",
+            "unregister": "Unregister",
+            "refresh": "Refresh",
+            "select": "Select",
+            "reset": "Initialize",
+            "retry": "Retry ",
+            "restore": "Restore",
+            "settings": "Settings",
+            "support": "Support"
+        },
+        "utility": {
+            "fraction": "{{count}}/{{total}}",
+            "bracket": "({{content}})",
+            "yyyymmdd": "{{yyyy}}/{{mm}}/{{dd}}"
+        }
+    },
+    "example": {
+        "root": {
+            "title": "Examples",
+            "description": "Sample Implementation Entries",
+            "links": "Link Examples",
+            "views": "View Examples",
+            "listviews": "Virtual List View Examples",
+            "touch": "Touch Test",
+            "potingtest": "Porting Test",
+            "advanced": "Advanced Examples",
+            "modulesLoadedMessage": "Load completed follow modules:",
+            "toExampleRoot": "To Examples"
+        }
+    },
+    "EOF": "EOF"
 }

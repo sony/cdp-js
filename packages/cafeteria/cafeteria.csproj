@@ -50,7 +50,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties package_1json__JSONSchema="" tsconfig_1base_1json__JSONSchema="http://json.schemastore.org/tsconfig" />
+      <UserProperties tsconfig_1base_1json__JSONSchema="http://json.schemastore.org/tsconfig" package_1json__JSONSchema="" />
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
@@ -75,8 +75,12 @@
   <ItemGroup>
     <Content Include=".gitignore" />
     <Content Include=".npmignore" />
+    <Content Include="app\scripts\view\options-view.js">
+      <DependentUpon>options-view.ts</DependentUpon>
+    </Content>
     <Content Include="BANNER" />
     <Content Include="config.xml" />
+    <Content Include="docs\localize\resource_conv.js" />
     <Content Include="LICENSE" />
     <Content Include="NOTICE" />
     <Content Include="package.json" />
@@ -88,6 +92,7 @@
     </Content>
     <Content Include="tsconfig.json" />
     <Content Include="web.config" />
+    <Content Include="docs\localize\messages_cafeteria.xlsx" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
@@ -241,6 +246,7 @@
     <Content Include="app\scripts\view\main-view.js">
       <DependentUpon>main-view.ts</DependentUpon>
     </Content>
+    <TypeScriptCompile Include="app\scripts\view\options-view.ts" />
     <TypeScriptCompile Include="tests\unit\sample-model.spec.ts" />
     <Content Include="tests\unit\sample-model.spec.js">
       <DependentUpon>sample-model.spec.ts</DependentUpon>

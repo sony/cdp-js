@@ -1,18 +1,18 @@
-﻿import {
+﻿import { Router } from "cdp/framework";
+import {
+//    Promise,  // async - await を使用する場合、top level に Promise を再配置することは不可
     PageView,
-    ShowEventData,
-    HideEventData,
-    Toast,
+    IPromiseBase,
     registerPage,
 } from "cdp/ui";
-
-import CheckModel from "../model/sample-model";
 
 const TAG = "[view.MainView] ";
 
 /**
  * @class MainView
  * @brief メインビュークラス
+ *        サンプル例のルート画面
+ *        モジュールの遅延ロードのタイミングに使用
  */
 export class MainView extends PageView {
 
@@ -21,7 +21,7 @@ export class MainView extends PageView {
      */
     constructor() {
         super("/templates/main.html", "page-main", {
-            route: "page-main"
+            route: "main(/:query)"
         });
     }
 
@@ -31,83 +31,62 @@ export class MainView extends PageView {
     //! イベントハンドラのマッピング
     events(): any {
         return {
-            "vclick .command-hello": this.onHello,
+            "vclick .command-navigate": this.onNavigate,
         };
     }
 
-    //! ".command-hello" のイベントハンドラ
-    private onHello(event: JQueryEventObject): void {
-        Toast.show(CheckModel.coolMethod("from CheckModel"));
-    }
+    //! ".command-navigate" のイベントハンドラ
+    private async onNavigate(event: JQuery.Event): Promise<void> {
+        let url = $(event.currentTarget).data("command");
+        let transition = $(event.currentTarget).data("transition") || "platform-default";
+        event.preventDefault();
 
+        await this.loadSubModule();
+        Router.navigate(url, transition);
+    }
+/*
+    //! ".command-navigate" のイベントハンドラ
+    private onNavigate(event: JQuery.Event): Promise<void> {
+        let url = $(event.currentTarget).data("command");
+        let transition = $(event.currentTarget).data("transition") || "platform-default";
+        event.preventDefault();
+        return this.loadSubModule()
+            .then(() => {
+                Router.navigate(url, transition);
+            })
+    }
+*/
     ///////////////////////////////////////////////////////////////////////
-    // Override: UI.PageView
+    // 内部関数
 
-    /**
-     * jQM event: "pagebeforecreate" に対応
-     *
-     * @param event [in] イベントオブジェクト
-     */
-    onPageBeforeCreate(event: JQueryEventObject): void {
-        super.onPageBeforeCreate(event);
+    private loadSubModule(): Promise<void> {
+        // async - await を使用する場合、top level に Promise を再配置することは不可
+        // CDP.Promise ならアクセス可.
+//        return new CDP.Promise<void>((resolve, reject) => {
+        return new Promise<void>((resolve, reject) => {
+            if (this.isLoadedSubModule()) {
+                resolve();
+            } else {
+                // TODO:
+                reject();
+                //require(["modernizr", "app.extends"], () => {
+                //    let $css: JQuery = $("<link rel='stylesheet'/>");
+                //    $css.attr("href", CDP.Framework.toUrl("/lib/stylesheets/app.extends.css") + "?bust=" + Date.now());
+                //    $css.appendTo(document.head);
+                //    df.resolve();
+                //});
+            }
+        });
     }
 
-    /**
-     * jQM event: "pagecreate" (旧:"pageinit") に対応
-     *
-     * @param event [in] イベントオブジェクト
-     */
-    onPageInit(event: JQueryEventObject): void {
-        super.onPageInit(event);
-    }
-
-    /**
-     * jQM event: "pagebeforeshow" に対応
-     *
-     * @param event [in] イベントオブジェクト
-     * @param data  [in] 付加情報
-     */
-    onPageBeforeShow(event: JQueryEventObject, data: ShowEventData): void {
-        super.onPageBeforeShow(event, data);
-    }
-
-    /**
-     * jQM event: "pagecontainershow" (旧:"pageshow") に対応
-     *
-     * @param event [in] イベントオブジェクト
-     * @param data  [in] 付加情報
-     */
-    onPageShow(event: JQueryEventObject, data: ShowEventData): void {
-        super.onPageShow(event, data);
-    }
-
-    /**
-     * jQM event: "pagebeforehide" に対応
-     *
-     * @param event [in] イベントオブジェクト
-     * @param data  [in] 付加情報
-     */
-    onPageBeforeHide(event: JQueryEventObject, data: HideEventData): void {
-        super.onPageBeforeHide(event, data);
-    }
-
-    /**
-     * jQM event: "pagecontainerhide" (旧:"pagehide") に対応
-     *
-     * @param event [in] イベントオブジェクト
-     * @param data  [in] 付加情報
-     */
-    onPageHide(event: JQueryEventObject, data: HideEventData): void {
-        super.onPageHide(event, data);
-    }
-
-    /**
-     * jQM event: "pageremove" に対応
-     *
-     * @param event [in] イベントオブジェクト
-     */
-    onPageRemove(event: JQueryEventObject): void {
-        super.onPageRemove(event);
+    private isLoadedSubModule(): boolean {
+        // TODO:
+        return true;
+        //let $css = $("link[rel='stylesheet']")
+        //    .filter((index: number, elem: HTMLElement) => {
+        //        return $(elem).attr("href").match(/app.extends.css/ig) ? true : false;
+        //    });
+        //return (0 < $css.length);
     }
 }
 
