@@ -1,0 +1,98 @@
+﻿--------------------------------------------------------------------------------
+NOTICES FOR Cordova
+--------------------------------------------------------------------------------
+
+ - Cordova - ./dev/platforms/android/cordova/
+           - ./dev/platforms/android/CordovaLib/
+           - ./dev/platforms/ios/cordova/
+           - ./dev/platforms/ios/CordovaLib/
+    http://cordova.apache.org/
+    https://github.com/apache/cordova-android
+    https://github.com/apache/cordova-ios
+
+
+    Released under the Apache License v2.0.
+    http://cordova.apache.org/#about
+
+--------------------------------------------------------------------------------
+NOTICES FOR jQuery
+--------------------------------------------------------------------------------
+
+ - jQuery - ./dev/app/modules/jquery/scripts/jquery.js
+    https://github.com/jquery/jquery
+
+    Released under the MIT Licenses.
+    http://jquery.org/license
+
+--------------------------------------------------------------------------------
+NOTICES FOR RequireJS
+--------------------------------------------------------------------------------
+
+ - RequireJS - ./dev/app/modules/requirejs/scripts/require.js
+    https://github.com/jrburke/requirejs
+
+    Dual licensed under new BSD or MIT Licenses.
+    https://github.com/jrburke/requirejs/blob/master/LICENSE
+
+--------------------------------------------------------------------------------
+NOTICES FOR UNDERSCORE.JS
+--------------------------------------------------------------------------------
+
+ - UNDERSCORE.JS - ./dev/app/modules/underscore/scripts/underscore.js
+    https://github.com/jashkenas/underscore
+
+    Released under the MIT Licenses.
+    https://github.com/jashkenas/underscore/blob/master/LICENSE
+
+
+--------------------------------------------------------------------------------
+NOTICES FOR BACKBONE.JS
+--------------------------------------------------------------------------------
+
+ - BACKBONE.JS - ./dev/app/modules/backbone/scripts/backbone.js
+    https://github.com/jashkenas/backbone
+
+    Released under the MIT Licenses.
+    https://github.com/jashkenas/backbone/blob/master/LICENSE
+
+--------------------------------------------------------------------------------
+NOTICES FOR i18Next
+--------------------------------------------------------------------------------
+
+ - i18Next - ./dev/app/modules/i18next/scripts/i18next.js
+    https://github.com/i18next/i18next
+
+    Released under the MIT Licenses.
+    https://github.com/i18next/i18next/blob/master/license
+
+--------------------------------------------------------------------------------
+NOTICES FOR Hogan.JS
+--------------------------------------------------------------------------------
+
+ - Hogan.JS - ./dev/app/modules/hogan/scripts/hogan.js
+    https://github.com/twitter/hogan.js/
+
+    Released under the Apache License v2.0.
+    https://github.com/twitter/hogan.js/blob/master/LICENSE
+
+--------------------------------------------------------------------------------
+NOTICES FOR jQuery Mobile
+--------------------------------------------------------------------------------
+
+ - jQuery Mobile - ./dev/app/modules/jquery/scripts/jquery.mobile.js
+                 - ./dev/app/modules/jquery/stylesheets/jquery.mobile.css
+    https://github.com/jquery/jquery-mobile
+
+    Released under the MIT Licenses.
+    http://jquery.org/license
+
+--------------------------------------------------------------------------------
+NOTICES FOR Cordova Plugin Test Framework
+--------------------------------------------------------------------------------
+
+ - Cordova Plugin Test Framework - ./dev/plugins/com.sony.cdp.plugin.test-framework/
+                                 - ./dev/app/cdvtests/
+    https://github.com/apache/cordova-plugin-test-framework
+
+    Released under the Apache License v2.0.
+    https://github.com/apache/cordova-plugin-test-framework/blob/master/LICENSE

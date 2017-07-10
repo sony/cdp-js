@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cordova-plugin-cdp-nativebridge" version="1.1.0" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+  <name>NativeBridge</name>
+  <js-module name="NativeBridge" src="www/cdp.plugin.nativebridge.js">
+    <clobbers target="CDP.Plugin.NativeBridge" />
+  </js-module>
+  <platform name="android">
+    <config-file parent="/*" target="res/xml/config.xml">
+      <feature name="NativeBridge">
+        <param name="android-package" value="com.sony.cdp.plugin.nativebridge.NativeBridge" />
+      </feature>
+    </config-file>
+    <config-file parent="/*" target="AndroidManifest.xml" />
+    <source-file src="src/android/NativeBridge.java" target-dir="src/com/sony/cdp/plugin/nativebridge" />
+    <source-file src="src/android/MethodContext.java" target-dir="src/com/sony/cdp/plugin/nativebridge" />
+    <source-file src="src/android/Gate.java" target-dir="src/com/sony/cdp/plugin/nativebridge" />
+    <source-file src="src/android/MessageUtils.java" target-dir="src/com/sony/cdp/plugin/nativebridge" />
+  </platform>
+  <platform name="ios">
+    <config-file parent="/*" target="config.xml">
+      <feature name="NativeBridge">
+        <param name="ios-package" value="CDPNativeBridge" />
+      </feature>
+    </config-file>
+    <header-file src="src/ios/CDPNativeBridge.h" />
+    <source-file src="src/ios/CDPNativeBridge.m" />
+    <header-file src="src/ios/CDPMethodContext.h" />
+    <source-file src="src/ios/CDPMethodContext.m" />
+    <header-file src="src/ios/CDPGate.h" />
+    <source-file src="src/ios/CDPGate.m" />
+    <header-file src="src/ios/CDPNativeBridgeMsgUtils.h" />
+    <source-file src="src/ios/CDPNativeBridgeMsgUtils.m" />
+  </platform>
+</plugin>

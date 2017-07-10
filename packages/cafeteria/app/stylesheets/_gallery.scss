@@ -1,0 +1,9 @@
+﻿.switcher-adjust {
+    padding-bottom: 0.5em;
+}
+
+.gallery-example {
+    &.ui-listview:not(.ui-listview-inset) {
+        margin-top: 16px;
+    }
+}

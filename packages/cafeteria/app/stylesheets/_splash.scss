@@ -1,0 +1,99 @@
+﻿#splash-screen {
+    display: table;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    z-index: 99999999;
+    visibility: visible;
+}
+
+#splash-contents {
+    display: table-cell;
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+    text-align: center;
+}
+
+#waiting-img {
+    list-style-type: none;
+}
+
+#waiting-img > li {
+    display: inline-block;
+    background-color: transparent;
+    width: 12px;
+    height: 12px;
+    -webkit-border-radius: 12px;
+       -moz-border-radius: 12px;
+            border-radius: 12px;
+    margin: 6px;
+    -webkit-animation: waiting-animation 1s linear 0s infinite normal;
+       -moz-animation: waiting-animation 1s linear 0s infinite normal;
+         -o-animation: waiting-animation 1s linear 0s infinite normal;
+            animation: waiting-animation 1s linear 0s infinite normal;
+}
+
+#waiting-img > li:nth-child(1) {
+    -webkit-animation-delay: 0.1s;
+       -moz-animation-delay: 0.1s;
+         -o-animation-delay: 0.1s;
+            animation-delay: 0.1s;
+}
+
+#waiting-img > li:nth-child(2) {
+    -webkit-animation-delay: 0.2s;
+       -moz-animation-delay: 0.2s;
+         -o-animation-delay: 0.2s;
+            animation-delay: 0.2s;
+}
+
+#waiting-img > li:nth-child(3) {
+    -webkit-animation-delay: 0.3s;
+       -moz-animation-delay: 0.3s;
+         -o-animation-delay: 0.3s;
+            animation-delay: 0.3s;
+}
+
+#waiting-img > li:nth-child(4) {
+    -webkit-animation-delay: 0.4s;
+       -moz-animation-delay: 0.4s;
+         -o-animation-delay: 0.4s;
+            animation-delay: 0.4s;
+}
+
+#waiting-img > li:nth-child(5) {
+    -webkit-animation-delay: 0.5s;
+       -moz-animation-delay: 0.5s;
+         -o-animation-delay: 0.5s;
+            animation-delay: 0.5s;
+}
+
+#waiting-img > li:nth-child(6) {
+    -o-animation-delay: 0.6s;
+    -moz-animation-delay: 0.6s;
+    -webkit-animation-delay: 0.6s;
+    animation-delay: 0.6s;
+}
+
+#waiting-msg {
+    text-align: center;
+    color: white;
+}
+
+@keyframes waiting-animation {
+    0% {
+        background-color: transparent;
+    }
+
+    20% {
+        background-color: Lime;
+    }
+
+    40% {
+        background-color: transparent;
+    }
+}

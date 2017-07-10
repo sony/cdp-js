@@ -1,0 +1,29 @@
+{
+  "extends": "./tsconfig.base",
+  "compileOnSave": true,
+  "compilerOptions": {
+    "declaration": false
+  },
+  "include": [
+    "app/scripts/**/*.ts",
+    "app/lib/scripts/**/*.ts",
+    "app/porting/scripts/**/*.ts",
+    "platforms/*/porting/scripts/**/*.ts",
+    "tests/unit/**/*.ts"
+  ],
+  "exclude": [
+    "app/external",
+    "app/res",
+    "app/stylesheets",
+    "app/templates",
+    "npm",
+    "!platforms/*/porting",
+    "docs",
+    "tasks",
+    "www",
+    ".temp",
+    "node_modules",
+    "bin",
+    "obj"
+  ]
+}

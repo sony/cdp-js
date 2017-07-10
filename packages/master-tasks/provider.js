@@ -82,7 +82,7 @@ function setupByLink() {
         const absPath = path.join(PACKAGES_DIR, filePath);
         if (fs.statSync(absPath).isDirectory()) {
             if (/^cdp-/.test(filePath)) {
-                // chekc project.config.js
+                // check project.config.js
                 try {
                     const config = require(path.join(absPath, 'project.config'));
                     if (config.required_tasks) {
@@ -133,8 +133,8 @@ function makeLinkFile() {
     .forEach((filePath) => {
         const absPath = path.join(PACKAGES_DIR, filePath);
         if (fs.statSync(absPath).isDirectory()) {
-            if (/^cdp-/.test(filePath)) {
-                // chekc project.config.js
+            if (!/^master-task/.test(filePath)) {
+                // check project.config.js
                 try {
                     const config = require(path.join(absPath, 'project.config'));
                     if (config.required_tasks) {

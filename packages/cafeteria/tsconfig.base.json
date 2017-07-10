@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "module": "amd",
+    "moduleResolution": "node",
+    "target": "es5",
+    "emitBOM": true,
+    "inlineSourceMap": true,
+    "inlineSources": true,
+    "pretty": true,
+    "lib": [
+      "dom",
+      "es5",
+      "scripthost",
+      "es2015.iterable"
+    ],
+    "typeRoots": [
+      "./node_modules/@types",
+      "./app/external/@types"
+    ],
+    "types": [
+      "@cdp/mobile",
+      "patch.dependencies",
+      "requirejs",
+      "jasmine"
+    ]
+  }
+}

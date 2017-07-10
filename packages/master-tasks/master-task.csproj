@@ -78,20 +78,29 @@ call compass compile -c config.rb
     <Content Include=".gitignore" />
     <Content Include="provider.js" />
     <Content Include="tasks\banner.js" />
+    <Content Include="tasks\build-addon.js" />
     <Content Include="tasks\bundle-finalizer.js" />
     <Content Include="tasks\bundle-adjuster.js" />
     <Content Include="tasks\bundle.js" />
     <Content Include="tasks\clean.js" />
     <Content Include="tasks\collect-coverage.js" />
     <Content Include="tasks\command.js" />
+    <Content Include="tasks\compile-scss.js" />
+    <Content Include="tasks\compile-ts.js" />
+    <Content Include="tasks\copy.js" />
+    <Content Include="tasks\cordova-receiver.js" />
     <Content Include="tasks\exports-setup.js" />
     <Content Include="tasks\external-rearrange.js" />
+    <Content Include="tasks\instrument.js" />
     <Content Include="tasks\internal-rearrange.js" />
     <Content Include="tasks\minify.js" />
     <Content Include="tasks\normalize-coverage.js" />
     <Content Include="tasks\packager.js" />
+    <Content Include="tasks\porting-setup.js" />
     <Content Include="tasks\remap-coverage.js" />
     <Content Include="tasks\srcmap.js" />
+    <Content Include="tasks\string-replace.js" />
+    <Content Include="tasks\tsconfig-templates.js" />
   </ItemGroup>
   <ItemGroup>
     <Content Include=".npmignore" />
