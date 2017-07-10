@@ -96,6 +96,7 @@
         const assign_porting    = _assign_package.bind(null, config, _porting);
 
         // >>>LIB_DEPENDENCIES>>> package assign
+        assign_lib("cdp.device.console");
         // <<<LIB_DEPENDENCIES<<<
 
         /* tslint:enable:no-unused-variable no-unused-vars */

@@ -45,6 +45,7 @@
     "options": {
         "title": "Options",
         "labelTransition": "Transition:",
+        "transitionDefault": "Platform Default",
         "labelPerfomance": "Performance Log:",
         "labelDeviceConsole": "Console:",
         "labelPlatformTheme": "Platform Theme:"

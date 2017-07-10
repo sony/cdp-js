@@ -1,5 +1,6 @@
 ﻿import { Model, ModelSetOptions } from "cdp/framework";
-import { Toast } from "cdp/ui";
+import { Toast, Theme } from "cdp/ui";
+import { DeviceConsole } from "cdp.device.console";
 
 const TAG = "[model.Options] ";
 
@@ -26,30 +27,43 @@ export class Options extends Model {
     }
 
     ///////////////////////////////////////////////////////////////////////
+    // public method: transition
+
+    public setTransition(transition: string): void {
+        {
+            const transitionMap = (<any>Theme).s_pageTransitionMap;
+            if ("platform-default" === transition) {
+                transitionMap["platform-default"] = {
+                    ios: "slide",
+                    android: "floatup",
+                    fallback: "slide",
+                };
+            } else {
+                transitionMap["platform-default"] = {
+                    ios: transition,
+                    android: transition,
+                    fallback: "slide",
+                };
+            }
+            Theme.setPageTransitionMap(transitionMap);
+        }
+        this.set("transition", transition);
+    }
+
+    ///////////////////////////////////////////////////////////////////////
     // public method: DeviceConsole
 
     // check device console visible
     public isVisibleDeviceConsole(): boolean {
-        // TODO:
-        return false;
-        //if (!this.isEnableDeviceConsole()) {
-        //    return false;
-        //}
-        //return CDP.UI.DeviceConsole.visible();
+        return DeviceConsole.visible();
     }
 
     public showDeviceConsole(): void {
-        // TODO:
-        //if (this.isEnableDeviceConsole()) {
-        //    CDP.UI.DeviceConsole.show();
-        //}
+        DeviceConsole.show();
     }
 
     public hideDeviceConsole(): void {
-        // TODO:
-        //if (this.isEnableDeviceConsole()) {
-        //    CDP.UI.DeviceConsole.hide();
-        //}
+        DeviceConsole.hide();
     }
 
     ///////////////////////////////////////////////////////////////////////
@@ -108,6 +122,9 @@ export class Options extends Model {
         for (let i = 0, n = keys.length; i < n; i++) {
             initValue(keys[i]);
         }
+
+        // transition の適用
+        this.setTransition(this.get("transition"));
     }
 
     ///////////////////////////////////////////////////////////////////////

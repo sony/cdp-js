@@ -6,6 +6,7 @@
     Toast,
     registerPage,
 } from "cdp/ui";
+import { DeviceConsole } from "cdp.device.console";
 
 import { Options } from "../model/options";
 
@@ -90,7 +91,7 @@ export class OptionsView extends PageView {
 
     private onTransitionChanged(event: JQuery.Event): void {
         const options = Options.getInstance();
-        options.set("transition", $(event.target).val());
+        options.setTransition(<string>$(event.target).val());
     }
 
     private onPerformanceLoggerChanged(event: JQuery.Event): void {
@@ -110,6 +111,38 @@ export class OptionsView extends PageView {
     ///////////////////////////////////////////////////////////////////////
     // Override: UI.PageView
 
+    // 描画更新
+    render(): PageView {
+        this.refreshTransition();
+        this.refreshTransitionLogger();
+        this.refreshUseDeviceConsole();
+        return this;
+    }
+
+    // 既定のトランジション設定
+    private refreshTransition(): void {
+        const options = Options.getInstance();
+        const $transition = $("#option-select-transition");
+        $transition.val(options.get("transition"));
+        $transition.selectmenu("refresh");
+    }
+
+    // パフォーマンスログ使用設定
+    private refreshTransitionLogger(): void {
+        const options = Options.getInstance();
+        const $flipLogger = $("#flip-transition-logger");
+        $flipLogger.prop("checked", options.get("transitionLogger") ? true : false);
+        $flipLogger.flipswitch("refresh");
+    }
+
+    // デバイスコンソール使用設定
+    private refreshUseDeviceConsole(): void {
+        const options = Options.getInstance();
+        const $flipConsole = $("#flip-device-console");
+        $flipConsole.prop("checked", options.isVisibleDeviceConsole() ? true : false);
+        $flipConsole.flipswitch("refresh");
+    }
+
     /**
      * jQM event: "pagecreate" (旧:"pageinit") に対応
      *
@@ -119,24 +152,16 @@ export class OptionsView extends PageView {
         super.onPageInit(event);
         console.log(TAG + "onPageInit()");
 
-        const options = Options.getInstance();
-
-        const $transition = $("#option-select-transition");
-        $transition.val(options.get("transition"));
-        $transition.selectmenu("refresh");
-
-        const $flipLogger = $("#flip-transition-logger");
-        $flipLogger.prop("checked", options.get("transitionLogger") ? true : false);
-        $flipLogger.flipswitch("refresh");
-
-        const $flipConsole = $("#flip-device-console");
-        $flipConsole.prop("checked", options.isVisibleDeviceConsole() ? true : false);
-        $flipConsole.flipswitch("refresh");
-
         this._themeSwitcher = new ThemeSwitcher({
             owner: this,
             $el: this.$el.find(".theme-switcher"),
         });
+
+        DeviceConsole.on("state-changed:hide", () => {
+            this.refreshUseDeviceConsole();
+        });
+
+        this.render();
     }
 
     /**

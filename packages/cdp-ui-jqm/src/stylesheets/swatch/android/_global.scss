@@ -44,7 +44,15 @@
         ///////////////////////////////////////////////////////////////////////
         // icons:
 
-        [class*=ui-icon-],
+        // button icon
+        [class*=ui-icon-] {
+            &:after {
+                background-color: $color-android-btn-icon;
+            }
+        }
+
+        .ui-emphasis .ui-collapsible-heading [class*=ui-icon-],
+        [class*=ui-icon-].ui-emphasis,
         .ui-back-indicator {
             &:after {
                 background-color: $color-android-icon;
