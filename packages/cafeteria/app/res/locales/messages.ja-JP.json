@@ -42,5 +42,11 @@
             "toExampleRoot": "サンプルへ"
         }
     },
+    "options": {
+        "title": "設定",
+        "labelTransition": "トランジション:",
+        "labelPerfomance": "パフォーマンスログ:",
+        "labelDeviceConsole": "コンソール:"
+    },
     "EOF": "EOF"
 }

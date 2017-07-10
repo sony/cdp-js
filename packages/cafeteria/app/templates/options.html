@@ -1,11 +1,10 @@
-﻿<article data-role="page" id="page-options"  class="ui-responsive-panel" data-theme="b">
-    <header data-role="header" data-position="inline">
-        <a href="back" data-rel="back" data-transition="fade" data-i18n="page-common.close">Close</a>
+﻿<article data-role="page" id="page-options" data-theme="cdp">
+    <header data-role="header" data-position="fixed" data-tap-toggle="false">
+        <button class="command-back ui-back-indicator ui-btn ui-btn-icon-left" data-i18n="app.common.close">app.common.close</button>
         <h1 data-i18n="page-options.title">Options</h1>
     </header>
     <section data-role="content">
-        <label for="select-transtion" class="select" data-i18n="page-options.labelTransition">Transition:</label>
-        <!-- select box は Native Menu を使用する。close ボタンにて、特殊な履歴管理を行っているため、選択項目が popup されると機能しなくなるため -->
+        <label for="select-transtion" class="select" data-i18n="options.labelTransition">options.labelTransition</label>
         <select name="select-transtion" id="option-select-transition" data-native-menu="true">
             <option value="none">None</option>
             <option value="pop">Pop</option>
@@ -19,18 +18,18 @@
             <option value="flow">Flow</option>
         </select>
 
-        <label for="flip-transition-logger" data-i18n="page-options.labelPerfomance">Performance Log:</label>
-        <select name="transition-logger" id="flip-transition-logger" data-role="slider" data-mini="true">
-            <option value="off" data-i18n="page-common.off">Off</option>
-            <option value="on" data-i18n="page-common.on">On</option>
-        </select>
+        <hr class="ui-separator" />
 
-        <label for="flip-device-console" data-i18n="page-options.labelDeviceConsole">Device Console:</label>
-        <select name="setting-device-console" id="flip-device-console" data-role="slider" data-mini="true">
-            <option value="off" data-i18n="page-common.off">Off</option>
-            <option value="on" data-i18n="page-common.on">On</option>
-        </select>
-
+        <ul class="gallery-example" data-role="listview" data-inset="true">
+            <li class="ui-control-inline">
+                <label class="ui-btn" for="flip-transition-logger" data-i18n="options.labelPerfomance">options.labelPerfomance</label>
+                <input type="checkbox" data-role="flipswitch" name="flip-transition-logger" id="flip-transition-logger" />
+            </li>
+            <li class="ui-control-inline">
+                <label class="ui-btn" for="flip-device-console" data-i18n="options.labelDeviceConsole">options.labelDeviceConsole</label>
+                <input type="checkbox" data-role="flipswitch" name="flip-device-console" id="flip-device-console" />
+            </li>
+        </ul>
     </section>
 </article>
 

@@ -42,5 +42,11 @@
             "toExampleRoot": "To Examples"
         }
     },
+    "options": {
+        "title": "Options",
+        "labelTransition": "Transition:",
+        "labelPerfomance": "Performance Log:",
+        "labelDeviceConsole": "Console:"
+    },
     "EOF": "EOF"
 }

@@ -75,9 +75,13 @@
   <ItemGroup>
     <Content Include=".gitignore" />
     <Content Include=".npmignore" />
+    <Content Include="app\scripts\model\options.js">
+      <DependentUpon>options.ts</DependentUpon>
+    </Content>
     <Content Include="app\scripts\view\options-view.js">
       <DependentUpon>options-view.ts</DependentUpon>
     </Content>
+    <Content Include="app\templates\options.html" />
     <Content Include="BANNER" />
     <Content Include="config.xml" />
     <Content Include="docs\localize\resource_conv.js" />
@@ -226,6 +230,7 @@
     <Content Include="app\scripts\index.js">
       <DependentUpon>index.ts</DependentUpon>
     </Content>
+    <TypeScriptCompile Include="app\scripts\model\options.ts" />
     <TypeScriptCompile Include="app\scripts\model\sample-model.ts" />
     <Content Include="app\scripts\model\sample-model.js">
       <DependentUpon>sample-model.ts</DependentUpon>
