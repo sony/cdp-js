@@ -50,7 +50,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties tsconfig_1base_1json__JSONSchema="http://json.schemastore.org/tsconfig" package_1json__JSONSchema="" />
+      <UserProperties package_1json__JSONSchema="" tsconfig_1base_1json__JSONSchema="http://json.schemastore.org/tsconfig" />
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
@@ -75,8 +75,316 @@
   <ItemGroup>
     <Content Include=".gitignore" />
     <Content Include=".npmignore" />
+    <Content Include="app\res\data\examples\contents\animal\jellyfish.jpg" />
+    <Content Include="app\res\data\examples\contents\animal\koala.jpg" />
+    <Content Include="app\res\data\examples\contents\animal\penguins.jpg" />
+    <Content Include="app\res\data\examples\contents\landscape\desert.jpg" />
+    <Content Include="app\res\data\examples\contents\landscape\lighthouse.jpg" />
+    <Content Include="app\res\data\examples\contents\plant\chrysanthemum.jpg" />
+    <Content Include="app\res\data\examples\contents\plant\hydrangeas.jpg" />
+    <Content Include="app\res\data\examples\contents\plant\tulips.jpg" />
+    <Content Include="app\res\data\sample\image\org\0.jpg" />
+    <Content Include="app\res\data\sample\image\org\1.jpg" />
+    <Content Include="app\res\data\sample\image\org\10.jpg" />
+    <Content Include="app\res\data\sample\image\org\11.jpg" />
+    <Content Include="app\res\data\sample\image\org\12.jpg" />
+    <Content Include="app\res\data\sample\image\org\13.jpg" />
+    <Content Include="app\res\data\sample\image\org\14.jpg" />
+    <Content Include="app\res\data\sample\image\org\15.jpg" />
+    <Content Include="app\res\data\sample\image\org\16.jpg" />
+    <Content Include="app\res\data\sample\image\org\17.jpg" />
+    <Content Include="app\res\data\sample\image\org\18.jpg" />
+    <Content Include="app\res\data\sample\image\org\19.jpg" />
+    <Content Include="app\res\data\sample\image\org\2.jpg" />
+    <Content Include="app\res\data\sample\image\org\20.jpg" />
+    <Content Include="app\res\data\sample\image\org\21.jpg" />
+    <Content Include="app\res\data\sample\image\org\22.jpg" />
+    <Content Include="app\res\data\sample\image\org\23.jpg" />
+    <Content Include="app\res\data\sample\image\org\24.jpg" />
+    <Content Include="app\res\data\sample\image\org\25.jpg" />
+    <Content Include="app\res\data\sample\image\org\26.jpg" />
+    <Content Include="app\res\data\sample\image\org\27.jpg" />
+    <Content Include="app\res\data\sample\image\org\28.jpg" />
+    <Content Include="app\res\data\sample\image\org\29.jpg" />
+    <Content Include="app\res\data\sample\image\org\3.jpg" />
+    <Content Include="app\res\data\sample\image\org\30.jpg" />
+    <Content Include="app\res\data\sample\image\org\31.jpg" />
+    <Content Include="app\res\data\sample\image\org\32.jpg" />
+    <Content Include="app\res\data\sample\image\org\33.jpg" />
+    <Content Include="app\res\data\sample\image\org\34.jpg" />
+    <Content Include="app\res\data\sample\image\org\35.jpg" />
+    <Content Include="app\res\data\sample\image\org\36.jpg" />
+    <Content Include="app\res\data\sample\image\org\37.jpg" />
+    <Content Include="app\res\data\sample\image\org\38.jpg" />
+    <Content Include="app\res\data\sample\image\org\39.jpg" />
+    <Content Include="app\res\data\sample\image\org\4.jpg" />
+    <Content Include="app\res\data\sample\image\org\40.jpg" />
+    <Content Include="app\res\data\sample\image\org\41.jpg" />
+    <Content Include="app\res\data\sample\image\org\42.jpg" />
+    <Content Include="app\res\data\sample\image\org\43.jpg" />
+    <Content Include="app\res\data\sample\image\org\44.jpg" />
+    <Content Include="app\res\data\sample\image\org\45.jpg" />
+    <Content Include="app\res\data\sample\image\org\46.jpg" />
+    <Content Include="app\res\data\sample\image\org\47.jpg" />
+    <Content Include="app\res\data\sample\image\org\48.jpg" />
+    <Content Include="app\res\data\sample\image\org\49.jpg" />
+    <Content Include="app\res\data\sample\image\org\5.jpg" />
+    <Content Include="app\res\data\sample\image\org\50.jpg" />
+    <Content Include="app\res\data\sample\image\org\51.jpg" />
+    <Content Include="app\res\data\sample\image\org\52.jpg" />
+    <Content Include="app\res\data\sample\image\org\53.jpg" />
+    <Content Include="app\res\data\sample\image\org\54.jpg" />
+    <Content Include="app\res\data\sample\image\org\55.jpg" />
+    <Content Include="app\res\data\sample\image\org\56.jpg" />
+    <Content Include="app\res\data\sample\image\org\57.jpg" />
+    <Content Include="app\res\data\sample\image\org\58.jpg" />
+    <Content Include="app\res\data\sample\image\org\59.jpg" />
+    <Content Include="app\res\data\sample\image\org\6.jpg" />
+    <Content Include="app\res\data\sample\image\org\60.jpg" />
+    <Content Include="app\res\data\sample\image\org\61.jpg" />
+    <Content Include="app\res\data\sample\image\org\62.jpg" />
+    <Content Include="app\res\data\sample\image\org\63.jpg" />
+    <Content Include="app\res\data\sample\image\org\64.jpg" />
+    <Content Include="app\res\data\sample\image\org\65.jpg" />
+    <Content Include="app\res\data\sample\image\org\66.jpg" />
+    <Content Include="app\res\data\sample\image\org\67.jpg" />
+    <Content Include="app\res\data\sample\image\org\68.jpg" />
+    <Content Include="app\res\data\sample\image\org\69.jpg" />
+    <Content Include="app\res\data\sample\image\org\7.jpg" />
+    <Content Include="app\res\data\sample\image\org\70.jpg" />
+    <Content Include="app\res\data\sample\image\org\71.jpg" />
+    <Content Include="app\res\data\sample\image\org\72.jpg" />
+    <Content Include="app\res\data\sample\image\org\73.jpg" />
+    <Content Include="app\res\data\sample\image\org\74.jpg" />
+    <Content Include="app\res\data\sample\image\org\75.jpg" />
+    <Content Include="app\res\data\sample\image\org\76.jpg" />
+    <Content Include="app\res\data\sample\image\org\77.jpg" />
+    <Content Include="app\res\data\sample\image\org\78.jpg" />
+    <Content Include="app\res\data\sample\image\org\79.jpg" />
+    <Content Include="app\res\data\sample\image\org\8.jpg" />
+    <Content Include="app\res\data\sample\image\org\80.jpg" />
+    <Content Include="app\res\data\sample\image\org\81.jpg" />
+    <Content Include="app\res\data\sample\image\org\82.jpg" />
+    <Content Include="app\res\data\sample\image\org\83.jpg" />
+    <Content Include="app\res\data\sample\image\org\84.jpg" />
+    <Content Include="app\res\data\sample\image\org\85.jpg" />
+    <Content Include="app\res\data\sample\image\org\86.jpg" />
+    <Content Include="app\res\data\sample\image\org\87.jpg" />
+    <Content Include="app\res\data\sample\image\org\88.jpg" />
+    <Content Include="app\res\data\sample\image\org\89.jpg" />
+    <Content Include="app\res\data\sample\image\org\9.jpg" />
+    <Content Include="app\res\data\sample\image\org\90.jpg" />
+    <Content Include="app\res\data\sample\image\org\91.jpg" />
+    <Content Include="app\res\data\sample\image\org\92.jpg" />
+    <Content Include="app\res\data\sample\image\org\93.jpg" />
+    <Content Include="app\res\data\sample\image\org\94.jpg" />
+    <Content Include="app\res\data\sample\image\org\95.jpg" />
+    <Content Include="app\res\data\sample\image\org\96.jpg" />
+    <Content Include="app\res\data\sample\image\org\97.jpg" />
+    <Content Include="app\res\data\sample\image\org\98.jpg" />
+    <Content Include="app\res\data\sample\image\org\99.jpg" />
+    <Content Include="app\res\data\sample\image\pmo\dummy\idx_mainvisual_a7.png" />
+    <Content Include="app\res\data\sample\image\pmo\hdpi\action_add.png" />
+    <Content Include="app\res\data\sample\image\pmo\hdpi\action_delete.png" />
+    <Content Include="app\res\data\sample\image\pmo\hdpi\action_done.png" />
+    <Content Include="app\res\data\sample\image\pmo\hdpi\action_edit.png" />
+    <Content Include="app\res\data\sample\image\pmo\hdpi\action_notification.png" />
+    <Content Include="app\res\data\sample\image\pmo\hdpi\action_overflow.png" />
+    <Content Include="app\res\data\sample\image\pmo\hdpi\action_photo.png" />
+    <Content Include="app\res\data\sample\image\pmo\hdpi\action_play_gif.png" />
+    <Content Include="app\res\data\sample\image\pmo\hdpi\action_refresh.png" />
+    <Content Include="app\res\data\sample\image\pmo\hdpi\action_share.png" />
+    <Content Include="app\res\data\sample\image\pmo\hdpi\action_spinner.gif" />
+    <Content Include="app\res\data\sample\image\pmo\hdpi\appicon_actionbar_noindicator.png" />
+    <Content Include="app\res\data\sample\image\pmo\hdpi\appicon_actionbar_withindicator.png" />
+    <Content Include="app\res\data\sample\image\pmo\hdpi\btn_expand_down.png" />
+    <Content Include="app\res\data\sample\image\pmo\hdpi\btn_expand_up.png" />
+    <Content Include="app\res\data\sample\image\pmo\hdpi\icon_members.png" />
+    <Content Include="app\res\data\sample\image\pmo\hdpi\icon_members_dark.png" />
+    <Content Include="app\res\data\sample\image\pmo\hdpi\service_logo.png" />
+    <Content Include="app\res\data\sample\image\pmo\hdpi\status_syncing.png" />
+    <Content Include="app\res\data\sample\image\pmo\mdpi\action_add.png" />
+    <Content Include="app\res\data\sample\image\pmo\mdpi\action_delete.png" />
+    <Content Include="app\res\data\sample\image\pmo\mdpi\action_done.png" />
+    <Content Include="app\res\data\sample\image\pmo\mdpi\action_edit.png" />
+    <Content Include="app\res\data\sample\image\pmo\mdpi\action_notification.png" />
+    <Content Include="app\res\data\sample\image\pmo\mdpi\action_overflow.png" />
+    <Content Include="app\res\data\sample\image\pmo\mdpi\action_photo.png" />
+    <Content Include="app\res\data\sample\image\pmo\mdpi\action_play_gif.png" />
+    <Content Include="app\res\data\sample\image\pmo\mdpi\action_refresh.png" />
+    <Content Include="app\res\data\sample\image\pmo\mdpi\action_share.png" />
+    <Content Include="app\res\data\sample\image\pmo\mdpi\action_spinner.gif" />
+    <Content Include="app\res\data\sample\image\pmo\mdpi\appicon_actionbar_noindicator.png" />
+    <Content Include="app\res\data\sample\image\pmo\mdpi\appicon_actionbar_withindicator.png" />
+    <Content Include="app\res\data\sample\image\pmo\mdpi\btn_expand_down.png" />
+    <Content Include="app\res\data\sample\image\pmo\mdpi\btn_expand_up.png" />
+    <Content Include="app\res\data\sample\image\pmo\mdpi\icon_members.png" />
+    <Content Include="app\res\data\sample\image\pmo\mdpi\icon_members_dark.png" />
+    <Content Include="app\res\data\sample\image\pmo\mdpi\service_logo.png" />
+    <Content Include="app\res\data\sample\image\pmo\mdpi\status_syncing.png" />
+    <Content Include="app\res\data\sample\image\pmo\nodpi\gmenu_all.png" />
+    <Content Include="app\res\data\sample\image\pmo\nodpi\gmenu_friends.png" />
+    <Content Include="app\res\data\sample\image\pmo\nodpi\gmenu_loading.png" />
+    <Content Include="app\res\data\sample\image\pmo\nodpi\gmenu_mylists.png" />
+    <Content Include="app\res\data\sample\image\pmo\nodpi\gmenu_photobooks.png" />
+    <Content Include="app\res\data\sample\image\pmo\nodpi\gmenu_postcards.png" />
+    <Content Include="app\res\data\sample\image\pmo\nodpi\spinner_large.png" />
+    <Content Include="app\res\data\sample\image\pmo\nodpi\spinner_medium.png" />
+    <Content Include="app\res\data\sample\image\pmo\nodpi\spinner_small.png" />
+    <Content Include="app\res\data\sample\image\pmo\nodpi\thm_avatar.png" />
+    <Content Include="app\res\data\sample\image\pmo\nodpi\thm_broken.png" />
+    <Content Include="app\res\data\sample\image\pmo\nodpi\thm_broken_sq.png" />
+    <Content Include="app\res\data\sample\image\pmo\nodpi\thm_loading.png" />
+    <Content Include="app\res\data\sample\image\pmo\nodpi\thm_loading_sq.png" />
+    <Content Include="app\res\data\sample\image\pmo\nodpi\thm_pending.png" />
+    <Content Include="app\res\data\sample\image\pmo\nodpi\thm_pending_sq.png" />
+    <Content Include="app\res\data\sample\image\pmo\nodpi\thm_selected.png" />
+    <Content Include="app\res\data\sample\image\pmo\nodpi\thm_unknown.png" />
+    <Content Include="app\res\data\sample\image\pmo\xhdpi\action_add.png" />
+    <Content Include="app\res\data\sample\image\pmo\xhdpi\action_delete.png" />
+    <Content Include="app\res\data\sample\image\pmo\xhdpi\action_done.png" />
+    <Content Include="app\res\data\sample\image\pmo\xhdpi\action_edit.png" />
+    <Content Include="app\res\data\sample\image\pmo\xhdpi\action_notification.png" />
+    <Content Include="app\res\data\sample\image\pmo\xhdpi\action_overflow.png" />
+    <Content Include="app\res\data\sample\image\pmo\xhdpi\action_photo.png" />
+    <Content Include="app\res\data\sample\image\pmo\xhdpi\action_play_gif.png" />
+    <Content Include="app\res\data\sample\image\pmo\xhdpi\action_refresh.png" />
+    <Content Include="app\res\data\sample\image\pmo\xhdpi\action_share.png" />
+    <Content Include="app\res\data\sample\image\pmo\xhdpi\action_spinner.gif" />
+    <Content Include="app\res\data\sample\image\pmo\xhdpi\appicon_actionbar_noindicator.png" />
+    <Content Include="app\res\data\sample\image\pmo\xhdpi\appicon_actionbar_withindicator.png" />
+    <Content Include="app\res\data\sample\image\pmo\xhdpi\btn_expand_down.png" />
+    <Content Include="app\res\data\sample\image\pmo\xhdpi\btn_expand_up.png" />
+    <Content Include="app\res\data\sample\image\pmo\xhdpi\icon_members.png" />
+    <Content Include="app\res\data\sample\image\pmo\xhdpi\icon_members_dark.png" />
+    <Content Include="app\res\data\sample\image\pmo\xhdpi\service_logo.png" />
+    <Content Include="app\res\data\sample\image\pmo\xhdpi\status_syncing.png" />
+    <Content Include="app\res\data\sample\image\pmo\xxhdpi\action_add.png" />
+    <Content Include="app\res\data\sample\image\pmo\xxhdpi\action_delete.png" />
+    <Content Include="app\res\data\sample\image\pmo\xxhdpi\action_done.png" />
+    <Content Include="app\res\data\sample\image\pmo\xxhdpi\action_edit.png" />
+    <Content Include="app\res\data\sample\image\pmo\xxhdpi\action_notification.png" />
+    <Content Include="app\res\data\sample\image\pmo\xxhdpi\action_overflow.png" />
+    <Content Include="app\res\data\sample\image\pmo\xxhdpi\action_photo.png" />
+    <Content Include="app\res\data\sample\image\pmo\xxhdpi\action_refresh.png" />
+    <Content Include="app\res\data\sample\image\pmo\xxhdpi\action_share.png" />
+    <Content Include="app\res\data\sample\image\pmo\xxhdpi\action_spinner.gif" />
+    <Content Include="app\res\data\sample\image\pmo\xxhdpi\appicon_actionbar_noindicator.png" />
+    <Content Include="app\res\data\sample\image\pmo\xxhdpi\appicon_actionbar_withindicator.png" />
+    <Content Include="app\res\data\sample\image\pmo\xxhdpi\btn_expand_down.png" />
+    <Content Include="app\res\data\sample\image\pmo\xxhdpi\btn_expand_up.png" />
+    <Content Include="app\res\data\sample\image\pmo\xxhdpi\icon_members.png" />
+    <Content Include="app\res\data\sample\image\pmo\xxhdpi\icon_members_dark.png" />
+    <Content Include="app\res\data\sample\image\pmo\xxhdpi\service_logo.png" />
+    <Content Include="app\res\data\sample\image\pmo\xxhdpi\status_syncing.png" />
+    <Content Include="app\res\data\sample\image\small\0.jpg" />
+    <Content Include="app\res\data\sample\image\small\1.jpg" />
+    <Content Include="app\res\data\sample\image\small\10.jpg" />
+    <Content Include="app\res\data\sample\image\small\11.jpg" />
+    <Content Include="app\res\data\sample\image\small\12.jpg" />
+    <Content Include="app\res\data\sample\image\small\13.jpg" />
+    <Content Include="app\res\data\sample\image\small\14.jpg" />
+    <Content Include="app\res\data\sample\image\small\15.jpg" />
+    <Content Include="app\res\data\sample\image\small\16.jpg" />
+    <Content Include="app\res\data\sample\image\small\17.jpg" />
+    <Content Include="app\res\data\sample\image\small\18.jpg" />
+    <Content Include="app\res\data\sample\image\small\19.jpg" />
+    <Content Include="app\res\data\sample\image\small\2.jpg" />
+    <Content Include="app\res\data\sample\image\small\20.jpg" />
+    <Content Include="app\res\data\sample\image\small\21.jpg" />
+    <Content Include="app\res\data\sample\image\small\22.jpg" />
+    <Content Include="app\res\data\sample\image\small\23.jpg" />
+    <Content Include="app\res\data\sample\image\small\24.jpg" />
+    <Content Include="app\res\data\sample\image\small\25.jpg" />
+    <Content Include="app\res\data\sample\image\small\26.jpg" />
+    <Content Include="app\res\data\sample\image\small\27.jpg" />
+    <Content Include="app\res\data\sample\image\small\28.jpg" />
+    <Content Include="app\res\data\sample\image\small\29.jpg" />
+    <Content Include="app\res\data\sample\image\small\3.jpg" />
+    <Content Include="app\res\data\sample\image\small\30.jpg" />
+    <Content Include="app\res\data\sample\image\small\31.jpg" />
+    <Content Include="app\res\data\sample\image\small\32.jpg" />
+    <Content Include="app\res\data\sample\image\small\33.jpg" />
+    <Content Include="app\res\data\sample\image\small\34.jpg" />
+    <Content Include="app\res\data\sample\image\small\35.jpg" />
+    <Content Include="app\res\data\sample\image\small\36.jpg" />
+    <Content Include="app\res\data\sample\image\small\37.jpg" />
+    <Content Include="app\res\data\sample\image\small\38.jpg" />
+    <Content Include="app\res\data\sample\image\small\39.jpg" />
+    <Content Include="app\res\data\sample\image\small\4.jpg" />
+    <Content Include="app\res\data\sample\image\small\40.jpg" />
+    <Content Include="app\res\data\sample\image\small\41.jpg" />
+    <Content Include="app\res\data\sample\image\small\42.jpg" />
+    <Content Include="app\res\data\sample\image\small\43.jpg" />
+    <Content Include="app\res\data\sample\image\small\44.jpg" />
+    <Content Include="app\res\data\sample\image\small\45.jpg" />
+    <Content Include="app\res\data\sample\image\small\46.jpg" />
+    <Content Include="app\res\data\sample\image\small\47.jpg" />
+    <Content Include="app\res\data\sample\image\small\48.jpg" />
+    <Content Include="app\res\data\sample\image\small\49.jpg" />
+    <Content Include="app\res\data\sample\image\small\5.jpg" />
+    <Content Include="app\res\data\sample\image\small\50.jpg" />
+    <Content Include="app\res\data\sample\image\small\51.jpg" />
+    <Content Include="app\res\data\sample\image\small\52.jpg" />
+    <Content Include="app\res\data\sample\image\small\53.jpg" />
+    <Content Include="app\res\data\sample\image\small\54.jpg" />
+    <Content Include="app\res\data\sample\image\small\55.jpg" />
+    <Content Include="app\res\data\sample\image\small\56.jpg" />
+    <Content Include="app\res\data\sample\image\small\57.jpg" />
+    <Content Include="app\res\data\sample\image\small\58.jpg" />
+    <Content Include="app\res\data\sample\image\small\59.jpg" />
+    <Content Include="app\res\data\sample\image\small\6.jpg" />
+    <Content Include="app\res\data\sample\image\small\60.jpg" />
+    <Content Include="app\res\data\sample\image\small\61.jpg" />
+    <Content Include="app\res\data\sample\image\small\62.jpg" />
+    <Content Include="app\res\data\sample\image\small\63.jpg" />
+    <Content Include="app\res\data\sample\image\small\64.jpg" />
+    <Content Include="app\res\data\sample\image\small\65.jpg" />
+    <Content Include="app\res\data\sample\image\small\66.jpg" />
+    <Content Include="app\res\data\sample\image\small\67.jpg" />
+    <Content Include="app\res\data\sample\image\small\68.jpg" />
+    <Content Include="app\res\data\sample\image\small\69.jpg" />
+    <Content Include="app\res\data\sample\image\small\7.jpg" />
+    <Content Include="app\res\data\sample\image\small\70.jpg" />
+    <Content Include="app\res\data\sample\image\small\71.jpg" />
+    <Content Include="app\res\data\sample\image\small\72.jpg" />
+    <Content Include="app\res\data\sample\image\small\73.jpg" />
+    <Content Include="app\res\data\sample\image\small\74.jpg" />
+    <Content Include="app\res\data\sample\image\small\75.jpg" />
+    <Content Include="app\res\data\sample\image\small\76.jpg" />
+    <Content Include="app\res\data\sample\image\small\77.jpg" />
+    <Content Include="app\res\data\sample\image\small\78.jpg" />
+    <Content Include="app\res\data\sample\image\small\79.jpg" />
+    <Content Include="app\res\data\sample\image\small\8.jpg" />
+    <Content Include="app\res\data\sample\image\small\80.jpg" />
+    <Content Include="app\res\data\sample\image\small\81.jpg" />
+    <Content Include="app\res\data\sample\image\small\82.jpg" />
+    <Content Include="app\res\data\sample\image\small\83.jpg" />
+    <Content Include="app\res\data\sample\image\small\84.jpg" />
+    <Content Include="app\res\data\sample\image\small\85.jpg" />
+    <Content Include="app\res\data\sample\image\small\86.jpg" />
+    <Content Include="app\res\data\sample\image\small\87.jpg" />
+    <Content Include="app\res\data\sample\image\small\88.jpg" />
+    <Content Include="app\res\data\sample\image\small\89.jpg" />
+    <Content Include="app\res\data\sample\image\small\9.jpg" />
+    <Content Include="app\res\data\sample\image\small\90.jpg" />
+    <Content Include="app\res\data\sample\image\small\91.jpg" />
+    <Content Include="app\res\data\sample\image\small\92.jpg" />
+    <Content Include="app\res\data\sample\image\small\93.jpg" />
+    <Content Include="app\res\data\sample\image\small\94.jpg" />
+    <Content Include="app\res\data\sample\image\small\95.jpg" />
+    <Content Include="app\res\data\sample\image\small\96.jpg" />
+    <Content Include="app\res\data\sample\image\small\97.jpg" />
+    <Content Include="app\res\data\sample\image\small\98.jpg" />
+    <Content Include="app\res\data\sample\image\small\99.jpg" />
     <Content Include="app\scripts\model\options.js">
       <DependentUpon>options.ts</DependentUpon>
+    </Content>
+    <Content Include="app\scripts\model\picture-list.js">
+      <DependentUpon>picture-list.ts</DependentUpon>
+    </Content>
+    <Content Include="app\scripts\model\picture.js">
+      <DependentUpon>picture.ts</DependentUpon>
     </Content>
     <Content Include="app\scripts\view\gallery\button.js">
       <DependentUpon>button.ts</DependentUpon>
@@ -118,6 +426,12 @@
     <Content Include="app\templates\gallery\switch.html" />
     <Content Include="app\templates\gallery\text-input.html" />
     <Content Include="app\templates\options.html" />
+    <Content Include="app\templates\views-sample\view-backbone.html" />
+    <Content Include="app\templates\views-sample\view-page-owner.html" />
+    <Content Include="app\templates\views-sample\view-page-view.html" />
+    <Content Include="app\templates\views-sample\view-page.html" />
+    <Content Include="app\templates\views-sample\view-root.html" />
+    <Content Include="app\templates\views-sample\view-templates.html" />
     <Content Include="BANNER" />
     <Content Include="config.xml" />
     <Content Include="docs\localize\resource_conv.js" />
@@ -127,6 +441,12 @@
     <Content Include="project.config.js" />
     <Content Include="README.md" />
     <Content Include="tasks\cafeteria.js" />
+    <Content Include="tests\unit\model.picture-list.spec.js">
+      <DependentUpon>model.picture-list.spec.ts</DependentUpon>
+    </Content>
+    <Content Include="tests\unit\model.picture.spec.js">
+      <DependentUpon>model.picture.spec.ts</DependentUpon>
+    </Content>
     <Content Include="tsconfig.base.json">
       <DependentUpon>tsconfig.json</DependentUpon>
     </Content>
@@ -139,6 +459,16 @@
     <Content Include="app\stylesheets\cdp\utils\_utils.scss" />
     <Content Include="app\stylesheets\cdp\_mixins.scss" />
     <Content Include="app\stylesheets\_config.scss" />
+    <Content Include="app\res\data\examples\json\animal.json" />
+    <Content Include="app\res\data\examples\json\landscape.json" />
+    <Content Include="app\res\data\examples\json\plant.json" />
+    <Content Include="app\res\data\sample\image\image.json" />
+    <Content Include="app\res\data\sample\image\item.json" />
+    <Content Include="app\res\data\sample\image\metadata.json" />
+    <Content Include="app\res\data\sample\image\org\Thumbs.db" />
+    <Content Include="app\res\data\sample\image\recallplayback.json" />
+    <Content Include="app\res\data\sample\image\small\Thumbs.db" />
+    <Content Include="app\res\data\sample\image\thumbnail.json" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
@@ -275,10 +605,8 @@
       <DependentUpon>index.ts</DependentUpon>
     </Content>
     <TypeScriptCompile Include="app\scripts\model\options.ts" />
-    <TypeScriptCompile Include="app\scripts\model\sample-model.ts" />
-    <Content Include="app\scripts\model\sample-model.js">
-      <DependentUpon>sample-model.ts</DependentUpon>
-    </Content>
+    <TypeScriptCompile Include="app\scripts\model\picture-list.ts" />
+    <TypeScriptCompile Include="app\scripts\model\picture.ts" />
     <TypeScriptCompile Include="app\scripts\view\gallery\base-pageview.ts" />
     <Content Include="app\scripts\view\gallery\base-pageview.js">
       <DependentUpon>base-pageview.ts</DependentUpon>
@@ -305,9 +633,13 @@
       <DependentUpon>main-view.ts</DependentUpon>
     </Content>
     <TypeScriptCompile Include="app\scripts\view\options-view.ts" />
-    <TypeScriptCompile Include="tests\unit\sample-model.spec.ts" />
-    <Content Include="tests\unit\sample-model.spec.js">
-      <DependentUpon>sample-model.spec.ts</DependentUpon>
-    </Content>
+    <TypeScriptCompile Include="app\scripts\view\views-sample\backbone.ts" />
+    <TypeScriptCompile Include="app\scripts\view\views-sample\helper.ts" />
+    <TypeScriptCompile Include="app\scripts\view\views-sample\page-owner.ts" />
+    <TypeScriptCompile Include="app\scripts\view\views-sample\page-view.ts" />
+    <TypeScriptCompile Include="app\scripts\view\views-sample\page.ts" />
+    <TypeScriptCompile Include="app\scripts\view\views-sample\root.ts" />
+    <TypeScriptCompile Include="tests\unit\model.picture-list.spec.ts" />
+    <TypeScriptCompile Include="tests\unit\model.picture.spec.ts" />
   </ItemGroup>
 </Project>

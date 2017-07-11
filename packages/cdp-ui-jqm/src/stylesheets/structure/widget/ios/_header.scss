@@ -84,6 +84,7 @@
     .ui-header {
         .ui-btn {
             top: 0;
+            line-height: $metrics-header-height;
         }
         .ui-btn-left.ui-btn-icon-notext:after {
             left: 16px;

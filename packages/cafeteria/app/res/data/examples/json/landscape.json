@@ -1,0 +1,16 @@
+﻿{
+	"pictures": [
+        {
+			"name": "砂漠",
+			"kind": "landscape",
+			"src": "/res/data/examples/contents/landscape/desert.jpg",
+			"desc": "東京砂漠。"
+		},
+        {
+			"name": "灯台",
+			"kind": "landscape",
+			"src": "/res/data/examples/contents/landscape/lighthouse.jpg",
+			"desc": "灯台下暗し。"
+		}
+	]
+}

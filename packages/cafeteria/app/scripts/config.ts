@@ -60,7 +60,7 @@
          */
         const config = {
             baseUrl: _baseUrl,
-            urlArgs: "bust=" + Date.now(),
+//            urlArgs: "bust=" + Date.now(),
 
             // >>>EXTERNAL_MODULES>>> external module entry
             paths: {
@@ -120,7 +120,7 @@
      */
     export const jquerymobile = {
         allowCrossDomainPages: true,
-        defaultPageTransition: "none",
+        defaultPageTransition: "platform-default",
         hashListeningEnabled: false,
         pushStateEnabled: false,
     };

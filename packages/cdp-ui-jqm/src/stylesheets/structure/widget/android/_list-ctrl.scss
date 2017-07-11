@@ -4,7 +4,7 @@
 @import "../_metrics.scss";
 
 .ui-platform-android {
-    .ui-listview > .ui-li-static:not(.ui-control-inline):not(.ui-field-contain) {
+    .ui-listview > .ui-li-static:not(.ui-control-inline):not(.ui-field-contain):not(.ui-li-has-thumb) {
         padding: ($metrics-font-base-size * 0.875) ($metrics-font-base-size * 1);
     }
     .ui-listview li > .ui-btn, .ui-controlgroup-vertical .ui-controlgroup-controls .ui-btn {

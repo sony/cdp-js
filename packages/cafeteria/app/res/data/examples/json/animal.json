@@ -1,0 +1,23 @@
+﻿{
+	"pictures": [
+        {
+            "name": "コアラ", 
+            "kind": "animal",
+            "src": "/res/data/examples/contents/animal/koala.jpg",
+            "desc": "自己主張が激しいです。"
+        },
+        {
+			"name": "クラゲ",
+			"kind": "animal",
+			"src": "/res/data/examples/contents/animal/jellyfish.jpg",
+			"desc": "本当は貝になりたかった。"
+		},
+        {
+			"name": "ペンギン達",
+			"kind": "animal",
+			"src": "/res/data/examples/contents/animal/penguins.jpg",
+			"desc": "3羽で行動します。"
+		}
+	]
+}
+

@@ -1,0 +1,29 @@
+﻿<article>
+    <script type="text/template" id="view-list-el-template">
+        {{#imglist}}
+        <li class="page-example-list-el">
+            <img src="{{src}}" class="ui-li-thumb"/>
+            <h3>{{name}}</h3>
+            <p>{{desc}}</p>
+        </li>
+        {{/imglist}}
+    </script>
+
+    <script type="text/template" id="slideshow-thumbnail-list-element-template">
+        <figure style='background-image:url({{url}});'></figure>
+        <span>{{id}}</span>
+    </script>
+
+    <script type="text/template" id="dialog-common-template">
+        <article data-role="page" id="dialog-common" data-overlay-theme="none">
+            <div data-role="header" data-theme="b">
+                <h1>{{title}}</h1>
+            </div>
+            <section data-role="content" data-theme="a">
+                <h1>{{task}}</h1>
+                <p>{{message}}</p>
+                <button id="dlg-common-btn-positive" data-theme="b" data-inline="true">{{label}}</button>
+            </section>
+        </article>
+    </script>
+</article>

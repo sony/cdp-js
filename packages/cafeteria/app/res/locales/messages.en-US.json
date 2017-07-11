@@ -65,5 +65,24 @@
             "promptText": "What is today's weather?"
         }
     },
+    "views": {
+        "title": "View Examples",
+        "description": "View Example Entries",
+        "operation": "ListView Operation",
+        "kind": "Kind",
+        "animal": "Animal",
+        "plant": "Plant",
+        "landscape": "Landscape",
+        "addition": "Addition",
+        "deletion": "Deletion",
+        "add": "add()",
+        "fetch": "fetch()",
+        "remove": "remove()",
+        "reset": "reset()",
+        "backbone": "Backbone.View class Sample",
+        "page": "Page class Sample",
+        "pageowner": "Page + Backbone.View class Sample",
+        "pageview": "PageView class Sample"
+    },
     "EOF": "EOF"
 }
