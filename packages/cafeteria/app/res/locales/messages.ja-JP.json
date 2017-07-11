@@ -32,6 +32,7 @@
         "root": {
             "title": "サンプル実装例",
             "description": "サンプル実装例の入り口",
+            "gallery": "UI ギャラリー",
             "links": "リンクの実装例",
             "views": "View の実装例",
             "listviews": "仮想 List View の実装例",

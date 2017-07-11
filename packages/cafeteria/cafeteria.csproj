@@ -78,9 +78,45 @@
     <Content Include="app\scripts\model\options.js">
       <DependentUpon>options.ts</DependentUpon>
     </Content>
+    <Content Include="app\scripts\view\gallery\button.js">
+      <DependentUpon>button.ts</DependentUpon>
+    </Content>
+    <Content Include="app\scripts\view\gallery\checkbox.js">
+      <DependentUpon>checkbox.ts</DependentUpon>
+    </Content>
+    <Content Include="app\scripts\view\gallery\dialog.js">
+      <DependentUpon>dialog.ts</DependentUpon>
+    </Content>
+    <Content Include="app\scripts\view\gallery\radio.js">
+      <DependentUpon>radio.ts</DependentUpon>
+    </Content>
+    <Content Include="app\scripts\view\gallery\root.js">
+      <DependentUpon>root.ts</DependentUpon>
+    </Content>
+    <Content Include="app\scripts\view\gallery\slider.js">
+      <DependentUpon>slider.ts</DependentUpon>
+    </Content>
+    <Content Include="app\scripts\view\gallery\spinner.js">
+      <DependentUpon>spinner.ts</DependentUpon>
+    </Content>
+    <Content Include="app\scripts\view\gallery\switch.js">
+      <DependentUpon>switch.ts</DependentUpon>
+    </Content>
+    <Content Include="app\scripts\view\gallery\text-input.js">
+      <DependentUpon>text-input.ts</DependentUpon>
+    </Content>
     <Content Include="app\scripts\view\options-view.js">
       <DependentUpon>options-view.ts</DependentUpon>
     </Content>
+    <Content Include="app\templates\gallery\button.html" />
+    <Content Include="app\templates\gallery\checkbox.html" />
+    <Content Include="app\templates\gallery\dialog.html" />
+    <Content Include="app\templates\gallery\radio-button.html" />
+    <Content Include="app\templates\gallery\root.html" />
+    <Content Include="app\templates\gallery\slider.html" />
+    <Content Include="app\templates\gallery\spinner.html" />
+    <Content Include="app\templates\gallery\switch.html" />
+    <Content Include="app\templates\gallery\text-input.html" />
     <Content Include="app\templates\options.html" />
     <Content Include="BANNER" />
     <Content Include="config.xml" />
@@ -247,10 +283,19 @@
     <Content Include="app\scripts\view\gallery\base-pageview.js">
       <DependentUpon>base-pageview.ts</DependentUpon>
     </Content>
+    <TypeScriptCompile Include="app\scripts\view\gallery\button.ts" />
+    <TypeScriptCompile Include="app\scripts\view\gallery\checkbox.ts" />
+    <TypeScriptCompile Include="app\scripts\view\gallery\dialog.ts" />
     <TypeScriptCompile Include="app\scripts\view\gallery\list-control.ts" />
     <Content Include="app\scripts\view\gallery\list-control.js">
       <DependentUpon>list-control.ts</DependentUpon>
     </Content>
+    <TypeScriptCompile Include="app\scripts\view\gallery\radio.ts" />
+    <TypeScriptCompile Include="app\scripts\view\gallery\root.ts" />
+    <TypeScriptCompile Include="app\scripts\view\gallery\slider.ts" />
+    <TypeScriptCompile Include="app\scripts\view\gallery\spinner.ts" />
+    <TypeScriptCompile Include="app\scripts\view\gallery\switch.ts" />
+    <TypeScriptCompile Include="app\scripts\view\gallery\text-input.ts" />
     <TypeScriptCompile Include="app\scripts\view\loader.ts" />
     <Content Include="app\scripts\view\loader.js">
       <DependentUpon>loader.ts</DependentUpon>

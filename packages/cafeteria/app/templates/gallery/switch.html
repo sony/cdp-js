@@ -1,0 +1,108 @@
+﻿<article data-role="page" id="gallery-switch" data-theme="cdp">
+    <header data-role="header" data-position="fixed" data-tap-toggle="false">
+        <button class="command-back ui-back-indicator ui-btn ui-btn-icon-left">Gallery</button>
+        <h1>Switch</h1>
+    </header>
+    <section data-role="content">
+        <h2>Demo:</h2>
+        <form>
+            <label for="switch-01">Checkbox switch:</label>
+            <input type="checkbox" data-role="flipswitch" name="switch-01" id="switch-01" />
+        </form>
+        <form>
+            <label for="switch-02">Checkbox with custom labels:</label>
+            <input type="checkbox" data-role="flipswitch" name="switch-02" id="switch-02" data-on-text="Light" data-off-text="Dark" data-wrapper-class="custom-label-flipswitch" />
+        </form>
+        <form>
+            <label for="switch-03">Checkbox switch checked:</label>
+            <input type="checkbox" data-role="flipswitch" name="switch-03" id="switch-03" checked="checked" />
+        </form>
+        <form class="ui-control-right">
+            <label for="switch-04b">Checkbox switch right:</label>
+            <input type="checkbox" data-role="flipswitch" name="switch-04b" id="switch-04b" />
+        </form>
+        <form>
+            <label for="switch-04">Checkbox switch disabled:</label>
+            <input type="checkbox" data-role="flipswitch" name="switch-04" id="switch-04" disabled="disabled" />
+        </form>
+
+        <hr class="ui-separator">
+
+        <form>
+            <label for="switch-05">Select switch:</label>
+            <select name="switch-05" id="switch-05" data-role="flipswitch">
+                <option value="off">オフ</option>
+                <option value="on">オン</option>
+            </select>
+        </form>
+
+        <form>
+            <label for="switch-06">Select switch second option selected:</label>
+            <select name="switch-06" id="switch-06" data-role="flipswitch">
+                <option value="off">オフ</option>
+                <option value="on" selected="selected">オン</option>
+            </select>
+        </form>
+
+        <form>
+            <label for="switch-07">Select switch disabled:</label>
+            <select name="switch-07" id="switch-07" data-role="flipswitch" disabled="disabled">
+                <option value="off">オフ</option>
+                <option value="on">オン</option>
+            </select>
+        </form>
+
+        <!--
+        duplicate slider-switch
+                <hr class="ui-separator">
+
+                <form>
+                    <label for="switch-14">Slider switch:</label>
+                    <select name="switch-14" id="switch-14" data-role="slider">
+                        <option value="off">Off</option>
+                        <option value="on">On</option>
+                    </select>
+                </form>
+    -->
+        <div data-role="collapsible" class="ui-emphasis">
+            <h2>Flip switch:</h2>
+
+            <h2>Mini:</h2>
+            <form>
+                <label for="switch-08">Checkbox switch mini:</label>
+                <input type="checkbox" data-role="flipswitch" name="switch-08" id="switch-08" data-mini="true" />
+            </form>
+            <form>
+                <label for="switch-09">Select switch mini:</label>
+                <select name="switch-09" id="switch-09" data-role="flipswitch" data-mini="true">
+                    <option value="off">Off</option>
+                    <option value="on">On</option>
+                </select>
+            </form>
+            <h2>No corners:</h2>
+            <form>
+                <label for="switch-10">Checkbox switch no corners:</label>
+                <input type="checkbox" data-role="flipswitch" name="switch-10" id="switch-10" data-corners="false" />
+            </form>
+            <form>
+                <label for="switch-11">Select switch no corners:</label>
+                <select name="switch-11" id="switch-11" data-role="flipswitch" data-corners="false">
+                    <option value="off">Off</option>
+                    <option value="on">On</option>
+                </select>
+            </form>
+            <h2>Label hidden:</h2>
+            <form>
+                <label for="switch-12" class="ui-hidden-accessible">Checkbox switch no label:</label>
+                <input type="checkbox" data-role="flipswitch" name="switch-12" id="switch-12" />
+            </form>
+            <form>
+                <label for="switch-13" class="ui-hidden-accessible">Select switch no label:</label>
+                <select name="switch-13" id="switch-13" data-role="flipswitch">
+                    <option value="off">Off</option>
+                    <option value="on">On</option>
+                </select>
+            </form>
+        </div>
+    </section>
+</article>

@@ -32,6 +32,7 @@
         "root": {
             "title": "Examples",
             "description": "Sample Implementation Entries",
+            "gallery": "UI Gallery",
             "links": "Link Examples",
             "views": "View Examples",
             "listviews": "Virtual List View Examples",

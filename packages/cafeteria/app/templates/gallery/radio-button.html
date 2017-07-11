@@ -1,0 +1,147 @@
+﻿<article data-role="page" id="gallery-radio-button" data-theme="cdp">
+    <header data-role="header" data-position="fixed" data-tap-toggle="false">
+        <button class="command-back ui-back-indicator ui-btn ui-btn-icon-left">Gallery</button>
+        <h1>Radio Button</h1>
+    </header>
+    <section data-role="content">
+        <h2>default:</h2>
+
+        <h2>Radio Group:</h2>
+        <form>
+            <!-- class は 親要素に対して指定可能 -->
+            <fieldset class="ui-listitem-border-offset-icon ui-layout-match-parent" data-role="controlgroup">
+                <input type="radio" name="radio-group-default" id="catalog-radio-default-1" value="on" checked="checked">
+                <label for="catalog-radio-default-1">Radio 1L</label>
+                <input type="radio" name="radio-group-default" id="catalog-radio-default-2" value="off">
+                <label for="catalog-radio-default-2">Radio 2L</label>
+                <input type="radio" name="radio-group-default" id="catalog-radio-default-3" value="off">
+                <label for="catalog-radio-default-3">Radio 3L</label>
+            </fieldset>
+        </form>
+
+        <h2>Radio Group: data-iconpos="right"</h2>
+        <form>
+            <fieldset class="ui-layout-match-parent" data-role="controlgroup" data-iconpos="right">
+                <input type="radio" name="radio-group-default" id="catalog-radio-default-right-1" value="on" checked="checked">
+                <label for="catalog-radio-default-right-1">Radio 1R</label>
+                <input type="radio" name="radio-group-default" id="catalog-radio-default-right-2" value="off">
+                <label for="catalog-radio-default-right-2">Radio 2R</label>
+                <input type="radio" name="radio-group-default" id="catalog-radio-default-right-3" value="off">
+                <label for="catalog-radio-default-right-3">Radio 3R</span></label>
+            </fieldset>
+        </form>
+
+        <h2>Button Only:</h2>
+        <form>
+            <!--<fieldset data-role="controlgroup">-->
+            <label class="ui-btn-icon-notext ui-ripple-none">
+                Button Only 01
+                <span class="ui-ripple-center"></span>
+                <input type="radio" name="radio-only" id="catalog-radio-icon-01" checked="checked"/>
+            </label>
+            <label class="ui-btn-icon-notext ui-ripple-none" for="catalog-radio-icon-02">
+                Button Only 02
+                <span class="ui-ripple-center"></span>
+            </label>
+            <input type="radio" name="radio-only" id="catalog-radio-icon-02">
+            <div class="ui-radio">
+                <label for="catalog-radio-icon-03" class="ui-btn-icon-notext ui-btn ui-corner-all ui-btn-inherit ui-btn-icon-left ui-radio-off ui-ripple-none">
+                    Button Only 03
+                    <span class="ui-ripple-center"></span>
+                </label>
+                <input type="radio" name="radio-only" id="catalog-radio-icon-03" data-enhanced="true">
+            </div>
+            <!--</fieldset>-->
+        </form>
+
+        <h2>Segmented Control:</h2>
+        <form>
+            <fieldset class="ui-layout-match-parent" data-role="controlgroup" data-type="horizontal">
+                <div class="center-container ui-corner-all">
+                    <input type="radio" name="segmented-control-default" id="catalog-segment-default-1" value="on" checked="checked">
+                    <label for="catalog-segment-default-1">Seg 01</label>
+                    <input type="radio" name="segmented-control-default" id="catalog-segment-default-2" value="off">
+                    <label for="catalog-segment-default-2">Seg 02</label>
+                    <input type="radio" name="segmented-control-default" id="catalog-segment-default-3" value="off">
+                    <label for="catalog-segment-default-3">Seg 03</label>
+                </div>
+            </fieldset>
+        </form>
+
+        <div data-role="collapsible" class="ui-emphasis">
+            <h2>Radio Buttons:</h2>
+
+            <h2>Basic markup:</h2>
+            <form>
+                <label>
+                    <input type="radio" name="radio-basic" id="catalog-radio-01" />Radio 01
+                </label>
+                <label for="catalog-radio-02">Radio 02</label>
+                <input type="radio" name="radio-basic" id="catalog-radio-02">
+            </form>
+
+            <h2>Vertical:</h2>
+            <form>
+                <fieldset class="ui-layout-match-parent ui-listitem-border-offset-icon" data-role="controlgroup">
+                    <input type="radio" name="radio-vertical" id="catalog-radio-03" value="on" checked="checked">
+                    <label for="catalog-radio-03">Radio 03</label>
+                    <input type="radio" name="radio-vertical" id="catalog-radio-04" value="off">
+                    <label for="catalog-radio-04">Radio 04</label>
+                    <input type="radio" name="radio-vertical" id="catalog-radio-05" value="off">
+                    <label for="catalog-radio-05">Radio 05</label>
+                </fieldset>
+            </form>
+
+            <h2>Horizontal:</h2>
+            <form>
+                <fieldset data-role="controlgroup" data-type="horizontal">
+                    <input type="radio" name="radio-horizontal" id="catalog-radio-06" value="on" checked="checked">
+                    <label for="catalog-radio-06">Radio06</label>
+                    <input type="radio" name="radio-horizontal" id="catalog-radio-07" value="off">
+                    <label for="catalog-radio-07">Radio07</label>
+                    <input type="radio" name="radio-horizontal" id="catalog-radio-08" value="off">
+                    <label for="catalog-radio-08">Radio08</label>
+                </fieldset>
+            </form>
+
+            <h2>Icon Position:</h2>
+            <form>
+                <fieldset class="ui-layout-match-parent" data-role="controlgroup" data-iconpos="right">
+                    <input type="radio" name="radio-vertical-right" id="catalog-radio-09" value="on" checked="checked">
+                    <label for="catalog-radio-09">Radio 09</label>
+                    <input type="radio" name="radio-vertical-right" id="catalog-radio-10" value="off">
+                    <label for="catalog-radio-10">Radio 10</label>
+                    <input type="radio" name="radio-vertical-right" id="catalog-radio-11" value="off">
+                    <label for="catalog-radio-11">Radio 11</label>
+                </fieldset>
+            </form>
+
+            <h2>Mini size:</h2>
+            <form>
+                <fieldset class="ui-layout-match-parent ui-listitem-border-offset-icon" data-role="controlgroup" data-mini="true">
+                    <input type="radio" name="radio-vertical-mini" id="catalog-radio-12" value="on" checked="checked">
+                    <label for="catalog-radio-12">Radio 12</label>
+                    <input type="radio" name="radio-vertical-mini" id="catalog-radio-13" value="off">
+                    <label for="catalog-radio-13">Radio 13</label>
+                    <input type="radio" name="radio-vertical-mini" id="catalog-radio-14" value="off">
+                    <label for="catalog-radio-14">Radio 14</label>
+                </fieldset>
+            </form>
+
+            <h2>Disabled:</h2>
+            <form>
+                <label>
+                    <input type="radio" name="radio-disabled" id="catalog-radio-15" disabled="disabled" />Radio 15
+                </label>
+                <label for="catalog-radio-16">Radio 16</label>
+                <input type="radio" name="radio-disabled" id="catalog-radio-16" value="on" checked="checked" disabled="disabled">
+            </form>
+
+            <h2>Enhanced:</h2>
+            <div class="ui-radio">
+                <label for="catalog-radio-17" class="ui-btn ui-corner-all ui-btn-inherit ui-btn-icon-left ui-radio-off">Radio 17</label>
+                <input type="radio" name="radio-enhanced" id="catalog-radio-17" data-enhanced="true">
+            </div>
+        </div>
+    </section>
+</article>

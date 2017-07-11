@@ -1,5 +1,5 @@
-﻿import { BasePageView } from "./base-pageview";
-import { registerPage } from "cdp/ui";
+﻿import { registerPage } from "cdp/ui";
+import { BasePageView } from "./base-pageview";
 
 const TAG = "[view.gallery.ListControlPageView] ";
 
