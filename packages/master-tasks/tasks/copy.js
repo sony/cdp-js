@@ -154,15 +154,14 @@ function copyExternalModules(release) {
             cwd: SRC_DIR,
             nodir: true,
             ignore: [
+                '**/*.map',
                 config.dir.external + '/' + config.dir.types + '/**/*',
             ],
         })
         .forEach((file) => {
-            if (hasVersionString(file)) {
-                const src = path.join(SRC_DIR, file);
-                const dst = path.join(PKG_DIR, file).replace(version_or_min_suffix_regex, '$3');
-                fs.copySync(src, dst);
-            }
+            const src = path.join(SRC_DIR, file);
+            const dst = path.join(PKG_DIR, file).replace(version_or_min_suffix_regex, '$3');
+            fs.copySync(src, dst);
         });
     }
 }

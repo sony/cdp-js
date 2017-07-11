@@ -23,6 +23,7 @@ Folder and file structure of this repository is the following list.
         hooks/                  // cordova hook scripts here.
         plugins/                // installed cordova plugins here.
         platforms/              // native project setting files and sources.
+        tasks/                  // task scripts directory.
         tests/                  // tests scripts directory.
         www/                    // target repository. compiled source and resource are set here.
 
