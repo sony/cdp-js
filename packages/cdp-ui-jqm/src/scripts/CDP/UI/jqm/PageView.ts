@@ -254,6 +254,8 @@ namespace CDP.UI {
          */
         onPageRemove(event: JQuery.Event): void {
             this.remove();
+            this.el  = null;
+            this.$el = null;
         }
     }
 }
