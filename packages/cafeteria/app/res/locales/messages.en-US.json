@@ -32,6 +32,7 @@
         "root": {
             "title": "Examples",
             "description": "Sample Implementation Entries",
+            "gallery": "UI Gallery",
             "links": "Link Examples",
             "views": "View Examples",
             "listviews": "Virtual List View Examples",
@@ -49,6 +50,20 @@
         "labelPerfomance": "Performance Log:",
         "labelDeviceConsole": "Console:",
         "labelPlatformTheme": "Platform Theme:"
+    },
+    "gallery": {
+        "labelPlatformTheme": "プラットフォームテーマ:",
+        "spinner": {
+            "normalLabel": "Normal:",
+            "bigLabel": "Big:",
+            "colorLabel": "Specified Color:",
+            "bigColorLabel": "Big, Specified Color:"
+        },
+        "dialog": {
+            "messageText": "Hello. World.",
+            "confirmText": "Is it fine today?",
+            "promptText": "What is today's weather?"
+        }
     },
     "EOF": "EOF"
 }

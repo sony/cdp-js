@@ -1,0 +1,137 @@
+﻿<article data-role="page" id="gallery-slider" data-theme="cdp">
+    <header data-role="header" data-position="fixed" data-tap-toggle="false">
+        <button class="command-back ui-back-indicator ui-btn ui-btn-icon-left">Gallery</button>
+        <h1>Slider</h1>
+    </header>
+    <section data-role="content">
+        <h2>Demo:</h2>
+        <form>
+            <label for="slider-01">Basic:</label>
+            <input type="range" name="slider-01" id="slider-01" data-highlight="true" min="0" max="100" value="50">
+        </form>
+        <form class="ui-ripple-none">
+            <label for="slider-01a">No Focus Ripple:</label>
+            <input type="range" name="slider-01a" id="slider-01a" data-highlight="true" min="0" max="100" value="50">
+        </form>
+        <form class="ui-slider-no-scale">
+            <label for="slider-01b">No Focus Scale:</label>
+            <input type="range" name="slider-01b" id="slider-01b" data-highlight="true" min="0" max="100" value="50">
+        </form>
+        <form class="ui-control-right">
+            <label for="slider-02">Right input:</label>
+            <input type="range" name="slider-02" id="slider-02" data-highlight="true" min="0" max="100" value="50">
+        </form>
+        <form class="ui-control-full">
+            <label for="slider-03">Full width:</label>
+            <input type="range" name="slider-03" id="slider-03" data-highlight="true" min="0" max="100" value="50">
+        </form>
+        <form>
+            <label for="slider-05">Tooltip:</label>
+            <input type="range" name="slider-05" id="slider-05" data-popup-enabled="true" data-highlight="true" min="0" max="100" value="50">
+        </form>
+        <form>
+            <label for="slider-04">Disabled:</label>
+            <input type="range" name="slider-04" id="slider-04" disabled="disabled" data-highlight="true" min="0" max="10" step="1" value="5">
+        </form>
+        <form>
+            <div data-role="rangeslider">
+                <label for="range-01a">Rangeslider:</label>
+                <input type="range" name="range-01a" id="range-01a" min="0" max="100" value="20">
+                <label for="range-01b">Rangeslider:</label>
+                <input type="range" name="range-01a" id="range-01b" min="0" max="100" value="80">
+            </div>
+        </form>
+        <div data-role="collapsible" class="ui-emphasis">
+            <h2>Slider:</h2>
+
+            <h2>Step Attribute:</h2>
+            <form>
+                <label for="slider-21">Slider:</label>
+                <input type="range" name="slider-21" id="slider-21" data-highlight="true" min="0" max="10" step="1" value="5">
+            </form>
+            <h2>No Hightlight:</h2>
+            <form>
+                <label for="slider-22">Slider:</label>
+                <input type="range" name="slider-22" id="slider-22" min="0" max="100" value="50">
+            </form>
+            <h2>Min size:</h2>
+            <form>
+                <label for="slider-23">Slider:</label>
+                <input type="range" name="slider-23" id="slider-23" data-mini="true" data-highlight="true" min="0" max="100" value="50">
+            </form>
+            <h2>Label hidden:</h2>
+            <form>
+                <label for="slider-24" class="ui-hidden-accessible">Slider:</label>
+                <input type="range" name="slider-24" id="slider-24" data-highlight="true" min="0" max="100" value="50">
+            </form>
+            <h2>Fieldcontain:</h2>
+            <form>
+                <div class="ui-field-contain">
+                    <label for="slider-25">Slider:</label>
+                    <input type="range" name="slider-25" id="slider-25" data-highlight="true" min="0" max="100" value="50">
+                </div>
+            </form>
+            <h2>Fieldcontain mini:</h2>
+            <form>
+                <div class="ui-field-contain">
+                    <label for="slider-26">Slider:</label>
+                    <input type="range" name="slider-26" id="slider-26" data-mini="true" data-highlight="true" min="0" max="100" value="50">
+                </div>
+            </form>
+            <h2>Show value on button:</h2>
+            <form>
+                <label for="slider-26">Slider:</label>
+                <input type="range" name="slider-26" id="slider-26" data-show-value="true" data-highlight="true" min="0" max="100" value="50">
+            </form>
+            <h2>Rangeslider disabled:</h2>
+            <form>
+                <div data-role="rangeslider">
+                    <label for="range-20a">Rangeslider:</label>
+                    <input type="range" name="range-20a" id="range-20a" disabled="disabled" min="0" max="100" value="20">
+                    <label for="range-20b">Rangeslider:</label>
+                    <input type="range" name="range-20b" id="range-20b" disabled="disabled" min="0" max="100" value="80">
+                </div>
+            </form>
+            <h2>Rangeslider mini:</h2>
+            <form>
+                <div data-role="rangeslider" data-mini="true">
+                    <label for="range-21a">Rangeslider:</label>
+                    <input type="range" name="range-21a" id="range-21a" min="0" max="100" value="20">
+                    <label for="range-21b">Rangeslider:</label>
+                    <input type="range" name="range-21b" id="range-21b" min="0" max="100" value="80">
+                </div>
+            </form>
+            <h2>Rangeslider Label hidden:</h2>
+            <form>
+                <div data-role="rangeslider">
+                    <label for="range-22a" class="ui-hidden-accessible">Rangeslider:</label>
+                    <input type="range" name="range-22a" id="range-22a" min="0" max="100" value="20">
+                    <label for="range-22b">Rangeslider:</label>
+                    <input type="range" name="range-22b" id="range-22b" min="0" max="100" value="80">
+                </div>
+            </form>
+            <h2>Rangeslider Fieldcontain:</h2>
+            <form>
+                <div class="ui-field-contain">
+                    <div data-role="rangeslider">
+                        <label for="range-23a">Rangeslider:</label>
+                        <input type="range" name="range-23a" id="range-23a" min="0" max="100" value="20">
+                        <label for="range-23b">Rangeslider:</label>
+                        <input type="range" name="range-23b" id="range-23b" min="0" max="100" value="80">
+                    </div>
+                </div>
+            </form>
+            <h2>Rangeslider Fieldcontain mini:</h2>
+            <form>
+                <div class="ui-field-contain">
+                    <div data-role="rangeslider" data-mini="true">
+                        <label for="range-24a">Rangeslider:</label>
+                        <input type="range" name="range-24a" id="range-24a" min="0" max="100" value="20">
+                        <label for="range-24b">Rangeslider:</label>
+                        <input type="range" name="range-24b" id="range-24b" min="0" max="100" value="80">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+</article>

@@ -1,0 +1,193 @@
+﻿<article data-role="page" id="gallery-checkbox" data-theme="cdp">
+    <header data-role="header" data-position="fixed" data-tap-toggle="false">
+        <button class="command-back ui-back-indicator ui-btn ui-btn-icon-left">Gallery</button>
+        <h1>CheckBox</h1>
+    </header>
+    <section data-role="content">
+        <h2>default:</h2>
+
+        <h2>Check Group:</h2>
+        <form>
+            <!-- class は 親要素に対して指定可能 -->
+            <fieldset class="ui-listitem-border-offset-icon ui-layout-match-parent" data-role="controlgroup">
+                <input type="checkbox" name="checkbox-group-default" id="catalog-checkbox-default-1" value="on" checked="checked">
+                <label for="catalog-checkbox-default-1">Check Box 1L</label>
+                <input type="checkbox" name="checkbox-group-default" id="catalog-checkbox-default-2" value="off">
+                <label for="catalog-checkbox-default-2">Check Box 2L</label>
+                <input type="checkbox" name="checkbox-group-default" id="catalog-checkbox-default-3" value="off">
+                <label for="catalog-checkbox-default-3">Check Box 3L</label>
+            </fieldset>
+        </form>
+
+        <h2>Check Box Group: data-iconpos="right"</h2>
+        <form>
+            <fieldset class="ui-layout-match-parent" data-role="controlgroup" data-iconpos="right">
+                <input type="checkbox" name="checkbox-group-default" id="catalog-checkbox-default-right-1" value="on" checked="checked">
+                <label for="catalog-checkbox-default-right-1">Check Box 1R</label>
+                <input type="checkbox" name="checkbox-group-default" id="catalog-checkbox-default-right-2" value="off">
+                <label for="catalog-checkbox-default-right-2">Check Box 2R</label>
+                <input type="checkbox" name="checkbox-group-default" id="catalog-checkbox-default-right-3" value="off">
+                <label for="catalog-checkbox-default-right-3">Check Box 3R</label>
+            </fieldset>
+        </form>
+
+        <h2>Button Only:</h2>
+        <form>
+            <!--<fieldset data-role="controlgroup">-->
+            <label class="ui-btn-icon-notext ui-ripple-none">
+                Button Only 01
+                <span class="ui-ripple-center"></span>
+                <input type="checkbox" name="checkbox-only" id="catalog-checkbox-icon-01" checked="checked"/>
+            </label>
+            <label class="ui-btn-icon-notext ui-ripple-none" for="catalog-checkbox-icon-02">
+                Button Only 02
+                <span class="ui-ripple-center"></span>
+            </label>
+            <input type="checkbox" name="checkbox-only" id="catalog-checkbox-icon-02">
+            <div class="ui-checkbox">
+                <label for="catalog-checkbox-icon-03" class="ui-btn-icon-notext ui-btn ui-corner-all ui-btn-inherit ui-btn-icon-left ui-checkbox-off ui-ripple-none">
+                    Button Only 03<span class="ui-ripple-center"></span>
+                </label>
+                <input type="checkbox" name="checkbox-only" id="catalog-checkbox-icon-03" data-enhanced="true">
+            </div>
+            <!--</fieldset>-->
+        </form>
+
+        <h2>Check Group ALTERNATIVE:</h2>
+        <form class="ui-alt-icon">
+            <!-- class は 親要素に対して指定可能 -->
+            <fieldset class="ui-listitem-border-offset-icon ui-layout-match-parent" data-role="controlgroup">
+                <input type="checkbox" name="checkbox-group-default" id="catalog-checkbox-alt-default-1" value="on" checked="checked">
+                <label for="catalog-checkbox-alt-default-1">Check Box 1L</label>
+                <input type="checkbox" name="checkbox-group-default" id="catalog-checkbox-alt-default-2" value="off">
+                <label for="catalog-checkbox-alt-default-2">Check Box 2L</label>
+                <input type="checkbox" name="checkbox-group-default" id="catalog-checkbox-alt-default-3" value="off">
+                <label for="catalog-checkbox-alt-default-3">Check Box 3L</label>
+            </fieldset>
+        </form>
+
+        <h2>Check Box Group ALTERNATIVE: data-iconpos="right"</h2>
+        <form class="ui-alt-icon">
+            <fieldset class="ui-layout-match-parent" data-role="controlgroup" data-iconpos="right">
+                <input type="checkbox" name="checkbox-group-default" id="catalog-checkbox-alt-default-right-1" value="on" checked="checked">
+                <label for="catalog-checkbox-alt-default-right-1">Check Box 1R</label>
+                <input type="checkbox" name="checkbox-group-default" id="catalog-checkbox-alt-default-right-2" value="off">
+                <label for="catalog-checkbox-alt-default-right-2">Check Box 2R</label>
+                <input type="checkbox" name="checkbox-group-default" id="catalog-checkbox-alt-default-right-3" value="off">
+                <label for="catalog-checkbox-alt-default-right-3">Check Box 3R</label>
+            </fieldset>
+        </form>
+
+        <h2>Button Only ALTERNATIVE:</h2>
+        <form>
+            <!--<fieldset data-role="controlgroup">-->
+            <label class="ui-btn-icon-notext ui-ripple-none ui-alt-icon">
+                Button Only 01
+                <span class="ui-ripple-center"></span>
+                <input type="checkbox" name="checkbox-only" id="catalog-checkbox-alt-icon-01" checked="checked"/>
+            </label>
+            <label class="ui-btn-icon-notext ui-ripple-none ui-alt-icon" for="catalog-checkbox-alt-icon-02">
+                Button Only 02
+                <span class="ui-ripple-center"></span>
+            </label>
+            <input type="checkbox" name="checkbox-only" id="catalog-checkbox-alt-icon-02">
+            <div class="ui-checkbox">
+                <label for="catalog-checkbox-alt-icon-03" class="ui-btn-icon-notext ui-btn ui-corner-all ui-btn-inherit ui-btn-icon-left ui-checkbox-off ui-ripple-none ui-alt-icon">
+                    Button Only 03<span class="ui-ripple-center"></span>
+                </label>
+                <input type="checkbox" name="checkbox-only" id="catalog-checkbox-alt-icon-03" data-enhanced="true">
+            </div>
+            <!--</fieldset>-->
+        </form>
+
+        <h2>Segmented Control:</h2>
+        <form>
+            <fieldset class="ui-layout-match-parent" data-role="controlgroup" data-type="horizontal">
+                <div class="center-container ui-corner-all">
+                    <input type="checkbox" name="segmented-control-default" id="catalog-segment-default-1" value="on" checked="checked">
+                    <label for="catalog-segment-default-1">Seg 01</label>
+                    <input type="checkbox" name="segmented-control-default" id="catalog-segment-default-2" value="off">
+                    <label for="catalog-segment-default-2">Seg 02</label>
+                    <input type="checkbox" name="segmented-control-default" id="catalog-segment-default-3" value="off">
+                    <label for="catalog-segment-default-3">Seg 03</label>
+                </div>
+            </fieldset>
+        </form>
+
+        <div data-role="collapsible" class="ui-emphasis">
+            <h2>Check Box Buttons:</h2>
+
+            <h2>Basic markup:</h2>
+            <form>
+                <label>
+                    <input type="checkbox" name="checkbox-basic" id="catalog-checkbox-01" />Check Box 01
+                </label>
+                <label for="catalog-checkbox-02">Check Box 02</label>
+                <input type="checkbox" name="checkbox-basic" id="catalog-checkbox-02">
+            </form>
+
+            <h2>Vertical:</h2>
+            <form>
+                <fieldset class="ui-layout-match-parent ui-listitem-border-offset-icon" data-role="controlgroup">
+                    <input type="checkbox" name="checkbox-vertical" id="catalog-checkbox-03" value="on" checked="checked">
+                    <label for="catalog-checkbox-03">Check Box 03</label>
+                    <input type="checkbox" name="checkbox-vertical" id="catalog-checkbox-04" value="off">
+                    <label for="catalog-checkbox-04">Check Box 04</label>
+                    <input type="checkbox" name="checkbox-vertical" id="catalog-checkbox-05" value="off">
+                    <label for="catalog-checkbox-05">Check Box 05</label>
+                </fieldset>
+            </form>
+
+            <h2>Horizontal:</h2>
+            <form>
+                <fieldset data-role="controlgroup" data-type="horizontal">
+                    <input type="checkbox" name="checkbox-horizontal" id="catalog-checkbox-06" value="on" checked="checked">
+                    <label for="catalog-checkbox-06">CB 06</label>
+                    <input type="checkbox" name="checkbox-horizontal" id="catalog-checkbox-07" value="off">
+                    <label for="catalog-checkbox-07">CB 07</label>
+                    <input type="checkbox" name="checkbox-horizontal" id="catalog-checkbox-08" value="off">
+                    <label for="catalog-checkbox-08">CB 08</label>
+                </fieldset>
+            </form>
+
+            <h2>Icon Position:</h2>
+            <form>
+                <fieldset class="ui-layout-match-parent" data-role="controlgroup" data-iconpos="right">
+                    <input type="checkbox" name="checkbox-vertical-right" id="catalog-checkbox-09" value="on" checked="checked">
+                    <label for="catalog-checkbox-09">Check Box 09</label>
+                    <input type="checkbox" name="checkbox-vertical-right" id="catalog-checkbox-10" value="off">
+                    <label for="catalog-checkbox-10">Check Box 10</label>
+                    <input type="checkbox" name="checkbox-vertical-right" id="catalog-checkbox-11" value="off">
+                    <label for="catalog-checkbox-11">Check Box 11</label>
+                </fieldset>
+            </form>
+
+            <h2>Mini size:</h2>
+            <form>
+                <fieldset class="ui-layout-match-parent ui-listitem-border-offset-icon" data-role="controlgroup" data-mini="true">
+                    <input type="checkbox" name="checkbox-vertical-mini" id="catalog-checkbox-12" value="on" checked="checked">
+                    <label for="catalog-checkbox-12">Check Box 12</label>
+                    <input type="checkbox" name="checkbox-vertical-mini" id="catalog-checkbox-13" value="off">
+                    <label for="catalog-checkbox-13">Check Box 13</label>
+                    <input type="checkbox" name="checkbox-vertical-mini" id="catalog-checkbox-14" value="off">
+                    <label for="catalog-checkbox-14">Check Box 14</label>
+                </fieldset>
+            </form>
+
+            <h2>Disabled:</h2>
+            <form>
+                <label>
+                    <input type="checkbox" name="checkbox-disabled" id="catalog-checkbox-15" disabled="disabled" />Check Box 15
+                </label>
+                <label for="catalog-checkbox-16">Check Box 16</label>
+                <input type="checkbox" name="checkbox-disabled" id="catalog-checkbox-16" value="on" checked="checked" disabled="disabled">
+            </form>
+
+            <h2>Enhanced:</h2>
+            <div class="ui-checkbox">
+                <label for="catalog-checkbox-17" class="ui-btn ui-corner-all ui-btn-inherit ui-btn-icon-left ui-checkbox-off">Check Box 17</label>
+                <input type="checkbox" name="checkbox-enhanced" id="catalog-checkbox-17" data-enhanced="true">
+            </div>
+        </div>
+    </section>
+</article>

@@ -1,2 +1,2 @@
 ﻿export * from "./main";
-export as namespace Cafeteria;
+export as namespace LibDeviceConsole;

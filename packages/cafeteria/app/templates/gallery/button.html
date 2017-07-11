@@ -1,0 +1,242 @@
+﻿<article data-role="page" id="gallery-button" data-theme="cdp">
+    <header data-role="header" data-position="fixed" data-tap-toggle="false">
+        <button class="command-back ui-back-indicator ui-btn ui-btn-icon-left">Gallery</button>
+        <h1>Button</h1>
+    </header>
+    <section data-role="content">
+        <h3>REGULAR BUTTONS</h3>
+        <button class="ui-btn">Button</button>
+        <div class="ui-grid-a">
+            <div class="ui-block-a">
+                <button class="ui-btn ui-state-selected">Active</button>
+            </div>
+            <div class="ui-block-b">
+                <button class="ui-btn">Button</button>
+            </div>
+        </div>
+        <div class="ui-grid-a">
+            <div class="ui-block-a">
+                <a href="#" class="ui-btn ui-emphasis">Submit</a>
+            </div>
+            <div class="ui-block-b">
+                <a href="#" class="ui-btn ui-alt-emphasis">Cancel</a>
+            </div>
+        </div>
+
+        <hr />
+
+        <h3>ALTERNATIVE BUTTONS</h3>
+        <div class="ui-grid-b">
+            <div class="ui-block-a">
+                <a href="#" class="ui-btn ui-alt">Button</a>
+            </div>
+            <div class="ui-block-b">
+                <a href="#" class="ui-btn ui-alt">Button</a>
+            </div>
+            <div class="ui-block-c">
+                <a href="#" class="ui-btn ui-alt">Button</a>
+            </div>
+        </div>
+
+        <hr />
+
+        <h3>BIG BUTTONS</h3>
+        <div class="ui-grid-a ui-big">
+            <div class="ui-block-a">
+                <button class="ui-btn ui-state-selected ui-alt">Active</button>
+            </div>
+            <div class="ui-block-b">
+                <button class="ui-btn ui-alt">Button</button>
+            </div>
+        </div>
+        <div class="ui-grid-a">
+            <div class="ui-block-a">
+                <a href="#" class="ui-btn ui-emphasis ui-big">Submit</a>
+            </div>
+            <div class="ui-block-b">
+                <a href="#" class="ui-btn ui-alt-emphasis ui-big">Cancel</a>
+            </div>
+        </div>
+
+        <hr />
+
+        <h3>SKELETON: ui-btn ui-corner-all ui-btn-inline disabled</h3>
+        <button class="ui-btn ui-btn-inline">Test</button>
+        <button class="ui-btn ui-corner-all ui-btn-inline">?</button>
+        <button class="ui-btn ui-corner-all ui-btn-inline" disabled="">Disabled</button>
+        <div class="ui-input-btn ui-btn ui-corner-all ui-btn-inline">
+            Enhanced
+            <input type="button" data-enhanced="true" value="Enhanced">
+        </div>
+
+        <hr />
+
+        <div data-role="collapsible" class="ui-emphasis">
+            <h3>REGULAR (Buttons)</h3>
+            <h3>Basic markup: ui-btn</h3>
+            <button class="ui-btn">Button</button>
+            <a href="#" class="ui-btn">Anchor</a>
+
+            <h3>Corners: ui-corner-all</h3>
+            <button class="ui-btn ui-corner-all">Button</button>
+            <a href="#" class="ui-btn ui-corner-all">Anchor</a>
+            <a href="#" class="ui-btn ui-icon-delete ui-btn-icon-notext ui-corner-all">No text</a>
+
+            <h3>Shadow: ui-shadow</h3>
+            <button class="ui-btn ui-shadow">Button</button>
+            <a href="#" class="ui-btn ui-shadow">Anchor</a>
+
+            <h3>Inline: ui-btn-inline</h3>
+            <button class="ui-btn ui-btn-inline">Test</button>
+            <button class="ui-btn ui-btn-inline">?</button>
+            <button class="ui-btn ui-btn-inline" disabled="">Disabled</button>
+
+            <h3>Mini: ui-mini</h3>
+            <button class="ui-btn ui-mini">Button</button>
+            <a href="#" class="ui-btn ui-mini">Anchor</a>
+
+            <h3>Icons: ui-btn-icon-delete ui-btn-icon-left</h3>
+            <button class="ui-btn ui-icon-delete ui-btn-icon-left">Button</button>
+            <a href="#" class="ui-btn ui-icon-delete ui-btn-icon-left">Anchor</a>
+
+            <h3>Icon position: ui-icon-(left | right | top | bottom | notext)</h3>
+            <a href="#" class="ui-btn ui-icon-delete ui-btn-icon-left ">Left</a>
+            <a href="#" class="ui-btn ui-icon-delete ui-btn-icon-right ">Right</a>
+            <a href="#" class="ui-btn ui-icon-delete ui-btn-icon-top ">Top</a>
+            <a href="#" class="ui-btn ui-icon-delete ui-btn-icon-bottom ">Bottom</a>
+            <a href="#" class="ui-btn ui-icon-delete ui-btn-icon-notext ">Icon only</a>
+
+            <h3>Inline icon position: ui-btn-inline ui-icon-(left | right | top | bottom | notext)</h3>
+            <a href="#" class="ui-btn ui-btn-inline ui-icon-delete ui-btn-icon-left ">Left</a>
+            <a href="#" class="ui-btn ui-btn-inline ui-icon-delete ui-btn-icon-right ">Right</a>
+            <a href="#" class="ui-btn ui-btn-inline ui-icon-delete ui-btn-icon-top ">Top</a>
+            <a href="#" class="ui-btn ui-btn-inline ui-icon-delete ui-btn-icon-bottom ">Bottom</a>
+            <a href="#" class="ui-btn ui-btn-inline ui-icon-delete ui-btn-icon-notext ">Icon only</a>
+
+            <h3>Icon shadow: ui-shadow-icon</h3>
+            <button class="ui-btn ui-icon-delete ui-btn-icon-left ui-shadow-icon">Button</button>
+            <a href="#" class="ui-btn ui-icon-delete ui-btn-icon-left ui-shadow-icon">Anchor</a>
+
+            <h3>Disabled: disabled  ui-state-disabled</h3>
+            <button class="ui-btn" disabled="">Button</button>
+            <a href="#" class="ui-btn ui-state-disabled">Anchor</a>
+        </div>
+        <div data-role="collapsible" class="ui-alt ui-alt-icon ui-emphasis">
+            <h3>ALTERNATIVE (Button widget)</h3>
+            <h3>Default: button submit reset</h3>
+            <form>
+                <input type="button" value="Button">
+                <input type="submit" disabled="" value="Submit ([danger] need app restart)">
+                <input type="reset" value="Reset">
+            </form>
+
+            <h3>Enhanced: data-enhanced</h3>
+            <form>
+                <div class="ui-input-btn ui-btn ui-corner-all ui-shadow">
+                    Input value
+                    <input type="button" data-enhanced="true" value="Input value">
+                </div>
+            </form>
+
+            <h3>Corners: data-corners ui-corner-all ui-btn-icon-notext</h3>
+            <form>
+                <input type="button" value="Has corners by default">
+                <input type="button" data-corners="false" value="Unset corners">
+                <div class="ui-input-btn ui-btn ui-corner-all">
+                    Enhanced
+                    <input type="button" data-enhanced="true" value="Enhanced">
+                </div>
+                <input type="button" data-icon="delete" data-iconpos="notext" value="Icon only">
+                <div class="ui-input-btn ui-btn ui-icon-delete ui-btn-icon-notext ui-corner-all">
+                    Enhanced - Icon only
+                    <input type="button" data-enhanced="true" value="Enhanced - Icon only">
+                </div>
+            </form>
+
+            <h3>Shadow: data-shadow ui-shadow</h3>
+            <form>
+                <input type="button" value="Has shadow by default">
+                <input type="button" data-shadow="false" value="Unset shadow">
+                <div class="ui-input-btn ui-btn ui-shadow">
+                    Enhanced
+                    <input type="button" data-enhanced="true" value="Enhanced">
+                </div>
+            </form>
+
+
+            <h3>Inline: data-inline ui-btn-inline</h3>
+            <form>
+                <input type="button" data-inline="true" value="Input">
+                <div class="ui-input-btn ui-btn ui-btn-inline">
+                    Enhanced
+                    <input type="button" data-enhanced="true" value="Enhanced">
+                </div>
+            </form>
+
+            <h3>Mini: data-mini ui-mini</h3>
+            <form>
+                <input type="button" data-mini="true" value="Input">
+                <div class="ui-input-btn ui-btn ui-mini">
+                    Enhanced
+                    <input type="button" data-enhanced="true" value="Enhanced">
+                </div>
+            </form>
+
+            <h3>Icons: data-icon ui-btn-icon-delete ui-btn-icon-left</h3>
+            <form>
+                <input type="button" data-icon="delete" value="Input">
+                <div class="ui-input-btn ui-btn ui-icon-delete ui-btn-icon-left">
+                    Enhanced
+                    <input type="button" data-enhanced="true" value="Enhanced">
+                </div>
+            </form>
+
+            <h3>Icon position: data-iconpos ui-icon-(left | right | top | bottom | notext)</h3>
+            <form>
+                <input type="button" data-icon="delete" value="Left (default)">
+                <input type="button" data-icon="delete" data-iconpos="right" value="Right">
+                <input type="button" data-icon="delete" data-iconpos="top" value="Top">
+                <input type="button" data-icon="delete" data-iconpos="bottom" value="Bottom">
+                <input type="button" data-icon="delete" data-iconpos="notext" value="Icon only">
+                <div class="ui-input-btn ui-btn ui-icon-delete ui-btn-icon-left">
+                    Enhanced - Left
+                    <input type="button" data-enhanced="true" value="Enhanced - Left">
+                </div>
+                <div class="ui-input-btn ui-btn ui-icon-delete ui-btn-icon-right">
+                    Enhanced - Right
+                    <input type="button" data-enhanced="true" value="Enhanced - Right">
+                </div>
+                <div class="ui-input-btn ui-btn ui-icon-delete ui-btn-icon-top">
+                    Enhanced - Top
+                    <input type="button" data-enhanced="true" value="Enhanced - Top">
+                </div>
+                <div class="ui-input-btn ui-btn ui-icon-delete ui-btn-icon-bottom">
+                    Enhanced - Bottom
+                    <input type="button" data-enhanced="true" value="Enhanced - Bottom">
+                </div>
+                <div class="ui-input-btn ui-btn ui-icon-delete ui-btn-icon-notext">
+                    Enhanced - Icon Only
+                    <input type="button" data-enhanced="true" value="Enhanced - Icon Only">
+                </div>
+            </form>
+
+            <h3>Icon shadow: data-iconshadow ui-shadow-icon</h3>
+            <form>
+                <input type="button" data-icon="delete" data-iconshadow="true" value="Input">
+                <div class="ui-input-btn ui-btn ui-icon-delete ui-btn-icon-left ui-shadow-icon">
+                    Enhanced
+                    <input type="button" data-enhanced="true" value="Enhanced">
+                </div>
+            </form>
+
+            <h3>Disabled: disabled ui-state-disabled</h3>
+            <form>
+                <input type="button" disabled="" value="Input button with disabled attribute">
+                <div class="ui-input-btn ui-btn ui-state-disabled">
+                    Enhanced
+                    <input type="button" data-enhanced="true" value="Enhanced">
+                </div>
+            </form>
+        </div>
+    </section>
+</article>

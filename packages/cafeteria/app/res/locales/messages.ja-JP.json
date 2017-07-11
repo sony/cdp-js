@@ -32,6 +32,7 @@
         "root": {
             "title": "サンプル実装例",
             "description": "サンプル実装例の入り口",
+            "gallery": "UI ギャラリー",
             "links": "リンクの実装例",
             "views": "View の実装例",
             "listviews": "仮想 List View の実装例",
@@ -49,6 +50,20 @@
         "labelPerfomance": "パフォーマンスログ:",
         "labelDeviceConsole": "コンソール:",
         "labelPlatformTheme": "プラットフォームテーマ:"
+    },
+    "gallery": {
+        "labelPlatformTheme": "プラットフォームテーマ:",
+        "spinner": {
+            "normalLabel": "標準:",
+            "bigLabel": "大:",
+            "colorLabel": "色指定:",
+            "bigColorLabel": "大, 色指定:"
+        },
+        "dialog": {
+            "messageText": "こんにちは。世界。",
+            "confirmText": "今日はよい天気ですね?",
+            "promptText": "今日の天気は何ですか?"
+        }
     },
     "EOF": "EOF"
 }

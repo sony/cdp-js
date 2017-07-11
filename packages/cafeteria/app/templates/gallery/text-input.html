@@ -1,0 +1,274 @@
+﻿<article data-role="page" id="gallery-text-input" data-theme="cdp">
+    <header data-role="header" data-position="fixed" data-tap-toggle="false">
+        <button class="command-back ui-back-indicator ui-btn ui-btn-icon-left">Gallery</button>
+        <h1>Text Input</h1>
+    </header>
+    <section data-role="content">
+        <h2>Demo:</h2>
+        <br/>
+        <form>
+            <label for="text-demo-01" class="ui-float-label">float label</label>
+            <input type="text" name="text-demo-01" id="text-demo-01" placeholder="float label">
+            <label for="text-demo-02" class="ui-float-label">float label</label>
+            <input type="text" data-clear-btn="true" name="text-demo-02" id="text-demo-02" placeholder="float label">
+            <label for="text-demo-02a" class="ui-hidden-accessible">no label float</label>
+            <input type="text" data-clear-btn="true" name="text-demo-02" id="text-demo-02a" placeholder="no label float">
+            <label for="text-demo-03" class="ui-float-label">disabled</label>
+            <input type="text" disabled="disabled" data-clear-btn="true" name="text-demo-03" id="text-demo-03" placeholder="disabled">
+        </form>
+
+        <hr class="ui-separator">
+
+        <form>
+            <label for="text-01" class="ui-float-label">Text input:</label>
+            <input type="text" name="text-01" id="text-01">
+            <label for="text-02">Text input: data-clear-btn="true"</label>
+            <input type="text" data-clear-btn="true" name="text-02" id="text-02" data-wrapper-class="hogehoge">
+        </form>
+
+        <form>
+            <label for="search-01">Search:</label>
+            <input type="search" name="search-01" id="search-01">
+            <label for="search-02" class="ui-float-label">Search (Placeholder):</label>
+            <input type="search" name="search-02" id="search-02" placeholder="Placeholder">
+        </form>
+
+        <form>
+            <label for="textarea-01" class="ui-float-label">Textarea:</label>
+            <textarea name="textarea-01" id="textarea-01" placeholder="Text Placeholer"></textarea>
+        </form>
+
+        <div data-role="collapsible" class="ui-emphasis">
+            <h2>Text Inputs:</h2>
+
+            <h2>Number:</h2>
+            <form>
+                <label for="number-01">Number: data-clear-btn="false"</label>
+                <input type="number" data-clear-btn="false" name="number-01" id="number-01">
+                <label for="number-02">Number: data-clear-btn="true"</label>
+                <input type="number" data-clear-btn="true" name="number-02" id="number-02">
+                <label for="number-03">Number + pattern: data-clear-btn="false"</label>
+                <input type="number" data-clear-btn="false" name="number-03" pattern="[0-9]*" id="number-03">
+                <label for="number-04">Number + pattern: data-clear-btn="true"</label>
+                <input type="number" data-clear-btn="true" name="number-04" pattern="[0-9]*" id="number-04">
+            </form>
+
+            <h2>Date:</h2>
+            <form>
+                <label for="date-01">Date: data-clear-btn="false"</label>
+                <input type="date" data-clear-btn="false" name="date-01" id="date-01">
+                <label for="date-02">Date: data-clear-btn="true"</label>
+                <input type="date" data-clear-btn="true" name="date-02" id="date-02">
+            </form>
+
+
+            <h2>Month:</h2>
+            <form>
+                <label for="month-01">Month: data-clear-btn="false"</label>
+                <input type="month" data-clear-btn="false" name="month-01" id="month-01">
+                <label for="month-02">Month: data-clear-btn="true"</label>
+                <input type="month" data-clear-btn="true" name="month-02" id="month-02">
+            </form>
+
+            <h2>Week:</h2>
+            <form>
+                <label for="week-01">Week: data-clear-btn="false"</label>
+                <input type="week" data-clear-btn="false" name="week-01" id="week-01">
+                <label for="week-02">Week: data-clear-btn="true"</label>
+                <input type="week" data-clear-btn="true" name="week-02" id="week-02">
+            </form>
+
+            <h2>Time:</h2>
+            <form>
+                <label for="time-01">Time: data-clear-btn="false"</label>
+                <input type="time" data-clear-btn="false" name="time-01" id="time-01">
+                <label for="time-02">Time: data-clear-btn="true"</label>
+                <input type="time" data-clear-btn="true" name="time-02" id="time-02">
+            </form>
+
+            <h2>Datetime:</h2>
+            <form>
+                <label for="datetime-01">Datetime: data-clear-btn="false"</label>
+                <input type="datetime" data-clear-btn="false" name="datetime-01" id="datetime-01">
+                <label for="datetime-02">Datetime: data-clear-btn="true"</label>
+                <input type="datetime" data-clear-btn="true" name="datetime-02" id="datetime-02">
+                <label for="datetime-03">Datetime-local: data-clear-btn="false"</label>
+                <input type="datetime-local" data-clear-btn="false" name="datetime-03" id="datetime-03">
+                <label for="datetime-04">Datetime-local: data-clear-btn="true"</label>
+                <input type="datetime-local" data-clear-btn="true" name="datetime-04" id="datetime-04">
+            </form>
+
+            <h2>Telephone:</h2>
+            <form>
+                <label for="tel-01">Tel: data-clear-btn="false"</label>
+                <input type="tel" data-clear-btn="false" name="tel-01" id="tel-01">
+                <label for="tel-02">Tel: data-clear-btn="true"</label>
+                <input type="tel" data-clear-btn="true" name="tel-02" id="tel-02">
+            </form>
+
+            <h2>Email:</h2>
+            <form>
+                <label for="email-01">Email: data-clear-btn="false"</label>
+                <input type="email" data-clear-btn="false" name="email-01" id="email-01">
+                <label for="email-02">Email: data-clear-btn="true"</label>
+                <input type="email" data-clear-btn="true" name="email-02" id="email-02">
+            </form>
+
+            <h2>URL:</h2>
+            <form>
+                <label for="url-01">Url: data-clear-btn="false"</label>
+                <input type="url" data-clear-btn="false" name="url-01" id="url-01">
+                <label for="url-02">Url: data-clear-btn="true"</label>
+                <input type="url" data-clear-btn="true" name="url-02" id="url-02">
+            </form>
+
+            <h2>Password:</h2>
+            <form>
+                <label for="password-01">Password: data-clear-btn="false"</label>
+                <input type="password" data-clear-btn="false" name="password-01" id="password-01">
+                <label for="password-02">Password: data-clear-btn="true"</label>
+                <input type="password" data-clear-btn="true" name="password-02" id="password-02">
+            </form>
+
+            <h2>Color:</h2>
+            <form>
+                <label for="color-01">Color: data-clear-btn="false"</label>
+                <input type="color" data-clear-btn="false" name="color-01" id="color-01">
+                <label for="color-02">Color: data-clear-btn="true"</label>
+                <input type="color" data-clear-btn="true" name="color-02" id="color-02">
+            </form>
+
+            <h2>File:</h2>
+            <form>
+                <label for="file-01">File: data-clear-btn="false"</label>
+                <input type="file" data-clear-btn="false" name="file-01" id="file-01">
+                <label for="file-02">File: data-clear-btn="true"</label>
+                <input type="file" data-clear-btn="true" name="file-02" id="file-02">
+            </form>
+
+            <h2>Mini:</h2>
+            <form>
+                <label for="text-04">Text input:</label>
+                <input type="text" data-mini="true" name="text-04" id="text-04">
+                <label for="text-05">Text input: data-clear-btn="true"</label>
+                <input type="text" data-mini="true" data-clear-btn="true" name="text-05" id="text-05">
+                <label for="search-03">Search:</label>
+                <input type="search" data-mini="true" name="search-03" id="search-03">
+                <label for="textarea-02">Textarea:</label>
+                <textarea data-mini="true" cols="40" raws="8" name="textarea-02" id="textarea-02"></textarea>
+            </form>
+
+
+            <h2>Floating Label:</h2>
+            <!-- class は 親要素に対して指定可能 -->
+            <form class="ui-float-label">
+                <label for="text-06">Text input:</label>
+                <input type="text" name="text-06" id="text-06" placeholder="Placeholder">
+                <label for="text-07">Text input: data-clear-btn="true"</label>
+                <input type="text" data-clear-btn="true" name="text-07" id="text-07" placeholder="Placeholder">
+                <label for="search-04">Search:</label>
+                <input type="search" name="search-04" id="search-04" placeholder="Placeholder">
+                <label for="textarea-03">Textarea:</label>
+                <textarea cols="40" raws="8" name="textarea-03" id="textarea-03" placeholder="Placeholder"></textarea>
+            </form>
+
+
+            <h2>Value/Text:</h2>
+            <form>
+                <label for="text-08">Text input:</label>
+                <input type="text" name="text-08" id="text-08" value="Value">
+                <label for="text-09">Text input: data-clear-btn="true"</label>
+                <input type="text" data-clear-btn="true" name="text-09" id="text-09" value="Value">
+                <label for="search-05">Search:</label>
+                <input type="search" name="search-05" id="search-05" value="Value">
+                <label for="textarea-04">Textarea:</label>
+                <textarea cols="40" raws="8" name="textarea-04" id="textarea-04">Text</textarea>
+            </form>
+
+
+            <h2>Label Hidden:</h2>
+            <form>
+                <label for="text-10" class="ui-hidden-accessible">Text input:</label>
+                <input type="text" name="text-10" id="text-10">
+                <label for="text-11" class="ui-hidden-accessible">Text input: data-clear-btn="true"</label>
+                <input type="text" data-clear-btn="true" name="text-11" id="text-11">
+                <label for="search-06" class="ui-hidden-accessible">Search:</label>
+                <input type="search" name="search-06" id="search-06">
+                <label for="textarea-05" class="ui-hidden-accessible">Textarea:</label>
+                <textarea cols="40" raws="8" name="textarea-05" id="textarea-05"></textarea>
+            </form>
+
+            <h2>Disabled:</h2>
+            <form>
+                <label for="text-12">Text input:</label>
+                <input type="text" disabled="disabled" name="text-12" id="text-12">
+                <label for="text-13">Text input: data-clear-btn="true"</label>
+                <input type="text" disabled="disabled" data-clear-btn="true" name="text-13" id="text-13" value="Value">
+                <label for="search-07">Search:</label>
+                <input type="search" disabled="disabled" name="search-07" id="search-07">
+                <label for="textarea-06">Textarea:</label>
+                <textarea disabled="disabled" cols="40" raws="8" name="textarea-06" id="textarea-06">Text</textarea>
+            </form>
+
+
+            <h2>Enhanced:</h2>
+            <form>
+                <label for="text-enhanced">Text input:</label>
+                <div class="ui-input-text ui-body-inherit ui-corner-all ui-shadow-inset ui-input-has-clear">
+                    <input type="text" data-enhanced="true" data-clear-btn="true" name="text-enhanced" id="text-enhanced">
+                    <a href="#" class="ui-input-clear ui-btn ui-icon-delete ui-btn-icon-notext ui-corner-all ui-input-clear-hidden" title="Clear text">Clear text</a>
+                </div>
+                <label for="search-enhanced">Search:</label>
+                <div class="ui-input-search ui-body-inherit ui-corner-all ui-shadow-inset ui-input-has-clear">
+                    <input type="text" data-type="search" data-enhanced="true" data-clear-btn="true" name="search-enhanced" id="search-enhanced">
+                    <a href="#" class="ui-input-clear ui-btn ui-icon-delete ui-btn-icon-notext ui-corner-all ui-input-clear-hidden" title="Clear text">Clear text</a>
+                </div>
+                <label for="textarea-enhanced">Textarea:</label>
+                <textarea name="textarea-enhanced" id="textarea-enhanced" data-enhanced="true" class="ui-input-text ui-shadow-inset ui-body-inherit ui-corner-all"></textarea>
+            </form>
+
+
+            <h2>Fieldcontain:</h2>
+            <!-- class は 親要素に対して指定可能 -->
+            <form class="ui-float-label">
+                <div class="ui-field-contain">
+                    <label for="text-13b">Text input:</label>
+                    <input type="text" name="text-13b" id="text-13b" placeholder="Placeholder">
+                </div>
+                <div class="ui-field-contain">
+                    <label for="text-14">Text input: data-clear-btn="true"</label>
+                    <input type="text" data-clear-btn="true" name="text-14" id="text-14" placeholder="Placeholder">
+                </div>
+                <div class="ui-field-contain">
+                    <label for="search-08">Search:</label>
+                    <input type="search" name="search-08" id="search-08" placeholder="Placeholder">
+                </div>
+                <div class="ui-field-contain">
+                    <label for="textarea-09">Textarea:</label>
+                    <textarea cols="40" raws="8" name="textarea-09" id="textarea-09" placeholder="Placeholder"></textarea>
+                </div>
+            </form>
+
+            <h2>Fieldcontain, mini sized:</h2>
+            <!-- class は 親要素に対して指定可能 -->
+            <form class="ui-float-label">
+                <div class="ui-field-contain">
+                    <label for="text-15" class="ui-mini">Text input:</label>
+                    <input type="text" data-mini="true" name="text-15" id="text-15" placeholder="Placeholder">
+                </div>
+                <div class="ui-field-contain">
+                    <label for="text-16" class="ui-mini">Text input: data-clear-btn="true"</label>
+                    <input type="text" data-mini="true" data-clear-btn="true" name="text-16" id="text-16" placeholder="Placeholder">
+                </div>
+                <div class="ui-field-contain">
+                    <label for="search-09" class="ui-mini">Search:</label>
+                    <input type="search" data-mini="true" name="search-09" id="search-09" placeholder="Placeholder">
+                </div>
+                <div class="ui-field-contain">
+                    <label for="textarea-10" class="ui-mini">Textarea:</label>
+                    <textarea data-mini="true" cols="40" raws="8" name="textarea-10" id="textarea-10" placeholder="Placeholder"></textarea>
+                </div>
+            </form>
+        </div>
+    </section>
+</article>

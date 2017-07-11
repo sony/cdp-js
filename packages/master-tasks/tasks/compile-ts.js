@@ -104,7 +104,7 @@ function resolveBuildDependencies(target) {
     const code = config_ts.match(/\/\/ >>>LIB_DEPENDENCIES[\s\S]*?\/\/ <<<LIB_DEPENDENCIES<<</);
     if (code) {
         const regexp_depends = new RegExp('assign_' + target + '\\([\\s\\S]*?\\)', 'gm');
-        const regexp_module = new RegExp('assign_' + target + '\\(([a-zA-Z0-9_-]+)+');
+        const regexp_module = new RegExp('assign_' + target + '\\(([.a-zA-Z0-9_-]+)+');
         const depends = code[0].match(regexp_depends);
         if (depends) {
             depends.forEach((info) => {
