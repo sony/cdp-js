@@ -39,14 +39,14 @@ class DialogPageView extends BasePageView {
 
     //! Toast 表示
     private onShowToast(event: JQuery.Event): void {
-        Toast.show("Toast\nこんにちは。世界。");
+        Toast.show("Toast\n" + $.t("gallery.dialog.messageText"));
     }
 
     //! Alert 表示
     private onShowAlert(event: JQuery.Event): void {
         event.preventDefault();
 
-        alert("こんにちは。世界。", {
+        alert($.t("gallery.dialog.messageText"), {
             title: "ALERT",
         })
             .on("popupafterclose", (ev: JQuery.Event) => {
@@ -57,7 +57,7 @@ class DialogPageView extends BasePageView {
     //! Confirm 表示
     private onShowConfirm(event: JQuery.Event): void {
         event.preventDefault();
-        confirm("今日はよい天気ですね?", {
+        confirm($.t("gallery.dialog.confirmText"), {
             title: "CONFIRM",
         })
             .on("vclick", "#dlg-btn-positive", (ev: JQuery.Event) => {
@@ -72,7 +72,7 @@ class DialogPageView extends BasePageView {
     //! Prompt 表示
     private onShowPrompt(event: JQuery.Event): void {
         event.preventDefault();
-        prompt("今日の天気は何ですか?", {
+        prompt($.t("gallery.dialog.promptText"), {
             title: "PROMPT",
         })
             .on("promptok", (ev: JQuery.Event, input: string) => {

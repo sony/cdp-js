@@ -51,5 +51,19 @@
         "labelDeviceConsole": "Console:",
         "labelPlatformTheme": "Platform Theme:"
     },
+    "gallery": {
+        "labelPlatformTheme": "プラットフォームテーマ:",
+        "spinner": {
+            "normalLabel": "Normal:",
+            "bigLabel": "Big:",
+            "colorLabel": "Specified Color:",
+            "bigColorLabel": "Big, Specified Color:"
+        },
+        "dialog": {
+            "messageText": "Hello. World.",
+            "confirmText": "Is it fine today?",
+            "promptText": "What is today's weather?"
+        }
+    },
     "EOF": "EOF"
 }

@@ -104,7 +104,9 @@ export class BasePageView extends PageView {
     //! jQM event: "pagebeforecreate" に対応
     onPageBeforeCreate(event: JQueryEventObject): void {
         super.onPageBeforeCreate(event);
-        $(this._themeSwitchTemplate()).prependTo(this.$page.find("[data-role=content]"));
+        $(this._themeSwitchTemplate())
+            .localize()
+            .prependTo(this.$page.find("[data-role=content]"));
     }
 
     //! jQM event: "pagecreate" (旧:"pageinit") に対応

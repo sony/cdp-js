@@ -171,7 +171,7 @@ interface JQueryStatic {
 }
 
 interface JQuery {
-    localize: (options?: CDP.I18N.TranslationOptions) => void;
+    localize: (options?: CDP.I18N.TranslationOptions) => JQuery;
 }
 
 ///////////////////////////////////////////////////////////////////////

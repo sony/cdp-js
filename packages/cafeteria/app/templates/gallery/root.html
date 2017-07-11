@@ -1,6 +1,6 @@
 ﻿<article data-role="page" id="gallery-root" data-theme="cdp">
     <header data-role="header" data-position="fixed" data-tap-toggle="false">
-        <button class="command-back ui-back-indicator ui-btn ui-btn-icon-left">戻る</button>
+        <button class="command-back ui-back-indicator ui-btn ui-btn-icon-left" data-i18n="app.common.back">app.common.back</button>
         <h1>Gallery</h1>
     </header>
     <section data-role="content">
@@ -16,24 +16,4 @@
             <li><a href="#gallery-dialog" class="ui-btn ui-btn-icon-right ui-icon-carat-r" data-transition="platform-default">Dialog</a></li>
         </ul>
     </section>
-</article>
-
-<article>
-    <script type="text/template" id="template-gallery-theme-switcher">
-        <div class="theme-switcher switcher-adjust">
-            <h3>Platform テーマ切り替え</h3>
-            <form>
-                <fieldset class="ui-layout-match-parent" data-role="controlgroup" data-type="horizontal">
-                    <div class="ui-layout-center-container ui-alt">
-                        <input type="radio" name="segmented-control-platform-theme" id="gallery-theme-ios" value="ios" checked="checked">
-                        <label for="gallery-theme-ios">iOS</label>
-                        <input type="radio" name="segmented-control-platform-theme" id="gallery-theme-android" value="android">
-                        <label for="gallery-theme-android">Android</label>
-                        <input type="radio" name="segmented-control-platform-theme" id="gallery-theme-default" value="default">
-                        <label for="gallery-theme-default">Default</label>
-                    </div>
-                </fieldset>
-            </form>
-        </div>
-    </script>
 </article>
