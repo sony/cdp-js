@@ -252,4 +252,20 @@
             }
         }
     }
+
+    // thumbnail listview
+    .ui-listview .ui-li-has-thumb {
+        img.ui-li-thumb {
+            left:       16px;
+            top:        50%;
+            margin-top: -1.8em;
+            max-height: 4.7em;
+            max-width:  4.7em;
+        }
+        &.ui-first-child, &.ui-last-child {
+            img.ui-li-thumb {
+               border-radius: initial;
+            }
+        }
+    }
 }

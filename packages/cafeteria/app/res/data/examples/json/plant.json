@@ -1,0 +1,22 @@
+﻿{
+	"pictures": [
+        {
+			"name": "菊",
+			"kind": "plant",
+			"src": "/res/data/examples/contents/plant/chrysanthemum.jpg",
+			"desc": "食べられることもあります。"
+		},
+        {
+			"name": "アジサイ",
+			"kind": "plant",
+			"src": "/res/data/examples/contents/plant/hydrangeas.jpg",
+			"desc": "雨のイメージもあります。"
+		},
+        {
+			"name": "チューリップ",
+			"kind": "plant",
+			"src": "/res/data/examples/contents/plant/tulips.jpg",
+			"desc": "最初に描く花の絵。"
+		}
+	]
+}

@@ -115,8 +115,9 @@ namespace CDP.Framework {
      * @brief 初期化オプション
      * @private
      */
-    interface InitOptions {
-        anchorVclick?: boolean;    //!< 暗黙の anchor vclick をサポート
+    export interface InitOptions {
+        anchorVclick?: boolean;         // 暗黙の anchor vclick をサポート
+        firstPageTransition?: boolean;  // 初期ページトランジション
     }
 
     /**
@@ -203,6 +204,7 @@ namespace CDP.Framework {
         private static s_lastNavigateInfo: NavigateInfo = {};
         private static s_lastClickedTime: number = null;
         private static s_lastIntent: Intent = {};
+        private static s_firstChangePage: boolean = true;
         private static s_loadUrl: (fragment: string) => boolean = null;
         private static s_back: () => void = null;
         private static DELAY_TIME = 200;        // TBD: 暫定値
@@ -214,6 +216,7 @@ namespace CDP.Framework {
 
         private static s_defaultInitOptions: InitOptions = {
             anchorVclick: true,
+            firstPageTransition: false,
         };
 
         private static s_defaultNavigateOptions: NavigateOptions = {
@@ -238,7 +241,7 @@ namespace CDP.Framework {
          * @param  options {Object} [in] オプション
          * @return {Boolean} 成否
          */
-        public static initialize(options: any): boolean {
+        public static initialize(options: InitOptions): boolean {
             const $body = $("body");
             if (!!Router.s_router) {
                 console.warn(TAG + "logic error. initialize call twice.");
@@ -246,6 +249,9 @@ namespace CDP.Framework {
             }
 
             Router.s_initOptions = $.extend({}, Router.s_defaultInitOptions, options);
+            if (Router.s_initOptions.firstPageTransition) {
+                Router.s_firstChangePage = false;
+            }
 
             // Backbone.Router が、route を解決できなかった場合にも通知を捕捉するためのコールバックを設定
             Router.s_loadUrl = _.bind(Backbone.history.loadUrl, Backbone.history);
@@ -1291,10 +1297,21 @@ namespace CDP.Framework {
 
                     Router.treatUrlHistory();
 
+                    const pageTransition = (() => {
+                        if (Router.s_lastNavigateInfo.transition) {
+                            return Router.s_lastNavigateInfo.transition;
+                        } else if (Router.s_firstChangePage) {
+                            Router.s_firstChangePage = false;
+                            return "none";  // splash からの遷移
+                        } else {
+                            return $.mobile.defaultPageTransition;
+                        }
+                    })();
+
                     $.mobile.changePage(Framework.toUrl(path), {
                         showLoadMsg: false,
                         allowSamePageTransition: true,
-                        transition: Router.s_lastNavigateInfo.transition || "none",
+                        transition: pageTransition,
                         reverse: Router.s_lastNavigateInfo.reverse,
                         fromHashChange: !Router.s_lastNavigateInfo.positiveNavigate,
                         changeHash: !Router.s_lastNavigateInfo.noHashChange,

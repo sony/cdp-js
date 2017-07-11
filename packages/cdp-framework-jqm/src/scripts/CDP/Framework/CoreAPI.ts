@@ -98,6 +98,7 @@ namespace CDP {
             applyJQueryMobileConfig?: () => void;
             applyPatch?: boolean;
             anchorVclick?: boolean;
+            firstPageTransition?: boolean;
         }
 
         interface OrientationListenerHolder {
@@ -156,7 +157,10 @@ namespace CDP {
                                 ;
 
                                 // Router の初期化
-                                if (Router.initialize({ anchorVclick: config.anchorVclick, })) {
+                                if (Router.initialize({
+                                    anchorVclick: config.anchorVclick,
+                                    firstPageTransition: config.firstPageTransition,
+                                })) {
                                     _dfInitialize.resolve();
                                 } else {
                                     console.error(TAG + "error. CDP.Framework.Router.initialize() failed.");
@@ -385,7 +389,8 @@ namespace CDP {
 
                 jquerymobile: {
                     allowCrossDomainPages: true,
-                    defaultPageTransition: "none",
+                    defaultPageTransition: "platform-default",
+                    defaultDialogTransition: "platform-default",
                     hashListeningEnabled: false,
                     pushStateEnabled: false,
                 },
@@ -397,6 +402,7 @@ namespace CDP {
 
                 applyPatch: true,
                 anchorVclick: true,
+                firstPageTransition: false,
 
                 applyJQueryConfig: function () {
                     $.ajaxSetup(this.jquery.ajaxSetup);

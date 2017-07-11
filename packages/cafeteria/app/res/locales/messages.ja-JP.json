@@ -65,5 +65,24 @@
             "promptText": "今日の天気は何ですか?"
         }
     },
+    "views": {
+        "title": "View の実装例",
+        "description": "View のサンプル実装例",
+        "operation": "ListView 操作",
+        "kind": "種類",
+        "animal": "動物",
+        "plant": "植物",
+        "landscape": "風景",
+        "addition": "追加",
+        "deletion": "削除",
+        "add": "add()",
+        "fetch": "fetch()",
+        "remove": "remove()",
+        "reset": "reset()",
+        "backbone": "Backbone.View class サンプル",
+        "page": "Page class サンプル",
+        "pageowner": "Page + Backbone.View class サンプル",
+        "pageview": "PageView class サンプル"
+    },
     "EOF": "EOF"
 }
