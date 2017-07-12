@@ -36,7 +36,7 @@ If you want to use newest version, you can build the modules yourself as follow 
         root/
             dist/
                 cdp.promise.js             js modules for dev.
-                cdp.promise.min.js         js modules for release with versioned.
+                cdp.promise.min.js         js modules for production.
                 cdp.promise.min.js.map     js map file.
                 @types/
                      cdp.promise.d.ts      d.ts file for this module.

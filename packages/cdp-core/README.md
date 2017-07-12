@@ -36,7 +36,7 @@ If you want to use newest version, you can build the modules yourself as follow 
         root/
             dist/
                 cdp.core.js             js modules for dev.
-                cdp.core.min.js         js modules for release with versioned.
+                cdp.core.min.js         js modules for production.
                 cdp.core.min.js.map     js map file.
                 @types/
                      cdp.core.d.ts      d.ts file for this module.

@@ -91,6 +91,6 @@
     "typedoc": "^0.7.1",
     "typescript": "^2.4.1",
     "uglify-js": "^3.0.24",
-    "webpack": "^3.1.0"
+    "webpack": "^3.2.0"
   }
 }

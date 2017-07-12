@@ -71,9 +71,11 @@
 
 // ページ外に配置される共通ヘッダのベース部品. transition 中のデザイン対応用定義
 .ui-header-base {
-    position:   fixed;
-    width:      100%;
-    height:     $metrics-header-height;
-    top:        0;
-    border:     none;
+    position:       fixed;
+    width:          100%;
+    height:         $metrics-header-height;
+    top:            0;
+    border:         none;
+    pointer-events: none;
+    z-index:        20; // transition 中(.slide.in) の z-index より大きくする.
 }

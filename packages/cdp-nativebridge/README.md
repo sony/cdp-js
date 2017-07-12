@@ -36,7 +36,7 @@ If you want to use newest version, you can build the modules yourself as follow 
         root/
             dist/
                 cdp.nativebridge.js             js modules for dev.
-                cdp.nativebridge.min.js         js modules for release with versioned.
+                cdp.nativebridge.min.js         js modules for production.
                 cdp.nativebridge.min.js.map     js map file.
                 @types/
                      cdp.nativebridge.d.ts      d.ts file for this module.

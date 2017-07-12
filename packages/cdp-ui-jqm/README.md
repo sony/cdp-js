@@ -36,7 +36,7 @@ If you want to use newest version, you can build the modules yourself as follow 
         root/
             dist/
                 cdp.ui.jqm.js             js modules for dev.
-                cdp.ui.jqm.min.js         js modules for release with versioned.
+                cdp.ui.jqm.min.js         js modules for production.
                 cdp.ui.jqm.min.js.map     js map file.
                 @types/
                      cdp.ui.jqm.d.ts      d.ts file for this module.
