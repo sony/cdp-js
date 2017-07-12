@@ -36,7 +36,7 @@ If you want to use newest version, you can build the modules yourself as follow 
         root/
             dist/
                 cdp.lazyload.js             js modules for dev.
-                cdp.lazyload.min.js         js modules for release with versioned.
+                cdp.lazyload.min.js         js modules for production.
                 cdp.lazyload.min.js.map     js map file.
                 @types/
                      cdp.lazyload.d.ts      d.ts file for this module.

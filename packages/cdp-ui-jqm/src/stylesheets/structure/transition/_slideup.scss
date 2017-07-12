@@ -1,21 +1,24 @@
 ﻿/*** transition : jqm slideup override ***************************************************/
+/*** need: simultaneous transition settings **********************************************/
 
 @import "../_mixins.scss";
 
 .slideup.out {
-    @include transition-no-reaction;
+    animation-duration: 250ms;
+    z-index: 0;
+    &.reverse {
+        z-index: 10;
+    }
 }
 
 .slideup.in.reverse {
-    @include transition-no-reaction;
+    z-index: 10;
+    &.reverse {
+        animation-duration: 200ms;
+        z-index: 0;
+    }
 }
 
-.ui-mobile-viewport-transitioning.viewport-slideup {
-    .ui-page {
-        display: block;
-        z-index: 0;
-        &.ui-page-active {
-            z-index: 1000;
-        }
-    }
+.slideup.out, .slideup.in.reverse {
+    animation-name: transition-no-effect;
 }

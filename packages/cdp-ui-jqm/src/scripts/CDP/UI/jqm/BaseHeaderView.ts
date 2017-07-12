@@ -134,11 +134,14 @@
 
         //! 共通ヘッダのベースを破棄
         private releaseHeaderBase(): JQuery {
-            if (null != BaseHeaderView.s_$headerBase) {
-                BaseHeaderView.s_refCount--;
-                if (0 === BaseHeaderView.s_refCount) {
-                    BaseHeaderView.s_$headerBase.remove();
-                    BaseHeaderView.s_$headerBase = null;
+            // 固定ヘッダ時に参照カウントを管理
+            if ("fixed" === this._owner.$header.jqmData("position")) {
+                if (null != BaseHeaderView.s_$headerBase) {
+                    BaseHeaderView.s_refCount--;
+                    if (0 === BaseHeaderView.s_refCount) {
+                        BaseHeaderView.s_$headerBase.remove();
+                        BaseHeaderView.s_$headerBase = null;
+                    }
                 }
             }
             return BaseHeaderView.s_$headerBase;

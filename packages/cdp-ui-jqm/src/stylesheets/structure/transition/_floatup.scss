@@ -1,4 +1,5 @@
 ﻿/*** transition : floatup ***************************************************/
+/*** need: simultaneous transition settings *********************************/
 
 @import "../_mixins.scss";
 @import "_constant.scss";
@@ -28,27 +29,25 @@
 }
 
 .floatup.out {
-    @include transition-no-reaction;
+    z-index: 0;
+    &.reverse {
+        z-index: 10;
+    }
 }
 
 .floatup.in {
+    z-index: 10;
     animation: floatupin #{$transition-floatup-duration} forwards;
-}
-
-.floatup.in.reverse {
-    @include transition-no-reaction;
+    &.reverse {
+        z-index: 0;
+    }
 }
 
 .floatup.out.reverse {
     animation: floatupout #{$transition-floatup-duration} forwards;
 }
 
-.ui-mobile-viewport-transitioning.viewport-floatup {
-    .ui-page {
-        display: block;
-        z-index: 0;
-        &.ui-page-active {
-            z-index: 1000;
-        }
-    }
+.floatup.out, .floatup.in.reverse {
+    animation-name: transition-no-effect;
+    animation-duration: $transition-floatup-duration;
 }

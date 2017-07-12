@@ -4,8 +4,8 @@
     import Framework    = CDP.Framework;
 
     /**
-     * @interface TransitionMap
-     * @brief トランジションマップ
+     * @interface PlatformTransition
+     * @brief プラットフォームごとの Transition を格納
      */
     export interface PlatformTransition {
         [platform: string]: string;     //!< ex) ios: "slide"

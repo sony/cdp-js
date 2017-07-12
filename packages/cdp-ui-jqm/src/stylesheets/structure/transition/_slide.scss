@@ -1,4 +1,5 @@
 ﻿/*** transition : jqm slide override ***************************************************/
+/*** need: simultaneous transition settings (jquery.mobile default) ********************/
 
 @import "../_mixins.scss";
 @import "_constant.scss";
@@ -47,12 +48,18 @@
     animation-duration: $transition-slide-duration;
 }
 
-.slide.out.reverse {
-    z-index: 10;
+.slide.out {
+    z-index: 0;
+    &.reverse {
+        z-index: 10;
+    }
 }
 
-.slide.in.reverse {
-    z-index: 0;
+.slide.in {
+    z-index: 10;
+    &.reverse {
+        z-index: 0;
+    }
 }
 
 // slide 時の overlay の定義

@@ -50,7 +50,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties package_1json__JSONSchema="" tsconfig_1base_1json__JSONSchema="http://json.schemastore.org/tsconfig" />
+      <UserProperties tsconfig_1base_1json__JSONSchema="http://json.schemastore.org/tsconfig" package_1json__JSONSchema="" />
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
@@ -75,6 +75,7 @@
   <ItemGroup>
     <Content Include=".gitignore" />
     <Content Include=".npmignore" />
+    <Content Include="app\external\jquery\stylesheets\jquery.mobile.default-theme.css" />
     <Content Include="app\res\data\examples\contents\animal\jellyfish.jpg" />
     <Content Include="app\res\data\examples\contents\animal\koala.jpg" />
     <Content Include="app\res\data\examples\contents\animal\penguins.jpg" />
@@ -413,8 +414,47 @@
     <Content Include="app\scripts\view\gallery\text-input.js">
       <DependentUpon>text-input.ts</DependentUpon>
     </Content>
+    <Content Include="app\scripts\view\link-sample\advanced-control-back-a.js">
+      <DependentUpon>advanced-control-back-a.ts</DependentUpon>
+    </Content>
+    <Content Include="app\scripts\view\link-sample\advanced-control-back-b.js">
+      <DependentUpon>advanced-control-back-b.ts</DependentUpon>
+    </Content>
+    <Content Include="app\scripts\view\link-sample\control-back-1.js">
+      <DependentUpon>control-back-1.ts</DependentUpon>
+    </Content>
+    <Content Include="app\scripts\view\link-sample\control-back-2.js">
+      <DependentUpon>control-back-2.ts</DependentUpon>
+    </Content>
+    <Content Include="app\scripts\view\link-sample\control-back-root.js">
+      <DependentUpon>control-back-root.ts</DependentUpon>
+    </Content>
+    <Content Include="app\scripts\view\link-sample\root.js">
+      <DependentUpon>root.ts</DependentUpon>
+    </Content>
+    <Content Include="app\scripts\view\link-sample\stack-manage.js">
+      <DependentUpon>stack-manage.ts</DependentUpon>
+    </Content>
     <Content Include="app\scripts\view\options-view.js">
       <DependentUpon>options-view.ts</DependentUpon>
+    </Content>
+    <Content Include="app\scripts\view\views-sample\backbone.js">
+      <DependentUpon>backbone.ts</DependentUpon>
+    </Content>
+    <Content Include="app\scripts\view\views-sample\helper.js">
+      <DependentUpon>helper.ts</DependentUpon>
+    </Content>
+    <Content Include="app\scripts\view\views-sample\page-owner.js">
+      <DependentUpon>page-owner.ts</DependentUpon>
+    </Content>
+    <Content Include="app\scripts\view\views-sample\page-view.js">
+      <DependentUpon>page-view.ts</DependentUpon>
+    </Content>
+    <Content Include="app\scripts\view\views-sample\page.js">
+      <DependentUpon>page.ts</DependentUpon>
+    </Content>
+    <Content Include="app\scripts\view\views-sample\root.js">
+      <DependentUpon>root.ts</DependentUpon>
     </Content>
     <Content Include="app\templates\gallery\button.html" />
     <Content Include="app\templates\gallery\checkbox.html" />
@@ -425,6 +465,23 @@
     <Content Include="app\templates\gallery\spinner.html" />
     <Content Include="app\templates\gallery\switch.html" />
     <Content Include="app\templates\gallery\text-input.html" />
+    <Content Include="app\templates\link-sample\link-back-hash1.html" />
+    <Content Include="app\templates\link-sample\link-back-hash2.html" />
+    <Content Include="app\templates\link-sample\link-back-hash3.html" />
+    <Content Include="app\templates\link-sample\link-back-path1.html" />
+    <Content Include="app\templates\link-sample\link-back-path2.html" />
+    <Content Include="app\templates\link-sample\link-back-path3.html" />
+    <Content Include="app\templates\link-sample\link-back-root.html" />
+    <Content Include="app\templates\link-sample\link-back-script-a.html" />
+    <Content Include="app\templates\link-sample\link-back-script-b.html" />
+    <Content Include="app\templates\link-sample\link-back-script-c.html" />
+    <Content Include="app\templates\link-sample\link-back-script1.html" />
+    <Content Include="app\templates\link-sample\link-back-script2.html" />
+    <Content Include="app\templates\link-sample\link-back-script3.html" />
+    <Content Include="app\templates\link-sample\link-hash.html" />
+    <Content Include="app\templates\link-sample\link-path.html" />
+    <Content Include="app\templates\link-sample\link-root.html" />
+    <Content Include="app\templates\link-sample\link-stack-manage.html" />
     <Content Include="app\templates\options.html" />
     <Content Include="app\templates\views-sample\view-backbone.html" />
     <Content Include="app\templates\views-sample\view-page-owner.html" />
@@ -624,6 +681,13 @@
     <TypeScriptCompile Include="app\scripts\view\gallery\spinner.ts" />
     <TypeScriptCompile Include="app\scripts\view\gallery\switch.ts" />
     <TypeScriptCompile Include="app\scripts\view\gallery\text-input.ts" />
+    <TypeScriptCompile Include="app\scripts\view\link-sample\advanced-control-back-a.ts" />
+    <TypeScriptCompile Include="app\scripts\view\link-sample\advanced-control-back-b.ts" />
+    <TypeScriptCompile Include="app\scripts\view\link-sample\control-back-1.ts" />
+    <TypeScriptCompile Include="app\scripts\view\link-sample\control-back-2.ts" />
+    <TypeScriptCompile Include="app\scripts\view\link-sample\control-back-root.ts" />
+    <TypeScriptCompile Include="app\scripts\view\link-sample\root.ts" />
+    <TypeScriptCompile Include="app\scripts\view\link-sample\stack-manage.ts" />
     <TypeScriptCompile Include="app\scripts\view\loader.ts" />
     <Content Include="app\scripts\view\loader.js">
       <DependentUpon>loader.ts</DependentUpon>

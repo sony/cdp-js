@@ -393,6 +393,12 @@ namespace CDP {
                     defaultDialogTransition: "platform-default",
                     hashListeningEnabled: false,
                     pushStateEnabled: false,
+                    // @see jquery.mobile.js LINE 6394
+                    transitionHandler: {
+                        defaultHandler: "simultaneous",
+                        sequential: ["fade", "flip", "flow"],
+                        simultaneous: [],
+                    },
                 },
 
                 i18n: {
@@ -405,9 +411,10 @@ namespace CDP {
                 firstPageTransition: false,
 
                 applyJQueryConfig: function () {
-                    $.ajaxSetup(this.jquery.ajaxSetup);
                     Object.keys(this.jquery).forEach((key) => {
-                        if ("ajaxSetup" !== key) {
+                        if ("ajaxSetup" === key) {
+                            $.ajaxSetup(this.jquery.ajaxSetup);
+                        } else {
                             $[key] = this.jquery[key];
                         }
                     });
@@ -416,7 +423,22 @@ namespace CDP {
                 applyJQueryMobileConfig: function () {
                     $.mobile.loader.prototype.options.text = undefined;
                     Object.keys(this.jquerymobile).forEach((key) => {
-                        $.mobile[key] = this.jquerymobile[key];
+                        if ("transitionHandler" === key) {
+                            const $mobile: any = $.mobile;
+                            // default handler
+                            $mobile.defaultTransitionHandler
+                                = $mobile.transitionHandlers[this.jquerymobile.transitionHandler.defaultHandler];
+                            // simultaneous handler
+                            this.jquerymobile.transitionHandler.simultaneous.forEach((transition) => {
+                                $mobile.transitionHandlers[transition] = $mobile.transitionHandlers.simultaneous;
+                            });
+                            // sequential handler
+                            this.jquerymobile.transitionHandler.sequential.forEach((transition) => {
+                                $mobile.transitionHandlers[transition] = $mobile.transitionHandlers.sequential;
+                            });
+                        } else {
+                            $.mobile[key] = this.jquerymobile[key];
+                        }
                     });
                 },
             };

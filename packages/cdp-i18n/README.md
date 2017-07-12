@@ -36,7 +36,7 @@ If you want to use newest version, you can build the modules yourself as follow 
         root/
             dist/
                 cdp.i18n.js             js modules for dev.
-                cdp.i18n.min.js         js modules for release with versioned.
+                cdp.i18n.min.js         js modules for production.
                 cdp.i18n.min.js.map     js map file.
                 @types/
                      cdp.i18n.d.ts      d.ts file for this module.

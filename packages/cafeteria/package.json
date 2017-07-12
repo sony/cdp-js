@@ -16,7 +16,7 @@
     "test": "run-s -l clean compile lint unit-test",
     "ci": "run-s -l clean compile lint unit-test metrics document build:release",
     "package": "cordova build --release",
-    "update": "npm update --save-dev && npm update --save && && npm run update:cdp",
+    "update": "npm update --save-dev && npm update --save && npm run update:cdp",
     "update:cdp": "node ./tasks/cafeteria.js --operation=rearrange",
     "depends": "npm list --depth=1",
     "depends:prod": "npm list --depth=0 --only=prod",
