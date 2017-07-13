@@ -60,7 +60,7 @@ class PictureListViewPage extends Page {
         $(".btn-fetch").on("vclick", (event: JQuery.Event) => {
             console.log(TAG + "onButtonFetch()");
             PictureListViewHelper.updateTarget(this._collection);
-            this._collection.fetch(<any>{
+            this._collection.fetch(<Backbone.CollectionFetchOptions>{
                 remove: false,
                 success: () => {
                     this.render();
