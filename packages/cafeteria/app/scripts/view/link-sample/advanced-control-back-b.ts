@@ -123,16 +123,16 @@ class AdvancedControlBackViewB extends PageView {
     private stateChange(): void {
         if (this._otherMode) {
             this.$page.page({ theme: "a" });
-            this.$header.find("h1").text($.t("page-example-link-back.titleScriptB'"));
-            this.$page.find("h3").text($.t("page-example-link-back.description-subflow-B'"));
-            this.$page.find("#subflow-b-btn-1").val($.t("page-example-link-back.endSubFlow")).button("refresh");
+            this.$header.find("h1").text($.t("link.back.titleScriptB'"));
+            this.$page.find("h3").text($.t("link.back.descriptionSubflowB'"));
+            this.$page.find("#subflow-b-btn-1").val($.t("link.back.endSubFlow")).button("refresh");
             this.$page.find("#subflow-b-btn-2").parent().css("display", "none");
             this.$page.find("#subflow-b-btn-3").parent().css("display", "none");
         } else {
             this.$page.page({ theme: "b" });
-            this.$header.find("h1").text($.t("page-example-link-back.titleScriptB"));
-            this.$page.find("h3").text($.t("page-example-link-back.description-subflow-B"));
-            this.$page.find("#subflow-b-btn-1").val($.t("page-example-link-back.beginSubFlowDestA")).button("refresh");
+            this.$header.find("h1").text($.t("link.back.titleScriptB"));
+            this.$page.find("h3").text($.t("link.back.descriptionSubflowB"));
+            this.$page.find("#subflow-b-btn-1").val($.t("link.back.beginSubFlowDestA")).button("refresh");
             this.$page.find("#subflow-b-btn-2").parent().css("display", "block");
             this.$page.find("#subflow-b-btn-3").parent().css("display", "block");
         }

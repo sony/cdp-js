@@ -33,7 +33,7 @@ class ControlBackView2 extends PageView {
      */
     events(): any {
         return {
-            "vclick .btn-change-page": this.onButtonChangePage,
+            "vclick .command-change-page": this.onCommandChangePage,
         };
     }
 
@@ -45,8 +45,8 @@ class ControlBackView2 extends PageView {
     ///////////////////////////////////////////////////////////////////////
     // Event Handler
 
-    private onButtonChangePage(): void {
-        console.log(TAG + "onButtonChangePage()");
+    private onCommandChangePage(): void {
+        console.log(TAG + "onCommandChangePage()");
         Router.navigate("#link-back-script3", "platform-default", false, { backDestination: "#link-back-script2" });
     }
 

@@ -1,7 +1,7 @@
 ﻿/*!
  * cdp.tools.js 2.0.0
  *
- * Date: 2017-07-13T00:32:20.461Z
+ * Date: 2017-07-13T05:46:19.715Z
  */
 (function (root, factory) { if (typeof define === "function" && define.amd) { define(["jquery", "underscore"], function ($, _) { return factory(root.CDP || (root.CDP = {}), $, _); }); } else if (typeof exports === "object") { module.exports = factory(root.CDP || (root.CDP = {}), require("jquery"), require("underscore")); } else { factory(root.CDP || (root.CDP = {}), root.jQuery || root.$, root._); } }(((this || 0).self || global), function (CDP, $, _) { CDP.Tools = CDP.Tools || {};
 /**

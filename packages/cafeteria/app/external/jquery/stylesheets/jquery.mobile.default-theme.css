@@ -7,6 +7,7 @@
 * Released under the MIT license.
 * http://jquery.org/license
 *
+* [ADD]     icon background color
 * [REMOVED] structure and global definition
 */
 
@@ -14,6 +15,15 @@
 /* Swatches */
 /* A
 -----------------------------------------------------------------------------------------------------------*/
+/* Icon [ADD] */
+.ui-page-theme-a [class*=ui-icon-]:after {
+    background-color: grey;
+}
+.ui-page-theme-a .ui-header .ui-icon-back:after {
+    background-color: grey;
+    transform: initial;
+}
+
 /* Bar: Toolbars, dividers, slider track */
 .ui-bar-a,
 .ui-page-theme-a .ui-bar-inherit,
@@ -174,6 +184,15 @@ html head + body .ui-body-a.ui-focus {
 }
 /* B
 -----------------------------------------------------------------------------------------------------------*/
+/* Icon [ADD] */
+.ui-page-theme-b [class*=ui-icon-]:after {
+    background-color: white;
+}
+.ui-page-theme-b .ui-header .ui-icon-back:after {
+    background-color: white;
+    transform: initial;
+}
+
 /* Bar: Toolbars, dividers, slider track */
 .ui-bar-b,
 .ui-page-theme-b .ui-bar-inherit,
@@ -190,6 +209,7 @@ html body .ui-group-theme-b .ui-bar-inherit {
     border-width: 1px;
     border-style: solid;
 }
+
 /* Page and overlay */
 .ui-overlay-b,
 .ui-page-theme-b,

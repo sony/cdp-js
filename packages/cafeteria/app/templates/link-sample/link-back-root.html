@@ -1,15 +1,15 @@
 ﻿<article data-role="page" id="link-back-root" data-theme="cdp">
-    <header data-role="header" data-position="inline">
-        <a href="##" data-rel="back" data-icon="back" data-iconpos="notext"></a>
-        <h1 data-i18n="page-example-link-back.title">Control Back Root</h1>
+    <header data-role="header" data-position="fixed">
+        <a href="#" class="ui-back-indicator" data-rel="back" data-icon="back" data-i18n="link.title">link.title</a>
+        <h1 data-i18n="link.back.title">link.back.title</h1>
         <a href="#options" data-transition="slideup" data-icon="gear" data-iconpos="notext"></a>
     </header>
     <section data-role="content">
-        <h3 data-i18n="page-example-link-back.description">Controlled Back Operation.</h3>
-        <a href="link-back-path1.html" data-role="button" data-transition="example-selected" data-icon="arrow-r" data-back-dst="#link-back-root", data-i18n="page-example-link-back.toPagePath1">to Page Path 1</a>
-        <a href="#link-back-hash1" data-role="button" data-transition="example-selected" data-icon="arrow-r" data-back-dst="#link-back-root", data-i18n="page-example-link-back.toPageHash1">to Page Hash 1</a>
-        <input type="button" data-icon="arrow-r" class="btn-change-page" data-url="#link-back-script1" value="to Page Script 1" data-i18n="[value]page-example-link-back.toPageScript1" />
-        <h3 data-i18n="page-example-link-back.description-subflow">Sub Flow Control Back Operation.</h3>
-        <input type="button" data-icon="arrow-r" class="btn-sub-flow" data-url="#link-back-script-a" value="to Sub Flow Example" data-i18n="[value]page-example-link-back.toSubFlowExample" />
+        <h3 data-i18n="link.back.description">link.back.description</h3>
+        <a href="link-back-path1.html" data-role="button" data-icon="arrow-r" data-back-dst="#link-back-root", data-i18n="link.back.toPagePath1">link.back.toPagePath1</a>
+        <a href="#link-back-hash1" data-role="button" data-icon="arrow-r" data-back-dst="#link-back-root", data-i18n="link.back.toPageHash1">link.back.toPageHash1</a>
+        <input type="button" data-icon="arrow-r" class="command-change-page" data-url="#link-back-script1" value="link.back.toPageScript1" data-i18n="[value]link.back.toPageScript1" />
+        <h3 data-i18n="link.back.descriptionSubflow">link.back.descriptionSubflow</h3>
+        <input type="button" data-icon="arrow-r" class="command-sub-flow" data-url="#link-back-script-a" value="link.back.toSubFlowExample" data-i18n="[value]link.back.toSubFlowExample" />
     </section>
 </article>
