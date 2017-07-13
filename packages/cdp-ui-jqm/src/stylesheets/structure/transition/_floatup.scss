@@ -35,7 +35,7 @@
     }
 }
 
-.floatup.in {
+.floatup.in, .floatup.in.out {
     z-index: 10;
     animation: floatupin #{$transition-floatup-duration} forwards;
     &.reverse {

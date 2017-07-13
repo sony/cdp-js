@@ -11,6 +11,12 @@
     }
 }
 
+.slideup.in.out {
+    transform: translateY(0);
+    animation-name: slideinfrombottom;
+    animation-duration: 250ms;
+}
+
 .slideup.in.reverse {
     z-index: 10;
     &.reverse {

@@ -40,8 +40,8 @@ class ControlBackViewRoot extends PageView {
      */
     events(): any {
         return {
-            "vclick .btn-change-page": this.onButtonChangePageWithBackDestination,
-            "vclick .btn-sub-flow": this.onButtonChangePage,
+            "vclick .command-change-page": this.onCommandChangePageWithBackDestination,
+            "vclick .command-sub-flow": this.onCommandSubFlow,
         };
     }
 
@@ -53,15 +53,15 @@ class ControlBackViewRoot extends PageView {
     ///////////////////////////////////////////////////////////////////////
     // Event Handler
 
-    private onButtonChangePageWithBackDestination(event: JQuery.Event): void {
-        console.log(TAG + "onButtonChangePage()");
+    private onCommandChangePageWithBackDestination(event: JQuery.Event): void {
+        console.log(TAG + "onCommandChangePageWithBackDestination()");
         const url = $(event.currentTarget).data("url");
         event.preventDefault();
         Router.navigate(url, "platform-default", false, { backDestination: "#link-back-root" });
     }
 
-    private onButtonChangePage(event: JQuery.Event): void {
-        console.log(TAG + "onButtonChangePage()");
+    private onCommandSubFlow(event: JQuery.Event): void {
+        console.log(TAG + "onCommandSubFlow()");
         const url = $(event.currentTarget).data("url");
         event.preventDefault();
         Router.navigate(url, "platform-default", false);

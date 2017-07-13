@@ -34,7 +34,7 @@ class StackManageView extends PageView {
      */
     events(): any {
         return {
-            "vclick .btn-stack-manage": this.onButtonStartStackManage,
+            "vclick .command-stack-manage": this.onCommandStartStackManage,
         };
     }
 
@@ -46,14 +46,14 @@ class StackManageView extends PageView {
     ///////////////////////////////////////////////////////////////////////
     // Event Handler
 
-    private onButtonStartStackManage(event: JQuery.Event): void {
-        Toast.show("onButtonStartStackManage");
+    private onCommandStartStackManage(event: JQuery.Event): void {
+        Toast.show("onCommandStartStackManage");
         const test = [
-            { route: "#view/backbone",      transition: "slide", },
-            { route: "#view/page",          transition: "slide", },
-            { route: "#view/page-owner",    transition: "slide", },
-            { route: "#view/page-view",     transition: "slide", },
-            { route: "",                    transition: "slide", },
+            { route: "#view/backbone",      transition: "turn",         },
+            { route: "#view/page",          transition: "slide",        },
+            { route: "#view/page-owner",    transition: "slidefade",    },
+            { route: "#view/page-view",     transition: "floatup",      },
+            { route: "",                    transition: "flow",         },
         ];
         Router.registerPageStack(test, true);
     }

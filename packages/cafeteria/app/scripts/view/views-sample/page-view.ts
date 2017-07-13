@@ -70,7 +70,7 @@ class PictureListViewPageView extends PageView<Picture> {
     private onButtonFetch(): void {
         console.log(TAG + "onButtonFetch()");
         PictureListViewHelper.updateTarget(<PictureList>this.collection);
-        this.collection.fetch(<any>{ remove: false });
+        this.collection.fetch(<Backbone.CollectionFetchOptions>{ remove: false });
     }
 
     private onButtonRemove(): void {

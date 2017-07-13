@@ -65,7 +65,7 @@ class AdvancedControlBackViewA extends PageView {
     private onButton2(event: JQuery.Event): void {
         console.log(TAG + "onButton2()");
         event.preventDefault();
-        Router.navigate("#link-back-script-a/other", "platform-default", false, { subFlow: { operation: "begin" } });
+        Router.navigate("#link-back-script-a/other", "slidefade", false, { subFlow: { operation: "begin" } });
     }
 
     private onButton3(event: JQuery.Event): void {
@@ -76,11 +76,11 @@ class AdvancedControlBackViewA extends PageView {
             destStacks: [
                 {
                     route: "#link-back-script-b",
-                    transition: "platform-default",
+                    transition: "slidefade",
                 }
             ],
         };
-        Router.navigate("#link-back-script-a/other", "platform-default", false, { subFlow: subFlow });
+        Router.navigate("#link-back-script-a/other", "slidefade", false, { subFlow: subFlow });
     }
 
     private onButton4(event: JQuery.Event): void {
@@ -96,7 +96,7 @@ class AdvancedControlBackViewA extends PageView {
                 }
             ],
         };
-        Router.navigate("#link-back-script-a/other", "platform-default", false, { subFlow: subFlow });
+        Router.navigate("#link-back-script-a/other", "slidefade", false, { subFlow: subFlow });
     }
 
     ///////////////////////////////////////////////////////////////////////
@@ -138,17 +138,17 @@ class AdvancedControlBackViewA extends PageView {
     private stateChange(): void {
         if (this._otherMode) {
             this.$page.page({ theme: "a" });
-            this.$header.find("h1").text($.t("page-example-link-back.titleScriptA'"));
-            this.$page.find("h3").text($.t("page-example-link-back.description-subflow-A'"));
-            this.$page.find("#subflow-a-btn-1").val($.t("page-example-link-back.toPageScriptB'")).button("refresh");
+            this.$header.find("h1").text($.t("link.back.titleScriptA'"));
+            this.$page.find("h3").text($.t("link.back.descriptionSubflowA'"));
+            this.$page.find("#subflow-a-btn-1").val($.t("link.back.toPageScriptB'")).button("refresh");
             this.$page.find("#subflow-a-btn-2").parent().css("display", "none");
             this.$page.find("#subflow-a-btn-3").parent().css("display", "none");
             this.$page.find("#subflow-a-btn-4").parent().css("display", "none");
         } else {
             this.$page.page({ theme: "b" });
-            this.$header.find("h1").text($.t("page-example-link-back.titleScriptA"));
-            this.$page.find("h3").text($.t("page-example-link-back.description-subflow-A"));
-            this.$page.find("#subflow-a-btn-1").val($.t("page-example-link-back.toPageScriptB")).button("refresh");
+            this.$header.find("h1").text($.t("link.back.titleScriptA"));
+            this.$page.find("h3").text($.t("link.back.descriptionSubflowA"));
+            this.$page.find("#subflow-a-btn-1").val($.t("link.back.toPageScriptB")).button("refresh");
             this.$page.find("#subflow-a-btn-2").parent().css("display", "block");
             this.$page.find("#subflow-a-btn-3").parent().css("display", "block");
             this.$page.find("#subflow-a-btn-4").parent().css("display", "block");

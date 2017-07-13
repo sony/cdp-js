@@ -92,6 +92,14 @@
         .ui-btn-right.ui-btn-icon-notext:after {
             right: 16px;
         }
+        .ui-btn-left {
+            &.ui-icon-close {
+                padding-left: 15px;
+                &:after {
+                    content: none;
+                }
+            }
+        }
         .ui-icon-back,
         .ui-icon-arrow-l,
         .ui-back-indicator {
