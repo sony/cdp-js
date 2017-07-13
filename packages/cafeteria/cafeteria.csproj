@@ -76,6 +76,15 @@
     <Content Include=".gitignore" />
     <Content Include=".npmignore" />
     <Content Include="app\external\jquery\stylesheets\jquery.mobile.default-theme.css" />
+    <Content Include="app\lib\scripts\cafeteria.image.data\image-interface.js">
+      <DependentUpon>image-interface.ts</DependentUpon>
+    </Content>
+    <Content Include="app\lib\scripts\cafeteria.image.data\image-item-generator.js">
+      <DependentUpon>image-item-generator.ts</DependentUpon>
+    </Content>
+    <Content Include="app\lib\scripts\cafeteria.image.data\main.js">
+      <DependentUpon>main.ts</DependentUpon>
+    </Content>
     <Content Include="app\res\data\examples\contents\animal\jellyfish.jpg" />
     <Content Include="app\res\data\examples\contents\animal\koala.jpg" />
     <Content Include="app\res\data\examples\contents\animal\penguins.jpg" />
@@ -378,6 +387,15 @@
     <Content Include="app\res\data\sample\image\small\97.jpg" />
     <Content Include="app\res\data\sample\image\small\98.jpg" />
     <Content Include="app\res\data\sample\image\small\99.jpg" />
+    <Content Include="app\scripts\model\listviews-sample\config.js">
+      <DependentUpon>config.ts</DependentUpon>
+    </Content>
+    <Content Include="app\scripts\model\listviews-sample\data.js">
+      <DependentUpon>data.ts</DependentUpon>
+    </Content>
+    <Content Include="app\scripts\model\listviews-sample\util.js">
+      <DependentUpon>util.ts</DependentUpon>
+    </Content>
     <Content Include="app\scripts\model\options.js">
       <DependentUpon>options.ts</DependentUpon>
     </Content>
@@ -435,6 +453,51 @@
     <Content Include="app\scripts\view\link-sample\stack-manage.js">
       <DependentUpon>stack-manage.ts</DependentUpon>
     </Content>
+    <Content Include="app\scripts\view\listviews-sample\expand-listitem-view.js">
+      <DependentUpon>expand-listitem-view.ts</DependentUpon>
+    </Content>
+    <Content Include="app\scripts\view\listviews-sample\expand-listview-page.js">
+      <DependentUpon>expand-listview-page.ts</DependentUpon>
+    </Content>
+    <Content Include="app\scripts\view\listviews-sample\expand-listview.js">
+      <DependentUpon>expand-listview.ts</DependentUpon>
+    </Content>
+    <Content Include="app\scripts\view\listviews-sample\listview-compare-page.js">
+      <DependentUpon>listview-compare-page.ts</DependentUpon>
+    </Content>
+    <Content Include="app\scripts\view\listviews-sample\listview-element-page.js">
+      <DependentUpon>listview-element-page.ts</DependentUpon>
+    </Content>
+    <Content Include="app\scripts\view\listviews-sample\listview-iscroll-page.js">
+      <DependentUpon>listview-iscroll-page.ts</DependentUpon>
+    </Content>
+    <Content Include="app\scripts\view\listviews-sample\page-expand-listview.js">
+      <DependentUpon>page-expand-listview.ts</DependentUpon>
+    </Content>
+    <Content Include="app\scripts\view\listviews-sample\page-listview-iscroll.js">
+      <DependentUpon>page-listview-iscroll.ts</DependentUpon>
+    </Content>
+    <Content Include="app\scripts\view\listviews-sample\page-listview-native.js">
+      <DependentUpon>page-listview-native.ts</DependentUpon>
+    </Content>
+    <Content Include="app\scripts\view\listviews-sample\root.js">
+      <DependentUpon>root.ts</DependentUpon>
+    </Content>
+    <Content Include="app\scripts\view\listviews-sample\simple-listitem-view.js">
+      <DependentUpon>simple-listitem-view.ts</DependentUpon>
+    </Content>
+    <Content Include="app\scripts\view\listviews-sample\simple-listview.js">
+      <DependentUpon>simple-listview.ts</DependentUpon>
+    </Content>
+    <Content Include="app\scripts\view\listviews-sample\sort-listitem-view.js">
+      <DependentUpon>sort-listitem-view.ts</DependentUpon>
+    </Content>
+    <Content Include="app\scripts\view\listviews-sample\sort-listview-page.js">
+      <DependentUpon>sort-listview-page.ts</DependentUpon>
+    </Content>
+    <Content Include="app\scripts\view\listviews-sample\sort-listview.js">
+      <DependentUpon>sort-listview.ts</DependentUpon>
+    </Content>
     <Content Include="app\scripts\view\options-view.js">
       <DependentUpon>options-view.ts</DependentUpon>
     </Content>
@@ -482,6 +545,16 @@
     <Content Include="app\templates\link-sample\link-path.html" />
     <Content Include="app\templates\link-sample\link-root.html" />
     <Content Include="app\templates\link-sample\link-stack-manage.html" />
+    <Content Include="app\templates\listviews-sample\expandable-listview.html" />
+    <Content Include="app\templates\listviews-sample\listview-compare.html" />
+    <Content Include="app\templates\listviews-sample\listview-element.html" />
+    <Content Include="app\templates\listviews-sample\listview-iscroll.html" />
+    <Content Include="app\templates\listviews-sample\listview-root.html" />
+    <Content Include="app\templates\listviews-sample\listview-templates.html" />
+    <Content Include="app\templates\listviews-sample\page-expandable-listview.html" />
+    <Content Include="app\templates\listviews-sample\page-listview-iscroll.html" />
+    <Content Include="app\templates\listviews-sample\page-listview-native.html" />
+    <Content Include="app\templates\listviews-sample\sortable-listview.html" />
     <Content Include="app\templates\options.html" />
     <Content Include="app\templates\views-sample\view-backbone.html" />
     <Content Include="app\templates\views-sample\view-page-owner.html" />
@@ -526,6 +599,7 @@
     <Content Include="app\res\data\sample\image\recallplayback.json" />
     <Content Include="app\res\data\sample\image\small\Thumbs.db" />
     <Content Include="app\res\data\sample\image\thumbnail.json" />
+    <Content Include="app\stylesheets\_listview.scss" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
@@ -645,6 +719,11 @@
     <TypeScriptCompile Include="app\external\%40types\%40cdp\mobile\i18next.d.ts" />
     <TypeScriptCompile Include="app\external\%40types\%40cdp\mobile\index.d.ts" />
     <TypeScriptCompile Include="app\external\%40types\%40cdp\mobile\jquery.mobile.d.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\cafeteria.image.data\image-interface.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\cafeteria.image.data\image-item-generator.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\cafeteria.image.data\main.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\cafeteria.image.data\_declare.d.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\cafeteria.image.data\_export.d.ts" />
     <TypeScriptCompile Include="app\lib\scripts\cdp.device.console\device-console.ts" />
     <TypeScriptCompile Include="app\lib\scripts\cdp.device.console\main.ts" />
     <TypeScriptCompile Include="app\lib\scripts\cdp.device.console\_declare.d.ts" />
@@ -661,6 +740,9 @@
     <Content Include="app\scripts\index.js">
       <DependentUpon>index.ts</DependentUpon>
     </Content>
+    <TypeScriptCompile Include="app\scripts\model\listviews-sample\config.ts" />
+    <TypeScriptCompile Include="app\scripts\model\listviews-sample\data.ts" />
+    <TypeScriptCompile Include="app\scripts\model\listviews-sample\util.ts" />
     <TypeScriptCompile Include="app\scripts\model\options.ts" />
     <TypeScriptCompile Include="app\scripts\model\picture-list.ts" />
     <TypeScriptCompile Include="app\scripts\model\picture.ts" />
@@ -688,6 +770,21 @@
     <TypeScriptCompile Include="app\scripts\view\link-sample\control-back-root.ts" />
     <TypeScriptCompile Include="app\scripts\view\link-sample\root.ts" />
     <TypeScriptCompile Include="app\scripts\view\link-sample\stack-manage.ts" />
+    <TypeScriptCompile Include="app\scripts\view\listviews-sample\expand-listitem-view.ts" />
+    <TypeScriptCompile Include="app\scripts\view\listviews-sample\expand-listview-page.ts" />
+    <TypeScriptCompile Include="app\scripts\view\listviews-sample\expand-listview.ts" />
+    <TypeScriptCompile Include="app\scripts\view\listviews-sample\listview-compare-page.ts" />
+    <TypeScriptCompile Include="app\scripts\view\listviews-sample\listview-element-page.ts" />
+    <TypeScriptCompile Include="app\scripts\view\listviews-sample\listview-iscroll-page.ts" />
+    <TypeScriptCompile Include="app\scripts\view\listviews-sample\root.ts" />
+    <TypeScriptCompile Include="app\scripts\view\listviews-sample\page-expand-listview.ts" />
+    <TypeScriptCompile Include="app\scripts\view\listviews-sample\page-listview-iscroll.ts" />
+    <TypeScriptCompile Include="app\scripts\view\listviews-sample\page-listview-native.ts" />
+    <TypeScriptCompile Include="app\scripts\view\listviews-sample\simple-listitem-view.ts" />
+    <TypeScriptCompile Include="app\scripts\view\listviews-sample\simple-listview.ts" />
+    <TypeScriptCompile Include="app\scripts\view\listviews-sample\sort-listitem-view.ts" />
+    <TypeScriptCompile Include="app\scripts\view\listviews-sample\sort-listview-page.ts" />
+    <TypeScriptCompile Include="app\scripts\view\listviews-sample\sort-listview.ts" />
     <TypeScriptCompile Include="app\scripts\view\loader.ts" />
     <Content Include="app\scripts\view\loader.js">
       <DependentUpon>loader.ts</DependentUpon>

@@ -279,6 +279,18 @@ button[disabled],
     line-height: 1.5;
 }
 
+.ui-listview-scroll-map {
+    position:   relative;
+    width:      100%;
+    overflow:   hidden;
+    @include hardware-accelerator-props;
+    > .ui-listview-item-base {
+        position:   absolute;
+        width:      100%;
+        top:        0;
+    }
+}
+
 ///////////////////////////////////////////////////////////////////////
 // layout:
 
