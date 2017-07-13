@@ -55,7 +55,7 @@ export default class ExpandListView extends ExpandableListView {
                 this.update();
             })
             .then(() => {
-                Toast.show($.t("listview.loadComplete"));
+                Toast.show($.t("listviews.loadComplete"));
             });
         return this;
     }

@@ -51,7 +51,7 @@ export default class SimpleListView extends ListView {
                 this.update();
             })
             .then(() => {
-                Toast.show($.t("listview.loadComplete"));
+                Toast.show($.t("listviews.loadComplete"));
             });
         return this;
     }

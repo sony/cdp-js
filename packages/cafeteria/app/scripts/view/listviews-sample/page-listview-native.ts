@@ -73,7 +73,7 @@ class PageListViewNative extends PageListView {
                 this.update();
             })
             .then(() => {
-                Toast.show($.t("listview.loadComplete"));
+                Toast.show($.t("listviews.loadComplete"));
             });
     }
 }

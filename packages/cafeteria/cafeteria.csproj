@@ -600,6 +600,7 @@
     <Content Include="app\res\data\sample\image\small\Thumbs.db" />
     <Content Include="app\res\data\sample\image\thumbnail.json" />
     <Content Include="app\stylesheets\_listview.scss" />
+    <Content Include="app\stylesheets\_utils.scss" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
