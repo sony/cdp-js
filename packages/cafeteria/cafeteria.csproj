@@ -85,6 +85,18 @@
     <Content Include="app\lib\scripts\cafeteria.image.data\main.js">
       <DependentUpon>main.ts</DependentUpon>
     </Content>
+    <Content Include="app\lib\scripts\cdp.device.console\device-console.js">
+      <DependentUpon>device-console.ts</DependentUpon>
+    </Content>
+    <Content Include="app\lib\scripts\cdp.device.console\main.js">
+      <DependentUpon>main.ts</DependentUpon>
+    </Content>
+    <Content Include="app\lib\scripts\cdp.ui.smoothscroll\main.js">
+      <DependentUpon>main.ts</DependentUpon>
+    </Content>
+    <Content Include="app\lib\scripts\cdp.ui.smoothscroll\smoothscroll.js">
+      <DependentUpon>smoothscroll.ts</DependentUpon>
+    </Content>
     <Content Include="app\res\data\examples\contents\animal\jellyfish.jpg" />
     <Content Include="app\res\data\examples\contents\animal\koala.jpg" />
     <Content Include="app\res\data\examples\contents\animal\penguins.jpg" />
@@ -730,6 +742,10 @@
     <TypeScriptCompile Include="app\lib\scripts\cdp.device.console\main.ts" />
     <TypeScriptCompile Include="app\lib\scripts\cdp.device.console\_declare.d.ts" />
     <TypeScriptCompile Include="app\lib\scripts\cdp.device.console\_export.d.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\cdp.ui.smoothscroll\main.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\cdp.ui.smoothscroll\smoothscroll.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\cdp.ui.smoothscroll\_declare.d.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\cdp.ui.smoothscroll\_export.d.ts" />
     <TypeScriptCompile Include="app\scripts\app.ts" />
     <Content Include="app\scripts\app.js">
       <DependentUpon>app.ts</DependentUpon>

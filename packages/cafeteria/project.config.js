@@ -67,8 +67,19 @@ const build_settings = {
         dev_resource: ['samples'],
     },
     string_replace: {
+        // dev-func を有効にする場合は、release より先に enalbe などを設定
+        'dev-func': {
+            '%% dev_functions_enabled %%': 'enable',    // 置換対象が1つのときはオプションなしでデフォルト
+        },
+        'server': {
+            '%% target_server %%': 'prod|dev|stg|qa',   // 配列が2つ以上あるときはいずれか1つの値をとる. 誤りがあればエラー
+        },
+        'runtime-context': {
+            '%% runtime_context %%': false,             // false の場合、引数は任意. デフォルトは空に置換
+        },
         'release': {
-            '%% build_setting %%': true,
+            '%% build_setting %%': true,                // true の場合、必ず空に置換
+            '%% dev_functions_enabled %%': true,
         },
     },
     hook_scripts: {

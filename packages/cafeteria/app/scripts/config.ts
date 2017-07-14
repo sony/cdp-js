@@ -6,11 +6,38 @@ namespace Config {
 
     //_____________________________________________________________________________________________//
 
+    // project.config.build_settings.string_replace エントリに従い文字列置換される
+
     /**
-     * build config
+     * ビルド設定判定
+     *
+     * リリース版では '%% build_setting %%' を '' (空文字列) に置換することにより
+     *   !!("") (== false)
+     * の設定が反映される
      */
     export const DEBUG = ((): boolean => {
-        return !!("%% build_setting %%");
+        return !!("%% build_setting %%");    //! リリース時には false が返る
+    })();
+
+    /**
+     * 開発モードの例
+     */
+    export const DEV_FUNCTIONS_ENABLED = ((): boolean => {
+        return !!("%% dev_functions_enabled %%");
+    })();
+
+    /**
+     * 接続先サーバー切り替えの例
+     */
+    export const TARGET_SERVER = ((): string => {
+        return "%% target_server %%";
+    })();
+
+    /**
+     * 任意の置換
+     */
+    export const RUNTIME_CONTEXT = ((): string => {
+        return "%% runtime_context %%";
     })();
 
     //_____________________________________________________________________________________________//
@@ -91,6 +118,7 @@ namespace Config {
 
         // >>>LIB_DEPENDENCIES>>> package assign
         assign_lib("cdp.device.console");
+        assign_lib("cdp.ui.smoothscroll");
         assign_lib("cafeteria.image.data");
         // <<<LIB_DEPENDENCIES<<<
 
