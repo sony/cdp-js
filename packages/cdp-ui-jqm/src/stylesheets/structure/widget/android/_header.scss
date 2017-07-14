@@ -55,5 +55,14 @@
         .ui-btn + .ui-title {
             text-indent:    74px;
         }
+
+        // button group adjust
+        .ui-controlgroup-horizontal {
+            &.ui-btn-left, &.ui-btn-right {
+                .ui-controlgroup-controls {
+                    height: 48px;
+                }
+            }
+        }
     }
 }

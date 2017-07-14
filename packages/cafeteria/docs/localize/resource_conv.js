@@ -1,5 +1,5 @@
 /**
- * PMO Web Resource converter (from ods to messages/messages.*.res)
+ * Resource converter (from ods to messages/messages.*.res)
  *
  * Usage: 'cscript resource_conv.js' in Command prompt window
  *
@@ -35,9 +35,9 @@ var JsonFormatter = function (singular) {
     var self = this;
     this.singluer = singular;
     this.requireDefaultFile = false;
-    // [SA customize]
+    // [CDP customize]
     this.folderName = '..\\..\\app\\res\\locales';
-    // [SA customize]
+    // [CDP customize]
     this.formatLine = function (key, value) {
         var v2 = '' + value;
         return '  "' + key + '": "' + v2.replace(/"/g, '\\"') + '",\n';
@@ -54,9 +54,9 @@ var JsonFormatter = function (singular) {
         return self.singluer ? '{\n' : '';
     };
     this.formatFooter = function (localeKey) {
-        // [SA customize]
+        // [CDP customize]
         return self.singluer ? '\n}' : '\n';
-        // [SA customize]
+        // [CDP customize]
     };
     this.getFilePath = function (folderPath, localeKey) {
         return folderPath + '\\messages.' + localeKey + '.json';
@@ -362,7 +362,7 @@ function findExcelFile() {
     var files = fso.getFolder(".").Files;
     for (var e = new Enumerator(files) ; !e.atEnd() ; e.moveNext()) {
         var file = e.item();
-        // [SA customize]
+        // [CDP customize]
         var extXLSX = '.xlsx';
         var extODS = '.ods';
         if (file.Name.substr(file.Name.length - extXLSX.length) === extXLSX) {
@@ -370,7 +370,7 @@ function findExcelFile() {
         } else if (file.Name.substr(file.Name.length - extODS.length) === extODS) {
             return file.Path;            
         }
-        // [SA customize]
+        // [CDP customize]
     }
     return null;
 }

@@ -1,4 +1,6 @@
-﻿namespace Config {
+﻿/* tslint:disable:max-line-length */
+
+namespace Config {
 
     const global = Function("return this")();
 
@@ -17,18 +19,10 @@
      * requirejs
      */
     global.requirejs = (() => {
-        const _index = (path: string) => {
-            return "../" + path;
-        };
-        const _module = (name: string, file?: string): string => {
-            return _index("external/") + name + "/scripts/" + (file ? file : name);
-        };
-        const _lib = (name: string): string => {
-            return _index("lib/scripts/") + name;
-        };
-        const _porting = (name: string): string => {
-            return _index("porting/scripts/") + name;
-        };
+        const _index = (path: string) => { return "../" + path; };
+        const _module = (name: string, file?: string): string => { return _index("external/") + name + "/scripts/" + (file ? file : name); };
+        const _lib = (name: string): string => { return _index("lib/scripts/") + name; };
+        const _porting = (name: string): string => { return _index("porting/scripts/") + name; };
         const _assign_package = (
             _config: { paths: {}; packages?: {}[]; },
             _path: (name: string) => string,
@@ -97,6 +91,7 @@
 
         // >>>LIB_DEPENDENCIES>>> package assign
         assign_lib("cdp.device.console");
+        assign_lib("cafeteria.image.data");
         // <<<LIB_DEPENDENCIES<<<
 
         /* tslint:enable:no-unused-variable no-unused-vars */

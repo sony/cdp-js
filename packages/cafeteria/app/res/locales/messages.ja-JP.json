@@ -156,5 +156,30 @@
         "pageowner": "Page + Backbone.View class サンプル",
         "pageview": "PageView class サンプル"
     },
+    "listviews": {
+        "title": "仮想 List View の実装例",
+        "loadComplete": "Item のロードが完了しました。",
+        "operation": {
+            "sort": "sort()",
+            "fetch": "fetch()",
+            "reset": "reset()"
+        },
+        "listView": {
+            "description": "仮想 List View のサンプル実装例:",
+            "titleElement": "サンプル: Element Overflow",
+            "titleIScroll": "サンプル: iScroll",
+            "titleCompare": "サンプル: 比較",
+            "titleExpandableListView": "サンプル: 開閉 List View",
+            "titleSortableListView": "サンプル: ソート可能な List View",
+            "useElement": "例: element の overflow を用いた実装",
+            "useIScroll": "例: iscroll を用いた実装"
+        },
+        "pageListView": {
+            "description": "Page List View のサンプル実装例:",
+            "titleNative": "サンプル: Page Native View Scroll",
+            "titleIScroll": "サンプル: Page iScroll",
+            "titleExpandableListView": "サンプル: Page Expandable List View"
+        }
+    },
     "EOF": "EOF"
 }

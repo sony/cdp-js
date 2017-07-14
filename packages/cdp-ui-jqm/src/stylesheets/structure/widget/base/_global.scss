@@ -196,7 +196,7 @@ label.ui-btn {
 // icon overwrite: .ui-icon-carat-{l,r,u,d}
 $indicator-list: l, r, u, d;
 @each $indicator-id in $indicator-list {
-    [class*=ui-platform-] .ui-icon-carat-#{$indicator-id} {
+    [class*=ui-platform-] .ui-content:not(.ui-no-override-icon) .ui-icon-carat-#{$indicator-id} {
         &:after {
             background-image: none !important;
             background-color: initial !important;
@@ -206,9 +206,9 @@ $indicator-list: l, r, u, d;
                 @include declare-indicator-l(8px, 2px, null);
             } @elseif r == $indicator-id {
                 @include declare-indicator-r(8px, 2px, null);
-            } @elseif t == $indicator-id {
+            } @elseif u == $indicator-id {
                 @include declare-indicator-u(8px, 2px, null);
-            } @elseif b == $indicator-id {
+            } @elseif d == $indicator-id {
                 @include declare-indicator-d(8px, 2px, null);
             }
         }
@@ -277,6 +277,18 @@ button[disabled],
 .ui-listview > li h6,
 .ui-listview > li p {
     line-height: 1.5;
+}
+
+.ui-listview-scroll-map {
+    position:   relative;
+    width:      100%;
+    overflow:   hidden;
+    @include hardware-accelerator-props;
+    > .ui-listview-item-base {
+        position:   absolute;
+        width:      100%;
+        top:        0;
+    }
 }
 
 ///////////////////////////////////////////////////////////////////////

@@ -156,5 +156,30 @@
         "pageowner": "Page + Backbone.View class Sample",
         "pageview": "PageView class Sample"
     },
+    "listviews": {
+        "title": "Virtual List View Examples",
+        "loadComplete": "Item loading complete.",
+        "operation": {
+            "sort": "sort()",
+            "fetch": "fetch()",
+            "reset": "reset()"
+        },
+        "listView": {
+            "description": "Virtual List View Example Entries:",
+            "titleElement": "Sample: Element Overflow",
+            "titleIScroll": "Sample: iScroll",
+            "titleCompare": "Sample: Compare",
+            "titleExpandableListView": "Sample: Expandable List View",
+            "titleSortableListView": "Sample: Sortable List View",
+            "useElement": "Ex) Implement by using element overflow.",
+            "useIScroll": "Ex) Implement by using iscroll."
+        },
+        "pageListView": {
+            "description": "Page List View Example Entries:",
+            "titleNative": "Sample: Page Native View Scroll",
+            "titleIScroll": "Sample: Page iScroll",
+            "titleExpandableListView": "Sample: Page Expandable List View"
+        }
+    },
     "EOF": "EOF"
 }
