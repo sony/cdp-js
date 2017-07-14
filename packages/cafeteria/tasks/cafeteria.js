@@ -10,7 +10,8 @@ function queryOptions() {
     const argv = process.argv.slice(2);
 
     let settings = {
-        operation: 'rearrange', // 'rearrange' | 'platforms'
+        operation: 'rearrange', // 'rearrange' | 'platforms' | 'sdk'
+        target: null,
     };
 
     if (0 < argv.length) {
@@ -20,6 +21,8 @@ function queryOptions() {
                 const name = option.split('=')[0];
                 if ('operation' === name) {
                     settings.operation = option.split('=')[1] || 'rearrange';
+                } else if ('target' === name) {
+                    settings.target = option.split('=')[1];
                 } else if (name === key) {
                     settings[key] = true;
                 }
@@ -99,13 +102,88 @@ function platformsSetup() {
     });
 }
 
+function sdkUpdate(options) {
+    return new Promise((resolve, reject) => {
+        buildPackage(options)
+        .then(() => {
+            return rebuildMobile();
+        })
+        .then(() => {
+            rearrange();
+            resolve();
+        })
+        .catch((reason) => {
+            reject(reason);
+        });
+    });
+}
+
+function buildPackage(options) {
+    return new Promise((resolve, reject) => {
+        const command = require('./command');
+        const cwdBackup = process.cwd();
+
+        let targets = (() => {
+            if (options.target) {
+                return options.target.split(',');
+            } else {
+                return [];
+            }
+        })();
+
+        const proc = () => {
+            const target = targets.shift();
+            if (!target) {
+                return resolve();
+            }
+
+            process.chdir(`../${target}`);
+            command.exec('npm', 'run build')
+                .then(() => {
+                    process.chdir(cwdBackup);
+                    setTimeout(proc);
+                })
+                .catch((reason) => {
+                    reject(reason);
+                });
+
+        };
+        setTimeout(proc);
+    });
+}
+
+function rebuildMobile() {
+    return new Promise((resolve, reject) => {
+        const command = require('./command');
+        const cwdBackup = process.cwd();
+
+        process.chdir('../cdp-mobile');
+        command.exec('npm', 'run rebuild')
+            .then(() => {
+                process.chdir(cwdBackup);
+                resolve();
+            })
+            .catch((reason) => {
+                reject(reason);
+            });
+    });
+}
+
 function main() {
-    switch (queryOptions().operation) {
+    const options = queryOptions();
+    switch (options.operation) {
         case 'rearrange':
             rearrange();
             break;
         case 'platforms':
             platformsSetup();
+            break;
+        case 'sdk':
+            sdkUpdate(options)
+                .catch((reason) => {
+                    console.error(reason);
+                    process.exit(1);
+                });
             break;
         default:
             break;
