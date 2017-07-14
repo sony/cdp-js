@@ -164,7 +164,7 @@
             "fetch": "fetch()",
             "reset": "reset()"
         },
-        "listview": {
+        "listView": {
             "description": "Virtual List View Example Entries:",
             "titleElement": "Sample: Element Overflow",
             "titleIScroll": "Sample: iScroll",

@@ -123,6 +123,29 @@
         .ui-title {
             transition: opacity $transition-slide-duration $transition-slide-timing-function;
         }
+
+        // button group adjust
+        .ui-controlgroup-horizontal {
+            &.ui-btn-left, &.ui-btn-right {
+                 top: 0;
+                 .ui-btn.ui-btn-icon-notext {
+                     width: 44px;
+                     &:after {
+                        left:           50%;
+                        margin-left:    -11px;
+                     }
+                 }
+            }
+            $revise-padding: 16px - 11px; // (bass:padding - icon:margin-left)
+            &.ui-btn-left {
+                left: 0;
+                padding-left: $revise-padding;
+            }
+            &.ui-btn-right {
+                right: 0;
+                padding-right: $revise-padding;
+            }
+        }
     }
 
     // slide transition アニメーション定義

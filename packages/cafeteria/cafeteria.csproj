@@ -519,6 +519,8 @@
     <Content Include="app\scripts\view\views-sample\root.js">
       <DependentUpon>root.ts</DependentUpon>
     </Content>
+    <Content Include="app\stylesheets\images\nodpi\btn_expand_down.png" />
+    <Content Include="app\stylesheets\images\nodpi\btn_expand_up.png" />
     <Content Include="app\templates\gallery\button.html" />
     <Content Include="app\templates\gallery\checkbox.html" />
     <Content Include="app\templates\gallery\dialog.html" />
@@ -652,7 +654,6 @@
     <Folder Include="app\porting\scripts\%40types\" />
     <Folder Include="app\porting\stylesheets\" />
     <Folder Include="app\porting\templates\" />
-    <Folder Include="app\stylesheets\images\" />
     <Folder Include="docs\images\" />
     <Folder Include="platforms\android\porting\scripts\" />
     <Folder Include="platforms\android\porting\stylesheets\" />

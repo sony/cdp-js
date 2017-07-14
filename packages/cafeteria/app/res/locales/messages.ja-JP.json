@@ -164,7 +164,7 @@
             "fetch": "fetch()",
             "reset": "reset()"
         },
-        "listview": {
+        "listView": {
             "description": "仮想 List View のサンプル実装例:",
             "titleElement": "サンプル: Element Overflow",
             "titleIScroll": "サンプル: iScroll",
