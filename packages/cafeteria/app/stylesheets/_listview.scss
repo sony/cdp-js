@@ -59,7 +59,7 @@ body {
             overflow-y: auto;
             background-color: gray;
             &.with-operations {
-                top: 72px;
+                top: 95px;
             }
         }
 
@@ -184,6 +184,12 @@ body {
             &.disable {
                 opacity: 0.2;
             }
+        }
+
+        // page listview
+        .ui-content.ui-listview-scroll-map {
+            margin-top: 2px;
+            background-color: gray;
         }
     }
 }
