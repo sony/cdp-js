@@ -108,14 +108,15 @@ function normalize_package_src() {
         ],
     }).forEach((file) => {
         console.log('  normalize... ' + file);
-        const basename = path.basename(file).split('.');
+        const ext = path.extname(file);
+        const basename = path.basename(file, ext);
         const srcPath = path.join(PKG_DIR, file);
 
         let src = fs.readFileSync(srcPath).toString().replace(/^\ufeff/gm, '');
         if (!/^\/\**!+/.test(src)) {
             // set banner
             const node = srcmap.getNodeFromCode(src);
-            node.prepend(banner('.' + basename[1], basename[0]) + '\n');
+            node.prepend(banner(ext, basename) + '\n');
             src = srcmap.getCodeFromNode(node);
         }
         src = normalize_src(src, {
@@ -131,7 +132,7 @@ function normalize_package_src() {
                     .replace(/platforms\/\w+\//, SOURCE_MAP_NAMESPACE + config.dir.src + '/')
                 ;
             },
-            multiline: 'css' === basename[1].toLowerCase(),
+            multiline: 'css' === ext.toLowerCase(),
         });
         fs.writeFileSync(srcPath, src);
     });

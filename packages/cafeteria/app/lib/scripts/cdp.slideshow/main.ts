@@ -9,12 +9,12 @@
 
 /* tslint:disable:no-string-literal */
 
-import DeviceConsole from "./device-console";
+import { Player as SlideShow } from "./slideshow/player";
 
 const global = Function("return this")();
 global["CDP"] = global["CDP"] || {};
 
 const _CDP = global["CDP"];
-_CDP.DeviceConsole = DeviceConsole;
+_CDP.SlideShow = SlideShow;
 
-export { DeviceConsole };
+export { SlideShow };

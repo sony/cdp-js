@@ -8,7 +8,7 @@ const DOUBLE_TAP_POSITION_ALLOWANCE = 200;
  * @class DeviceConsole
  * @brief 拡張コンソール出力 UI を作成, 管理するクラス
  */
-export class DeviceConsole implements Console {
+export default class DeviceConsole implements Console {
     private static s_console: Console = null;
     private static s_instance: DeviceConsole = null;
     private static s_$display: JQuery = null;
