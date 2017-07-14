@@ -196,7 +196,7 @@ label.ui-btn {
 // icon overwrite: .ui-icon-carat-{l,r,u,d}
 $indicator-list: l, r, u, d;
 @each $indicator-id in $indicator-list {
-    [class*=ui-platform-] .ui-icon-carat-#{$indicator-id} {
+    [class*=ui-platform-] .ui-content:not(.ui-no-override-icon) .ui-icon-carat-#{$indicator-id} {
         &:after {
             background-image: none !important;
             background-color: initial !important;

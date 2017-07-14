@@ -60,6 +60,7 @@
 | ui-no-title                      | ヘッダータイトル未所有                                 | stylesheets/structure/widget/base/_dialog.scss        |
 | ui-message                       | メッセージ                                             | stylesheets/structure/widget/base/_dialog.scss        |
 | ui-modal-footer                  | ボタン領域                                             | stylesheets/structure/widget/base/_dialog.scss        |
+| ui-no-override-icon              | ui-icon-carat などの上書きをしない (ui-content に設定) | stylesheets/structure/widget/base/_global.scss        |
 | ui-listview-scroll-map           | 仮想リストビュー用スクロールマップ領域                 | stylesheets/structure/widget/base/_global.scss        |
 | ui-listview-item-base            | 仮想リストビュー用リスト要素                           | stylesheets/structure/widget/base/_global.scss        |
 | ui-listview-wrapper              | iScroll 使用時の wrapper                               | cdp-ui-listview 内の Config 既定値                    |
