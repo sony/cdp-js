@@ -94,6 +94,7 @@ namespace Config {
                 "hammerjs": _module("hammerjs", "hammer"),
                 "jquery-hammerjs": _module("hammerjs", "jquery.hammer"),
                 "iscroll": _module("iscroll", "iscroll-probe"),
+                "sylvester": _module("sylvester"),
 
                 // core frameworks
                 "cdp": _module("cdp"),
@@ -119,6 +120,7 @@ namespace Config {
         // >>>LIB_DEPENDENCIES>>> package assign
         assign_lib("cdp.device.console");
         assign_lib("cdp.ui.smoothscroll");
+        assign_lib("cdp.slideshow");
         assign_lib("cafeteria.image.data");
         // <<<LIB_DEPENDENCIES<<<
 
