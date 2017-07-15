@@ -14,7 +14,7 @@ const TAG = "[CDP.SlideShow.TimerAnimation] ";
  * @brief Slide Show internal class.
  */
 export default class TimerAnimationInfo {
-    //! constructor
+    // constructor
     constructor(private _enableFade: boolean,
         private _opacity: TimerAnimationParam,
         private _enableTransform: boolean,
@@ -25,7 +25,7 @@ export default class TimerAnimationInfo {
         private _cssPrefixes: any) {
     }
 
-    //! accesser : fade
+    // accesser : fade
     getFadeProperty(rev: number): any {
         if (!this._enableFade) {
             return -1;    // for ignore mark.
@@ -44,7 +44,7 @@ export default class TimerAnimationInfo {
         return opacity;
     }
 
-    //! accesser : transform
+    // accesser : transform
     getTransformProperty(rev: number): any {
         if (!this._enableTransform) {
             return false;

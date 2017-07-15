@@ -7,7 +7,7 @@
  * ※既存の cdp.ui.*.js に実装する場合は、従来どおり classical module 方式にすること
  */
 declare namespace CDP.UI {
-    const SmoothScroll: typeof LibSmoothScroll;
+    const SmoothScroll: typeof LibSmoothScroll.SmoothScroll;
 }
 
 declare module "cdp.ui.smoothscroll" {

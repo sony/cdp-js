@@ -13,6 +13,7 @@
     "location": true,
     "Symbol": true,
     "Promise": true,
+    "CDP": true,
     "module": true,
     "require": true,
     "define": true,

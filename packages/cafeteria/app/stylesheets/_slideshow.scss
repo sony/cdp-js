@@ -1,0 +1,504 @@
+﻿/* variables */
+
+/* custom mixins */
+@import "_utils.scss";
+
+$animation-interval: 0.25s;
+$res-root: "#{$images-root}/slideshow";
+
+// css transition properties
+.hide-navigation {
+    visibility: hidden;
+    opacity:    0.0;
+}
+
+.show-navigation {
+    visibility: visible;
+    opacity:    1.0;
+}
+
+.show-info-footer {
+    transform: translate3d(0,-210px,0);
+}
+
+/* screens smaller than 1280px
+***************************************************************************/
+@media only screen and (max-width: $screen-mid-max) and (min-width: $screen-mid-min){
+    .show-info-footer {
+        transform: translate3d(0,-170px,0);
+    }
+}
+/* screens smaller than 640px
+***************************************************************************/
+@media only screen and (max-width: $screen-small-max)  {
+    .show-info-footer {
+        transform: translate3d(0,-144px,0);
+    }
+}
+
+#page-slideshow {
+    position:   absolute;
+    top:        0;
+    bottom:     0;
+    left:       0;
+    right:      0;
+    overflow:   hidden;
+
+    #slideshow-screen {
+        position:   absolute;
+        top:        0;
+        bottom:     0;
+        left:       0;
+        right:      0;
+        overflow:   hidden;
+        z-index:    0;
+    }
+
+    .center-spinner {
+        position:   absolute;
+        top:        50%;
+        left:       50%;
+        padding:    0;
+        margin-left: -36px;
+        margin-top:  -36px;
+    }
+
+    #area-prev {
+        position:           absolute;
+        width:              122px;
+        height:             232px;
+        top:                50%;
+        left:               0;
+        margin-top:         -116px;
+        background-image:   url("#{$res-root}/image_back_normal_l.png");
+        cursor:             pointer;
+        z-index:            3;
+        transition:         opacity $animation-interval linear 0;
+        &:hover {
+            background-image: url("#{$res-root/image_back_hover_l.png");
+        }
+        &:active {
+            background-image: url("#{$res-root}/image_back_push_l.png");
+        }
+    }
+
+    #area-next {
+        position:           absolute;
+        width:              122px;
+        height:             232px;
+        top:                50%;
+        right:              0;
+        margin-top:         -116px;
+        background-image:   url("#{$res-root}/image_next_normal_l.png");
+        cursor:             pointer;
+        z-index:            3;
+        transition:         opacity $animation-interval linear 0;
+        &:hover {
+            background-image: url("#{$res-root}/image_next_hover_l.png");
+        }
+        &:active {
+            background-image: url("#{$res-root}/image_next_push_l.png");
+        }
+    }
+
+    #menu {
+        position:   absolute;
+        height:     34px;
+        top:        30px;
+        right:      40px;
+        z-index:    2;
+
+        #toggle-fullscreen, #close {
+            height:             34px;
+            border:             none;
+            padding:            0 15px 0 15px;
+            color:              white;
+            font-size:          14px;
+            background-color:   #1F2024;
+            opacity:            0.60;
+            cursor:             pointer;
+            z-index:            3;
+            transition:         opacity $animation-interval linear 0;
+            &:hover {
+                background-color: #0A0B0D;
+            }
+            &:active {
+                background-color: #2F353D;
+            }
+        }
+    }
+
+    #info-footer {
+        position:   absolute;
+        width:      100%;
+        height:     210px;
+        top:        210px;
+        z-index:    2;
+        transition: transform $animation-interval linear;
+
+        #area-info {
+            position:   absolute;
+            width:      100%;
+            height:     90px;
+            top:        0;
+
+            #play-control {
+                position:           absolute;
+                width:              60px;
+                height:             60px;
+                top:                0;
+                left:               0;
+                padding:            0;
+                margin:             15px 30px 15px 45px;
+                background-image:   url("#{$res-root}/play_normal_ml.png");
+                cursor:             pointer;
+                &:hover {
+                    background-image: url("#{$res-root}/play_hover_ml.png");
+                }
+                &:active {
+                    background-image: url("#{$res-root}/play_push_ml.png");
+                }
+                &.to-stop {
+                    background-image: url("#{$res-root}/pause_normal_ml.png");
+                    &:hover {
+                        background-image: url("#{$res-root}/pause_hover_ml.png");
+                    }
+                    &:active {
+                        background-image: url("#{$res-root}/pause_push_ml.png");
+                    }
+                }
+            }
+
+            section {
+                position:   absolute;
+                width:      100%;
+                height:     60px;
+                left:       135px;
+                margin:     15px 15px 15px 0;
+
+                #info-date-time {
+                    position:       absolute;
+                    width:          100%;
+                    height:         40px;
+                    top:            0;
+                    left:           0;
+                    font-size:      30px;
+                    color:          white;
+                    text-shadow:    1px 1px 1px black;
+                    text-align:     left;
+                    vertical-align: middle;
+                }
+
+                #info-title {
+                    position:       absolute;
+                    width:          100%;
+                    height:         20px;
+                    top:            40px;
+                    left:           0;
+                    font-size:      14px;
+                    color:          white;
+                    text-shadow:    1px 1px 1px black;
+                    text-align:     left;
+                    vertical-align: middle;
+                }
+            }
+        }
+
+        #area-thumbnail {
+            position:   absolute;
+            width:      100%;
+            height:     120px;
+            top:        90px;
+
+            #thumb-container {
+                position:       absolute;
+                height:         104px;
+                margin:         10px;
+                white-space:    nowrap;
+                overflow-x:     auto;
+                overflow-y:     hidden;
+
+                .thumbnail {
+                    position:   relative;
+                    width:      100px;
+                    height:     100px;
+                    margin:     0 2px 0 0;
+                    display:    inline-block;
+
+                    figure {
+                        position:               absolute;
+                        top:                    1px;
+                        left:                   1px;
+                        right:                  1px;
+                        bottom:                 1px;
+                        margin:                 0;
+                        border:                 2px solid transparent;
+                        background-position:    center;
+                        background-size:        cover;
+                        background-repeat:      no-repeat;
+                        cursor:                 pointer;
+                    }
+                    &.focus {
+                        background-color: #29ABE2;
+                        figure {
+                            border: 2px solid #29ABE2;
+                        }
+                    }
+                    &:hover {
+                        figure {
+                            border: 2px solid white;
+                        }
+                    }
+                    // +++ TODO : remove, for debug +++
+                    span {
+                        text-align: center;
+                        font-size:  large;
+                        position:   absolute;
+                        margin:     0 auto;
+                        color:      gold;
+                    }
+                    // --- TODO : remove, for debug ---
+                }
+            }
+
+            #thumb-prev {
+                position:           absolute;
+                width:              90px;
+                height:             100%;
+                left:               0;
+                background-image:   url("#{$res-root}/thumb_back_normal_l.png");
+                cursor:             pointer;
+                &:hover {
+                    background-image: url("#{$res-root}/thumb_back_hover_l.png");
+                }
+                &:active {
+                    background-image: url("#{$res-root}/thumb_back_push_l.png");
+                }
+            }
+
+            #thumb-next {
+                position:           absolute;
+                width:              90px;
+                height:             100%;
+                right:              0;
+                background-image:   url("#{$res-root}/thumb_next_normal_l.png");
+                cursor:             pointer;
+                &:hover {
+                    background-image: url("#{$res-root}/thumb_next_hover_l.png");
+                }
+                &:active {
+                    background-image: url("#{$res-root}/thumb_next_push_l.png");
+                }
+            }
+        }
+    }
+
+    /* screen wider than 1280px
+    ***************************************************************************/
+
+    @media only screen and (min-width: $screen-large-min){
+    }
+
+    /* screens smaller than 1280px
+    ***************************************************************************/
+
+    @media only screen and (max-width: $screen-mid-max) and (min-width: $screen-mid-min){
+        #area-prev {
+            width:              42px;
+            height:             120px;
+            margin-top:         -60px;
+            background-image:   url("#{$res-root}/image_back_normal_m.png");
+            &:hover {
+                background-image: url("#{$res-root}/image_back_hover_m.png");
+            }
+            &:active {
+                background-image: url("#{$res-root}/image_back_push_m.png");
+            }
+        }
+
+        #area-next {
+            width:              42px;
+            height:             120px;
+            margin-top:         -60px;
+            background-image:   url("#{$res-root}/image_next_normal_m.png");
+            &:hover {
+                background-image: url("#{$res-root}/image_next_hover_m.png");
+            }
+            &:active {
+                background-image: url("#{$res-root}/image_next_push_m.png");
+            }
+        }
+
+        #info-footer {
+            height: 170px;
+            top:    170px;
+
+            #area-info {
+                #play-control {
+                    margin: 15px;
+                }
+                section {
+                    left: 90px;
+                }
+            }
+
+            #area-thumbnail {
+                height: 80px;
+                #thumb-container {
+                    height: 64px;
+                    margin:10px;
+                    .thumbnail {
+                        width: 60px;
+                        height: 60px;
+                    }
+                }
+
+                #thumb-prev {
+                    width:              60px;
+                    background-image:   url("#{$res-root}/thumb_back_normal_m.png");
+                    &:hover {
+                        background-image: url("#{$res-root}/thumb_back_hover_m.png");
+                    }
+                    &:active {
+                        background-image: url("#{$res-root}/thumb_back_push_m.png");
+                    }
+                }
+
+                #thumb-next {
+                    width:              60px;
+                    background-image:   url("#{$res-root}/thumb_next_normal_m.png");
+                    &:hover {
+                        background-image: url("#{$res-root}/thumb_next_hover_m.png");
+                    }
+                    &:active {
+                        background-image: url("#{$res-root}/thumb_next_push_m.png");
+                    }
+                }
+            }
+        }
+    }
+
+    /* screens smaller than 640px
+    ***************************************************************************/
+
+    @media only screen and (max-width: $screen-small-max)  {
+        #menu {
+            height: 30px;
+            top:    20px;
+            right:  20px;
+
+            #toggle-fullscreen, #close {
+                height:     30px;
+                padding:    0 5px 0 5px;
+                font-size:  10px;
+            }
+        }
+
+        #area-prev {
+            width:              21px;
+            height:             60px;
+            margin-top:         -30px;
+            background-image:   url("#{$res-root}/image_back_normal_s.png");
+            &:hover {
+                background-image: url("#{$res-root}/image_back_hover_s.png");
+            }
+            &:active {
+                background-image: url("#{$res-root}/image_back_push_s.png");
+            }
+        }
+
+        #area-next {
+            width:              21px;
+            height:             60px;
+            margin-top:         -30px;
+            background-image:   url("#{$res-root}/image_next_normal_s.png");
+            &:hover {
+                background-image: url("#{$res-root}/image_next_hover_s.png");
+            }
+            &:active {
+                background-image: url("#{$res-root}/image_next_push_s.png");
+            }
+        }
+
+        #info-footer {
+            height: 144px;
+            top:    144px;
+
+            #area-info {
+                #play-control {
+                    width:              50px;
+                    height:             50px;
+                    margin:             10px;
+                    background-image:   url("#{$res-root}/play_normal_s.png");
+                    &:hover {
+                        background-image: url("#{$res-root}/play_hover_s.png");
+                    }
+                    &:active {
+                        background-image: url("#{$res-root}/play_push_s.png");
+                    }
+                    &.to-stop {
+                        background-image: url("#{$res-root}/pause_normal_s.png");
+                        &:hover {
+                            background-image: url("#{$res-root}/pause_hover_s.png");
+                        }
+                        &:active {
+                            background-image: url("#{$res-root}/pause_push_s.png");
+                        }
+                    }
+                }
+
+                section {
+                    left:   70px;
+                    margin: 10px 10px 10px 0;
+
+                    #info-date-time {
+                        height:     32px;
+                        font-size:  16px;
+                    }
+
+                    #info-title {
+                        height:     18px;
+                        top:        32px;
+                        font-size:  12px;
+                    }
+                }
+            }
+
+            #area-thumbnail {
+                height: 74px;
+                top:    70px;
+
+                #thumb-container {
+                    height: 58px;
+                    margin: 10px;
+                    .thumbnail {
+                        width:  54px;
+                        height: 54px;
+                    }
+                }
+
+                #thumb-prev {
+                    width:              54px;
+                    background-image:   url("#{$res-root}/thumb_back_normal_s.png");
+                    &:hover {
+                        background-image: url("#{$res-root}/thumb_back_hover_s.png");
+                    }
+                    &:active {
+                        background-image: url("#{$res-root}/thumb_back_push_s.png");
+                    }
+                }
+
+                #thumb-next {
+                    width:              54px;
+                    background-image:   url("#{$res-root}/thumb_next_normal_s.png");
+                    &:hover {
+                        background-image: url("#{$res-root}/thumb_next_hover_s.png");
+                    }
+                    &:active {
+                        background-image: url("#{$res-root}/thumb_next_push_s.png");
+                    }
+                }
+            }
+        }
+    }
+}

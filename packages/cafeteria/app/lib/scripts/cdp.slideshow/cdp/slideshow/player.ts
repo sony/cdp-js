@@ -16,6 +16,8 @@ import Transition from "./transition";
 
 const TAG = "[CDP.SlideShow.Player] ";
 
+// re-export
+export { InfinityContainer, CSS };
 
 /**
  * @class _Config
@@ -50,11 +52,11 @@ export class Player {
 
     private static _defaultOptions = {
         // SlideShow settings.
-        preloadCount: 4,                                                        //!< {Number} number of images to preload.
-        enableTouch: true,                                                        //!< {Boolean} true: enable screen touch event handing. / false: no reaction.
-        showFirstImageImmediately: true,                                        //!< {Boolean}  first image showing when initialize finished.
-        setSpinnerCallback: null,                                                //!< {Function} callback when need to show spinner div. (viewport: JQuery, element: HTMLElement).
-        stateChangedCallback: function (event: string, info: any) { /*noop*/ },    //!< {Function} callback when slideshow state changed.
+        preloadCount: 4,                                                        //< {Number} number of images to preload.
+        enableTouch: true,                                                        //< {Boolean} true: enable screen touch event handing. / false: no reaction.
+        showFirstImageImmediately: true,                                        //< {Boolean}  first image showing when initialize finished.
+        setSpinnerCallback: null,                                                //< {Function} callback when need to show spinner div. (viewport: JQuery, element: HTMLElement).
+        stateChangedCallback: function (event: string, info: any) { /*noop*/ },    //< {Function} callback when slideshow state changed.
         // event: "state:playback-image-changed", info: content index.
         //        "state:play-state-changed", info: play state.
         //        "error:max-error-count", info: undefined.
@@ -68,7 +70,7 @@ export class Player {
         firstContainerStart: 0,
         firstContainerEnd: null,    // always override.
         firstContainerPosition: 0,
-        allowedErrorMax: 100,        //!< maximum error count. add 2014/02/17
+        allowedErrorMax: 100,        //< maximum error count. add 2014/02/17
     };
 
     private _settings: any = null;
@@ -89,7 +91,7 @@ export class Player {
     private _currentTranslateX: number;
     private _currentTranslateY: number;
 
-    private _errorCount: number = 0;    //!< error counter. add 2014/02/17
+    private _errorCount: number = 0;    //< error counter. add 2014/02/17
 
     // used on sidepeek mode only
     private _rightImage: HTMLElement = null;
@@ -140,8 +142,8 @@ export class Player {
         this._imgContainer.init(imageData, options)
             .then(() => {
 
-                //! touch有効なときのみ、targetを指定する必要あり。
-                //! 中でpreventDefaultをcallしているため。
+                // touch有効なときのみ、targetを指定する必要あり。
+                // 中でpreventDefaultをcallしているため。
                 if (this._settings.enableTouch) {
                     Touch.setTarget(this._$viewport);
                 }
@@ -173,7 +175,7 @@ export class Player {
             this.notifyStateChanged("state:play-state-changed", this._isPlaying);
         }
 
-        Touch.removeTarget(this._$viewport); //! TODO: 以下のoffでevent handlerをunbindしているので不要かも
+        Touch.removeTarget(this._$viewport); // TODO: 以下のoffでevent handlerをunbindしているので不要かも
         (this._$viewport).off();
 
         this.cleanViewPort(this._$viewport);

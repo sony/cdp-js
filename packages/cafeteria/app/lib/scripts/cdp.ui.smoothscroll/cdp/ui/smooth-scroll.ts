@@ -2,7 +2,7 @@
 
 import * as $ from "jquery";
 
-//! SmoothScroll internal profile interface.
+// SmoothScroll internal profile interface.
 interface Profile {
     scrollMapSize: number;
     elementWidth: number;

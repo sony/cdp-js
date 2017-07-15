@@ -46,7 +46,7 @@ class PictureListViewPageView extends PageView<Picture> {
         };
     }
 
-    //! 描画
+    // 描画
     render(): PageView {
         this._$listview.html(
             this._template({

@@ -16,7 +16,7 @@ namespace Config {
      * の設定が反映される
      */
     export const DEBUG = ((): boolean => {
-        return !!("%% build_setting %%");    //! リリース時には false が返る
+        return !!("%% build_setting %%");    // リリース時には false が返る
     })();
 
     /**
@@ -122,6 +122,7 @@ namespace Config {
         assign_lib("cdp.ui.smoothscroll");
         assign_lib("cdp.slideshow");
         assign_lib("cafeteria.images");
+        assign_lib("cafeteria.slideshow");
         // <<<LIB_DEPENDENCIES<<<
 
         /* tslint:enable:no-unused-variable no-unused-vars */

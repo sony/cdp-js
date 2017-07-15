@@ -1,0 +1,85 @@
+﻿<article data-role="page" id="page-pmo-dashboard" class="pmo" data-theme="none" data-dom-cache="false">
+    <!-- actionbar/navigationbar area -->
+    <header data-role="header" data-position="fixed" data-fullscreen="true" data-tap-toggle="false" class="commandview">
+        <section class="actionbar command-defs">
+            <section class="command-set normal translucent-light active" data-mode="normal">
+                <nav class="command-icon withindicator">&nbsp;</nav>
+                <h1 class="command-title" data-i18n="page-example-advanced.pmo.common.appName">PlayMemories Online</h1>
+                <nav class="command-button notification" style="visibility: hidden">&nbsp;</nav>
+                <nav class="command-button refresh">&nbsp;</nav>
+                <nav class="command-button add">&nbsp;</nav>
+                <nav class="command-button overflow">&nbsp;</nav>
+            </section>
+        </section>
+    </header>
+
+    <!-- main contents area -->
+    <section class="fullscreen">
+        <section id="dashboard-slideshow-area">
+            <figure class="background">&nbsp;</figure>
+            <div id="dashboard-slideshow-screen" class="fade-out"></div>
+            <div class="area-shadow"></div>
+        </section>
+        <div id="dashboard-mask"></div>
+        <section id="dashboard-ad-area" class="fade-out">
+            <div class="scroll-map">
+                <div id="dashboard-ad"><p class="text-3l">★広告</p>&nbsp;</div>
+                <div class="area-shadow"></div>
+            </div>
+        </section>
+        <section id="dashboard-contents-area">
+            <div class="area-shadow"></div>
+            <div id="dashboard-recall-info">
+                <aside class="description">
+                    <p class="text-s fade-out"></p>
+                    <p class="text-s fade-out fade-in"></p>
+                </aside>
+                <aside class="date">
+                    <p class="text-3l fade-out"></p>
+                    <p class="text-3l fade-out fade-in"></p>
+                </aside>
+            </div>
+            <nav class="dashboard-content fade-out" data-type="calendar" data-command="#calendar">
+                <figure class="fade-out">&nbsp;</figure>
+                <figure class="fade-out fade-in">&nbsp;</figure>
+                <div></div>
+                <p class="text-m" data-i18n="page-example-advanced.pmo.dashboard.toCalendar">All</p>
+            </nav>
+            <nav class="dashboard-content fade-out" data-type="album" data-command="#albumlist">
+                <figure class="fade-out">&nbsp;</figure>
+                <figure class="fade-out fade-in">&nbsp;</figure>
+                <div></div>
+                <p class="text-m" data-i18n="page-example-advanced.pmo.dashboard.toAlbum">My Collections</p>
+            </nav>
+            <nav class="dashboard-content fade-out" data-type="postcard" data-command="#postcardlist">
+                <figure class="fade-out">&nbsp;</figure>
+                <figure class="fade-out fade-in">&nbsp;</figure>
+                <div></div>
+                <p class="text-m" data-i18n="page-example-advanced.pmo.dashboard.toPostcard">Postcards</p>
+            </nav>
+            <nav class="dashboard-content fade-out" data-type="spb" data-command="#spb">
+                <figure class="fade-out">&nbsp;</figure>
+                <figure class="fade-out fade-in">&nbsp;</figure>
+                <div></div>
+                <p class="text-m" data-i18n="page-example-advanced.pmo.dashboard.toSPB">Photo Books</p>
+            </nav>
+            <nav class="dashboard-content fade-out" data-type="friend" data-command="#friendlist">
+                <figure class="fade-out">&nbsp;</figure>
+                <figure class="fade-out fade-in">&nbsp;</figure>
+                <div></div>
+                <p class="text-m" data-i18n="page-example-advanced.pmo.dashboard.toFriendAlbum">Friends&#8217;Collections</p>
+            </nav>
+            <div class="event-delegater"></div>
+        </section>
+    </section>
+
+    <!-- overflow menu -->
+    <menu class="overflow" data-role="popup" data-corners="false" data-theme="none">
+        <li class="navigate" data-command="#settings" data-i18n="page-example-advanced.pmo.menu.settings">Settings</li>
+        <li class="external" data-command="http://www.yahoo.co.jp" data-i18n="page-example-advanced.pmo.menu.notifications">Notifications</li>
+        <li class="external" data-command="https://www.google.co.jp/" data-i18n="page-example-advanced.pmo.menu.help">Help</li>
+        <!-- TODO: 削除 -->
+        <li class="test" data-command="update-image">[Test] Update Image</li>
+        <li class="test" data-command="dialog">[Test] Dialog</li>
+    </menu>
+</article>

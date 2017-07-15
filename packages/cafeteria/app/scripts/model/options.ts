@@ -20,7 +20,7 @@ export class Options extends Model {
 
     static s_instance: Options = null;
 
-    //! constructor
+    // constructor
     private constructor() {
         super();
         this.init();
@@ -103,7 +103,7 @@ export class Options extends Model {
         localStorage.setItem(key, JSON.stringify(data));
     }
 
-    //! 初期化
+    // 初期化
     private init(update?: boolean): void {
         const keys = [
             "transition",
