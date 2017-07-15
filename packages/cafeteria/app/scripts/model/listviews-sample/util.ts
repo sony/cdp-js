@@ -1,6 +1,5 @@
 ﻿import {
     IPromise,
-    Promise,
     makePromise,
 } from "cdp/framework";
 import { Toast } from "cdp/ui";
@@ -55,7 +54,8 @@ export function queryItemInfoList(): IPromise<ItemInfo[]> {
 
 // ItemInfo を生成 (Group 用)
 export function queryItemInfoGroupList(): IPromise<ItemInfoGroup[]> {
-    return new Promise((resolve, reject, dependOn) => {
+    // [NOTE] async- await を使用する場合、Top Level に Promise import は不可
+    return new CDP.Promise((resolve, reject, dependOn) => {
         const itemGroup: ItemInfoGroup[] = [];
         let groupCount = Math.floor(Math.random() * (Config.LIMIT_ITEMGROUPINFO_LIST_COUNT - 1)) + 1;
 
@@ -88,20 +88,15 @@ export function queryItemInfoGroupList(): IPromise<ItemInfoGroup[]> {
                 };
                 setTimeout(proc);
             });
-
     });
 }
 
 ///////////////////////////////////////////////////////////////////////
 // private static methods
 
-// app.data をロード
-function loadModules(): Promise<void> {
-    return new Promise((resolve) => {
-        require(["cafeteria.images"], () => {
-            resolve();
-        });
-    });
+// "cafeteria.images" をロード
+async function loadModules(): Promise<void> {
+    await import("cafeteria.images");
 }
 
 // エラーハンドラ

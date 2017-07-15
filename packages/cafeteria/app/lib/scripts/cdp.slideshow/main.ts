@@ -4,7 +4,7 @@
  * 生成する d.ts に AMD module 名を設定するために、
  * <amd-module name/> の triple slash directive が必須
  */
-/// <amd-module name="cdp.device.console" />
+/// <amd-module name="cdp.slideshow" />
 
 /*
  * [NOTE] Managed AMD namespace
@@ -28,4 +28,4 @@ global["CDP"] = global["CDP"] || {};
 global["CDP"].SlideShow = SlideShow;
 /* tslint:enable:no-string-literal */
 
-export { SlideShow };
+export default SlideShow;
