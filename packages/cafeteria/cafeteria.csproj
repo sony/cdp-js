@@ -77,22 +77,22 @@
     <Content Include=".npmignore" />
     <Content Include="app\external\jquery\stylesheets\jquery.mobile.default-theme.css" />
     <Content Include="app\external\sylvester\scripts\sylvester.js" />
-    <Content Include="app\lib\scripts\cafeterica.slideshow\cafeteria\model\%40entry.js">
-      <DependentUpon>%40entry.ts</DependentUpon>
+    <Content Include="app\lib\scripts\cafeteria.slideshow\cafeteria\model\%40entry-slideshow.js">
+      <DependentUpon>%40entry-slideshow.ts</DependentUpon>
     </Content>
-    <Content Include="app\lib\scripts\cafeterica.slideshow\cafeteria\model\assets-image-data-provider.js">
+    <Content Include="app\lib\scripts\cafeteria.slideshow\cafeteria\model\assets-image-data-provider.js">
       <DependentUpon>assets-image-data-provider.ts</DependentUpon>
     </Content>
-    <Content Include="app\lib\scripts\cafeterica.slideshow\cafeteria\model\image-data-provider-interface.js">
+    <Content Include="app\lib\scripts\cafeteria.slideshow\cafeteria\model\image-data-provider-interface.js">
       <DependentUpon>image-data-provider-interface.ts</DependentUpon>
     </Content>
-    <Content Include="app\lib\scripts\cafeterica.slideshow\cafeteria\view\%40entry.js">
-      <DependentUpon>%40entry.ts</DependentUpon>
+    <Content Include="app\lib\scripts\cafeteria.slideshow\cafeteria\view\%40entry-slideshow.js">
+      <DependentUpon>%40entry-slideshow.ts</DependentUpon>
     </Content>
-    <Content Include="app\lib\scripts\cafeterica.slideshow\cafeteria\view\slideshow-view.js">
+    <Content Include="app\lib\scripts\cafeteria.slideshow\cafeteria\view\slideshow-view.js">
       <DependentUpon>slideshow-view.ts</DependentUpon>
     </Content>
-    <Content Include="app\lib\scripts\cafeterica.slideshow\main.js">
+    <Content Include="app\lib\scripts\cafeteria.slideshow\main.js">
       <DependentUpon>main.ts</DependentUpon>
     </Content>
     <Content Include="app\lib\scripts\cdp.deviceconsole\cdp\device-console.js">
@@ -835,14 +835,14 @@
     <TypeScriptCompile Include="app\lib\scripts\cafeteria.images\main.ts" />
     <TypeScriptCompile Include="app\lib\scripts\cafeteria.images\_declare.d.ts" />
     <TypeScriptCompile Include="app\lib\scripts\cafeteria.images\_export.d.ts" />
-    <TypeScriptCompile Include="app\lib\scripts\cafeterica.slideshow\cafeteria\model\assets-image-data-provider.ts" />
-    <TypeScriptCompile Include="app\lib\scripts\cafeterica.slideshow\cafeteria\model\image-data-provider-interface.ts" />
-    <TypeScriptCompile Include="app\lib\scripts\cafeterica.slideshow\cafeteria\model\%40entry.ts" />
-    <TypeScriptCompile Include="app\lib\scripts\cafeterica.slideshow\cafeteria\view\slideshow-view.ts" />
-    <TypeScriptCompile Include="app\lib\scripts\cafeterica.slideshow\cafeteria\view\%40entry.ts" />
-    <TypeScriptCompile Include="app\lib\scripts\cafeterica.slideshow\main.ts" />
-    <TypeScriptCompile Include="app\lib\scripts\cafeterica.slideshow\_declare.d.ts" />
-    <TypeScriptCompile Include="app\lib\scripts\cafeterica.slideshow\_export.d.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\cafeteria.slideshow\cafeteria\model\assets-image-data-provider.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\cafeteria.slideshow\cafeteria\model\image-data-provider-interface.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\cafeteria.slideshow\cafeteria\model\%40entry-slideshow.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\cafeteria.slideshow\cafeteria\view\slideshow-view.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\cafeteria.slideshow\cafeteria\view\%40entry-slideshow.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\cafeteria.slideshow\main.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\cafeteria.slideshow\_declare.d.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\cafeteria.slideshow\_export.d.ts" />
     <TypeScriptCompile Include="app\lib\scripts\cdp.deviceconsole\cdp\device-console.ts" />
     <TypeScriptCompile Include="app\lib\scripts\cdp.deviceconsole\main.ts" />
     <TypeScriptCompile Include="app\lib\scripts\cdp.deviceconsole\_declare.d.ts" />

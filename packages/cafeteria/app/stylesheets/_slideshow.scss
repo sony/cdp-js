@@ -75,7 +75,7 @@ $res-root: "#{$images-root}/slideshow";
         z-index:            3;
         transition:         opacity $animation-interval linear 0;
         &:hover {
-            background-image: url("#{$res-root/image_back_hover_l.png");
+            background-image: url("#{$res-root}/image_back_hover_l.png");
         }
         &:active {
             background-image: url("#{$res-root}/image_back_push_l.png");

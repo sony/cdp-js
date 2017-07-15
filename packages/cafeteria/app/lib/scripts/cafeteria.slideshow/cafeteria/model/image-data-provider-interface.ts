@@ -171,15 +171,15 @@ export class ImageDataProviderUtil {
 
             // data setup proc
             setTimeout(() => {
-                let data = {
+                const data = {
                     total: context.getTotalSize(),
                     items: context.models.slice(unitIndex, unitIndex + context.getQuerySize()),
                 };
                 if (!noload) {
                     // wait for load
                     ImageDataProviderUtil.waitForLoadComplete(context, type, data)
-                        .done((data) => {
-                            resolve(data);
+                        .done((result) => {
+                            resolve(result);
                         })
                         .fail(() => {
                             reject();
@@ -214,8 +214,8 @@ export class ImageDataProviderUtil {
                     index = ImageDataProviderUtil.findIndexFromItemId(imageId, data, startIndex);
                     if (-1 !== index) {
                         ImageDataProviderUtil.waitForLoadComplete(context, type, data)
-                            .done((data) => {
-                                df.resolve(data, index, unitIndex);
+                            .done((result) => {
+                                df.resolve(result, index, unitIndex);
                             })
                             .fail(() => {
                                 df.reject();
@@ -229,8 +229,8 @@ export class ImageDataProviderUtil {
                             console.error("error. item not found. id:" + imageId);
                             // for fail safe.
                             ImageDataProviderUtil.queryData(context, type, 0)
-                                .done((data) => {
-                                    df.resolve(data, 0, 0);
+                                .done((result) => {
+                                    df.resolve(result, 0, 0);
                                 })
                                 .fail(() => {
                                     df.reject();
@@ -286,7 +286,7 @@ export class ImageDataProviderUtil {
         }
 
         for (let i = 0, length = data.items.length; i < length; i++) {
-            let item = data.items[i];
+            const item = data.items[i];
             if (item.get("id") === imageId) {
                 return startIndex;
             }
@@ -303,7 +303,7 @@ export class ImageDataProviderUtil {
     private static waitForLoadComplete(context: ImageDataProvider, type: string, data: any): IPromise<any> {
         return new Promise((resolve, reject) => {
             // wait for load
-            let promises = _.map(data.items, (item: ImageData) => {
+            const promises = _.map(data.items, (item: ImageData) => {
                 return item.load(type);
             });
             if (0 < promises.length) {

@@ -22,7 +22,7 @@ import {
     ImageData,
     ImageDataProvider,
     AssetsImageDataProvider,
-} from "../model/@entry";
+} from "../model/@entry-slideshow";
 
 const TAG = "[cafeteria.slideshow.view.SlideShowView] ";
 
@@ -693,18 +693,82 @@ class SlideShowView extends PageView {
         };
 
         const transitionList = [
-            { type: "slidein", config: {} },
-            { type: "fadein", config: { duration: 5000, focusDuration: 1000 } },
-            { type: "fixed-fadein-zoomout-inscribed", config: { scale: 1.25, transformDuration: 5000, fadeDuration: 2500, focusDuration: 0 } },
-            { type: "kenburn", config: { focusDuration: 0, type: "slideleft" } },
-            { type: "custom-effect", config: { oldEndScale: 1.0 } },
-            { type: "kenburn", config: { focusDuration: 500, type: "slideright" } },
-            { type: "slidein", config: {} },
-            { type: "fadein", config: {} },
-            { type: "kenburn", config: { focusDuration: 0, type: "zoomout" } },
-            { type: "kenburn", config: { focusDuration: 0, type: "slideleft" } },
-            { type: "kenburn", config: { focusDuration: 0, type: "zoomin" } },
-            { type: "kenburn", config: { focusDuration: 500, type: "slideright" } },
+            {
+                type: "slidein",
+                config: {},
+            },
+            {
+                type: "fadein",
+                config: {
+                    duration: 5000,
+                    focusDuration: 1000,
+                },
+            },
+            {
+                type: "fixed-fadein-zoomout-inscribed",
+                config: {
+                    scale: 1.25,
+                    transformDuration: 5000,
+                    fadeDuration: 2500,
+                    focusDuration: 0,
+                },
+            },
+            {
+                type: "kenburn",
+                config: {
+                    focusDuration: 0,
+                    type: "slideleft",
+                },
+            },
+            {
+                type: "custom-effect",
+                config: {
+                    oldEndScale: 1.0,
+                },
+            },
+            {
+                type: "kenburn",
+                config: {
+                    focusDuration: 500,
+                    type: "slideright",
+                },
+            },
+            {
+                type: "slidein",
+                config: {},
+            },
+            {
+                type: "fadein",
+                config: {},
+            },
+            {
+                type: "kenburn",
+                config: {
+                    focusDuration: 0,
+                    type: "zoomout",
+                },
+            },
+            {
+                type: "kenburn",
+                config: {
+                    focusDuration: 0,
+                    type: "slideleft",
+                },
+            },
+            {
+                type: "kenburn",
+                config: {
+                    focusDuration: 0,
+                    type: "zoomin",
+                },
+            },
+            {
+                type: "kenburn",
+                config: {
+                    focusDuration: 500,
+                    type: "slideright",
+                }
+            },
         ];
 
         this._slideshowEngine = new SlideShow.Player();
