@@ -50,7 +50,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties tsconfig_1base_1json__JSONSchema="http://json.schemastore.org/tsconfig" package_1json__JSONSchema="" />
+      <UserProperties package_1json__JSONSchema="" tsconfig_1base_1json__JSONSchema="http://json.schemastore.org/tsconfig" />
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
@@ -632,7 +632,6 @@
     <Content Include="app\lib\stylesheets\cdp.device.console\_device-console.scss" />
     <Content Include="app\stylesheets\_base.scss" />
     <Content Include="app\stylesheets\cdp\utils\_utils.scss" />
-    <Content Include="app\stylesheets\cdp\_mixins.scss" />
     <Content Include="app\stylesheets\_config.scss" />
     <Content Include="app\res\data\examples\json\animal.json" />
     <Content Include="app\res\data\examples\json\landscape.json" />

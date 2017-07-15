@@ -1,7 +1,7 @@
 /*!
  * @cdp/mobile 2.0.0
  *
- * Date: 2017-07-14T09:38:11.739Z
+ * Date: 2017-07-15T00:40:15.912Z
  *
  * including:
  *     @cdp/core 2.0.0
