@@ -40,7 +40,7 @@ class ThemeSwitcher extends PageContainerView {
         this.$el.find("input[name='segmented-control-platform-theme']").checkboxradio("refresh");
     }
 
-    //! 破棄 (同一 element を扱わないようにするための専用処理)
+    // 破棄 (同一 element を扱わないようにするための専用処理)
     public destroy(): void {
         this.stopListening();
         this.$el.find("#gallery-theme-ios").attr("id", null);
@@ -53,15 +53,15 @@ class ThemeSwitcher extends PageContainerView {
     ///////////////////////////////////////////////////////////////////////
     // Event Handler:
 
-    //! events binding
+    // events binding
     events(): any {
         return {
             "change input[name='segmented-control-platform-theme']": this.onThemeChanged,
         };
     }
 
-    //! テーマ切り替え
-    private onThemeChanged(event: JQueryEventObject): void {
+    // テーマ切り替え
+    private onThemeChanged(event: JQuery.Event): void {
         let platform = <string>this.$el.find("input[name='segmented-control-platform-theme']:checked").val();
         if ("default" === platform) {
             platform = null;
@@ -92,7 +92,7 @@ export class BasePageView extends PageView {
     ///////////////////////////////////////////////////////////////////////
     // Override: UI.PageView
 
-    //! Router "before route change" ハンドラ
+    // Router "before route change" ハンドラ
     onBeforeRouteChange(): IPromiseBase<any> {
         if (this._themeSwitcher) {
             this._themeSwitcher.destroy();
@@ -101,16 +101,16 @@ export class BasePageView extends PageView {
         return super.onBeforeRouteChange();
     }
 
-    //! jQM event: "pagebeforecreate" に対応
-    onPageBeforeCreate(event: JQueryEventObject): void {
+    // jQM event: "pagebeforecreate" に対応
+    onPageBeforeCreate(event: JQuery.Event): void {
         super.onPageBeforeCreate(event);
         $(this._themeSwitchTemplate())
             .localize()
             .prependTo(this.$page.find("[data-role=content]"));
     }
 
-    //! jQM event: "pagecreate" (旧:"pageinit") に対応
-    onPageInit(event: JQueryEventObject): void {
+    // jQM event: "pagecreate" (旧:"pageinit") に対応
+    onPageInit(event: JQuery.Event): void {
         super.onPageInit(event);
         this._themeSwitcher = new ThemeSwitcher({
             owner: this,
@@ -118,8 +118,8 @@ export class BasePageView extends PageView {
         });
     }
 
-    //! jQM event: "pagebeforehide" に対応
-    onPageBeforeHide(event: JQueryEventObject, data: HideEventData): void {
+    // jQM event: "pagebeforehide" に対応
+    onPageBeforeHide(event: JQuery.Event, data: HideEventData): void {
         super.onPageBeforeHide(event, data);
     }
 }

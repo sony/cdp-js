@@ -47,7 +47,7 @@ class PictureListViewPage extends Page {
     ///////////////////////////////////////////////////////////////////////
     // 内部関数
 
-    //! イベントバインド
+    // イベントバインド
     private bindEvent(): void {
         $(".btn-add").on("vclick", (event: JQuery.Event) => {
             console.log(TAG + "onButtonAdd()");

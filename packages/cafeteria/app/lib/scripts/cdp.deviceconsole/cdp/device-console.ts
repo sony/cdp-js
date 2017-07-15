@@ -132,7 +132,7 @@ export default class DeviceConsole implements Console {
         DeviceConsole.s_line = line;
     }
 
-    //! 出力
+    // 出力
     static output(message: string, kind?: string): void {
         // [iOS] DOM 操作による preventDefault を避けるための setTimeout 処理
         setTimeout(() => {
@@ -150,7 +150,7 @@ export default class DeviceConsole implements Console {
         }, 1);
     }
 
-    //! message の破棄
+    // message の破棄
     static clearMessage(): void {
         if (DeviceConsole.s_$display) {
             DeviceConsole.s_$display.find("p").remove();

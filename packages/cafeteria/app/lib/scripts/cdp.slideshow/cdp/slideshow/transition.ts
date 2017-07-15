@@ -21,7 +21,7 @@ export default class Transition {
     ///////////////////////////////////////////////////////////////////////
     // public static methods
 
-    //! get image offset value
+    // get image offset value
     public static get imageOffset(): number {
         return Transition.s_imageOffset;
     }

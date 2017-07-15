@@ -27,7 +27,7 @@ class DialogPageView extends BasePageView {
     ///////////////////////////////////////////////////////////////////////
     // Event Handler
 
-    //! イベントハンドラのマッピング
+    // イベントハンドラのマッピング
     events(): any {
         return {
             "vclick .command-show-toast": this.onShowToast,
@@ -37,12 +37,12 @@ class DialogPageView extends BasePageView {
         };
     }
 
-    //! Toast 表示
+    // Toast 表示
     private onShowToast(event: JQuery.Event): void {
         Toast.show("Toast\n" + $.t("gallery.dialog.messageText"));
     }
 
-    //! Alert 表示
+    // Alert 表示
     private onShowAlert(event: JQuery.Event): void {
         event.preventDefault();
 
@@ -54,7 +54,7 @@ class DialogPageView extends BasePageView {
             });
     }
 
-    //! Confirm 表示
+    // Confirm 表示
     private onShowConfirm(event: JQuery.Event): void {
         event.preventDefault();
         confirm($.t("gallery.dialog.confirmText"), {
@@ -69,7 +69,7 @@ class DialogPageView extends BasePageView {
             ;
     }
 
-    //! Prompt 表示
+    // Prompt 表示
     private onShowPrompt(event: JQuery.Event): void {
         event.preventDefault();
         prompt($.t("gallery.dialog.promptText"), {

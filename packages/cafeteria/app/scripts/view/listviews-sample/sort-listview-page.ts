@@ -71,7 +71,7 @@ class SortListViewPage extends PageView {
     }
 
     // ソート
-    private onSort(event: JQueryEventObject): void {
+    private onSort(event: JQuery.Event): void {
         event.preventDefault();
         if (this._listViewElement) {
             const collection = this._listViewElement.collection;
@@ -90,7 +90,7 @@ class SortListViewPage extends PageView {
     }
 
     // 追加
-    private onFetch(event: JQueryEventObject): void {
+    private onFetch(event: JQuery.Event): void {
         event.preventDefault();
         if (this._listViewElement) {
             this._listViewElement.collection.fetch();
@@ -98,7 +98,7 @@ class SortListViewPage extends PageView {
     }
 
     // 削除
-    private onReset(event: JQueryEventObject): void {
+    private onReset(event: JQuery.Event): void {
         event.preventDefault();
         if (this._listViewElement) {
             this._listViewElement.collection.reset();

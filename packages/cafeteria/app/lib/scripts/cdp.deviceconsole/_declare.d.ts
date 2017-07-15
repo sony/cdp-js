@@ -7,9 +7,9 @@
  * ※既存の cdp.ui.*.js に実装する場合は、従来どおり classical module 方式にすること
  */
 declare namespace CDP {
-    const DeviceConsole: typeof LibDeviceConsole;
+    const DeviceConsole: typeof LibDeviceConsole.DeviceConsole;
 }
 
 declare module "cdp.deviceconsole" {
-    export = CDP.DeviceConsole;
+    export = LibDeviceConsole;
 }

@@ -11,12 +11,12 @@ export class ListItemModel extends Model {
 
     private static s_uniqueId = 0;
 
-    //! constructor
+    // constructor
     constructor(attributes?: any) {
         super($.extend({}, { devId: ListItemModel.makeDevId() }, attributes), null);
     }
 
-    //! returns default value.
+    // returns default value.
     defaults(): any {
         return {
             devId: "devId:none",
@@ -25,7 +25,7 @@ export class ListItemModel extends Model {
         };
     }
 
-    //! devId factory mehtod.
+    // devId factory mehtod.
     private static makeDevId(): string {
         const devId = "devId:" + toZeroPadding(ListItemModel.s_uniqueId, 8);
         ListItemModel.s_uniqueId++;
@@ -45,7 +45,7 @@ export class ListItemCollection extends Collection<ListItemModel> {
 
     private static s_baseItemHeight = 100;
 
-    //! constructor
+    // constructor
     constructor(model?: ListItemModel[]) {
         super(model);
     }

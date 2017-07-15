@@ -44,7 +44,7 @@ class AdvancedControlBackViewA extends PageView {
         };
     }
 
-    //! 描画
+    // 描画
     render(): PageView {
         return this;
     }

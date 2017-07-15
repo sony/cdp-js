@@ -10,7 +10,7 @@ import { SortListItemView } from "./sort-listitem-view";
 
 const TAG = "[view.listviews-sample.SortListView] ";
 
-//! SortListView の構築オプション定義
+// SortListView の構築オプション定義
 export interface SortListViewConstructOptions extends ListViewConstructOptions<ListItemModel> {
     collection: ListItemCollection;
 }

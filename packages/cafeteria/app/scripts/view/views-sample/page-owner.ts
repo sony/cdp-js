@@ -27,12 +27,12 @@ class PictureListViewPageOwner extends Page {
     ///////////////////////////////////////////////////////////////////////
     // Override: Page
 
-    onPageInit(event: JQueryEventObject): void {
+    onPageInit(event: JQuery.Event): void {
         console.log(TAG + "onPageInit()");
         this._view = new PictureListViewBackbone({ el: "#view-page-owner" });
     }
 
-    onPageRemove(event: JQueryEventObject): void {
+    onPageRemove(event: JQuery.Event): void {
         console.log(TAG + "onPageRemove()");
         if (this._view) {
             this._view.stopListening();

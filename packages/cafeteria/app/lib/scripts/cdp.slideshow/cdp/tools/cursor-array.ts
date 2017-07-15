@@ -56,12 +56,12 @@ export class CursorArray {
         }
     }
 
-    //! set accesser property
+    // set accesser property
     public set accesser(propAccesser: PropertyAccesser) {
         this._accesser = propAccesser;
     }
 
-    //! get accesser property
+    // get accesser property
     public get accesser(): PropertyAccesser {
         return this._accesser;
     }

@@ -41,15 +41,15 @@ class ThemeSwitcher extends PageContainerView {
     ///////////////////////////////////////////////////////////////////////
     // Event Handler:
 
-    //! events binding
+    // events binding
     events(): any {
         return {
             "change input[name='segmented-control-platform-theme']": this.onThemeChanged,
         };
     }
 
-    //! テーマ切り替え
-    private onThemeChanged(event: JQueryEventObject): void {
+    // テーマ切り替え
+    private onThemeChanged(event: JQuery.Event): void {
         let platform = <string>this.$el.find("input[name='segmented-control-platform-theme']:checked").val();
         if ("default" === platform) {
             platform = null;
@@ -80,7 +80,7 @@ export class OptionsView extends PageView {
     ///////////////////////////////////////////////////////////////////////
     // Event Handler
 
-    //! イベントハンドラのマッピング
+    // イベントハンドラのマッピング
     events(): any {
         return {
             "change #option-select-transition": this.onTransitionChanged,

@@ -50,7 +50,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties package_1json__JSONSchema="" tsconfig_1base_1json__JSONSchema="http://json.schemastore.org/tsconfig" />
+      <UserProperties tsconfig_1base_1json__JSONSchema="http://json.schemastore.org/tsconfig" package_1json__JSONSchema="" />
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
@@ -77,6 +77,24 @@
     <Content Include=".npmignore" />
     <Content Include="app\external\jquery\stylesheets\jquery.mobile.default-theme.css" />
     <Content Include="app\external\sylvester\scripts\sylvester.js" />
+    <Content Include="app\lib\scripts\cafeteria.slideshow\cafeteria\model\%40entry-slideshow.js">
+      <DependentUpon>%40entry-slideshow.ts</DependentUpon>
+    </Content>
+    <Content Include="app\lib\scripts\cafeteria.slideshow\cafeteria\model\assets-image-data-provider.js">
+      <DependentUpon>assets-image-data-provider.ts</DependentUpon>
+    </Content>
+    <Content Include="app\lib\scripts\cafeteria.slideshow\cafeteria\model\image-data-provider-interface.js">
+      <DependentUpon>image-data-provider-interface.ts</DependentUpon>
+    </Content>
+    <Content Include="app\lib\scripts\cafeteria.slideshow\cafeteria\view\%40entry-slideshow.js">
+      <DependentUpon>%40entry-slideshow.ts</DependentUpon>
+    </Content>
+    <Content Include="app\lib\scripts\cafeteria.slideshow\cafeteria\view\slideshow-view.js">
+      <DependentUpon>slideshow-view.ts</DependentUpon>
+    </Content>
+    <Content Include="app\lib\scripts\cafeteria.slideshow\main.js">
+      <DependentUpon>main.ts</DependentUpon>
+    </Content>
     <Content Include="app\lib\scripts\cdp.deviceconsole\cdp\device-console.js">
       <DependentUpon>device-console.ts</DependentUpon>
     </Content>
@@ -439,6 +457,9 @@
     <Content Include="app\scripts\model\picture.js">
       <DependentUpon>picture.ts</DependentUpon>
     </Content>
+    <Content Include="app\scripts\view\advanced-sample\root.js">
+      <DependentUpon>root.ts</DependentUpon>
+    </Content>
     <Content Include="app\scripts\view\gallery\button.js">
       <DependentUpon>button.ts</DependentUpon>
     </Content>
@@ -555,6 +576,59 @@
     </Content>
     <Content Include="app\stylesheets\images\nodpi\btn_expand_down.png" />
     <Content Include="app\stylesheets\images\nodpi\btn_expand_up.png" />
+    <Content Include="app\stylesheets\images\slideshow\cannnot_display.png" />
+    <Content Include="app\stylesheets\images\slideshow\image_back_hover_l.png" />
+    <Content Include="app\stylesheets\images\slideshow\image_back_hover_m.png" />
+    <Content Include="app\stylesheets\images\slideshow\image_back_hover_s.png" />
+    <Content Include="app\stylesheets\images\slideshow\image_back_normal_l.png" />
+    <Content Include="app\stylesheets\images\slideshow\image_back_normal_m.png" />
+    <Content Include="app\stylesheets\images\slideshow\image_back_normal_s.png" />
+    <Content Include="app\stylesheets\images\slideshow\image_back_push_l.png" />
+    <Content Include="app\stylesheets\images\slideshow\image_back_push_m.png" />
+    <Content Include="app\stylesheets\images\slideshow\image_back_push_s.png" />
+    <Content Include="app\stylesheets\images\slideshow\image_next_hover_l.png" />
+    <Content Include="app\stylesheets\images\slideshow\image_next_hover_m.png" />
+    <Content Include="app\stylesheets\images\slideshow\image_next_hover_s.png" />
+    <Content Include="app\stylesheets\images\slideshow\image_next_normal_l.png" />
+    <Content Include="app\stylesheets\images\slideshow\image_next_normal_m.png" />
+    <Content Include="app\stylesheets\images\slideshow\image_next_normal_s.png" />
+    <Content Include="app\stylesheets\images\slideshow\image_next_push_l.png" />
+    <Content Include="app\stylesheets\images\slideshow\image_next_push_m.png" />
+    <Content Include="app\stylesheets\images\slideshow\image_next_push_s.png" />
+    <Content Include="app\stylesheets\images\slideshow\loading_white_l_size.gif" />
+    <Content Include="app\stylesheets\images\slideshow\pause_hover_ml.png" />
+    <Content Include="app\stylesheets\images\slideshow\pause_hover_s.png" />
+    <Content Include="app\stylesheets\images\slideshow\pause_normal_ml.png" />
+    <Content Include="app\stylesheets\images\slideshow\pause_normal_s.png" />
+    <Content Include="app\stylesheets\images\slideshow\pause_push_ml.png" />
+    <Content Include="app\stylesheets\images\slideshow\pause_push_s.png" />
+    <Content Include="app\stylesheets\images\slideshow\play_hover_ml.png" />
+    <Content Include="app\stylesheets\images\slideshow\play_hover_s.png" />
+    <Content Include="app\stylesheets\images\slideshow\play_normal_ml.png" />
+    <Content Include="app\stylesheets\images\slideshow\play_normal_s.png" />
+    <Content Include="app\stylesheets\images\slideshow\play_push_ml.png" />
+    <Content Include="app\stylesheets\images\slideshow\play_push_s.png" />
+    <Content Include="app\stylesheets\images\slideshow\thumb_back_hover_l.png" />
+    <Content Include="app\stylesheets\images\slideshow\thumb_back_hover_m.png" />
+    <Content Include="app\stylesheets\images\slideshow\thumb_back_hover_s.png" />
+    <Content Include="app\stylesheets\images\slideshow\thumb_back_normal_l.png" />
+    <Content Include="app\stylesheets\images\slideshow\thumb_back_normal_m.png" />
+    <Content Include="app\stylesheets\images\slideshow\thumb_back_normal_s.png" />
+    <Content Include="app\stylesheets\images\slideshow\thumb_back_push_l.png" />
+    <Content Include="app\stylesheets\images\slideshow\thumb_back_push_m.png" />
+    <Content Include="app\stylesheets\images\slideshow\thumb_back_push_s.png" />
+    <Content Include="app\stylesheets\images\slideshow\thumb_next_hover_l.png" />
+    <Content Include="app\stylesheets\images\slideshow\thumb_next_hover_m.png" />
+    <Content Include="app\stylesheets\images\slideshow\thumb_next_hover_s.png" />
+    <Content Include="app\stylesheets\images\slideshow\thumb_next_normal_l.png" />
+    <Content Include="app\stylesheets\images\slideshow\thumb_next_normal_m.png" />
+    <Content Include="app\stylesheets\images\slideshow\thumb_next_normal_s.png" />
+    <Content Include="app\stylesheets\images\slideshow\thumb_next_push_l.png" />
+    <Content Include="app\stylesheets\images\slideshow\thumb_next_push_m.png" />
+    <Content Include="app\stylesheets\images\slideshow\thumb_next_push_s.png" />
+    <Content Include="app\templates\advanced-sample\advanced-root.html" />
+    <Content Include="app\templates\advanced-sample\pmo-dashboard.html" />
+    <Content Include="app\templates\advanced-sample\slideshow.html" />
     <Content Include="app\templates\gallery\button.html" />
     <Content Include="app\templates\gallery\checkbox.html" />
     <Content Include="app\templates\gallery\dialog.html" />
@@ -636,6 +710,7 @@
     <Content Include="app\res\data\sample\image\thumbnail.json" />
     <Content Include="app\stylesheets\_listview.scss" />
     <Content Include="app\stylesheets\_utils.scss" />
+    <Content Include="app\stylesheets\_slideshow.scss" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
@@ -760,6 +835,14 @@
     <TypeScriptCompile Include="app\lib\scripts\cafeteria.images\main.ts" />
     <TypeScriptCompile Include="app\lib\scripts\cafeteria.images\_declare.d.ts" />
     <TypeScriptCompile Include="app\lib\scripts\cafeteria.images\_export.d.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\cafeteria.slideshow\cafeteria\model\assets-image-data-provider.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\cafeteria.slideshow\cafeteria\model\image-data-provider-interface.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\cafeteria.slideshow\cafeteria\model\%40entry-slideshow.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\cafeteria.slideshow\cafeteria\view\slideshow-view.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\cafeteria.slideshow\cafeteria\view\%40entry-slideshow.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\cafeteria.slideshow\main.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\cafeteria.slideshow\_declare.d.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\cafeteria.slideshow\_export.d.ts" />
     <TypeScriptCompile Include="app\lib\scripts\cdp.deviceconsole\cdp\device-console.ts" />
     <TypeScriptCompile Include="app\lib\scripts\cdp.deviceconsole\main.ts" />
     <TypeScriptCompile Include="app\lib\scripts\cdp.deviceconsole\_declare.d.ts" />
@@ -798,6 +881,7 @@
     <TypeScriptCompile Include="app\scripts\model\options.ts" />
     <TypeScriptCompile Include="app\scripts\model\picture-list.ts" />
     <TypeScriptCompile Include="app\scripts\model\picture.ts" />
+    <TypeScriptCompile Include="app\scripts\view\advanced-sample\root.ts" />
     <TypeScriptCompile Include="app\scripts\view\gallery\base-pageview.ts" />
     <Content Include="app\scripts\view\gallery\base-pageview.js">
       <DependentUpon>base-pageview.ts</DependentUpon>
