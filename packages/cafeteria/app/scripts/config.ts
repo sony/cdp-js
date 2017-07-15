@@ -118,10 +118,10 @@ namespace Config {
         const assign_porting    = _assign_package.bind(null, config, _porting);
 
         // >>>LIB_DEPENDENCIES>>> package assign
-        assign_lib("cdp.device.console");
+        assign_lib("cdp.deviceconsole");
         assign_lib("cdp.ui.smoothscroll");
         assign_lib("cdp.slideshow");
-        assign_lib("cafeteria.image.data");
+        assign_lib("cafeteria.images");
         // <<<LIB_DEPENDENCIES<<<
 
         /* tslint:enable:no-unused-variable no-unused-vars */

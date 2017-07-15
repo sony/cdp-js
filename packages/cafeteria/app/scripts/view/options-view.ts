@@ -6,7 +6,7 @@
     Toast,
     registerPage,
 } from "cdp/ui";
-import { DeviceConsole } from "cdp.device.console";
+import { DeviceConsole } from "cdp.deviceconsole";
 
 import { Options } from "../model/options";
 

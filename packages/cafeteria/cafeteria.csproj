@@ -50,7 +50,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties tsconfig_1base_1json__JSONSchema="http://json.schemastore.org/tsconfig" package_1json__JSONSchema="" />
+      <UserProperties package_1json__JSONSchema="" tsconfig_1base_1json__JSONSchema="http://json.schemastore.org/tsconfig" />
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
@@ -77,56 +77,47 @@
     <Content Include=".npmignore" />
     <Content Include="app\external\jquery\stylesheets\jquery.mobile.default-theme.css" />
     <Content Include="app\external\sylvester\scripts\sylvester.js" />
-    <Content Include="app\lib\scripts\cafeteria.image.data\image-interface.js">
-      <DependentUpon>image-interface.ts</DependentUpon>
-    </Content>
-    <Content Include="app\lib\scripts\cafeteria.image.data\image-item-generator.js">
-      <DependentUpon>image-item-generator.ts</DependentUpon>
-    </Content>
-    <Content Include="app\lib\scripts\cafeteria.image.data\main.js">
-      <DependentUpon>main.ts</DependentUpon>
-    </Content>
-    <Content Include="app\lib\scripts\cdp.device.console\device-console.js">
+    <Content Include="app\lib\scripts\cdp.deviceconsole\cdp\device-console.js">
       <DependentUpon>device-console.ts</DependentUpon>
     </Content>
-    <Content Include="app\lib\scripts\cdp.device.console\main.js">
+    <Content Include="app\lib\scripts\cdp.deviceconsole\main.js">
       <DependentUpon>main.ts</DependentUpon>
+    </Content>
+    <Content Include="app\lib\scripts\cdp.slideshow\cdp\slideshow\interfaces.js">
+      <DependentUpon>interfaces.ts</DependentUpon>
+    </Content>
+    <Content Include="app\lib\scripts\cdp.slideshow\cdp\slideshow\player.js">
+      <DependentUpon>player.ts</DependentUpon>
+    </Content>
+    <Content Include="app\lib\scripts\cdp.slideshow\cdp\slideshow\timer-animation.js">
+      <DependentUpon>timer-animation.ts</DependentUpon>
+    </Content>
+    <Content Include="app\lib\scripts\cdp.slideshow\cdp\slideshow\transition.js">
+      <DependentUpon>transition.ts</DependentUpon>
+    </Content>
+    <Content Include="app\lib\scripts\cdp.slideshow\cdp\tools\constants.js">
+      <DependentUpon>constants.ts</DependentUpon>
+    </Content>
+    <Content Include="app\lib\scripts\cdp.slideshow\cdp\tools\css.js">
+      <DependentUpon>css.ts</DependentUpon>
+    </Content>
+    <Content Include="app\lib\scripts\cdp.slideshow\cdp\tools\cursor-array.js">
+      <DependentUpon>cursor-array.ts</DependentUpon>
+    </Content>
+    <Content Include="app\lib\scripts\cdp.slideshow\cdp\tools\infinity-container.js">
+      <DependentUpon>infinity-container.ts</DependentUpon>
+    </Content>
+    <Content Include="app\lib\scripts\cdp.slideshow\cdp\tools\touch.js">
+      <DependentUpon>touch.ts</DependentUpon>
     </Content>
     <Content Include="app\lib\scripts\cdp.slideshow\main.js">
       <DependentUpon>main.ts</DependentUpon>
     </Content>
-    <Content Include="app\lib\scripts\cdp.slideshow\slideshow\interfaces.js">
-      <DependentUpon>interfaces.ts</DependentUpon>
-    </Content>
-    <Content Include="app\lib\scripts\cdp.slideshow\slideshow\player.js">
-      <DependentUpon>player.ts</DependentUpon>
-    </Content>
-    <Content Include="app\lib\scripts\cdp.slideshow\slideshow\timer-animation.js">
-      <DependentUpon>timer-animation.ts</DependentUpon>
-    </Content>
-    <Content Include="app\lib\scripts\cdp.slideshow\slideshow\transition.js">
-      <DependentUpon>transition.ts</DependentUpon>
-    </Content>
-    <Content Include="app\lib\scripts\cdp.slideshow\tools\constants.js">
-      <DependentUpon>constants.ts</DependentUpon>
-    </Content>
-    <Content Include="app\lib\scripts\cdp.slideshow\tools\css.js">
-      <DependentUpon>css.ts</DependentUpon>
-    </Content>
-    <Content Include="app\lib\scripts\cdp.slideshow\tools\cursor-array.js">
-      <DependentUpon>cursor-array.ts</DependentUpon>
-    </Content>
-    <Content Include="app\lib\scripts\cdp.slideshow\tools\infinity-container.js">
-      <DependentUpon>infinity-container.ts</DependentUpon>
-    </Content>
-    <Content Include="app\lib\scripts\cdp.slideshow\tools\touch.js">
-      <DependentUpon>touch.ts</DependentUpon>
+    <Content Include="app\lib\scripts\cdp.ui.smoothscroll\cdp\ui\smooth-scroll.js">
+      <DependentUpon>smooth-scroll.ts</DependentUpon>
     </Content>
     <Content Include="app\lib\scripts\cdp.ui.smoothscroll\main.js">
       <DependentUpon>main.ts</DependentUpon>
-    </Content>
-    <Content Include="app\lib\scripts\cdp.ui.smoothscroll\smoothscroll.js">
-      <DependentUpon>smoothscroll.ts</DependentUpon>
     </Content>
     <Content Include="app\res\data\examples\contents\animal\jellyfish.jpg" />
     <Content Include="app\res\data\examples\contents\animal\koala.jpg" />
@@ -628,11 +619,10 @@
     <Content Include="tsconfig.json" />
     <Content Include="web.config" />
     <Content Include="docs\localize\messages_cafeteria.xlsx" />
-    <Content Include="app\lib\stylesheets\cdp.device.console.scss" />
-    <Content Include="app\lib\stylesheets\cdp.device.console\_device-console.scss" />
+    <Content Include="app\lib\stylesheets\cdp.deviceconsole.scss" />
+    <Content Include="app\lib\stylesheets\cdp.deviceconsole\_device-console.scss" />
     <Content Include="app\stylesheets\_base.scss" />
     <Content Include="app\stylesheets\cdp\utils\_utils.scss" />
-    <Content Include="app\stylesheets\cdp\_mixins.scss" />
     <Content Include="app\stylesheets\_config.scss" />
     <Content Include="app\res\data\examples\json\animal.json" />
     <Content Include="app\res\data\examples\json\landscape.json" />
@@ -765,29 +755,29 @@
     <TypeScriptCompile Include="app\external\%40types\%40cdp\mobile\index.d.ts" />
     <TypeScriptCompile Include="app\external\%40types\%40cdp\mobile\jquery.mobile.d.ts" />
     <TypeScriptCompile Include="app\external\%40types\patch.dependencies\sylvester.d.ts" />
-    <TypeScriptCompile Include="app\lib\scripts\cafeteria.image.data\image-interface.ts" />
-    <TypeScriptCompile Include="app\lib\scripts\cafeteria.image.data\image-item-generator.ts" />
-    <TypeScriptCompile Include="app\lib\scripts\cafeteria.image.data\main.ts" />
-    <TypeScriptCompile Include="app\lib\scripts\cafeteria.image.data\_declare.d.ts" />
-    <TypeScriptCompile Include="app\lib\scripts\cafeteria.image.data\_export.d.ts" />
-    <TypeScriptCompile Include="app\lib\scripts\cdp.device.console\device-console.ts" />
-    <TypeScriptCompile Include="app\lib\scripts\cdp.device.console\main.ts" />
-    <TypeScriptCompile Include="app\lib\scripts\cdp.device.console\_declare.d.ts" />
-    <TypeScriptCompile Include="app\lib\scripts\cdp.device.console\_export.d.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\cafeteria.images\cafeteria\image-interface.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\cafeteria.images\cafeteria\image-item-generator.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\cafeteria.images\main.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\cafeteria.images\_declare.d.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\cafeteria.images\_export.d.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\cdp.deviceconsole\cdp\device-console.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\cdp.deviceconsole\main.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\cdp.deviceconsole\_declare.d.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\cdp.deviceconsole\_export.d.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\cdp.slideshow\cdp\slideshow\interfaces.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\cdp.slideshow\cdp\slideshow\player.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\cdp.slideshow\cdp\slideshow\timer-animation.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\cdp.slideshow\cdp\slideshow\transition.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\cdp.slideshow\cdp\tools\constants.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\cdp.slideshow\cdp\tools\css.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\cdp.slideshow\cdp\tools\cursor-array.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\cdp.slideshow\cdp\tools\infinity-container.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\cdp.slideshow\cdp\tools\touch.ts" />
     <TypeScriptCompile Include="app\lib\scripts\cdp.slideshow\main.ts" />
-    <TypeScriptCompile Include="app\lib\scripts\cdp.slideshow\slideshow\interfaces.ts" />
-    <TypeScriptCompile Include="app\lib\scripts\cdp.slideshow\slideshow\player.ts" />
-    <TypeScriptCompile Include="app\lib\scripts\cdp.slideshow\slideshow\timer-animation.ts" />
-    <TypeScriptCompile Include="app\lib\scripts\cdp.slideshow\slideshow\transition.ts" />
-    <TypeScriptCompile Include="app\lib\scripts\cdp.slideshow\tools\constants.ts" />
-    <TypeScriptCompile Include="app\lib\scripts\cdp.slideshow\tools\css.ts" />
-    <TypeScriptCompile Include="app\lib\scripts\cdp.slideshow\tools\cursor-array.ts" />
-    <TypeScriptCompile Include="app\lib\scripts\cdp.slideshow\tools\infinity-container.ts" />
-    <TypeScriptCompile Include="app\lib\scripts\cdp.slideshow\tools\touch.ts" />
     <TypeScriptCompile Include="app\lib\scripts\cdp.slideshow\_declare.d.ts" />
     <TypeScriptCompile Include="app\lib\scripts\cdp.slideshow\_export.d.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\cdp.ui.smoothscroll\cdp\ui\smooth-scroll.ts" />
     <TypeScriptCompile Include="app\lib\scripts\cdp.ui.smoothscroll\main.ts" />
-    <TypeScriptCompile Include="app\lib\scripts\cdp.ui.smoothscroll\smoothscroll.ts" />
     <TypeScriptCompile Include="app\lib\scripts\cdp.ui.smoothscroll\_declare.d.ts" />
     <TypeScriptCompile Include="app\lib\scripts\cdp.ui.smoothscroll\_export.d.ts" />
     <TypeScriptCompile Include="app\scripts\app.ts" />

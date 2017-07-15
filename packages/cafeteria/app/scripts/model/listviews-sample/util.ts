@@ -7,7 +7,7 @@ import { Toast } from "cdp/ui";
 import {
     ItemInfo,
     ItemListGenerator,
-} from "cafeteria.image.data";
+} from "cafeteria.images";
 import * as Config from "./config";
 
 const TAG = "[model.listview-sample.DataUtil] ";
@@ -98,7 +98,7 @@ export function queryItemInfoGroupList(): IPromise<ItemInfoGroup[]> {
 // app.data をロード
 function loadModules(): Promise<void> {
     return new Promise((resolve) => {
-        require(["cafeteria.image.data"], () => {
+        require(["cafeteria.images"], () => {
             resolve();
         });
     });

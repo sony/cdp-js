@@ -1,6 +1,6 @@
 ﻿import { Model, ModelSetOptions } from "cdp/framework";
 import { Toast, Theme } from "cdp/ui";
-import { DeviceConsole } from "cdp.device.console";
+import { DeviceConsole } from "cdp.deviceconsole";
 
 const TAG = "[model.Options] ";
 
