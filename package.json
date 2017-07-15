@@ -28,6 +28,7 @@
     "ci": "npm run setup && npm test && node ./tasks/command-delegator.js --command=ci && npm run update:reports",
     "package": "node ./tasks/command-delegator.js --command=update && npm run update:package",
     "update": "npm update --save-dev && npm update --save && node ./tasks/command-delegator.js --command=update && npm run update:package",
+    "update:depends": "npm update --save-dev && npm update --save && node ./tasks/command-delegator.js --command=update:depends",
     "update:package": "node ./tasks/update-package.js",
     "update:reports": "node ./tasks/update-package.js --operation=reports",
     "check:update": "node ./tasks/command-delegator.js",
@@ -47,6 +48,6 @@
   "devDependencies": {
     "del": "^3.0.0",
     "eslint": "^4.2.0",
-    "fs-extra": "^3.0.1"
+    "fs-extra": "^4.0.0"
   }
 }
