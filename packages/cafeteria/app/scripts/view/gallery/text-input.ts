@@ -14,7 +14,7 @@ class TextInputPageView extends BasePageView {
      */
     constructor() {
         super("/templates/gallery/text-input.html", "gallery-text-input", {
-            route: "gallery-text-input"
+            route: "gallery/text-input"
         });
     }
 }

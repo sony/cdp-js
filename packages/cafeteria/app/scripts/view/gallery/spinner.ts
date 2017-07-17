@@ -14,7 +14,7 @@ class SpinnerPageView extends BasePageView {
      */
     constructor() {
         super("/templates/gallery/spinner.html", "gallery-spinner", {
-            route: "gallery-spinner"
+            route: "gallery/spinner"
         });
     }
 }

@@ -28,7 +28,7 @@ class SortListViewPage extends PageView {
         super("/templates/listviews-sample/sortable-listview.html",
             "sortable-listview",
             {
-                route: "sortable-listview"
+                route: "listviews/listview/sortable"
             }
         );
     }

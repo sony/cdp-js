@@ -23,7 +23,7 @@ class ListViewElementPage extends PageView {
         super("/templates/listviews-sample/listview-element.html",
             "listview-element",
             {
-                route: "listview/element"
+                route: "listviews/listview/element"
             }
         );
     }

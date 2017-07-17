@@ -104,4 +104,4 @@ $(document)
     });
 
 // Router へは script が読み込まれたタイミングで登録を行う。
-Router.register("view/backbone", "/templates/views-sample/view-backbone.html");
+Router.register("views/backbone", "/templates/views-sample/view-backbone.html");

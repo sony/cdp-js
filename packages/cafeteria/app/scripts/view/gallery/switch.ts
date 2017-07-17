@@ -14,7 +14,7 @@ class SwitchPageView extends BasePageView {
      */
     constructor() {
         super("/templates/gallery/switch.html", "gallery-switch", {
-            route: "gallery-switch"
+            route: "gallery/switch"
         });
     }
 }

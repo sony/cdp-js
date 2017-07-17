@@ -14,7 +14,7 @@ class ListControlPageView extends BasePageView {
      */
     constructor() {
         super("/templates/gallery/listctrl.html", "gallery-listctrl", {
-            route: "gallery-listctrl"
+            route: "gallery/listctrl"
         });
     }
 }

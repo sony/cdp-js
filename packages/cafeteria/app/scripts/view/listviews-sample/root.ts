@@ -23,7 +23,7 @@ class RootPageView extends PageView {
         super("/templates/listviews-sample/listview-root.html",
             "listview-root",
             {
-                route: "listview-root"
+                route: "listviews"
             }
         );
     }

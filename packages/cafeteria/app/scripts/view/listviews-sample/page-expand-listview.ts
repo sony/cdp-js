@@ -41,7 +41,7 @@ class PageExpandListView extends PageExpandableListView {
         super("/templates/listviews-sample/page-expandable-listview.html",
             "page-expandable-listview",
             {
-                route: "page-expandable-listview",
+                route: "listviews/pagelistview/expandable",
                 scrollerFactory: ScrollerNative.getFactory(),
                 animationDuration: Config.COLLAPSE_DELAY_TIME,
                 baseDepth: "0",

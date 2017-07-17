@@ -30,7 +30,7 @@ class PageListViewIScroll extends PageListView {
         super("/templates/listviews-sample/page-listview-iscroll.html",
             "pagelistview-iscroll",
             {
-                route: "pagelistview/iscroll",
+                route: "listviews/pagelistview/iscroll",
                 scrollerFactory: ScrollerIScroll.getFactory({
                     fadeScrollbars: false,
                 }),

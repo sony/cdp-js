@@ -23,7 +23,7 @@ class ListViewIScrollPage extends PageView {
         super("/templates/listviews-sample/listview-iscroll.html",
             "listview-iscroll",
             {
-                route: "listview/iscroll"
+                route: "listviews/listview/iscroll"
             }
         );
     }

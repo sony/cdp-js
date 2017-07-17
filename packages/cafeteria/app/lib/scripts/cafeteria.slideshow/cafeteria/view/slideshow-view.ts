@@ -22,7 +22,7 @@ import {
     ImageData,
     ImageDataProvider,
     AssetsImageDataProvider,
-} from "../model/@entry-slideshow";
+} from "../model/_entry-slideshow";
 
 const TAG = "[cafeteria.slideshow.view.SlideShowView] ";
 
