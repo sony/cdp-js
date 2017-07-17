@@ -3,13 +3,15 @@
     import Config       = CDP.Config;
     import Framework    = CDP.Framework;
 
+    const TAG = "[CDP.UI.Theme] ";
+
     /**
      * @interface PlatformTransition
      * @brief プラットフォームごとの Transition を格納
      */
     export interface PlatformTransition {
-        [platform: string]: string;     //!< ex) ios: "slide"
-        fallback: string;               //!< fallback transition prop
+        [platform: string]: string;     // ex) ios: "slide"
+        fallback: string;               // fallback transition prop
     }
 
     /**
@@ -18,6 +20,15 @@
      */
     export interface TransitionMap {
         [transitionName: string]: PlatformTransition;
+    }
+
+    /**
+     * @interface ThemeInitOptions
+     * @brief トランジションマップ
+     */
+    export interface ThemeInitOptions {
+        platform?: string;                  // platform を指定. default:"auto"
+        reserveScrollbarRegion?: boolean;   // PC デバッグ環境ではスクロールバーを表示. default: "true"
     }
 
     //__________________________________________________________________________________________________________//
@@ -53,15 +64,38 @@
         // public static methods:
 
         /**
+         * Theme の初期化
+         *
+         * @param options オプション指定
+         * @returns true: 成功 / false: 失敗
+         */
+        public static initialize(options?: ThemeInitOptions): string {
+            const opt = $.extend({}, {
+                platform: "auto",
+                reserveScrollbarRegion: true,
+            }, options);
+
+            if ("auto" === opt.platform) {
+                return Theme.detectUIPlatform(opt.reserveScrollbarRegion);
+            } else {
+                if (Theme.setCurrentUIPlatform(opt.platform)) {
+                    return opt.platform;
+                } else {
+                    console.warn(TAG + "setCurrentUIPlatform(), failed. platform: " + opt.platform);
+                }
+            }
+        }
+
+        /**
          * 現在指定されている UI Platform を取得
          *
          * @return {String} ex) "ios"
          */
         public static getCurrentUIPlatform(): string {
             const $htms = $("html");
-            for (let i = 0, n = this.s_platforms.length; i < n; i++) {
-                if ($htms.hasClass("ui-platform-" + this.s_platforms[i])) {
-                    return this.s_platforms[i];
+            for (let i = 0, n = Theme.s_platforms.length; i < n; i++) {
+                if ($htms.hasClass("ui-platform-" + Theme.s_platforms[i])) {
+                    return Theme.s_platforms[i];
                 }
             }
             return null;
@@ -73,9 +107,9 @@
          * @return {String} true: 成功 / false: 失敗
          */
         public static setCurrentUIPlatform(platform: string): boolean {
-            if (null == platform || this.s_platforms.indexOf(platform) >= 0) {
+            if (null == platform || Theme.s_platforms.indexOf(platform) >= 0) {
                 const $htms = $("html");
-                this.s_platforms.forEach((target) => {
+                Theme.s_platforms.forEach((target) => {
                     $htms.removeClass("ui-platform-" + target);
                 });
                 if (platform) {
@@ -90,54 +124,59 @@
         /**
          * 現在の Platform を判定し最適な platform を自動決定
          *
-         * @return {String} ex) "ios"
+         * @param reserveScrollbarRegion PC デバッグ環境ではスクロールバーを表示. default: true
+         * @returns ex) "ios"
          */
-        public static detectUIPlatform(): void {
+        public static detectUIPlatform(reserveScrollbarRegion: boolean = true): string {
+            let platform = "";
             // platform の設定
             if (Framework.Platform.iOS) {
                 $("html").addClass("ui-platform-ios");
+                platform = "ios";
             } else {
                 $("html").addClass("ui-platform-android");
+                platform = "android";
             }
             // PC デバッグ環境ではスクロールバーを表示
-            if (Config.DEBUG && !Framework.Platform.Mobile) {
+            if (Config.DEBUG && reserveScrollbarRegion && !Framework.Platform.Mobile) {
                 $("body").css("overflow-y", "scroll");
             }
+            return platform;
         }
 
         /**
-         * platform を配列で設定
+         * platform を配列で登録
          * 上書きされる
          *
          * @param {String[]} platforms [in] OS ex): ["ios", "android"]
          */
-        public static setUIPlatforms(platforms: string[]): void {
+        public static registerUIPlatforms(platforms: string[]): void {
             if (platforms) {
-                this.s_platforms = platforms;
+                Theme.s_platforms = platforms;
             }
         }
 
         /**
-         * page transition を設定
+         * page transition を登録
          * 上書きされる
          *
          * @param {TransitionMap} map [in] TransitionMap を指定
          */
-        public static setPageTransitionMap(map: TransitionMap): void {
+        public static registerPageTransitionMap(map: TransitionMap): void {
             if (map) {
-                this.s_pageTransitionMap = map;
+                Theme.s_pageTransitionMap = map;
             }
         }
 
         /**
-         * dialog transition を設定
+         * dialog transition を登録
          * 上書きされる
          *
          * @param {TransitionMap} map [in] TransitionMap を指定
          */
-        public static setDialogTransitionMap(map: TransitionMap): void {
+        public static registerDialogTransitionMap(map: TransitionMap): void {
             if (map) {
-                this.s_dialogTransitionMap = map;
+                Theme.s_dialogTransitionMap = map;
             }
         }
 
@@ -148,9 +187,9 @@
          * @return {String[]} "slide"
          */
         public static queryPageTransition(original: string): string {
-            const convert = this.s_pageTransitionMap[original];
+            const convert = Theme.s_pageTransitionMap[original];
             if (convert) {
-                return convert[this.getCurrentUIPlatform()] || convert.fallback;
+                return convert[Theme.getCurrentUIPlatform()] || convert.fallback;
             } else {
                 return original;
             }
@@ -163,9 +202,9 @@
          * @return {String[]} "slide"
          */
         public static queryDialogTransition(original: string): string {
-            const convert = this.s_dialogTransitionMap[original];
+            const convert = Theme.s_dialogTransitionMap[original];
             if (convert) {
-                return convert[this.getCurrentUIPlatform()] || convert.fallback;
+                return convert[Theme.getCurrentUIPlatform()] || convert.fallback;
             } else {
                 return original;
             }

@@ -6,6 +6,7 @@ export const Theme   = _ui.Theme;
 
 export type PlatformTransition  = CDP.UI.PlatformTransition;
 export type TransitionMap       = CDP.UI.TransitionMap;
+export type ThemeInitOptions    = CDP.UI.ThemeInitOptions;
 
 // @class ExtensionManager
 export type  ExtensionManager    = CDP.UI.ExtensionManager;

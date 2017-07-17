@@ -45,7 +45,7 @@ export class Options extends Model {
                     fallback: "slide",
                 };
             }
-            Theme.setPageTransitionMap(transitionMap);
+            Theme.registerPageTransitionMap(transitionMap);
         }
         this.set("transition", transition);
     }
