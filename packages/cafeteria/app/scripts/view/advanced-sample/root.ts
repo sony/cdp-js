@@ -1,4 +1,4 @@
-﻿import { Router } from "cdp/framework";
+﻿import { Router, constructPages } from "cdp/framework";
 import { PageView, registerPage } from "cdp/ui";
 
 /**
@@ -15,7 +15,7 @@ class AdvancedRoot extends PageView {
         super("/templates/advanced-sample/advanced-root.html",
             "advanced-root",
             {
-                route: "advanced/root"
+                route: "advanced"
             }
         );
     }
@@ -41,6 +41,7 @@ class AdvancedRoot extends PageView {
         const url = $(event.target).data("navigate-to");
         const target: string = $(event.target).data("module");
         await import(target);
+        constructPages();
         Router.navigate(url);
     }
 }

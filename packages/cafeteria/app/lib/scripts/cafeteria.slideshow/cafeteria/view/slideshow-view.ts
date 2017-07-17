@@ -69,14 +69,19 @@ class SlideShowView extends PageView {
      *
      */
     constructor() {
-        super("/templates/extends/slideshow.html", "page-slideshow");
+        super("/templates/advanced-sample/slideshow.html",
+            "page-slideshow",
+            {
+                route: "advanced/slideshow"
+            }
+        );
         this._template = this.getJST("#slideshow-thumbnail-list-element-template", "/templates/views-sample/view-templates.html");
     }
 
     /**
      * 初期化
      */
-    initialize(): void {
+    initSlideShow(): void {
         this.initDataProvider()
             .then(() => {
                 if (!this._dataProvider.valid()) {
@@ -226,7 +231,7 @@ class SlideShowView extends PageView {
      * @return {String} 日時フォーマット文字列
      */
     private buildDateTimeText(item: ImageData): string {
-        return item.get("dateTime").toString();
+        return item.get("dateTime").toDateString();
     }
 
     /**
@@ -679,7 +684,7 @@ class SlideShowView extends PageView {
         const setSpinnerCallback = (viewport, element) => {
             const spinnerDiv = document.createElement("div");
             const loading = new Image();
-            loading.src = toUrl("/lib/stylesheets/images/slideshow/loading_white_l_size.gif");
+            loading.src = toUrl("/stylesheets/images/slideshow/loading_white_l_size.gif");
             $(loading).addClass("center-spinner");
 
             const spinnerProps = {
@@ -958,7 +963,7 @@ class SlideShowView extends PageView {
 
     onPageShow(e: JQuery.Event, ui?: ShowEventData): void {
         super.onPageShow(e, ui);
-        this.initialize();
+        this.initSlideShow();
     }
 
     onPageBeforeHide(e: JQuery.Event, ui?: HideEventData): void {

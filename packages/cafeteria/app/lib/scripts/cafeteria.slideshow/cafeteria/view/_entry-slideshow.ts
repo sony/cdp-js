@@ -1,1 +1,1 @@
-﻿export * from "./slideshow-view";
+﻿import "./slideshow-view";

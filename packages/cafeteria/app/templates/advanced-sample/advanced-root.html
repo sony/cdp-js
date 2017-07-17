@@ -1,11 +1,12 @@
-﻿<article data-role="page" id="page-example-advanced-root" data-theme="b">
-    <header data-role="header" data-position="inline">
-        <a href="#" data-rel="back" data-icon="back" data-i18n="page-example-root.toExampleRoot">Back to Examples</a>
-        <h1 data-i18n="page-example-advanced.title">Advanced Examples</h1>
+﻿<article data-role="page" id="advanced-root" data-theme="cdp">
+    <header data-role="header" data-position="fixed" data-tap-toggle="false">
+        <a href="#" class="ui-back-indicator" data-rel="back" data-icon="back" data-i18n="app.common.back">app.common.back</a>
+        <h1 data-i18n="advanced.title">advanced.title</h1>
         <a href="#options" data-transition="slideup" data-icon="gear" data-iconpos="notext"></a>
     </header>
     <section data-role="content">
-        <h3 data-i18n="page-example-advanced.pmo.description">PMO Samples.</h3>
-        <input class="navigate" type="button" data-icon="grid" data-command="#pmo/dashboard" data-transition="pop" value="Dashboard Example" data-i18n="[value]page-example-advanced.pmo.toDashboard" />
+        <h3 data-i18n="advanced.description">advanced.description</h3>
+        <input class="command-load-navigate" type="button" data-icon="video" data-navigate-to="#advanced/slideshow" data-module="cafeteria.slideshow" data-transition="pop" value="advanced.slideshow.toSlideShow" data-i18n="[value]advanced.slideshow.toSlideShow" />
+        <input disabled class="command-load-navigate" type="button" data-icon="grid" data-navigate-to="#advanced/pmo/dashboard" data-module="todo" data-transition="pop" value="advanced.pmo.toDashboard" data-i18n="[value]advanced.pmo.toDashboard" />
     </section>
 </article>
