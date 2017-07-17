@@ -6,5 +6,5 @@
  */
 /// <amd-module name="cafeteria.slideshow" />
 
-export * from "./cafeteria/model/@entry-slideshow";
-export * from "./cafeteria/view/@entry-slideshow";
+export * from "./cafeteria/model/_entry-slideshow";
+import "./cafeteria/view/_entry-slideshow";

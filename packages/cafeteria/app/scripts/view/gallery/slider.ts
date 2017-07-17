@@ -14,7 +14,7 @@ class SliderPageView extends BasePageView {
      */
     constructor() {
         super("/templates/gallery/slider.html", "gallery-slider", {
-            route: "gallery-slider"
+            route: "gallery/slider"
         });
     }
 }

@@ -14,7 +14,7 @@ class RadioButtonPageView extends BasePageView {
      */
     constructor() {
         super("/templates/gallery/radio-button.html", "gallery-radio-button", {
-            route: "gallery-radio-button"
+            route: "gallery/radio-button"
         });
     }
 }

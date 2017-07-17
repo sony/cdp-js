@@ -50,7 +50,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties tsconfig_1base_1json__JSONSchema="http://json.schemastore.org/tsconfig" package_1json__JSONSchema="" />
+      <UserProperties package_1json__JSONSchema="" tsconfig_1base_1json__JSONSchema="http://json.schemastore.org/tsconfig" />
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
@@ -77,20 +77,20 @@
     <Content Include=".npmignore" />
     <Content Include="app\external\jquery\stylesheets\jquery.mobile.default-theme.css" />
     <Content Include="app\external\sylvester\scripts\sylvester.js" />
-    <Content Include="app\lib\scripts\cafeteria.slideshow\cafeteria\model\%40entry-slideshow.js">
-      <DependentUpon>%40entry-slideshow.ts</DependentUpon>
-    </Content>
     <Content Include="app\lib\scripts\cafeteria.slideshow\cafeteria\model\assets-image-data-provider.js">
       <DependentUpon>assets-image-data-provider.ts</DependentUpon>
     </Content>
     <Content Include="app\lib\scripts\cafeteria.slideshow\cafeteria\model\image-data-provider-interface.js">
       <DependentUpon>image-data-provider-interface.ts</DependentUpon>
     </Content>
-    <Content Include="app\lib\scripts\cafeteria.slideshow\cafeteria\view\%40entry-slideshow.js">
-      <DependentUpon>%40entry-slideshow.ts</DependentUpon>
+    <Content Include="app\lib\scripts\cafeteria.slideshow\cafeteria\model\_entry-slideshow.js">
+      <DependentUpon>_entry-slideshow.ts</DependentUpon>
     </Content>
     <Content Include="app\lib\scripts\cafeteria.slideshow\cafeteria\view\slideshow-view.js">
       <DependentUpon>slideshow-view.ts</DependentUpon>
+    </Content>
+    <Content Include="app\lib\scripts\cafeteria.slideshow\cafeteria\view\_entry-slideshow.js">
+      <DependentUpon>_entry-slideshow.ts</DependentUpon>
     </Content>
     <Content Include="app\lib\scripts\cafeteria.slideshow\main.js">
       <DependentUpon>main.ts</DependentUpon>
@@ -837,9 +837,9 @@
     <TypeScriptCompile Include="app\lib\scripts\cafeteria.images\_export.d.ts" />
     <TypeScriptCompile Include="app\lib\scripts\cafeteria.slideshow\cafeteria\model\assets-image-data-provider.ts" />
     <TypeScriptCompile Include="app\lib\scripts\cafeteria.slideshow\cafeteria\model\image-data-provider-interface.ts" />
-    <TypeScriptCompile Include="app\lib\scripts\cafeteria.slideshow\cafeteria\model\%40entry-slideshow.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\cafeteria.slideshow\cafeteria\model\_entry-slideshow.ts" />
     <TypeScriptCompile Include="app\lib\scripts\cafeteria.slideshow\cafeteria\view\slideshow-view.ts" />
-    <TypeScriptCompile Include="app\lib\scripts\cafeteria.slideshow\cafeteria\view\%40entry-slideshow.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\cafeteria.slideshow\cafeteria\view\_entry-slideshow.ts" />
     <TypeScriptCompile Include="app\lib\scripts\cafeteria.slideshow\main.ts" />
     <TypeScriptCompile Include="app\lib\scripts\cafeteria.slideshow\_declare.d.ts" />
     <TypeScriptCompile Include="app\lib\scripts\cafeteria.slideshow\_export.d.ts" />

@@ -95,7 +95,7 @@
     "iscroll": "^5.2.0",
     "node-sass": "^4.5.3",
     "npm-run-all": "^4.0.2",
-    "nyc": "^11.0.3",
+    "nyc": "^11.1.0",
     "plato": "^1.7.0",
     "postcss-cli": "^4.1.0",
     "requirejs": "^2.3.3",
@@ -103,6 +103,6 @@
     "tslint": "^5.5.0",
     "typedoc": "^0.7.1",
     "typescript": "^2.4.1",
-    "uglify-js": "^3.0.24"
+    "uglify-js": "^3.0.25"
   }
 }

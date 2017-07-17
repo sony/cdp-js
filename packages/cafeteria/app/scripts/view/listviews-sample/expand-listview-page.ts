@@ -24,7 +24,7 @@ class ExpandListViewPage extends PageView {
         super("/templates/listviews-sample/expandable-listview.html",
             "expandable-listview",
             {
-                route: "expandable-listview"
+                route: "listviews/listview/expandable"
             }
         );
     }

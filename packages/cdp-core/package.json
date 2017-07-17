@@ -63,11 +63,11 @@
     "del": "^3.0.0",
     "eslint": "^4.2.0",
     "npm-run-all": "^4.0.2",
-    "nyc": "^11.0.3",
+    "nyc": "^11.1.0",
     "plato": "^1.7.0",
     "requirejs": "^2.3.3",
     "tslint": "^5.5.0",
     "typescript": "^2.4.1",
-    "uglify-js": "^3.0.24"
+    "uglify-js": "^3.0.25"
   }
 }

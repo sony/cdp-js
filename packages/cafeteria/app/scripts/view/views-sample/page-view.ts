@@ -25,7 +25,7 @@ class PictureListViewPageView extends PageView<Picture> {
      * constructor
      */
     constructor() {
-        super("/templates/views-sample/view-page-view.html", "view-page-view", { route: "view/page-view" });
+        super("/templates/views-sample/view-page-view.html", "view-page-view", { route: "views/page-view" });
         // template の読み込み
         this._template = PictureListViewHelper.getJST("#view-list-el-template", "/templates/views-sample/view-templates.html");
     }

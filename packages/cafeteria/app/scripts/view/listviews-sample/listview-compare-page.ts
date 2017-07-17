@@ -25,7 +25,7 @@ class ListViewComparePage extends PageView {
         super("/templates/listviews-sample/listview-compare.html",
             "listview-compare",
             {
-                route: "listview/compare"
+                route: "listviews/listview/compare"
             }
         );
     }

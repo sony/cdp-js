@@ -14,7 +14,7 @@ class ButtonPageView extends BasePageView {
      */
     constructor() {
         super("/templates/gallery/button.html", "gallery-button", {
-            route: "gallery-button"
+            route: "gallery/button"
         });
     }
 }

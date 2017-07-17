@@ -21,7 +21,7 @@ class PictureListViewPageOwner extends Page {
      * constructor
      */
     constructor() {
-        super("/templates/views-sample/view-page-owner.html", "view-page-owner", { route: "view/page-owner" });
+        super("/templates/views-sample/view-page-owner.html", "view-page-owner", { route: "views/page-owner" });
     }
 
     ///////////////////////////////////////////////////////////////////////

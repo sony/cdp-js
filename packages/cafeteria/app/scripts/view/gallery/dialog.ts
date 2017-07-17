@@ -20,7 +20,7 @@ class DialogPageView extends BasePageView {
      */
     constructor() {
         super("/templates/gallery/dialog.html", "gallery-dialog", {
-            route: "gallery-dialog"
+            route: "gallery/dialog"
         });
     }
 

@@ -30,7 +30,7 @@ class PageListViewNative extends PageListView {
         super("/templates/listviews-sample/page-listview-native.html",
             "pagelistview-native",
             {
-                route: "pagelistview/native",
+                route: "listviews/pagelistview/native",
                 scrollerFactory: ScrollerNative.getFactory(),
             });
     }

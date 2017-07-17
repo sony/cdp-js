@@ -14,7 +14,7 @@ class CheckBoxPageView extends BasePageView {
      */
     constructor() {
         super("/templates/gallery/checkbox.html", "gallery-checkbox", {
-            route: "gallery-checkbox"
+            route: "gallery/checkbox"
         });
     }
 }

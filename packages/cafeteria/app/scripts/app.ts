@@ -19,7 +19,7 @@ const TAG: string = "[app] ";
 
 function onStart(): void {
     // for dev. always show vertical scroll bar.
-    Theme.detectUIPlatform();
+    Theme.initialize();
 
     router.register("", "/templates/main.html", true);
     // start Router.
