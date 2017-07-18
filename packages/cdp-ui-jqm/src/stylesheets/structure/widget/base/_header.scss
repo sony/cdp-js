@@ -5,7 +5,7 @@
 
 [class*=ui-platform-] {
     // 各ページ内に配置される共通ヘッダ本体
-    .ui-header {
+    .ui-header:not(.ui-no-platform) {
         height: $metrics-header-height;
 
         .ui-back-indicator {

@@ -62,7 +62,7 @@
 
     // iOS7+: status bar の分だけ補正をかける.
     @media screen and (orientation: portrait) {
-        .ui-header {
+        .ui-header:not(.ui-no-platform) {
             padding-top: $metrics-ios-status-bar-revise;
             .ui-btn-left, .ui-btn-right {
                 margin-top: $metrics-ios-status-bar-revise;
@@ -81,7 +81,7 @@
         top: -1px;
     }
 
-    .ui-header {
+    .ui-header:not(.ui-no-platform) {
         .ui-btn {
             top: 0;
             line-height: $metrics-header-height;

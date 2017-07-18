@@ -1,0 +1,106 @@
+﻿@import "../_utils.scss";
+@import "_constant.scss";
+
+@keyframes rotation {
+    from {
+        transform: rotate(0);
+    }
+    to {
+        transform: rotate(359deg);
+    }
+}
+
+article {
+    .common-radio {
+        .ui-checkbox, .ui-radio {
+            margin:0 0 0 0;
+        }
+        .ui-radio .ui-btn.ui-radio-on:after {
+            width:10px;
+            height:10px;
+            background-color:dodgerblue;
+            border-style:double;
+            border-width: 0.5em;
+        }
+        input[type=radio] {
+             // 既存のラジオボタンを非表示にする
+             opacity: 0;
+        }
+        .ui-btn-icon-left:after, .ui-btn-icon-right:after, .ui-btn-icon-top:after, .ui-btn-icon-bottom:after, .ui-btn-icon-notext:after {
+            width:20px;
+            height:20px;
+            border-style:solid;
+            background-color:White;
+            background-position: center center;
+            background-repeat: no-repeat;
+            border-radius: 1em;
+        }
+    }
+
+    // 選択状態のアイテム（白半透明状態）
+    .selected-item {
+        position            : absolute;
+        background-color    : rgba(255, 255, 255, 0.60);
+        width               : 100%;
+        height              : 100%;
+    }
+
+    // 選択状態のアイテム（右下にチェックボックス）
+    .selected-icon {
+        position        : absolute;
+        width           : 20px;
+        height          : 20px;
+        bottom          : 2px;
+        right           : 2px;
+        @include background-center-crop;
+        background-image: url("#{$res-root}/thm_selected.png");
+    }
+
+    // スピナー
+    .spinner {
+        position: relative;
+        width: 42px;
+        height: 42px;
+        top: 50%;
+        margin: 0 auto;
+        margin-top: -21px;
+        display: none;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-image: url("#{$res-root}/spinner_medium.png");
+        background-size: 100% 100%;
+        animation: rotation 1.3s linear infinite;
+        &.show {
+            display: block;
+        }
+        &.small {
+            width: 14px;
+            height: 14px;
+            margin-top: -7px;
+            background-image: url("#{$res-root}/spinner_small.png");
+        }
+        &.large {
+            width: 60px;
+            height: 60px;
+            margin-top: -30px;
+            background-image: url("#{$res-root}/spinner_large.png");
+        }
+    }
+
+    // 開閉ボタン
+    .expand-button {
+        width: 48px;
+        height: 48px;
+        opacity: 1.0;
+        @include background-center-crop;
+        &.to-expand {
+            background-image: url("#{$res-root}/btn_expand_down.png");
+        }
+        &.to-collapse {
+            background-image: url("#{$res-root}/btn_expand_up.png");
+        }
+        &.disable {
+            opacity: 0.2;
+        }
+    }
+}

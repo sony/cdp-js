@@ -1,0 +1,31 @@
+﻿@import "../_utils.scss";
+
+menu.overflow {
+    position: absolute;
+    left: -8px; // for right margin
+    background-color: $color-popup-divider;
+    min-width: 196px;
+    padding: 0;
+    margin: 0;
+
+    > li {
+        height: 40px;
+        background-color: $color-popup-background;
+        margin-top: 1px;
+        cursor: pointer;
+        list-style-type: none;
+        @include font-base(1em);
+        text-indent: 10px;
+        white-space: nowrap;
+        color: $color-common-white;
+        line-height: 40px;
+        overflow: hidden;
+
+        &:first-child {
+            margin-top: 0;
+        }
+        &.active {
+            background-color: $color-common-accent-dark;
+        }
+    }
+}

@@ -1,0 +1,42 @@
+﻿@import "../../../stylesheets/cdp/utils/_utils.scss";
+@import "_constant.scss";
+
+$drawable-root: "./images/pmo";
+
+// get background drawable path.
+@mixin background-nodpi-url($path) {
+    @include background-center-crop;
+    background-image: url("#{$drawable-root}/nodpi/#{$path}");
+}
+
+// get background drawable path with media queries.
+@mixin background-drawable-url($path) {
+    @include background-center-crop;
+    background-image: url("#{$drawable-root}/mdpi/#{$path}");
+
+    @media screen and (-webkit-device-pixel-ratio: 3) {
+        background-image: url("#{$drawable-root}/xxhdpi/#{$path}");
+    }
+    @media screen and (-webkit-device-pixel-ratio: 2) {
+        background-image: url("#{$drawable-root}/xhdpi/#{$path}");
+    }
+    @media screen and (-webkit-device-pixel-ratio: 1.5) {
+        background-image: url("#{$drawable-root}/hdpi/#{$path}");
+    }
+    @media screen and (-webkit-device-pixel-ratio: 1) {
+        background-image: url("#{$drawable-root}/mdpi/#{$path}");
+    }
+    @media screen and (-webkit-device-pixel-ratio: .75) {
+        background-image: url("#{$drawable-root}/mdpi/#{$path}");
+    }
+}
+
+.pmo {
+    // font-size
+    p {
+        @include font-base-set(left, ellipsis);
+        overflow: hidden;
+        white-space: nowrap;
+        color: $color-common-white;
+    }
+}

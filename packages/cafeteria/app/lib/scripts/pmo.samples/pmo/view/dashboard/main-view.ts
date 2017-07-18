@@ -1,5 +1,6 @@
 ﻿/* tslint:disable:no-bitwise */
 
+import * as $ from "jquery";
 import * as _ from "underscore";
 import {
     IPromiseBase,
@@ -73,7 +74,8 @@ class MainView extends AppPageView {
         super("/templates/advanced-sample/pmo-dashboard.html",
             "page-pmo-dashboard",
             {
-                route: "pmo/dashboard", top: false
+                route: "advanced/pmo/dashboard",
+                top: false
             }
         );
     }
@@ -101,7 +103,7 @@ class MainView extends AppPageView {
         super.onPageInit(event);
         // Dialog resource の設定
         Dialog.setDefaultOptions({
-            src: toUrl("/templates/common/dialogs.html"),
+            src: toUrl("/templates/advanced-sample/dialogs.html"),
             labelPositive: $.t("app.common.ok"),
             labelNegative: $.t("app.common.cancel"),
         });
@@ -814,3 +816,8 @@ class MainView extends AppPageView {
 }
 
 registerPage(MainView);
+
+// css の読み込み
+const $css: JQuery = $("<link rel='stylesheet'/>");
+$css.attr("href", toUrl("/lib/stylesheets/pmo.samples.css") + "?bust=" + Date.now());
+$css.appendTo(document.head);

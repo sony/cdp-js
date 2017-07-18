@@ -23,6 +23,7 @@
 | ui-text-emphasis                 | ボタンテキストの強調                                   | stylesheets/structure/widget/base/_dialog.scss        |
 | ui-back-indicator                | ヘッダ用戻るインジケータ                               | stylesheets/structure/widget/base/_header.scss        |
 | ui-header-base                   | 画面遷移時にも有効なベースヘッダ(internal)             | stylesheets/structure/widget/base/_header.scss        |
+| ui-no-platform                   | platform 装飾を抑止 (ui-header に紐づく)               | stylesheets/structure/widget/base/_header.scss        |
 | ui-fixed-back-indicator          | 画面遷移時にも有効なヘッダ用戻るインジケータ(internal) | stylesheets/structure/widget/ios/_header.scss         |
 | ui-header-no-fix                 | 固定ヘッダを使用しないときには必須 (がたつき回避)      | stylesheets/structure/widget/base/_page.scss          |
 | ui-page-no-fix                   | body native scroll したい場合は必須 (がたつき回避)     | stylesheets/structure/widget/base/_page.scss          |

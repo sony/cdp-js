@@ -1,0 +1,76 @@
+﻿@import "_utils.scss";
+
+article {
+    .navigationbar {
+        &.command-defs {
+            width: 100%;
+            border-style: solid;
+
+            @include media(tablet) {
+                height: 56px;
+            }
+            @include media(phone) {
+                @include orientation-landscape {
+                    height: 40px;
+                }
+                @include orientation-portrait {
+                    height: 48px;
+                }
+            }
+
+            > .command-set {
+                width: 100%;
+                height: 100%;
+                display: none;
+                background-color: $color-actionbar-translucent-background;
+                &.active {
+                    display: block;
+                }
+                > .command-button {
+                        position: absolute;
+                        width: 150px;
+                        top: 0;
+                        bottom: 0;
+                        background-color: darkcyan;
+                    &:nth-of-type(1) {
+                        left: 0;
+                    }
+                    &:nth-last-of-type(1) {
+                        right: 0;
+                    }
+                }
+
+                > .command-title {
+                    position: relative;
+                    width: auto;
+                    margin: 0 30%;
+                    padding: 0;
+                    display: block;
+                    text-align: center;
+                    text-indent: 10px;
+                    vertical-align: middle;
+                    @include font-text-overflow(ellipsis);
+                    overflow: hidden;
+                    white-space: nowrap;
+                    font-size: 1em;
+                    font-weight: normal;
+                    color: $color-actionbar-title;
+                    @include media(tablet) {
+                        height: 56px;
+                        line-height: 56px;
+                    }
+                    @include media(phone) {
+                        @include orientation-landscape {
+                            height: 40px;
+                            line-height: 40px;
+                        }
+                        @include orientation-portrait {
+                            height: 48px;
+                            line-height: 48px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

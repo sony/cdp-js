@@ -5,7 +5,7 @@
 
 .ui-platform-android {
 
-    .ui-header {
+    .ui-header:not(.ui-no-platform) {
         padding: ($metrics-android-header-revise / 2) 0;
 
         .ui-btn {

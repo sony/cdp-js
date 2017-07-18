@@ -1,0 +1,26 @@
+﻿// colors
+$color-common-white: white;
+$color-common-black: black;
+$color-common-accent-light: #33B5E5;
+$color-common-accent-dark: #0099CC;
+$color-common-bg-black-alpha-80: rgba(0, 0, 0, .8);
+$color-common-bg-black-alpha-50: rgba(0, 0, 0, .5);
+$color-common-bg-black-alpha-20: rgba(0, 0, 0, .2);
+$color-common-bg-black-alpha-0: transparent;
+$color-common-background: #1A1A1A;
+$color-common-fill-background: #282828;
+$color-common-background-light: $color-common-white;
+$color-common-gray: #C6C6C6;
+
+$color-actionbar-translucent-background: rgba(0, 0, 0, .8);
+$color-actionbar-translucent-border: rgba(0, 0, 0, .66);
+$color-actionbar-translucent-light-background: $color-common-bg-black-alpha-50;
+$color-actionbar-translucent-light-border: transparent;
+$color-actionbar-select-mode-background: #002E3E;
+$color-actionbar-title: #f6f6f6;
+
+$color-popup-background: $color-common-fill-background;
+$color-popup-divider: #515151;
+
+$color-calendar-background-month: $color-common-fill-background;
+$color-calendar-background-day: $color-common-background;

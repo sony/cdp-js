@@ -1,0 +1,195 @@
+﻿@import "../_utils.scss";
+@import "_constant.scss";
+
+// 分割時の後に続く nav button の共通定義
+%nav-button-follow-block-definition {
+    border-left: {
+        width: 1px;
+        color: $color-popup-divider;
+    }
+}
+
+section.common-dialog {
+    width: 320px;
+    max-width: 98%;
+    background-color: $color-popup-background;
+    pointer-events: none;
+    border: {
+        style: solid;
+        width: 1px 0 0 0;
+        color: $color-popup-divider;
+    }
+    border-radius: 2px;
+
+    // common title header
+    > header {
+        width: auto;
+        height: auto;
+        display: block;
+        pointer-events: none;
+
+        &.no-title {
+            display: none;
+        }
+
+        > h1.title {
+            margin: 0;
+            padding: 8px 0 8px 0;
+            @include font-base(18px);
+            text-indent: 12px;
+            color: $color-common-accent-light;
+            border: {
+                style: solid;
+                width: 0 0 2px 0;
+                color: $color-common-accent-light;
+            }
+        }
+    }
+
+    // common text: jQM の既定の定義がレイアウト的に適当
+    p {
+        font-size: 16px;
+        color: $color-common-white;
+        white-space: pre-wrap;
+        // common message
+        &.message {
+            pointer-events: none;
+        }
+        &.debug {
+            color: #b6ff00;
+        }
+        &.info {
+            color: #00ffff;
+        }
+        &.assert {
+            color: #b200ff;
+        }
+        &.warn {
+            color: #ffd800;
+        }
+        &.error {
+            color: red;
+        }
+    }
+
+    // common button
+    nav.button {
+        height: 42px;
+        cursor: pointer;
+        @include font-base(14px, center);
+        line-height: 42px;
+        color: $color-common-white;
+        pointer-events: all;
+        border: {
+            style: solid;
+            width: 1px 0 1px 0;
+            top-color: $color-popup-divider;
+            bottom-color: transparent;
+        }
+
+        &.active {
+            background-color: $color-common-accent-dark;
+        }
+
+        // jQM ui-block.* css をコンパクトにするために @extend を使用する
+        $block-list: b, c, d, e;
+        @each $block-id in $block-list {
+            &.ui-block-#{$block-id} {
+                @extend %nav-button-follow-block-definition;
+            }
+        }
+    }
+
+    // common dialog list
+    &.dialog-list {
+        > menu {
+            margin: 0;
+            padding: 0;
+            background-color: $color-popup-divider;
+
+            > li {
+                height: 40px;
+                margin-top: 1px;
+                cursor: pointer;
+                overflow: hidden;
+                background-color: $color-popup-background;
+                list-style-type: none;
+                @include font-base(16px);
+                text-indent: 8px;
+                white-space: nowrap;
+                color: $color-common-white;
+                line-height: 40px;
+                pointer-events: all;
+
+                &:first-child {
+                    margin-top: 0;
+                }
+                &.active {
+                    background-color: $color-common-accent-dark;
+                }
+            }
+        }
+    }
+
+    // clickable
+    input {
+        pointer-events: all;
+    }
+
+    .list-item-with-radio {
+        $navi-button-height: 42px;
+        $ui-width: 20px;
+        width: auto;
+        height: $navi-button-height;
+        display: -webkit-box;
+        -webkit-box-align: center;
+
+        .fill-space {
+            -webkit-box-flex: 1;
+        }
+
+        .radio-div {
+            width: $ui-width;
+            padding-right: 16px;
+        }
+
+        .radio-ui {
+            margin:auto;
+        }
+     }
+
+    .spinner-dialog {
+        padding: 10px;
+        display: -webkit-box;
+        -webkit-box-pack: center;
+        -webkit-box-align: center;
+
+        > p {
+            font-size: 16px;
+            color: $color-common-white;
+            margin-left: 20px;
+        }
+
+        // スピナー
+        .spinner {
+            width: 42px;
+            height: 42px;
+            display: block;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-image: url("#{$res-root}/spinner_medium.png");
+            background-size: 100% 100%;
+            animation: rotation 1.3s linear infinite;
+            &.small {
+                width: 14px;
+                height: 14px;
+                background-image: url("#{$res-root}/spinner_small.png");
+            }
+            &.large {
+                width: 60px;
+                height: 60px;
+                background-image: url("#{$res-root}/spinner_large.png");
+            }
+        }
+    }
+}
