@@ -50,7 +50,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties package_1json__JSONSchema="" tsconfig_1base_1json__JSONSchema="http://json.schemastore.org/tsconfig" />
+      <UserProperties tsconfig_1base_1json__JSONSchema="http://json.schemastore.org/tsconfig" package_1json__JSONSchema="" />
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
@@ -77,6 +77,15 @@
     <Content Include=".npmignore" />
     <Content Include="app\external\jquery\stylesheets\jquery.mobile.default-theme.css" />
     <Content Include="app\external\sylvester\scripts\sylvester.js" />
+    <Content Include="app\lib\scripts\cafeteria.images\cafeteria\image-interface.js">
+      <DependentUpon>image-interface.ts</DependentUpon>
+    </Content>
+    <Content Include="app\lib\scripts\cafeteria.images\cafeteria\image-item-generator.js">
+      <DependentUpon>image-item-generator.ts</DependentUpon>
+    </Content>
+    <Content Include="app\lib\scripts\cafeteria.images\main.js">
+      <DependentUpon>main.ts</DependentUpon>
+    </Content>
     <Content Include="app\lib\scripts\cafeteria.slideshow\cafeteria\model\assets-image-data-provider.js">
       <DependentUpon>assets-image-data-provider.ts</DependentUpon>
     </Content>
@@ -136,6 +145,75 @@
     </Content>
     <Content Include="app\lib\scripts\cdp.ui.smoothscroll\main.js">
       <DependentUpon>main.ts</DependentUpon>
+    </Content>
+    <Content Include="app\lib\scripts\pmo.samples\main.js">
+      <DependentUpon>main.ts</DependentUpon>
+    </Content>
+    <Content Include="app\lib\scripts\pmo.samples\pmo\model\event-source.js">
+      <DependentUpon>event-source.ts</DependentUpon>
+    </Content>
+    <Content Include="app\lib\scripts\pmo.samples\pmo\model\factory.js">
+      <DependentUpon>factory.ts</DependentUpon>
+    </Content>
+    <Content Include="app\lib\scripts\pmo.samples\pmo\model\interfaces.js">
+      <DependentUpon>interfaces.ts</DependentUpon>
+    </Content>
+    <Content Include="app\lib\scripts\pmo.samples\pmo\model\settings.js">
+      <DependentUpon>settings.ts</DependentUpon>
+    </Content>
+    <Content Include="app\lib\scripts\pmo.samples\pmo\model\stub-dashboard.js">
+      <DependentUpon>stub-dashboard.ts</DependentUpon>
+    </Content>
+    <Content Include="app\lib\scripts\pmo.samples\pmo\model\stub-media-provider.js">
+      <DependentUpon>stub-media-provider.ts</DependentUpon>
+    </Content>
+    <Content Include="app\lib\scripts\pmo.samples\pmo\model\_entry.js">
+      <DependentUpon>_entry.ts</DependentUpon>
+    </Content>
+    <Content Include="app\lib\scripts\pmo.samples\pmo\utils\format.js">
+      <DependentUpon>format.ts</DependentUpon>
+    </Content>
+    <Content Include="app\lib\scripts\pmo.samples\pmo\utils\metrics.js">
+      <DependentUpon>metrics.ts</DependentUpon>
+    </Content>
+    <Content Include="app\lib\scripts\pmo.samples\pmo\utils\_entry.js">
+      <DependentUpon>_entry.ts</DependentUpon>
+    </Content>
+    <Content Include="app\lib\scripts\pmo.samples\pmo\view\base-frame\action-bar-footer-buttons.js">
+      <DependentUpon>action-bar-footer-buttons.ts</DependentUpon>
+    </Content>
+    <Content Include="app\lib\scripts\pmo.samples\pmo\view\base-frame\action-bar.js">
+      <DependentUpon>action-bar.ts</DependentUpon>
+    </Content>
+    <Content Include="app\lib\scripts\pmo.samples\pmo\view\base-frame\app-page-base.js">
+      <DependentUpon>app-page-base.ts</DependentUpon>
+    </Content>
+    <Content Include="app\lib\scripts\pmo.samples\pmo\view\base-frame\app-page-view.js">
+      <DependentUpon>app-page-view.ts</DependentUpon>
+    </Content>
+    <Content Include="app\lib\scripts\pmo.samples\pmo\view\base-frame\command-view-adaptor.js">
+      <DependentUpon>command-view-adaptor.ts</DependentUpon>
+    </Content>
+    <Content Include="app\lib\scripts\pmo.samples\pmo\view\base-frame\command-view.js">
+      <DependentUpon>command-view.ts</DependentUpon>
+    </Content>
+    <Content Include="app\lib\scripts\pmo.samples\pmo\view\base-frame\navigation-bar.js">
+      <DependentUpon>navigation-bar.ts</DependentUpon>
+    </Content>
+    <Content Include="app\lib\scripts\pmo.samples\pmo\view\base-frame\tool-bar.js">
+      <DependentUpon>tool-bar.ts</DependentUpon>
+    </Content>
+    <Content Include="app\lib\scripts\pmo.samples\pmo\view\dashboard\ad-view.js">
+      <DependentUpon>ad-view.ts</DependentUpon>
+    </Content>
+    <Content Include="app\lib\scripts\pmo.samples\pmo\view\dashboard\main-view.js">
+      <DependentUpon>main-view.ts</DependentUpon>
+    </Content>
+    <Content Include="app\lib\scripts\pmo.samples\pmo\view\_entry.js">
+      <DependentUpon>_entry.ts</DependentUpon>
+    </Content>
+    <Content Include="app\lib\stylesheets\cdp.deviceconsole.css">
+      <DependentUpon>cdp.deviceconsole.scss</DependentUpon>
     </Content>
     <Content Include="app\res\data\examples\contents\animal\jellyfish.jpg" />
     <Content Include="app\res\data\examples\contents\animal\koala.jpg" />
@@ -863,6 +941,30 @@
     <TypeScriptCompile Include="app\lib\scripts\cdp.ui.smoothscroll\main.ts" />
     <TypeScriptCompile Include="app\lib\scripts\cdp.ui.smoothscroll\_declare.d.ts" />
     <TypeScriptCompile Include="app\lib\scripts\cdp.ui.smoothscroll\_export.d.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\pmo.samples\main.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\pmo.samples\pmo\model\event-source.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\pmo.samples\pmo\model\factory.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\pmo.samples\pmo\model\interfaces.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\pmo.samples\pmo\model\settings.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\pmo.samples\pmo\model\stub-dashboard.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\pmo.samples\pmo\model\stub-media-provider.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\pmo.samples\pmo\model\_entry.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\pmo.samples\pmo\utils\format.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\pmo.samples\pmo\utils\metrics.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\pmo.samples\pmo\utils\_entry.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\pmo.samples\pmo\view\base-frame\action-bar-footer-buttons.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\pmo.samples\pmo\view\base-frame\action-bar.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\pmo.samples\pmo\view\base-frame\app-page-base.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\pmo.samples\pmo\view\base-frame\app-page-view.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\pmo.samples\pmo\view\base-frame\command-view-adaptor.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\pmo.samples\pmo\view\base-frame\command-view.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\pmo.samples\pmo\view\base-frame\navigation-bar.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\pmo.samples\pmo\view\base-frame\tool-bar.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\pmo.samples\pmo\view\dashboard\ad-view.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\pmo.samples\pmo\view\dashboard\main-view.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\pmo.samples\pmo\view\_entry.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\pmo.samples\_declare.d.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\pmo.samples\_export.d.ts" />
     <TypeScriptCompile Include="app\scripts\app.ts" />
     <Content Include="app\scripts\app.js">
       <DependentUpon>app.ts</DependentUpon>

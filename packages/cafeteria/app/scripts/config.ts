@@ -123,6 +123,7 @@ namespace Config {
         assign_lib("cdp.slideshow");
         assign_lib("cafeteria.images");
         assign_lib("cafeteria.slideshow");
+        assign_lib("pmo.samples");
         // <<<LIB_DEPENDENCIES<<<
 
         /* tslint:enable:no-unused-variable no-unused-vars */

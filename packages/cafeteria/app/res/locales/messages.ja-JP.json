@@ -25,7 +25,32 @@
         "utility": {
             "fraction": "{{count}}/{{total}}",
             "bracket": "({{content}})",
-            "yyyymmdd": "{{yyyy}}/{{mm}}/{{dd}}"
+            "yyyymmdd": "{{yyyy}}/{{mm}}/{{dd}}",
+            "month": {
+                "index_0": "1月",
+                "index_1": "2月",
+                "index_2": "3月",
+                "index_3": "4月",
+                "index_4": "5月",
+                "index_5": "6月",
+                "index_6": "7月",
+                "index_7": "8月",
+                "index_8": "9月",
+                "index_9": "10月",
+                "index_10": "11月",
+                "index_11": "12月"
+            },
+            "day": {
+                "short": {
+                    "index_0": "日",
+                    "index_1": "月",
+                    "index_2": "火",
+                    "index_3": "水",
+                    "index_4": "木",
+                    "index_5": "金",
+                    "index_6": "土"
+                }
+            }
         }
     },
     "example": {
@@ -185,7 +210,46 @@
         "title": "高度な機能",
         "description": "高度な機能の実装例:",
         "toSlideShow": "スライドショー",
-        "toPMODashboard": "PMO ダッシュボード"
+        "toPMODashboard": "PMO ダッシュボード",
+        "pmo": {
+            "app": {
+                "name": "PlayMemories Online",
+                "countMediaFiles": "{{count}}件の画像",
+                "formatSelected": "選択数: {{count}}",
+                "yearMonthDate": "{{year}}年{{month}}{{date}}日",
+                "errorGeneralNoSelection": "何も選択されていません。"
+            },
+            "menu": {
+                "settings": "設定",
+                "selectContents": "画像を選択",
+                "notifications": "お知らせ",
+                "help": "ヘルプ",
+                "rotateRight": "右回転",
+                "rotateLeft": "左回転",
+                "slideshow": "スライドショー",
+                "deleteContents": "画像を削除",
+                "editDetails": "詳細を編集",
+                "addToAlbum": "コレクションに追加",
+                "newAlbum": "コレクションを作成"
+            },
+            "action": {
+                "selectMediaFiles": "画像を選択",
+                "selectFromAll": "すべての画像から選択",
+                "selectFromMyLists": "コレクションから選択",
+                "selectFromAnotherList": "他のコレクションから選択",
+                "selectFromDevice": "機器から選択",
+                "selectFromRecentlyUsed": "最近使用したものから選択",
+                "selectFromContacts": "連絡先から選択",
+                "uploadTakePhoto": "写真を撮影"
+            },
+            "dashboard": {
+                "toCalendar": "すべての画像",
+                "toAlbum": "マイコレクション",
+                "toPostcard": "ポストカード",
+                "toSPB": "フォトブック",
+                "toFriendAlbum": "フレンズコレクション"
+            }
+        }
     },
     "error": {
         "resourceNotFound": {

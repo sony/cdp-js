@@ -16,10 +16,10 @@ namespace CDP.UI {
 
     /* tslint:disable:no-use-before-declare */
     /**
-     * @interface PageContainerOptions
+     * @interface PageContainerViewOptions
      * @brief PageContainer のオプション
      */
-    export interface PageContainerOptions<TModel extends Framework.Model = Framework.Model> extends Framework.ViewOptions<TModel> {
+    export interface PageContainerViewOptions<TModel extends Framework.Model = Framework.Model> extends Framework.ViewOptions<TModel> {
         owner: PageView;
         $el?: JQuery;
     }
@@ -35,7 +35,7 @@ namespace CDP.UI {
         /**
          * constructor
          */
-        constructor(options: PageContainerOptions<TModel>) {
+        constructor(options: PageContainerViewOptions<TModel>) {
             super(options);
             this._owner = options.owner;
             if (options.$el) {

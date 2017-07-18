@@ -22,6 +22,7 @@ export const getDefaultClickEvent                   = _framework.getDefaultClick
 export const registerPage                           = _framework.registerPage;
 export const constructPages                         = _framework.constructPages;
 export const disposePages                           = _framework.disposePages;
+export const setBackButtonHandler                   = CDP.setBackButtonHandler;
 
 // @class Page
 export type  Page = CDP.Framework.Page;
@@ -42,6 +43,7 @@ export type  ModelSaveOptions                           = CDP.Framework.ModelSav
 export type  ModelDestroyOptions                        = CDP.Framework.ModelDestroyOptions;
 export type  ViewOptions<TModel extends Model = Model>  = CDP.Framework.ViewOptions<TModel>;
 export type  Orientation                                = CDP.Framework.Orientation;
+export const Orientation                                = _framework.Orientation;
 export type  PageTransitionDirection                    = CDP.Framework.PageTransitionDirection;
 export type  Intent                                     = CDP.Framework.Intent;
 export type  PageStack                                  = CDP.Framework.PageStack;

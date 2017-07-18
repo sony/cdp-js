@@ -228,7 +228,7 @@ export default class CSS {
             CSS.transformElement(element, {
                 duration: duration,
                 callback: callback,
-                scale: scaleX, // TODO: まずは、scaleXとscaleYは同じ値が指定される前提
+                scale: scaleX, // [NOTE]: scaleXとscaleYは同じ値が指定される前提
                 offsetX: offsetX,
                 offsetY: offsetY,
             });
