@@ -99,8 +99,8 @@ class SlideShowView extends PageView {
                     });
             })
             .fail(() => {
-                alert($.t("TODO:"), {
-                    title: "TODO",
+                alert(`${$.t("error.resourceNotFound.task")}\n${$.t("error.resourceNotFound.message")}`, {
+                    title: "error.resourceNotFound.title",
                 })
                     .on("popupafterclose", (event: JQuery.Event) => {
                         Router.back();
@@ -134,11 +134,6 @@ class SlideShowView extends PageView {
             }
 
             this._lastDataProvierType = type;
-
-            // TODO:
-            // "assets" を使用する場合には、"sample/image/" 以下に、"org" と "thumb" を配置すること。
-            //                this._dataProvider = Model.Factory.getImageDataProvider({ newInstance: true, type: "assets" });
-            //                this._dataProvider = Model.Factory.getImageDataProvider({ newInstance: true });
             this._dataProvider = new AssetsImageDataProvider();
             this._dataProvider.load()
                 .done(() => {

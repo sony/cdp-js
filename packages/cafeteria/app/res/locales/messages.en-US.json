@@ -181,5 +181,18 @@
             "titleExpandableListView": "Sample: Page Expandable List View"
         }
     },
+    "advanced": {
+        "title": "Advanced Functions",
+        "description": "Advanced Functions Examples Entries:",
+        "toSlideShow": "Slide Show",
+        "toPMODashboard": "PMO Dashboard"
+    },
+    "error": {
+        "resourceNotFound": {
+            "title": "Resource Access Error",
+            "task": "Cannot read sample data.",
+            "message": "Please setup sample contents folder at 'res/data' directory."
+        }
+    },
     "EOF": "EOF"
 }

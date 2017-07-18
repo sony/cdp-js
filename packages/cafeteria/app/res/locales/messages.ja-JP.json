@@ -181,5 +181,18 @@
             "titleExpandableListView": "サンプル: Page Expandable List View"
         }
     },
+    "advanced": {
+        "title": "高度な機能",
+        "description": "高度な機能の実装例:",
+        "toSlideShow": "スライドショー",
+        "toPMODashboard": "PMO ダッシュボード"
+    },
+    "error": {
+        "resourceNotFound": {
+            "title": "リソースアクセスエラー",
+            "task": "サンプルコンテンツにアクセスできませんでした",
+            "message": "res/data' 以下に sample フォルダを配置してください。"
+        }
+    },
     "EOF": "EOF"
 }

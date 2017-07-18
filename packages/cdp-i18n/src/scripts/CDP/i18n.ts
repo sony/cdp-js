@@ -6,8 +6,8 @@ namespace CDP {
     import I18next = i18next.i18n;
 
     export namespace I18N {
-        export type I18n = I18next.I18n;
-        export type Options = I18next.Options;
+        export type I18n = I18next.i18n;
+        export type Options = I18next.InitOptions;
         export type TranslationOptions = I18next.TranslationOptions;
         export type TranslationFunction = I18next.TranslationFunction;
         export type InterpolationOptions = I18next.InterpolationOptions;
