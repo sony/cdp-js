@@ -1,0 +1,43 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {
+            "config.xml": {
+                "parents": {
+                    "/*": [
+                        {
+                            "xml": "<feature name=\"NativeBridge\"><param name=\"ios-package\" value=\"CDPNativeBridge\" /></feature>",
+                            "count": 1
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "installed_plugins": {
+        "cordova-plugin-cdp-nativebridge": {
+            "PACKAGE_NAME": "com.sony.cdp.cafeteria"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.sony.cdp.cafeteria"
+        }
+    },
+    "dependent_plugins": {},
+    "modules": [
+        {
+            "id": "cordova-plugin-cdp-nativebridge.NativeBridge",
+            "file": "plugins/cordova-plugin-cdp-nativebridge/www/cdp.plugin.nativebridge.js",
+            "pluginId": "cordova-plugin-cdp-nativebridge",
+            "clobbers": [
+                "CDP.Plugin.NativeBridge"
+            ]
+        }
+    ],
+    "plugin_metadata": {
+        "cordova-plugin-cdp-nativebridge": "1.1.0",
+        "cordova-plugin-whitelist": "1.3.2"
+    }
+}

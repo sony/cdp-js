@@ -2,7 +2,7 @@
  * jQuery plugin definition
  */
 interface JQuery {
-    spinner(options?: CDP.UI.DomExtensionOptions): JQuery;
+    spinner(options?: CDP.UI.DomExtensionOptions | "refresh"): JQuery;
 }
 
 namespace CDP.UI.Extension {
@@ -53,6 +53,7 @@ namespace CDP.UI.Extension {
                 param = makeTemplateParam(color);
             }
             $elem.append(_template(param));
+            refresh($elem);
         };
 
         $target.find(".ui-spinner, .ui-icon-loading")
@@ -63,9 +64,42 @@ namespace CDP.UI.Extension {
         return $target;
     }
 
+    // iOS 10.2+ SVG SMIL アニメーションが 2回目以降動かない問題の対策
+    // data:image/svg+xml;<cache bust string>;base,... とすることで data-url にもcache busting が有効になる
+    function refresh($target: JQuery): JQuery {
+        const PREFIX = ["-webkit-", ""];
+
+        const valid = (prop) => {
+            return (prop && "none" !== prop);
+        };
+
+        let dataUrl: string;
+        for (let i = 0, n = PREFIX.length; i < n; i++) {
+            if (!valid(dataUrl)) {
+                dataUrl = $target.css(PREFIX[i] + "mask-image");
+                if (valid(dataUrl)) {
+                    // iOS では url(data***); 内に '"' は入らない
+                    const match = dataUrl.match(/(url\(data:image\/svg\+xml;)([\s\S]*)?(base64,[\s\S]*\))/);
+                    if (match) {
+                        dataUrl = `${match[1]}bust=${Date.now().toString(36)};${match[3]}`;
+                    }
+                }
+            }
+            if (valid(dataUrl)) {
+                $target.css(PREFIX[i] + "mask-image", dataUrl);
+            }
+        }
+
+        return $target;
+    }
+
     //! jQuery plugin
-    $.fn.spinner = function (options?: DomExtensionOptions) {
-        return applyDomExtension($(this), options);
+    $.fn.spinner = function (options?: DomExtensionOptions | "refresh") {
+        if ("string" === typeof options) {
+            return refresh($(this));
+        } else {
+            return applyDomExtension($(this), options);
+        }
     };
 
     // 登録

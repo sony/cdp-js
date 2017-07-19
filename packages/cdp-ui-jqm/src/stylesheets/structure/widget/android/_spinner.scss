@@ -58,7 +58,8 @@
 
 .ui-platform-android {
     .ui-spinner, .ui-icon-loading {
-        background-color: initial !important;
+        background-color:   initial !important;
+        mask-image:         none !important;
     }
     // disable loading icon
     .ui-icon-loading {
