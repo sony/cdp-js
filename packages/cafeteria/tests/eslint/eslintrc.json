@@ -14,6 +14,8 @@
     "Symbol": true,
     "Promise": true,
     "CDP": true,
+    "Hammer": true,
+    "$M": true,
     "module": true,
     "require": true,
     "define": true,
@@ -27,7 +29,7 @@
 
     "comma-dangle": "off",
     "no-cond-assign": "off",
-    "no-unused-vars": ["error", {"args": "none", "varsIgnorePattern": "^TAG|^__" }],
+    "no-unused-vars": ["error", {"args": "none", "varsIgnorePattern": "^TAG|^__|Touch" }],
     "no-extra-boolean-cast": "off",
     "no-constant-condition": "off",
     "no-console": "off"

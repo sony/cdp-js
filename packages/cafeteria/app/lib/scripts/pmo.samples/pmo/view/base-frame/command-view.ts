@@ -228,6 +228,7 @@ export default class CommandView extends View<Model> {
     ///////////////////////////////////////////////////////////////////////
     // Event Handler
 
+    /* eslint-disable no-unused-vars */
     // active page に発生したイベントハンドラ
     private onPageEvent(event?: JQuery.Event): void {
         let absPageX = 0,
@@ -280,6 +281,7 @@ export default class CommandView extends View<Model> {
             }
         };
     }
+    /* eslint-enable no-unused-vars */
 
     // Orientation の変更検知
     public onOrientationChanged(): void {
