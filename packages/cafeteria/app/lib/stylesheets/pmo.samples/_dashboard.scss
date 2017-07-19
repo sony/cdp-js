@@ -1,0 +1,203 @@
+﻿@import "_utils.scss";
+
+#page-pmo-dashboard {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    background-color: $color-common-black;
+
+    &.enable-scroll {
+        overflow-y: auto;
+    }
+
+    // 動的に transition on/off を切り替えるクラス
+    .fade-setting {
+        @include transition-fade(.5s, ease);
+    }
+
+    #dashboard-slideshow-area {
+        position: fixed;
+        top: 0;
+
+        > .background {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            @include background-center-crop;
+            background-image: url("#{$drawable-root}/nodpi/gmenu_loading.png");
+        }
+
+        #dashboard-slideshow-screen {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+            pointer-events: none;
+        }
+
+        > .area-shadow {
+            position: absolute;
+            @include orientation-portrait {
+                width: 100%;
+                top: 75%;
+                bottom: 0;
+                @include linear-gradient-shadow(to bottom, transparent, $color-common-black);
+            }
+            @include orientation-landscape {
+                height: 100%;
+                left: 75%;
+                right: 0;
+                @include linear-gradient-shadow(to right, transparent, $color-common-black);
+            }
+        }
+    }
+
+    #dashboard-mask {
+        position: fixed;
+        @include orientation-portrait {
+            width: 100%;
+            bottom: 0;
+            background-color: $color-common-black;
+        }
+        @include orientation-landscape {
+            height: 100%;
+            right: 0;
+            background-color: $color-common-black;
+        }
+    }
+
+    #dashboard-ad-area {
+        position: fixed;
+        bottom: 0;
+        margin: 0 6px 0 6px;
+        overflow: hidden;
+
+        @include orientation-portrait {
+            left: 0;
+        }
+        @include orientation-landscape {
+            right: 0;
+        }
+
+        > .scroll-map {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            > #dashboard-ad {
+                position: absolute;
+                width: 100%;
+                top: 50%;
+                background-position: bottom;
+                background-repeat: no-repeat;
+                background-size: 100% auto;
+            }
+            > .area-shadow {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background-color: $color-common-black;
+            }
+        }
+    }
+
+    #dashboard-contents-area {
+        position: absolute;
+        margin: 0;
+
+        @include orientation-portrait {
+            width: 100%;
+        }
+
+        @include orientation-landscape {
+            top: 0;
+            right: 0;
+        }
+
+        > .area-shadow {
+            position: absolute;
+            width: 100%;
+            top: 0;
+            @include linear-gradient-shadow(to bottom, transparent, black, $color-common-bg-black-alpha-20);
+        }
+
+        #dashboard-recall-info {
+            height: 44px;   // 固定値
+
+            @include orientation-portrait {
+                position: absolute;
+                width: 100%;
+            }
+
+            @include orientation-landscape {
+                position: fixed;
+                width: auto;
+                left: 0;
+                bottom: 14px;
+            }
+
+            > aside {
+                position: absolute;
+                width: 100%;
+                &.description {
+                    height: 13px;
+                    top: 0;
+                }
+                &.date{
+                    height: 31px;
+                    top: 13px;
+                }
+                > p {
+                    position: absolute;
+                    margin: 0;
+                    text-indent: 6px;
+                    @include transition-fade(1.0s, ease);
+                }
+            }
+        }
+
+        > .dashboard-content {
+            position: absolute;
+
+            > p {
+                position: absolute;
+                width: 100%;
+                height: 24px;
+                bottom: 0;
+                margin: 0;
+                background-color: $color-common-bg-black-alpha-50;
+                text-indent: 6px;
+                line-height: 24px;
+                @include hardware-accelerator-props; // To avoid Android ICS bug that scale3d automatically becomes 0 even if we didn't change. 
+            }
+
+            > figure {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                @include transition-fade(.5s, ease);
+                @include background-center-crop;
+            }
+
+            > div {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+                opacity: 0;
+                background-color: $color-common-black;
+                cursor: pointer;
+            }
+        }
+
+        > .event-delegater {
+            position: absolute;
+            bottom: 0;
+            cursor: pointer;
+        }
+    }
+}

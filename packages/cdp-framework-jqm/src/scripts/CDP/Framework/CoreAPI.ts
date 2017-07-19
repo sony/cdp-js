@@ -123,23 +123,23 @@ namespace CDP {
                 return <any>_dfInitialize.promise();
             }
 
-            const config = getConfig(options);
-
             // CDP 環境の初期化
             // 現状は、console オブジェクトの保証と jQuery の WinRT 対応。
             CDP.initialize({
                 success: () => {
-                    // Framework 用の Patch 適用
+                    const config = getConfig(options);
+
+                    // Framework 用の Patch 適用 (Framework 初期化前)
                     if (config.applyPatch) {
-                        Framework.Patch.apply();
+                        Framework.Patch.applyBeforeInit();
                     }
 
-                    // jQuery の共通設定
+                    // config の反映: jquery
                     config.applyJQueryConfig();
 
                     // jQuery Mobile の初期化
                     $(document).on("mobileinit", (): void => {
-                        // config の反映
+                        // config の反映: jquery mobile
                         config.applyJQueryMobileConfig();
 
                         // cdp.i18n の初期化
@@ -161,6 +161,10 @@ namespace CDP {
                                     anchorVclick: config.anchorVclick,
                                     firstPageTransition: config.firstPageTransition,
                                 })) {
+                                    // Framework 用の Patch 適用 (Framework 初期化後)
+                                    if (config.applyPatch) {
+                                        Framework.Patch.applyAfterInit();
+                                    }
                                     _dfInitialize.resolve();
                                 } else {
                                     console.error(TAG + "error. CDP.Framework.Router.initialize() failed.");

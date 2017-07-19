@@ -1,10 +1,10 @@
-﻿<article data-role="page" id="page-pmo-dashboard" class="pmo" data-theme="none" data-dom-cache="false">
+﻿<article data-role="page" id="page-pmo-dashboard" class="pmo ui-page-no-fix ui-header-no-fix" data-theme="none" data-dom-cache="false">
     <!-- actionbar/navigationbar area -->
-    <header data-role="header" data-position="fixed" data-fullscreen="true" data-tap-toggle="false" class="commandview">
+    <header data-role="header" data-position="fixed" data-fullscreen="true" data-tap-toggle="false" class="commandview ui-no-platform">
         <section class="actionbar command-defs">
             <section class="command-set normal translucent-light active" data-mode="normal">
                 <nav class="command-icon withindicator">&nbsp;</nav>
-                <h1 class="command-title" data-i18n="page-example-advanced.pmo.common.appName">PlayMemories Online</h1>
+                <h1 class="command-title" data-i18n="advanced.pmo.app.name">advanced.pmo.app.name</h1>
                 <nav class="command-button notification" style="visibility: hidden">&nbsp;</nav>
                 <nav class="command-button refresh">&nbsp;</nav>
                 <nav class="command-button add">&nbsp;</nav>
@@ -14,7 +14,7 @@
     </header>
 
     <!-- main contents area -->
-    <section class="fullscreen">
+    <section class="ui-screen-full">
         <section id="dashboard-slideshow-area">
             <figure class="background">&nbsp;</figure>
             <div id="dashboard-slideshow-screen" class="fade-out"></div>
@@ -74,10 +74,10 @@
     </section>
 
     <!-- overflow menu -->
-    <menu class="overflow" data-role="popup" data-corners="false" data-theme="none">
-        <li class="navigate" data-command="#settings" data-i18n="page-example-advanced.pmo.menu.settings">Settings</li>
-        <li class="external" data-command="http://www.yahoo.co.jp" data-i18n="page-example-advanced.pmo.menu.notifications">Notifications</li>
-        <li class="external" data-command="https://www.google.co.jp/" data-i18n="page-example-advanced.pmo.menu.help">Help</li>
+    <menu class="overflow" data-role="popup" data-corners="false" data-theme="none" data-overlay-theme="cdp">
+        <li class="navigate" data-command="#settings" data-i18n="advanced.pmo.menu.settings">advanced.pmo.menu.settings</li>
+        <li class="external" data-command="http://www.yahoo.co.jp" data-i18n="advanced.pmo.menu.notifications">advanced.pmo.menu.notifications</li>
+        <li class="external" data-command="https://www.google.co.jp/" data-i18n="advanced.pmo.menu.help">Help</li>
         <!-- TODO: 削除 -->
         <li class="test" data-command="update-image">[Test] Update Image</li>
         <li class="test" data-command="dialog">[Test] Dialog</li>

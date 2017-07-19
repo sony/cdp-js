@@ -40,9 +40,10 @@ class AdvancedRoot extends PageView {
         event.preventDefault();
         const url = $(event.target).data("navigate-to");
         const target: string = $(event.target).data("module");
+        const transition: string = $(event.target).data("transition");
         await import(target);
         constructPages();
-        Router.navigate(url);
+        Router.navigate(url, transition);
     }
 }
 

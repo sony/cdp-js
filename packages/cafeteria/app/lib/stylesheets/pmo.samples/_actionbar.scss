@@ -1,0 +1,261 @@
+﻿@import "_utils.scss";
+
+article {
+    header {
+        .actionbar {
+            &.command-defs {
+                position: relative;
+                width: 100%;
+                border-style: solid;
+
+                @include media(tablet) {
+                    height: 56px;
+                }
+                @include media(phone) {
+                    @include orientation-landscape {
+                        height: 40px;
+                    }
+                    @include orientation-portrait {
+                        height: 48px;
+                    }
+                }
+
+                > .normal {
+                    width: 100%;
+                    height: 100%;
+                    border-width: 0 0 2px 0;
+                    background-color: $color-common-black;
+                    border-color: $color-common-black;
+                    display: none;
+                    &.active {
+                        display: block;
+                    }
+                    &.translucent {
+                        background-color: $color-actionbar-translucent-background;
+                        border-color: $color-actionbar-translucent-border;
+                    }
+                    &.translucent-light {
+                        background-color: $color-actionbar-translucent-light-background;
+                        border-color: $color-actionbar-translucent-light-border;
+                    }
+                }
+                > .select {
+                    width: 100%;
+                    height: 100%;
+                    border-width: 0 0 3px 0;
+                    border-style: solid;
+                    background-color: $color-actionbar-select-mode-background;
+                    border-color: $color-common-accent-light;
+                    display: none;
+                    &.active {
+                        display: block;
+                    }
+                }
+
+                .command-icon {
+                    position: absolute;
+                    width: 53px;
+                    height: 32px;
+                    top:50%;
+                    border-style: solid;
+                    border-color: transparent;
+                    @include media(tablet) {
+                        border-width: 12px 4px 12px 0;
+                        margin:-29px 0;
+                    }
+                    @include media(phone) {
+                        @include orientation-landscape {
+                            border-width: 4px 4px 4px 0;
+                            margin:-21px 0;
+                        }
+                        @include orientation-portrait {
+                            border-width: 8px 4px 8px 0;
+                            margin:-25px 0;
+                        }
+                    }
+
+                    &.noindicator {
+                        @include background-drawable-url("appicon_actionbar_noindicator.png");
+                    }
+                    &.withindicator {
+                        cursor: pointer;
+                        @include background-drawable-url("appicon_actionbar_withindicator.png");
+                        &.active {
+                            background-color: $color-common-accent-dark;
+                            border-color: $color-common-accent-dark;
+                        }
+                    }
+                    &.done {
+                        width: 32px;
+                        left: 11px;
+                        cursor: pointer;
+                        @include background-drawable-url("action_done.png");
+                        &.active {
+                            // TODO: 要修正
+                            background-color: $color-common-accent-dark;
+                            border-color: $color-common-accent-dark;
+                        }
+                    }
+                }
+
+                .command-title {
+                    position: relative;
+                    width: auto;
+                    left: 53px;
+                    right: 120px;
+                    margin: 0;
+                    padding: 0;
+                    display: table-cell;
+                    text-align: left;
+                    text-indent: 10px;
+                    vertical-align: middle;
+                    @include font-text-overflow(ellipsis);
+                    overflow: hidden;
+                    white-space: nowrap;
+                    font-size: 1em;
+                    font-weight: normal;
+                    color: $color-actionbar-title;
+                    @include media(tablet) {
+                        height: 56px;
+                    }
+                    @include media(phone) {
+                        @include orientation-landscape {
+                            height: 40px;
+                        }
+                        @include orientation-portrait {
+                            height: 48px;
+                        }
+                    }
+                }
+
+                .command-button {
+                    position: absolute;
+                    width: 32px;
+                    height: 32px;
+                    top:50%;
+                    cursor: pointer;
+                    border-style: solid;
+                    border-color: transparent;
+
+                    &:nth-last-of-type(1) {
+                        right: 0;
+                    }
+
+                    @include media(tablet) {
+                        border-width: 12px;
+                        margin:-29px 0;
+                        &:nth-last-of-type(2) {
+                            right: 56px;
+                        }
+                        &:nth-last-of-type(3) {
+                            right: 112px;
+                        }
+                        &:nth-last-of-type(4) {
+                            right: 168px;
+                        }
+                    }
+                    @include media(phone) {
+                        @include orientation-landscape {
+                            border-width: 4px;
+                            margin:-21px 0;
+                            &:nth-last-of-type(2) {
+                                right: 40px;
+                            }
+                            &:nth-last-of-type(3) {
+                                right: 80px;
+                            }
+                            &:nth-last-of-type(4) {
+                                right: 120px;
+                            }
+                        }
+                        @include orientation-portrait {
+                            border-width: 8px;
+                            margin:-25px 0;
+                            &:nth-last-of-type(2) {
+                                right: 48px;
+                            }
+                            &:nth-last-of-type(3) {
+                                right: 96px;
+                            }
+                            &:nth-last-of-type(4) {
+                                right: 144px;
+                            }
+                        }
+                    }
+
+                    &.add {
+                        @include background-drawable-url("action_add.png");
+                    }
+                    &.delete {
+                        @include background-drawable-url("action_delete.png");
+                    }
+                    &.edit {
+                        @include background-drawable-url("action_edit.png");
+                    }
+                    &.notification {
+                        @include background-drawable-url("action_notification.png");
+                    }
+                    &.overflow {
+                        @include background-drawable-url("action_overflow.png");
+                    }
+                    &.photo {
+                        @include background-drawable-url("action_photo.png");
+                    }
+                    &.play {
+                        @include background-drawable-url("action_play_gif.png");
+                    }
+                    &.refresh {
+                        @include background-drawable-url("action_refresh.png");
+                        &.loading {
+                            @include background-drawable-url("action_spinner.gif");
+                        }
+                    }
+                    &.share {
+                        @include background-drawable-url("action_share.png");
+                    }
+                    &.active {
+                        background-color: $color-common-accent-dark;
+                        border-color: $color-common-accent-dark;
+                    }
+                }
+            }
+        }
+    }
+
+    footer {
+        .actionbar {
+            &.command-defs {
+                // footer buttons
+                .footer-buttons {
+                    background-color: $color-common-black;
+                    display: none;
+                    &.active {
+                        display: block;
+                    }
+
+                    nav.button {
+                        margin: 9px 0 9px 0;
+                        padding: 14px 0 14px;
+                        border-width: 0 5px 0 5px;
+                        border-style: solid;
+                        border-color: $color-common-black;
+                        background-color: $color-common-fill-background;
+                        opacity: .3;
+                        color: white;
+                        text-align: center;
+              
+                        // 押すと色が変わる設定,色をはっきりさせて実行可能を示唆
+                        &.enable {
+                            opacity: 1;
+                            cursor: pointer;
+                            &.active {
+                                background-color: $color-common-accent-light;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+

@@ -112,7 +112,7 @@
     "@types/i18next": "^8.4.1",
     "@types/iscroll": "^5.2.0",
     "@types/jasmine": "^2.5.53",
-    "@types/jquery": "^3.2.8",
+    "@types/jquery": "^3.2.9",
     "@types/requirejs": "^2.1.29",
     "@types/sylvester": "^0.1.5",
     "@types/underscore": "^1.8.1",

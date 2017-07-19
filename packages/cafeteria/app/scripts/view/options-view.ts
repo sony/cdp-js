@@ -1,7 +1,7 @@
 ﻿import {
     PageView,
     PageContainerView,
-    PageContainerOptions,
+    PageContainerViewOptions,
     Theme,
     Toast,
     registerPage,
@@ -21,7 +21,7 @@ class ThemeSwitcher extends PageContainerView {
     /**
      * constructor
      */
-    constructor(options: PageContainerOptions) {
+    constructor(options: PageContainerViewOptions) {
         super(options);
         switch (Theme.getCurrentUIPlatform()) {
             case "ios":

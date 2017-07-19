@@ -17,6 +17,7 @@ export const View = _framework.View;
 // framework ui utils
 export const toUrl                                  = _framework.toUrl;
 export const registerPage                           = _framework.registerPage;
+export const Orientation                            = _framework.Orientation;
 export const getOrientation                         = _framework.getOrientation;
 export const registerOrientationChangedListener     = _framework.registerOrientationChangedListener;
 export const unregisterOrientationChangedListener   = _framework.unregisterOrientationChangedListener;

@@ -25,7 +25,32 @@
         "utility": {
             "fraction": "{{count}}/{{total}}",
             "bracket": "({{content}})",
-            "yyyymmdd": "{{yyyy}}/{{mm}}/{{dd}}"
+            "yyyymmdd": "{{yyyy}}/{{mm}}/{{dd}}",
+            "month": {
+                "index_0": "January",
+                "index_1": "February",
+                "index_2": "March",
+                "index_3": "April",
+                "index_4": "May",
+                "index_5": "June",
+                "index_6": "July",
+                "index_7": "August",
+                "index_8": "September",
+                "index_9": "October",
+                "index_10": "November",
+                "index_11": "December"
+            },
+            "day": {
+                "short": {
+                    "index_0": "Sun",
+                    "index_1": "Mon",
+                    "index_2": "Tue",
+                    "index_3": "Wed",
+                    "index_4": "Thu",
+                    "index_5": "Fri",
+                    "index_6": "Sat"
+                }
+            }
         }
     },
     "example": {
@@ -185,7 +210,47 @@
         "title": "Advanced Functions",
         "description": "Advanced Functions Examples Entries:",
         "toSlideShow": "Slide Show",
-        "toPMODashboard": "PMO Dashboard"
+        "toPMODashboard": "PMO Dashboard",
+        "pmo": {
+            "app": {
+                "name": "PlayMemories Online",
+                "countMediaFiles": "{{count}} media files",
+                "formatSelected": "{{count}} selected",
+                "yearMonthDate": "{{date}} {{month}} {{year}}",
+                "errorGeneralNoSelection": "Nothing is selected."
+            },
+            "menu": {
+                "settings": "Settings",
+                "selectContents": "Select Media File",
+                "notifications": "Notifications",
+                "help": "Help",
+                "rotateRight": "Rotate Right",
+                "rotateLeft": "Rotate Left",
+                "slideshow": "Slideshow",
+                "deleteContents": "Delete Media File",
+                "editDetails": "Edit Details",
+                "addToAlbum": "Add to Collection",
+                "newAlbum": "New Collection"
+            },
+            "action": {
+                "upload": "Upload",
+                "selectMediaFiles": "Select Media File",
+                "selectFromAll": "Select from All",
+                "selectFromMyLists": "Select from Collections",
+                "selectFromAnotherList": "Select from another Collection",
+                "selectFromDevice": "Select from Device",
+                "selectFromRecentlyUsed": "Add from Recently Used",
+                "selectFromContacts": "Add from Contacts",
+                "uploadTakePhoto": "Take a Photo"
+            },
+            "dashboard": {
+                "toCalendar": "All",
+                "toAlbum": "My Collections",
+                "toPostcard": "Postcards",
+                "toSPB": "Photo Books",
+                "toFriendAlbum": "Friends\nCollections"
+            }
+        }
     },
     "error": {
         "resourceNotFound": {

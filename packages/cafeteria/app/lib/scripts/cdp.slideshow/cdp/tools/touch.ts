@@ -113,7 +113,7 @@ export module Touch {// [PMO]
      */
     export function removeTarget(element: JQuery): void {
         for (let evt in _origEvents) {
-            // If we are in IE  // TODO: This part should be checked wheter correct or not.
+            // If we are in IE  // [NOTE]: This part should be checked wheter correct or not.
             if (!evt) {
                 evt = <any>window.event;
             }
@@ -132,7 +132,7 @@ export module Touch {// [PMO]
 
     // [PMO]
     function _unbindFromElement(customEvent, element) {
-        // TODO: handler名を指定して、削除すべきかも
+        // [NOTE]: handler名を指定して、削除すべきかも
         $(element).unbind(customEvent);
     }
 

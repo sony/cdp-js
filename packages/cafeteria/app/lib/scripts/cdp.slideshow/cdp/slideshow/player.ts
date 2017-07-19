@@ -3,6 +3,9 @@
 import * as $ from "jquery";
 import CSS from "../tools/css";
 import {
+    PropertyAccesser,
+} from "../tools/cursor-array";
+import {
     InfinityContainer,
 } from "../tools/infinity-container";
 import {
@@ -17,7 +20,7 @@ import Transition from "./transition";
 const TAG = "[CDP.SlideShow.Player] ";
 
 // re-export
-export { InfinityContainer, CSS };
+export { PropertyAccesser, InfinityContainer, CSS };
 
 /**
  * @class _Config
@@ -175,7 +178,7 @@ export class Player {
             this.notifyStateChanged("state:play-state-changed", this._isPlaying);
         }
 
-        Touch.removeTarget(this._$viewport); // TODO: 以下のoffでevent handlerをunbindしているので不要かも
+        Touch.removeTarget(this._$viewport); // [NOTE]: 以下のoffでevent handlerをunbindしているので不要かも
         (this._$viewport).off();
 
         this.cleanViewPort(this._$viewport);
@@ -1545,7 +1548,7 @@ export class Player {
             } else {
                 const transX = CSS.getCssMatrixValue(element, "translateX");
                 const transY = CSS.getCssMatrixValue(element, "translateY");
-                const defaultZoomScale = 3; // TODO: 画像サイズに合わせて拡大する必要がある。倍率ではない。
+                const defaultZoomScale = 3; // [NOTE]: 画像サイズに合わせて拡大する必要がある。倍率ではない。
                 this._isTransitioning = true;
                 CSS.moveImage(transX, transY, defaultZoomScale, defaultZoomScale, element, this._snapDuration, () => {
                     this._currentScale = CSS.getCssMatrixValue(element, "scaleX");

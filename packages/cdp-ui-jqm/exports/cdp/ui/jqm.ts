@@ -57,7 +57,7 @@ export type BasePageOptions<TModel extends Model = Model> = CDP.UI.BasePageOptio
 export type PageContainerView<TModel extends Model = Model>    = CDP.UI.PageContainerView<TModel>;
 export const PageContainerView = _ui.PageContainerView;
 
-export type PageContainerOptions<TModel extends Model = Model> = CDP.UI.PageContainerOptions<TModel>;
+export type PageContainerViewOptions<TModel extends Model = Model> = CDP.UI.PageContainerViewOptions<TModel>;
 
 
 // @class PageView

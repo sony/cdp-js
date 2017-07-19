@@ -1,0 +1,8 @@
+﻿@import "_utils.scss";
+
+article {
+    > .ui-header-fixed {
+        padding-top: 0;
+        border-style: none;
+    }
+}

@@ -1,4 +1,4 @@
-﻿/* tslint:disable:typedef */
+﻿/* tslint:disable:typedef no-bitwise */
 
 namespace CDP.Framework {
 
@@ -28,9 +28,57 @@ namespace CDP.Framework {
         (<any>$.fn).off = custom_off;
     };
 
+    /**
+     * $.mobile.widget.popup patch
+     */
+    const _mobilePopupPatch = (): void => {
+        const jqueryMajor = ~~$.fn.jquery.split(".")[0];
+        const jqmVersion = $.mobile.version.split(".");
+        const jqmMajor = ~~jqmVersion[0];
+        const jqmMiner = ~~jqmVersion[1];
+
+        if (3 <= jqueryMajor && jqmMajor < 2 && jqmMiner < 5) {
+            // patch code from jqm 1.5
+            // https://github.com/jquery/jquery-mobile/commit/d34c86ae14d4ea603357be5e326de1fb8c31dbf9
+            const _safeCreatePrerequisites = function (screenPrerequisite: any, containerPrerequisite: any, whenDone: any): void {
+                let prerequisites;
+                const self: any = this;
+
+                prerequisites = {
+                    screen: $.Deferred(),
+                    container: $.Deferred()
+                };
+
+                prerequisites.screen.done(function () {
+                    if (prerequisites === self._prerequisites) {
+                        screenPrerequisite();
+                    }
+                });
+
+                prerequisites.container.done(function () {
+                    if (prerequisites === self._prerequisites) {
+                        containerPrerequisite();
+                    }
+                });
+
+                $.when(prerequisites.screen, prerequisites.container).done(function () {
+                    if (prerequisites === self._prerequisites) {
+                        self._prerequisites = null;
+                        whenDone();
+                    }
+                });
+
+                self._prerequisites = prerequisites;
+            };
+
+            const $mobile: any = $.mobile;
+            if ($mobile.widgets && $mobile.widgets.popup) {
+                $mobile.widgets.popup.prototype._createPrerequisites = _safeCreatePrerequisites;
+            }
+        }
+    };
 
     //___________________________________________________________________________________________________________________//
-
 
     /**
      * @class Patch
@@ -46,16 +94,27 @@ namespace CDP.Framework {
 
         /**
          * \~english
-         * Apply patch.
+         * Apply patch before initialize.
          *
          * \~japanese
-         * パッチの適用
+         * 初期化前のパッチの適用
          */
-        public static apply(): void {
+        public static applyBeforeInit(): void {
             if (!Patch.isSupportedVclick()) {
                 _vclickPatch();
                 Patch.s_vclickEvent = "click";
             }
+        }
+
+        /**
+         * \~english
+         * Apply patch after initialize.
+         *
+         * \~japanese
+         * 初期化後のパッチの適用
+         */
+        public static applyAfterInit(): void {
+            _mobilePopupPatch();
         }
 
         /**
