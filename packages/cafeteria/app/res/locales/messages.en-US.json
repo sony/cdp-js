@@ -233,6 +233,7 @@
                 "newAlbum": "New Collection"
             },
             "action": {
+                "upload": "Upload",
                 "selectMediaFiles": "Select Media File",
                 "selectFromAll": "Select from All",
                 "selectFromMyLists": "Select from Collections",

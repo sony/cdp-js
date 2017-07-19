@@ -106,6 +106,7 @@ class MainView extends AppPageView {
             src: toUrl("/templates/advanced-sample/dialogs.html"),
             labelPositive: $.t("app.common.ok"),
             labelNegative: $.t("app.common.cancel"),
+//            scrollEvent: "allow",
         });
     }
 
@@ -201,7 +202,7 @@ class MainView extends AppPageView {
     // .command-button.add のコールバック
     onCommandAdd(event?: JQuery.Event): void {
         const dialog = new Dialog("#common-dialog-list", {
-            title: $.t("page-example-advanced.pmo.common.upload"),
+            title: $.t("advanced.pmo.action.upload"),
             list: [
                 {
                     id: "dlg-btn-from-local",
