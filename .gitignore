@@ -21,3 +21,4 @@ packages/cafeteria/app/external/cdp
 packages/cafeteria/platforms/ios/Cafeteria.xcarchive
 packages/cafeteria/platforms/ios/CordovaLib/CordovaLib.xcodeproj/xcuserdata/ogata.xcuserdatad
 packages/cafeteria/platforms/ios/Cafeteria.xcodeproj/xcuserdata/ogata.xcuserdatad
+packages/cafeteria/tasks
