@@ -50,7 +50,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties tsconfig_1base_1json__JSONSchema="http://json.schemastore.org/tsconfig" package_1json__JSONSchema="" />
+      <UserProperties package_1json__JSONSchema="" tsconfig_1base_1json__JSONSchema="http://json.schemastore.org/tsconfig" />
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
@@ -221,7 +221,6 @@
     <Content Include="app\lib\stylesheets\images\commonctrl\spinner_medium.png" />
     <Content Include="app\lib\stylesheets\images\commonctrl\spinner_small.png" />
     <Content Include="app\lib\stylesheets\images\commonctrl\thm_selected.png" />
-    <Content Include="app\lib\stylesheets\images\pmo\dummy\idx_mainvisual_a7.png" />
     <Content Include="app\lib\stylesheets\images\pmo\hdpi\action_add.png" />
     <Content Include="app\lib\stylesheets\images\pmo\hdpi\action_delete.png" />
     <Content Include="app\lib\stylesheets\images\pmo\hdpi\action_done.png" />
@@ -260,12 +259,7 @@
     <Content Include="app\lib\stylesheets\images\pmo\mdpi\icon_members_dark.png" />
     <Content Include="app\lib\stylesheets\images\pmo\mdpi\service_logo.png" />
     <Content Include="app\lib\stylesheets\images\pmo\mdpi\status_syncing.png" />
-    <Content Include="app\lib\stylesheets\images\pmo\nodpi\gmenu_all.png" />
-    <Content Include="app\lib\stylesheets\images\pmo\nodpi\gmenu_friends.png" />
     <Content Include="app\lib\stylesheets\images\pmo\nodpi\gmenu_loading.png" />
-    <Content Include="app\lib\stylesheets\images\pmo\nodpi\gmenu_mylists.png" />
-    <Content Include="app\lib\stylesheets\images\pmo\nodpi\gmenu_photobooks.png" />
-    <Content Include="app\lib\stylesheets\images\pmo\nodpi\gmenu_postcards.png" />
     <Content Include="app\lib\stylesheets\images\pmo\nodpi\spinner_large.png" />
     <Content Include="app\lib\stylesheets\images\pmo\nodpi\spinner_medium.png" />
     <Content Include="app\lib\stylesheets\images\pmo\nodpi\spinner_small.png" />
@@ -426,6 +420,12 @@
     <Content Include="app\res\data\sample\image\org\97.jpg" />
     <Content Include="app\res\data\sample\image\org\98.jpg" />
     <Content Include="app\res\data\sample\image\org\99.jpg" />
+    <Content Include="app\res\data\sample\image\pmo\dummy\idx_mainvisual_a7.png" />
+    <Content Include="app\res\data\sample\image\pmo\nodpi\gmenu_all.png" />
+    <Content Include="app\res\data\sample\image\pmo\nodpi\gmenu_friends.png" />
+    <Content Include="app\res\data\sample\image\pmo\nodpi\gmenu_mylists.png" />
+    <Content Include="app\res\data\sample\image\pmo\nodpi\gmenu_photobooks.png" />
+    <Content Include="app\res\data\sample\image\pmo\nodpi\gmenu_postcards.png" />
     <Content Include="app\res\data\sample\image\small\0.jpg" />
     <Content Include="app\res\data\sample\image\small\1.jpg" />
     <Content Include="app\res\data\sample\image\small\10.jpg" />
