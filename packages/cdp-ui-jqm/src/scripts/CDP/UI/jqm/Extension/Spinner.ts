@@ -64,6 +64,8 @@ namespace CDP.UI.Extension {
         return $target;
     }
 
+    // iOS 10.2+ SVG SMIL アニメーションが 2回目以降動かない問題の対策
+    // data:image/svg+xml;<cache bust string>;base,... とすることで data-url にもcache busting が有効になる
     function refresh($target: JQuery): JQuery {
         const PREFIX = ["-webkit-", ""];
 
@@ -76,7 +78,8 @@ namespace CDP.UI.Extension {
             if (!valid(dataUrl)) {
                 dataUrl = $target.css(PREFIX[i] + "mask-image");
                 if (valid(dataUrl)) {
-                    const match = dataUrl.match(/(url\("data:image\/svg\+xml;)([\s\S]*)?(base64,[\s\S]*"\))/);
+                    // iOS では url(data***); 内に '"' は入らない
+                    const match = dataUrl.match(/(url\(data:image\/svg\+xml;)([\s\S]*)?(base64,[\s\S]*\))/);
                     if (match) {
                         dataUrl = `${match[1]}bust=${Date.now().toString(36)};${match[3]}`;
                     }
