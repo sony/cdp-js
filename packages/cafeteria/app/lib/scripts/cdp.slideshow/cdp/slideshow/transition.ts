@@ -335,7 +335,6 @@ export default class Transition {
         let oldEndScale = config && config.oldEndScale ? config.oldEndScale : null;              // null: mean keep old value.
         let oldEndOffsetX = config && config.oldEndOffsetX ? config.oldEndOffsetX : null;        // null: mean keep old value.
         let oldEndOffsetY = config && config.oldEndOffsetY ? config.oldEndOffsetY : null;        // null: mean keep old value.
-        const oldEndOpacity = config && config.oldEndOpacity ? config.oldEndOpacity : null;        // null: mean keep old value.
 
         let newStartScale = config && config.newStartScale ? config.newStartScale : -1.0;        // -1: mean use fixed scale.
         const newStartOffsetX = config && config.newStartOffsetY ? config.newStartOffsetY : 0;
@@ -344,7 +343,6 @@ export default class Transition {
 
         let newEndScale = config && config.newEndScale ? config.newEndScale : -1.25;            // -1: mean use fixed scale.
         const newEndOffsetX = config && config.newEndOffsetX ? config.newEndOffsetX : 0;
-        const newEndOffsetY = config && config.newEndOffsetY ? config.newEndOffsetY : 0;
         const newEndOpacity = config && config.newEndOpacity ? config.newEndOpacity : 1.0;
         let fixedScale = 1.0;
 

@@ -63,7 +63,7 @@
     "porting:android": "node ./tasks/porting-setup.js --platform=android --porting=rebase",
     "porting:ios": "node ./tasks/porting-setup.js --platform=ios --porting=rebase",
     "lint": "run-p -l lint:*",
-    "lint:js": "eslint tasks/**/*.js app/scripts/**/*.js platforms/*/porting/scripts/**/*.js -c tests/eslint/eslintrc.json",
+    "lint:js": "eslint tasks/**/*.js app/scripts/**/*.js app/lib/scripts/**/*.js platforms/*/porting/scripts/**/*.js -c tests/eslint/eslintrc.json",
     "lint:ts": "tslint --type-check -p ./tsconfig.json -c ./tests/tslint/tslint.json -e app/**/*.d.ts app/**/*.ts platforms/*/porting/scripts/**/*.ts",
     "unit-test": "npm run coverage:exec",
     "unit-test:ci": "testem ci -f ./tests/runner/testem-ci.js",
@@ -75,7 +75,7 @@
     "rearrange": "node ./tasks/external-rearrange.js && node ./tasks/cafeteria.js --operation=rearrange",
     "module": "node ./tasks/clean.js --pkg --temp && node ./tasks/compile-ts.js --pkg=release --lib && node ./tasks/copy.js --task=lib-types && node ./tasks/clean.js --temp",
     "document": "typedoc --out docs/typedoc/ app/",
-    "metrics": "npm run compile:ts && plato -r -d docs/reports/metrics -e ./tests/eslint/eslintrc.json -x app/external/ app/**/*.js"
+    "metrics": "npm run compile:dev && plato -r -d docs/reports/metrics -e ./tests/eslint/eslintrc.json -x app/external/ app/**/*.js"
   },
   "repository": {
     "type": "git",
