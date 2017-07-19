@@ -1,7 +1,7 @@
 /*!
  * @cdp/mobile 2.0.0
  *
- * Date: 2017-07-19T10:38:46.551Z
+ * Date: 2017-07-19T11:15:37.894Z
  *
  * including:
  *     @cdp/core 2.0.0
@@ -19,7 +19,7 @@
 /*!
  * cdp.core.js 2.0.0
  *
- * Date: 2017-07-19T03:01:59.945Z
+ * Date: 2017-07-19T11:08:50.102Z
  */
 ((function (root, factory) {
     if (typeof define === "function" && define.amd) {
@@ -195,7 +195,7 @@
 /*!
  * cdp.promise.js 2.0.0
  *
- * Date: 2017-07-19T03:03:10.520Z
+ * Date: 2017-07-19T11:09:54.934Z
  */
 (function (root, factory) { if (typeof define === "function" && define.amd) { define("cdp.promise",["jquery"], function ($) { return factory(root.CDP || (root.CDP = {}), $, root); }); } else if (typeof exports === "object") { module.exports = factory(root.CDP || (root.CDP = {}), require("jquery"), root); } else { factory(root.CDP || (root.CDP = {}), root.jQuery || root.$, root); } }(((this || 0).self || global), function (CDP, $, root) {
 var CDP;
@@ -505,7 +505,7 @@ root.Promise = root.Promise || CDP.Promise; return CDP; }));
 /*!
  * cdp.i18n.js 2.0.0
  *
- * Date: 2017-07-19T03:04:02.247Z
+ * Date: 2017-07-19T11:11:04.471Z
  */
 
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -3978,7 +3978,7 @@ return Cache;
 /*!
  * cdp.framework.jqm.js 2.0.0
  *
- * Date: 2017-07-19T03:04:53.106Z
+ * Date: 2017-07-19T11:11:50.293Z
  */
 
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -22566,7 +22566,7 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_5__;
 /*!
  * cdp.tools.js 2.0.0
  *
- * Date: 2017-07-19T03:05:40.580Z
+ * Date: 2017-07-19T11:12:36.915Z
  */
 (function (root, factory) { if (typeof define === "function" && define.amd) { define("cdp.tools",["jquery", "underscore"], function ($, _) { return factory(root.CDP || (root.CDP = {}), $, _); }); } else if (typeof exports === "object") { module.exports = factory(root.CDP || (root.CDP = {}), require("jquery"), require("underscore")); } else { factory(root.CDP || (root.CDP = {}), root.jQuery || root.$, root._); } }(((this || 0).self || global), function (CDP, $, _) { CDP.Tools = CDP.Tools || {};
 /**
@@ -23299,7 +23299,7 @@ return CDP.Tools; }));
 /*!
  * cdp.ui.listview.js 2.0.0
  *
- * Date: 2017-07-19T03:06:30.697Z
+ * Date: 2017-07-19T11:13:22.286Z
  */
 (function (root, factory) { if (typeof define === "function" && define.amd) { define("cdp.ui.listview",["jquery", "underscore", "backbone"], function ($, _, Backbone) { return factory(root.CDP || (root.CDP = {}), $, _, Backbone); }); } else if (typeof exports === "object") { module.exports = factory(root.CDP || (root.CDP = {}), require("jquery"), require("underscore"), require("backbone")); } else { factory(root.CDP || (root.CDP = {}), root.$, root._, root.Backbone); } }(((this || 0).self || global), function (CDP, $, _, Backbone) { CDP.UI = CDP.UI || {};
 /// <reference types="jquery" />
@@ -26329,7 +26329,7 @@ return CDP.UI; }));
 /*!
  * cdp.ui.jqm.js 2.0.0
  *
- * Date: 2017-07-19T10:38:36.692Z
+ * Date: 2017-07-19T11:14:13.312Z
  */
 (function (root, factory) { if (typeof define === "function" && define.amd) { define("cdp.ui.jqm",["cdp.framework.jqm", "cdp.tools", "cdp.ui.listview"], function () { return factory(root.CDP || (root.CDP = {})); }); } else { factory(root.CDP || (root.CDP = {})); } }(this, function (CDP) { CDP.UI = CDP.UI || {};
 var CDP;
@@ -28254,7 +28254,7 @@ return CDP.UI; }));
 /*!
  * cdp.nativebridge.js 2.0.0
  *
- * Date: 2017-07-19T03:08:20.076Z
+ * Date: 2017-07-19T11:14:59.865Z
  */
 (function (root, factory) { if (typeof define === "function" && define.amd) { define("cdp.nativebridge",["cdp.promise"], function () { return factory(root.CDP || (root.CDP = {}), root.jQuery || root.$); }); } else { factory(root.CDP || (root.CDP = {}), root.jQuery || root.$); } }(((this || 0).self || global), function (CDP, $) { CDP.NativeBridge = CDP.NativeBridge || {};
 

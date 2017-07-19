@@ -74,7 +74,7 @@
         "coverage:report": "nyc report --reporter=lcov --reporter=html --reporter=text --report-dir=docs/reports/coverage --temp-directory=docs/reports/coverage",
         "rearrange": "node ./tasks/external-rearrange.js && node ./tasks/cafeteria.js --operation=rearrange",
         "module": "node ./tasks/clean.js --pkg --temp && node ./tasks/compile-ts.js --pkg=release --lib && node ./tasks/copy.js --task=lib-types && node ./tasks/clean.js --temp",
-        "document": "typedoc --out docs/typedoc/ app/",
+        "document": "typedoc --out docs/typedoc/ --ignoreCompilerErrors app/",
         "metrics": "npm run compile:dev && plato -r -d docs/reports/metrics -e ./tests/eslint/eslintrc.json -x app/external/ app/**/*.js"
     },
     "repository": {
