@@ -12,13 +12,20 @@ namespace CDP.UI.Extension {
 
     let _template: JST;
 
-    /**
-     * Material Design Spinner 拡張
-     *
-     * @param {jQuery}              $target   [in] 検索対象の jQuery オブジェクト
-     * @param {DomExtensionOptions} [options] [in] オプション
-     */
-    function applyDomExtension($target: JQuery, options?: DomExtensionOptions): JQuery {
+    // jQuery plugin
+    $.fn.spinner = function (options?: DomExtensionOptions | "refresh") {
+        if ("string" === typeof options) {
+            return refresh($(this));
+        } else {
+            return spinnerify($(this), options);
+        }
+    };
+
+    function spinnerify($target: JQuery, options?: DomExtensionOptions): JQuery {
+        if ($target.length <= 0) {
+            return $target;
+        }
+
         if (!_template) {
             _template = Template.getJST(`
                 <script type="text/template">
@@ -37,35 +44,26 @@ namespace CDP.UI.Extension {
             `);
         }
 
-        const makeTemplateParam = (color: string): Object => {
+        const makeTemplateParam = (clr: string): object => {
             return {
-                borderTop: "style=border-top-color:" + color + ";",
-                border: "style=border-color:" + color + ";",
+                borderTop: "style=border-top-color:" + clr + ";",
+                border: "style=border-color:" + clr + ";",
             };
         };
 
-        const spinnerify = (elem: Element) => {
-            const $elem = $(elem);
-            const color = $elem.data("spinner-color");
-            let param = null;
-            if (color) {
-                $elem.css({ "background-color": color });
-                param = makeTemplateParam(color);
-            }
-            $elem.append(_template(param));
-            refresh($elem);
-        };
+        const color = $target.data("spinner-color");
+        let param = null;
+        if (color) {
+            $target.css({ "background-color": color });
+            param = makeTemplateParam(color);
+        }
+        $target.append(_template(param));
 
-        $target.find(".ui-spinner, .ui-icon-loading")
-            .each((index: number, elem: Element) => {
-                spinnerify(elem);
-            });
-
-        return $target;
+        return refresh($target);
     }
 
     // iOS 10.2+ SVG SMIL アニメーションが 2回目以降動かない問題の対策
-    // data:image/svg+xml;<cache bust string>;base,... とすることで data-url にもcache busting が有効になる
+    // data:image/svg+xml;<cache bust string>;base64,... とすることで data-url にも cache busting が有効になる
     function refresh($target: JQuery): JQuery {
         const PREFIX = ["-webkit-", ""];
 
@@ -82,6 +80,8 @@ namespace CDP.UI.Extension {
                     const match = dataUrl.match(/(url\(data:image\/svg\+xml;)([\s\S]*)?(base64,[\s\S]*\))/);
                     if (match) {
                         dataUrl = `${match[1]}bust=${Date.now().toString(36)};${match[3]}`;
+                    } else {
+                        dataUrl = null;
                     }
                 }
             }
@@ -93,14 +93,19 @@ namespace CDP.UI.Extension {
         return $target;
     }
 
-    //! jQuery plugin
-    $.fn.spinner = function (options?: DomExtensionOptions | "refresh") {
-        if ("string" === typeof options) {
-            return refresh($(this));
-        } else {
-            return applyDomExtension($(this), options);
-        }
-    };
+    /**
+     * Material Design Spinner 拡張
+     *
+     * @param {jQuery}              $ui       [in] 検索対象の jQuery オブジェクト
+     * @param {DomExtensionOptions} [options] [in] オプション
+     */
+    function applyDomExtension($ui: JQuery, options?: DomExtensionOptions): JQuery {
+        $ui.find(".ui-spinner, .ui-icon-loading")
+            .each((index: number, elem: Element) => {
+                $(elem).spinner(options);
+            });
+        return $ui;
+    }
 
     // 登録
     ExtensionManager.registerDomExtension(applyDomExtension);

@@ -188,8 +188,19 @@ body {
 
         // page listview
         .ui-content.ui-listview-scroll-map {
-            margin-top: 2px;
             background-color: gray;
+        }
+    }
+}
+
+// expandable listview title
+.ui-platform-ios {
+    #expandable-listview {
+        .ui-header .ui-title {
+            @media only screen and (max-width: $screen-small-min) {
+                text-align: left;
+                text-indent: 60px;
+            }
         }
     }
 }

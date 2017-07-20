@@ -11,9 +11,10 @@ $font-weight-bold:      700;    // bold
 $metrics-common-border-width: 1px;
 
 // header
-$metrics-header-height:         44px;
-$metrics-ios-status-bar-revise: 22px;
-$metrics-android-header-revise: 12px;
+$metrics-header-height:                     44px;
+$metrics-ios-status-bar-revise:             22px;
+$metrics-android-header-revise-portrait:    12px;
+$metrics-android-header-revise-landspace:   4px;
 
 // list
 $metrics-list-font-weight: normal;

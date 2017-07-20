@@ -503,6 +503,7 @@ export class AppPageBase extends Page implements IAppPageBase {
     onPageBeforeShow(event: JQuery.Event, data?: ShowEventData): void {
         super.onPageBeforeShow(event, data);
         this._commandView.activate();
+        this._commandView.setTitleMaxWidth();
     }
 
     /**

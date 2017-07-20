@@ -1,1 +1,8 @@
 ﻿@import "_utils.scss";
+
+// for subflow page
+.ui-page-theme-a, .ui-page-theme-b {
+    .ui-header > .ui-icon-back:after {
+        mask-image: none !important;
+    }
+}

@@ -9,9 +9,12 @@ namespace CDP.UI.Extension {
 
     import Framework = CDP.Framework;
 
-    //! jQuery plugin
-    $.fn.ripple = function (options?: DomExtensionOptions) {
+    // jQuery plugin
+    $.fn.ripple = function (options?: DomExtensionOptions): JQuery {
         const $el = $(this);
+        if ($el.length <= 0) {
+            return $el;
+        }
         return $el.on(Framework.Patch.s_vclickEvent, function (event: JQuery.Event) {
             const surface = $(this);
 
@@ -84,7 +87,11 @@ namespace CDP.UI.Extension {
             .addClass("ui-ripple");
 
         // ripplify
-        $ui.find(".ui-ripple").ripple();
+//        $ui.find(".ui-ripple").ripple(options);
+        $ui.find(".ui-ripple")
+            .each((index: number, elem: Element) => {
+                $(elem).ripple(options);
+            });
         return $ui;
     }
 

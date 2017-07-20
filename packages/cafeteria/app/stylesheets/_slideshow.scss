@@ -30,7 +30,7 @@ $res-root: "#{$images-root}/slideshow";
 }
 /* screens smaller than 640px
 ***************************************************************************/
-@media only screen and (max-width: $screen-small-max)  {
+@media only screen and (max-width: $screen-small-max) {
     .show-info-footer {
         transform: translate3d(0,-144px,0);
     }
@@ -383,7 +383,7 @@ $res-root: "#{$images-root}/slideshow";
     /* screens smaller than 640px
     ***************************************************************************/
 
-    @media only screen and (max-width: $screen-small-max)  {
+    @media only screen and (max-width: $screen-small-max) {
         #menu {
             height: 30px;
             top:    20px;
@@ -391,7 +391,7 @@ $res-root: "#{$images-root}/slideshow";
 
             #toggle-fullscreen, #close {
                 height:     30px;
-                padding:    0 5px 0 5px;
+                padding:    0 10px 0 10px;
                 font-size:  10px;
             }
         }

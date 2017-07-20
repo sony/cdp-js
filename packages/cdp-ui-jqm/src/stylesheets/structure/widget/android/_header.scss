@@ -6,12 +6,19 @@
 .ui-platform-android {
 
     .ui-header:not(.ui-no-platform) {
-        padding: ($metrics-android-header-revise / 2) 0;
+        border-width: 0;
+        padding: ($metrics-android-header-revise-portrait / 2) 0;
+        @media screen and (orientation: landscape) {
+            padding: ($metrics-android-header-revise-landspace / 2) 0;
+        }
 
         .ui-btn {
             height:     48px;
             top:        50%;
             margin-top: -24px;
+            @media screen and (orientation: landscape) {
+                font-size:  $metrics-font-base-size * 0.875; // 14px
+            }
             &.ui-back-indicator, &.ui-btn-icon-left, &.ui-btn-icon-right, &.ui-btn-icon-notext {
                 width:      48px;
                 min-width:  initial;
