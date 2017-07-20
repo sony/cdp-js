@@ -794,6 +794,20 @@
       <DependentUpon>porting-test.scss</DependentUpon>
     </Content>
     <Content Include="platforms\android\porting\templates\porting-test.html" />
+    <Content Include="platforms\ios\porting\scripts\porting-test\cafeteria\model\porting-function.js">
+      <DependentUpon>porting-function.ts</DependentUpon>
+    </Content>
+    <Content Include="platforms\ios\porting\scripts\porting-test\cafeteria\view\porting-check-view.js">
+      <DependentUpon>porting-check-view.ts</DependentUpon>
+    </Content>
+    <Content Include="platforms\ios\porting\scripts\porting-test\main.js">
+      <DependentUpon>main.ts</DependentUpon>
+    </Content>
+    <Content Include="platforms\ios\porting\stylesheets\images\test\ios.png" />
+    <Content Include="platforms\ios\porting\stylesheets\porting-test.css">
+      <DependentUpon>porting-test.scss</DependentUpon>
+    </Content>
+    <Content Include="platforms\ios\porting\templates\porting-test.html" />
     <Content Include="project.config.js" />
     <Content Include="README.md" />
     <Content Include="tasks\cafeteria.js" />
@@ -844,6 +858,8 @@
     <Content Include="app\porting\stylesheets\porting-test.scss" />
     <Content Include="platforms\android\porting\stylesheets\porting-test.scss" />
     <Content Include="platforms\android\porting\stylesheets\porting-test\_test.scss" />
+    <Content Include="platforms\ios\porting\stylesheets\porting-test.scss" />
+    <Content Include="platforms\ios\porting\stylesheets\porting-test\_test.scss" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
@@ -1094,6 +1110,9 @@
     <TypeScriptCompile Include="platforms\android\porting\scripts\porting-test\cafeteria\model\porting-function.ts" />
     <TypeScriptCompile Include="platforms\android\porting\scripts\porting-test\cafeteria\view\porting-check-view.ts" />
     <TypeScriptCompile Include="platforms\android\porting\scripts\porting-test\main.ts" />
+    <TypeScriptCompile Include="platforms\ios\porting\scripts\porting-test\cafeteria\model\porting-function.ts" />
+    <TypeScriptCompile Include="platforms\ios\porting\scripts\porting-test\cafeteria\view\porting-check-view.ts" />
+    <TypeScriptCompile Include="platforms\ios\porting\scripts\porting-test\main.ts" />
     <TypeScriptCompile Include="tests\unit\model.picture-list.spec.ts" />
     <TypeScriptCompile Include="tests\unit\model.picture.spec.ts" />
   </ItemGroup>
