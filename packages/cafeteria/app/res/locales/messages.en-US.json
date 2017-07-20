@@ -62,7 +62,6 @@
             "views": "View Examples",
             "listviews": "Virtual List View Examples",
             "touch": "Touch Test",
-            "potingtest": "Porting Test",
             "advanced": "Advanced Examples",
             "modulesLoadedMessage": "Load completed follow modules:",
             "toExampleRoot": "To Examples"
@@ -211,7 +210,9 @@
     },
     "advanced": {
         "title": "Advanced Functions",
-        "description": "Advanced Functions Examples Entries:",
+        "description": "Advanced Functions Examples:",
+        "description2": "Application Examples:",
+        "toPortingTest": "Porting Test",
         "toSlideShow": "Slide Show",
         "toPMODashboard": "PMO Dashboard",
         "pmo": {

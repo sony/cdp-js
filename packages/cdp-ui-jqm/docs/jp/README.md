@@ -70,3 +70,22 @@
 
 * ui-ripple-center は label の class 属性に引越し
 
+
+### jquery mobile 1.5 の破壊的変更備忘録
+
+* [Upgrade Guid](http://jquerymobile.com/upgrade-guide/1.5/)
+
+    - icon は :after から span に変わります
+        - 使用可能な div は増えますが、padding 値などに影響がでます
+        - icon-position 的クラスはなくなるか、新規にすべて置き換わります。
+        - リストビューや、後述の checkbox, radio に影響があります。
+    - ui-checkbox, ui-radio は ui-checkboxradio に統合されます
+        - ふたつのコンポーネントは、ui-chackboxradio-radio-lable の有無で判別可能です。
+        - wrapper の div がなくなるので、やはり後述する controlgroup に影響がでます。
+    - controlgroup は jquery-ui のものになり、互換がなくなります。
+        - 1.4.5 での積極拡張は行わない予定です。
+        - listview 内の controlgroup にも影響がでます。(主にボーダーライン)
+    - ui-header, ui-footer はのこりますが、別途 ui-toolbar-header, ui-toolbar-footer が追加されます。
+        - 現在のヘッダー実装に影響がでます。
+
+いずれにしても多岐にわたって修正が入りますが、jqm の基本設計思想は変わらないため、なんとか対応できると考えています。
