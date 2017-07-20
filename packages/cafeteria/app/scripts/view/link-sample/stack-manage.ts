@@ -49,10 +49,10 @@ class StackManageView extends PageView {
     private onCommandStartStackManage(event: JQuery.Event): void {
         Toast.show("onCommandStartStackManage");
         const test = [
-            { route: "#view/backbone",      transition: "turn",         },
-            { route: "#view/page",          transition: "slide",        },
-            { route: "#view/page-owner",    transition: "slidefade",    },
-            { route: "#view/page-view",     transition: "floatup",      },
+            { route: "#views/backbone",      transition: "turn",         },
+            { route: "#views/page",          transition: "slide",        },
+            { route: "#views/page-owner",    transition: "slidefade",    },
+            { route: "#views/page-view",     transition: "floatup",      },
             { route: "",                    transition: "flow",         },
         ];
         Router.registerPageStack(test, true);
