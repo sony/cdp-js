@@ -2,16 +2,23 @@
 
 @import "../_metrics.scss";
 
-$metrics-android-status-bar-header: $metrics-header-height + $metrics-android-header-revise;
+$metrics-android-status-bar-header-portrait:    $metrics-header-height + $metrics-android-header-revise-portrait;
+$metrics-android-status-bar-header-landspace:   $metrics-header-height + $metrics-android-header-revise-landspace;
 
 .ui-platform-android {
     .ui-page {
         &:not(.ui-header-no-fix) {
-            padding-top: $metrics-android-status-bar-header !important;
+            padding-top: $metrics-android-status-bar-header-portrait !important;
+            @media screen and (orientation: landscape) {
+                padding-top: $metrics-android-status-bar-header-landspace !important;
+            }
         }
         .ui-content {
             &:not(.ui-screen-no-fix) {
-                top: $metrics-android-status-bar-header + $metrics-common-border-width;
+                top: $metrics-android-status-bar-header-portrait + $metrics-common-border-width;
+                @media screen and (orientation: landscape) {
+                    top: $metrics-android-status-bar-header-landspace + $metrics-common-border-width;
+                }
             }
         }
     }

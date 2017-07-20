@@ -44,10 +44,10 @@ namespace CDP.UI.Extension {
             `);
         }
 
-        const makeTemplateParam = (color: string): object => {
+        const makeTemplateParam = (clr: string): object => {
             return {
-                borderTop: "style=border-top-color:" + color + ";",
-                border: "style=border-color:" + color + ";",
+                borderTop: "style=border-top-color:" + clr + ";",
+                border: "style=border-color:" + clr + ";",
             };
         };
 

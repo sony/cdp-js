@@ -53,7 +53,7 @@ class StackManageView extends PageView {
             { route: "#views/page",          transition: "slide",        },
             { route: "#views/page-owner",    transition: "slidefade",    },
             { route: "#views/page-view",     transition: "floatup",      },
-            { route: "",                    transition: "flow",         },
+            { route: "#gallery",             transition: "flow",         },
         ];
         Router.registerPageStack(test, true);
     }

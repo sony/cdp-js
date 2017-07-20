@@ -14,12 +14,19 @@
     textarea,
     .ui-listview .ui-btn, .ui-controlgroup-controls .ui-btn,
     .ui-listview .ui-listitem-title, .ui-controlgroup-controls .ui-listitem-title {
-        font-size: $metrics-font-base-size * 1;         // 16px
+        font-size: $metrics-font-base-size * 1;             // 16px
     }
+
     .ui-header, .ui-footer {
-        font-size: $metrics-font-base-size * 1.25;      // 20px
+        font-size: $metrics-font-base-size * 1.25;          // 20px
         .ui-title {
-            font-size: $metrics-font-base-size * 1.25;  // 20px
+            font-size: $metrics-font-base-size * 1.25;      // 20px
+        }
+        @media screen and (orientation: landscape) {
+            font-size: $metrics-font-base-size * 0.875;     // 14px
+            .ui-title {
+                font-size: $metrics-font-base-size * 0.875; // 14px
+            }
         }
     }
 
