@@ -1,0 +1,31 @@
+﻿@import "../../../stylesheets/cdp/utils/_utils.scss";
+
+#porting-test {
+    .logo {
+        width: 256px;
+        height: 256px;
+        background-image: url("./images/test/cordova.png");
+        @include background-center-crop;
+    }
+}
+
+#porting-test-console {
+    width: 96%;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    padding: 10px 10px 10px 10px;
+    opacity: .6;
+    background-color: black;
+    font-size: 14px;
+    color: white;
+    text-shadow: 1px 1px 1px black;
+    text-align: left;
+    overflow: auto;
+    z-index: 0;
+
+    > p {
+        margin: 0;
+        color: #ffd800;
+    }
+}

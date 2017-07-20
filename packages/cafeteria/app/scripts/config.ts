@@ -124,6 +124,7 @@ namespace Config {
         assign_lib("cafeteria.images");
         assign_lib("cafeteria.slideshow");
         assign_lib("pmo.samples");
+        assign_porting("porting-test");
         // <<<LIB_DEPENDENCIES<<<
 
         /* tslint:enable:no-unused-variable no-unused-vars */

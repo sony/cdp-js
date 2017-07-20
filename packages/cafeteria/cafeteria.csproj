@@ -50,7 +50,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties package_1json__JSONSchema="" tsconfig_1base_1json__JSONSchema="http://json.schemastore.org/tsconfig" />
+      <UserProperties tsconfig_1base_1json__JSONSchema="http://json.schemastore.org/tsconfig" package_1json__JSONSchema="" />
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
@@ -312,6 +312,14 @@
     <Content Include="app\lib\stylesheets\pmo.samples.css">
       <DependentUpon>pmo.samples.scss</DependentUpon>
     </Content>
+    <Content Include="app\porting\scripts\porting-test\main.js">
+      <DependentUpon>main.ts</DependentUpon>
+    </Content>
+    <Content Include="app\porting\stylesheets\images\test\cordova.png" />
+    <Content Include="app\porting\stylesheets\porting-test.css">
+      <DependentUpon>porting-test.scss</DependentUpon>
+    </Content>
+    <Content Include="app\porting\templates\porting-test.html" />
     <Content Include="app\res\data\examples\contents\animal\jellyfish.jpg" />
     <Content Include="app\res\data\examples\contents\animal\koala.jpg" />
     <Content Include="app\res\data\examples\contents\animal\penguins.jpg" />
@@ -812,6 +820,8 @@
     <Content Include="app\lib\stylesheets\pmo.samples\commonctrl\_constant.scss" />
     <Content Include="app\lib\stylesheets\pmo.samples\commonctrl\_dialogs.scss" />
     <Content Include="app\lib\stylesheets\pmo.samples\commonctrl\_overflow.scss" />
+    <Content Include="app\porting\stylesheets\porting-test\_test.scss" />
+    <Content Include="app\porting\stylesheets\porting-test.scss" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
@@ -860,9 +870,6 @@
     <Content Include="app\index.html" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="app\porting\scripts\%40types\" />
-    <Folder Include="app\porting\stylesheets\" />
-    <Folder Include="app\porting\templates\" />
     <Folder Include="docs\images\" />
     <Folder Include="platforms\android\porting\scripts\" />
     <Folder Include="platforms\android\porting\stylesheets\" />
@@ -988,6 +995,10 @@
     <TypeScriptCompile Include="app\lib\scripts\pmo.samples\pmo\view\_entry.ts" />
     <TypeScriptCompile Include="app\lib\scripts\pmo.samples\_declare.d.ts" />
     <TypeScriptCompile Include="app\lib\scripts\pmo.samples\_export.d.ts" />
+    <TypeScriptCompile Include="app\porting\scripts\%40types\porting-test.d.ts" />
+    <TypeScriptCompile Include="app\porting\scripts\porting-test\cafeteria\model\porting-function.ts" />
+    <TypeScriptCompile Include="app\porting\scripts\porting-test\cafeteria\view\porting-check-view.ts" />
+    <TypeScriptCompile Include="app\porting\scripts\porting-test\main.ts" />
     <TypeScriptCompile Include="app\scripts\app.ts" />
     <Content Include="app\scripts\app.js">
       <DependentUpon>app.ts</DependentUpon>

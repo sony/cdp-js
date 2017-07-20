@@ -62,7 +62,6 @@
             "views": "View の実装例",
             "listviews": "仮想 List View の実装例",
             "touch": "タッチテスト",
-            "potingtest": "Porting テスト",
             "advanced": "高度な機能の実装例",
             "modulesLoadedMessage": "以下のモジュールをロード:",
             "toExampleRoot": "サンプルへ"
@@ -212,6 +211,8 @@
     "advanced": {
         "title": "高度な機能",
         "description": "高度な機能の実装例:",
+        "description2": "アプリケーションの実装例:",
+        "toPortingTest": "Porting テスト",
         "toSlideShow": "スライドショー",
         "toPMODashboard": "PMO ダッシュボード",
         "pmo": {
