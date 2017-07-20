@@ -312,6 +312,12 @@
     <Content Include="app\lib\stylesheets\pmo.samples.css">
       <DependentUpon>pmo.samples.scss</DependentUpon>
     </Content>
+    <Content Include="app\porting\scripts\porting-test\cafeteria\model\porting-function.js">
+      <DependentUpon>porting-function.ts</DependentUpon>
+    </Content>
+    <Content Include="app\porting\scripts\porting-test\cafeteria\view\porting-check-view.js">
+      <DependentUpon>porting-check-view.ts</DependentUpon>
+    </Content>
     <Content Include="app\porting\scripts\porting-test\main.js">
       <DependentUpon>main.ts</DependentUpon>
     </Content>
@@ -774,6 +780,20 @@
     <Content Include="LICENSE" />
     <Content Include="NOTICE" />
     <Content Include="package.json" />
+    <Content Include="platforms\android\porting\scripts\porting-test\cafeteria\model\porting-function.js">
+      <DependentUpon>porting-function.ts</DependentUpon>
+    </Content>
+    <Content Include="platforms\android\porting\scripts\porting-test\cafeteria\view\porting-check-view.js">
+      <DependentUpon>porting-check-view.ts</DependentUpon>
+    </Content>
+    <Content Include="platforms\android\porting\scripts\porting-test\main.js">
+      <DependentUpon>main.ts</DependentUpon>
+    </Content>
+    <Content Include="platforms\android\porting\stylesheets\images\test\android.png" />
+    <Content Include="platforms\android\porting\stylesheets\porting-test.css">
+      <DependentUpon>porting-test.scss</DependentUpon>
+    </Content>
+    <Content Include="platforms\android\porting\templates\porting-test.html" />
     <Content Include="project.config.js" />
     <Content Include="README.md" />
     <Content Include="tasks\cafeteria.js" />
@@ -822,6 +842,8 @@
     <Content Include="app\lib\stylesheets\pmo.samples\commonctrl\_overflow.scss" />
     <Content Include="app\porting\stylesheets\porting-test\_test.scss" />
     <Content Include="app\porting\stylesheets\porting-test.scss" />
+    <Content Include="platforms\android\porting\stylesheets\porting-test.scss" />
+    <Content Include="platforms\android\porting\stylesheets\porting-test\_test.scss" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
@@ -871,9 +893,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="docs\images\" />
-    <Folder Include="platforms\android\porting\scripts\" />
-    <Folder Include="platforms\android\porting\stylesheets\" />
-    <Folder Include="platforms\android\porting\templates\" />
     <Folder Include="www\" />
   </ItemGroup>
   <ItemGroup />
@@ -1072,6 +1091,9 @@
     <TypeScriptCompile Include="app\scripts\view\views-sample\page-view.ts" />
     <TypeScriptCompile Include="app\scripts\view\views-sample\page.ts" />
     <TypeScriptCompile Include="app\scripts\view\views-sample\root.ts" />
+    <TypeScriptCompile Include="platforms\android\porting\scripts\porting-test\cafeteria\model\porting-function.ts" />
+    <TypeScriptCompile Include="platforms\android\porting\scripts\porting-test\cafeteria\view\porting-check-view.ts" />
+    <TypeScriptCompile Include="platforms\android\porting\scripts\porting-test\main.ts" />
     <TypeScriptCompile Include="tests\unit\model.picture-list.spec.ts" />
     <TypeScriptCompile Include="tests\unit\model.picture.spec.ts" />
   </ItemGroup>
