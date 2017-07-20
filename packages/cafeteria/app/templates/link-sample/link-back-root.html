@@ -5,11 +5,28 @@
         <a href="#options" data-transition="slideup" data-icon="gear" data-iconpos="notext"></a>
     </header>
     <section data-role="content">
-        <h3 data-i18n="link.back.description">link.back.description</h3>
-        <a href="link-back-path1.html" data-role="button" data-icon="arrow-r" data-back-dst="#link-back-root", data-i18n="link.back.toPagePath1">link.back.toPagePath1</a>
-        <a href="#link-back-hash1" data-role="button" data-icon="arrow-r" data-back-dst="#link-back-root", data-i18n="link.back.toPageHash1">link.back.toPageHash1</a>
+        <!--<h3 data-i18n="link.back.description">link.back.description</h3>
+        <a href="link-back-path1.html" data-role="button" data-icon="arrow-r" data-back-dst="#link-back-root" , data-i18n="link.back.toPagePath1">link.back.toPagePath1</a>
+        <a href="#link-back-hash1" data-role="button" data-icon="arrow-r" data-back-dst="#link-back-root" , data-i18n="link.back.toPageHash1">link.back.toPageHash1</a>
         <input type="button" data-icon="arrow-r" class="command-change-page" data-url="#link-back-script1" value="link.back.toPageScript1" data-i18n="[value]link.back.toPageScript1" />
         <h3 data-i18n="link.back.descriptionSubflow">link.back.descriptionSubflow</h3>
-        <input type="button" data-icon="arrow-r" class="command-sub-flow" data-url="#link-back-script-a" value="link.back.toSubFlowExample" data-i18n="[value]link.back.toSubFlowExample" />
+        <input type="button" data-icon="arrow-r" class="command-sub-flow" data-url="#link-back-script-a" value="link.back.toSubFlowExample" data-i18n="[value]link.back.toSubFlowExample" />-->
+
+        <ul class="cafeteria-example ui-listitem-border-offset-enable" data-role="listview" data-inset="false">
+            <li data-role="list-divider" data-i18n="link.back.description">link.back.description</li>
+            <li class="ui-listitem-border-offset-icon" data-icon-position="beginning" data-icon="navigation">
+                <a href="link-back-path1.html" data-icon="arrow-r" data-back-dst="#link-back-root" data-i18n="link.back.toPagePath1">link.back.toPagePath1</a>
+            </li>
+            <li class="ui-listitem-border-offset-icon" data-icon-position="beginning" data-icon="navigation">
+                <a href="#link-back-hash1" data-back-dst="#link-back-root" data-i18n="link.back.toPageHash1">link.back.toPageHash1</a>
+            </li>
+            <li class="ui-listitem-border-offset-icon" data-icon-position="beginning" data-icon="navigation">
+                <a href="#" data-no-vclick-handle="true" class="command-change-page" data-url="#link-back-script1" data-i18n="link.back.toPageScript1">link.back.toPageScript1</a>
+            </li>
+            <li data-role="list-divider" data-i18n="link.back.descriptionSubflow">link.back.descriptionSubflow</li>
+            <li class="ui-listitem-border-offset-icon" data-icon-position="beginning" data-icon="info">
+                <a href="#" data-no-vclick-handle="true" class="command-sub-flow" data-url="#link-back-script-a" data-i18n="link.back.toSubFlowExample">link.back.toSubFlowExample</a>
+            </li>
+        </ul>
     </section>
 </article>

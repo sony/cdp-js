@@ -6,10 +6,22 @@
     </header>
     <section data-role="content">
         <h3 data-i18n="link.description">link.description</h3>
-        <a href="#link-hash" data-role="button" data-icon="info" data-i18n="link.byHash">link.byHash</a>
-        <a href="link-path.html" data-prefetch="true" data-role="button" data-icon="info" data-i18n="link.byPath">link.byPath</a>
-        <a href="#link-back-root" data-role="button" data-icon="info" data-i18n="link.backRoot">link.backRoot</a>
-        <a href="#link-stack-manage" data-role="button" data-icon="info" data-i18n="link.stackManageRoot">link.stackManageRoot</a>
-        <a href="http://yahoo.co.jp" data-no-vclick-handle="true" data-role="button" data-icon="info" rel="external" data-i18n="link.toExternal">link.toExternal</a>
+        <ul class="cafeteria-example ui-listitem-border-offset-enable" data-role="listview" data-inset="false">
+            <li class="ui-listitem-border-offset-icon" data-icon-position="beginning" data-icon="navigation">
+                <a href="#link-hash" data-i18n="link.byHash">link.byHash</a>
+            </li>
+            <li class="ui-listitem-border-offset-icon" data-icon-position="beginning" data-icon="navigation">
+                <a href="link-path.html" data-prefetch="true" data-i18n="link.byPath">link.byPath</a>
+            </li>
+            <li class="ui-listitem-border-offset-icon" data-icon-position="beginning" data-icon="info">
+                <a href="#link-back-root" data-i18n="link.backRoot">link.backRoot</a>
+            </li>
+            <li class="ui-listitem-border-offset-icon" data-icon-position="beginning" data-icon="info">
+                <a href="#link-stack-manage" data-i18n="link.stackManageRoot">link.stackManageRoot</a>
+            </li>
+            <li class="ui-listitem-border-offset-icon" data-icon-position="beginning" data-icon="forward">
+                <a href="http://yahoo.co.jp" data-no-vclick-handle="true" rel="external" data-i18n="link.toExternal">link.toExternal</a>
+            </li>
+        </ul>
     </section>
 </article>
