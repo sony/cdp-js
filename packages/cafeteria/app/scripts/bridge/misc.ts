@@ -38,7 +38,7 @@ class Misc extends Gate {
                 packageInfo: "com.sony.cdp.cafeteria.nativebridge.Misc",    // Android Java でリフレクションに使用するクラス
             },
             ios: {
-                packageInfo: "CafeteriaNativeBridgeMisc",                   // iOS Objective-C でリフレクションに使用するクラス
+                packageInfo: "CafeteriaMisc",                               // iOS Objective-C でリフレクションに使用するクラス
             },
         });
     }

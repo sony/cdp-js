@@ -457,11 +457,11 @@
         ///////////////////////////////////////////////////////////////////////
         // static methods:
 
-        static resolve<U>(value?: U | PromiseLike<U>): IPromiseBase<U> {
+        static resolve<U>(value?: U | PromiseLike<U>): IPromise<U> {
             return <any>$.Deferred().resolve(value);
         }
 
-        static reject<U>(reason?: any): Promise<U> {
+        static reject<U>(reason?: any): IPromise<U> {
             return <any>$.Deferred().reject(reason);
         }
 

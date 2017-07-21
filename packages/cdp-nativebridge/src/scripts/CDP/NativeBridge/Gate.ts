@@ -55,10 +55,10 @@
          * @param options [in] オプションを指定
          */
         constructor(feature: Feature, options?: ConstructOptions) {
+            this._options = $.extend({ receiveParams: true }, options);
             Utils.waitForPluginReady()
-                .then(() => {
+                .done(() => {
                     this._bridge = new Plugin.NativeBridge(feature, options);
-                    this._options = $.extend({ receiveParams: true }, options);
                 })
                 .catch((reason) => {
                     throw Error(reason);
@@ -93,17 +93,17 @@
             const opt = $.extend({}, this._options, options);
 
             Utils.waitForPluginReady()
-                .then(() => {
+                .done(() => {
                     const taskId = this._bridge.exec(
                         (result: IResult) => {
                             if (SUCCESS_PROGRESS === result.code) {
-                                if (opt.receiveParams) {
+                                if (opt.receiveParams && null != result.params) {
                                     df.notify(...[...result.params, result]);
                                 } else {
                                     df.notify(result);
                                 }
                             } else {
-                                if (opt.receiveParams) {
+                                if (opt.receiveParams && null != result.params) {
                                     df.resolve(...[...result.params, result]);
                                 } else {
                                     df.resolve(result);
@@ -143,7 +143,7 @@
         public cancel(options?: ExecOptions): IPromiseBase<IResult> {
             const df = $.Deferred();
             Utils.waitForPluginReady()
-                .then(() => {
+                .done(() => {
                     this._bridge.cancel(null, options,
                         (result) => {
                             df.resolve(result);
@@ -177,7 +177,7 @@
         public dispose(options?: ExecOptions): IPromiseBase<IResult> {
             const df = $.Deferred();
             Utils.waitForPluginReady()
-                .then(() => {
+                .done(() => {
                     this._bridge.dispose(options,
                         (result) => {
                             df.resolve(result);

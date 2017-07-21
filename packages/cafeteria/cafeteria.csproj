@@ -804,6 +804,9 @@
       <DependentUpon>porting-test.scss</DependentUpon>
     </Content>
     <Content Include="platforms\android\porting\templates\porting-test.html" />
+    <Content Include="platforms\android\src\com\sony\cdp\cafeteria\MainActivity.java" />
+    <Content Include="platforms\android\src\com\sony\cdp\cafeteria\nativebridge\Misc.java" />
+    <Content Include="platforms\android\src\com\sony\cdp\cafeteria\nativebridge\SimpleGate.java" />
     <Content Include="platforms\ios\porting\scripts\porting-test\cafeteria\model\porting-function.js">
       <DependentUpon>porting-function.ts</DependentUpon>
     </Content>
