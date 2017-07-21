@@ -213,14 +213,14 @@
         "title": "Native Bridge 連携",
         "simpleGate": {
             "title": "SimpleGate サンプル",
-            "coolMethod": "coolMethod()",
-            "threadMethod": "threadMethod()",
-            "progressMethod": "progressMethod()",
+            "coolMethod": "cool",
+            "threadMethod": "thread",
+            "progressMethod": "progress",
             "progressMethodAbort": "進捗停止"
         },
         "misc": {
             "title": "Native 連携例",
-            "genUUID": "UUID の生成",
+            "genUUID": "UUID の生成 (Native API)",
             "changeStatusBarLight": "StatusBar: 明るい (iOS)",
             "changeStatusBarDark": "StatusBar: 暗い (iOS)",
             "uuidDlgTitle": "UUID"

@@ -213,14 +213,14 @@
         "title": "Native Bridge Functions",
         "simpleGate": {
             "title": "SimpleGate サンプル",
-            "coolMethod": "coolMethod()",
-            "threadMethod": "threadMethod()",
-            "progressMethod": "progressMethod()",
+            "coolMethod": "cool",
+            "threadMethod": "thread",
+            "progressMethod": "progress",
             "progressMethodAbort": "Abort Progress"
         },
         "misc": {
             "title": "Native Call Examples",
-            "genUUID": "Generate UUID",
+            "genUUID": "Generate UUID (Native API)",
             "changeStatusBarLight": "StatusBar: LIGHT (iOS)",
             "changeStatusBarDark": "StatusBar: DARK (iOS)",
             "uuidDlgTitle": "UUID"

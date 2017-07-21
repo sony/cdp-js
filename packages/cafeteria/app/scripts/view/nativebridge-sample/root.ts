@@ -34,8 +34,7 @@ class RootPageView extends PageView {
     // Override: Backbone.View
 
     /**
-     * イベントハンドラのマッピング。
-     * CSS セレクタにマッチした要素にイベントハンドラを自動でセットされる。
+     * イベントハンドラのマッピング
      */
     events(): any {
         return {
@@ -60,6 +59,7 @@ class RootPageView extends PageView {
         Toast.show(TAG + "onCommandProgressMethod");
     }
 
+    // 連携例: UUID の生成
     private async onCommandGenUUID(event: JQuery.Event): Promise<void> {
         event.preventDefault();
         const uuid = await this._prmsManager.add(Misc.generateUUID());
@@ -68,6 +68,7 @@ class RootPageView extends PageView {
         });
     }
 
+    // 連携例: UUID の生成
     private onCommandChangeStatusBarLight(event: JQuery.Event): void {
         this._prmsManager.add(Misc.changeStatusBarColor(Misc.STATUSBAR_STYLE.LIGHT_CONTENT))
             .then((result) => {
