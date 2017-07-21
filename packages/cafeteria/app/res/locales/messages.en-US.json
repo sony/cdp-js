@@ -61,6 +61,7 @@
             "links": "Link Examples",
             "views": "View Examples",
             "listviews": "Virtual List View Examples",
+            "nativebridge": "Native Bridge",
             "touch": "Touch Test",
             "advanced": "Advanced Examples",
             "modulesLoadedMessage": "Load completed follow modules:",
@@ -206,6 +207,23 @@
             "titleNative": "Page Native View Scroll",
             "titleIScroll": "Page iScroll",
             "titleExpandableListView": "Page Expandable List View"
+        }
+    },
+    "nativebridge": {
+        "title": "Native Bridge Functions",
+        "simpleGate": {
+            "title": "SimpleGate サンプル",
+            "coolMethod": "coolMethod()",
+            "threadMethod": "threadMethod()",
+            "progressMethod": "progressMethod()",
+            "progressMethodAbort": "Abort Progress"
+        },
+        "misc": {
+            "title": "Native Call Examples",
+            "genUUID": "Generate UUID",
+            "changeStatusBarLight": "StatusBar: LIGHT (iOS)",
+            "changeStatusBarDark": "StatusBar: DARK (iOS)",
+            "uuidDlgTitle": "UUID"
         }
     },
     "advanced": {

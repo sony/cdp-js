@@ -11,7 +11,7 @@ const TAG = "[view.link-sample.RootPageView] ";
 
 /**
  * @class RootPageView
- * @brief Gallery サンプル例のルート画面クラス
+ * @brief Links サンプル例のルート画面クラス
  */
 class RootPageView extends PageView {
 
