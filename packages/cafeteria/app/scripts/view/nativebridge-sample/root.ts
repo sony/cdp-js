@@ -1,6 +1,9 @@
 ﻿import {
+    IPromise,
+    PromiseManager,
     PageView,
     registerPage,
+    alert,
     Toast,
 } from "cdp/ui";
 import { IResult } from "cdp/bridge";
@@ -15,6 +18,8 @@ const TAG = "[view.nativebridge-sample.RootPageView] ";
  */
 class RootPageView extends PageView {
 
+    private _prmsManager: PromiseManager;
+
     /**
      * constructor
      */
@@ -22,6 +27,7 @@ class RootPageView extends PageView {
         super("/templates/nativebridge-sample/nativebridge-root.html", "nativebridge-root", {
             route: "bridge"
         });
+        this._prmsManager = new PromiseManager();
     }
 
     ///////////////////////////////////////////////////////////////////////
@@ -54,16 +60,44 @@ class RootPageView extends PageView {
         Toast.show(TAG + "onCommandProgressMethod");
     }
 
-    private onCommandGenUUID(event: JQuery.Event): void {
-        Toast.show(TAG + "onCommandGenUUID");
+    private async onCommandGenUUID(event: JQuery.Event): Promise<void> {
+        event.preventDefault();
+        const uuid = await this._prmsManager.add(Misc.generateUUID());
+        alert(uuid, {
+            title: $.t("nativebridge.misc.uuidDlgTitle"),
+        });
     }
 
     private onCommandChangeStatusBarLight(event: JQuery.Event): void {
-        Toast.show(TAG + "onCommandChangeStatusBarLight");
+        this._prmsManager.add(Misc.changeStatusBarColor(Misc.STATUSBAR_STYLE.LIGHT_CONTENT))
+            .then((result) => {
+                Toast.show(result);
+            })
+            .catch((reason: IResult) => {
+                if (reason.code !== CDP.NativeBridge.ERROR_CANCEL) {
+                    Toast.show(TAG + reason.message);
+                }
+            });
     }
 
     private onCommandChangeStatusBarDark(event: JQuery.Event): void {
-        Toast.show(TAG + "onCommandChangeStatusBarDark");
+        this._prmsManager.add(Misc.changeStatusBarColor(Misc.STATUSBAR_STYLE.DEFAULT))
+            .then((result) => {
+                Toast.show(result);
+            })
+            .catch((reason: IResult) => {
+                if (reason.code !== CDP.NativeBridge.ERROR_CANCEL) {
+                    Toast.show(TAG + reason.message);
+                }
+            });
+    }
+
+    ///////////////////////////////////////////////////////////////////////
+    // Override: PageView
+
+    onPageRemove(event: JQuery.Event): void {
+        this._prmsManager.cancel();
+        super.onPageRemove(event);
     }
 }
 

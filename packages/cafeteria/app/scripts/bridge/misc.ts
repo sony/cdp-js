@@ -14,7 +14,7 @@ const TAG = "[bridge.Misc] ";
  * @enum  STATUSBAR_STYLE
  * @param ステータスバーのスタイルーコード
  */
-export const enum STATUSBAR_STYLE {
+export enum STATUSBAR_STYLE {
     DEFAULT = 0,
     LIGHT_CONTENT = 1,
 }
@@ -70,18 +70,18 @@ class Misc extends Gate {
      * @param  styleId [in] STATUSBAR_COLOR を指定
      * @return Promise オブジェクト
      */
-    public changeStatusBarColor(styleId: STATUSBAR_STYLE): IPromise<void> {
+    public changeStatusBarColor(styleId: STATUSBAR_STYLE): IPromise<string> {
         return new Promise((resolve, reject, dependOn) => {
             dependOn(super.exec("changeStatusBarColor", [styleId]))
                 .done((result: IResult) => {
-                    resolve();
+                    resolve("changed: " + STATUSBAR_STYLE[styleId]);
                 })
                 .fail((error: IResult) => {
                     if (CDP.NativeBridge.ERROR_METHOD_NOT_FOUND === error.code ||
                         CDP.NativeBridge.ERROR_CLASS_NOT_FOUND === error.code
                     ) {
                         // 正常系
-                        resolve();
+                        resolve("changeStatusBarColor() not supported.");
                     } else {
                         reject(error);
                     }
@@ -131,9 +131,9 @@ class Misc extends Gate {
     /**
      * PC 環境用汎用フォールバック関数
      */
-    public static nullOperation(): IPromise<void> {
+    public static nullOperation(): IPromise<string> {
         return new Promise((resolve) => {
-            resolve();
+            resolve(TAG + "method not supported");
         });
     }
 }
@@ -168,7 +168,7 @@ export function generateUUID(): IPromise<string> {
  * @param  {STATUSBAR_COLOR} styleId [in] STATUSBAR_COLOR を指定
  * @return {IPromise<void>} Promise オブジェクト
  */
-export function changeStatusBarColor(styleId: STATUSBAR_STYLE): IPromise<void> {
+export function changeStatusBarColor(styleId: STATUSBAR_STYLE): IPromise<string> {
     if (Platform.Mobile) {
         return getGate().changeStatusBarColor(styleId);
     } else {
