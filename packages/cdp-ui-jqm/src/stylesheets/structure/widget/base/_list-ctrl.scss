@@ -81,6 +81,19 @@
         }
     }
 
+    // anchor icon position
+    .ui-listview {
+        li[data-icon-position="beginning"] {
+            > a.ui-btn {
+                padding-left: ($metrics-font-base-size * 2.5) + ($metrics-font-base-size * 1 - $metrics-font-base-size * 0.5625);
+                &:before, &:after {
+                    left: $metrics-font-base-size;
+                    right: inherit;
+                }
+            }
+        }
+    }
+
     // divider
     .ui-listview > .ui-li-divider {
         font-weight: $font-weight-regular;

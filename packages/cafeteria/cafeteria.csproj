@@ -50,7 +50,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties tsconfig_1base_1json__JSONSchema="http://json.schemastore.org/tsconfig" package_1json__JSONSchema="" />
+      <UserProperties package_1json__JSONSchema="" tsconfig_1base_1json__JSONSchema="http://json.schemastore.org/tsconfig" />
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
@@ -860,6 +860,7 @@
     <Content Include="platforms\android\porting\stylesheets\porting-test\_test.scss" />
     <Content Include="platforms\ios\porting\stylesheets\porting-test.scss" />
     <Content Include="platforms\ios\porting\stylesheets\porting-test\_test.scss" />
+    <Content Include="app\stylesheets\_link.scss" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>

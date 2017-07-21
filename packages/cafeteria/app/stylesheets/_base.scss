@@ -1,8 +1,70 @@
 ﻿@import "_utils.scss";
 
 // for subflow page
-.ui-page-theme-a, .ui-page-theme-b {
-    .ui-header > .ui-icon-back:after {
-        mask-image: none !important;
+.ui-platform-ios {
+    .ui-page-theme-a, .ui-page-theme-b {
+        .ui-header > .ui-icon-back:after {
+            mask-image: none !important;
+        }
+    }
+}
+
+// common listctrl
+.cafeteria-example.ui-listview:not(.ui-listview-inset) {
+    margin-top: 16px;
+}
+
+.ui-platform-android .cafeteria-example.ui-listview {
+    li[data-icon-position="beginning"] {
+        > a.ui-btn:after {
+            background-color: #009688;
+        }
+    }
+    &:not(.ui-listview-inset) .ui-li-divider.ui-first-child {
+        margin-top: -34px;
+    }
+    &.cafeteria-listview-next:not(.ui-listview-inset) {
+        margin-top: 34px;
+    }
+}
+
+.ui-platform-ios .cafeteria-example.ui-listview {
+    li[data-icon-position="beginning"] {
+        > a.ui-btn:after {
+            background-color: #007aff;
+        }
+    }
+    
+
+    @mixin ios-listview-auto-inset {
+        box-shadow:     initial;
+        border-radius:  7px;
+        margin:         16px 0;
+        .ui-li-divider.ui-first-child {
+            border-width: 0;
+            border-top-left-radius:  7px;
+            border-top-right-radius: 7px;
+        }
+        li.ui-first-child:before, li.ui-last-child:after {
+            content: none;
+        }
+    }
+
+    &:not(.ui-listview-inset) {
+        @include device(tablet) {
+            @include ios-listview-auto-inset;
+        }
+        @include device(phone) {
+            @include orientation-landscape {
+                @include ios-listview-auto-inset;
+            }
+        }
+    }
+    &.cafeteria-listview-next:not(.ui-listview-inset) {
+        @include device(phone) {
+            @include orientation-portrait {
+                margin-top: 34px;
+            }
+        }
     }
 }

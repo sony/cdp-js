@@ -1,6 +1,6 @@
 ﻿@import "_utils.scss";
 
-article {
+article.pmo {
     header {
         .actionbar {
             &.command-defs {
@@ -8,10 +8,10 @@ article {
                 width: 100%;
                 border-style: solid;
 
-                @include media(tablet) {
+                @include device(tablet) {
                     height: 56px;
                 }
-                @include media(phone) {
+                @include device(phone) {
                     @include orientation-landscape {
                         height: 40px;
                     }
@@ -59,11 +59,11 @@ article {
                     top:50%;
                     border-style: solid;
                     border-color: transparent;
-                    @include media(tablet) {
+                    @include device(tablet) {
                         border-width: 12px 4px 12px 0;
                         margin:-29px 0;
                     }
-                    @include media(phone) {
+                    @include device(phone) {
                         @include orientation-landscape {
                             border-width: 4px 4px 4px 0;
                             margin:-21px 0;
@@ -115,10 +115,10 @@ article {
                     font-size: 1em;
                     font-weight: normal;
                     color: $color-actionbar-title;
-                    @include media(tablet) {
+                    @include device(tablet) {
                         height: 56px;
                     }
-                    @include media(phone) {
+                    @include device(phone) {
                         @include orientation-landscape {
                             height: 40px;
                         }
@@ -141,7 +141,7 @@ article {
                         right: 0;
                     }
 
-                    @include media(tablet) {
+                    @include device(tablet) {
                         border-width: 12px;
                         margin:-29px 0;
                         &:nth-last-of-type(2) {
@@ -154,7 +154,7 @@ article {
                             right: 168px;
                         }
                     }
-                    @include media(phone) {
+                    @include device(phone) {
                         @include orientation-landscape {
                             border-width: 4px;
                             margin:-21px 0;
