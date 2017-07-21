@@ -22,7 +22,7 @@
 {
     NSLog(@"%@ coolMethod, called.", TAG);
     
-    NSString* msg = [NSString stringWithFormat:@"arg1: %@, arg2: %@, arg3: %@, 日本語でOK: %@"
+    NSString* msg = [NSString stringWithFormat:@"[IOS:coolMethod] arg1: %@, arg2: %@, arg3: %@, OBJECT: %@"
                      , arg1, (arg2 ? @"true" : @"false"), arg3, (arg4[@"ok"] ? @"true" : @"false")];
     [self returnParams:msg];
 }
@@ -70,7 +70,7 @@
     [self.commandDelegate runInBackground:^{
         [self notifyParams:context withParams:@[arg1, (arg2 ? @YES : @NO)]];
         [self notifyParams:context withParams:@[arg3, arg4]];
-        NSString* msg = [NSString stringWithFormat:@"arg1: %@, arg2: %@, arg3: %@, 日本語でOK: %@"
+        NSString* msg = [NSString stringWithFormat:@"[IOS:threadMethod] arg1: %@, arg2: %@, arg3: %@, OBJECT: %@"
                          , arg1, (arg2 ? @"true" : @"false"), arg3, (arg4[@"ok"] ? @"true" : @"false")];
         [self resolveParams:context withParams:@[msg]];
     }];
@@ -87,6 +87,10 @@
         int progress = 0;
         [self setCancelable:context];
         while (true) {
+            if (100 < progress) {
+                [self resolveParams:context];
+                break;
+            }
             if ([self isCanceled:context]) {
                 NSString* msg = [NSString stringWithFormat:@"%@ progressMethod canceled.", TAG];
                 [self rejectParams:context withParams:nil andCode:CDP_NATIVEBRIDGE_ERROR_CANCEL andMessage:msg];

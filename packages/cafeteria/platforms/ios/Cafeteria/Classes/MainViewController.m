@@ -33,6 +33,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        self.statusBarStyle = UIStatusBarStyleDefault;
         // Uncomment to override the CDVCommandDelegateImpl used
         // _commandDelegate = [[MainCommandDelegate alloc] initWithViewController:self];
         // Uncomment to override the CDVCommandQueue used
@@ -45,6 +46,7 @@
 {
     self = [super init];
     if (self) {
+        self.statusBarStyle = UIStatusBarStyleDefault;
         // Uncomment to override the CDVCommandDelegateImpl used
         // _commandDelegate = [[MainCommandDelegate alloc] initWithViewController:self];
         // Uncomment to override the CDVCommandQueue used
@@ -59,6 +61,12 @@
     [super didReceiveMemoryWarning];
 
     // Release any cached data, images, etc that aren't in use.
+}
+
+#pragma mark Change status bar style
+
+-(UIStatusBarStyle)preferredStatusBarStyle {
+    return self.statusBarStyle;
 }
 
 #pragma mark View lifecycle

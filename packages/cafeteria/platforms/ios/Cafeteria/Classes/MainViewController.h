@@ -30,7 +30,7 @@
 #import <Cordova/CDVCommandQueue.h>
 
 @interface MainViewController : CDVViewController
-
+@property (atomic, readwrite) UIStatusBarStyle statusBarStyle;
 @end
 
 @interface MainCommandDelegate : CDVCommandDelegateImpl
