@@ -1,7 +1,7 @@
 ﻿/*!
  * cdp.framework.jqm.js 2.0.0
  *
- * Date: 2017-07-21T02:45:48.120Z
+ * Date: 2017-07-21T12:43:38.961Z
  */
 
 (function webpackUniversalModuleDefinition(root, factory) {

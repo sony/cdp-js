@@ -807,6 +807,8 @@
     <Content Include="platforms\android\src\com\sony\cdp\cafeteria\MainActivity.java" />
     <Content Include="platforms\android\src\com\sony\cdp\cafeteria\nativebridge\Misc.java" />
     <Content Include="platforms\android\src\com\sony\cdp\cafeteria\nativebridge\SimpleGate.java" />
+    <Content Include="platforms\ios\Cafeteria\Classes\AppDelegate.h" />
+    <Content Include="platforms\ios\Cafeteria\Classes\MainViewController.h" />
     <Content Include="platforms\ios\porting\scripts\porting-test\cafeteria\model\porting-function.js">
       <DependentUpon>porting-function.ts</DependentUpon>
     </Content>
@@ -875,6 +877,10 @@
     <Content Include="platforms\ios\porting\stylesheets\porting-test\_test.scss" />
     <Content Include="app\stylesheets\_link.scss" />
     <Content Include="app\stylesheets\_nativebridge.scss" />
+    <Content Include="platforms\ios\Cafeteria\Classes\AppDelegate.m" />
+    <Content Include="platforms\ios\Cafeteria\Classes\MainViewController.m" />
+    <Content Include="platforms\ios\Cafeteria\NativeBridge\CafeteriaMisc.m" />
+    <Content Include="platforms\ios\Cafeteria\NativeBridge\CafeteriaSimpleGate.m" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
