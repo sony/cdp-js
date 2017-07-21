@@ -50,7 +50,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties package_1json__JSONSchema="" tsconfig_1base_1json__JSONSchema="http://json.schemastore.org/tsconfig" />
+      <UserProperties tsconfig_1base_1json__JSONSchema="http://json.schemastore.org/tsconfig" package_1json__JSONSchema="" />
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
@@ -540,6 +540,12 @@
     <Content Include="app\res\data\sample\image\small\97.jpg" />
     <Content Include="app\res\data\sample\image\small\98.jpg" />
     <Content Include="app\res\data\sample\image\small\99.jpg" />
+    <Content Include="app\scripts\bridge\misc.js">
+      <DependentUpon>misc.ts</DependentUpon>
+    </Content>
+    <Content Include="app\scripts\bridge\simple-gate.js">
+      <DependentUpon>simple-gate.ts</DependentUpon>
+    </Content>
     <Content Include="app\scripts\model\listviews-sample\config.js">
       <DependentUpon>config.ts</DependentUpon>
     </Content>
@@ -654,6 +660,9 @@
     <Content Include="app\scripts\view\listviews-sample\sort-listview.js">
       <DependentUpon>sort-listview.ts</DependentUpon>
     </Content>
+    <Content Include="app\scripts\view\nativebridge-sample\root.js">
+      <DependentUpon>root.ts</DependentUpon>
+    </Content>
     <Content Include="app\scripts\view\options-view.js">
       <DependentUpon>options-view.ts</DependentUpon>
     </Content>
@@ -767,6 +776,7 @@
     <Content Include="app\templates\listviews-sample\page-listview-iscroll.html" />
     <Content Include="app\templates\listviews-sample\page-listview-native.html" />
     <Content Include="app\templates\listviews-sample\sortable-listview.html" />
+    <Content Include="app\templates\nativebridge-sample\nativebridge-root.html" />
     <Content Include="app\templates\options.html" />
     <Content Include="app\templates\views-sample\view-backbone.html" />
     <Content Include="app\templates\views-sample\view-page-owner.html" />
@@ -794,6 +804,11 @@
       <DependentUpon>porting-test.scss</DependentUpon>
     </Content>
     <Content Include="platforms\android\porting\templates\porting-test.html" />
+    <Content Include="platforms\android\src\com\sony\cdp\cafeteria\MainActivity.java" />
+    <Content Include="platforms\android\src\com\sony\cdp\cafeteria\nativebridge\Misc.java" />
+    <Content Include="platforms\android\src\com\sony\cdp\cafeteria\nativebridge\SimpleGate.java" />
+    <Content Include="platforms\ios\Cafeteria\Classes\AppDelegate.h" />
+    <Content Include="platforms\ios\Cafeteria\Classes\MainViewController.h" />
     <Content Include="platforms\ios\porting\scripts\porting-test\cafeteria\model\porting-function.js">
       <DependentUpon>porting-function.ts</DependentUpon>
     </Content>
@@ -861,6 +876,11 @@
     <Content Include="platforms\ios\porting\stylesheets\porting-test.scss" />
     <Content Include="platforms\ios\porting\stylesheets\porting-test\_test.scss" />
     <Content Include="app\stylesheets\_link.scss" />
+    <Content Include="app\stylesheets\_nativebridge.scss" />
+    <Content Include="platforms\ios\Cafeteria\Classes\AppDelegate.m" />
+    <Content Include="platforms\ios\Cafeteria\Classes\MainViewController.m" />
+    <Content Include="platforms\ios\Cafeteria\NativeBridge\CafeteriaMisc.m" />
+    <Content Include="platforms\ios\Cafeteria\NativeBridge\CafeteriaSimpleGate.m" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
@@ -1039,6 +1059,8 @@
     <Content Include="app\scripts\app.js">
       <DependentUpon>app.ts</DependentUpon>
     </Content>
+    <TypeScriptCompile Include="app\scripts\bridge\misc.ts" />
+    <TypeScriptCompile Include="app\scripts\bridge\simple-gate.ts" />
     <TypeScriptCompile Include="app\scripts\config.ts" />
     <Content Include="app\scripts\config.js">
       <DependentUpon>config.ts</DependentUpon>
@@ -1101,6 +1123,7 @@
     <Content Include="app\scripts\view\main-view.js">
       <DependentUpon>main-view.ts</DependentUpon>
     </Content>
+    <TypeScriptCompile Include="app\scripts\view\nativebridge-sample\root.ts" />
     <TypeScriptCompile Include="app\scripts\view\options-view.ts" />
     <TypeScriptCompile Include="app\scripts\view\views-sample\backbone.ts" />
     <TypeScriptCompile Include="app\scripts\view\views-sample\helper.ts" />

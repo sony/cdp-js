@@ -13,6 +13,8 @@
 		301BF552109A68D80062928A /* libCordova.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 301BF535109A57CC0062928A /* libCordova.a */; };
 		302D95F114D2391D003F00A1 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 302D95EF14D2391D003F00A1 /* MainViewController.m */; };
 		302D95F214D2391D003F00A1 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 302D95F014D2391D003F00A1 /* MainViewController.xib */; };
+		47891F2D1F22198E000950B1 /* CafeteriaMisc.m in Sources */ = {isa = PBXBuildFile; fileRef = 47891F2B1F22198E000950B1 /* CafeteriaMisc.m */; };
+		47891F2E1F22198E000950B1 /* CafeteriaSimpleGate.m in Sources */ = {isa = PBXBuildFile; fileRef = 47891F2C1F22198E000950B1 /* CafeteriaSimpleGate.m */; };
 		6AFF5BF91D6E424B00AB3073 /* CDVLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AFF5BF81D6E424B00AB3073 /* CDVLaunchScreen.storyboard */; };
 		720FAFE6CB3849FABF689AC3 /* CDPNativeBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E93157E4CFA4EABB6C568E4 /* CDPNativeBridge.m */; };
 		9B9A6FD5ACC243B0AA388F17 /* CDPNativeBridgeMsgUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF266840EE8434391CC319F /* CDPNativeBridgeMsgUtils.m */; };
@@ -59,6 +61,8 @@
 		3047A5101AB8059700498E2A /* build-release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "build-release.xcconfig"; path = "cordova/build-release.xcconfig"; sourceTree = SOURCE_ROOT; };
 		3047A5111AB8059700498E2A /* build.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = build.xcconfig; path = cordova/build.xcconfig; sourceTree = SOURCE_ROOT; };
 		32CA4F630368D1EE00C91783 /* Cafeteria-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Cafeteria-Prefix.pch"; sourceTree = "<group>"; };
+		47891F2B1F22198E000950B1 /* CafeteriaMisc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CafeteriaMisc.m; path = Cafeteria/NativeBridge/CafeteriaMisc.m; sourceTree = SOURCE_ROOT; };
+		47891F2C1F22198E000950B1 /* CafeteriaSimpleGate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CafeteriaSimpleGate.m; path = Cafeteria/NativeBridge/CafeteriaSimpleGate.m; sourceTree = SOURCE_ROOT; };
 		4DF266840EE8434391CC319F /* CDPNativeBridgeMsgUtils.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = CDPNativeBridgeMsgUtils.m; path = "cordova-plugin-cdp-nativebridge/CDPNativeBridgeMsgUtils.m"; sourceTree = "<group>"; };
 		6AFF5BF81D6E424B00AB3073 /* CDVLaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = CDVLaunchScreen.storyboard; path = Cafeteria/CDVLaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
 		6E93157E4CFA4EABB6C568E4 /* CDPNativeBridge.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = CDPNativeBridge.m; path = "cordova-plugin-cdp-nativebridge/CDPNativeBridge.m"; sourceTree = "<group>"; };
@@ -90,6 +94,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				47891F2A1F221976000950B1 /* NativeBridge */,
 				302D95EE14D2391D003F00A1 /* MainViewController.h */,
 				302D95EF14D2391D003F00A1 /* MainViewController.m */,
 				302D95F014D2391D003F00A1 /* MainViewController.xib */,
@@ -189,6 +194,15 @@
 			name = Plugins;
 			path = Cafeteria/Plugins;
 			sourceTree = SOURCE_ROOT;
+		};
+		47891F2A1F221976000950B1 /* NativeBridge */ = {
+			isa = PBXGroup;
+			children = (
+				47891F2B1F22198E000950B1 /* CafeteriaMisc.m */,
+				47891F2C1F22198E000950B1 /* CafeteriaSimpleGate.m */,
+			);
+			name = NativeBridge;
+			sourceTree = "<group>";
 		};
 		EB87FDF11871DA420020F90C /* Staging */ = {
 			isa = PBXGroup;
@@ -310,8 +324,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47891F2E1F22198E000950B1 /* CafeteriaSimpleGate.m in Sources */,
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* AppDelegate.m in Sources */,
+				47891F2D1F22198E000950B1 /* CafeteriaMisc.m in Sources */,
 				302D95F114D2391D003F00A1 /* MainViewController.m in Sources */,
 				720FAFE6CB3849FABF689AC3 /* CDPNativeBridge.m in Sources */,
 				F07A1A8B23C74FFDA3FCB3AF /* CDPMethodContext.m in Sources */,

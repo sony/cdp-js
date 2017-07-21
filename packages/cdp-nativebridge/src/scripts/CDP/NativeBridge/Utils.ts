@@ -1,6 +1,7 @@
 ﻿namespace CDP.NativeBridge {
 
-    import IPromise = CDP.IPromise;
+    import IPromiseBase = CDP.IPromiseBase;
+    import IPromise     = CDP.IPromise;
 
     const TAG = "[CDP.NativeBridge.Utils] ";
 
@@ -52,7 +53,7 @@
          * \~japanese
          * cordova が 使用可能になるまで待機
          */
-        public static waitForPluginReady(): Promise<void> {
+        public static waitForPluginReady(): IPromiseBase<void> {
             const df = $.Deferred<void>();
 
             if (Utils.s_pluginReady) {
@@ -142,7 +143,7 @@
          * @param staticProps [in] static properties をオブジェクトで指定
          * @returns サブクラスのコンストラクタ
          */
-        public static extend(protoProps: Object, staticProps?: Object): Object {
+        public static extend(protoProps: object, staticProps?: object): object {
             const parent = this;
             let child;
 

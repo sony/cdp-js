@@ -61,6 +61,7 @@
             "links": "リンクの実装例",
             "views": "View の実装例",
             "listviews": "仮想 List View の実装例",
+            "nativebridge": "Native 連携",
             "touch": "タッチテスト",
             "advanced": "高度な機能の実装例",
             "modulesLoadedMessage": "以下のモジュールをロード:",
@@ -206,6 +207,23 @@
             "titleNative": "Page Native View Scroll",
             "titleIScroll": "Page iScroll",
             "titleExpandableListView": "Page Expandable List View"
+        }
+    },
+    "nativebridge": {
+        "title": "Native Bridge 連携",
+        "simpleGate": {
+            "title": "SimpleGate サンプル",
+            "coolMethod": "cool",
+            "threadMethod": "thread",
+            "progressMethod": "progress",
+            "progressMethodAbort": "進捗停止"
+        },
+        "misc": {
+            "title": "Native 連携例",
+            "genUUID": "UUID の生成 (Native API)",
+            "changeStatusBarLight": "StatusBar: 明るい (iOS)",
+            "changeStatusBarDark": "StatusBar: 暗い (iOS)",
+            "uuidDlgTitle": "UUID"
         }
     },
     "advanced": {

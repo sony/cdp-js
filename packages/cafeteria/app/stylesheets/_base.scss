@@ -1,5 +1,14 @@
 ﻿@import "_utils.scss";
 
+// mobile foundation
+body {
+    height:                 100%;
+    overflow:               auto;
+    text-size-adjust:       100%;
+    -webkit-touch-callout:  none;
+    user-select:            none;
+}
+
 // for subflow page
 .ui-platform-ios {
     .ui-page-theme-a, .ui-page-theme-b {

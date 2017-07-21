@@ -1,0 +1,18 @@
+﻿@import "_utils.scss";
+
+#nativebridge-console {
+    position: relative;
+    width: 96%;
+    height: 100px;
+    margin: 16px auto;
+    padding: 10px;
+    opacity: .6;
+    background-color: black;
+    font-size: 16px;
+    overflow: auto;
+    z-index: 0;
+
+    > p {
+        color: deepskyblue;
+    }
+}
