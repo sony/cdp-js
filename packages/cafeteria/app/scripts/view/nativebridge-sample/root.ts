@@ -19,6 +19,7 @@ const TAG = "[view.nativebridge-sample.RootPageView] ";
 class RootPageView extends PageView {
 
     private _prmsManager: PromiseManager;
+    private _prmsProgress: IPromise<void>;
 
     /**
      * constructor
@@ -48,15 +49,63 @@ class RootPageView extends PageView {
     }
 
     private onCommandCoolMethod(event: JQuery.Event): void {
-        Toast.show(TAG + "onCommandCoolMethod");
+        this._prmsManager.add(SimpleGate.coolMethod(100, false, "cafeteria", { ok: true }))
+            .then((result) => {
+                this.outputMessage(result);
+            })
+            .catch((reason: IResult) => {
+                if (reason.code !== CDP.NativeBridge.ERROR_CANCEL) {
+                    Toast.show(TAG + reason.message);
+                }
+            });
     }
 
     private onCommandThreadMethod(event: JQuery.Event): void {
-        Toast.show(TAG + "onCommandThreadMethod");
+        this._prmsManager.add(SimpleGate.threadMethod(200, true, "cafeteria:thread", { ok: false }))
+            .progress((arg1: any, arg2: any) => {
+                if ("object" === typeof arg2) {
+                    arg2 = JSON.stringify(arg2);
+                }
+                this.outputMessage(`[progress] ${arg1}, ${arg2}`);
+            })
+            .then((result) => {
+                this.outputMessage(result);
+            })
+            .catch((reason: IResult) => {
+                if (reason.code !== CDP.NativeBridge.ERROR_CANCEL) {
+                    Toast.show(TAG + reason.message);
+                }
+            });
     }
 
     private onCommandProgressMethod(event: JQuery.Event): void {
-        Toast.show(TAG + "onCommandProgressMethod");
+        if (this._prmsProgress && "pending" === this._prmsProgress.state()) {
+            this._prmsProgress.abort();
+            this.refreshProgressButton();
+            return;
+        }
+
+        this._prmsProgress = this._prmsManager.add(SimpleGate.progressMethod());
+        this._prmsProgress
+            .progress((prog: number) => {
+                this.outputMessage(`[progress] ${prog}%`);
+            })
+            .then(() => {
+                this.clearMessage();
+                this.outputMessage("DONE: progressMethod()");
+            })
+            .fail((reason: IResult) => {
+                if (reason.code === CDP.NativeBridge.ERROR_CANCEL) {
+                    this.outputMessage("CANCELED: progressMethod()");
+                } else {
+                    Toast.show(TAG + reason.message);
+                }
+            })
+            .always(() => {
+                this.refreshProgressButton();
+            });
+
+        this.refreshProgressButton();
     }
 
     // 連携例: UUID の生成
@@ -99,6 +148,33 @@ class RootPageView extends PageView {
     onPageRemove(event: JQuery.Event): void {
         this._prmsManager.cancel();
         super.onPageRemove(event);
+    }
+
+    ///////////////////////////////////////////////////////////////////////
+    // private methods:
+
+    private refreshProgressButton(): void {
+        const $buttonProgress = this.$page.find("#nativebridge-button-progress");
+        if (this._prmsProgress && "pending" === this._prmsProgress.state()) {
+            $buttonProgress.removeClass("ui-emphasis");
+            $buttonProgress.addClass("ui-alt-emphasis");
+            $buttonProgress.text($.t("nativebridge.simpleGate.progressMethodAbort"));
+        } else {
+            $buttonProgress.removeClass("ui-alt-emphasis");
+            $buttonProgress.addClass("ui-emphasis");
+            $buttonProgress.text($.t("nativebridge.simpleGate.progressMethod"));
+        }
+    }
+
+    private outputMessage(msg: string): void {
+        const $console = $("#nativebridge-console");
+        $console.append(`<p>${msg}</p>`);
+        $console.scrollTop($console[0].scrollHeight);
+    }
+
+    private clearMessage(): void {
+        const $console = $("#nativebridge-console");
+        $console.find("p").remove();
     }
 }
 

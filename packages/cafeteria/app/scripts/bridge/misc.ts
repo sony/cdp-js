@@ -56,7 +56,7 @@ class Misc extends Gate {
             dependOn(super.exec("generateUUID"))
                 .done((uuid: string, result: IResult) => {
                     // ハイフンの除去と小文字に正規化
-                    resolve(uuid.split("-").join("").toLowerCase());
+                    resolve(uuid.split("-").join("").toLowerCase(), result);
                 })
                 .fail((error: IResult) => {
                     reject(error);

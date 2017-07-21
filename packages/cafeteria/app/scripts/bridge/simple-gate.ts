@@ -1,6 +1,6 @@
 ﻿import {
     IPromise,
-    Promise,
+    makePromise,
     Platform,
 } from "cdp/framework";
 import { Gate } from "cdp/bridge";
@@ -38,7 +38,7 @@ class SimpleGate extends Gate {
      * 引数は任意の primitive, JSON で OK. (cordova 互換. void も可能)
      * 戻り値は既定で Promise の形をとる
      */
-    public coolMethod(arg1: number, arg2: boolean, arg3: string, arg4: object): IPromise<any> {
+    public coolMethod(arg1: number, arg2: boolean, arg3: string, arg4: object): IPromise<string> {
         /*
          * super.exec() 呼び出し
          * 第1引数は メソッド名を文字列で指定
@@ -54,7 +54,7 @@ class SimpleGate extends Gate {
      * threadMethod
      * Native 側で非同期
      */
-    public threadMethod(arg1: number, arg2: boolean, arg3: string, arg4: object): IPromise<any> {
+    public threadMethod(arg1: number, arg2: boolean, arg3: string, arg4: object): IPromise<string> {
         return super.exec("threadMethod", <any>arguments);
     }
 
@@ -62,7 +62,7 @@ class SimpleGate extends Gate {
      * progressMethod
      * 非同期処理のキャンセル
      */
-    public progressMethod(): IPromise<any> {
+    public progressMethod(): IPromise<void> {
         return super.exec("progressMethod");
     }
 
@@ -72,8 +72,81 @@ class SimpleGate extends Gate {
     /**
      * PC 環境用フォールバック関数
      */
-    public static stubOperation(...arg: any[]): IPromise<void> {
-        return <any>Promise.resolve();
+    public static stubOperation(...arg: any[]): IPromise<any> {
+        const df = $.Deferred();
+        const promise = makePromise(df);
+
+        const promiseProxy = () => {
+            const _df = $.Deferred();
+            const _promise = makePromise(_df);
+
+            _promise.dependOn(promise)
+                .progress((...args) => {
+                    _df.notify.apply(_df, args);
+                })
+                .done((...args) => {
+                    _df.resolve.apply(_df, args);
+                })
+                .fail((...args) => {
+                    if (args[0] && "abort" === args[0].message) {
+                        _df.reject({
+                            code: CDP.NativeBridge.ERROR_CANCEL,
+                            message: "abort",
+                        });
+                    } else {
+                        _df.reject.apply(_df, args);
+                    }
+                });
+
+            return _promise;
+        };
+
+        const threadProc = () => {
+            setTimeout(() => {
+                df.notify(arg[1], arg[2]);
+                df.notify(arg[3], arg[4]);
+                setTimeout(() => {
+                    const retval = `[STUB:thread] arg1: ${arg[1]}, arg2: ${arg[2]}, arg3: ${arg[3]}, OBJECT:OK=${arg[4].ok}`;
+                    df.resolve(retval);
+                });
+            });
+        };
+
+        const progressProc = () => {
+            let progress = 0;
+            const proc = () => {
+                if ("pending" !== df.state()) {
+                    return;
+                } else if (100 < progress) {
+                    df.resolve();
+                    return;
+                }
+                df.notify(progress);
+                progress++;
+                setTimeout(proc, 100);
+            };
+            setTimeout(proc);
+        };
+
+        setTimeout(() => {
+            switch (arg[0]) {
+                case "coolMethod":
+                    const retval = `[STUB] arg1: ${arg[1]}, arg2: ${arg[2]}, arg3: ${arg[3]}, OBJECT:OK=${arg[4].ok}`;
+                    df.resolve(retval);
+                    break;
+                case "threadMethod":
+                    threadProc();
+                    break;
+                case "progressMethod":
+                    progressProc();
+                    break;
+                default:
+                    df.reject(TAG + "unknown operation: " + arg[0]);
+                    break;
+            }
+        });
+
+        return promiseProxy();
     }
 }
 
@@ -88,7 +161,7 @@ function getGate(): SimpleGate {
     return s_gate;
 }
 
-export function coolMethod(arg1: number, arg2: boolean, arg3: string, arg4: object): IPromise<void> {
+export function coolMethod(arg1: number, arg2: boolean, arg3: string, arg4: object): IPromise<string> {
     if (Platform.Mobile) {
         return getGate().coolMethod(arg1, arg2, arg3, arg4);
     } else {
@@ -96,7 +169,7 @@ export function coolMethod(arg1: number, arg2: boolean, arg3: string, arg4: obje
     }
 }
 
-export function threadMethod(arg1: number, arg2: boolean, arg3: string, arg4: object): IPromise<void> {
+export function threadMethod(arg1: number, arg2: boolean, arg3: string, arg4: object): IPromise<string> {
     if (Platform.Mobile) {
         return getGate().threadMethod(arg1, arg2, arg3, arg4);
     } else {
