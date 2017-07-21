@@ -23,6 +23,9 @@
     &:not(.ui-listview-inset) .ui-li-divider.ui-first-child {
         margin-top: -34px;
     }
+    &.cafeteria-listview-next:not(.ui-listview-inset) {
+        margin-top: 34px;
+    }
 }
 
 .ui-platform-ios .cafeteria-example.ui-listview {
@@ -39,7 +42,8 @@
         margin:         16px 0;
         .ui-li-divider.ui-first-child {
             border-width: 0;
-            border-radius: initial;
+            border-top-left-radius:  7px;
+            border-top-right-radius: 7px;
         }
         li.ui-first-child:before, li.ui-last-child:after {
             content: none;
@@ -53,6 +57,13 @@
         @include device(phone) {
             @include orientation-landscape {
                 @include ios-listview-auto-inset;
+            }
+        }
+    }
+    &.cafeteria-listview-next:not(.ui-listview-inset) {
+        @include device(phone) {
+            @include orientation-portrait {
+                margin-top: 34px;
             }
         }
     }

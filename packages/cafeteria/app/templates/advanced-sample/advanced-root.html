@@ -5,13 +5,30 @@
         <a href="#options" data-transition="slideup" data-icon="gear" data-iconpos="notext"></a>
     </header>
     <section data-role="content">
-        <h3 data-i18n="advanced.description">advanced.description</h3>
+        <!--<h3 data-i18n="advanced.description">advanced.description</h3>
         <input class="command-load-navigate" type="button" data-icon="edit" data-navigate-to="#advanced/porting" data-module="porting-test" value="advanced.toPortingTest" data-i18n="[value]advanced.toPortingTest" />
 
-        <hr/>
+        <hr />
 
         <h3 data-i18n="advanced.description2">advanced.description2</h3>
         <input class="command-load-navigate" type="button" data-icon="video" data-navigate-to="#advanced/slideshow" data-module="cafeteria.slideshow" data-transition="pop" value="advanced.toSlideShow" data-i18n="[value]advanced.toSlideShow" />
-        <input class="command-load-navigate" type="button" data-icon="grid" data-navigate-to="#advanced/pmo/dashboard" data-module="pmo.samples" data-transition="pop" value="advanced.toPMODashboard" data-i18n="[value]advanced.toPMODashboard" />
+        <input class="command-load-navigate" type="button" data-icon="grid" data-navigate-to="#advanced/pmo/dashboard" data-module="pmo.samples" data-transition="pop" value="advanced.toPMODashboard" data-i18n="[value]advanced.toPMODashboard" />-->
+
+        <ul class="cafeteria-example ui-listitem-border-offset-enable" data-role="listview" data-inset="false">
+            <li data-role="list-divider" data-i18n="advanced.description">advanced.description</li>
+            <li class="ui-listitem-border-offset-icon" data-icon-position="beginning" data-icon="edit">
+                <a href="#" class="command-load-navigate" data-navigate-to="#advanced/porting" data-module="porting-test" data-i18n="advanced.toPortingTest">advanced.toPortingTest</a>
+            </li>
+        </ul>
+        <ul class="cafeteria-example cafeteria-listview-next ui-listitem-border-offset-enable" data-role="listview" data-inset="false">
+            <li data-role="list-divider" data-i18n="advanced.description2">advanced.description2</li>
+            <li class="ui-listitem-border-offset-icon" data-icon-position="beginning" data-icon="video">
+                <a href="#" class="command-load-navigate" data-navigate-to="#advanced/slideshow" data-module="cafeteria.slideshow" data-transition="pop" data-i18n="advanced.toSlideShow">advanced.toSlideShow</a>
+            </li>
+            <li class="ui-listitem-border-offset-icon" data-icon-position="beginning" data-icon="grid">
+                <a href="#" class="command-load-navigate" data-navigate-to="#advanced/pmo/dashboard" data-module="pmo.samples" data-transition="pop" data-i18n="advanced.toPMODashboard">advanced.toPMODashboard</a>
+            </li>
+        </ul>
+
     </section>
 </article>

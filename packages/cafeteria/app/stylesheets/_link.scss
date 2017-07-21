@@ -1,0 +1,12 @@
+﻿@import "_utils.scss";
+
+// adjust page title
+.ui-platform-ios {
+    #link-back-script3 {
+        .ui-header .ui-title {
+            @media only screen and (max-width: $screen-small-min) {
+                text-indent: 32px;
+            }
+        }
+    }
+}
