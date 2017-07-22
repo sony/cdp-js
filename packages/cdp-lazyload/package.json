@@ -66,7 +66,7 @@
     "@types/jquery": "^3.2.9",
     "@types/requirejs": "^2.1.29",
     "del": "^3.0.0",
-    "eslint": "^4.2.0",
+    "eslint": "^4.3.0",
     "fs-extra": "^4.0.0",
     "npm-run-all": "^4.0.2",
     "nyc": "^11.1.0",

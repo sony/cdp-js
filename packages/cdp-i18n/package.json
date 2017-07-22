@@ -74,7 +74,7 @@
     "@types/requirejs": "^2.1.29",
     "convert-source-map": "^1.5.0",
     "del": "^3.0.0",
-    "eslint": "^4.2.0",
+    "eslint": "^4.3.0",
     "fs-extra": "^4.0.0",
     "i18next": "^8.4.3",
     "i18next-browser-languagedetector": "^2.0.0",

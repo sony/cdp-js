@@ -76,7 +76,7 @@
     "@types/underscore": "^1.8.1",
     "convert-source-map": "^1.5.0",
     "del": "^3.0.0",
-    "eslint": "^4.2.0",
+    "eslint": "^4.3.0",
     "fs-extra": "^4.0.0",
     "hogan.js": "^3.0.2",
     "iscroll": "^5.2.0",

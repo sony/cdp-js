@@ -94,13 +94,24 @@ namespace CDP.UI {
 
         //! ダイアログ表示の直前
         protected onBeforeShow(): IPromiseBase<void> {
+            const onCommit = (event: JQuery.Event) => {
+                const text = this.$el.find("#_ui-prompt").val();
+                this.$el.trigger(this._eventOK, text);
+                this.close();
+                event.preventDefault();
+            };
+
             this.$el
                 .on("vclick", ".command-prompt-ok ", (event: JQuery.Event) => {
-                    const text = this.$el.find("#_ui-prompt").val();
-                    this.$el.trigger(this._eventOK, text);
-                    this.close();
-                    event.preventDefault();
+                    onCommit(event);
+                })
+                .on("keydown", "#_ui-prompt", (event: JQuery.Event) => {
+                    const ENTER_KEY_CODE = 13;
+                    if (ENTER_KEY_CODE === event.keyCode) {
+                        onCommit(event);
+                    }
                 });
+
             return super.onBeforeShow();
         }
     }

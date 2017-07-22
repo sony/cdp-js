@@ -11,6 +11,8 @@ $screen-extrasmall-min: $screen-small-min - 1px !default;
 $bp-table-threshold: 600px !default;
 $bp-phone-threshold: $bp-table-threshold - 1px !default;
 
+$bp-phone-long-side-threshold: 568px !default;
+
 @mixin orientation-landscape {
     @media screen and (orientation: landscape) {
         @content;
@@ -23,13 +25,13 @@ $bp-phone-threshold: $bp-table-threshold - 1px !default;
     }
 }
 
-@mixin media($media-type) {
-    @if $media-type == tablet {
+@mixin device($device-type) {
+    @if $device-type == tablet {
         @media only screen and (min-width: $bp-table-threshold) and (min-height: $bp-table-threshold){
             @content;
         }
     }
-    @else if $media-type == phone {
+    @else if $device-type == phone {
         @media only screen and (orientation: landscape) and (max-height: $bp-phone-threshold){
             @content;
         }
