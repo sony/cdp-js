@@ -22,7 +22,7 @@
         .ui-title {
             font-size: $metrics-font-base-size * 1.25;      // 20px
         }
-        @media screen and (orientation: landscape) {
+        @include orientation-landscape(phone) {
             font-size: $metrics-font-base-size * 0.875;     // 14px
             .ui-title {
                 font-size: $metrics-font-base-size * 0.875; // 14px

@@ -1,5 +1,6 @@
 ﻿/*** android structure: page ***************************************************/
 
+@import "../../_mixins.scss";
 @import "../_metrics.scss";
 
 $metrics-android-status-bar-header-portrait:    $metrics-header-height + $metrics-android-header-revise-portrait;
@@ -9,14 +10,14 @@ $metrics-android-status-bar-header-landspace:   $metrics-header-height + $metric
     .ui-page {
         &:not(.ui-header-no-fix) {
             padding-top: $metrics-android-status-bar-header-portrait !important;
-            @media screen and (orientation: landscape) {
+            @include orientation-landscape(phone) {
                 padding-top: $metrics-android-status-bar-header-landspace !important;
             }
         }
         .ui-content {
             &:not(.ui-screen-no-fix) {
                 top: $metrics-android-status-bar-header-portrait + $metrics-common-border-width;
-                @media screen and (orientation: landscape) {
+                @include orientation-landscape(phone) {
                     top: $metrics-android-status-bar-header-landspace + $metrics-common-border-width;
                 }
             }
