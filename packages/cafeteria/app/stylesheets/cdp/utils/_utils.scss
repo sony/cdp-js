@@ -11,17 +11,7 @@ $screen-extrasmall-min: $screen-small-min - 1px !default;
 $bp-table-threshold: 600px !default;
 $bp-phone-threshold: $bp-table-threshold - 1px !default;
 
-@mixin orientation-landscape {
-    @media screen and (orientation: landscape) {
-        @content;
-    }
-}
-
-@mixin orientation-portrait {
-    @media screen and (orientation: portrait) {
-        @content;
-    }
-}
+$bp-phone-long-side-threshold: 568px !default;
 
 @mixin device($device-type) {
     @if $device-type == tablet {
@@ -29,12 +19,68 @@ $bp-phone-threshold: $bp-table-threshold - 1px !default;
             @content;
         }
     }
-    @else if $device-type == phone {
+    @elseif $device-type == phone {
         @media only screen and (orientation: landscape) and (max-height: $bp-phone-threshold){
             @content;
         }
         @media only screen and (orientation: portrait) and (max-width: $bp-phone-threshold){
             @content;
+        }
+    }
+}
+
+@mixin orientation-landscape($device-type: all) {
+    $tablet: false;
+    $phone: false;
+
+    @if $device-type == all {
+        $tablet: true;
+        $phone: true;
+    } @elseif $device-type == tablet {
+        $tablet: true;
+    } @elseif $device-type == phone {
+        $phone: true;
+    }
+
+    @if $tablet {
+        @include device(tablet) {
+            @media screen and (orientation: landscape) {
+                @content;
+            }
+        }
+    } @elseif $phone {
+        @include device(phone) {
+            @media screen and (orientation: landscape) and (min-width: $bp-phone-long-side-threshold) {
+                @content;
+            }
+        }
+    }
+}
+
+@mixin orientation-portrait($device-type: all) {
+    $tablet: false;
+    $phone: false;
+
+    @if $device-type == all {
+        $tablet: true;
+        $phone: true;
+    } @elseif $device-type == tablet {
+        $tablet: true;
+    } @elseif $device-type == phone {
+        $phone: true;
+    }
+
+    @if $tablet {
+        @include device(tablet) {
+            @media screen and (orientation: portrait) {
+                @content;
+            }
+        }
+    } @elseif $phone {
+        @include device(phone) {
+            @media screen and (orientation: portrait) and (max-width: $bp-phone-long-side-threshold - 1px) {
+                @content;
+            }
         }
     }
 }

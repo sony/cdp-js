@@ -29,6 +29,78 @@ namespace CDP.Framework {
     };
 
     /**
+     * $.mobile.widget.popup patch for "_createPrerequisites"
+     *
+     * patch code from jqm 1.5
+     * https://github.com/jquery/jquery-mobile/commit/d34c86ae14d4ea603357be5e326de1fb8c31dbf9
+     */
+    const _apply_jqm_popup_createPrerequisites = (): void => {
+        const _safeCreatePrerequisites = function (screenPrerequisite: any, containerPrerequisite: any, whenDone: any): void {
+            let prerequisites;
+            const self: any = this;
+
+            prerequisites = {
+                screen: $.Deferred(),
+                container: $.Deferred()
+            };
+
+            prerequisites.screen.done(function () {
+                if (prerequisites === self._prerequisites) {
+                    screenPrerequisite();
+                }
+            });
+
+            prerequisites.container.done(function () {
+                if (prerequisites === self._prerequisites) {
+                    containerPrerequisite();
+                }
+            });
+
+            $.when(prerequisites.screen, prerequisites.container).done(function () {
+                if (prerequisites === self._prerequisites) {
+                    self._prerequisites = null;
+                    whenDone();
+                }
+            });
+
+            self._prerequisites = prerequisites;
+        };
+
+        const $mobile: any = $.mobile;
+        if ($mobile.widgets && $mobile.widgets.popup) {
+            $mobile.widgets.popup.prototype._createPrerequisites = _safeCreatePrerequisites;
+        }
+    };
+
+    /**
+     * $.mobile.widget.popup patch for "_handleWindowResize"
+     *
+     * patch code from stack overflow
+     * https://stackoverflow.com/questions/27090445/jqmobile-re-positions-popup-window-every-time-when-android-opens-own-virtual-key
+     */
+    const _apply_jqm_popup_handleWindowResize = (): void => {
+        const _safeHandleWindowResize = function (/* theEvent */): void {
+            if (this._isOpen && this._ignoreResizeTo === 0) {
+                if ((this._expectResizeEvent() || this._orientationchangeInProgress) &&
+                    !this._ui.container.hasClass("ui-popup-hidden")) {
+                    // effectively rapid-close the popup while leaving the screen intact
+                    //judge user is in input mode or not.
+                    if (!($(":focus").is("input") || $(":focus").is("textarea"))) {
+                        this._ui.container
+                            .addClass("ui-popup-hidden ui-popup-truncate")
+                            .removeAttr("style");
+                    }
+                }
+            }
+        };
+
+        const $mobile: any = $.mobile;
+        if ($mobile.widgets && $mobile.widgets.popup) {
+            $mobile.widgets.popup.prototype._handleWindowResize = _safeHandleWindowResize;
+        }
+    };
+
+    /**
      * $.mobile.widget.popup patch
      */
     const _mobilePopupPatch = (): void => {
@@ -38,43 +110,8 @@ namespace CDP.Framework {
         const jqmMiner = ~~jqmVersion[1];
 
         if (3 <= jqueryMajor && jqmMajor < 2 && jqmMiner < 5) {
-            // patch code from jqm 1.5
-            // https://github.com/jquery/jquery-mobile/commit/d34c86ae14d4ea603357be5e326de1fb8c31dbf9
-            const _safeCreatePrerequisites = function (screenPrerequisite: any, containerPrerequisite: any, whenDone: any): void {
-                let prerequisites;
-                const self: any = this;
-
-                prerequisites = {
-                    screen: $.Deferred(),
-                    container: $.Deferred()
-                };
-
-                prerequisites.screen.done(function () {
-                    if (prerequisites === self._prerequisites) {
-                        screenPrerequisite();
-                    }
-                });
-
-                prerequisites.container.done(function () {
-                    if (prerequisites === self._prerequisites) {
-                        containerPrerequisite();
-                    }
-                });
-
-                $.when(prerequisites.screen, prerequisites.container).done(function () {
-                    if (prerequisites === self._prerequisites) {
-                        self._prerequisites = null;
-                        whenDone();
-                    }
-                });
-
-                self._prerequisites = prerequisites;
-            };
-
-            const $mobile: any = $.mobile;
-            if ($mobile.widgets && $mobile.widgets.popup) {
-                $mobile.widgets.popup.prototype._createPrerequisites = _safeCreatePrerequisites;
-            }
+            _apply_jqm_popup_createPrerequisites();
+            _apply_jqm_popup_handleWindowResize();
         }
     };
 
