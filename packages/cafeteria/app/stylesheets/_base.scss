@@ -63,17 +63,13 @@ body {
         @include device(tablet) {
             @include ios-listview-auto-inset;
         }
-        @include device(phone) {
-            @include orientation-landscape {
-                @include ios-listview-auto-inset;
-            }
+        @include orientation-landscape(phone) {
+            @include ios-listview-auto-inset;
         }
     }
     &.cafeteria-listview-next:not(.ui-listview-inset) {
-        @include device(phone) {
-            @include orientation-portrait {
-                margin-top: 34px;
-            }
+        @include orientation-portrait(phone) {
+            margin-top: 34px;
         }
     }
 }

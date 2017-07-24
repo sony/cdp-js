@@ -110,9 +110,6 @@
     <Content Include="tests\unit\cdp.core.spec.js">
       <DependentUpon>cdp.core.spec.ts</DependentUpon>
     </Content>
-    <Content Include="tests\unit\preload\test.prologue.js">
-      <DependentUpon>test.prologue.ts</DependentUpon>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="docs\en\README.md" />
@@ -127,7 +124,6 @@
     <TypeScriptCompile Include="src\scripts\CDP\ErrorDefs.ts" />
     <TypeScriptCompile Include="src\scripts\CDP\Patch.ts" />
     <TypeScriptCompile Include="tests\unit\cdp.core.spec.ts" />
-    <TypeScriptCompile Include="tests\unit\preload\test.prologue.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="tasks\banner.js" />

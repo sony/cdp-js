@@ -12,10 +12,10 @@ article.pmo {
                     height: 56px;
                 }
                 @include device(phone) {
-                    @include orientation-landscape {
+                    @media screen and (orientation: landscape) {
                         height: 40px;
                     }
-                    @include orientation-portrait {
+                    @media screen and (orientation: portrait) {
                         height: 48px;
                     }
                 }
@@ -64,11 +64,11 @@ article.pmo {
                         margin:-29px 0;
                     }
                     @include device(phone) {
-                        @include orientation-landscape {
+                        @media screen and (orientation: landscape) {
                             border-width: 4px 4px 4px 0;
                             margin:-21px 0;
                         }
-                        @include orientation-portrait {
+                        @media screen and (orientation: portrait) {
                             border-width: 8px 4px 8px 0;
                             margin:-25px 0;
                         }
@@ -119,10 +119,10 @@ article.pmo {
                         height: 56px;
                     }
                     @include device(phone) {
-                        @include orientation-landscape {
+                        @media screen and (orientation: landscape) {
                             height: 40px;
                         }
-                        @include orientation-portrait {
+                        @media screen and (orientation: portrait) {
                             height: 48px;
                         }
                     }
@@ -155,7 +155,7 @@ article.pmo {
                         }
                     }
                     @include device(phone) {
-                        @include orientation-landscape {
+                        @media screen and (orientation: landscape) {
                             border-width: 4px;
                             margin:-21px 0;
                             &:nth-last-of-type(2) {
@@ -168,7 +168,7 @@ article.pmo {
                                 right: 120px;
                             }
                         }
-                        @include orientation-portrait {
+                        @media screen and (orientation: portrait) {
                             border-width: 8px;
                             margin:-25px 0;
                             &:nth-last-of-type(2) {
