@@ -47,8 +47,13 @@
                     options.success();
                 }
             } catch (error) {
-                const msg = (error && error.message) ? error.message : "initialize failed.";
-                console.error(TAG + msg);
+                const errorInfo = makeErrorInfo(
+                    RESULT_CODE.ERROR_CDP_INITIALIZE_FAILED,
+                    TAG,
+                    (error && error.message) ? error.message : null,
+                    error
+                );
+                console.error(errorInfo.message);
                 if (options && typeof options.fail === "function") {
                     options.fail(error);
                 }
