@@ -1,4 +1,8 @@
 ﻿import {
+    ErrorInfo,
+    isCanceledError,
+} from "cdp/framework";
+import {
     IPromise,
     PromiseManager,
     PageView,
@@ -9,6 +13,7 @@
 import { IResult } from "cdp/bridge";
 import * as SimpleGate from "../../bridge/simple-gate";
 import * as Misc from "../../bridge/misc";
+import { handleErrorInfo  } from "../../utils/error-defs";
 
 const TAG = "[view.nativebridge-sample.RootPageView] ";
 
@@ -55,7 +60,7 @@ class RootPageView extends PageView {
             })
             .catch((reason: IResult) => {
                 if (reason.code !== CDP.NativeBridge.ERROR_CANCEL) {
-                    Toast.show(TAG + reason.message);
+                    handleErrorInfo(reason);
                 }
             });
     }
@@ -73,7 +78,7 @@ class RootPageView extends PageView {
             })
             .catch((reason: IResult) => {
                 if (reason.code !== CDP.NativeBridge.ERROR_CANCEL) {
-                    Toast.show(TAG + reason.message);
+                    handleErrorInfo(reason);
                 }
             });
     }
@@ -98,7 +103,7 @@ class RootPageView extends PageView {
                 if (reason.code === CDP.NativeBridge.ERROR_CANCEL) {
                     this.outputMessage("CANCELED: progressMethod()");
                 } else {
-                    Toast.show(TAG + reason.message);
+                    handleErrorInfo(reason);
                 }
             })
             .always(() => {
@@ -123,9 +128,9 @@ class RootPageView extends PageView {
             .then((result) => {
                 Toast.show(result);
             })
-            .catch((reason: IResult) => {
-                if (reason.code !== CDP.NativeBridge.ERROR_CANCEL) {
-                    Toast.show(TAG + reason.message);
+            .catch((reason: ErrorInfo) => {
+                if (!(isCanceledError(reason))) {
+                    handleErrorInfo(reason);
                 }
             });
     }
@@ -135,9 +140,9 @@ class RootPageView extends PageView {
             .then((result) => {
                 Toast.show(result);
             })
-            .catch((reason: IResult) => {
-                if (reason.code !== CDP.NativeBridge.ERROR_CANCEL) {
-                    Toast.show(TAG + reason.message);
+            .catch((reason: ErrorInfo) => {
+                if (!(isCanceledError(reason))) {
+                    handleErrorInfo(reason);
                 }
             });
     }

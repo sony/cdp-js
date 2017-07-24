@@ -37,7 +37,10 @@ namespace CDP.NativeBridge {
      * @interface IResult
      * @brief NativeBridge の基底 Result 情報
      */
-    export interface IResult extends Plugin.IResult { }
+    export interface IResult extends Plugin.IResult, Error {
+        message: string;
+        name: string;
+    }
 
     /**
      * \~english

@@ -9,6 +9,7 @@ export const Config         = _core.Config;
 // error utils
 export type  ErrorInfo                  = _core.ErrorInfo;
 export const makeErrorInfo              = _core.makeErrorInfo;
+export const makeCanceledErrorInfo      = _core.makeCanceledErrorInfo;
 export const isCanceledError            = _core.isCanceledError;
 export type  RESULT_CODE                = _core.RESULT_CODE;
 export const RESULT_CODE                = _core.RESULT_CODE;

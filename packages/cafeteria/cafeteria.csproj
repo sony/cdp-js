@@ -50,7 +50,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties tsconfig_1base_1json__JSONSchema="http://json.schemastore.org/tsconfig" package_1json__JSONSchema="" />
+      <UserProperties package_1json__JSONSchema="" tsconfig_1base_1json__JSONSchema="http://json.schemastore.org/tsconfig" />
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
@@ -564,6 +564,9 @@
     <Content Include="app\scripts\model\picture.js">
       <DependentUpon>picture.ts</DependentUpon>
     </Content>
+    <Content Include="app\scripts\utils\error-defs.js">
+      <DependentUpon>error-defs.ts</DependentUpon>
+    </Content>
     <Content Include="app\scripts\view\advanced-sample\root.js">
       <DependentUpon>root.ts</DependentUpon>
     </Content>
@@ -1075,6 +1078,7 @@
     <TypeScriptCompile Include="app\scripts\model\options.ts" />
     <TypeScriptCompile Include="app\scripts\model\picture-list.ts" />
     <TypeScriptCompile Include="app\scripts\model\picture.ts" />
+    <TypeScriptCompile Include="app\scripts\utils\error-defs.ts" />
     <TypeScriptCompile Include="app\scripts\view\advanced-sample\root.ts" />
     <TypeScriptCompile Include="app\scripts\view\gallery\base-pageview.ts" />
     <Content Include="app\scripts\view\gallery\base-pageview.js">

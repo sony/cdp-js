@@ -31,6 +31,40 @@
     export const MODULE_RESULT_CODE_RANGE = 1000;
 
     /**
+     * エラー情報生成
+     *
+     * @param resultCode [in] RESULT_CODE を指定
+     * @param [tag]      [in] TAG を指定
+     * @param [message]  [in] メッセージを指定
+     * @param [cause]    [in] 下位のエラーを指定
+     * @returns エラーオブジェクト
+     */
+    export function makeErrorInfo(resultCode: number, tag?: string, message?: string, cause?: Error): ErrorInfo {
+        const canceled = (cause && CANCELED_MESSAGE === cause.message) ? true : false;
+        const msg = canceled ? CANCELED_MESSAGE : message;
+        const code = canceled ? RESULT_CODE.SUCCEEDED : resultCode;
+        return {
+            ...new Error(msg || messageFromResultCode(code)),
+            ...{
+                name: buildErrorName(code, tag),
+                code: code,
+                cause: cause,
+            }
+        };
+    }
+
+    /**
+     * キャンセルエラー情報生成
+     *
+     * @param [cause]    [in] 下位のエラーを指定
+     * @param [tag]      [in] TAG を指定
+     * @returns エラーオブジェクト
+     */
+    export function makeCanceledErrorInfo(cause?: Error, tag?: string): ErrorInfo {
+        return makeErrorInfo(RESULT_CODE.SUCCEEDED, tag, CANCELED_MESSAGE, cause);
+    }
+
+    /**
      * エラー情報がキャンセルされたものか判定
      *
      * @param error [in] エラー情報
@@ -46,28 +80,6 @@
         return false;
     }
 
-    /**
-     * エラー情報生成
-     *
-     * @param resultCode [in] RESULT_CODE を指定
-     * @param [tag]      [in] TAG を指定
-     * @param [message]  [in] メッセージを指定
-     * @param [cause]    [in] 下位のエラーを指定
-     * @returns エラーオブジェクト
-     */
-    export function makeErrorInfo(resultCode: RESULT_CODE, tag?: string, message?: string, cause?: Error): ErrorInfo {
-        const canceled = (cause && CANCELED_MESSAGE === cause.message) ? true : false;
-        const msg = canceled ? CANCELED_MESSAGE : message;
-        const code = canceled ? RESULT_CODE.SUCCEEDED : resultCode;
-        return {
-            ...new Error(msg || messageFromResultCode(code)),
-            ...{
-                name: buildErrorName(code, tag),
-                code: code,
-                cause: cause,
-            }
-        };
-    }
 
     /**
      * @enum  RESULT_CODE_BASE
@@ -85,7 +97,7 @@
 
     // エラーコード生成
     export function DECLARE_ERROR_CODE(baseName: string, localCode: number, message?: string): number {
-        return declareResultCode(RESULT_CODE_BASE[baseName], localCode, message);
+        return declareResultCode(CDP.RESULT_CODE_BASE[baseName], localCode, message);
     }
 
     /**

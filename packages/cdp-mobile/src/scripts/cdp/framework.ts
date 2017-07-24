@@ -5,6 +5,7 @@ export * from "./framework/jqm";
 // core error utils
 export type  ErrorInfo                  = _errors.ErrorInfo;
 export const makeErrorInfo              = _errors.makeErrorInfo;
+export const makeCanceledErrorInfo      = _errors.makeCanceledErrorInfo;
 export const isCanceledError            = _errors.isCanceledError;
 export type  RESULT_CODE                = _errors.RESULT_CODE;
 export const RESULT_CODE                = _errors.RESULT_CODE;

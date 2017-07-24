@@ -2,11 +2,16 @@
     IPromise,
     Promise,
     Platform,
+    makeErrorInfo,
+    makeCanceledErrorInfo,
 } from "cdp/framework";
 import {
     Gate,
     IResult,
 } from "cdp/bridge";
+import {
+    RESULT_CODE,
+} from "../utils/error-defs";
 
 const TAG = "[bridge.Misc] ";
 
@@ -59,7 +64,16 @@ class Misc extends Gate {
                     resolve(uuid.split("-").join("").toLowerCase(), result);
                 })
                 .fail((error: IResult) => {
-                    reject(error);
+                    if (error.code === CDP.NativeBridge.ERROR_CANCEL) {
+                        reject(makeCanceledErrorInfo(error, TAG));
+                    } else {
+                        reject(makeErrorInfo(
+                            RESULT_CODE.ERROR_CAFETERIA_NATIVEBRIDGE_METHOD_FAILED,
+                            TAG,
+                            null,
+                            error
+                        ));
+                    }
                 });
         });
     }
@@ -82,8 +96,15 @@ class Misc extends Gate {
                     ) {
                         // 正常系
                         resolve("changeStatusBarColor() not supported.");
+                    } else if (error.code === CDP.NativeBridge.ERROR_CANCEL) {
+                        reject(makeCanceledErrorInfo(error, TAG));
                     } else {
-                        reject(error);
+                        reject(makeErrorInfo(
+                            RESULT_CODE.ERROR_CAFETERIA_NATIVEBRIDGE_METHOD_FAILED,
+                            TAG,
+                            null,
+                            error
+                        ));
                     }
                 });
         });
