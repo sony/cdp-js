@@ -13,6 +13,8 @@ npm-debug.log
 .vs/
 bin/
 exports/**/*.js
+src/scripts/**/*.js
+external/
 node_modules/
 obj/
 temp/

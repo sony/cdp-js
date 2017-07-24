@@ -2,11 +2,17 @@
     IPromise,
     Promise,
     Platform,
+    ErrorInfo,
+    isCanceledError,
+    makeErrorInfo,
 } from "cdp/framework";
 import {
     Gate,
     IResult,
 } from "cdp/bridge";
+import {
+    RESULT_CODE,
+} from "../utils/error-defs";
 
 const TAG = "[bridge.Misc] ";
 
@@ -58,7 +64,8 @@ class Misc extends Gate {
                     // ハイフンの除去と小文字に正規化
                     resolve(uuid.split("-").join("").toLowerCase(), result);
                 })
-                .fail((error: IResult) => {
+                .fail((error: ErrorInfo) => {
+                    // 通常はそのまま返してOK
                     reject(error);
                 });
         });
@@ -76,14 +83,20 @@ class Misc extends Gate {
                 .done((result: IResult) => {
                     resolve("changed: " + STATUSBAR_STYLE[styleId]);
                 })
-                .fail((error: IResult) => {
-                    if (CDP.NativeBridge.ERROR_METHOD_NOT_FOUND === error.code ||
-                        CDP.NativeBridge.ERROR_CLASS_NOT_FOUND === error.code
+                .fail((error: ErrorInfo) => {
+                    if (CDP.RESULT_CODE.ERROR_CDP_NATIVEBRIDGE_METHOD_NOT_FOUND === error.code ||
+                        CDP.RESULT_CODE.ERROR_CDP_NATIVEBRIDGE_CLASS_NOT_FOUND === error.code
                     ) {
-                        // 正常系
+                        // 定義がない場合を正常系として扱う例
                         resolve("changeStatusBarColor() not supported.");
-                    } else {
-                        reject(error);
+                    } else if (!isCanceledError(error)) {
+                        // エラー空間を変更する例
+                        reject(makeErrorInfo(
+                            RESULT_CODE.ERROR_CAFETERIA_NATIVEBRIDGE_METHOD_FAILED,
+                            TAG,
+                            null,
+                            error
+                        ));
                     }
                 });
         });

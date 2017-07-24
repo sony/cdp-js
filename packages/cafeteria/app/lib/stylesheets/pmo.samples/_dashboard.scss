@@ -41,13 +41,13 @@
 
         > .area-shadow {
             position: absolute;
-            @include orientation-portrait {
+            @media screen and (orientation: portrait) {
                 width: 100%;
                 top: 75%;
                 bottom: 0;
                 @include linear-gradient-shadow(to bottom, transparent, $color-common-black);
             }
-            @include orientation-landscape {
+            @media screen and (orientation: landscape) {
                 height: 100%;
                 left: 75%;
                 right: 0;
@@ -58,12 +58,12 @@
 
     #dashboard-mask {
         position: fixed;
-        @include orientation-portrait {
+        @media screen and (orientation: portrait) {
             width: 100%;
             bottom: 0;
             background-color: $color-common-black;
         }
-        @include orientation-landscape {
+        @media screen and (orientation: landscape) {
             height: 100%;
             right: 0;
             background-color: $color-common-black;
@@ -76,10 +76,10 @@
         margin: 0 6px 0 6px;
         overflow: hidden;
 
-        @include orientation-portrait {
+        @media screen and (orientation: portrait) {
             left: 0;
         }
-        @include orientation-landscape {
+        @media screen and (orientation: landscape) {
             right: 0;
         }
 
@@ -108,11 +108,11 @@
         position: absolute;
         margin: 0;
 
-        @include orientation-portrait {
+        @media screen and (orientation: portrait) {
             width: 100%;
         }
 
-        @include orientation-landscape {
+        @media screen and (orientation: landscape) {
             top: 0;
             right: 0;
         }
@@ -127,12 +127,12 @@
         #dashboard-recall-info {
             height: 44px;   // 固定値
 
-            @include orientation-portrait {
+            @media screen and (orientation: portrait) {
                 position: absolute;
                 width: 100%;
             }
 
-            @include orientation-landscape {
+            @media screen and (orientation: landscape) {
                 position: fixed;
                 width: auto;
                 left: 0;

@@ -349,15 +349,17 @@ function main() {
     const options = queryOptions();
 
     const ignore = config.external_rearrange ? config.external_rearrange.ignore_modules : [];
-    Object.keys(config.pkg.dependencies).forEach((external) => {
-        for (let i = 0, n = ignore.length; i < n; i++) {
-            const regexp = new RegExp(ignore[i]);
-            if (regexp.test(external)) {
-                return;
+    if (config.pkg.dependencies) {
+        Object.keys(config.pkg.dependencies).forEach((external) => {
+            for (let i = 0, n = ignore.length; i < n; i++) {
+                const regexp = new RegExp(ignore[i]);
+                if (regexp.test(external)) {
+                    return;
+                }
             }
-        }
-        rearrange(external, options);
-    });
+            rearrange(external, options);
+        });
+    }
     if (config.external_rearrange && config.external_rearrange.specified_modules) {
         config.external_rearrange.specified_modules.forEach((external) => {
             rearrange(external, options);

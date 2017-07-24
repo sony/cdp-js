@@ -167,8 +167,11 @@ namespace CDP {
                                     }
                                     _dfInitialize.resolve();
                                 } else {
-                                    console.error(TAG + "error. CDP.Framework.Router.initialize() failed.");
-                                    _dfInitialize.reject();
+                                    _dfInitialize.reject(makeErrorInfo(
+                                        RESULT_CODE.ERROR_CDP_FRAMEWORK_ROUTER_INITIALIZE_FAILED,
+                                        TAG,
+                                        "error. CDP.Framework.Router.initialize() failed."
+                                    ));
                                     _dfInitialize = $.Deferred<void>();
                                 }
                             });
@@ -189,9 +192,13 @@ namespace CDP {
                         }
                     }
                 },
-                fail: (error) => {
-                    console.error(TAG + "error. CDP.initialize() failed.");
-                    _dfInitialize.reject();
+                fail: (error: ErrorInfo) => {
+                    _dfInitialize.reject(makeErrorInfo(
+                        RESULT_CODE.ERROR_CDP_FRAMEWORK_INITIALIZE_FAILED,
+                        TAG,
+                        "error. CDP.initialize() failed.",
+                        error
+                    ));
                     _dfInitialize = $.Deferred<void>();
                 },
             });

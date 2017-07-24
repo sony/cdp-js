@@ -25,7 +25,7 @@ namespace CDP.NativeBridge {
      * @brief 初期化に指定するオプション
      */
     export interface ConstructOptions extends Plugin.ConstructOptions {
-        receiveParams?: boolean; // exec 成功時に, ...params, IResult で返却する場合 true (既定値)
+        useRawPluginResult?: boolean;   // [過去互換用] exec コール時に, IResult で返却する場合 true. default: false
     }
 
     /**
@@ -37,7 +37,10 @@ namespace CDP.NativeBridge {
      * @interface IResult
      * @brief NativeBridge の基底 Result 情報
      */
-    export interface IResult extends Plugin.IResult { }
+    export interface IResult extends Plugin.IResult, Error {
+        message: string;
+        name: string;
+    }
 
     /**
      * \~english

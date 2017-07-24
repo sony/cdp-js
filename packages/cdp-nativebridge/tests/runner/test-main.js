@@ -7,6 +7,7 @@
             'testem': '../../../testem',
             'jquery': 'external/jquery/scripts/jquery',
             'cdp.lazyload': 'external/cdp/scripts/cdp.lazyload',
+            'cdp.core': 'external/cdp/scripts/cdp.core',
             'cdp.promise': 'external/cdp/scripts/cdp.promise',
         },
     });

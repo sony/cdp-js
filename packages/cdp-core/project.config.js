@@ -13,14 +13,31 @@ const target = {
 const dir = {
     src: 'src',
     pkg: 'dist',
-    built: 'exports',
+    built: 'built',
     doc: 'docs',
     task: 'tasks',
     test: 'tests',
     types: '@types',
-    temp: 'built',  // for coverage
+    temp: '.temp',
+    external: 'external',
     script: 'scripts',
 };
+
+const external_rearrange = {
+    root: `${dir.external}`,
+    ignore_modules: [
+        '^@types',
+    ],
+    specified_modules: [
+        'jquery',
+    ],
+    module_adjuster: {
+    },
+};
+
+const internal_rearrange = [
+    'cdp-lazyload',
+];
 
 const main = {
     basename: 'cdp.core',
@@ -29,7 +46,11 @@ const main = {
 };
 
 const built_cleanee = {
-    ts: ['**/*.js', '**/*.d.ts', '!**/_dev.dependencies.d.ts', '**/*.map'],
+    ts: ['**/*.js', '**/*.d.ts', '!**/index.d.ts', '**/*.map'],
+    roots: [
+        'exports',
+        `${dir.src}/${dir.script}`,
+    ],
 };
 
 const banner = {
@@ -41,7 +62,10 @@ const required_tasks = [
     'banner.js',
     'bundle.js',
     'clean.js',
-    'normalize-coverage.js',
+    'external-rearrange.js',
+    'internal-rearrange.js',
+    'remap-coverage.js',
+    'srcmap.js',
 ];
 
 // project configuration
@@ -49,6 +73,8 @@ module.exports = {
     target: target,
     pkg: pkg,
     dir: dir,
+    external_rearrange: external_rearrange,
+    internal_rearrange: internal_rearrange,
     main: main,
     built_cleanee: built_cleanee,
     banner: banner,

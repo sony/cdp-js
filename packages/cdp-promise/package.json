@@ -81,6 +81,6 @@
     "tslint": "^5.5.0",
     "typedoc": "^0.7.1",
     "typescript": "^2.4.2",
-    "uglify-js": "^3.0.25"
+    "uglify-js": "^3.0.26"
   }
 }

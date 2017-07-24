@@ -2,7 +2,7 @@
 (function (root, factory) {
     if (typeof define === "function" && define.amd) {
         // AMD
-        define(["cdp.promise"], function () {
+        define(["cdp.core", "cdp.promise"], function () {
             return factory(root.CDP || (root.CDP = {}), root.jQuery || root.$);
         });
     } else {

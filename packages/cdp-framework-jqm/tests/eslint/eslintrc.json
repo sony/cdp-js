@@ -27,7 +27,7 @@
 
     "comma-dangle": "off",
     "no-cond-assign": ["error", "always"],
-    "no-unused-vars": ["error", {"args": "none", "varsIgnorePattern": "^TAG|^__|Framework" }],
+    "no-unused-vars": ["error", {"args": "none", "varsIgnorePattern": "^TAG|^__|Framework|RESULT_CODE|RESULT_CODE_BASE" }],
     "no-extra-boolean-cast": "off",
     "no-constant-condition": "off",
     "no-console": "off"

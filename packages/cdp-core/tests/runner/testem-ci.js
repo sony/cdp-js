@@ -3,6 +3,14 @@ const fs        = require('fs');
 const http      = require('http');
 const shell     = require('shelljs');
 const proj      = require('../../project.config');
+const tsconfig  = require('../../src/tsconfig.all.json');
+
+const module_scripts = [];
+tsconfig.files.forEach((file) => {
+    module_scripts.push({
+        src: file.replace(/.ts$/i, '.js'),
+    });
+});
 
 const DOC_DIR       = path.join(__dirname, '../../', proj.dir.doc);
 const REPORTS_DIR   = path.join(DOC_DIR, 'reports');
@@ -49,6 +57,7 @@ const config = {
     },
 
     test_page: proj.dir.test + '/runner/index.mustache',
+    module_scripts: module_scripts,
 };
 
 module.exports = Object.assign({}, settings, config);

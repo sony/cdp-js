@@ -19,8 +19,8 @@ const dir = {
 const distribution_target = 'cdp-mobile';
 
 const include_modules = [
-    'cdp-core',
     'cdp-lazyload',
+    'cdp-core',
     'cdp-promise',
     'cdp-i18n',
     'cdp-framework-jqm',
