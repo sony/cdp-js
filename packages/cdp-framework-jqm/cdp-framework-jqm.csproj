@@ -114,6 +114,9 @@
     <Content Include="src\scripts\CDP\Framework\CoreAPI.js">
       <DependentUpon>CoreAPI.ts</DependentUpon>
     </Content>
+    <Content Include="src\scripts\CDP\Framework\ErrorDefs.js">
+      <DependentUpon>ErrorDefs.ts</DependentUpon>
+    </Content>
     <Content Include="src\scripts\CDP\Framework\Interfaces.js">
       <DependentUpon>Interfaces.ts</DependentUpon>
     </Content>
@@ -178,6 +181,7 @@
     <TypeScriptCompile Include="src\scripts\%40types\jquery.mobile.d.ts" />
     <TypeScriptCompile Include="src\scripts\cdp.framework.jqm.ts" />
     <TypeScriptCompile Include="src\scripts\CDP\Framework\CoreAPI.ts" />
+    <TypeScriptCompile Include="src\scripts\CDP\Framework\ErrorDefs.ts" />
     <TypeScriptCompile Include="src\scripts\CDP\Framework\Interfaces.ts" />
     <TypeScriptCompile Include="src\scripts\CDP\Framework\Orientation.ts" />
     <TypeScriptCompile Include="src\scripts\CDP\Framework\Page.ts" />

@@ -55,7 +55,7 @@
                 );
                 console.error(errorInfo.message);
                 if (options && typeof options.fail === "function") {
-                    options.fail(error);
+                    options.fail(errorInfo);
                 }
             }
         });

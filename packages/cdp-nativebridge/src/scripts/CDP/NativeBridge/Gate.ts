@@ -5,7 +5,7 @@
 
     const TAG: string = "[CDP.NativeBridge.Gate] ";
 
-    // Result code
+    // Plugin raw Result code
 
     export let SUCCESS_OK: number;              Utils.defineResultCode("SUCCESS_OK");
     export let SUCCESS_PROGRESS: number;        Utils.defineResultCode("SUCCESS_PROGRESS");
@@ -17,6 +17,42 @@
     export let ERROR_INVALID_OPERATION: number; Utils.defineResultCode("ERROR_INVALID_OPERATION");
     export let ERROR_CLASS_NOT_FOUND: number;   Utils.defineResultCode("ERROR_CLASS_NOT_FOUND");
     export let ERROR_METHOD_NOT_FOUND: number;  Utils.defineResultCode("ERROR_METHOD_NOT_FOUND");
+
+
+    function convertErrorInfo(result: IResult | CDP.Plugin.NativeBridge.IResult): ErrorInfo {
+        let resultCode: number;
+        switch (result.code) {
+            case ERROR_CANCEL:
+                break;
+            case ERROR_INVALID_ARG:
+                resultCode = RESULT_CODE.ERROR_CDP_NATIVEBRIDGE_INVALID_ARG;
+                break;
+            case ERROR_NOT_IMPLEMENT:
+                resultCode = RESULT_CODE.ERROR_CDP_NATIVEBRIDGE_NOT_IMPLEMENT;
+                break;
+            case ERROR_NOT_SUPPORT:
+                resultCode = RESULT_CODE.ERROR_CDP_NATIVEBRIDGE_NOT_SUPPORT;
+                break;
+            case ERROR_INVALID_OPERATION:
+                resultCode = RESULT_CODE.ERROR_CDP_NATIVEBRIDGE_INVALID_OPERATION;
+                break;
+            case ERROR_CLASS_NOT_FOUND:
+                resultCode = RESULT_CODE.ERROR_CDP_NATIVEBRIDGE_CLASS_NOT_FOUND;
+                break;
+            case ERROR_METHOD_NOT_FOUND:
+                resultCode = RESULT_CODE.ERROR_CDP_NATIVEBRIDGE_METHOD_NOT_FOUND;
+                break;
+            case ERROR_FAIL:
+            default:
+                resultCode = RESULT_CODE.FAILED;
+                break;
+        }
+        if (ERROR_CANCEL === result.code) {
+            return makeCanceledErrorInfo(TAG, <IResult>result);
+        } else {
+            return makeErrorInfo(resultCode, TAG, null, <IResult>result);
+        }
+    }
 
     //___________________________________________________________________________________________________________________//
 
@@ -55,7 +91,9 @@
          * @param options [in] オプションを指定
          */
         constructor(feature: Feature, options?: ConstructOptions) {
-            this._options = $.extend({ receiveParams: true }, options);
+            this._options = $.extend({
+                useRawPluginResult: false,
+            }, options);
             Utils.waitForPluginReady()
                 .done(() => {
                     this._bridge = new Plugin.NativeBridge(feature, options);
@@ -89,21 +127,21 @@
          */
         public exec(method: string, args?: any[], options?: ExecOptions): IPromise<any> {
             const df = $.Deferred();
-            const promise = Utils.makePromise(df);
             const opt = $.extend({}, this._options, options);
+            const promise = Utils.makePromise(df, opt.useRawPluginResult);
 
             Utils.waitForPluginReady()
                 .done(() => {
                     const taskId = this._bridge.exec(
                         (result: IResult) => {
                             if (SUCCESS_PROGRESS === result.code) {
-                                if (opt.receiveParams && null != result.params) {
+                                if (!opt.useRawPluginResult && null != result.params) {
                                     df.notify(...[...result.params, result]);
                                 } else {
                                     df.notify(result);
                                 }
                             } else {
-                                if (opt.receiveParams && null != result.params) {
+                                if (!opt.useRawPluginResult && null != result.params) {
                                     df.resolve(...[...result.params, result]);
                                 } else {
                                     df.resolve(result);
@@ -111,7 +149,11 @@
                             }
                         },
                         (error: IResult) => {
-                            df.reject(error);
+                            if (opt.useRawPluginResult) {
+                                df.reject(error);
+                            } else {
+                                df.reject(convertErrorInfo(error));
+                            }
                         },
                         method, args, options
                     );
@@ -120,8 +162,8 @@
                     (<any>promise)._bridge = this._bridge;
                     (<any>promise)._taskId = taskId;
                 })
-                .catch(() => {
-                    df.reject(this.makeFatal());
+                .catch((reason) => {
+                    df.reject(reason);
                 });
 
             return promise;
@@ -142,19 +184,25 @@
          */
         public cancel(options?: ExecOptions): IPromiseBase<IResult> {
             const df = $.Deferred();
+            const opt = $.extend({}, this._options, options);
+
             Utils.waitForPluginReady()
                 .done(() => {
-                    this._bridge.cancel(null, options,
+                    this._bridge.cancel(null, opt,
                         (result) => {
                             df.resolve(result);
                         },
                         (error) => {
-                            df.reject(error);
+                            if (opt.useRawPluginResult) {
+                                df.reject(error);
+                            } else {
+                                df.reject(convertErrorInfo(error));
+                            }
                         }
                     );
                 })
-                .catch(() => {
-                    df.reject(this.makeFatal());
+                .catch((reason) => {
+                    df.reject(reason);
                 });
             return df.promise();
         }
@@ -176,19 +224,25 @@
          */
         public dispose(options?: ExecOptions): IPromiseBase<IResult> {
             const df = $.Deferred();
+            const opt = $.extend({}, this._options, options);
+
             Utils.waitForPluginReady()
                 .done(() => {
-                    this._bridge.dispose(options,
+                    this._bridge.dispose(opt,
                         (result) => {
                             df.resolve(result);
                         },
                         (error) => {
-                            df.reject(error);
+                            if (opt.useRawPluginResult) {
+                                df.reject(error);
+                            } else {
+                                df.reject(convertErrorInfo(error));
+                            }
                         }
                     );
                 })
-                .catch(() => {
-                    df.reject(this.makeFatal());
+                .catch((reason) => {
+                    df.reject(reason);
                 });
             return df.promise();
         }
@@ -211,20 +265,6 @@
          */
         protected get bridge(): Plugin.NativeBridge {
             return this._bridge;
-        }
-
-        ///////////////////////////////////////////////////////////////////////
-        // private methods
-
-        //! Make fatal error object.
-        private makeFatal(): IResult {
-            const msg = TAG + "fatal error. 'cordova-plugin-cdp-nativebridge' is not available.";
-            console.error(msg);
-            return {
-                code: null,
-                name: TAG + "ERROR_FATAL",
-                message: msg,
-            };
         }
     }
 }

@@ -67,11 +67,15 @@
                         Utils.s_pluginReady = true;
                         df.resolve();
                     } else {
-                        df.reject(TAG + "'cordova-plugin-cdp-nativebridge' cordova plugin required.");
+                        df.reject(makeErrorInfo(
+                            RESULT_CODE.ERROR_CDP_NATIVEBRIDGE_CORDOVA_PLUGIN_REQUIRED, TAG
+                        ));
                     }
                 });
             } catch (error) {
-                df.reject(TAG + "cordova required.");
+                df.reject(makeErrorInfo(
+                    RESULT_CODE.ERROR_CDP_NATIVEBRIDGE_CORDOVA_REQUIRED, TAG
+                ));
             }
 
             return df.promise();
@@ -82,6 +86,7 @@
          * Create NativeBridge.Promise object from jQueryDeferred object.
          *
          * @param df [in] set jQueryDeferred instance.
+         * @param useRawPluginResult [in] return plugin result or errorinfo
          * @returns NativeBridge.Promise object.
          *
          * \~japanese
@@ -89,17 +94,18 @@
          * jQueryDeferred オブジェクトから、NativeBridge.Promise オブジェクトを作成する
          *
          * @param df [in] jQueryDeferred instance を指定
+         * @param useRawPluginResult [in] plugin result を返すか否か
          * @returns NativeBridge.Promise オブジェクト
          */
-        public static makePromise(df: JQueryDeferred<IResult>): IPromise<IResult> {
+        public static makePromise(df: JQueryDeferred<IResult>, useRawPluginResult: boolean): IPromise<IResult> {
             return CDP.makePromise(df, {
                 _bridge: null,
                 _taskId: null,
                 abort: function (info?: any): void {
-                    const detail = $.extend({
-                        code: NativeBridge.ERROR_CANCEL,
+                    const code = useRawPluginResult ? NativeBridge.ERROR_CANCEL : RESULT_CODE.SUCCEEDED;
+                    const detail = $.extend({ code: code }, {
                         message: "abort",
-                        name: TAG + "ERROR_CANCEL",
+                        name: TAG + "method canceled",
                         taskId: this._taskId,
                     }, info);
 

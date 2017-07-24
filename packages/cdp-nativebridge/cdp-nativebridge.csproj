@@ -85,12 +85,16 @@
     <Content Include="exports\cdp\bridge\nativebridge.js">
       <DependentUpon>nativebridge.ts</DependentUpon>
     </Content>
+    <Content Include="external\cdp\scripts\cdp.core.js" />
     <Content Include="external\cdp\scripts\cdp.lazyload.js" />
     <Content Include="external\cdp\scripts\cdp.promise.js" />
     <Content Include="external\jquery\scripts\jquery.js" />
     <Content Include="project.config.js" />
     <Content Include="src\scripts\cdp.nativebridge.js">
       <DependentUpon>cdp.nativebridge.ts</DependentUpon>
+    </Content>
+    <Content Include="src\scripts\CDP\NativeBridge\ErrorDefs.js">
+      <DependentUpon>ErrorDefs.ts</DependentUpon>
     </Content>
     <Content Include="src\scripts\CDP\NativeBridge\Gate.js">
       <DependentUpon>Gate.ts</DependentUpon>
@@ -126,6 +130,7 @@
     <TypeScriptCompile Include="src\scripts\%40types\cdp.plugin.nativebridge.d.ts" />
     <TypeScriptCompile Include="src\scripts\%40types\dev.dependencies\index.d.ts" />
     <TypeScriptCompile Include="src\scripts\cdp.nativebridge.ts" />
+    <TypeScriptCompile Include="src\scripts\CDP\NativeBridge\ErrorDefs.ts" />
     <TypeScriptCompile Include="src\scripts\CDP\NativeBridge\Gate.ts" />
     <TypeScriptCompile Include="src\scripts\CDP\NativeBridge\Interfaces.ts" />
     <TypeScriptCompile Include="src\scripts\CDP\NativeBridge\Utils.ts" />

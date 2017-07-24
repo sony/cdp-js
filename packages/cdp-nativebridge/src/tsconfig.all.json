@@ -9,6 +9,7 @@
   },
   "files": [
     "scripts/CDP/NativeBridge/Interfaces.ts",
+    "scripts/CDP/NativeBridge/ErrorDefs.ts",
     "scripts/CDP/NativeBridge/Utils.ts",
     "scripts/CDP/NativeBridge/Gate.ts"
   ]

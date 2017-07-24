@@ -26,7 +26,7 @@
 
     "comma-dangle": "off",
     "no-cond-assign": ["error", "always"],
-    "no-unused-vars": ["error", {"args": "none", "varsIgnorePattern": "^TAG|^__|NativeBridge" }],
+    "no-unused-vars": ["error", {"args": "none", "varsIgnorePattern": "^TAG|^__|NativeBridge|RESULT_CODE|RESULT_CODE_BASE" }],
     "no-extra-boolean-cast": "off",
     "no-constant-condition": "off",
     "no-console": "off"

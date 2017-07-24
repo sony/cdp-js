@@ -1,11 +1,12 @@
 ﻿import {
+    Config,
     MODULE_RESULT_CODE_RANGE,
     ASSIGN_RESULT_CODE_BASE,
     DECLARE_ERROR_CODE,
     ASSIGN_RESULT_CODE,
     ErrorInfo,
     isCanceledError,
-} from "cdp/framework";
+} from "cdp";
 import { Toast } from "cdp/ui";
 
 /**
@@ -15,7 +16,6 @@ import { Toast } from "cdp/ui";
  *        モジュールごとに被らない運用が必要
  */
 export enum RESULT_CODE_BASE {
-//    RESULT_CODE_BASE_DECLARATION = 0,       // TS2432 対策
     CAFETERIA_APP       = 1 * MODULE_RESULT_CODE_RANGE,
     CAFETERIA_IMAGES    = 2 * MODULE_RESULT_CODE_RANGE,
     CAFETERIA_SLIDESHOW = 3 * MODULE_RESULT_CODE_RANGE,
@@ -23,7 +23,7 @@ export enum RESULT_CODE_BASE {
     CDP_SLIDESHOW       = 5 * MODULE_RESULT_CODE_RANGE,
     CDP_UI_SMOOTHSCROLL = 6 * MODULE_RESULT_CODE_RANGE,
     PMO_SAMPLES         = 7 * MODULE_RESULT_CODE_RANGE,
-};
+}
 ASSIGN_RESULT_CODE_BASE(RESULT_CODE_BASE);
 
 
@@ -53,9 +53,8 @@ enum LOCAL_CODE_BASE {
  *        base name を指定し、モジュール別に拡張可能
  */
 export enum RESULT_CODE {
-    RESULT_CODE_DECLARATION = 0,    // TS2432 対策
-    ERROR_CAFETERIA_ASSET_ACCESS_FAILED                 = DECLARE_ERROR_CODE("CAFETERIA_APP", LOCAL_CODE_BASE.COMMON + 1, "assets access failed."),
-    ERROR_CAFETERIA_NATIVEBRIDGE_METHOD_FAILED          = DECLARE_ERROR_CODE("CAFETERIA_APP", LOCAL_CODE_BASE.NATIVEBRIDGE + 1, "nativebride method call failed."),
+    ERROR_CAFETERIA_ASSET_ACCESS_FAILED         = DECLARE_ERROR_CODE("CAFETERIA_APP", LOCAL_CODE_BASE.COMMON + 1, "assets access failed."),
+    ERROR_CAFETERIA_NATIVEBRIDGE_METHOD_FAILED  = DECLARE_ERROR_CODE("CAFETERIA_APP", LOCAL_CODE_BASE.NATIVEBRIDGE + 1, "nativebride method call failed."),
 }
 ASSIGN_RESULT_CODE(RESULT_CODE);
 /* tslint:enable:max-line-length */
@@ -72,7 +71,6 @@ export function handleErrorInfo(error?: Error): void {
     const errorInfo = <ErrorInfo>error;
     const detail = <ErrorInfo>{ message: "unknown" };
     let msg, toast: string;
-    let code: number;
     if (errorInfo) {
         if (isCanceledError(errorInfo)) {
             return;
@@ -87,7 +85,6 @@ export function handleErrorInfo(error?: Error): void {
     } else {
         error = error || <any>{};
         msg = toast = error.message || "[Cafeteria] unexpected error.";
-        code = CDP.RESULT_CODE.FAILED;
     }
 
     console.error(msg + "\ndetail: " + JSON.stringify(detail, null, 4));

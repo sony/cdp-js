@@ -60,7 +60,7 @@
      * @param [tag]      [in] TAG を指定
      * @returns エラーオブジェクト
      */
-    export function makeCanceledErrorInfo(cause?: Error, tag?: string): ErrorInfo {
+    export function makeCanceledErrorInfo(tag?: string, cause?: Error): ErrorInfo {
         return makeErrorInfo(RESULT_CODE.SUCCEEDED, tag, CANCELED_MESSAGE, cause);
     }
 
@@ -87,13 +87,14 @@
      *        エラーコード対応するモジュール内で 定義を拡張する.
      */
     export enum RESULT_CODE_BASE {
-        RESULT_CODE_BASE_DECLARATION = 0,       // TS2432 対策
-//      MODULE_A = 1 * MODULE_RESULT_CODE_RANGE, // ex) moduleA: 1001 ～ 1999
-//      MODULE_B = 2 * MODULE_RESULT_CODE_RANGE, // ex) moduleB: 2001 ～ 2999
-//      MODULE_C = 3 * MODULE_RESULT_CODE_RANGE, // ex) moduleC: 3001 ～ 3999
-        CDP = 101 * MODULE_RESULT_CODE_RANGE,    // cdp reserved. 101,000 ～
+        CDP_DECLARERATION = 0, // TS2432 対策: 同一 namespace に複数回にわたって同名の enum を宣言する場合に必要.
+//      MODULE_A = 1 * MODULE_RESULT_CODE_RANGE,    // ex) moduleA: 1001 ～ 1999
+//      MODULE_B = 2 * MODULE_RESULT_CODE_RANGE,    // ex) moduleB: 2001 ～ 2999
+//      MODULE_C = 3 * MODULE_RESULT_CODE_RANGE,    // ex) moduleC: 3001 ～ 3999
+        CDP = 101 * MODULE_RESULT_CODE_RANGE,       // cdp reserved. 101,000 ～
     }
-    ASSIGN_RESULT_CODE_BASE(RESULT_CODE_BASE);
+    // "CDP" 以外の namespace で定義した場合は、ASSING ユーティリティをコールする.
+//  ASSIGN_RESULT_CODE_BASE(RESULT_CODE_BASE);
 
     // エラーコード生成
     export function DECLARE_ERROR_CODE(baseName: string, localCode: number, message?: string): number {
@@ -134,10 +135,11 @@
      *        モジュール別に拡張可能
      */
     export enum RESULT_CODE {
-        RESULT_CODE_DECLARATION = 0,    // TS2432 対策
+        ERROR_CDP_DECLARATION_CDP   = 0, // TS2432 対策: 同一 namespace に複数回にわたって同名の enum を宣言する場合に必要.
         ERROR_CDP_INITIALIZE_FAILED = DECLARE_ERROR_CODE("CDP", LOCAL_CODE_BASE.CORE + 1, "initialized failed."),
     }
-    ASSIGN_RESULT_CODE_BASE(RESULT_CODE);
+    // "CDP" 以外の namespace で定義した場合は、ASSING ユーティリティをコールする.
+//  ASSIGN_RESULT_CODE_BASE(RESULT_CODE);
 
     ///////////////////////////////////////////////////////////////////////
     // private static methods:

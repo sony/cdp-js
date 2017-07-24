@@ -10,7 +10,6 @@ import {
     alert,
     Toast,
 } from "cdp/ui";
-import { IResult } from "cdp/bridge";
 import * as SimpleGate from "../../bridge/simple-gate";
 import * as Misc from "../../bridge/misc";
 import { handleErrorInfo  } from "../../utils/error-defs";
@@ -58,8 +57,8 @@ class RootPageView extends PageView {
             .then((result) => {
                 this.outputMessage(result);
             })
-            .catch((reason: IResult) => {
-                if (reason.code !== CDP.NativeBridge.ERROR_CANCEL) {
+            .catch((reason: ErrorInfo) => {
+                if (!isCanceledError(reason)) {
                     handleErrorInfo(reason);
                 }
             });
@@ -76,8 +75,8 @@ class RootPageView extends PageView {
             .then((result) => {
                 this.outputMessage(result);
             })
-            .catch((reason: IResult) => {
-                if (reason.code !== CDP.NativeBridge.ERROR_CANCEL) {
+            .catch((reason: ErrorInfo) => {
+                if (!isCanceledError(reason)) {
                     handleErrorInfo(reason);
                 }
             });
@@ -99,8 +98,8 @@ class RootPageView extends PageView {
                 this.clearMessage();
                 this.outputMessage("DONE: progressMethod()");
             })
-            .fail((reason: IResult) => {
-                if (reason.code === CDP.NativeBridge.ERROR_CANCEL) {
+            .fail((reason: ErrorInfo) => {
+                if (isCanceledError(reason)) {
                     this.outputMessage("CANCELED: progressMethod()");
                 } else {
                     handleErrorInfo(reason);

@@ -9,6 +9,7 @@
   },
   "files": [
     "scripts/CDP/Framework/Interfaces.ts",
+    "scripts/CDP/Framework/ErrorDefs.ts",
     "scripts/CDP/Framework/Platform.ts",
     "scripts/CDP/Framework/Patch.ts",
     "scripts/CDP/Framework/Orientation.ts",
