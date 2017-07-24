@@ -1,0 +1,15 @@
+{
+  "extends": "../tsconfig.base.json",
+  "compileOnSave": true,
+  "compilerOptions": {
+    "inlineSourceMap": true,
+    "inlineSources": true,
+    "declaration": true,
+    "outFile": "../built/cdp.core-all.js"
+  },
+  "files": [
+    "scripts/CDP/Core.ts",
+    "scripts/CDP/Patch.ts",
+    "scripts/CDP/ErrorDefs.ts"
+  ]
+}

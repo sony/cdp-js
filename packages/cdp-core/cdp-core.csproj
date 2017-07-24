@@ -88,10 +88,25 @@
     <Content Include="exports\cdp\core\core.js">
       <DependentUpon>core.ts</DependentUpon>
     </Content>
+    <Content Include="external\cdp\scripts\cdp.lazyload.js" />
     <Content Include="project.config.js" />
-    <Content Include="src\scripts\cdp.core.js" />
+    <Content Include="src\scripts\cdp.core.js">
+      <DependentUpon>cdp.core.ts</DependentUpon>
+    </Content>
+    <Content Include="src\scripts\CDP\Core.js">
+      <DependentUpon>Core.ts</DependentUpon>
+    </Content>
+    <Content Include="src\scripts\CDP\ErrorDefs.js">
+      <DependentUpon>ErrorDefs.ts</DependentUpon>
+    </Content>
+    <Content Include="src\scripts\CDP\Patch.js">
+      <DependentUpon>Patch.ts</DependentUpon>
+    </Content>
     <Content Include="tasks\bundle.js" />
-    <Content Include="tasks\normalize-coverage.js" />
+    <Content Include="tasks\external-rearrange.js" />
+    <Content Include="tasks\internal-rearrange.js" />
+    <Content Include="tasks\remap-coverage.js" />
+    <Content Include="tasks\srcmap.js" />
     <Content Include="tests\unit\cdp.core.spec.js">
       <DependentUpon>cdp.core.spec.ts</DependentUpon>
     </Content>
@@ -106,10 +121,13 @@
   <ItemGroup>
     <TypeScriptCompile Include="dist\%40types\cdp.core.d.ts" />
     <TypeScriptCompile Include="exports\cdp\core\core.ts" />
-    <TypeScriptCompile Include="src\scripts\cdp.core.d.ts" />
+    <TypeScriptCompile Include="src\scripts\%40types\dev.dependencies\index.d.ts" />
+    <TypeScriptCompile Include="src\scripts\cdp.core.ts" />
+    <TypeScriptCompile Include="src\scripts\CDP\Core.ts" />
+    <TypeScriptCompile Include="src\scripts\CDP\ErrorDefs.ts" />
+    <TypeScriptCompile Include="src\scripts\CDP\Patch.ts" />
     <TypeScriptCompile Include="tests\unit\cdp.core.spec.ts" />
     <TypeScriptCompile Include="tests\unit\preload\test.prologue.ts" />
-    <TypeScriptCompile Include="tests\unit\_dev.dependencies.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="tasks\banner.js" />
@@ -141,5 +159,14 @@
     <Content Include="tests\eslint\eslintrc.json" />
     <Content Include="tests\runner\index.mustache" />
     <Content Include="tests\runner\testem.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="src\tsconfig.all.json" />
+    <Content Include="src\tsconfig.entry.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="tsconfig.base.json">
+      <DependentUpon>tsconfig.json</DependentUpon>
+    </Content>
   </ItemGroup>
 </Project>

@@ -21,11 +21,11 @@
     "jquery"
   ],
   "scripts": {
-   "update": "npm update --save-dev",
-   "test": "eslint tasks/**/*.js ./provider.js -c eslintrc.json",
+    "update": "npm update --save-dev",
+    "test": "eslint tasks/**/*.js ./provider.js -c eslintrc.json",
     "mklink": "node provider.js --mode=make"
   },
   "devDependencies": {
-    "eslint": "^4.2.0"
+    "eslint": "^4.3.0"
   }
 }
