@@ -1,7 +1,7 @@
 ﻿/*!
  * cdp.promise.js 2.0.0
  *
- * Date: 2017-07-22T16:17:44.737Z
+ * Date: 2017-07-24T00:41:15.985Z
  */
 (function (root, factory) { if (typeof define === "function" && define.amd) { define(["jquery"], function ($) { return factory(root.CDP || (root.CDP = {}), $, root); }); } else if (typeof exports === "object") { module.exports = factory(root.CDP || (root.CDP = {}), require("jquery"), root); } else { factory(root.CDP || (root.CDP = {}), root.jQuery || root.$, root); } }(((this || 0).self || global), function (CDP, $, root) {
 var CDP;
