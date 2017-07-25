@@ -82,6 +82,31 @@
         return false;
     }
 
+    /**
+     * 入力を ErrorInfo に変換
+     *
+     * @param cause [in] 入力
+     * @returns ErrorInfo オブジェクト
+     */
+    export function ensureErrorInfo(cause?: any): ErrorInfo {
+        const errorInfo = <ErrorInfo>cause;
+        const unknown: ErrorInfo = {
+            name: "",
+            code: RESULT_CODE.FAILED,
+            message: "unknown error",
+        };
+        if (errorInfo) {
+            if (isCanceledError(errorInfo)) {
+                return errorInfo;
+            } else if ("string" === typeof cause) {
+                return { ...unknown, ...{ message: cause } };
+            } else if ("object" === typeof cause) {
+                return { ...unknown, ...cause };
+            }
+        }
+        return unknown;
+    }
+
     export const MODULE_RESULT_CODE_RANGE_CDP = 100;
 
     /**
@@ -96,7 +121,7 @@
 //      MODULE_C = 3 * MODULE_RESULT_CODE_RANGE,    // ex) moduleC: abs(3001 ～ 3999)
         CDP = 1 * MODULE_RESULT_CODE_RANGE_CDP,     // cdp reserved. abs(0 ～ 1000)
     }
-    // "CDP" 以外の namespace で定義した場合は、ASSING ユーティリティをコールする.
+    // "CDP" 以外の namespace で定義した場合は、ASSIGN ユーティリティをコールする.
 //  ASSIGN_RESULT_CODE_BASE(RESULT_CODE_BASE);
 
     // サクセスコード生成
@@ -155,14 +180,14 @@
 
     /**
      * @enum  RESULT_CODE
-     * @brief FES.Utils のエラーコード定義
+     * @brief cdp.core のエラーコード定義
      *        モジュール別に拡張可能
      */
     export enum RESULT_CODE {
-        ERROR_CDP_DECLARATION_CDP   = 0, // TS2432 対策: 同一 namespace に複数回にわたって同名の enum を宣言する場合に必要.
-        ERROR_CDP_INITIALIZE_FAILED = DECLARE_ERROR_CODE("CDP", LOCAL_CODE_BASE.CORE + 1, "initialized failed."),
+        ERROR_CDP_DECLARATION_CDP = 0, // TS2432 対策: 同一 namespace に複数回にわたって同名の enum を宣言する場合に必要.
+        ERROR_CDP_INITIALIZE_FAILED = DECLARE_ERROR_CODE(RESULT_CODE_BASE.CDP, LOCAL_CODE_BASE.CORE + 1, "initialized failed."),
     }
-    // "CDP" 以外の namespace で定義した場合は、ASSING ユーティリティをコールする.
+    // "CDP" 以外の namespace で定義した場合は、ASSIGN ユーティリティをコールする.
 //  ASSIGN_RESULT_CODE_BASE(RESULT_CODE);
 
     ///////////////////////////////////////////////////////////////////////
@@ -176,7 +201,7 @@
      * @param [message]  [in] リザルトコードに紐づくメッセージ
      * @returns リザルトコード
      */
-    function declareResultCode(base: RESULT_CODE_BASE, moduleCode: number, message?: string, succeeded = false): number {
+    function declareResultCode(base: RESULT_CODE_BASE, moduleCode: number, message?: string, succeeded: boolean = false): number {
         if (moduleCode <= 0 || MODULE_RESULT_CODE_RANGE <= moduleCode) {
             console.error(`declareResultCode(), invalid localCode range. [localCode: ${moduleCode}]`);
             return;

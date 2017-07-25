@@ -5,6 +5,7 @@
     ASSIGN_RESULT_CODE,
     ErrorInfo,
     isCanceledError,
+    ensureErrorInfo,
 } from "cdp";
 import { Toast } from "cdp/ui";
 import { RESULT_CODE as RESULT_CODE_IMAGES } from "cafeteria.images";
@@ -56,26 +57,14 @@ export default MERGED_RESULT_CODE;
  * @param [error] [in] エラー情報
  */
 export function handleErrorInfo(error?: Error): void {
-    const errorInfo = <ErrorInfo>error;
-    const detail = <ErrorInfo>{ message: "unknown" };
-    let msg, toast: string;
-    if (errorInfo) {
-        if (isCanceledError(errorInfo)) {
-            return;
-        } else {
-            msg = (errorInfo.name ? errorInfo.name : "") + errorInfo.message;
-            toast = (errorInfo.name ? errorInfo.name + "\n" : "") + errorInfo.message;
-            detail.name = errorInfo.name;
-            detail.message = errorInfo.message || detail.message;
-            detail.code = errorInfo.code;
-            detail.cause = errorInfo.cause;
-        }
-    } else {
-        error = error || <any>{};
-        msg = toast = error.message || "[Cafeteria] unexpected error.";
+    const errorInfo = ensureErrorInfo(error);
+    if (isCanceledError(errorInfo)) {
+        return;
     }
+    const msg = `${errorInfo.name} ${errorInfo.message}`;
+    const toast = `${errorInfo.name}\n${errorInfo.message}`;
 
-    console.error(msg + "\ndetail: " + JSON.stringify(detail, null, 4));
+    console.error(msg + "\ndetail: " + JSON.stringify(errorInfo, null, 4));
     if (Config.DEV_FUNCTIONS_ENABLED) {
         Toast.show(toast);
     }

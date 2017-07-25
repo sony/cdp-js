@@ -88,6 +88,9 @@
     <Content Include="exports\cdp\core\core.js">
       <DependentUpon>core.ts</DependentUpon>
     </Content>
+    <Content Include="exports\cdp\core\errors.js">
+      <DependentUpon>errors.ts</DependentUpon>
+    </Content>
     <Content Include="external\cdp\scripts\cdp.lazyload.js" />
     <Content Include="project.config.js" />
     <Content Include="src\scripts\cdp.core.js">
@@ -118,6 +121,7 @@
   <ItemGroup>
     <TypeScriptCompile Include="dist\%40types\cdp.core.d.ts" />
     <TypeScriptCompile Include="exports\cdp\core\core.ts" />
+    <TypeScriptCompile Include="exports\cdp\core\errors.ts" />
     <TypeScriptCompile Include="src\scripts\%40types\dev.dependencies\index.d.ts" />
     <TypeScriptCompile Include="src\scripts\cdp.core.ts" />
     <TypeScriptCompile Include="src\scripts\CDP\Core.ts" />

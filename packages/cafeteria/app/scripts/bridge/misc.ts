@@ -180,9 +180,6 @@ export function generateUUID(): IPromise<string> {
  * @return {IPromise<void>} Promise オブジェクト
  */
 export function changeStatusBarColor(styleId: STATUSBAR_STYLE): IPromise<string> {
-    if (RESULT_CODE.ERROR_CAFETERIA_SLIDESHOE_TEST) {
-        console.log("aaa");
-    }
     if (Platform.Mobile) {
         return getGate().changeStatusBarColor(styleId);
     } else {

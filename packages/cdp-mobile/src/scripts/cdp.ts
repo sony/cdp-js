@@ -18,6 +18,6 @@ import * as NativeBridge from "./cdp/bridge";
 export { Framework, Tools, UI, NativeBridge };
 
 // short cut for initialize method
-export const initialize           = Framework.initialize;
-export const isInitialized        = Framework.isInitialized;
-export const waitForInitialize    = Framework.waitForInitialize;
+export const initialize         = Framework.initialize;
+export const isInitialized      = Framework.isInitialized;
+export const waitForInitialize  = Framework.waitForInitialize;
