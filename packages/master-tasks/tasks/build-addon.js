@@ -113,7 +113,7 @@ function postProcess(options) {
 }
 
 function cleanTemp() {
-//    return command.exec('npm', 'run clean:temp');
+    return command.exec('npm', 'run clean:temp');
 }
 
 function run(options) {
