@@ -6,5 +6,6 @@
  */
 /// <amd-module name="cafeteria.slideshow" />
 
+export * from "./cafeteria/utils/error-defs";
 export * from "./cafeteria/model/_entry-slideshow";
 import "./cafeteria/view/_entry-slideshow";

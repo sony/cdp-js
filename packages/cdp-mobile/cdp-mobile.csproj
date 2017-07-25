@@ -170,6 +170,7 @@
     <TypeScriptCompile Include="src\scripts\cdp\bridge\nativebridge.ts" />
     <TypeScriptCompile Include="src\scripts\cdp\core.ts" />
     <TypeScriptCompile Include="src\scripts\cdp\core\core.ts" />
+    <TypeScriptCompile Include="src\scripts\cdp\core\errors.ts" />
     <TypeScriptCompile Include="src\scripts\cdp\core\framework.jqm.ts" />
     <TypeScriptCompile Include="src\scripts\cdp\core\i18n.ts" />
     <TypeScriptCompile Include="src\scripts\cdp\core\promise.ts" />

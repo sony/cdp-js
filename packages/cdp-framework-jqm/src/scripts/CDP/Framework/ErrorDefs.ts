@@ -6,7 +6,7 @@
      */
     export enum RESULT_CODE_BASE {
         CDP_FRAMEWORK_DECLARERATION = 0,    // TS2432 対策
-        CDP_FRAMEWORK = 103 * MODULE_RESULT_CODE_RANGE,
+        CDP_FRAMEWORK = 3 * MODULE_RESULT_CODE_RANGE_CDP,
     }
 
     ///////////////////////////////////////////////////////////////////////
@@ -16,7 +16,7 @@
 
     /**
      * @enum  LOCAL_CODE_BASE
-     * @brief cdp.core 内のローカルコードオフセット値
+     * @brief cdp.framework.jqm 内のローカルコードオフセット値
      */
     enum LOCAL_CODE_BASE {
         CoreAPI = 0,
@@ -27,12 +27,12 @@
     /* tslint:disable:max-line-length */
     /**
      * @enum  RESULT_CODE
-     * @brief cdp-framework-jqm のエラーコード定義
+     * @brief cdp.framework.jqm のエラーコード定義
      */
     export enum RESULT_CODE {
         ERROR_CDP_FRAMEWORK_DECLARATION                 = 0, // TS2432 対策
-        ERROR_CDP_FRAMEWORK_INITIALIZE_FAILED           = DECLARE_ERROR_CODE("CDP_FRAMEWORK", LOCAL_CODE_BASE.CoreAPI + 1, "framework initialize failed."),
-        ERROR_CDP_FRAMEWORK_ROUTER_INITIALIZE_FAILED    = DECLARE_ERROR_CODE("CDP_FRAMEWORK", LOCAL_CODE_BASE.Router + 1, "router initialize failed."),
+        ERROR_CDP_FRAMEWORK_INITIALIZE_FAILED           = DECLARE_ERROR_CODE(RESULT_CODE_BASE.CDP_FRAMEWORK, LOCAL_CODE_BASE.CoreAPI + 1, "framework initialize failed."),
+        ERROR_CDP_FRAMEWORK_ROUTER_INITIALIZE_FAILED    = DECLARE_ERROR_CODE(RESULT_CODE_BASE.CDP_FRAMEWORK, LOCAL_CODE_BASE.Router + 1, "router initialize failed."),
     }
     /* tslint:enable:max-line-length */
 }

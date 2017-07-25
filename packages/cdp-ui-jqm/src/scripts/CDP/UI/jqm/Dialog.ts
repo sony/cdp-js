@@ -253,7 +253,7 @@
 
         /**
          * Dialog の既定オプションを更新
-         * すぺての Dialog が使用する共通設定
+         * すべての Dialog が使用する共通設定
          *
          * @param options {DialogOptions} [in] ダイアログオプション
          */
@@ -266,7 +266,7 @@
         ///////////////////////////////////////////////////////////////////////
         // private methods
 
-        //! 現在 active なダイアログとして登録する
+        // 現在 active なダイアログとして登録する
         private static register(dialog: Dialog): void {
             if (null != dialog && null != Dialog.s_activeDialog) {
                 console.warn(TAG + "new dialog proc is called in the past dialog's one. use setTimeout() for post process.");

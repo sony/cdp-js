@@ -10,9 +10,7 @@ import {
     Gate,
     IResult,
 } from "cdp/bridge";
-import {
-    RESULT_CODE,
-} from "../utils/error-defs";
+import RESULT_CODE from "../utils/error-defs";
 
 const TAG = "[bridge.Misc] ";
 
