@@ -121,6 +121,7 @@ namespace Config {
         assign_lib("cdp.deviceconsole");
         assign_lib("cdp.ui.smoothscroll");
         assign_lib("cdp.slideshow");
+        assign_lib("cafeteria.errors");
         assign_lib("cafeteria.images");
         assign_lib("cafeteria.slideshow");
         assign_lib("pmo.samples");

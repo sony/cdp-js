@@ -3,6 +3,7 @@
     const CANCELED_MESSAGE = "abort";
     const s_code2message: { [resultCode: string]: string } = {
         "0": "operation succeeded.",
+        "1": "operation canceled.",
         "-1": "operation failed."
     };
 
@@ -14,8 +15,9 @@
      * @brief アプリケーション全体で使用する共通エラーコード定義
      */
     export enum RESULT_CODE {
-        SUCCEEDED = 0,  // 汎用成功
-        FAILED = -1,    // 汎用のエラー
+        SUCCEEDED   = 0,    // 汎用成功
+        CANCELED    = 1,    // 汎用キャンセル
+        FAILED      = -1,   // 汎用のエラー
     }
 
     /**
@@ -42,7 +44,7 @@
     export function makeErrorInfo(resultCode: number, tag?: string, message?: string, cause?: Error): ErrorInfo {
         const canceled = (cause && CANCELED_MESSAGE === cause.message) ? true : false;
         const msg = canceled ? CANCELED_MESSAGE : message;
-        const code = canceled ? RESULT_CODE.SUCCEEDED : resultCode;
+        const code = canceled ? RESULT_CODE.CANCELED : resultCode;
         return {
             ...new Error(msg || messageFromResultCode(code)),
             ...{
@@ -56,12 +58,12 @@
     /**
      * キャンセルエラー情報生成
      *
-     * @param [cause]    [in] 下位のエラーを指定
      * @param [tag]      [in] TAG を指定
+     * @param [cause]    [in] 下位のエラーを指定
      * @returns エラーオブジェクト
      */
     export function makeCanceledErrorInfo(tag?: string, cause?: Error): ErrorInfo {
-        return makeErrorInfo(RESULT_CODE.SUCCEEDED, tag, CANCELED_MESSAGE, cause);
+        return makeErrorInfo(RESULT_CODE.CANCELED, tag, CANCELED_MESSAGE, cause);
     }
 
     /**
@@ -73,13 +75,14 @@
     export function isCanceledError(error: Error): boolean {
         const errorInfo = <ErrorInfo>error;
         if (errorInfo) {
-            if (RESULT_CODE.SUCCEEDED === errorInfo.code || CANCELED_MESSAGE === errorInfo.message) {
+            if (RESULT_CODE.CANCELED === errorInfo.code || CANCELED_MESSAGE === errorInfo.message) {
                 return true;
             }
         }
         return false;
     }
 
+    export const MODULE_RESULT_CODE_RANGE_CDP = 100;
 
     /**
      * @enum  RESULT_CODE_BASE
@@ -88,17 +91,38 @@
      */
     export enum RESULT_CODE_BASE {
         CDP_DECLARERATION = 0, // TS2432 対策: 同一 namespace に複数回にわたって同名の enum を宣言する場合に必要.
-//      MODULE_A = 1 * MODULE_RESULT_CODE_RANGE,    // ex) moduleA: 1001 ～ 1999
-//      MODULE_B = 2 * MODULE_RESULT_CODE_RANGE,    // ex) moduleB: 2001 ～ 2999
-//      MODULE_C = 3 * MODULE_RESULT_CODE_RANGE,    // ex) moduleC: 3001 ～ 3999
-        CDP = 101 * MODULE_RESULT_CODE_RANGE,       // cdp reserved. 101,000 ～
+//      MODULE_A = 1 * MODULE_RESULT_CODE_RANGE,    // ex) moduleA: abs(1001 ～ 1999)
+//      MODULE_B = 2 * MODULE_RESULT_CODE_RANGE,    // ex) moduleB: abs(2001 ～ 2999)
+//      MODULE_C = 3 * MODULE_RESULT_CODE_RANGE,    // ex) moduleC: abs(3001 ～ 3999)
+        CDP = 1 * MODULE_RESULT_CODE_RANGE_CDP,     // cdp reserved. abs(0 ～ 1000)
     }
     // "CDP" 以外の namespace で定義した場合は、ASSING ユーティリティをコールする.
 //  ASSIGN_RESULT_CODE_BASE(RESULT_CODE_BASE);
 
+    // サクセスコード生成
+    export function DECLARE_SUCCESS_CODE(base: number | string, localCode: number, message?: string): number {
+        if ("string" === typeof base) {
+            base = CDP.RESULT_CODE_BASE[base];
+        }
+        return declareResultCode(<RESULT_CODE_BASE>base, localCode, message, true);
+    }
+
     // エラーコード生成
-    export function DECLARE_ERROR_CODE(baseName: string, localCode: number, message?: string): number {
-        return declareResultCode(CDP.RESULT_CODE_BASE[baseName], localCode, message);
+    export function DECLARE_ERROR_CODE(base: number | string, localCode: number, message?: string): number {
+        if ("string" === typeof base) {
+            base = CDP.RESULT_CODE_BASE[base];
+        }
+        return declareResultCode(<RESULT_CODE_BASE>base, localCode, message, false);
+    }
+
+    // 成功判定
+    export function SUCCEEDED(code: number): boolean {
+        return 0 <= code;
+    }
+
+    // 失敗判定
+    export function FAILED(code: number): boolean {
+        return code < 0;
     }
 
     /**
@@ -152,12 +176,13 @@
      * @param [message]  [in] リザルトコードに紐づくメッセージ
      * @returns リザルトコード
      */
-    function declareResultCode(base: RESULT_CODE_BASE, moduleCode: number, message?: string): number {
+    function declareResultCode(base: RESULT_CODE_BASE, moduleCode: number, message?: string, succeeded = false): number {
         if (moduleCode <= 0 || MODULE_RESULT_CODE_RANGE <= moduleCode) {
             console.error(`declareResultCode(), invalid localCode range. [localCode: ${moduleCode}]`);
             return;
         }
-        const resultCode = base + moduleCode;
+        const signed = succeeded ? 1 : -1;
+        const resultCode = signed * (base + moduleCode);
         s_code2message[resultCode] = message ? message : (`[RESULT_CODE: ${resultCode}]`);
         return resultCode;
     }

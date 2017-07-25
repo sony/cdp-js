@@ -1,35 +1,19 @@
 ﻿import {
     Config,
     MODULE_RESULT_CODE_RANGE,
-    ASSIGN_RESULT_CODE_BASE,
     DECLARE_ERROR_CODE,
     ASSIGN_RESULT_CODE,
     ErrorInfo,
     isCanceledError,
 } from "cdp";
 import { Toast } from "cdp/ui";
-
-/**
- * @enum  RESULT_CODE_BASE
- * @brief リザルトコードのオフセット値
- *        本定義はアプリケーション内で分散管理しても良いが、
- *        モジュールごとに被らない運用が必要
- */
-export enum RESULT_CODE_BASE {
-    CAFETERIA_APP       = 1 * MODULE_RESULT_CODE_RANGE,
-    CAFETERIA_IMAGES    = 2 * MODULE_RESULT_CODE_RANGE,
-    CAFETERIA_SLIDESHOW = 3 * MODULE_RESULT_CODE_RANGE,
-    CDP_DEVICECONSOLE   = 4 * MODULE_RESULT_CODE_RANGE,
-    CDP_SLIDESHOW       = 5 * MODULE_RESULT_CODE_RANGE,
-    CDP_UI_SMOOTHSCROLL = 6 * MODULE_RESULT_CODE_RANGE,
-    PMO_SAMPLES         = 7 * MODULE_RESULT_CODE_RANGE,
-}
-ASSIGN_RESULT_CODE_BASE(RESULT_CODE_BASE);
-
+import { RESULT_CODE as RESULT_CODE_IMAGES } from "cafeteria.images";
+import { RESULT_CODE as RESULT_CODE_SLIDESHOW } from "cafeteria.slideshow";
 
 ///////////////////////////////////////////////////////////////////////
 // module error declaration:
 
+const RESULT_CODE_BASE = 1 * MODULE_RESULT_CODE_RANGE;
 const FUNCTION_CODE_RANGE = 10;
 
 /**
@@ -53,11 +37,15 @@ enum LOCAL_CODE_BASE {
  *        base name を指定し、モジュール別に拡張可能
  */
 export enum RESULT_CODE {
-    ERROR_CAFETERIA_ASSET_ACCESS_FAILED         = DECLARE_ERROR_CODE("CAFETERIA_APP", LOCAL_CODE_BASE.COMMON + 1, "assets access failed."),
-    ERROR_CAFETERIA_NATIVEBRIDGE_METHOD_FAILED  = DECLARE_ERROR_CODE("CAFETERIA_APP", LOCAL_CODE_BASE.NATIVEBRIDGE + 1, "nativebride method call failed."),
+    ERROR_CAFETERIA_ASSET_ACCESS_FAILED         = DECLARE_ERROR_CODE(RESULT_CODE_BASE, LOCAL_CODE_BASE.COMMON + 1, "assets access failed."),
+    ERROR_CAFETERIA_NATIVEBRIDGE_METHOD_FAILED  = DECLARE_ERROR_CODE(RESULT_CODE_BASE, LOCAL_CODE_BASE.NATIVEBRIDGE + 1, "nativebride method call failed."),
 }
 ASSIGN_RESULT_CODE(RESULT_CODE);
 /* tslint:enable:max-line-length */
+
+// アプリケーション定義の RESULT_CODE をマージ可
+const MERGED_RESULT_CODE = { ...RESULT_CODE, ...RESULT_CODE_IMAGES, ...RESULT_CODE_SLIDESHOW };
+export default MERGED_RESULT_CODE;
 
 ///////////////////////////////////////////////////////////////////////
 // example: handleErrorInfo
