@@ -17,6 +17,8 @@
     "scripts/CDP/UI/jqm/BaseHeaderView.ts",
     "scripts/CDP/UI/jqm/BasePage.ts",
     "scripts/CDP/UI/jqm/PageView.ts",
+    "scripts/CDP/UI/jqm/TabHostView.ts",
+    "scripts/CDP/UI/jqm/TabView.ts",
     "scripts/CDP/UI/jqm/PageListView.ts",
     "scripts/CDP/UI/jqm/PageExpandableListView.ts",
     "scripts/CDP/UI/jqm/Extension/Ripple.ts",

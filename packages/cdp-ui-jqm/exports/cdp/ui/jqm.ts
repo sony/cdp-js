@@ -66,6 +66,17 @@ export const PageView = _ui.PageView;
 
 export type PageViewConstructOptions<TModel extends Model = Model> = CDP.UI.PageViewConstructOptions<TModel>;
 
+// @class TabView/TabHostView
+export type ITabView = CDP.UI.ITabView;
+export type TabViewConstructionOptions<TModel extends Model = Model> = CDP.UI.TabViewConstructionOptions<TModel>;
+export type TabViewContext<TModel extends Model = Model> = CDP.UI.TabViewContext<TModel>;
+export type TabHostViewConstructOptions<TModel extends Model = Model> = CDP.UI.TabHostViewConstructOptions<TModel>;
+export type TabHostView<TModel extends Model = Model> = CDP.UI.TabHostView<TModel>;
+export const TabHostView = _ui.TabHostView;
+export type TabView<TModel extends Model = Model> = CDP.UI.TabView<TModel>;
+export const TabView = _ui.TabView;
+
+
 // @class PageListView
 export type PageListView<TModel extends Model = Model> = CDP.UI.PageListView<TModel>;
 export const PageListView = _ui.PageListView;
