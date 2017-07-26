@@ -40,13 +40,14 @@ $ npm run <command>
 |:----------------|:----------------------------------------------------------------------------------------------------------------------|
 | clean           | `docs/reports/metrics` 以外の生成したファイルを削除                                                                   |
 | update          | `devDependencies`, `dependencies`, `@cdp/mobile` および `package.json` の更新. ※要 ssh-agent                         |
+| update:cdp      | `@cdp/mobile` の更新. ※要 ssh-agent                                                                                  |
 | test            | `compile`, `lint`, `unit-test` の実行                                                                                 |
 | rearrange       | `dependencies` に記載されているモジュールを `node_modules` から `external` 以下に再配置. ※既定で 整形, minify を実行 |
 | package         | `cordova build --release` を実行                                                                                      |
 | compile:dev     | `.ts` ファイルと同じ位置に `.js` をコンパイル. 既定の tsconfig.json の設定                                            |
-| watch           | [TBD] watch:ts と watch:scss の同時実行                                                                               |
-| watch:ts        | comming soon                                                                                                          |
-| watch:scss      | [TBD] post-css まで考慮するとたくさん node_modules を追加する必要がありそうなのが懸案                                 |
+| watch           | `watch:ts` と `watch:scss` の同時実行                                                                                 |
+| watch:ts        | `.ts` ファイルの監視 (VSCode ユーザー向け)                                                                            |
+| watch:scss      | `.scss` ファイルの監視 (VSCode ユーザー向け)                                                                          |
 | build:debug     | `www` 以下にデバッグビルドを作成                                                                                      |
 | build:release   | `www` 以下にリリースビルドを作成                                                                                      |
 | lint            | `eslint` と `tslint` の実行                                                                                           |
@@ -256,7 +257,7 @@ declare module "flipsnap" {
 `app/external/<module>/scripts/<module>.js` へのパスを展開します。  
 第2引数を使用することで、実際のファイル名がモジュール名と異なる場合にも解決可能です。(`iscrol`の例)  
 このヘルパー関数を使用することで、`Unit Test` 時のパスも解決されます。  
-したがって、`Unit TEST` のセットアップに**特別な設定は不要**です。
+したがって、`Unit Test` のセットアップに**特別な設定は不要**です。
 
 ```typescript
         const config = {
