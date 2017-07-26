@@ -53,7 +53,7 @@ $ npm run <command>
 | lint            | `eslint` と `tslint` の実行                                                                                           |
 | lint:js         | `eslint` の実行                                                                                                       |
 | lint:ts         | `tslint` の実行                                                                                                       |
-| debug           | TDD モードで `unit-test` の実行. library 開発と共通にしてこのコマンドをアサインしたが `tdd` にするかも.               |
+| tdd             | `testem` の実行. `Chrome` 上で TDD が可能                                                                              |
 | coverage        | `unit-test` を実行し `docs/reports/coverage` 以下にレポートを作成                                                     |
 | document        | `typedoc` を実行し、`docs/typedoc` 以下にドキュメントを生成                                                           |
 | metrics         | `plato` を実行し、`docs/reports/metrics` 以下にレポートを作成                                                         |

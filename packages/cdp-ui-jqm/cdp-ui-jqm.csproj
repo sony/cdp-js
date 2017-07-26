@@ -179,6 +179,12 @@
     <Content Include="src\scripts\CDP\UI\jqm\PageView.js">
       <DependentUpon>PageView.ts</DependentUpon>
     </Content>
+    <Content Include="src\scripts\CDP\UI\jqm\TabHostView.js">
+      <DependentUpon>TabHostView.ts</DependentUpon>
+    </Content>
+    <Content Include="src\scripts\CDP\UI\jqm\TabView.js">
+      <DependentUpon>TabView.ts</DependentUpon>
+    </Content>
     <Content Include="src\scripts\CDP\UI\jqm\Theme.js">
       <DependentUpon>Theme.ts</DependentUpon>
     </Content>
@@ -244,6 +250,8 @@
     <TypeScriptCompile Include="src\scripts\CDP\UI\jqm\Interfaces.ts" />
     <TypeScriptCompile Include="src\scripts\CDP\UI\jqm\PageExpandableListView.ts" />
     <TypeScriptCompile Include="src\scripts\CDP\UI\jqm\PageListView.ts" />
+    <TypeScriptCompile Include="src\scripts\CDP\UI\jqm\TabHostView.ts" />
+    <TypeScriptCompile Include="src\scripts\CDP\UI\jqm\TabView.ts" />
     <TypeScriptCompile Include="src\scripts\CDP\UI\jqm\Theme.ts" />
     <TypeScriptCompile Include="src\scripts\CDP\UI\jqm\PageView.ts" />
     <TypeScriptCompile Include="src\scripts\CDP\UI\jqm\Toast.ts" />
