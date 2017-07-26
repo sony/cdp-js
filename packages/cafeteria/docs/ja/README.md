@@ -15,11 +15,11 @@
         - [global モジュールの解決](#BOILERPLATE_DTS_GLOBAL)
         - [@types に見つからない or 定義が足りない場合](#BOILERPLATE_DTS_PATCH)
     - [config.ts の変更点](#BOILERPLATE_CONFIGTS)
-        - [require.config path 指定](#BOILERPLATE_CONFIGTS_REQUIREJS)
+        - [require.config の path 指定](#BOILERPLATE_CONFIGTS_REQUIREJS)
         - [基幹ライブラリのコンフィギュレーション指定](#BOILERPLATE_CONFIGTS_CORES)
     - [よく使用するビルドタスクのユーザー開放](#BOILERPLATE_BUILDTASKS)
         - [copy_src](#BOILERPLATE_BUILDTASKS_COPY)
-        - [string-replace](#BOILERPLATE_BUILDTASKS_SREPLACE)
+        - [string_replace](#BOILERPLATE_BUILDTASKS_SREPLACE)
         - [hook_scripts](#BOILERPLATE_BUILDTASKS_HOOKS)
     - [library module 開発](#BOILERPLATE_LIB)
     - [porting module 開発](#BOILERPLATE_PORTING)
@@ -44,9 +44,9 @@ $ npm run <command>
 | rearrange       | `dependencies` に記載されているモジュールを `node_modules` から `external` 以下に再配置. ※既定で 整形, minify を実行 |
 | package         | `cordova build --release` を実行                                                                                      |
 | compile:dev     | `.ts` ファイルと同じ位置に `.js` をコンパイル. 既定の tsconfig.json の設定                                            |
-| watch:ts        | comming soon                                                                                                          |
-| watch:scss      | [TBD] postcss まで考慮するとたくさん node_modules を追加する必要がありそうなのが懸案                                  |
 | watch           | [TBD] watch:ts と watch:scss の同時実行                                                                               |
+| watch:ts        | comming soon                                                                                                          |
+| watch:scss      | [TBD] post-css まで考慮するとたくさん node_modules を追加する必要がありそうなのが懸案                                 |
 | build:debug     | `www` 以下にデバッグビルドを作成                                                                                      |
 | build:release   | `www` 以下にリリースビルドを作成                                                                                      |
 | lint            | `eslint` と `tslint` の実行                                                                                           |
@@ -97,6 +97,7 @@ npm scripts, cordova command ともに、以下の便利オプションが指定
 |:------------|:-----------------------------------------------------------------------------------|
 | --no-minify | リリースビルドで `minify` しない                                                   |
 | --map       | リリースビルドで `map file` を生成する. `--no-minify` が指定されていた場合無効.    |
+| --no-hook   | 対象の cordova command を実行しても hook しない (公式 --nohook が効かない)         |
 
 
 - npm scripts からの指定方法
@@ -116,7 +117,7 @@ $ cordova build android --release --no-minify
 ## <a name="BOILERPLATE_ES2015" />es2015 モジュールで開発
 
 基本的に `import` 構文を使用して、ファイルを読み込みます。  
-もはや `/// <reference path="hoge.ts">` の**記述は不要**です。  
+`/// <reference path="hoge.ts">` の**記述は不要**です。  
 後述の View ルート解決を除いて、ファイル追加のみですぐに開発可能です。
 
 ```typescript
@@ -216,6 +217,7 @@ $ npm install @types/<modoule> --save-dev
       "@cdp/mobile",
       "patch.dependencies",
       "requirejs",
+      "cordova",
       "jasmine"
     ]
 ```
@@ -225,7 +227,7 @@ $ npm install @types/<modoule> --save-dev
 ### <a name="BOILERPLATE_DTS_PATCH" />@types に見つからない or 定義が足りない場合
 
 @types に無いモジュールは、手動で `d.ts` を追加することが可能です。  
-TypeScript 2.3 移行、無くても空気を読んでくれるようになりましたが、boilerplate では、`app/external/@types/patch.dependencies` にエントリすることで対応できます。
+TypeScript 2.3 以降、無くても空気を読んでくれるようになりましたが、boilerplate では、`app/external/@types/patch.dependencies` にエントリすることで対応できます。
 
 例: @types にはあるが、module 定義が無い場合(よくある)
 
@@ -234,7 +236,7 @@ TypeScript 2.3 移行、無くても空気を読んでくれるようになり�
 /// <reference path="flipsnap.d.ts"/>
 ```
 
-- app/external/@types/patch.dependencies/flipsnap.d.d.ts
+- app/external/@types/patch.dependencies/flipsnap.d.ts
 ```typescript
 /// <reference types="flipsnap"/>
 
@@ -248,7 +250,7 @@ declare module "flipsnap" {
 
 ## <a name="BOILERPLATE_CONFIGTS" />config.ts の変更点
 
-### <a name="BOILERPLATE_CONFIGTS_REQUIREJS" />require.config path 指定
+### <a name="BOILERPLATE_CONFIGTS_REQUIREJS" />require.config の path 指定
 
 `requirejs` の `config` に `_module()` ヘルパー関数を用意しました。  
 `app/external/<module>/scripts/<module>.js` へのパスを展開します。  
@@ -326,7 +328,7 @@ const build_settings = {
 `dev_resource` は配列で複数指定可能ですが、ルートは `app/res` 固定です。
 
 
-### <a name="BOILERPLATE_BUILDTASKS_SREPLACE" />string-replace
+### <a name="BOILERPLATE_BUILDTASKS_SREPLACE" />string_replace
 
 文字列置換タスクです。対象は `config.ts` をコンパイルした `config.js` 限定です。
 
@@ -335,7 +337,6 @@ const build_settings = {
 ```javascript
 const build_settings = {
     string_replace: {
-        // dev-func を有効にする場合は、release より先に enalbe などを設定
         'dev-func': {
             '%% dev_functions_enabled %%': 'enable',    // 置換対象が1つのときはオプションなしでデフォルト
         },
