@@ -15,6 +15,7 @@ const RESULT_CODE_BASE = 2 * MODULE_RESULT_CODE_RANGE;
  */
 enum LOCAL_CODE_BASE {
     COMMON = 0,
+    LOCAL_CONTENT,
 }
 
 /* tslint:disable:max-line-length */
@@ -23,7 +24,8 @@ enum LOCAL_CODE_BASE {
  * @brief モジュールのエラーコード定義
  */
 export enum RESULT_CODE {
-    ERROR_CAFETERIA_IMAGES_TEST = DECLARE_ERROR_CODE(RESULT_CODE_BASE, LOCAL_CODE_BASE.COMMON + 1, "test declaration"),
+    ERROR_CAFETERIA_IMAGES_TEST                                 = DECLARE_ERROR_CODE(RESULT_CODE_BASE, LOCAL_CODE_BASE.COMMON + 1, "test declaration"),
+    ERROR_CAFETERIA_IMAGES_LOCAL_CONTENTS_QUERY_CONTENTS_FAILED = DECLARE_ERROR_CODE(RESULT_CODE_BASE, LOCAL_CODE_BASE.LOCAL_CONTENT + 1, "query local contents failed."),
 }
 ASSIGN_RESULT_CODE(RESULT_CODE);
 /* tslint:enable:max-line-length */

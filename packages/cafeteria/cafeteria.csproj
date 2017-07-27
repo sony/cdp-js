@@ -50,7 +50,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties package_1json__JSONSchema="" tsconfig_1base_1json__JSONSchema="http://json.schemastore.org/tsconfig" />
+      <UserProperties tsconfig_1base_1json__JSONSchema="http://json.schemastore.org/tsconfig" package_1json__JSONSchema="" />
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
@@ -77,6 +77,12 @@
     <Content Include=".npmignore" />
     <Content Include="app\external\jquery\stylesheets\jquery.mobile.default-theme.css" />
     <Content Include="app\external\sylvester\scripts\sylvester.js" />
+    <Content Include="app\lib\scripts\cafeteria.images\cafeteria\bridge\native-local-content-provider.js">
+      <DependentUpon>native-local-content-provider.ts</DependentUpon>
+    </Content>
+    <Content Include="app\lib\scripts\cafeteria.images\cafeteria\bridge\stub-local-content-provider.js">
+      <DependentUpon>stub-local-content-provider.ts</DependentUpon>
+    </Content>
     <Content Include="app\lib\scripts\cafeteria.images\cafeteria\error-defs.js">
       <DependentUpon>error-defs.ts</DependentUpon>
     </Content>
@@ -85,6 +91,9 @@
     </Content>
     <Content Include="app\lib\scripts\cafeteria.images\cafeteria\image-item-generator.js">
       <DependentUpon>image-item-generator.ts</DependentUpon>
+    </Content>
+    <Content Include="app\lib\scripts\cafeteria.images\cafeteria\local-content-provider.js">
+      <DependentUpon>local-content-provider.ts</DependentUpon>
     </Content>
     <Content Include="app\lib\scripts\cafeteria.images\main.js">
       <DependentUpon>main.ts</DependentUpon>
@@ -1012,9 +1021,12 @@
     <TypeScriptCompile Include="app\external\%40types\%40cdp\mobile\index.d.ts" />
     <TypeScriptCompile Include="app\external\%40types\%40cdp\mobile\jquery.mobile.d.ts" />
     <TypeScriptCompile Include="app\external\%40types\patch.dependencies\sylvester.d.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\cafeteria.images\cafeteria\bridge\native-local-content-provider.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\cafeteria.images\cafeteria\bridge\stub-local-content-provider.ts" />
     <TypeScriptCompile Include="app\lib\scripts\cafeteria.images\cafeteria\error-defs.ts" />
     <TypeScriptCompile Include="app\lib\scripts\cafeteria.images\cafeteria\image-interface.ts" />
     <TypeScriptCompile Include="app\lib\scripts\cafeteria.images\cafeteria\image-item-generator.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\cafeteria.images\cafeteria\local-content-provider.ts" />
     <TypeScriptCompile Include="app\lib\scripts\cafeteria.images\main.ts" />
     <TypeScriptCompile Include="app\lib\scripts\cafeteria.images\_declare.d.ts" />
     <TypeScriptCompile Include="app\lib\scripts\cafeteria.images\_export.d.ts" />

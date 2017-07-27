@@ -2,7 +2,6 @@
     PageView,
     registerPage,
     ShowEventData,
-    ScrollerElement,
 } from "cdp/ui";
 
 const TAG = "[view.tabviews-sample.SwipeableTabViewPage] ";
