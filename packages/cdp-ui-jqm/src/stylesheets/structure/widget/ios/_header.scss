@@ -82,41 +82,41 @@
     }
 
     .ui-header:not(.ui-no-platform) {
-        .ui-btn {
+        .ui-btn:not(.ui-no-platform) {
             top: 0;
             line-height: $metrics-header-height;
-        }
-        .ui-btn-left.ui-btn-icon-notext:after {
-            left: 16px;
-        }
-        .ui-btn-right.ui-btn-icon-notext:after {
-            right: 16px;
-        }
-        .ui-btn-left {
-            &.ui-icon-close {
-                padding-left: 15px;
-                &:after {
-                    content: none;
+            &.ui-btn-left.ui-btn-icon-notext:after {
+                left: 16px;
+            }
+            &.ui-btn-right.ui-btn-icon-notext:after {
+                right: 16px;
+            }
+            &.ui-btn-left {
+                &.ui-icon-close {
+                    padding-left: 15px;
+                    &:after {
+                        content: none;
+                    }
                 }
             }
-        }
-        .ui-icon-back,
-        .ui-icon-arrow-l,
-        .ui-back-indicator {
-            min-width:      25%;
-            height:         $metrics-header-height;
-            padding:        0 0 0 30px;
-            text-align:     left;
-            text-shadow:    none;
-            font-size:      $metrics-font-base-size;
-            font-weight:    normal;
-            transition:     color $transition-slide-duration $transition-slide-timing-function;
-            &:active, &:focus {
-                opacity: 0.5;
-            }
-            &:after {
-                left: 16px;
-                @include declare-indicator-l(12px, 3px, null);
+            &.ui-icon-back,
+            &.ui-icon-arrow-l,
+            &.ui-back-indicator {
+                min-width:      25%;
+                height:         $metrics-header-height;
+                padding:        0 0 0 30px;
+                text-align:     left;
+                text-shadow:    none;
+                font-size:      $metrics-font-base-size;
+                font-weight:    normal;
+                transition:     color $transition-slide-duration $transition-slide-timing-function;
+                &:active, &:focus {
+                    opacity: 0.5;
+                }
+                &:after {
+                    left: 16px;
+                    @include declare-indicator-l(12px, 3px, null);
+                }
             }
         }
 

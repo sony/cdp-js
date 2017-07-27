@@ -19,13 +19,13 @@
     // structure
 
     .ui-page-theme-#{$theme} {
-        .ui-header {
+        .ui-header:not(.ui-no-platform) {
             &.ui-bar-inherit {
                 background-color:   $color-ios-header;
                 border-color:       $color-ios-header-border;
                 color:              $color-ios-header-font;
             }
-            .ui-btn {
+            .ui-btn:not(.ui-no-platform) {
                 color: $color-ios-header-button;
                 box-shadow: initial;
                 &:active {

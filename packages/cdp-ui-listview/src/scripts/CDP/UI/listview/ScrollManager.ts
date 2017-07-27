@@ -21,8 +21,8 @@ namespace CDP.UI {
         private _scroller: IScroller = null;                                        //!< Scroll に使用する IScroller インスタンス
         private _settings: ListViewOptions = null;                                  //!< ScrollManager オプションを格納
         private _active = true;                                                     //!< UI 表示中は true に指定
-        private _scrollEventHandler: (event: JQuery.Event) => void = null;     //!< Scroll Event Handler
-        private _scrollStopEventHandler: (event: JQuery.Event) => void = null; //!< Scroll Stop Event Handler
+        private _scrollEventHandler: (event: JQuery.Event) => void = null;          //!< Scroll Event Handler
+        private _scrollStopEventHandler: (event: JQuery.Event) => void = null;      //!< Scroll Stop Event Handler
         private _baseHeight: number = 0;                                            //!< 高さの基準値
         private _lines: LineProfile[] = [];                                         //!< 管理下にある LineProfile 配列
         private _pages: PageProfile[] = [];                                         //!< 管理下にある PageProfile 配列
@@ -54,7 +54,7 @@ namespace CDP.UI {
                 enableAnimation: true,
                 animationDuration: 0,
                 baseDepth: "auto",
-                itemTagName: "div",
+                itemTagName: "li",
                 removeItemWithTransition: true,
                 useDummyInactiveScrollMap: false,
             };

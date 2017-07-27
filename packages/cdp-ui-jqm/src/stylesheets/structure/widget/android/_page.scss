@@ -16,9 +16,9 @@ $metrics-android-status-bar-header-landspace:   $metrics-header-height + $metric
         }
         .ui-content {
             &:not(.ui-screen-no-fix) {
-                top: $metrics-android-status-bar-header-portrait + $metrics-common-border-width;
+                top: $metrics-android-status-bar-header-portrait;
                 @include orientation-landscape(phone) {
-                    top: $metrics-android-status-bar-header-landspace + $metrics-common-border-width;
+                    top: $metrics-android-status-bar-header-landspace;
                 }
             }
         }

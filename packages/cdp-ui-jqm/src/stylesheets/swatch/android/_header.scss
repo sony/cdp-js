@@ -4,13 +4,13 @@
 
 .ui-platform-android {
     .ui-page-theme-#{$theme} {
-        .ui-header {
+        .ui-header:not(.ui-no-platform) {
             &.ui-bar-inherit {
                 background-color:   $color-android-header;
                 border-color:       $color-android-header-border;
                 color:              $color-android-header-font;
             }
-            .ui-btn {
+            .ui-btn:not(.ui-no-platform) {
                 box-shadow: initial;
                 &:before {
                     background-color: $color-android-header-ripple-center;

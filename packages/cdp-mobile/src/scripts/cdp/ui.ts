@@ -9,7 +9,7 @@ export type IPage           = _framework.IPage;
 export type Page            = _framework.Page;
 export type Orientation     = _framework.Orientation;
 export type ShowEventData   = _framework.ShowEventData;
-export type HideEventData = _framework.HideEventData;
+export type HideEventData   = _framework.HideEventData;
 
 export type  View<TModel extends _framework.Model = _framework.Model> = CDP.Framework.View<TModel>;
 export const View = _framework.View;

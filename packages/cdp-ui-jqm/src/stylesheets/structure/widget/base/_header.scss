@@ -22,7 +22,7 @@
             }
         }
 
-        .ui-btn {
+        .ui-btn:not(.ui-no-platform) {
             min-width:      25%;
             height:         $metrics-header-height;
             padding:        0 15px;

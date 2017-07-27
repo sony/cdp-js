@@ -34,6 +34,7 @@ class PageListViewIScroll extends PageListView {
                 scrollerFactory: ScrollerIScroll.getFactory({
                     fadeScrollbars: false,
                 }),
+                itemTagName: "div",
             });
     }
 
