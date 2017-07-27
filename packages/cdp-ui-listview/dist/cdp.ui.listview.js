@@ -1,7 +1,7 @@
 ﻿/*!
  * cdp.ui.listview.js 2.0.0
  *
- * Date: 2017-07-26T11:49:46.615Z
+ * Date: 2017-07-27T02:32:19.470Z
  */
 (function (root, factory) { if (typeof define === "function" && define.amd) { define(["jquery", "underscore", "backbone"], function ($, _, Backbone) { return factory(root.CDP || (root.CDP = {}), $, _, Backbone); }); } else if (typeof exports === "object") { module.exports = factory(root.CDP || (root.CDP = {}), require("jquery"), require("underscore"), require("backbone")); } else { factory(root.CDP || (root.CDP = {}), root.$, root._, root.Backbone); } }(((this || 0).self || global), function (CDP, $, _, Backbone) { CDP.UI = CDP.UI || {};
 /// <reference types="jquery" />
