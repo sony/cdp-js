@@ -21,3 +21,6 @@ export { Framework, Tools, UI, NativeBridge };
 export const initialize         = Framework.initialize;
 export const isInitialized      = Framework.isInitialized;
 export const waitForInitialize  = Framework.waitForInitialize;
+
+const _CDP = CDP;
+export default _CDP;

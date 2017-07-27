@@ -293,9 +293,9 @@ declare module "flipsnap" {
 
 ## <a name="BOILERPLATE_BUILDTASKS" />よく使用するビルドタスクのユーザー開放
 
-ビルド時に細かい設定を変更したい場合があります。  
+仕向けごとにビルド時に細かい設定を変更したい場合があります。  
 たとえばサーバーにアクセスするアプリケーションの場合、API の向き先を QA 環境 <-> PROD 環境を柔軟に変更したいときなどが該当します。  
-このような時、従来の boilerplate では専用タスクを起こす必要がありました。  
+このような時、従来の boilerplate では都度専用タスクを起こす必要がありました。  
 今回の boilerplate では、`project.config.js` にプロパティを追加するだけで、実現可能です。
 
 - `project.config.js`
@@ -393,7 +393,7 @@ $ cordova build android --server=prod
     - `cordova build --release --dev-func` とした場合
         - `config.js` の `%% build_setting %%` 文字列を `` (空文字)に書き換える
 
-最後に例は、先に　`%% dev_functions_enabled %%` の置換が走るため、`--release` の対象外になるという振る舞いです。  
+最後の例は、先に　`%% dev_functions_enabled %%` の置換が走るため、`--release` の対象外になるという振る舞いです。  
 これは、**リリース版でも、エンジニアリングUI を有効にする** ようなシナリオで活用できます。
 
 

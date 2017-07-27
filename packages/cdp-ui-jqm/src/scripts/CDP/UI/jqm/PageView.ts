@@ -114,7 +114,7 @@ namespace CDP.UI {
          * @param status   {String}   [in] 状態識別子
          * @param callback {Function} [in] 処理コールバック
          */
-        statusScope(status: string, callback: () => void): void {
+        statusScope(status: string, callback: () => void | Promise<any>): void {
             this._statusMgr.statusScope(status, callback);
         }
 

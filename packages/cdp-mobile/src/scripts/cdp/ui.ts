@@ -25,3 +25,6 @@ export const unregisterOrientationChangedListener   = _framework.unregisterOrien
 // tools ui types & utils
 export type JST             = _tools.JST;
 export const getTemplate    = _tools.Template.getJST;
+
+const _CDP_UI = CDP.UI;
+export default _CDP_UI;
