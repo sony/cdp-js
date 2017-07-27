@@ -54,7 +54,7 @@
         }
 
         ///////////////////////////////////////////////////////////////////////
-        // Implements: IViewPager Events.
+        // Implements: ITabView Events.
 
         // Scroller の初期化時にコールされる
         onInitialize(host: TabHostView, $root: JQuery): void {

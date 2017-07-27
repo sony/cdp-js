@@ -675,6 +675,12 @@
     <Content Include="app\scripts\view\options-view.js">
       <DependentUpon>options-view.ts</DependentUpon>
     </Content>
+    <Content Include="app\scripts\view\tabviews-sample\root.js">
+      <DependentUpon>root.ts</DependentUpon>
+    </Content>
+    <Content Include="app\scripts\view\tabviews-sample\swipe-tabview-page.js">
+      <DependentUpon>swipe-tabview-page.ts</DependentUpon>
+    </Content>
     <Content Include="app\scripts\view\views-sample\backbone.js">
       <DependentUpon>backbone.ts</DependentUpon>
     </Content>
@@ -787,6 +793,8 @@
     <Content Include="app\templates\listviews-sample\sortable-listview.html" />
     <Content Include="app\templates\nativebridge-sample\nativebridge-root.html" />
     <Content Include="app\templates\options.html" />
+    <Content Include="app\templates\tabviews-sample\swipeable-tabview.html" />
+    <Content Include="app\templates\tabviews-sample\tabview-root.html" />
     <Content Include="app\templates\views-sample\view-backbone.html" />
     <Content Include="app\templates\views-sample\view-page-owner.html" />
     <Content Include="app\templates\views-sample\view-page-view.html" />
@@ -890,6 +898,7 @@
     <Content Include="platforms\ios\Cafeteria\Classes\MainViewController.m" />
     <Content Include="platforms\ios\Cafeteria\NativeBridge\CafeteriaMisc.m" />
     <Content Include="platforms\ios\Cafeteria\NativeBridge\CafeteriaSimpleGate.m" />
+    <Content Include="app\stylesheets\_tabview.scss" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
@@ -1137,6 +1146,8 @@
     </Content>
     <TypeScriptCompile Include="app\scripts\view\nativebridge-sample\root.ts" />
     <TypeScriptCompile Include="app\scripts\view\options-view.ts" />
+    <TypeScriptCompile Include="app\scripts\view\tabviews-sample\swipe-tabview-page.ts" />
+    <TypeScriptCompile Include="app\scripts\view\tabviews-sample\root.ts" />
     <TypeScriptCompile Include="app\scripts\view\views-sample\backbone.ts" />
     <TypeScriptCompile Include="app\scripts\view\views-sample\helper.ts" />
     <TypeScriptCompile Include="app\scripts\view\views-sample\page-owner.ts" />

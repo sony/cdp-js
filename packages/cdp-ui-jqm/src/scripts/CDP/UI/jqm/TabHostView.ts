@@ -109,16 +109,12 @@ namespace CDP.UI {
      * @brief TabHostView の初期化情報を格納するインターフェイスクラス
      */
     export interface TabHostViewConstructOptions<TModel extends Model = Model> extends PageContainerViewOptions<TModel>, FlipsnapOptions {
-        inactiveVisibleTabDistance?: number;                            // 非選択時の visible タブ数 ex) 1: 両サイド
-        enableNativeScroll?: boolean;                                   // ブラウザの最外枠 の Native スクロールを有効にする場合は true
-        tabContexts?: TabViewContext[];                                 // TabViewContext の配列
-        enableBounce?: boolean;                                         // 終端で bounce する場合には true
-        initialWidth?: number;                                          // width の初期値
-        initialHeight?: number;                                         // height の初期値
-        scrollHandler?: (event: JQuery.Event) => void;                  // 垂直方向のスクロールハンドラ
-        scrollStopHandler?: (event: JQuery.Event) => void;              // 垂直方向のスクロールストップハンドラ
-        tabMoveHandler?: (delta: number) => void;                       // 水平方向のスクロールハンドラ
-        tabStopHandler?: (newIndex: number, moved: boolean) => void;    // 水平方向のスクロールストップハンドラ
+        inactiveVisibleTabDistance?: number;    // 非選択時の visible タブ数 ex) 1: 両サイド
+        enableNativeScroll?: boolean;           // ブラウザの最外枠 の Native スクロールを有効にする場合は true
+        tabContexts?: TabViewContext[];         // TabViewContext の配列
+        enableBounce?: boolean;                 // 終端で bounce する場合には true
+        initialWidth?: number;                  // width の初期値
+        initialHeight?: number;                 // height の初期値
     }
 
     //___________________________________________________________________________________________________________________//
@@ -142,11 +138,18 @@ namespace CDP.UI {
         private _flipEndEventHandler: (event: JQuery.Event) => void = null;     // "fstouchend"
         private _flipMoveEventHandler: (event: JQuery.Event) => void = null;    // "fstouchmove"
         private _flipDeltaCache: number = 0;                                    // "flip 距離のキャッシュ"
+        private _scrollEndEventHandler: (event: JQuery.Event) => void = null;   // tabview "scrollstop"
+        private _scrollMoveEventHandler: (event: JQuery.Event) => void = null;  // tabview "scroll"
         private _refreshTimerId: number = null;                                 // refresh() 反映確認用
         private _$contentsHolder: JQuery = null;                                // contents holder
         private _settings: TabHostViewConstructOptions<TModel>;                 // TabHostView 設定値
 
         private _hostEventHooks: HostHookEvents = {};
+
+        public static EVENT_SCROLL_MOVE = "tabhost:scrollmove";
+        public static EVENT_SCROLL_STOP = "tabhost:scrollstop";
+        public static EVENT_TAB_MOVE    = "tabhost:tabmove";
+        public static EVENT_TAB_STOP    = "tabhost:tavstop";
 
         /**
          * constructor
@@ -195,12 +198,13 @@ namespace CDP.UI {
                 }
             };
 
-            if (this._settings.scrollHandler) {
-                this.setScrollHandler(this._settings.scrollHandler, true);
-            }
-            if (this._settings.scrollStopHandler) {
-                this.setScrollStopHandler(this._settings.scrollStopHandler, true);
-            }
+            this._scrollEndEventHandler = (event: JQuery.Event) => {
+                this.onScrollStop();
+            };
+
+            this._scrollMoveEventHandler = (event: JQuery.Event) => {
+                this.onScroll();
+            };
 
             // host event hook
             this._hostEventHooks.onOrientationChanged = this.owner.onOrientationChanged.bind(this.owner);
@@ -244,12 +248,6 @@ namespace CDP.UI {
          * メンバーの破棄のタイミングを変える場合、本メソッドをコールする
          */
         public destroy(): void {
-            if (this._settings.scrollHandler) {
-                this.setScrollHandler(this._settings.scrollHandler, false);
-            }
-            if (this._settings.scrollStopHandler) {
-                this.setScrollStopHandler(this._settings.scrollStopHandler, false);
-            }
             this.resetFlipsnapCondition();
             this._tabs.forEach((tabview: ITabView) => {
                 tabview.onDestroy();
@@ -259,7 +257,12 @@ namespace CDP.UI {
         }
 
         ///////////////////////////////////////////////////////////////////////
-        // public methods:
+        // Framework methods:
+
+        // ページの基準値を取得
+        public getBaseHeight(): number {
+            return this.$el.height();
+        }
 
         /**
          * TabView を登録
@@ -291,29 +294,22 @@ namespace CDP.UI {
             return null;
         }
 
-        // ページの基準値を取得
-        public getBaseHeight(): number {
-            return this.$el.height();
+        // タブポジションの初期化
+        protected resetTabPosition(): void {
+            this._tabs.forEach((tabview: ITabView) => {
+                tabview.scrollTo(0, false, 0);
+                tabview.refresh();
+            });
+            this.setActiveTab(0, 0, true);
         }
 
-        /**
-         * タブの数を取得
-         *
-         * @return {Number} タブ数
-         */
-        public getTabCount(): number {
-            return this._tabs.length;
+        // ITabView 設定リクエスト時にコールされる
+        protected onTabViewSetupRequest(initialHeight: number): void {
+            // override
         }
 
-        // アクティブなタブ Index を取得
-        public getActiveTabIndex(): number {
-            return this._activeTabIndex;
-        }
-
-        // swipe 移動量を取得 (swipe 中に delta の加算値を返却)
-        public getSwipeDelta(): number {
-            return this._flipDeltaCache;
-        }
+        ///////////////////////////////////////////////////////////////////////
+        // Tab control methods:
 
         // アクティブ Tab を設定
         public setActiveTab(index: number, transitionDuration?: number, initial?: boolean): boolean {
@@ -346,35 +342,90 @@ namespace CDP.UI {
             }
         }
 
-        ///////////////////////////////////////////////////////////////////////
-        // protected methods:
+        /**
+         * タブの数を取得
+         *
+         * @return {Number} タブ数
+         */
+        public getTabCount(): number {
+            return this._tabs.length;
+        }
 
-        // flip 終了時にコールされる
+        // アクティブなタブ Index を取得
+        public getActiveTabIndex(): number {
+            return this._activeTabIndex;
+        }
+
+        // swipe 移動量を取得 (swipe 中に delta の加算値を返却)
+        public getSwipeDelta(): number {
+            return this._flipDeltaCache;
+        }
+
+        // タブ移動イベント
+        protected onTabMoving(delta: number): void {
+            this.trigger(TabHostView.EVENT_TAB_MOVE, delta);
+        }
+
+        // タブ変更完了イベント
         protected onTabChanged(newIndex: number, moved: boolean): void {
             if (moved) {
                 this.setActiveTab(newIndex);
             }
-            this._settings.tabStopHandler(newIndex, moved);
+            this.trigger(TabHostView.EVENT_TAB_STOP, newIndex, moved);
         }
 
-        // flip 中にコールされる
-        protected onTabMoving(delta: number): void {
-            this._settings.tabMoveHandler(delta);
+        ///////////////////////////////////////////////////////////////////////
+        // Scroll control methods:
+
+        // スクロール位置を取得
+        getScrollPos(): number {
+            if (this._activeTabView) {
+                return this._activeTabView.getScrollPos();
+            } else {
+                return 0;
+            }
         }
 
-        // タブポジションの初期化
-        protected resetTabPosition(): void {
-            this._tabs.forEach((tabview: ITabView) => {
-                tabview.scrollTo(0, false, 0);
-                tabview.refresh();
-            });
-            this.setActiveTab(0, 0, true);
+        // スクロール位置の最大値を取得
+        getScrollPosMax(): number {
+            if (this._activeTabView) {
+                return this._activeTabView.getScrollPosMax();
+            } else {
+                return 0;
+            }
         }
 
-        // ITabView 設定リクエスト時にコールされる
-        protected onTabViewSetupRequest(initialHeight: number): void {
-            // override
+        // スクロール位置を指定
+        scrollTo(pos: number, animate?: boolean, time?: number): void {
+            if (this._activeTabView) {
+                this._activeTabView.scrollTo(pos, animate, time);
+            }
         }
+
+        // スクロールイベント
+        protected onScroll(): void {
+            this.trigger(TabHostView.EVENT_SCROLL_MOVE);
+        }
+
+        // スクロール完了イベント
+        protected onScrollStop(): void {
+            this.trigger(TabHostView.EVENT_SCROLL_STOP);
+        }
+
+        // スクロールイベントハンドラ設定/解除
+        setScrollHandler(handler: (event: JQuery.Event) => void, on: boolean): void {
+            if (this._activeTabView) {
+                this._activeTabView.setScrollHandler(handler, on);
+            }
+        }
+
+        // スクロール終了イベントハンドラ設定/解除
+        setScrollStopHandler(handler: (event: JQuery.Event) => void, on: boolean): void {
+            if (this._activeTabView) {
+                this._activeTabView.setScrollStopHandler(handler, on);
+            }
+        }
+
 
         ///////////////////////////////////////////////////////////////////////
         // Host event hooks:
@@ -425,48 +476,6 @@ namespace CDP.UI {
                     tabview.needRebuild = false;
                 }
             });
-        }
-
-        ///////////////////////////////////////////////////////////////////////
-        // Implements: ScrollManager Scroll
-
-        // スクロールイベントハンドラ設定/解除
-        setScrollHandler(handler: (event: JQuery.Event) => void, on: boolean): void {
-            if (this._activeTabView) {
-                this._activeTabView.setScrollHandler(handler, on);
-            }
-        }
-
-        // スクロール終了イベントハンドラ設定/解除
-        setScrollStopHandler(handler: (event: JQuery.Event) => void, on: boolean): void {
-            if (this._activeTabView) {
-                this._activeTabView.setScrollStopHandler(handler, on);
-            }
-        }
-
-        // スクロール位置を取得
-        getScrollPos(): number {
-            if (this._activeTabView) {
-                return this._activeTabView.getScrollPos();
-            } else {
-                return 0;
-            }
-        }
-
-        // スクロール位置の最大値を取得
-        getScrollPosMax(): number {
-            if (this._activeTabView) {
-                return this._activeTabView.getScrollPosMax();
-            } else {
-                return 0;
-            }
-        }
-
-        // スクロール位置を指定
-        scrollTo(pos: number, animate?: boolean, time?: number): void {
-            if (this._activeTabView) {
-                this._activeTabView.scrollTo(pos, animate, time);
-            }
         }
 
         ///////////////////////////////////////////////////////////////////////
@@ -521,7 +530,11 @@ namespace CDP.UI {
                 }
                 if (index === this._activeTabIndex) {
                     tabview.onTabSelected();
+                    tabview.setScrollHandler(this._scrollMoveEventHandler, true);
+                    tabview.setScrollStopHandler(this._scrollEndEventHandler, true);
                 } else if (index === lastActiveTabIndex) {
+                    tabview.setScrollHandler(this._scrollMoveEventHandler, false);
+                    tabview.setScrollStopHandler(this._scrollEndEventHandler, false);
                     tabview.onTabReleased();
                 }
             });
