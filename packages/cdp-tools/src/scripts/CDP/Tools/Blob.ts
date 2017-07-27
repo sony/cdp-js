@@ -1,5 +1,7 @@
 ﻿namespace CDP.Tools {
 
+    import Promise = CDP.Promise;
+
     const TAG = "[CDP.Tools.Blob] ";
 
     export module Blob {
@@ -11,6 +13,26 @@
          */
         function getBlobBuilder(): any {
             return global.BlobBuilder || global.WebKitBlobBuilder || global.MozBlobBuilder || global.MSBlobBuilder;
+        }
+
+        /**
+         * エラー情報生成 from DOMError
+         *
+         * @param  {RESULT_CODE} resultCode [in] RESULT_CODE を指定
+         * @param  {DOMError}    cause      [in] 下位の DOM エラーを指定
+         * @param  {String}      [tag]      [in] TAG を指定
+         * @param  {String}      [message]  [in] メッセージを指定
+         * @return {ErrorInfo} エラーオブジェクト
+         */
+        function makeErrorInfoFromDOMError(resultCode: RESULT_CODE, cause: DOMError, tag?: string, message?: string): ErrorInfo {
+            let _cause: Error;
+            if (cause) {
+                _cause = {
+                    name: cause.name,
+                    message: cause.name,    // DOMError.message が未サポート
+                };
+            }
+            return makeErrorInfo(resultCode, tag, message, _cause);
         }
 
         /**
@@ -57,6 +79,18 @@
                 blob = new global.Blob([base64ToArrayBuffer(base64)], { type: mimeType });
             }
             return blob;
+        }
+
+        /**
+         * data-url 形式画像から Blob オブジェクトへ変換
+         *
+         * @param  {String} dataUrl    [in] data url
+         * @param  {String} [mimeType] [in] mime type を指定. 既定では "image/png"
+         * @return {Blob} Blob インスタンス
+         */
+        export function dataUrlToBlob(dataUrl: string, mimeType: string = "image/png"): Blob {
+            const base64 = dataUrl.split(",")[1];
+            return base64ToBlob(base64, mimeType);
         }
 
         /**
@@ -116,6 +150,103 @@
                 data += String.fromCharCode(bytes[i]);
             }
             return window.btoa(data);
+        }
+
+
+        /**
+         * read Blob as ArrayBuffer
+         *
+         * @param  {Blob} blob [in] blob data
+         * @return {CDP.IPromise<ArrayBuffer>} promise object
+         */
+        export function readBlobAsArrayBuffer(blob: Blob): IPromise<ArrayBuffer> {
+            const reader = new FileReader();
+            const cancel = () => reader.abort();
+
+            return new Promise((resolve, reject) => {
+                reader.onload = () => {
+                    resolve(reader.result);
+                };
+                reader.onerror = () => {
+                    reject(makeErrorInfoFromDOMError(
+                        RESULT_CODE.ERROR_CDP_TOOLS_FILE_READER_ERROR,
+                        reader.error,
+                        TAG,
+                        "FileReader.readAsArrayBuffer() failed."
+                    ));
+                };
+                reader.readAsArrayBuffer(blob);
+            }, cancel);
+        }
+
+        /**
+         * read Blob as Uint8Array
+         *
+         * @param  {Blob} blob [in] blob data
+         * @return {CDP.IPromise<Uint8Array>} promise object
+         */
+        export function readBlobAsUint8Array(blob: Blob): IPromise<Uint8Array> {
+            return new Promise((resolve, reject, dependOn) => {
+                dependOn(readBlobAsArrayBuffer(blob))
+                    .then((result: ArrayBuffer) => {
+                        resolve(new Uint8Array(result));
+                    })
+                    .catch((error: ErrorInfo) => {
+                        reject(error);
+                    });
+            });
+        }
+
+        /**
+         * read Blob as text string
+         *
+         * @param  {Blob} blob [in] blob data
+         * @return {CDP.IPromise<Uint8Array>} promise object
+         */
+        export function readBlobAsText(blob: Blob, encode: string = "utf-8"): IPromise<string> {
+            const reader = new FileReader();
+            const cancel = () => reader.abort();
+
+            return new Promise((resolve, reject) => {
+                reader.onload = () => {
+                    resolve(reader.result);
+                };
+                reader.onerror = () => {
+                    reject(makeErrorInfoFromDOMError(
+                        RESULT_CODE.ERROR_CDP_TOOLS_FILE_READER_ERROR,
+                        reader.error,
+                        TAG,
+                        "FileReader.readAsText() failed."
+                    ));
+                };
+                reader.readAsText(blob, encode);
+            }, cancel);
+        }
+
+        /**
+         * read Blob as Data URL
+         *
+         * @param  {Blob} blob [in] blob data
+         * @return {CDP.IPromise<string>} promise object
+         */
+        export function readBlobAsDataURL(blob: Blob): IPromise<string> {
+            const reader = new FileReader();
+            const cancel = () => reader.abort();
+
+            return new Promise((resolve, reject) => {
+                reader.onload = () => {
+                    resolve(reader.result);
+                };
+                reader.onerror = () => {
+                    reject(makeErrorInfoFromDOMError(
+                        RESULT_CODE.ERROR_CDP_TOOLS_FILE_READER_ERROR,
+                        reader.error,
+                        TAG,
+                        "FileReader.readAsDataURL() failed."
+                    ));
+                };
+                reader.readAsDataURL(blob);
+            }, cancel);
         }
 
         /**

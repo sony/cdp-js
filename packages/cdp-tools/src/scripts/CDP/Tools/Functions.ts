@@ -2,6 +2,8 @@
 
 namespace CDP.Tools {
 
+    import Promise = CDP.Promise;
+
     const TAG = "[CDP.Tools.Functions] ";
 
     /**
@@ -102,7 +104,7 @@ namespace CDP.Tools {
      * @param staticProps {Object} [in] static properties をオブジェクトで指定
      * @return {Object} サブクラスのコンストラクタ
      */
-    export function extend(protoProps: Object, staticProps?: Object): Object {
+    export function extend(protoProps: object, staticProps?: object): object {
         const parent = this;
         let child;
 
@@ -167,5 +169,117 @@ namespace CDP.Tools {
         } else {
             return 1;
         }
+    }
+
+    // Canvas element のキャッシュ
+    let s_canvasFactory: HTMLCanvasElement;
+
+    // キャッシュ済みの Canvas を取得する
+    export function getCanvas(): HTMLCanvasElement {
+        s_canvasFactory = s_canvasFactory || document.createElement("canvas");
+        return <HTMLCanvasElement>s_canvasFactory.cloneNode(false);
+    }
+
+    /**
+     * 画像リソースのロード完了を保証
+     * ブラウザ既定のプログレッシブロードを走らせないため.
+     *
+     * @param  {String} url [in] url (data-url)
+     * @return {IPromise<string>} 表示可能な url
+     */
+    export function ensureImageLoaded(url: string): IPromise<string> {
+        let img = new Image();
+
+        const destroy = () => {
+            if (img) {
+                img.src = "";   // 読み込み停止
+                img = null;
+            }
+        };
+
+        return new Promise((resolve, reject) => {
+            img.onload = (event: Event) => {
+                destroy();
+                resolve(url);
+            };
+
+            img.onerror = (event: Event) => {
+                destroy();
+                reject(makeErrorInfo(
+                    RESULT_CODE.ERROR_CDP_TOOLS_IMAGE_LOAD_FAILED,
+                    TAG,
+                    "image load failed. [url: " + url + "]"
+                ));
+            };
+
+            img.src = url;
+
+        }, destroy);
+    }
+
+    /**
+     * 画像のリサイズ
+     * 指定した長辺の長さにアスペクト比を維持してリサイズを行う
+     * longSideLength より小さな場合はオリジナルサイズで data-url を返却する
+     *
+     * @param  {String} src            [in] image に指定するソース
+     * @param  {Number} longSideLength [in] リサイズに使用する長辺の最大値を指定
+     * @return {IPromise<string>} base64 data url を返却
+     */
+    export function resizeImage(src: string, longSideLength: number): IPromise<string> {
+        let img = new Image();
+
+        const destroy = () => {
+            if (img) {
+                img.src = "";   // 読み込み停止
+                img = null;
+            }
+        };
+
+        return new Promise((resolve, reject) => {
+            img.onload = (event: Event) => {
+                const canvas = getCanvas();
+                const ih = img.height, iw = img.width, ia = ih / iw;
+                let cw: number, ch: number;
+
+                if (iw === 0 || 0 === ia) { // 念のため不正な画像をガード
+                    reject(makeErrorInfo(
+                        RESULT_CODE.ERROR_CDP_TOOLS_INVALID_IMAGE,
+                        TAG,
+                        "invalid image. [src: " + src + "]"
+                    ));
+                } else {
+                    if (longSideLength <= 0) {
+                        longSideLength = (ia < 1) ? iw : ih;
+                    }
+                    if (ia < 1) {
+                        cw = (longSideLength < iw) ? longSideLength : iw;
+                        ch = Math.round(cw * ia);
+                    } else {
+                        ch = (longSideLength < ih) ? longSideLength : ih;
+                        cw = Math.round(ch / ia);
+                    }
+
+                    canvas.width = cw;
+                    canvas.height = ch;
+                    canvas.getContext("2d").drawImage(img, 0, 0, cw, ch);
+
+                    resolve(canvas.toDataURL());
+                }
+
+                destroy();
+            };
+
+            img.onerror = (event: Event) => {
+                destroy();
+                reject(makeErrorInfo(
+                    RESULT_CODE.ERROR_CDP_TOOLS_IMAGE_LOAD_FAILED,
+                    TAG,
+                    "image load failed. [src: " + src + "]"
+                ));
+            };
+
+            img.src = src;
+        });
     }
 }

@@ -1104,6 +1104,8 @@
     <TypeScriptCompile Include="app\scripts\model\listviews-sample\config.ts" />
     <TypeScriptCompile Include="app\scripts\model\listviews-sample\data.ts" />
     <TypeScriptCompile Include="app\scripts\model\listviews-sample\util.ts" />
+    <TypeScriptCompile Include="app\scripts\model\local-content-collection.ts" />
+    <TypeScriptCompile Include="app\scripts\model\local-content.ts" />
     <TypeScriptCompile Include="app\scripts\model\options.ts" />
     <TypeScriptCompile Include="app\scripts\model\picture-list.ts" />
     <TypeScriptCompile Include="app\scripts\model\picture.ts" />

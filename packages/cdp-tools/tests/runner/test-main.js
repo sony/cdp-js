@@ -9,6 +9,8 @@
             'underscore': 'external/underscore/scripts/underscore',
             'hogan': 'external/hogan/scripts/hogan',
             'cdp.lazyload': 'external/cdp/scripts/cdp.lazyload',
+            'cdp.core': 'external/cdp/scripts/cdp.core',
+            'cdp.promise': 'external/cdp/scripts/cdp.promise',
         },
     });
 

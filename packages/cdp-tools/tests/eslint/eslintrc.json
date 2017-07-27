@@ -29,7 +29,7 @@
 
     "comma-dangle": "off",
     "no-cond-assign": ["error", "always"],
-    "no-unused-vars": ["error", {"args": "none", "varsIgnorePattern": "^TAG|^__|Tools|Blob" }],
+    "no-unused-vars": ["error", {"args": "none", "varsIgnorePattern": "^TAG|^__|Tools|RESULT_CODE|Blob" }],
     "no-extra-boolean-cast": "off",
     "no-constant-condition": "off",
     "no-console": "off"
