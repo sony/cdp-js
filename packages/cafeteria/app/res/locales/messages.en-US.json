@@ -61,6 +61,7 @@
             "links": "Link Examples",
             "views": "View Examples",
             "listviews": "Virtual List View Examples",
+            "tabviews": "Tab View Examples",
             "nativebridge": "Native Bridge",
             "touch": "Touch Test",
             "advanced": "Advanced Examples",
@@ -208,6 +209,13 @@
             "titleIScroll": "Page iScroll",
             "titleExpandableListView": "Page Expandable List View"
         }
+    },
+    "tabviews": {
+        "title": "Tab View Examples",
+        "description": "TabView/TabHostView Examples",
+        "titleSwipeableTabView": "Swipeable Tab View",
+        "tabButtonLabel1": "IMAGE",
+        "tabButtonLabel2": "TEXTILE"
     },
     "nativebridge": {
         "title": "Native Bridge Functions",

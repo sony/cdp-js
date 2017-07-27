@@ -19,7 +19,7 @@ namespace CDP.UI {
         enableAnimation?: boolean;          //!< アニメーションを有効にする場合は true.                                [default: true]
         animationDuration?: number;         //!< アニメーションの費やす時間 (msec)                                     [default: 0]
         baseDepth?: string;                 //!< 基準とする z-index. "collapse" 時のアニメーション時に使用             [default: auto]
-        itemTagName?: string;               //!< ListItemView が使用するタグ名                                         [default: div]
+        itemTagName?: string;               //!< ListItemView が使用するタグ名                                         [default: li]
         removeItemWithTransition?: boolean; //!< removeItem() 時に必要に応じて自動で transition をかける場合は true    [default: true]
         //! 非アクティブな scroll map に対して Dummy を使用する場合は true. (flipsnap 切り替え時等. 効果はあまりなし)  [default: false]
         useDummyInactiveScrollMap?: boolean;

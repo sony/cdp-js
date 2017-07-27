@@ -93,6 +93,9 @@
     <Content Include="exports\cdp\tools\tools.js">
       <DependentUpon>tools.ts</DependentUpon>
     </Content>
+    <Content Include="external\cdp\scripts\cdp.core.js" />
+    <Content Include="external\cdp\scripts\cdp.lazyload.js" />
+    <Content Include="external\cdp\scripts\cdp.promise.js" />
     <Content Include="external\hogan\scripts\hogan.js" />
     <Content Include="external\jquery\scripts\jquery.js" />
     <Content Include="external\underscore\scripts\underscore.js" />
@@ -109,6 +112,9 @@
     <Content Include="src\scripts\CDP\Tools\DateTime.js">
       <DependentUpon>DateTime.ts</DependentUpon>
     </Content>
+    <Content Include="src\scripts\CDP\Tools\ErrorDefs.js">
+      <DependentUpon>ErrorDefs.ts</DependentUpon>
+    </Content>
     <Content Include="src\scripts\CDP\Tools\Functions.js">
       <DependentUpon>Functions.ts</DependentUpon>
     </Content>
@@ -117,9 +123,6 @@
     </Content>
     <Content Include="src\scripts\CDP\Tools\Template.js">
       <DependentUpon>Template.ts</DependentUpon>
-    </Content>
-    <Content Include="src\scripts\CDP\Tools\Utils.js">
-      <DependentUpon>Utils.ts</DependentUpon>
     </Content>
     <Content Include="tasks\banner.js" />
     <Content Include="tasks\bundle.js" />
@@ -157,10 +160,10 @@
     <TypeScriptCompile Include="src\scripts\CDP\Tools\BinaryTransport.ts" />
     <TypeScriptCompile Include="src\scripts\CDP\Tools\Blob.ts" />
     <TypeScriptCompile Include="src\scripts\CDP\Tools\DateTime.ts" />
+    <TypeScriptCompile Include="src\scripts\CDP\Tools\ErrorDefs.ts" />
     <TypeScriptCompile Include="src\scripts\CDP\Tools\Functions.ts" />
     <TypeScriptCompile Include="src\scripts\CDP\Tools\Interfaces.ts" />
     <TypeScriptCompile Include="src\scripts\CDP\Tools\Template.ts" />
-    <TypeScriptCompile Include="src\scripts\CDP\Tools\Utils.ts" />
     <TypeScriptCompile Include="tests\unit\DateTime.spec.ts" />
     <TypeScriptCompile Include="tests\unit\Functions.spec.ts" />
   </ItemGroup>

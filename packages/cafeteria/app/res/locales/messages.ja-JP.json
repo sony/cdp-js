@@ -61,6 +61,7 @@
             "links": "リンクの実装例",
             "views": "View の実装例",
             "listviews": "仮想 List View の実装例",
+            "tabviews": "Tab View の実装例",
             "nativebridge": "Native 連携",
             "touch": "タッチテスト",
             "advanced": "高度な機能の実装例",
@@ -208,6 +209,13 @@
             "titleIScroll": "Page iScroll",
             "titleExpandableListView": "Page Expandable List View"
         }
+    },
+    "tabviews": {
+        "title": "Tab View の実装例",
+        "description": "TabView/TabHostView の実装例",
+        "titleSwipeableTabView": "Swipeable Tab View",
+        "tabButtonLabel1": "IMAGE",
+        "tabButtonLabel2": "TEXTILE"
     },
     "nativebridge": {
         "title": "Native Bridge 連携",

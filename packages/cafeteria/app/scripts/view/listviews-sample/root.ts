@@ -11,7 +11,7 @@ import "./page-listview-native";
 const TAG = "[view.listviews-sample.RootPageView] ";
 
 /**
- * @class ListViewsRoot
+ * @class RootPageView
  * @brief ListView サンプル例のルート画面クラス
  */
 class RootPageView extends PageView {

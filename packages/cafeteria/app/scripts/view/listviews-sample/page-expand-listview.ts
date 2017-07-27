@@ -44,6 +44,7 @@ class PageExpandListView extends PageExpandableListView {
                 route: "listviews/pagelistview/expandable",
                 scrollerFactory: ScrollerNative.getFactory(),
                 animationDuration: Config.COLLAPSE_DELAY_TIME,
+                itemTagName: "div",
                 baseDepth: "0",
             });
         this._prmsManager = new PromiseManager();

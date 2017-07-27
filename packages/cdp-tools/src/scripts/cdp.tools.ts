@@ -3,12 +3,9 @@
 (function (root, factory) {
     if (typeof define === "function" && define.amd) {
         // AMD
-        define(["jquery", "underscore"], function ($, _) {
-            return factory(root.CDP || (root.CDP = {}), $, _);
+        define(["underscore", "cdp.core", "cdp.promise"], function () {
+            return factory(root.CDP || (root.CDP = {}), root.jQuery || root.$, root._);
         });
-    } else if (typeof exports === "object") {
-        // CommonJS
-        module.exports = factory(root.CDP || (root.CDP = {}), require("jquery"), require("underscore"));
     } else {
         // Browser globals
         factory(root.CDP || (root.CDP = {}), root.jQuery || root.$, root._);

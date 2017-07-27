@@ -32,6 +32,7 @@ class PageListViewNative extends PageListView {
             {
                 route: "listviews/pagelistview/native",
                 scrollerFactory: ScrollerNative.getFactory(),
+                itemTagName: "div",
             });
     }
 

@@ -1,0 +1,211 @@
+﻿@import "_utils.scss";
+
+.tab-base {
+    position: relative;
+    .tab {
+        border:         initial !important;
+        border-radius:  initial !important;
+        padding:        9px 16px !important;
+    }
+
+    .tab-link-highlight {
+        position:   absolute;
+        width:      50%;
+        height:     3px;
+        margin:     0;
+        padding:    0;
+        left:       0;
+        bottom:     0;
+        border:     none;
+        z-index:    10;
+    }
+}
+
+$tab-count: 2;
+
+.tab-container {
+    position:   absolute;
+    width:      100%;
+    top:        34px;
+    bottom:     0;
+    &.full {
+        top: 0;
+    }
+    .ui-tabhost {
+        background-color: gold;
+        width:  $tab-count * 100%;
+        height: 100%;
+        &:after {
+            content:    "";
+            display:    block;
+            clear:      both;
+            height:     0;
+        }
+
+        .ui-tabview {
+            position:                   relative;
+            float:                      left;
+            width:                      100% / $tab-count;
+            height:                     100%;
+            overflow-y:                 auto;
+            -webkit-overflow-scrolling: touch;
+            filter: grayscale(100%);
+        }
+    }
+}
+
+$bp-grid-large-min:         1020px;
+$bp-grid-mid-max:           $bp-grid-large-min - 1px;
+$bp-grid-mid-min:           720px;
+$bp-grid-small-max:         $bp-grid-mid-min - 1px;
+$bp-grid-small-min:         420px;
+$bp-grid-extrasmall-min:    $bp-grid-small-min - 1px;
+
+.content-item-container {
+    border-style:   solid;
+    border-width:   0 0 1px 1px;
+    border-color:   pink;
+}
+
+.local-content-listview {
+    .content-item-container {
+        @media only screen and (min-width: $bp-grid-mid-min + 1px){
+            width: 16.66%;  // 1/6
+            &:nth-of-type(6n) {
+                border-right-width: 1px;
+            }
+        }
+        @media only screen and (max-width: $bp-grid-mid-min) {
+            width: 25%;     // 1/4
+            &:nth-of-type(4n) {
+                border-right-width: 1px;
+            }
+        }
+        @media only screen and (max-width: $bp-grid-small-min){
+            width: 33.33%;  // 1/3
+            &:nth-of-type(3n) {
+                border-right-width: 1px;
+            }
+        }
+    }
+}
+
+.textile-content-listview {
+    .content-item-container {
+        @media only screen and (min-width: $bp-grid-mid-min + 1px){
+            width: 25%;     // 1/4
+            &:nth-of-type(4n) {
+                border-right-width: 1px;
+            }
+        }
+        @media only screen and (max-width: $bp-grid-mid-min) {
+            width: 33.33%;  // 1/3
+            &:nth-of-type(3n) {
+                border-right-width: 1px;
+            }
+        }
+        @media only screen and (max-width: $bp-grid-small-min){
+            width: 50%;  // 1/2
+            &:nth-of-type(2n) {
+                border-right-width: 1px;
+            }
+        }
+    }
+}
+
+.content-item {
+    cursor: pointer;
+    &:active, &:focus {
+        opacity: 0.3;
+    }
+    .fes-material-ink {
+        z-index: 10;
+    }
+    figure {
+        position:       absolute;
+        width:          100%;
+        height:         100%;
+        pointer-events: none;
+        @include background-center-crop();
+        @include fade-in-out(0.3s, ease);
+        &.default {
+            background-color: skyblue;
+        }
+    }
+}
+
+// grid
+.grid-layout {
+    display:            flex;
+    flex-wrap:          wrap;
+    justify-content:    flex-start;
+    margin:             0;
+    padding:            0;
+
+    .grid-item-container {
+        position:   relative;
+        display:    block;
+        width:      25%;
+        margin:     0;
+        padding:    0;
+        box-sizing: border-box;
+
+        &:after {
+            content:        "";
+            display:        block;
+            padding-top:    100%;
+        }
+
+        .grid-item {
+            position:       absolute;
+            display:        block;
+            top:            0;
+            right:          0;
+            bottom:         0;
+            left:           0;
+            margin:         0;
+            padding:        0;
+        }
+    }
+}
+
+.ui-platform-android {
+    .tab-base {
+        margin-top: 6px;
+    }
+    @include orientation-landscape(phone) {
+        .tab-base {
+            margin-top: 2px;
+        }
+    }
+    .ui-page-theme-cdp {
+        .tab-base {
+            background-color: #009688;
+            .tab {
+                color: white;
+            }
+            .tab-link-highlight {
+                background-color: white;
+            }
+        }
+    }
+}
+
+.ui-platform-ios {
+    .tab-base {
+        border-bottom-width:    1px;
+        border-style:           solid;
+    }
+    .ui-page-theme-cdp {
+        .tab-base {
+            background-color:   #f7f7f8;
+            border-color:       #c4c4c4;
+            .tab {
+                color: #007aff;
+            }
+            .tab-link-highlight {
+                background-color: #007aff;
+            }
+        }
+    }
+}

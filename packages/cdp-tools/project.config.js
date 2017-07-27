@@ -47,6 +47,8 @@ const external_rearrange = {
 
 const internal_rearrange = [
     'cdp-lazyload',
+    'cdp-core',
+    'cdp-promise',
 ];
 
 const main = {
