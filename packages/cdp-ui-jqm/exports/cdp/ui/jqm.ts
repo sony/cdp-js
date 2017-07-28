@@ -68,6 +68,7 @@ export type PageViewConstructOptions<TModel extends Model = Model> = CDP.UI.Page
 
 // @class TabView/TabHostView
 export type ITabView = CDP.UI.ITabView;
+export type TabViewContextOptions<TModel extends Model = Model> = CDP.UI.TabViewContextOptions<TModel>;
 export type TabViewConstructionOptions<TModel extends Model = Model> = CDP.UI.TabViewConstructionOptions<TModel>;
 export type TabViewContext<TModel extends Model = Model> = CDP.UI.TabViewContext<TModel>;
 export type TabHostViewConstructOptions<TModel extends Model = Model> = CDP.UI.TabHostViewConstructOptions<TModel>;

@@ -50,7 +50,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties tsconfig_1base_1json__JSONSchema="http://json.schemastore.org/tsconfig" package_1json__JSONSchema="" />
+      <UserProperties package_1json__JSONSchema="" tsconfig_1base_1json__JSONSchema="http://json.schemastore.org/tsconfig" />
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
@@ -570,6 +570,12 @@
     <Content Include="app\scripts\model\listviews-sample\util.js">
       <DependentUpon>util.ts</DependentUpon>
     </Content>
+    <Content Include="app\scripts\model\local-content-collection.js">
+      <DependentUpon>local-content-collection.ts</DependentUpon>
+    </Content>
+    <Content Include="app\scripts\model\local-content.js">
+      <DependentUpon>local-content.ts</DependentUpon>
+    </Content>
     <Content Include="app\scripts\model\options.js">
       <DependentUpon>options.ts</DependentUpon>
     </Content>
@@ -687,8 +693,23 @@
     <Content Include="app\scripts\view\tabviews-sample\root.js">
       <DependentUpon>root.ts</DependentUpon>
     </Content>
+    <Content Include="app\scripts\view\tabviews-sample\swipe-tab-host-view.js">
+      <DependentUpon>swipe-tab-host-view.ts</DependentUpon>
+    </Content>
     <Content Include="app\scripts\view\tabviews-sample\swipe-tabview-page.js">
       <DependentUpon>swipe-tabview-page.ts</DependentUpon>
+    </Content>
+    <Content Include="app\scripts\view\tabviews-sample\tab-image-listitem-view.js">
+      <DependentUpon>tab-image-listitem-view.ts</DependentUpon>
+    </Content>
+    <Content Include="app\scripts\view\tabviews-sample\tab-image-listview.js">
+      <DependentUpon>tab-image-listview.ts</DependentUpon>
+    </Content>
+    <Content Include="app\scripts\view\tabviews-sample\tab-textile-listitem-view.js">
+      <DependentUpon>tab-textile-listitem-view.ts</DependentUpon>
+    </Content>
+    <Content Include="app\scripts\view\tabviews-sample\tab-textile-listview.js">
+      <DependentUpon>tab-textile-listview.ts</DependentUpon>
     </Content>
     <Content Include="app\scripts\view\views-sample\backbone.js">
       <DependentUpon>backbone.ts</DependentUpon>
@@ -804,6 +825,7 @@
     <Content Include="app\templates\options.html" />
     <Content Include="app\templates\tabviews-sample\swipeable-tabview.html" />
     <Content Include="app\templates\tabviews-sample\tabview-root.html" />
+    <Content Include="app\templates\tabviews-sample\tabview-templates.html" />
     <Content Include="app\templates\views-sample\view-backbone.html" />
     <Content Include="app\templates\views-sample\view-page-owner.html" />
     <Content Include="app\templates\views-sample\view-page-view.html" />
@@ -1160,8 +1182,13 @@
     </Content>
     <TypeScriptCompile Include="app\scripts\view\nativebridge-sample\root.ts" />
     <TypeScriptCompile Include="app\scripts\view\options-view.ts" />
+    <TypeScriptCompile Include="app\scripts\view\tabviews-sample\swipe-tab-host-view.ts" />
     <TypeScriptCompile Include="app\scripts\view\tabviews-sample\swipe-tabview-page.ts" />
     <TypeScriptCompile Include="app\scripts\view\tabviews-sample\root.ts" />
+    <TypeScriptCompile Include="app\scripts\view\tabviews-sample\tab-image-listitem-view.ts" />
+    <TypeScriptCompile Include="app\scripts\view\tabviews-sample\tab-image-listview.ts" />
+    <TypeScriptCompile Include="app\scripts\view\tabviews-sample\tab-textile-listitem-view.ts" />
+    <TypeScriptCompile Include="app\scripts\view\tabviews-sample\tab-textile-listview.ts" />
     <TypeScriptCompile Include="app\scripts\view\views-sample\backbone.ts" />
     <TypeScriptCompile Include="app\scripts\view\views-sample\helper.ts" />
     <TypeScriptCompile Include="app\scripts\view\views-sample\page-owner.ts" />
