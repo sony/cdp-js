@@ -1,5 +1,4 @@
 ﻿/// <reference types="jquery" />
-/// <reference types="underscore" />
 
 namespace CDP.Tools {
 
@@ -96,12 +95,15 @@ namespace CDP.Tools {
                 jst = function (data?: any): string {
                     return template.render(data);
                 };
-            } else {
+            } else if (null != global._) {
                 template = _.template($element.html());
                 jst = function (data?: any): string {
                     // 改行とタブは削除する
                     return template(data).replace(/\n|\t/g, "");
                 };
+            } else {
+                console.warn(TAG + "cannot find template engine module.");
+                console.warn("    'hogan' or 'underscore' is required.");
             }
             return jst;
         }

@@ -6,7 +6,6 @@
             'boot': '//cdnjs.cloudflare.com/ajax/libs/jasmine/2.4.1/boot',
             'testem': '../../../testem',
             'jquery': 'external/jquery/scripts/jquery',
-            'underscore': 'external/underscore/scripts/underscore',
             'hogan': 'external/hogan/scripts/hogan',
             'cdp.lazyload': 'external/cdp/scripts/cdp.lazyload',
             'cdp.core': 'external/cdp/scripts/cdp.core',

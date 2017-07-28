@@ -63,8 +63,7 @@
     "metrics": "npm run compile:ts:src && plato -r -d docs/reports/metrics -e ./tests/eslint/eslintrc.json src/scripts/**/*.js"
   },
   "dependencies": {
-    "jquery": ">=1.8.3",
-    "underscore": ">=1.8.3"
+    "jquery": ">=1.8.3"
   },
   "devDependencies": {
     "@types/jasmine": "^2.5.53",
