@@ -1,4 +1,5 @@
 ﻿import * as Backbone from "backbone";
+import { Config } from "cdp";
 import { Platform } from "cdp/framework";
 
 const CSS_PREFIXES = ["-webkit-", ""];
@@ -343,33 +344,31 @@ export default class DeviceConsole implements Console {
         DeviceConsole.s_$display
             .hammer({
                 recognizers: [
-                    [Hammer.Pan, { pointers: 1, threshold: 0, direction: Hammer.DIRECTION_HORIZONTAL }],
-                    [Hammer.Tap, { event: "doubletap", taps: 2, posThreshold: DOUBLE_TAP_POSITION_ALLOWANCE }, [], ["pan"]],
+                    [Hammer.Tap, { event: "doubletap", taps: 2, posThreshold: DOUBLE_TAP_POSITION_ALLOWANCE }],
+                    [Hammer.Pan, { pointers: 1, threshold: 0, direction: Hammer.DIRECTION_HORIZONTAL }, ["doubletap"]],
                 ],
             })
             .on("taphold", (event: JQuery.Event) => {
-                event.preventDefault();
+                if (Config.DEBUG) { console.log("event:taphold"); }
                 DeviceConsole.onDragBegin();
+            })
+            .on("doubletap", (event: JQuery.Event) => {
+                if (Config.DEBUG) { console.log("event:doubletap"); }
+                DeviceConsole.onResetPosition();
             })
 //          .on("panstart", (event: JQuery.Event) => {
 //              event.preventDefault();
 //          })
             .on("panmove", (event: JQuery.Event) => {
-                event.preventDefault();
+                if (Config.DEBUG) { console.log("event:panmove"); }
                 DeviceConsole.onDrag((<any>event).gesture.deltaY);
             })
-            .on("doubletap", (event: JQuery.Event) => {
-                event.preventDefault();
-                DeviceConsole.onResetPosition();
-            })
-            ;
-
-        $(document)
-            .hammer()
             .on("panend", (event: JQuery.Event) => {
+                if (Config.DEBUG) { console.log("event:panend"); }
                 DeviceConsole.onDragEnd();
             })
             ;
+
     }
 
     private static onDragBegin(): void {
@@ -469,6 +468,6 @@ export default class DeviceConsole implements Console {
 $.extend(DeviceConsole, Backbone.Events);
 
 // set environment
-if (Platform.Mobile) {
-    $("html").addClass("touch");
+if (Platform.Android) {
+    $("html").addClass("require-touch-action-disable");
 }

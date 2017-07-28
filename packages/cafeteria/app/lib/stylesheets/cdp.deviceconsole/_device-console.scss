@@ -86,7 +86,7 @@
 
 // Android で drag できないバグの回避
 // https://github.com/hammerjs/hammer.js/issues/1050
-.touch.ui-platform-android {
+.require-touch-action-disable {
     #cdp-device-console {
         touch-action: none !important;
         .screen {
