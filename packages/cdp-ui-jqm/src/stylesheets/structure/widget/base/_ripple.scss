@@ -1,5 +1,6 @@
 ﻿/*** base structure: ripple effect ***************************************************/
 
 .ui-ripple-ink {
-    display: none;
+    display:        none;
+    pointer-events: none;
 }

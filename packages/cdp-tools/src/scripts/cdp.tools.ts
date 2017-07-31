@@ -3,14 +3,14 @@
 (function (root, factory) {
     if (typeof define === "function" && define.amd) {
         // AMD
-        define(["underscore", "cdp.core", "cdp.promise"], function () {
-            return factory(root.CDP || (root.CDP = {}), root.jQuery || root.$, root._);
+        define(["cdp.core", "cdp.promise"], function () {
+            return factory(root.CDP || (root.CDP = {}), root.jQuery || root.$);
         });
     } else {
         // Browser globals
-        factory(root.CDP || (root.CDP = {}), root.jQuery || root.$, root._);
+        factory(root.CDP || (root.CDP = {}), root.jQuery || root.$);
     }
-} (((this || 0).self || global), function (CDP, $, _) {
+} (((this || 0).self || global), function (CDP, $) {
     CDP.Tools = CDP.Tools || {};
 
     //<<

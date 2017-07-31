@@ -6,6 +6,31 @@
 
 const TAG: string = "[cafeteria.images.NativeLocalContentProvider] ";
 
+export const MAX_QUERY_LIMIT = 48;
+export const MAX_THUMBNAIL_WORK_LIMIT = 12;
+
+/**
+ * @interface Content
+ * @brief     コンテンツスキーマ
+ */
+export interface Content {
+    key: string;
+    index?: number;
+    width?: number;
+    height?: number;
+}
+
+/**
+ * @interface ContentList
+ * @brief コンテンツリストスキーマ
+ */
+export interface ContentList {
+    totalContentCount?: number; //!< コンテンツのトータル数
+    contents?: Content[];       //!< 画像パス
+}
+
+//___________________________________________________________________________________________________________________//
+
 /**
  * @class NativeLocalContentProvider
  * @brief LocalContentProvider の Native Plugin クラス

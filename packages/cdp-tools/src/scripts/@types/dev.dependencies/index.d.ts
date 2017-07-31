@@ -1,4 +1,5 @@
-﻿/// <reference path="../../../../../cdp-lazyload/dist/@types/cdp.lazyload.d.ts" />
+﻿/// <reference types="underscore" />
+/// <reference path="../../../../../cdp-lazyload/dist/@types/cdp.lazyload.d.ts" />
 /// <reference path="../../../../../cdp-core/dist/@types/cdp.core.d.ts" />
 /// <reference path="../../../../../cdp-promise/dist/@types/cdp.promise.d.ts" />
 

@@ -215,7 +215,7 @@
 
     // jquey.mobile.changePage() の Hook.
     function applyCustomChangePage() {
-        const jqmChangePage: (to: any, options?: ChangePageOptions) => void = _.bind($.mobile.changePage, $.mobile);
+        const jqmChangePage: (to: any, options?: ChangePageOptions) => void = $.mobile.changePage.bind($.mobile);
 
         function customChangePage(to: any, options?: ChangePageOptions): void {
             if (_.isString(to)) {

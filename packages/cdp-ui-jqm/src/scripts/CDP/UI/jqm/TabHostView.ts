@@ -83,12 +83,19 @@ namespace CDP.UI {
     }
 
     /**
+     * @interface TabViewContextOptions
+     * @brief TabViewContext に指定するオプション
+     */
+    export interface TabViewContextOptions<TModel extends Model = Model> extends ListViewConstructOptions<TModel> {
+        delayRegister?: boolean;    // 遅延登録を行う場合は true
+    }
+
+    /**
      * @interface TabViewConstructionOptions
      * @brief TabView のオプション
      */
-    export interface TabViewConstructionOptions<TModel extends Model = Model> extends ListViewConstructOptions<TModel> {
-        host: TabHostView;          // host を指定
-        delayRegister?: boolean;    // 遅延登録を行う場合は true
+    export interface TabViewConstructionOptions<TModel extends Model = Model> extends TabViewContextOptions<TModel> {
+        host: TabHostView;  // host を指定
     }
 
     //___________________________________________________________________________________________________________________//
@@ -99,7 +106,7 @@ namespace CDP.UI {
      */
     export interface TabViewContext<TModel extends Model = Model> {
         ctor?: new (options?: TabViewConstructionOptions<TModel>) => ITabView;  // ITabView のコンストラクタ
-        options?: TabViewConstructionOptions<TModel>;                           // 構築時の基底オプション
+        options?: TabViewContextOptions<TModel>;                                // 構築時の基底オプション
     }
 
     //___________________________________________________________________________________________________________________//
@@ -110,7 +117,6 @@ namespace CDP.UI {
      */
     export interface TabHostViewConstructOptions<TModel extends Model = Model> extends PageContainerViewOptions<TModel>, FlipsnapOptions {
         inactiveVisibleTabDistance?: number;    // 非選択時の visible タブ数 ex) 1: 両サイド
-        enableNativeScroll?: boolean;           // ブラウザの最外枠 の Native スクロールを有効にする場合は true
         tabContexts?: TabViewContext[];         // TabViewContext の配列
         enableBounce?: boolean;                 // 終端で bounce する場合には true
         initialWidth?: number;                  // width の初期値
@@ -213,14 +219,25 @@ namespace CDP.UI {
             this.owner.onPageShow = this.onPageShow.bind(this);
 
             // setup tabs
-            const initialWidth  = this._settings.initialWidth || this.$el.width();
-            const initialHeight = this._settings.initialHeight || this.$el.height();
+            if (this._settings.initialWidth) {
+                this.$el.width(this._settings.initialWidth);
+            } else {
+                this.$el.width(this.owner.$el.width());
+            }
+            if (this._settings.initialHeight) {
+                this.$el.height(this._settings.initialHeight);
+
+            }
+            const initialWidth  = this.$el.width();
+            const initialHeight = this.$el.height();
 
             const tabContexts = this._settings.tabContexts.slice();
             if (0 < tabContexts.length) {
                 tabContexts.forEach((context) => {
                     /* tslint:disable:no-unused-expression */
-                    new context.ctor($.extend({}, context.options, { host: this, delayRegister: false }));
+                    new context.ctor($.extend({
+                        initialHeight: initialHeight,
+                    }, context.options, { host: this, delayRegister: false }));
                     /* tslint:enable:no-unused-expression */
                 });
             } else {
@@ -230,11 +247,12 @@ namespace CDP.UI {
 
             // ITabView に $tabHost をアサインする
             // NOTE: 現在は DOM の順序は固定
+            const $tabs = this.$el.find(_Config.TABVIEW_SELECTOR);
             this._tabs.forEach((tabview: ITabView, index) => {
-                tabview.onInitialize(this, $(this.$el[index]));
+                tabview.onInitialize(this, $($tabs[index]));
             });
 
-            this._$contentsHolder = this.$el.parent();
+            this._$contentsHolder = this.$el.find(_Config.TABHOST_SELECTOR).parent();
 
             // Flipsnap
             this.setFlipsnapCondition($.extend({}, {
@@ -484,15 +502,15 @@ namespace CDP.UI {
         // flipsnap 環境設定
         private setFlipsnapCondition(options: FlipsnapOptions): void {
             this._flipsnap = global.Flipsnap(_Config.TABHOST_SELECTOR, options);
-            $(this._flipsnap.element).on("fstouchend", _.bind(this._flipEndEventHandler, this));
-            $(this._flipsnap.element).on("fstouchmove", _.bind(this._flipMoveEventHandler, this));
+            $(this._flipsnap.element).on("fstouchend", this._flipEndEventHandler.bind(this));
+            $(this._flipsnap.element).on("fstouchmove", this._flipMoveEventHandler.bind(this));
         }
 
         // flipsnap 環境破棄
         private resetFlipsnapCondition(): void {
             if (this._flipsnap) {
-                $(this._flipsnap.element).off("fstouchmove", _.bind(this._flipMoveEventHandler, this));
-                $(this._flipsnap.element).off("fstouchend", _.bind(this._flipEndEventHandler, this));
+                $(this._flipsnap.element).off("fstouchmove", this._flipMoveEventHandler.bind(this));
+                $(this._flipsnap.element).off("fstouchend", this._flipEndEventHandler.bind(this));
                 this._flipsnap.destroy();
                 this._flipsnap = null;
             }

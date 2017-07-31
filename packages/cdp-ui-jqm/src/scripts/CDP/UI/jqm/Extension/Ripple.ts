@@ -87,7 +87,6 @@ namespace CDP.UI.Extension {
             .addClass("ui-ripple");
 
         // ripplify
-//        $ui.find(".ui-ripple").ripple(options);
         $ui.find(".ui-ripple")
             .each((index: number, elem: Element) => {
                 $(elem).ripple(options);
