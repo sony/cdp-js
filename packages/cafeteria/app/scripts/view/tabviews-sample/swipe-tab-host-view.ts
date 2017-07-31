@@ -22,6 +22,7 @@ const TAG = "[view.tabviews-sample.SwipeableTabHostView] ";
 export interface SwipeableTabHostViewConstructionOptions extends TabHostViewConstructOptions<LocalContent> {
     localContentCollection: LocalContentCollection;
     textileCollection: LocalContentCollection;
+    $staticRoot: JQuery,
 }
 
 type OptionsBase = { tabContexts: TabViewContextOptions };
@@ -55,6 +56,9 @@ export class SwipeableTabHostView extends TabHostView {
                 },
                 {
                     ctor: StaticView,
+                    options: {
+                        $el: options.$staticRoot,
+                    },
                 },
             ],
         }, options));

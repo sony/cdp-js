@@ -19,14 +19,6 @@ export class StaticView extends TabView {
      */
     constructor(options: TabViewConstructionOptions) {
         super(options);
-    }
-
-    ///////////////////////////////////////////////////////////////////////
-    // Implements: TabView Events.
-
-    // Scroller の初期化時にコールされる
-    onInitialize(host: TabHostView, $root: JQuery): void {
-        super.onInitialize(host, $root);
         this.render();
     }
 

@@ -63,7 +63,6 @@ class SwipeableTabViewPage extends PageView {
         this.updateTabHighlight();
     }
 
-    // jQM event: "pagebeforeshow" に対応
     onPageBeforeShow(event: JQuery.Event, data?: ShowEventData): void {
         super.onPageBeforeShow(event, data);
 
@@ -78,12 +77,18 @@ class SwipeableTabViewPage extends PageView {
             owner: this,
             localContentCollection: this._localContentCollection,
             textileCollection: new LocalContentCollection("textile"),
+            $staticRoot: this.$page.find(".static-view"),
         });
         this._tabHostView.on(TabHostView.EVENT_TAB_MOVE, this.onTabMoving.bind(this));
         this._tabHostView.on(TabHostView.EVENT_TAB_STOP, this.onTabChanged.bind(this));
 
         this.updateTabHighlight(this._lastActiveTabIndex);
         this._tabHostView.setActiveTab(this._lastActiveTabIndex, 0);
+    }
+
+    onPageShow(event: JQuery.Event, data?: ShowEventData): void {
+        super.onPageShow(event, data);
+        this._tabHostView.initializeTabViews();
     }
 
     onPageRemove(event: JQuery.Event): void {

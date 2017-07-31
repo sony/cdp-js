@@ -121,6 +121,7 @@ namespace CDP.UI {
         enableBounce?: boolean;                 // 終端で bounce する場合には true
         initialWidth?: number;                  // width の初期値
         initialHeight?: number;                 // height の初期値
+        initImmediate?: boolean;                // コンストラクタで TabView を初期化する場合 true
     }
 
     //___________________________________________________________________________________________________________________//
@@ -229,12 +230,9 @@ namespace CDP.UI {
                 this.onTabViewSetupRequest(initialHeight);
             }
 
-            // ITabView に $tabHost をアサインする
-            // NOTE: 現在は DOM の順序は固定
-            const $tabs = this.$el.find(_Config.TABVIEW_SELECTOR);
-            this._tabs.forEach((tabview: ITabView, index) => {
-                tabview.onInitialize(this, $($tabs[index]));
-            });
+            if (this._settings.initImmediate) {
+                this.initializeTabViews();
+            }
 
             this._$contentsHolder = this.$el.find(_Config.TABHOST_SELECTOR).parent();
 
@@ -243,6 +241,18 @@ namespace CDP.UI {
                 distance: initialWidth,
             }, this._settings));
             this.setActiveTab(this._activeTabIndex, 0, true);
+        }
+
+        /**
+         * 配下の TabView を初期化
+         */
+        public initializeTabViews(): void {
+            // ITabView に $tabHost をアサインする
+            // NOTE: 現在は DOM の順序は固定
+            const $tabs = this.$el.find(_Config.TABVIEW_SELECTOR);
+            this._tabs.forEach((tabview: ITabView, index) => {
+                tabview.onInitialize(this, $($tabs[index]));
+            });
         }
 
         /**
