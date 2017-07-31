@@ -1,7 +1,6 @@
 ﻿import {
     TabView,
     TabViewConstructionOptions,
-    TabHostView,
     toUrl,
     getTemplate,
 } from "cdp/ui";
