@@ -21,4 +21,9 @@
     <preference name="DisallowOverscroll" value="true" />
     <preference name="KeyboardDisplayRequiresUserAction" value="false" />
     <preference name="BackgroundColor" value="0xff000000" />
+    <feature name="File">
+        <param name="android-package" value="org.apache.cordova.file.FileUtils" />
+        <param name="onload" value="true" />
+    </feature>
+    <allow-navigation href="cdvfile:*" />
 </widget>
