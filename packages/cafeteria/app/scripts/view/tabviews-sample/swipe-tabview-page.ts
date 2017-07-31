@@ -4,6 +4,7 @@ import {
     PageView,
     registerPage,
     ShowEventData,
+    Orientation,
     TabHostView,
 } from "cdp/ui";
 import { LocalContentCollection } from "../../model/local-content-collection";
@@ -56,36 +57,38 @@ class SwipeableTabViewPage extends PageView {
     ///////////////////////////////////////////////////////////////////////
     // Override: PageView
 
-    // jQM event: "pagebeforeshow" に対応
+    // Orientation の変更を受信
+    onOrientationChanged(newOrientation: Orientation): void {
+        super.onOrientationChanged(newOrientation);
+        this.updateTabHighlight();
+    }
+
     onPageBeforeShow(event: JQuery.Event, data?: ShowEventData): void {
         super.onPageBeforeShow(event, data);
 
+        // page のサイズを確定する
+        this.$page.css("display", "block");
+
         this._$tabHighLight = this.$header.find(".tab-link-highlight");
         const $tabContainer = this.$page.find(".tab-container");
-        const initialHeight = this.$el.height() - parseInt($tabContainer.css("top"), 10)
 
         this._tabHostView = new SwipeableTabHostView({
             $el: $tabContainer,
             owner: this,
-            initialHeight: initialHeight,
             localContentCollection: this._localContentCollection,
             textileCollection: new LocalContentCollection("textile"),
+            $staticRoot: this.$page.find(".static-view"),
         });
         this._tabHostView.on(TabHostView.EVENT_TAB_MOVE, this.onTabMoving.bind(this));
         this._tabHostView.on(TabHostView.EVENT_TAB_STOP, this.onTabChanged.bind(this));
 
         this.updateTabHighlight(this._lastActiveTabIndex);
-        this._tabHostView.setActiveTab(this._lastActiveTabIndex);
+        this._tabHostView.setActiveTab(this._lastActiveTabIndex, 0);
     }
 
-    // $el の高さが決まってから処理する必要があるため、onPageShow() をハンドリング
     onPageShow(event: JQuery.Event, data?: ShowEventData): void {
         super.onPageShow(event, data);
-        //this._listViewElement = new SimpleListView({
-        //    el: this.$page.find("#sample-listview-element"),
-        //    scrollerFactory: ScrollerElement.getFactory(),
-        //    //          itemTagName: "li",    // display: block の指定も必要
-        //});
+        this._tabHostView.initializeTabViews();
     }
 
     onPageRemove(event: JQuery.Event): void {
@@ -115,18 +118,6 @@ class SwipeableTabViewPage extends PageView {
 
     ///////////////////////////////////////////////////////////////////////
     // private methods: layout 用
-
-    //! Page 表示前に Page の高さと ListView を調整する.
-    private adjustListViewHeight($prevPage: JQuery): number {
-        let $header = $prevPage.find("[data-role='header']");
-        let headerHeight: number = $header.height() + parseInt($header.css("padding-top"), 10);
-        let pageHeight = $prevPage.height();
-
-        // 表示に先駆けて page の高さを合わせる
-        this.$el.height(pageHeight);
-
-        return this.$el.height() - headerHeight;
-    }
 
     // tab highlight ポジションの更新
     private updateTabHighlight(index: number = this._tabHostView.getActiveTabIndex()): void {

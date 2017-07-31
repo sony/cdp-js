@@ -7,54 +7,27 @@ namespace CDP.UI {
     const TAG = "[CDP.UI.PageView] ";
 
     /**
+     * PageView が発行するイベント定義
+     */
+    export namespace PAGEVIEW_EVENTS {
+        export const ORIENTATION_CHANGED = "pageview:orientation-changed";
+        export const INITIALZSE          = "pageview:initialize";
+        export const PAGE_BEFORE_CREATE  = "pageview:before-create";
+        export const PAGE_INIT           = "pageview:page-init";
+        export const PAGE_BEFORE_SHOW    = "pageview:before-show";
+        export const PAGE_SHOW           = "pageview:show";
+        export const PAGE_BEFORE_HIDE    = "pageview:before-hide";
+        export const PAGE_HIDE           = "pageview:hide";
+        export const PAGE_REMOVE         = "pageview:remove";
+    }
+
+    /**
      * @interface PageViewConstructOptions
      * @brief Router への登録情報と Backbone.View への初期化情報を格納するインターフェイスクラス
      */
     export interface PageViewConstructOptions<TModel extends Framework.Model = Framework.Model> extends BasePageOptions<TModel> {
         basePage?: new (url: string, id: string, options?: Framework.PageConstructOptions) => Framework.Page;    //!< Page 機能を提供する基底インスタンス
     }
-
-    /* tslint:disable:no-use-before-declare */
-    /**
-     * @interface PageContainerViewOptions
-     * @brief PageContainer のオプション
-     */
-    export interface PageContainerViewOptions<TModel extends Framework.Model = Framework.Model> extends Framework.ViewOptions<TModel> {
-        owner: PageView;
-        $el?: JQuery;
-    }
-
-    /**
-     * @class PageContainerView
-     * @brief PageView と連携可能な コンテナビュークラス
-     */
-    export class PageContainerView<TModel extends Framework.Model = Framework.Model> extends Framework.View<TModel> {
-
-        private _owner: PageView = null;
-
-        /**
-         * constructor
-         */
-        constructor(options: PageContainerViewOptions<TModel>) {
-            super(options);
-            this._owner = options.owner;
-            if (options.$el) {
-                const delegates = (<any>this).events ? true : false;
-                this.setElement(options.$el, delegates);
-            }
-        }
-
-        ///////////////////////////////////////////////////////////////////////
-        // short cut methods
-
-        //! Owner 取得
-        get owner(): PageView {
-            return this._owner;
-        }
-    }
-    /* tslint:enable:no-use-before-declare */
-
-    //___________________________________________________________________________________________________________________//
 
     /**
      * @class PageView
@@ -146,7 +119,7 @@ namespace CDP.UI {
          * @param newOrientation {Orientation} [in] new orientation code.
          */
         onOrientationChanged(newOrientation: Framework.Orientation): void {
-            // Override
+            this.trigger(PAGEVIEW_EVENTS.ORIENTATION_CHANGED, newOrientation);
         }
 
         /**
@@ -186,7 +159,7 @@ namespace CDP.UI {
          * @param event {JQuery.Event} [in] イベントオブジェクト
          */
         onInitialize(event: JQuery.Event): void {
-            // Override
+            this.trigger(PAGEVIEW_EVENTS.INITIALZSE, event);
         }
 
         /**
@@ -196,6 +169,7 @@ namespace CDP.UI {
          */
         onPageBeforeCreate(event: JQuery.Event): void {
             this.setElement(this.$page, true);
+            this.trigger(PAGEVIEW_EVENTS.PAGE_BEFORE_CREATE, event);
         }
 
         /**
@@ -204,7 +178,7 @@ namespace CDP.UI {
          * @param event {JQuery.Event} [in] イベントオブジェクト
          */
         onPageInit(event: JQuery.Event): void {
-            // Override
+            this.trigger(PAGEVIEW_EVENTS.PAGE_INIT, event);
         }
 
         /**
@@ -214,7 +188,7 @@ namespace CDP.UI {
          * @param data  {ShowEventData}     [in] 付加情報
          */
         onPageBeforeShow(event: JQuery.Event, data?: Framework.ShowEventData): void {
-            // Override
+            this.trigger(PAGEVIEW_EVENTS.PAGE_BEFORE_SHOW, event, data);
         }
 
         /**
@@ -224,7 +198,7 @@ namespace CDP.UI {
          * @param data  {ShowEventData}     [in] 付加情報
          */
         onPageShow(event: JQuery.Event, data?: Framework.ShowEventData): void {
-            // Override
+            this.trigger(PAGEVIEW_EVENTS.PAGE_SHOW, event, data);
         }
 
         /**
@@ -234,7 +208,7 @@ namespace CDP.UI {
          * @param data  {HideEventData}     [in] 付加情報
          */
         onPageBeforeHide(event: JQuery.Event, data?: Framework.HideEventData): void {
-            // Override
+            this.trigger(PAGEVIEW_EVENTS.PAGE_BEFORE_HIDE, event, data);
         }
 
         /**
@@ -244,7 +218,7 @@ namespace CDP.UI {
          * @param data  {HideEventData}     [in] 付加情報
          */
         onPageHide(event: JQuery.Event, data?: Framework.HideEventData): void {
-            // Override
+            this.trigger(PAGEVIEW_EVENTS.PAGE_HIDE, event, data);
         }
 
         /**
@@ -253,6 +227,7 @@ namespace CDP.UI {
          * @param event {JQuery.Event} [in] イベントオブジェクト
          */
         onPageRemove(event: JQuery.Event): void {
+            this.trigger(PAGEVIEW_EVENTS.PAGE_REMOVE, event);
             this.remove();
             this.el  = null;
             this.$el = null;

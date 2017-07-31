@@ -170,6 +170,9 @@
     <Content Include="src\scripts\CDP\UI\jqm\Interfaces.js">
       <DependentUpon>Interfaces.ts</DependentUpon>
     </Content>
+    <Content Include="src\scripts\CDP\UI\jqm\PageContainerView.js">
+      <DependentUpon>PageContainerView.ts</DependentUpon>
+    </Content>
     <Content Include="src\scripts\CDP\UI\jqm\PageExpandableListView.js">
       <DependentUpon>PageExpandableListView.ts</DependentUpon>
     </Content>
@@ -248,6 +251,7 @@
     <TypeScriptCompile Include="src\scripts\CDP\UI\jqm\Extension\Slider.ts" />
     <TypeScriptCompile Include="src\scripts\CDP\UI\jqm\Extension\Spinner.ts" />
     <TypeScriptCompile Include="src\scripts\CDP\UI\jqm\Interfaces.ts" />
+    <TypeScriptCompile Include="src\scripts\CDP\UI\jqm\PageContainerView.ts" />
     <TypeScriptCompile Include="src\scripts\CDP\UI\jqm\PageExpandableListView.ts" />
     <TypeScriptCompile Include="src\scripts\CDP\UI\jqm\PageListView.ts" />
     <TypeScriptCompile Include="src\scripts\CDP\UI\jqm\TabHostView.ts" />

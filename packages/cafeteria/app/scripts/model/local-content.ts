@@ -5,7 +5,10 @@
     Model,
 } from "cdp/framework";
 import { resizeImage  } from "cdp/tools/tools";
-import { LocalContentProvider as Provider } from "cafeteria.images";
+import {
+    LocalContentProvider,
+    TextileProvider as StubProvider,
+} from "cafeteria.images";
 
 const TAG = "[model.LocalContent] ";
 const MAX_IMAGE_LONG_SIDE_LENGTH = 1920; // Image サイズの 長辺
@@ -53,7 +56,7 @@ export default class LocalContent extends Model {
      * @returns data-url
      */
     public getThumbnail(): IPromise<string> {
-        return Provider.getThumbnail(this.key);
+        return this.Provider.getThumbnail(this.key);
     }
 
     /**
@@ -63,7 +66,7 @@ export default class LocalContent extends Model {
      */
     public getImageSource(): IPromise<string> {
         return new Promise((resolve, reject, dependOn) => {
-            dependOn(Provider.getImageSource(this.key))
+            dependOn(this.Provider.getImageSource(this.key))
                 .then((src: string) => {
                     return dependOn(resizeImage(src, MAX_IMAGE_LONG_SIDE_LENGTH));
                 })
@@ -75,4 +78,17 @@ export default class LocalContent extends Model {
                 });
         });
     }
+
+    ///////////////////////////////////////////////////////////////////////
+    // private accesser
+
+    private get Provider(
+    ): { getThumbnail: (key: string) => IPromise<string>; getImageSource: (key: string) => IPromise<string>; } {
+        if (!this.get("stub")) {
+            return LocalContentProvider;
+        } else {
+            return StubProvider;
+        }
+    }
+
 }

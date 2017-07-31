@@ -47,7 +47,7 @@
         // jqm default を使用したい場合は ".ui-screen-no-fix" を使用
         .ui-content:not(.ui-screen-no-fix) {
             position:   absolute;
-            top:        $metrics-header-height + $metrics-common-border-width; // default header height + border
+            top:        $metrics-header-height;
             right:      0;
             bottom:     0;
             left:       0;

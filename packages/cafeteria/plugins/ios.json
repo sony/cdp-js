@@ -12,7 +12,14 @@
         },
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.sony.cdp.cafeteria"
+        },
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "jp.co.sony.cdp.cafeteria"
         }
     },
-    "dependent_plugins": {}
+    "dependent_plugins": {
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "jp.co.sony.cdp.cafeteria"
+        }
+    }
 }

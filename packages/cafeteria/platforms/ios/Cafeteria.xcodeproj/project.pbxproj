@@ -10,11 +10,15 @@
 		0207DA581B56EA530066E2B4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0207DA571B56EA530066E2B4 /* Images.xcassets */; };
 		1D3623260D0F684500981E51 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* AppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
+		26F95D5EE97E4B139D89E4D9 /* CDVLocalFilesystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 20CB8FFE1AC244DC83A1477A /* CDVLocalFilesystem.m */; };
+		2AEBFAB945754113BC1ECD94 /* CDVFile.m in Sources */ = {isa = PBXBuildFile; fileRef = E7AC6B389BE440E58163467A /* CDVFile.m */; };
 		301BF552109A68D80062928A /* libCordova.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 301BF535109A57CC0062928A /* libCordova.a */; };
 		302D95F114D2391D003F00A1 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 302D95EF14D2391D003F00A1 /* MainViewController.m */; };
 		302D95F214D2391D003F00A1 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 302D95F014D2391D003F00A1 /* MainViewController.xib */; };
 		47891F2D1F22198E000950B1 /* CafeteriaMisc.m in Sources */ = {isa = PBXBuildFile; fileRef = 47891F2B1F22198E000950B1 /* CafeteriaMisc.m */; };
 		47891F2E1F22198E000950B1 /* CafeteriaSimpleGate.m in Sources */ = {isa = PBXBuildFile; fileRef = 47891F2C1F22198E000950B1 /* CafeteriaSimpleGate.m */; };
+		47C50AE71F2F44CE00C48585 /* CafeteriaLocalContentProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C50AE61F2F44CE00C48585 /* CafeteriaLocalContentProvider.m */; };
+		544A90943A224515857B13B9 /* CDVAssetLibraryFilesystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 36328116E26A4510B60D5A5E /* CDVAssetLibraryFilesystem.m */; };
 		6AFF5BF91D6E424B00AB3073 /* CDVLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AFF5BF81D6E424B00AB3073 /* CDVLaunchScreen.storyboard */; };
 		720FAFE6CB3849FABF689AC3 /* CDPNativeBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E93157E4CFA4EABB6C568E4 /* CDPNativeBridge.m */; };
 		9B9A6FD5ACC243B0AA388F17 /* CDPNativeBridgeMsgUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DF266840EE8434391CC319F /* CDPNativeBridgeMsgUtils.m */; };
@@ -48,9 +52,11 @@
 
 /* Begin PBXFileReference section */
 		0207DA571B56EA530066E2B4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Cafeteria/Images.xcassets; sourceTree = SOURCE_ROOT; };
+		11C0F15C9727441F9878E16B /* CDVAssetLibraryFilesystem.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CDVAssetLibraryFilesystem.h; path = "cordova-plugin-file/CDVAssetLibraryFilesystem.h"; sourceTree = "<group>"; };
 		1D3623240D0F684500981E51 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		1D6058910D05DD3D006BFB54 /* Cafeteria.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cafeteria.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		20CB8FFE1AC244DC83A1477A /* CDVLocalFilesystem.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = CDVLocalFilesystem.m; path = "cordova-plugin-file/CDVLocalFilesystem.m"; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		301BF52D109A57CC0062928A /* CordovaLib/CordovaLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = CordovaLib/CordovaLib.xcodeproj; sourceTree = "<group>"; };
 		301BF56E109A69640062928A /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; path = www; sourceTree = SOURCE_ROOT; };
@@ -61,18 +67,23 @@
 		3047A5101AB8059700498E2A /* build-release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "build-release.xcconfig"; path = "cordova/build-release.xcconfig"; sourceTree = SOURCE_ROOT; };
 		3047A5111AB8059700498E2A /* build.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = build.xcconfig; path = cordova/build.xcconfig; sourceTree = SOURCE_ROOT; };
 		32CA4F630368D1EE00C91783 /* Cafeteria-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Cafeteria-Prefix.pch"; sourceTree = "<group>"; };
+		36328116E26A4510B60D5A5E /* CDVAssetLibraryFilesystem.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = CDVAssetLibraryFilesystem.m; path = "cordova-plugin-file/CDVAssetLibraryFilesystem.m"; sourceTree = "<group>"; };
 		47891F2B1F22198E000950B1 /* CafeteriaMisc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CafeteriaMisc.m; path = Cafeteria/NativeBridge/CafeteriaMisc.m; sourceTree = SOURCE_ROOT; };
 		47891F2C1F22198E000950B1 /* CafeteriaSimpleGate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CafeteriaSimpleGate.m; path = Cafeteria/NativeBridge/CafeteriaSimpleGate.m; sourceTree = SOURCE_ROOT; };
+		47C50AE61F2F44CE00C48585 /* CafeteriaLocalContentProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CafeteriaLocalContentProvider.m; path = Cafeteria/NativeBridge/CafeteriaLocalContentProvider.m; sourceTree = SOURCE_ROOT; };
 		4DF266840EE8434391CC319F /* CDPNativeBridgeMsgUtils.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = CDPNativeBridgeMsgUtils.m; path = "cordova-plugin-cdp-nativebridge/CDPNativeBridgeMsgUtils.m"; sourceTree = "<group>"; };
 		6AFF5BF81D6E424B00AB3073 /* CDVLaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = CDVLaunchScreen.storyboard; path = Cafeteria/CDVLaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
 		6E93157E4CFA4EABB6C568E4 /* CDPNativeBridge.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = CDPNativeBridge.m; path = "cordova-plugin-cdp-nativebridge/CDPNativeBridge.m"; sourceTree = "<group>"; };
 		72F82C34C59F47B999BCBC5C /* CDPMethodContext.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CDPMethodContext.h; path = "cordova-plugin-cdp-nativebridge/CDPMethodContext.h"; sourceTree = "<group>"; };
+		7CA32A22049D459EA00A1369 /* CDVFile.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CDVFile.h; path = "cordova-plugin-file/CDVFile.h"; sourceTree = "<group>"; };
 		842181BA56F64451AD31E568 /* CDPNativeBridgeMsgUtils.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CDPNativeBridgeMsgUtils.h; path = "cordova-plugin-cdp-nativebridge/CDPNativeBridgeMsgUtils.h"; sourceTree = "<group>"; };
 		864D51A5B9CF49BD999C8AFC /* CDPGate.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = CDPGate.m; path = "cordova-plugin-cdp-nativebridge/CDPGate.m"; sourceTree = "<group>"; };
+		88E32773FD734A3DB6931C05 /* CDVLocalFilesystem.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CDVLocalFilesystem.h; path = "cordova-plugin-file/CDVLocalFilesystem.h"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Cafeteria-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Cafeteria-Info.plist"; path = "Cafeteria/Cafeteria-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = SOURCE_ROOT; };
 		931830522662414C92741D00 /* CDPGate.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CDPGate.h; path = "cordova-plugin-cdp-nativebridge/CDPGate.h"; sourceTree = "<group>"; };
 		A1A07E58592145A8AA670BE9 /* CDPNativeBridge.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CDPNativeBridge.h; path = "cordova-plugin-cdp-nativebridge/CDPNativeBridge.h"; sourceTree = "<group>"; };
 		E1F78744316D4E6D9CF3C63C /* CDPMethodContext.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = CDPMethodContext.m; path = "cordova-plugin-cdp-nativebridge/CDPMethodContext.m"; sourceTree = "<group>"; };
+		E7AC6B389BE440E58163467A /* CDVFile.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = CDVFile.m; path = "cordova-plugin-file/CDVFile.m"; sourceTree = "<group>"; };
 		EB87FDF31871DA8E0020F90C /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; name = www; path = ../../www; sourceTree = "<group>"; };
 		EB87FDF41871DAF40020F90C /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = ../../config.xml; sourceTree = "<group>"; };
 		ED33DF2A687741AEAF9F8254 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
@@ -190,6 +201,12 @@
 				72F82C34C59F47B999BCBC5C /* CDPMethodContext.h */,
 				931830522662414C92741D00 /* CDPGate.h */,
 				842181BA56F64451AD31E568 /* CDPNativeBridgeMsgUtils.h */,
+				E7AC6B389BE440E58163467A /* CDVFile.m */,
+				20CB8FFE1AC244DC83A1477A /* CDVLocalFilesystem.m */,
+				36328116E26A4510B60D5A5E /* CDVAssetLibraryFilesystem.m */,
+				7CA32A22049D459EA00A1369 /* CDVFile.h */,
+				88E32773FD734A3DB6931C05 /* CDVLocalFilesystem.h */,
+				11C0F15C9727441F9878E16B /* CDVAssetLibraryFilesystem.h */,
 			);
 			name = Plugins;
 			path = Cafeteria/Plugins;
@@ -198,6 +215,7 @@
 		47891F2A1F221976000950B1 /* NativeBridge */ = {
 			isa = PBXGroup;
 			children = (
+				47C50AE61F2F44CE00C48585 /* CafeteriaLocalContentProvider.m */,
 				47891F2B1F22198E000950B1 /* CafeteriaMisc.m */,
 				47891F2C1F22198E000950B1 /* CafeteriaSimpleGate.m */,
 			);
@@ -332,7 +350,11 @@
 				720FAFE6CB3849FABF689AC3 /* CDPNativeBridge.m in Sources */,
 				F07A1A8B23C74FFDA3FCB3AF /* CDPMethodContext.m in Sources */,
 				E6F3FB4E372F4399AD6EEB50 /* CDPGate.m in Sources */,
+				47C50AE71F2F44CE00C48585 /* CafeteriaLocalContentProvider.m in Sources */,
 				9B9A6FD5ACC243B0AA388F17 /* CDPNativeBridgeMsgUtils.m in Sources */,
+				2AEBFAB945754113BC1ECD94 /* CDVFile.m in Sources */,
+				26F95D5EE97E4B139D89E4D9 /* CDVLocalFilesystem.m in Sources */,
+				544A90943A224515857B13B9 /* CDVAssetLibraryFilesystem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

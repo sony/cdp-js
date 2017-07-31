@@ -11,6 +11,7 @@ import LocalContent from "../../model/local-content";
 import { LocalContentCollection } from "../../model/local-content-collection";
 import { ImageListView } from "./tab-image-listview";
 import { TextileListView } from "./tab-textile-listview";
+import { StaticView } from "./tab-static-view";
 
 const TAG = "[view.tabviews-sample.SwipeableTabHostView] ";
 
@@ -21,6 +22,7 @@ const TAG = "[view.tabviews-sample.SwipeableTabHostView] ";
 export interface SwipeableTabHostViewConstructionOptions extends TabHostViewConstructOptions<LocalContent> {
     localContentCollection: LocalContentCollection;
     textileCollection: LocalContentCollection;
+    $staticRoot: JQuery;
 }
 
 type OptionsBase = { tabContexts: TabViewContextOptions };
@@ -50,6 +52,12 @@ export class SwipeableTabHostView extends TabHostView {
                         collection: options.textileCollection,
                         scrollerFactory: ScrollerElement.getFactory(),
                         initialHeight: (options && options.initialHeight) ? options.initialHeight : undefined,
+                    },
+                },
+                {
+                    ctor: StaticView,
+                    options: {
+                        $el: options.$staticRoot,
                     },
                 },
             ],

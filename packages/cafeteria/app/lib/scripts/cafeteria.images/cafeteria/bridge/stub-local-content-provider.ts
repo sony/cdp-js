@@ -11,7 +11,7 @@ import { RESULT_CODE } from "../error-defs";
 
 const TAG: string = "[cafeteria.images.StubLocalContentProvider] ";
 
-const TOTAL_CONTENT_COUNT = 956;
+const TOTAL_CONTENT_COUNT = 319;
 const MAX_QUERY_LIMIT = 48; // 3, 4, 6 の公倍数
 
 interface Content extends Model {
@@ -19,6 +19,7 @@ interface Content extends Model {
     index: number;
     width: number;
     height: number;
+    stub: boolean; // stub signature
 }
 
 type ContentCollection = Collection<Content>;
@@ -160,6 +161,7 @@ export default class StubLocalContentProvider {
                         key: image.id,
                         width: image.width,
                         height: image.height,
+                        stub: true,
                     };
                 };
 
