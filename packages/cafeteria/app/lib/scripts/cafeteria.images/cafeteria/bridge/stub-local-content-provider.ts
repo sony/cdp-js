@@ -19,6 +19,7 @@ interface Content extends Model {
     index: number;
     width: number;
     height: number;
+    stub: boolean; // stub signature
 }
 
 type ContentCollection = Collection<Content>;
@@ -160,6 +161,7 @@ export default class StubLocalContentProvider {
                         key: image.id,
                         width: image.width,
                         height: image.height,
+                        stub: true,
                     };
                 };
 
