@@ -41,7 +41,7 @@ export class ImageListItemView extends ListItemView<LocalContent> {
     constructor(options?: ImageListItemViewOptions) {
         super(options);
         this._prmsManager = new PromiseManager();
-        this._template = getTemplate("#template-image-listitemview", toUrl("/templates/tabviews-sample/tabview-templates.html"));
+        this._template = getTemplate("#template-tabview-listitemview", toUrl("/templates/tabviews-sample/tabview-templates.html"));
         this._models = options.models || [];
         this.render();
     }

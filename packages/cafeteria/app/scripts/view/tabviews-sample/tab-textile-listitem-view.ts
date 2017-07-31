@@ -41,7 +41,7 @@ export class TextileListItemView extends ListItemView<Textile> {
     constructor(options?: TextileListItemViewOptions) {
         super(options);
         this._prmsManager = new PromiseManager();
-        this._template = getTemplate("#template-textile-listitemview", toUrl("/templates/tabviews-sample/tabview-templates.html"));
+        this._template = getTemplate("#template-tabview-listitemview", toUrl("/templates/tabviews-sample/tabview-templates.html"));
         this._models = options.models || [];
         this.render();
     }
@@ -83,14 +83,14 @@ export class TextileListItemView extends ListItemView<Textile> {
             this._prmsManager.add(model.getThumbnail())
                 .done((src: string) => {
                     this.$el
-                        .find("[data-content-id='" + model.id + "']")
+                        .find(`[data-content-key='${model.key}']`)
                         .children()
                         .each((index: number, element: Element) => {
                             const $target = $(element);
                             if ($target.hasClass("fade-in")) {
                                 $target.removeClass("fade-in");
                             } else {
-                                $target.css("background-image", "url('" + src + "')");
+                                $target.css("background-image", `url('${src}')`);
                                 $target.addClass("fade-in");
                             }
                         });

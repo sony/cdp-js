@@ -50,6 +50,7 @@ class SwipeableTabViewPage extends PageView {
         const tabIndex: number = ~~$(event.currentTarget).data("tab-index");
         event.preventDefault();
         this._tabHostView.setActiveTab(tabIndex);
+        this.updateTabHighlight();
     }
 
     ///////////////////////////////////////////////////////////////////////
@@ -73,6 +74,7 @@ class SwipeableTabViewPage extends PageView {
         this._tabHostView.on(TabHostView.EVENT_TAB_MOVE, this.onTabMoving.bind(this));
         this._tabHostView.on(TabHostView.EVENT_TAB_STOP, this.onTabChanged.bind(this));
 
+        this.updateTabHighlight(this._lastActiveTabIndex);
         this._tabHostView.setActiveTab(this._lastActiveTabIndex);
     }
 
@@ -108,7 +110,6 @@ class SwipeableTabViewPage extends PageView {
     // flip 終了時にコールされる
     private onTabChanged(newIndex: number, moved: boolean): void {
         this.$page.removeClass("swiping");
-        console.log("newIndex:" + newIndex);
         this.updateTabHighlight(newIndex);
     }
 
@@ -128,7 +129,7 @@ class SwipeableTabViewPage extends PageView {
     }
 
     // tab highlight ポジションの更新
-    private updateTabHighlight(index: number): void {
+    private updateTabHighlight(index: number = this._tabHostView.getActiveTabIndex()): void {
         const CSS_PREFIXES = ["-webkit-", ""];
         if (this._$tabHighLight) {
             const tabNum = this._tabHostView.getTabCount();
@@ -137,8 +138,6 @@ class SwipeableTabViewPage extends PageView {
             for (let i = 0; i < CSS_PREFIXES.length; i++) {
                 transform[CSS_PREFIXES[i] + "transform"] = "translate3d(" + pos + "px, 0px, 0px)";
             }
-            //console.log("POS: " + pos);
-            console.log("  INDEX: " + index);
             this._$tabHighLight.css(transform);
         }
     }
