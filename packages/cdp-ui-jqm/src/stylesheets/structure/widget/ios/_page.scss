@@ -14,7 +14,7 @@ $metrics-ios-status-bar-header: $metrics-header-height + $metrics-ios-status-bar
             }
             .ui-content {
                 &:not(.ui-screen-no-fix) {
-                    top: $metrics-ios-status-bar-header + $metrics-common-border-width;
+                    top: $metrics-ios-status-bar-header;
                 }
             }
         }

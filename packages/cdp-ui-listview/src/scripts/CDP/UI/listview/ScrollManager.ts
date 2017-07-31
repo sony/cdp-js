@@ -44,7 +44,7 @@ namespace CDP.UI {
         constructor(options?: ListViewOptions) {
             // ListViewOptions 既定値
             const defOptions: ListViewOptions = {
-                scrollerFactory: ScrollerNative.getFactory(),
+                scrollerFactory: ScrollerElement.getFactory(),
                 enableHiddenPage: false,
                 enableTransformOffset: false,
                 scrollMapRefreshInterval: 200,
@@ -145,8 +145,8 @@ namespace CDP.UI {
             let i: number;
             const transform = {};
 
-            const updateOffset = ($target: JQuery, offset?: number): JQuery => {
-                offset = offset || (this._scroller.getPos() - this._lastActivePageContext.pos);
+            const updateOffset = ($target: JQuery): JQuery => {
+                const offset = (this._scroller.getPos() - this._lastActivePageContext.pos);
                 if (_Utils.getCssMatrixValue($target, "translateY") !== offset) {
                     for (i = 0; i < _Utils.cssPrefixes.length; i++) {
                         transform[_Utils.cssPrefixes[i] + "transform"] = "translate3d(0px," + offset + "px,0px)";
@@ -175,7 +175,7 @@ namespace CDP.UI {
                 if (this._settings.useDummyInactiveScrollMap) {
                     this.prepareInactiveMap().remove();
                 }
-            } else {
+            } else if (this._scroller) {
                 if (this._settings.useDummyInactiveScrollMap) {
                     updateOffset(this.prepareInactiveMap());
                 } else {

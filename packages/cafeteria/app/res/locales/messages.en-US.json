@@ -215,7 +215,9 @@
         "description": "TabView/TabHostView Examples",
         "titleSwipeableTabView": "Swipeable Tab View",
         "tabButtonLabel1": "IMAGE",
-        "tabButtonLabel2": "TEXTILE"
+        "tabButtonLabel2": "TEXTILE",
+        "tabButtonLabel3": "STATIC",
+        "staticViewDescription": "Static TabView"
     },
     "nativebridge": {
         "title": "Native Bridge Functions",

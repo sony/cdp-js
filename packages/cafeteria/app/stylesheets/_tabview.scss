@@ -1,5 +1,7 @@
 ﻿@import "_utils.scss";
 
+$tab-count: 3;
+
 .tab-base {
     position: relative;
     .tab {
@@ -10,7 +12,7 @@
 
     .tab-link-highlight {
         position:   absolute;
-        width:      50%;
+        width:      100% / $tab-count;
         height:     3px;
         margin:     0;
         padding:    0;
@@ -28,8 +30,6 @@
     }
 }
 
-$tab-count: 2;
-
 .tab-container {
     position:   absolute;
     width:      100%;
@@ -39,7 +39,6 @@ $tab-count: 2;
         top: 0;
     }
     .ui-tabhost {
-        background-color: gold;
         width:  $tab-count * 100%;
         height: 100%;
         &:after {
@@ -105,7 +104,7 @@ $bp-grid-extrasmall-min:    $bp-grid-small-min - 1px;
 .content-item-container {
     border-style:   solid;
     border-width:   0 0 1px 1px;
-    border-color:   pink;
+    border-color:   white;
 }
 
 .image-content-listview {
@@ -170,8 +169,20 @@ $bp-grid-extrasmall-min:    $bp-grid-small-min - 1px;
         @include background-center-crop();
         @include fade-in-out(0.3s, ease);
         &.default {
-            background-color: skyblue;
+            background-color: grey;
         }
+    }
+}
+
+.static-view {
+    position:           absolute;
+    width:              100%;
+    height:             100%;
+    background-color:   black;
+    .description {
+        padding:    16px;
+        color:      white;
+        font-size:  20px;
     }
 }
 

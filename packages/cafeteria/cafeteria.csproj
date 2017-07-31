@@ -50,7 +50,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties package_1json__JSONSchema="" tsconfig_1base_1json__JSONSchema="http://json.schemastore.org/tsconfig" />
+      <UserProperties tsconfig_1base_1json__JSONSchema="http://json.schemastore.org/tsconfig" package_1json__JSONSchema="" />
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
@@ -705,6 +705,9 @@
     <Content Include="app\scripts\view\tabviews-sample\tab-image-listview.js">
       <DependentUpon>tab-image-listview.ts</DependentUpon>
     </Content>
+    <Content Include="app\scripts\view\tabviews-sample\tab-static-view.js">
+      <DependentUpon>tab-static-view.ts</DependentUpon>
+    </Content>
     <Content Include="app\scripts\view\tabviews-sample\tab-textile-listitem-view.js">
       <DependentUpon>tab-textile-listitem-view.ts</DependentUpon>
     </Content>
@@ -1187,6 +1190,7 @@
     <TypeScriptCompile Include="app\scripts\view\tabviews-sample\root.ts" />
     <TypeScriptCompile Include="app\scripts\view\tabviews-sample\tab-image-listitem-view.ts" />
     <TypeScriptCompile Include="app\scripts\view\tabviews-sample\tab-image-listview.ts" />
+    <TypeScriptCompile Include="app\scripts\view\tabviews-sample\tab-static-view.ts" />
     <TypeScriptCompile Include="app\scripts\view\tabviews-sample\tab-textile-listitem-view.ts" />
     <TypeScriptCompile Include="app\scripts\view\tabviews-sample\tab-textile-listview.ts" />
     <TypeScriptCompile Include="app\scripts\view\views-sample\backbone.ts" />

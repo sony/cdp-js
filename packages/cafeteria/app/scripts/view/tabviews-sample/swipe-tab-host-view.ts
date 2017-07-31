@@ -11,6 +11,7 @@ import LocalContent from "../../model/local-content";
 import { LocalContentCollection } from "../../model/local-content-collection";
 import { ImageListView } from "./tab-image-listview";
 import { TextileListView } from "./tab-textile-listview";
+import { StaticView } from "./tab-static-view";
 
 const TAG = "[view.tabviews-sample.SwipeableTabHostView] ";
 
@@ -51,6 +52,9 @@ export class SwipeableTabHostView extends TabHostView {
                         scrollerFactory: ScrollerElement.getFactory(),
                         initialHeight: (options && options.initialHeight) ? options.initialHeight : undefined,
                     },
+                },
+                {
+                    ctor: StaticView,
                 },
             ],
         }, options));
