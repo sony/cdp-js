@@ -11,7 +11,7 @@ import { RESULT_CODE } from "../error-defs";
 
 const TAG: string = "[cafeteria.images.StubLocalContentProvider] ";
 
-const TOTAL_CONTENT_COUNT = 330;
+const TOTAL_CONTENT_COUNT = 319;
 const MAX_QUERY_LIMIT = 48; // 3, 4, 6 の公倍数
 
 interface Content extends Model {

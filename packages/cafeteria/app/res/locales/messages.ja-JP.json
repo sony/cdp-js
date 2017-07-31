@@ -213,6 +213,7 @@
     "tabviews": {
         "title": "Tab View の実装例",
         "description": "TabView/TabHostView の実装例",
+        "backToRoot": "Tab View",
         "titleSwipeableTabView": "Swipeable Tab View",
         "tabButtonLabel1": "IMAGE",
         "tabButtonLabel2": "TEXTILE",

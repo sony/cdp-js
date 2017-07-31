@@ -213,6 +213,7 @@
     "tabviews": {
         "title": "Tab View Examples",
         "description": "TabView/TabHostView Examples",
+        "backToRoot": "Tab View",
         "titleSwipeableTabView": "Swipeable Tab View",
         "tabButtonLabel1": "IMAGE",
         "tabButtonLabel2": "TEXTILE",

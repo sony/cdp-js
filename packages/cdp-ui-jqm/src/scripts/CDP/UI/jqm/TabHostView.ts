@@ -125,12 +125,6 @@ namespace CDP.UI {
 
     //___________________________________________________________________________________________________________________//
 
-    // Owner イベントフック
-    interface HostHookEvents {
-        onOrientationChanged?: (newOrientation: Orientation) => void;
-        onPageShow?: (event: JQuery.Event, data?: Framework.ShowEventData) => void;
-    }
-
     /**
      * @class TabHostView
      * @brief タブ切り替え機能を持つ View クラス
@@ -149,8 +143,6 @@ namespace CDP.UI {
         private _refreshTimerId: number = null;                                 // refresh() 反映確認用
         private _$contentsHolder: JQuery = null;                                // contents holder
         private _settings: TabHostViewConstructOptions<TModel>;                 // TabHostView 設定値
-
-        private _hostEventHooks: HostHookEvents = {};
 
         public static EVENT_SCROLL_MOVE = "tabhost:scrollmove";
         public static EVENT_SCROLL_STOP = "tabhost:scrollstop";
@@ -212,23 +204,15 @@ namespace CDP.UI {
                 this.onScroll();
             };
 
-            // host event hook
-            this._hostEventHooks.onOrientationChanged = this.owner.onOrientationChanged.bind(this.owner);
-            this.owner.onOrientationChanged = this.onOrientationChanged.bind(this);
-            this._hostEventHooks.onPageShow = this.owner.onPageShow.bind(this.owner);
-            this.owner.onPageShow = this.onPageShow.bind(this);
-
             // setup tabs
             if (this._settings.initialWidth) {
                 this.$el.width(this._settings.initialWidth);
-            } else {
-                this.$el.width(this.owner.$el.width());
             }
             if (this._settings.initialHeight) {
                 this.$el.height(this._settings.initialHeight);
 
             }
-            const initialWidth  = this.$el.width();
+            const initialWidth  = this._settings.initialWidth;
             const initialHeight = this.$el.height();
 
             const tabContexts = this._settings.tabContexts.slice();
@@ -450,7 +434,7 @@ namespace CDP.UI {
 
         // Orientation の変更検知
         onOrientationChanged(newOrientation: Orientation): void {
-            this._hostEventHooks.onOrientationChanged(newOrientation);
+            super.onOrientationChanged(newOrientation);
 
             this._tabs.forEach((tabview: ITabView) => {
                 tabview.onOrientationChanged(newOrientation);
@@ -461,25 +445,23 @@ namespace CDP.UI {
             }
 
             if (this._flipsnap && 0 < this._tabs.length) {
-                (() => {
-                    const proc = () => {
-                        // リトライ
-                        if (this._flipsnap && this._flipsnap._maxPoint !== (this._tabs.length - 1)) {
-                            this._flipsnap.refresh();
-                            this._refreshTimerId = setTimeout(proc, _Config.TABHOST_REFRESH_INTERVAL);
-                        } else {
-                            this._refreshTimerId = null;
-                        }
-                    };
-                    this._flipsnap.refresh();
-                    this._refreshTimerId = setTimeout(proc, _Config.TABHOST_REFRESH_INTERVAL);
-                })();
+                const proc = () => {
+                    // リトライ
+                    if (this._flipsnap && this._flipsnap._maxPoint !== (this._tabs.length - 1)) {
+                        this._flipsnap.refresh();
+                        this._refreshTimerId = setTimeout(proc, _Config.TABHOST_REFRESH_INTERVAL);
+                    } else {
+                        this._refreshTimerId = null;
+                    }
+                };
+                this._flipsnap.refresh();
+                this._refreshTimerId = setTimeout(proc, _Config.TABHOST_REFRESH_INTERVAL);
             }
         }
 
         // jQM event: "pagecontainershow" (旧:"pageshow") に対応
         onPageShow(event: JQuery.Event, data?: Framework.ShowEventData): void {
-            this._hostEventHooks.onPageShow(event, data);
+            super.onPageShow(event, data);
             this.rebuild();
         }
 

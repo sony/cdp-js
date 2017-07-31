@@ -225,4 +225,12 @@ $bp-grid-extrasmall-min:    $bp-grid-small-min - 1px;
             }
         }
     }
+    // adjust page title
+    #swipeable-tabview {
+        .ui-header .ui-title {
+            @media only screen and (max-width: $screen-small-min) {
+                text-indent: 32px;
+            }
+        }
+    }
 }
