@@ -15,6 +15,9 @@
         },
         "cordova-plugin-file": {
             "PACKAGE_NAME": "jp.co.sony.cdp.cafeteria"
+        },
+        "cordova-plugin-secure-storage": {
+            "PACKAGE_NAME": "jp.co.sony.cdp.cafeteria"
         }
     },
     "dependent_plugins": {

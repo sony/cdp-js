@@ -1,0 +1,119 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "cordova-plugin-secure-storage",
+        "scope": null,
+        "escapedName": "cordova-plugin-secure-storage",
+        "name": "cordova-plugin-secure-storage",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "/Users/ogata/Documents/Project/CDP/NextFrameworks/cdp-js/packages/cafeteria/node_modules"
+    ]
+  ],
+  "_from": "cordova-plugin-secure-storage@latest",
+  "_id": "cordova-plugin-secure-storage@2.6.8",
+  "_inCache": true,
+  "_location": "/cordova-plugin-secure-storage",
+  "_nodeVersion": "7.10.0",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/cordova-plugin-secure-storage-2.6.8.tgz_1496058938977_0.07450970984064043"
+  },
+  "_npmUser": {
+    "name": "ggozad",
+    "email": "ggozadinos@gmail.com"
+  },
+  "_npmVersion": "4.2.0",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "cordova-plugin-secure-storage",
+    "scope": null,
+    "escapedName": "cordova-plugin-secure-storage",
+    "name": "cordova-plugin-secure-storage",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-secure-storage/-/cordova-plugin-secure-storage-2.6.8.tgz",
+  "_shasum": "81d0b129cd17930338607a188ea23db7a8832b09",
+  "_shrinkwrap": null,
+  "_spec": "cordova-plugin-secure-storage",
+  "_where": "/Users/ogata/Documents/Project/CDP/NextFrameworks/cdp-js/packages/cafeteria/node_modules",
+  "author": {
+    "name": "Yiorgis Gozadinos",
+    "email": "ggozad@crypho.com"
+  },
+  "bugs": {
+    "url": "https://github.com/crypho/cordova-plugin-secure-storage/issues"
+  },
+  "contributors": [
+    {
+      "name": "Demetris Manikas",
+      "email": "demetris.manikas@gmail.com"
+    },
+    {
+      "name": "Sergey Grebnov",
+      "email": "sergei.grebnov@gmail.com"
+    }
+  ],
+  "cordova": {
+    "id": "cordova-plugin-secure-storage",
+    "platforms": [
+      "android",
+      "ios",
+      "wp8",
+      "windows"
+    ]
+  },
+  "dependencies": {},
+  "description": "Secure storage plugin for iOS & Android",
+  "devDependencies": {
+    "cordova-plugin-test-framework": ">=1.0.0",
+    "eslint": ""
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "81d0b129cd17930338607a188ea23db7a8832b09",
+    "tarball": "https://registry.npmjs.org/cordova-plugin-secure-storage/-/cordova-plugin-secure-storage-2.6.8.tgz"
+  },
+  "gitHead": "3dc645f4b8f8152227e6764adc4a5f5a18880465",
+  "homepage": "https://github.com/crypho/cordova-plugin-secure-storage#readme",
+  "keywords": [
+    "cordova",
+    "security",
+    "encryption",
+    "storage",
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios",
+    "cordova-wp8",
+    "cordova-windows",
+    "cordova-browser"
+  ],
+  "license": "MIT",
+  "main": "www/securestorage.js",
+  "maintainers": [
+    {
+      "name": "ggozad",
+      "email": "ggozadinos@gmail.com"
+    }
+  ],
+  "name": "cordova-plugin-secure-storage",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crypho/cordova-plugin-secure-storage.git"
+  },
+  "scripts": {
+    "eslint": "eslint www/securestorage.js tests/tests.js"
+  },
+  "version": "2.6.8"
+}
