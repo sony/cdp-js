@@ -1,0 +1,8 @@
+/* 
+  InfoPlist.strings
+  Cafeteria
+
+  Created by Shin Ogata on 2017/08/01.
+
+*/
+"NSPhotoLibraryUsageDescription" = "Select photo files from Library.";

@@ -52,5 +52,7 @@
       <key>NSAllowsArbitraryLoads</key>
       <true/>
     </dict>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>Select photo files from Library.</string>
   </dict>
 </plist>

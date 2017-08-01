@@ -18,6 +18,7 @@
 		47891F2D1F22198E000950B1 /* CafeteriaMisc.m in Sources */ = {isa = PBXBuildFile; fileRef = 47891F2B1F22198E000950B1 /* CafeteriaMisc.m */; };
 		47891F2E1F22198E000950B1 /* CafeteriaSimpleGate.m in Sources */ = {isa = PBXBuildFile; fileRef = 47891F2C1F22198E000950B1 /* CafeteriaSimpleGate.m */; };
 		47C50AE71F2F44CE00C48585 /* CafeteriaLocalContentProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C50AE61F2F44CE00C48585 /* CafeteriaLocalContentProvider.m */; };
+		47C50B1B1F303A8B00C48585 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 47C50B1D1F303A8B00C48585 /* InfoPlist.strings */; };
 		544A90943A224515857B13B9 /* CDVAssetLibraryFilesystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 36328116E26A4510B60D5A5E /* CDVAssetLibraryFilesystem.m */; };
 		6AFF5BF91D6E424B00AB3073 /* CDVLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AFF5BF81D6E424B00AB3073 /* CDVLaunchScreen.storyboard */; };
 		720FAFE6CB3849FABF689AC3 /* CDPNativeBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E93157E4CFA4EABB6C568E4 /* CDPNativeBridge.m */; };
@@ -71,6 +72,8 @@
 		47891F2B1F22198E000950B1 /* CafeteriaMisc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CafeteriaMisc.m; path = Cafeteria/NativeBridge/CafeteriaMisc.m; sourceTree = SOURCE_ROOT; };
 		47891F2C1F22198E000950B1 /* CafeteriaSimpleGate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CafeteriaSimpleGate.m; path = Cafeteria/NativeBridge/CafeteriaSimpleGate.m; sourceTree = SOURCE_ROOT; };
 		47C50AE61F2F44CE00C48585 /* CafeteriaLocalContentProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CafeteriaLocalContentProvider.m; path = Cafeteria/NativeBridge/CafeteriaLocalContentProvider.m; sourceTree = SOURCE_ROOT; };
+		47C50B1C1F303A8B00C48585 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		47C50B1E1F303A9700C48585 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4DF266840EE8434391CC319F /* CDPNativeBridgeMsgUtils.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = CDPNativeBridgeMsgUtils.m; path = "cordova-plugin-cdp-nativebridge/CDPNativeBridgeMsgUtils.m"; sourceTree = "<group>"; };
 		6AFF5BF81D6E424B00AB3073 /* CDVLaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = CDVLaunchScreen.storyboard; path = Cafeteria/CDVLaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
 		6E93157E4CFA4EABB6C568E4 /* CDPNativeBridge.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = CDPNativeBridge.m; path = "cordova-plugin-cdp-nativebridge/CDPNativeBridge.m"; sourceTree = "<group>"; };
@@ -159,6 +162,7 @@
 				3047A50E1AB8057F00498E2A /* config */,
 				8D1107310486CEB800E47090 /* Cafeteria-Info.plist */,
 				6AFF5BF81D6E424B00AB3073 /* CDVLaunchScreen.storyboard */,
+				47C50B1D1F303A8B00C48585 /* InfoPlist.strings */,
 			);
 			name = Resources;
 			path = Cafeteria/Resources;
@@ -273,6 +277,7 @@
 			hasScannedForEncodings = 1;
 			knownRegions = (
 				en,
+				ja,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
@@ -312,6 +317,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				302D95F214D2391D003F00A1 /* MainViewController.xib in Resources */,
+				47C50B1B1F303A8B00C48585 /* InfoPlist.strings in Resources */,
 				0207DA581B56EA530066E2B4 /* Images.xcassets in Resources */,
 				6AFF5BF91D6E424B00AB3073 /* CDVLaunchScreen.storyboard in Resources */,
 			);
@@ -367,6 +373,19 @@
 			targetProxy = 301BF550109A68C00062928A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		47C50B1D1F303A8B00C48585 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				47C50B1C1F303A8B00C48585 /* en */,
+				47C50B1E1F303A9700C48585 /* ja */,
+			);
+			name = InfoPlist.strings;
+			path = Cafeteria;
+			sourceTree = SOURCE_ROOT;
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
@@ -427,6 +446,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3047A5111AB8059700498E2A /* build.xcconfig */;
 			buildSettings = {
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -453,6 +473,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3047A5111AB8059700498E2A /* build.xcconfig */;
 			buildSettings = {
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
