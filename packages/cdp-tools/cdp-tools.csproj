@@ -120,6 +120,9 @@
     <Content Include="src\scripts\CDP\Tools\Interfaces.js">
       <DependentUpon>Interfaces.ts</DependentUpon>
     </Content>
+    <Content Include="src\scripts\CDP\Tools\ProgressCounter.js">
+      <DependentUpon>ProgressCounter.ts</DependentUpon>
+    </Content>
     <Content Include="src\scripts\CDP\Tools\Template.js">
       <DependentUpon>Template.ts</DependentUpon>
     </Content>
@@ -162,6 +165,7 @@
     <TypeScriptCompile Include="src\scripts\CDP\Tools\ErrorDefs.ts" />
     <TypeScriptCompile Include="src\scripts\CDP\Tools\Functions.ts" />
     <TypeScriptCompile Include="src\scripts\CDP\Tools\Interfaces.ts" />
+    <TypeScriptCompile Include="src\scripts\CDP\Tools\ProgressCounter.ts" />
     <TypeScriptCompile Include="src\scripts\CDP\Tools\Template.ts" />
     <TypeScriptCompile Include="tests\unit\DateTime.spec.ts" />
     <TypeScriptCompile Include="tests\unit\Functions.spec.ts" />

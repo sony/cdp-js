@@ -14,6 +14,7 @@
     "scripts/CDP/Tools/Blob.ts",
     "scripts/CDP/Tools/BinaryTransport.ts",
     "scripts/CDP/Tools/DateTime.ts",
-    "scripts/CDP/Tools/Template.ts"
+    "scripts/CDP/Tools/Template.ts",
+    "scripts/CDP/Tools/ProgressCounter.ts"
   ]
 }
