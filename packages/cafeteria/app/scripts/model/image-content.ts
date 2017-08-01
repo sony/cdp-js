@@ -7,17 +7,17 @@
 import { resizeImage  } from "cdp/tools/tools";
 import {
     LocalContentProvider,
-    TextileProvider as StubProvider,
+    AssetsContentProvider,
 } from "cafeteria.images";
 
-const TAG = "[model.LocalContent] ";
+const TAG = "[model.ImageContent] ";
 const MAX_IMAGE_LONG_SIDE_LENGTH = 1920; // Image サイズの 長辺
 
 /**
- * @class LocalContent
+ * @class ImageContent
  * @brief ローカルコンテンツを扱う Backbone.Model クラス
  */
-export default class LocalContent extends Model {
+export default class ImageContent extends Model {
 
     /**
      * key の取得
@@ -84,10 +84,10 @@ export default class LocalContent extends Model {
 
     private get Provider(
     ): { getThumbnail: (key: string) => IPromise<string>; getImageSource: (key: string) => IPromise<string>; } {
-        if (!this.get("stub")) {
+        if (!this.get("assets")) {
             return LocalContentProvider;
         } else {
-            return StubProvider;
+            return AssetsContentProvider;
         }
     }
 

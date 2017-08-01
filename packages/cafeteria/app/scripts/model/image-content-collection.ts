@@ -5,30 +5,30 @@
 } from "cdp/framework";
 import {
     LocalContentProvider,
-    TextileProvider,
+    AssetsContentProvider,
     Content,
     ContentList,
 } from "cafeteria.images";
-import LocalContent from "./local-content";
+import ImageContent from "./image-content";
 
 const TAG = "[model.LocalContentCollection] ";
 
 /**
- * @interface LocalContentsFetchOptions
- * @brief LocalContentCollection に指定可能な fetch オプション
+ * @interface ImageContentsFetchOptions
+ * @brief ImageContentCollection に指定可能な fetch オプション
  */
-export interface LocalContentsFetchOptions extends Backbone.CollectionFetchOptions {
+export interface ImageContentsFetchOptions extends Backbone.CollectionFetchOptions {
     queryIndex?: number;    // 取得開始 Index を指定 default: 0
     queryLimit?: number;    // 1回の query で制限する 取得コンテンツ数 default: 48
     autoFetch?: boolean;    // 自動全取得する場合は true
 }
 
 /**
- * @interface LocalContentResponse
- * @brief LocalContentCollection.fetch() のレスポンスインターフェイス
+ * @interface ImageContentResponse
+ * @brief ImageContentCollection.fetch() のレスポンスインターフェイス
  */
-export interface LocalContentResponse extends ContentList {
-    models?: LocalContent[];    // 更新差分の LocalContent配列
+export interface ImageContentResponse extends ContentList {
+    models?: ImageContent[];    // 更新差分の LocalContent配列
 }
 
 //___________________________________________________________________________________________________________________//
@@ -38,26 +38,26 @@ interface IProvider {
 }
 
 /**
- * @class LocalContentCollection
- * @brief LocalContent を格納する Backbone.Collection クラス
+ * @class ImageContentCollection
+ * @brief ImageContent を格納する Backbone.Collection クラス
  */
-export class LocalContentCollection extends Collection<LocalContent> {
+export class ImageContentCollection extends Collection<ImageContent> {
 
     // Collection に Model の型情報を指定
-    model = LocalContent;
+    model = ImageContent;
 
     private _totalContentCount: number;
     private _provider: IProvider;
 
-    constructor(kind: "localcontent"|"textile") {
+    constructor(kind: "local" |"assets") {
         super();
         switch (kind) {
-            case "localcontent":
+            case "local":
                 this._provider = LocalContentProvider;
                 break;
-            case "textile":
+            case "assets":
             default:
-                this._provider = TextileProvider;
+                this._provider = AssetsContentProvider;
                 break;
         }
     }
@@ -83,16 +83,16 @@ export class LocalContentCollection extends Collection<LocalContent> {
     /**
      * fetch
      */
-    fetch(options?: LocalContentsFetchOptions): JQueryXHR {
+    fetch(options?: ImageContentsFetchOptions): JQueryXHR {
         const df = $.Deferred();
         const promise = makePromise(df);
 
         const opt = $.extend({}, { remove: false }, options);
 
-        opt.success = (self: LocalContentCollection, resp: ContentList, fetchOptions: LocalContentsFetchOptions) => {
+        opt.success = (self: ImageContentCollection, resp: ContentList, fetchOptions: ImageContentsFetchOptions) => {
             if (resp) {
                 this._totalContentCount = resp.totalContentCount;
-                (<LocalContentResponse>resp).models = this.slice(this.length - resp.contents.length);
+                (<ImageContentResponse>resp).models = this.slice(this.length - resp.contents.length);
                 df.notify(resp);
             }
             if (opt.autoFetch && (this._totalContentCount !== this.length)) {
@@ -108,7 +108,7 @@ export class LocalContentCollection extends Collection<LocalContent> {
 
     /**
      * sync
-     * NativeBridge.LocalContentProvider からのコンテンツ供給
+     * Provider からのコンテンツ供給
      */
     sync(...args: any[]): JQueryXHR {
         return this._provider.sync(args[0], args[1], args[2]);

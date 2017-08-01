@@ -9,36 +9,36 @@ import {
     ListItemViewOptions,
 } from "cdp/ui";
 import { handleErrorInfo } from "../../utils/error-defs";
-import Textile from "../../model/local-content";
+import ImageContent from "../../model/image-content";
 
-const TAG = "[view.tabviews-sample.TextileListItemView] ";
+const TAG = "[view.tabviews-sample.LocalContentListItemView] ";
 
 /**
- * @interface TextileListItemViewOptions
- * @brief TextileListItemViewOptions の構築オプション
+ * @interface LocalContentListItemViewOptions
+ * @brief LocalContentListItemView の構築オプション
  */
-export interface TextileListItemViewOptions extends ListItemViewOptions<Textile> {
-    models: Textile[];
+export interface LocalContentListItemViewOptions extends ListItemViewOptions<ImageContent> {
+    models: ImageContent[];
 }
 
 //___________________________________________________________________________________________________________________//
 
 /**
- * @class TextileListItemView
- * @brief テキスタイル用 ListItemView
+ * @class LocalContentListItemView
+ * @brief ローカルフォトコンテンツ用 ListItemView
  */
-export class TextileListItemView extends ListItemView<Textile> {
+export class LocalContentListItemView extends ListItemView<ImageContent> {
 
     private _prmsManager: PromiseManager;
     private _template: JST = null;
-    private _models: Textile[] = [];
+    private _models: ImageContent[] = [];
 
     /**
      * constructor
      *
-     * @param options {SelectTextileListItemViewOptions} [in] オプション
+     * @param options [in] オプション
      */
-    constructor(options?: TextileListItemViewOptions) {
+    constructor(options?: LocalContentListItemViewOptions) {
         super(options);
         this._prmsManager = new PromiseManager();
         this._template = getTemplate("#template-tabview-listitemview", toUrl("/templates/tabviews-sample/tabview-templates.html"));
@@ -50,7 +50,7 @@ export class TextileListItemView extends ListItemView<Textile> {
     // Override: ListItemView
 
     // 描画
-    render(): TextileListItemView {
+    render(): LocalContentListItemView {
         if (null != this.$el && !this.hasChildNode()) {
             const $line = $(this._template(this.makeTemplateParam()));
             $line.height(this.$el.height());
@@ -62,9 +62,9 @@ export class TextileListItemView extends ListItemView<Textile> {
     }
 
     // 破棄
-    remove(): TextileListItemView {
+    remove(): LocalContentListItemView {
         this._prmsManager.cancel();
-        return <TextileListItemView>super.remove();
+        return <LocalContentListItemView>super.remove();
     }
 
     ///////////////////////////////////////////////////////////////////////
@@ -79,7 +79,7 @@ export class TextileListItemView extends ListItemView<Textile> {
 
     // サムネイルの更新
     private updateThumbnail(): void {
-        this._models.forEach((model: Textile) => {
+        this._models.forEach((model: ImageContent) => {
             this._prmsManager.add(model.getThumbnail())
                 .done((src: string) => {
                     this.$el

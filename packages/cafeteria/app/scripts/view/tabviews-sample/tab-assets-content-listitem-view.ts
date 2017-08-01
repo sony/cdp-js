@@ -9,36 +9,36 @@ import {
     ListItemViewOptions,
 } from "cdp/ui";
 import { handleErrorInfo } from "../../utils/error-defs";
-import LocalContent from "../../model/local-content";
+import ImageContent from "../../model/image-content";
 
-const TAG = "[view.tabviews-sample.ImageListItemView] ";
+const TAG = "[view.tabviews-sample.AssetsContentListItemView] ";
 
 /**
- * @interface ImageListItemViewOptions
- * @brief ImageListItemViewOptions の構築オプション
+ * @interface AssetsContentListItemViewOptions
+ * @brief AssetsContentListItemViewOptions の構築オプション
  */
-export interface ImageListItemViewOptions extends ListItemViewOptions<LocalContent> {
-    models: LocalContent[];
+export interface AssetsContentListItemViewOptions extends ListItemViewOptions<ImageContent> {
+    models: ImageContent[];
 }
 
 //___________________________________________________________________________________________________________________//
 
 /**
- * @class ImageListItemView
- * @brief ローカルフォトコンテンツ用 ListItemView
+ * @class AssetsContentListItemView
+ * @brief アセット画像用 ListItemView
  */
-export class ImageListItemView extends ListItemView<LocalContent> {
+export class AssetsContentListItemView extends ListItemView<ImageContent> {
 
     private _prmsManager: PromiseManager;
     private _template: JST = null;
-    private _models: LocalContent[] = [];
+    private _models: ImageContent[] = [];
 
     /**
      * constructor
      *
      * @param options [in] オプション
      */
-    constructor(options?: ImageListItemViewOptions) {
+    constructor(options?: AssetsContentListItemViewOptions) {
         super(options);
         this._prmsManager = new PromiseManager();
         this._template = getTemplate("#template-tabview-listitemview", toUrl("/templates/tabviews-sample/tabview-templates.html"));
@@ -50,7 +50,7 @@ export class ImageListItemView extends ListItemView<LocalContent> {
     // Override: ListItemView
 
     // 描画
-    render(): ImageListItemView {
+    render(): AssetsContentListItemView {
         if (null != this.$el && !this.hasChildNode()) {
             const $line = $(this._template(this.makeTemplateParam()));
             $line.height(this.$el.height());
@@ -62,9 +62,9 @@ export class ImageListItemView extends ListItemView<LocalContent> {
     }
 
     // 破棄
-    remove(): ImageListItemView {
+    remove(): AssetsContentListItemView {
         this._prmsManager.cancel();
-        return <ImageListItemView>super.remove();
+        return <AssetsContentListItemView>super.remove();
     }
 
     ///////////////////////////////////////////////////////////////////////
@@ -79,7 +79,7 @@ export class ImageListItemView extends ListItemView<LocalContent> {
 
     // サムネイルの更新
     private updateThumbnail(): void {
-        this._models.forEach((model: LocalContent) => {
+        this._models.forEach((model: ImageContent) => {
             this._prmsManager.add(model.getThumbnail())
                 .done((src: string) => {
                     this.$el

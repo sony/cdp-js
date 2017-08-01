@@ -7,10 +7,10 @@ import {
     Toast,
 } from "cdp/ui";
 import { handleErrorInfo } from "../../utils/error-defs";
-import LocalContent from "../../model/local-content";
-import { LocalContentCollection } from "../../model/local-content-collection";
-import { ImageListView } from "./tab-image-listview";
-import { TextileListView } from "./tab-textile-listview";
+import ImageContent from "../../model/image-content";
+import { ImageContentCollection } from "../../model/image-content-collection";
+import { LocalContentListView } from "./tab-local-content-listview";
+import { AssetsContentListView } from "./tab-assets-content-listview";
 import { StaticView } from "./tab-static-view";
 
 const TAG = "[view.tabviews-sample.SwipeableTabHostView] ";
@@ -19,9 +19,9 @@ const TAG = "[view.tabviews-sample.SwipeableTabHostView] ";
  * @class SwipeableTabHostViewConstructionOptions
  * @brief SwipeableTabHostView の構築オプション
  */
-export interface SwipeableTabHostViewConstructionOptions extends TabHostViewConstructOptions<LocalContent> {
-    localContentCollection: LocalContentCollection;
-    textileCollection: LocalContentCollection;
+export interface SwipeableTabHostViewConstructionOptions extends TabHostViewConstructOptions<ImageContent> {
+    localContentCollection: ImageContentCollection;
+    assetsContentCollection: ImageContentCollection;
     $staticRoot: JQuery;
 }
 
@@ -39,7 +39,7 @@ export class SwipeableTabHostView extends TabHostView {
         super($.extend(<OptionsBase>{
             tabContexts: [
                 {
-                    ctor: ImageListView,
+                    ctor: LocalContentListView,
                     options: {
                         collection: options.localContentCollection,
                         scrollerFactory: ScrollerElement.getFactory(),
@@ -47,9 +47,9 @@ export class SwipeableTabHostView extends TabHostView {
                     },
                 },
                 {
-                    ctor: TextileListView,
+                    ctor: AssetsContentListView,
                     options: {
-                        collection: options.textileCollection,
+                        collection: options.assetsContentCollection,
                         scrollerFactory: ScrollerElement.getFactory(),
                         initialHeight: (options && options.initialHeight) ? options.initialHeight : undefined,
                     },
@@ -65,7 +65,7 @@ export class SwipeableTabHostView extends TabHostView {
     }
 
     // コンテンツの選択時に呼ばれる
-    onContentSelected(target: LocalContent, kind: string): void {
+    onContentSelected(target: ImageContent, kind: string): void {
         if (target) {
             Toast.show(`${kind}: ${target.key}`);
         } else {

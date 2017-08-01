@@ -8,16 +8,16 @@ import {
     TabViewConstructionOptions,
     TabHostView,
 } from "cdp/ui";
-import LocalContent from "../../model/local-content";
+import ImageContent from "../../model/image-content";
 import {
-    LocalContentCollection,
-    LocalContentResponse,
-} from "../../model/local-content-collection";
+    ImageContentCollection,
+    ImageContentResponse,
+} from "../../model/image-content-collection";
 import {
-    ImageListItemView,
-} from "./tab-image-listitem-view";
+    AssetsContentListItemView,
+} from "./tab-assets-content-listitem-view";
 
-const TAG = "[view.tabviews-sample.ImageListView] ";
+const TAG = "[view.tabviews-sample.AssetsContentListView] ";
 
 const LINE_ITEM_MAX_COUNT       = 12;
 const POST_RENDER_PROC_INTERVAL = 240;
@@ -26,26 +26,26 @@ const BP_GRID_MID_MIN           = 720;
 const PROC_LOOP_THRESHOLD       = 50;
 
 /**
- * @interface ImageListViewOptions
- * @brief ImageListView の構築オプション
+ * @interface AssetsContentListViewOptions
+ * @brief AssetsContentListView の構築オプション
  */
-export interface ImageListViewOptions extends TabViewConstructionOptions<LocalContent> {
+export interface AssetsContentListViewOptions extends TabViewConstructionOptions<ImageContent> {
 }
 
 //___________________________________________________________________________________________________________________//
 
 /**
- * @class ImageListView
- * @brief ローカルフォトリスト一覧 View クラス.
+ * @class AssetsContentListView
+ * @brief アセット画像用リスト一覧 View クラス.
  */
-export class ImageListView extends TabView<LocalContent> {
+export class AssetsContentListView extends TabView<ImageContent> {
 
     private _promise: IPromise<any> = null;
 
     /**
      * constructor
      */
-    constructor(options: ImageListViewOptions) {
+    constructor(options: AssetsContentListViewOptions) {
         super(options);
         this.listenTo(this.collection, "sync", this.onSync);
     }
@@ -61,11 +61,11 @@ export class ImageListView extends TabView<LocalContent> {
     }
 
     // コンテンツの選択
-    private onContentSelected(event: JQuery.Event): void {
+    private onContentSelected(event: JQueryEventObject): void {
         event.preventDefault();
         const contentIndex = $(event.target).data("content-index");
         const target = this.collection.at(contentIndex);
-        (<any>this.host).onContentSelected(target, "local-content");
+        (<any>this.host).onContentSelected(target, "assets");
     }
 
     ///////////////////////////////////////////////////////////////////////
@@ -80,7 +80,7 @@ export class ImageListView extends TabView<LocalContent> {
     /**
      * Orientation の変更を受信
      *
-     * @param newOrientation [in] new orientation code.
+     * @param newOrientation {Orientation} [in] new orientation code.
      */
     onOrientationChanged(newOrientation: Orientation): void {
         super.onOrientationChanged(newOrientation);
@@ -100,7 +100,7 @@ export class ImageListView extends TabView<LocalContent> {
     // Override: Backbone.View
 
     // 描画
-    render(models?: LocalContent[]): ImageListView {
+    render(models?: ImageContent[]): AssetsContentListView {
         if (this.$el) {
             if (models && models.length) {
                 const baseSize = $(window).width();
@@ -109,7 +109,7 @@ export class ImageListView extends TabView<LocalContent> {
                 // 処理に時間がかかるときメッセージループに制御を戻す
                 const startTime = Date.now();
 
-                const postRenderProc = (next: LocalContent[]) => {
+                const postRenderProc = (next: ImageContent[]) => {
                     this.update();
                     setTimeout(() => {
                         this.render(next);
@@ -127,7 +127,7 @@ export class ImageListView extends TabView<LocalContent> {
                     // ListItemView を追加
                     this.addItem(
                         this.getBaseHeight(baseSize, lineModels.length),
-                        ImageListItemView, {
+                        AssetsContentListItemView, {
                             models: lineModels,
                         });
 
@@ -150,31 +150,31 @@ export class ImageListView extends TabView<LocalContent> {
     }
 
     // 破棄
-    remove(): ImageListView {
+    remove(): AssetsContentListView {
         if (this._promise) {
             this._promise.abort();
             this._promise = null;
         }
-        return <ImageListView>super.remove();
+        return <AssetsContentListView>super.remove();
     }
 
     ///////////////////////////////////////////////////////////////////////
     // private methods
 
     // アイテム設定
-    private onSync(collection: LocalContentCollection, resp: LocalContentResponse, options: any): void {
-        this.render(resp.models);
+    private onSync(collection: ImageContentCollection, resp: ImageContentResponse, options: any): void {
+        this.render(collection.models);
     }
 
     // fetch 開始
     private fetch(): boolean {
-        const collection = <LocalContentCollection>this.collection;
+        const collection = <ImageContentCollection>this.collection;
         if (collection.length !== collection.totalCount) {
             if (!this._promise) {
-                    this._promise = <any>collection.fetch({
-                        queryIndex: collection.length,
-                        autoFetch: true,
-                    });
+                this._promise = <any>collection.fetch({
+                    queryIndex: collection.length,
+                    autoFetch: true,
+                });
             }
             return true;
         } else {
@@ -189,14 +189,14 @@ export class ImageListView extends TabView<LocalContent> {
         let lineCount: number;
 
         if (baseSize <= BP_GRID_SMALL_MIN) {
+            itemHeight = baseSize / 2;
+            lineCount = Math.ceil(itemCount / 2);
+        } else if (baseSize <= BP_GRID_MID_MIN) {
             itemHeight = baseSize / 3;
             lineCount = Math.ceil(itemCount / 3);
-        } else if (baseSize <= BP_GRID_MID_MIN) {
+        } else {
             itemHeight = baseSize / 4;
             lineCount = Math.ceil(itemCount / 4);
-        } else {
-            itemHeight = baseSize / 6;
-            lineCount = Math.ceil(itemCount / 6);
         }
 
         return itemHeight * lineCount;
@@ -206,12 +206,12 @@ export class ImageListView extends TabView<LocalContent> {
     private getBackupKey(orientation: Orientation): string {
         switch (orientation) {
             case Orientation.PORTRAIT:
-                return "layout-image-content-portrait";
+                return "layout-assets-portrait";
             case Orientation.LANDSCAPE:
-                return "layout-image-content-landscape";
+                return "layout-assets-landscape";
             default:
                 console.warn("unknown orientation: " + orientation);
-                return "layout-image-content-portrait";
+                return "layout-assets-portrait";
         }
     }
 }

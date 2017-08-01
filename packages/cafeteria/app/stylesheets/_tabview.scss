@@ -107,7 +107,7 @@ $bp-grid-extrasmall-min:    $bp-grid-small-min - 1px;
     border-color:   white;
 }
 
-.image-content-listview {
+.local-content-listview {
     .content-item-container {
         @media only screen and (min-width: $bp-grid-mid-min + 1px){
             width: 16.66%;  // 1/6
@@ -130,7 +130,7 @@ $bp-grid-extrasmall-min:    $bp-grid-small-min - 1px;
     }
 }
 
-.textile-content-listview {
+.assets-content-listview {
     .content-item-container {
         @media only screen and (min-width: $bp-grid-mid-min + 1px){
             width: 25%;     // 1/4

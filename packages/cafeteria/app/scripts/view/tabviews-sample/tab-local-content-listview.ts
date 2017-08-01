@@ -8,16 +8,16 @@ import {
     TabViewConstructionOptions,
     TabHostView,
 } from "cdp/ui";
-import Textile from "../../model/local-content";
+import ImageContent from "../../model/image-content";
 import {
-    LocalContentCollection as TextileCollection,
-    LocalContentResponse as TextileResponse,
-} from "../../model/local-content-collection";
+    ImageContentCollection,
+    ImageContentResponse,
+} from "../../model/image-content-collection";
 import {
-    TextileListItemView,
-} from "./tab-textile-listitem-view";
+    LocalContentListItemView,
+} from "./tab-local-content-listitem-view";
 
-const TAG = "[view.tabviews-sample.ImageListView] ";
+const TAG = "[view.tabviews-sample.LocalContentListView] ";
 
 const LINE_ITEM_MAX_COUNT       = 12;
 const POST_RENDER_PROC_INTERVAL = 240;
@@ -26,26 +26,26 @@ const BP_GRID_MID_MIN           = 720;
 const PROC_LOOP_THRESHOLD       = 50;
 
 /**
- * @interface TextileListViewOptions
- * @brief TextileListViewOptions の構築オプション
+ * @interface LocalContentListViewOptions
+ * @brief LocalContentListView の構築オプション
  */
-export interface TextileListViewOptions extends TabViewConstructionOptions<Textile> {
+export interface LocalContentListViewOptions extends TabViewConstructionOptions<ImageContent> {
 }
 
 //___________________________________________________________________________________________________________________//
 
 /**
- * @class TextileListView
- * @brief テキスタイルリスト一覧 View クラス.
+ * @class LocalContentListView
+ * @brief ローカルフォトリスト一覧 View クラス.
  */
-export class TextileListView extends TabView<Textile> {
+export class LocalContentListView extends TabView<ImageContent> {
 
     private _promise: IPromise<any> = null;
 
     /**
      * constructor
      */
-    constructor(options: TextileListViewOptions) {
+    constructor(options: LocalContentListViewOptions) {
         super(options);
         this.listenTo(this.collection, "sync", this.onSync);
     }
@@ -61,11 +61,11 @@ export class TextileListView extends TabView<Textile> {
     }
 
     // コンテンツの選択
-    private onContentSelected(event: JQueryEventObject): void {
+    private onContentSelected(event: JQuery.Event): void {
         event.preventDefault();
         const contentIndex = $(event.target).data("content-index");
         const target = this.collection.at(contentIndex);
-        (<any>this.host).onContentSelected(target, "textile");
+        (<any>this.host).onContentSelected(target, "local-content");
     }
 
     ///////////////////////////////////////////////////////////////////////
@@ -80,7 +80,7 @@ export class TextileListView extends TabView<Textile> {
     /**
      * Orientation の変更を受信
      *
-     * @param newOrientation {Orientation} [in] new orientation code.
+     * @param newOrientation [in] new orientation code.
      */
     onOrientationChanged(newOrientation: Orientation): void {
         super.onOrientationChanged(newOrientation);
@@ -100,7 +100,7 @@ export class TextileListView extends TabView<Textile> {
     // Override: Backbone.View
 
     // 描画
-    render(models?: Textile[]): TextileListView {
+    render(models?: ImageContent[]): LocalContentListView {
         if (this.$el) {
             if (models && models.length) {
                 const baseSize = $(window).width();
@@ -109,7 +109,7 @@ export class TextileListView extends TabView<Textile> {
                 // 処理に時間がかかるときメッセージループに制御を戻す
                 const startTime = Date.now();
 
-                const postRenderProc = (next: Textile[]) => {
+                const postRenderProc = (next: ImageContent[]) => {
                     this.update();
                     setTimeout(() => {
                         this.render(next);
@@ -127,7 +127,7 @@ export class TextileListView extends TabView<Textile> {
                     // ListItemView を追加
                     this.addItem(
                         this.getBaseHeight(baseSize, lineModels.length),
-                        TextileListItemView, {
+                        LocalContentListItemView, {
                             models: lineModels,
                         });
 
@@ -150,31 +150,31 @@ export class TextileListView extends TabView<Textile> {
     }
 
     // 破棄
-    remove(): TextileListView {
+    remove(): LocalContentListView {
         if (this._promise) {
             this._promise.abort();
             this._promise = null;
         }
-        return <TextileListView>super.remove();
+        return <LocalContentListView>super.remove();
     }
 
     ///////////////////////////////////////////////////////////////////////
     // private methods
 
     // アイテム設定
-    private onSync(collection: TextileCollection, resp: TextileResponse, options: any): void {
-        this.render(collection.models);
+    private onSync(collection: ImageContentCollection, resp: ImageContentResponse, options: any): void {
+        this.render(resp.models);
     }
 
     // fetch 開始
     private fetch(): boolean {
-        const collection = <TextileCollection>this.collection;
+        const collection = <ImageContentCollection>this.collection;
         if (collection.length !== collection.totalCount) {
             if (!this._promise) {
-                this._promise = <any>collection.fetch({
-                    queryIndex: collection.length,
-                    autoFetch: true,
-                });
+                    this._promise = <any>collection.fetch({
+                        queryIndex: collection.length,
+                        autoFetch: true,
+                    });
             }
             return true;
         } else {
@@ -189,14 +189,14 @@ export class TextileListView extends TabView<Textile> {
         let lineCount: number;
 
         if (baseSize <= BP_GRID_SMALL_MIN) {
-            itemHeight = baseSize / 2;
-            lineCount = Math.ceil(itemCount / 2);
-        } else if (baseSize <= BP_GRID_MID_MIN) {
             itemHeight = baseSize / 3;
             lineCount = Math.ceil(itemCount / 3);
-        } else {
+        } else if (baseSize <= BP_GRID_MID_MIN) {
             itemHeight = baseSize / 4;
             lineCount = Math.ceil(itemCount / 4);
+        } else {
+            itemHeight = baseSize / 6;
+            lineCount = Math.ceil(itemCount / 6);
         }
 
         return itemHeight * lineCount;
@@ -206,12 +206,12 @@ export class TextileListView extends TabView<Textile> {
     private getBackupKey(orientation: Orientation): string {
         switch (orientation) {
             case Orientation.PORTRAIT:
-                return "layout-textile-portrait";
+                return "layout-image-content-portrait";
             case Orientation.LANDSCAPE:
-                return "layout-textile-landscape";
+                return "layout-image-content-landscape";
             default:
                 console.warn("unknown orientation: " + orientation);
-                return "layout-textile-portrait";
+                return "layout-image-content-portrait";
         }
     }
 }

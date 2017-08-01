@@ -9,4 +9,4 @@
 export * from "./cafeteria/error-defs";
 export * from "./cafeteria/image-interface";
 export * from "./cafeteria/image-item-generator";
-export * from "./cafeteria/local-content-provider";
+export * from "./cafeteria/content-provider";

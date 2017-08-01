@@ -3,6 +3,8 @@
     <preference name="DisallowOverscroll" value="true" />
     <preference name="KeyboardDisplayRequiresUserAction" value="false" />
     <preference name="BackgroundColor" value="0xff000000" />
+    <preference name="iosPersistentFileLocation" value="Library" />
+    <preference name="AndroidPersistentFileLocation" value="Internal" />
     <name>Cafeteria</name>
     <content src="index.html" />
     <access origin="*" />
