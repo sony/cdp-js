@@ -15,6 +15,10 @@
                         {
                             "xml": "<feature name=\"File\"><param name=\"ios-package\" value=\"CDVFile\" /><param name=\"onload\" value=\"true\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"SecureStorage\"><param name=\"ios-package\" value=\"SecureStorage\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -32,6 +36,9 @@
             "PACKAGE_NAME": "jp.co.sony.cdp.cafeteria"
         },
         "cordova-plugin-file": {
+            "PACKAGE_NAME": "jp.co.sony.cdp.cafeteria"
+        },
+        "cordova-plugin-secure-storage": {
             "PACKAGE_NAME": "jp.co.sony.cdp.cafeteria"
         }
     },
@@ -217,12 +224,27 @@
                 "cordova"
             ],
             "runs": true
+        },
+        {
+            "id": "cordova-plugin-secure-storage.SecureStorage",
+            "file": "plugins/cordova-plugin-secure-storage/www/securestorage.js",
+            "pluginId": "cordova-plugin-secure-storage",
+            "clobbers": [
+                "SecureStorage"
+            ]
+        },
+        {
+            "id": "cordova-plugin-secure-storage.sjcl_ss",
+            "file": "plugins/cordova-plugin-secure-storage/www/sjcl_ss.js",
+            "pluginId": "cordova-plugin-secure-storage",
+            "runs": true
         }
     ],
     "plugin_metadata": {
         "cordova-plugin-cdp-nativebridge": "1.1.0",
         "cordova-plugin-whitelist": "1.3.2",
         "cordova-plugin-compat": "1.1.0",
-        "cordova-plugin-file": "4.3.3"
+        "cordova-plugin-file": "4.3.3",
+        "cordova-plugin-secure-storage": "2.6.8"
     }
 }

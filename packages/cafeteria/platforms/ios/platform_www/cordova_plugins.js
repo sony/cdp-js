@@ -180,6 +180,20 @@ module.exports = [
             "cordova"
         ],
         "runs": true
+    },
+    {
+        "id": "cordova-plugin-secure-storage.SecureStorage",
+        "file": "plugins/cordova-plugin-secure-storage/www/securestorage.js",
+        "pluginId": "cordova-plugin-secure-storage",
+        "clobbers": [
+            "SecureStorage"
+        ]
+    },
+    {
+        "id": "cordova-plugin-secure-storage.sjcl_ss",
+        "file": "plugins/cordova-plugin-secure-storage/www/sjcl_ss.js",
+        "pluginId": "cordova-plugin-secure-storage",
+        "runs": true
     }
 ];
 module.exports.metadata = 
@@ -188,7 +202,8 @@ module.exports.metadata =
     "cordova-plugin-cdp-nativebridge": "1.1.0",
     "cordova-plugin-whitelist": "1.3.2",
     "cordova-plugin-compat": "1.1.0",
-    "cordova-plugin-file": "4.3.3"
+    "cordova-plugin-file": "4.3.3",
+    "cordova-plugin-secure-storage": "2.6.8"
 };
 // BOTTOM OF METADATA
 });

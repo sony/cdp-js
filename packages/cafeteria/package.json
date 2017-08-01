@@ -99,6 +99,7 @@
         "cordova-plugin-cdp-nativebridge": "^1.1.0",
         "cordova-plugin-compat": "^1.1.0",
         "cordova-plugin-file": "^4.3.3",
+        "cordova-plugin-secure-storage": "^2.6.8",
         "cordova-plugin-whitelist": "^1.3.2",
         "flipsnap": "^0.6.3",
         "hammerjs": "^2.0.8",
@@ -144,7 +145,8 @@
         "plugins": {
             "cordova-plugin-whitelist": {},
             "cordova-plugin-cdp-nativebridge": {},
-            "cordova-plugin-file": {}
+            "cordova-plugin-file": {},
+            "cordova-plugin-secure-storage": {}
         },
         "platforms": [
             "android",

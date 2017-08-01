@@ -455,8 +455,7 @@ public class LocalContentProvider extends Gate {
      * @throws IllegalStateException        decodeに失敗した
      */
     private Bitmap decodeBitmap(final String filePath) throws IllegalArgumentException, IllegalStateException {
-//        final int MAX_IMAGE_LONG_SIDE_LENGTH = 1920;
-        final int MAX_IMAGE_LONG_SIDE_LENGTH = 1024;    // 1024 より大きなサイズは decode に時間がかかるため、実績のある PMO に合わせる
+        final int MAX_IMAGE_LONG_SIDE_LENGTH = 1920;
         Bitmap bmpImage = null;
         Bitmap tmpBmp = null;
         try {

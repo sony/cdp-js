@@ -30,5 +30,13 @@
         },
         "is_top_level": false,
         "variables": {}
+    },
+    "cordova-plugin-secure-storage": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-secure-storage"
+        },
+        "is_top_level": true,
+        "variables": {}
     }
 }

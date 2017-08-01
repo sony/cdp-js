@@ -50,7 +50,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties tsconfig_1base_1json__JSONSchema="http://json.schemastore.org/tsconfig" package_1json__JSONSchema="" />
+      <UserProperties package_1json__JSONSchema="" tsconfig_1base_1json__JSONSchema="http://json.schemastore.org/tsconfig" />
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
@@ -77,11 +77,14 @@
     <Content Include=".npmignore" />
     <Content Include="app\external\jquery\stylesheets\jquery.mobile.default-theme.css" />
     <Content Include="app\external\sylvester\scripts\sylvester.js" />
-    <Content Include="app\lib\scripts\cafeteria.images\cafeteria\bridge\native-local-content-provider.js">
-      <DependentUpon>native-local-content-provider.ts</DependentUpon>
+    <Content Include="app\lib\scripts\cafeteria.images\cafeteria\bridge\assets-content-provider.js">
+      <DependentUpon>assets-content-provider.ts</DependentUpon>
     </Content>
-    <Content Include="app\lib\scripts\cafeteria.images\cafeteria\bridge\stub-local-content-provider.js">
-      <DependentUpon>stub-local-content-provider.ts</DependentUpon>
+    <Content Include="app\lib\scripts\cafeteria.images\cafeteria\bridge\local-content-provider.js">
+      <DependentUpon>local-content-provider.ts</DependentUpon>
+    </Content>
+    <Content Include="app\lib\scripts\cafeteria.images\cafeteria\content-provider.js">
+      <DependentUpon>content-provider.ts</DependentUpon>
     </Content>
     <Content Include="app\lib\scripts\cafeteria.images\cafeteria\error-defs.js">
       <DependentUpon>error-defs.ts</DependentUpon>
@@ -91,9 +94,6 @@
     </Content>
     <Content Include="app\lib\scripts\cafeteria.images\cafeteria\image-item-generator.js">
       <DependentUpon>image-item-generator.ts</DependentUpon>
-    </Content>
-    <Content Include="app\lib\scripts\cafeteria.images\cafeteria\local-content-provider.js">
-      <DependentUpon>local-content-provider.ts</DependentUpon>
     </Content>
     <Content Include="app\lib\scripts\cafeteria.images\main.js">
       <DependentUpon>main.ts</DependentUpon>
@@ -561,6 +561,12 @@
     <Content Include="app\scripts\bridge\simple-gate.js">
       <DependentUpon>simple-gate.ts</DependentUpon>
     </Content>
+    <Content Include="app\scripts\model\image-content-collection.js">
+      <DependentUpon>image-content-collection.ts</DependentUpon>
+    </Content>
+    <Content Include="app\scripts\model\image-content.js">
+      <DependentUpon>image-content.ts</DependentUpon>
+    </Content>
     <Content Include="app\scripts\model\listviews-sample\config.js">
       <DependentUpon>config.ts</DependentUpon>
     </Content>
@@ -569,12 +575,6 @@
     </Content>
     <Content Include="app\scripts\model\listviews-sample\util.js">
       <DependentUpon>util.ts</DependentUpon>
-    </Content>
-    <Content Include="app\scripts\model\local-content-collection.js">
-      <DependentUpon>local-content-collection.ts</DependentUpon>
-    </Content>
-    <Content Include="app\scripts\model\local-content.js">
-      <DependentUpon>local-content.ts</DependentUpon>
     </Content>
     <Content Include="app\scripts\model\options.js">
       <DependentUpon>options.ts</DependentUpon>
@@ -699,20 +699,20 @@
     <Content Include="app\scripts\view\tabviews-sample\swipe-tabview-page.js">
       <DependentUpon>swipe-tabview-page.ts</DependentUpon>
     </Content>
-    <Content Include="app\scripts\view\tabviews-sample\tab-image-listitem-view.js">
-      <DependentUpon>tab-image-listitem-view.ts</DependentUpon>
+    <Content Include="app\scripts\view\tabviews-sample\tab-assets-content-listitem-view.js">
+      <DependentUpon>tab-assets-content-listitem-view.ts</DependentUpon>
     </Content>
-    <Content Include="app\scripts\view\tabviews-sample\tab-image-listview.js">
-      <DependentUpon>tab-image-listview.ts</DependentUpon>
+    <Content Include="app\scripts\view\tabviews-sample\tab-assets-content-listview.js">
+      <DependentUpon>tab-assets-content-listview.ts</DependentUpon>
+    </Content>
+    <Content Include="app\scripts\view\tabviews-sample\tab-local-content-listitem-view.js">
+      <DependentUpon>tab-local-content-listitem-view.ts</DependentUpon>
+    </Content>
+    <Content Include="app\scripts\view\tabviews-sample\tab-local-content-listview.js">
+      <DependentUpon>tab-local-content-listview.ts</DependentUpon>
     </Content>
     <Content Include="app\scripts\view\tabviews-sample\tab-static-view.js">
       <DependentUpon>tab-static-view.ts</DependentUpon>
-    </Content>
-    <Content Include="app\scripts\view\tabviews-sample\tab-textile-listitem-view.js">
-      <DependentUpon>tab-textile-listitem-view.ts</DependentUpon>
-    </Content>
-    <Content Include="app\scripts\view\tabviews-sample\tab-textile-listview.js">
-      <DependentUpon>tab-textile-listview.ts</DependentUpon>
     </Content>
     <Content Include="app\scripts\view\views-sample\backbone.js">
       <DependentUpon>backbone.ts</DependentUpon>
@@ -1048,12 +1048,12 @@
     <TypeScriptCompile Include="app\external\%40types\%40cdp\mobile\index.d.ts" />
     <TypeScriptCompile Include="app\external\%40types\%40cdp\mobile\jquery.mobile.d.ts" />
     <TypeScriptCompile Include="app\external\%40types\patch.dependencies\sylvester.d.ts" />
-    <TypeScriptCompile Include="app\lib\scripts\cafeteria.images\cafeteria\bridge\native-local-content-provider.ts" />
-    <TypeScriptCompile Include="app\lib\scripts\cafeteria.images\cafeteria\bridge\stub-local-content-provider.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\cafeteria.images\cafeteria\bridge\assets-content-provider.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\cafeteria.images\cafeteria\bridge\local-content-provider.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\cafeteria.images\cafeteria\content-provider.ts" />
     <TypeScriptCompile Include="app\lib\scripts\cafeteria.images\cafeteria\error-defs.ts" />
     <TypeScriptCompile Include="app\lib\scripts\cafeteria.images\cafeteria\image-interface.ts" />
     <TypeScriptCompile Include="app\lib\scripts\cafeteria.images\cafeteria\image-item-generator.ts" />
-    <TypeScriptCompile Include="app\lib\scripts\cafeteria.images\cafeteria\local-content-provider.ts" />
     <TypeScriptCompile Include="app\lib\scripts\cafeteria.images\main.ts" />
     <TypeScriptCompile Include="app\lib\scripts\cafeteria.images\_declare.d.ts" />
     <TypeScriptCompile Include="app\lib\scripts\cafeteria.images\_export.d.ts" />
@@ -1131,8 +1131,8 @@
     <TypeScriptCompile Include="app\scripts\model\listviews-sample\config.ts" />
     <TypeScriptCompile Include="app\scripts\model\listviews-sample\data.ts" />
     <TypeScriptCompile Include="app\scripts\model\listviews-sample\util.ts" />
-    <TypeScriptCompile Include="app\scripts\model\local-content-collection.ts" />
-    <TypeScriptCompile Include="app\scripts\model\local-content.ts" />
+    <TypeScriptCompile Include="app\scripts\model\image-content-collection.ts" />
+    <TypeScriptCompile Include="app\scripts\model\image-content.ts" />
     <TypeScriptCompile Include="app\scripts\model\options.ts" />
     <TypeScriptCompile Include="app\scripts\model\picture-list.ts" />
     <TypeScriptCompile Include="app\scripts\model\picture.ts" />
@@ -1190,11 +1190,11 @@
     <TypeScriptCompile Include="app\scripts\view\tabviews-sample\swipe-tab-host-view.ts" />
     <TypeScriptCompile Include="app\scripts\view\tabviews-sample\swipe-tabview-page.ts" />
     <TypeScriptCompile Include="app\scripts\view\tabviews-sample\root.ts" />
-    <TypeScriptCompile Include="app\scripts\view\tabviews-sample\tab-image-listitem-view.ts" />
-    <TypeScriptCompile Include="app\scripts\view\tabviews-sample\tab-image-listview.ts" />
+    <TypeScriptCompile Include="app\scripts\view\tabviews-sample\tab-local-content-listitem-view.ts" />
+    <TypeScriptCompile Include="app\scripts\view\tabviews-sample\tab-local-content-listview.ts" />
     <TypeScriptCompile Include="app\scripts\view\tabviews-sample\tab-static-view.ts" />
-    <TypeScriptCompile Include="app\scripts\view\tabviews-sample\tab-textile-listitem-view.ts" />
-    <TypeScriptCompile Include="app\scripts\view\tabviews-sample\tab-textile-listview.ts" />
+    <TypeScriptCompile Include="app\scripts\view\tabviews-sample\tab-assets-content-listitem-view.ts" />
+    <TypeScriptCompile Include="app\scripts\view\tabviews-sample\tab-assets-content-listview.ts" />
     <TypeScriptCompile Include="app\scripts\view\views-sample\backbone.ts" />
     <TypeScriptCompile Include="app\scripts\view\views-sample\helper.ts" />
     <TypeScriptCompile Include="app\scripts\view\views-sample\page-owner.ts" />

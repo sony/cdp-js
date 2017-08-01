@@ -19,7 +19,7 @@ interface Content extends Model {
     index: number;
     width: number;
     height: number;
-    stub: boolean; // stub signature
+    assets: boolean; // assets signature
 }
 
 type ContentCollection = Collection<Content>;
@@ -36,10 +36,11 @@ interface ContentList {
 //___________________________________________________________________________________________________________________//
 
 /**
- * @class StubLocalContentProvider
- * @brief LocalContentProvider の Stub クラス
+ * @class AssetsContentProvider
+ * @brief アセット画像供給クラス
+ *        Stub としても機能する
  */
-export default class StubLocalContentProvider {
+export default class AssetsContentProvider {
 
     private static s_images: object;
 
@@ -53,7 +54,7 @@ export default class StubLocalContentProvider {
     public static sync(method: string, collection: Collection<Model>, options?: Backbone.PersistenceOptions): JQueryXHR {
         switch (method) {
             case "read":
-                return StubLocalContentProvider.read(<ContentCollection>collection, options);
+                return AssetsContentProvider.read(<ContentCollection>collection, options);
             default:
                 return <any>$.Deferred().reject(makeErrorInfo(
                     CDP.RESULT_CODE.FAILED,
@@ -71,7 +72,7 @@ export default class StubLocalContentProvider {
      */
     public static getThumbnail(key: string): IPromise<string> {
         return new Promise((resolve) => {
-            StubLocalContentProvider.loadSchema();
+            AssetsContentProvider.loadSchema();
             setTimeout(() => {
                 resolve(toUrl("/res/data/sample/image/small/" + key + ".jpg"));
             });
@@ -86,7 +87,7 @@ export default class StubLocalContentProvider {
      */
     public static getImageSource(key: string): IPromise<string> {
         return new Promise((resolve) => {
-            StubLocalContentProvider.loadSchema();
+            AssetsContentProvider.loadSchema();
             setTimeout(() => {
                 resolve(toUrl("/res/data/sample/image/org/" + key + ".jpg"));
             });
@@ -99,7 +100,7 @@ export default class StubLocalContentProvider {
     // ダミーコンテンツ読み込み
     private static read(collection: ContentCollection, options?: Backbone.PersistenceOptions): JQueryXHR {
         const promise = new Promise((resolve, reject, dependOn) => {
-            dependOn(StubLocalContentProvider.generateContents((<any>options).queryIndex, (<any>options).queryLimit))
+            dependOn(AssetsContentProvider.generateContents((<any>options).queryIndex, (<any>options).queryLimit))
                 .done((info: ContentList, result: CDP.NativeBridge.IResult) => {
                     const resp = { ...info, ...{ result: result } };
                     if (options && options.success) {
@@ -149,19 +150,19 @@ export default class StubLocalContentProvider {
                     queryCount = limit;
                 }
 
-                StubLocalContentProvider.loadSchema();
+                AssetsContentProvider.loadSchema();
 
                 const getContent = (idx: number): Content => {
                     // "index === 0" 以外は "0 - 99" のランダム値
                     const random = (0 === idx) ? 0 : Math.floor(Math.random() * 100);
-                    const image = StubLocalContentProvider.s_images[random];
+                    const image = AssetsContentProvider.s_images[random];
 
                     return <Content>{
                         index: idx,
                         key: image.id,
                         width: image.width,
                         height: image.height,
-                        stub: true,
+                        assets: true,
                     };
                 };
 
@@ -214,8 +215,8 @@ export default class StubLocalContentProvider {
 
     // スキーマのロード
     private static loadSchema(): void {
-        if (!StubLocalContentProvider.s_images) {
-            StubLocalContentProvider.s_images = StubLocalContentProvider.loadJSON(toUrl("/res/data/sample/image/image.json"));
+        if (!AssetsContentProvider.s_images) {
+            AssetsContentProvider.s_images = AssetsContentProvider.loadJSON(toUrl("/res/data/sample/image/image.json"));
         }
     }
 }

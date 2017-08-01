@@ -7,7 +7,7 @@ import {
     Orientation,
     TabHostView,
 } from "cdp/ui";
-import { LocalContentCollection } from "../../model/local-content-collection";
+import { ImageContentCollection } from "../../model/image-content-collection";
 import { SwipeableTabHostView } from "./swipe-tab-host-view";
 
 const TAG = "[view.tabviews-sample.SwipeableTabViewPage] ";
@@ -21,7 +21,7 @@ class SwipeableTabViewPage extends PageView {
     private _$tabHighLight: JQuery;
     private _tabHostView: SwipeableTabHostView;
     private _lastActiveTabIndex = 0;
-    private _localContentCollection: LocalContentCollection;
+    private _localContentCollection: ImageContentCollection;
 
     /**
      * constructor
@@ -33,7 +33,7 @@ class SwipeableTabViewPage extends PageView {
                 route: "tabviews/swipeable-tabview"
             }
         );
-        this._localContentCollection = new LocalContentCollection("localcontent");
+        this._localContentCollection = new ImageContentCollection("local");
     }
 
     ///////////////////////////////////////////////////////////////////////
@@ -76,7 +76,7 @@ class SwipeableTabViewPage extends PageView {
             $el: $tabContainer,
             owner: this,
             localContentCollection: this._localContentCollection,
-            textileCollection: new LocalContentCollection("textile"),
+            assetsContentCollection: new ImageContentCollection("assets"),
             $staticRoot: this.$page.find(".static-view"),
         });
         this._tabHostView.on(TabHostView.EVENT_TAB_MOVE, this.onTabMoving.bind(this));
