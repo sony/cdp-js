@@ -119,6 +119,7 @@ namespace Config {
 
         // >>>LIB_DEPENDENCIES>>> package assign
         assign_lib("cdp.deviceconsole");
+        assign_lib("cdp.storage");
         assign_lib("cdp.ui.smoothscroll");
         assign_lib("cdp.slideshow");
         assign_lib("cafeteria.images");

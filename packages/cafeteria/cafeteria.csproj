@@ -155,6 +155,30 @@
     <Content Include="app\lib\scripts\cdp.slideshow\main.js">
       <DependentUpon>main.ts</DependentUpon>
     </Content>
+    <Content Include="app\lib\scripts\cdp.storage\cdp\storage\device-storage.js">
+      <DependentUpon>device-storage.ts</DependentUpon>
+    </Content>
+    <Content Include="app\lib\scripts\cdp.storage\cdp\storage\error-defs.js">
+      <DependentUpon>error-defs.ts</DependentUpon>
+    </Content>
+    <Content Include="app\lib\scripts\cdp.storage\cdp\storage\interfaces.js">
+      <DependentUpon>interfaces.ts</DependentUpon>
+    </Content>
+    <Content Include="app\lib\scripts\cdp.storage\cdp\storage\secure-storage.js">
+      <DependentUpon>secure-storage.ts</DependentUpon>
+    </Content>
+    <Content Include="app\lib\scripts\cdp.storage\cdp\storage\storage-access.js">
+      <DependentUpon>storage-access.ts</DependentUpon>
+    </Content>
+    <Content Include="app\lib\scripts\cdp.storage\cdp\storage\utils.js">
+      <DependentUpon>utils.ts</DependentUpon>
+    </Content>
+    <Content Include="app\lib\scripts\cdp.storage\cdp\storage\web-storage.js">
+      <DependentUpon>web-storage.ts</DependentUpon>
+    </Content>
+    <Content Include="app\lib\scripts\cdp.storage\main.js">
+      <DependentUpon>main.ts</DependentUpon>
+    </Content>
     <Content Include="app\lib\scripts\cdp.ui.smoothscroll\cdp\ui\smooth-scroll.js">
       <DependentUpon>smooth-scroll.ts</DependentUpon>
     </Content>
@@ -1047,6 +1071,7 @@
     <TypeScriptCompile Include="app\external\%40types\%40cdp\mobile\i18next.d.ts" />
     <TypeScriptCompile Include="app\external\%40types\%40cdp\mobile\index.d.ts" />
     <TypeScriptCompile Include="app\external\%40types\%40cdp\mobile\jquery.mobile.d.ts" />
+    <TypeScriptCompile Include="app\external\%40types\patch.dependencies\cordova-plugin-secure-storage.d.ts" />
     <TypeScriptCompile Include="app\external\%40types\patch.dependencies\sylvester.d.ts" />
     <TypeScriptCompile Include="app\lib\scripts\cafeteria.images\cafeteria\bridge\assets-content-provider.ts" />
     <TypeScriptCompile Include="app\lib\scripts\cafeteria.images\cafeteria\bridge\local-content-provider.ts" />
@@ -1082,6 +1107,16 @@
     <TypeScriptCompile Include="app\lib\scripts\cdp.slideshow\main.ts" />
     <TypeScriptCompile Include="app\lib\scripts\cdp.slideshow\_declare.d.ts" />
     <TypeScriptCompile Include="app\lib\scripts\cdp.slideshow\_export.d.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\cdp.storage\cdp\storage\device-storage.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\cdp.storage\cdp\storage\error-defs.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\cdp.storage\cdp\storage\interfaces.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\cdp.storage\cdp\storage\secure-storage.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\cdp.storage\cdp\storage\storage-access.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\cdp.storage\cdp\storage\utils.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\cdp.storage\cdp\storage\web-storage.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\cdp.storage\main.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\cdp.storage\_declare.d.ts" />
+    <TypeScriptCompile Include="app\lib\scripts\cdp.storage\_export.d.ts" />
     <TypeScriptCompile Include="app\lib\scripts\cdp.ui.smoothscroll\cdp\ui\smooth-scroll.ts" />
     <TypeScriptCompile Include="app\lib\scripts\cdp.ui.smoothscroll\main.ts" />
     <TypeScriptCompile Include="app\lib\scripts\cdp.ui.smoothscroll\_declare.d.ts" />

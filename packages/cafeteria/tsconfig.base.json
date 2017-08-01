@@ -23,6 +23,7 @@
       "patch.dependencies",
       "requirejs",
       "cordova",
+      "cordova-plugin-file",
       "jasmine"
     ]
   }

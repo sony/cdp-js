@@ -40,5 +40,11 @@ export const DateTime = _tools.DateTime;
 export type  Template = CDP.Tools.Template;
 export const Template = _tools.Template;
 
+// @class ProgressCounter
+export type  ProgressCounterOptions = CDP.Tools.ProgressCounterOptions;
+export type  ProgressCounterResult  = CDP.Tools.ProgressCounterResult;
+export type  ProgressCounter        = CDP.Tools.ProgressCounter;
+export const ProgressCounter        = _tools.ProgressCounter;
+
 // interfaces
 export type JST = CDP.Tools.JST;

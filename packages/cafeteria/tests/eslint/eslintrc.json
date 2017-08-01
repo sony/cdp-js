@@ -14,6 +14,9 @@
     "Symbol": true,
     "Promise": true,
     "CDP": true,
+    "cordova": true,
+    "ArrayBuffer": true,
+    "Uint8Array": true,
     "Hammer": true,
     "$M": true,
     "module": true,
@@ -29,7 +32,7 @@
 
     "comma-dangle": "off",
     "no-cond-assign": "off",
-    "no-unused-vars": ["error", {"args": "none", "varsIgnorePattern": "^TAG|^__|Touch" }],
+    "no-unused-vars": ["error", {"args": "none", "varsIgnorePattern": "^TAG|^__|Touch|STORAGE_KIND" }],
     "no-extra-boolean-cast": "off",
     "no-constant-condition": "off",
     "no-console": "off"
