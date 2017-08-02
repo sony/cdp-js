@@ -182,10 +182,12 @@ $bp-phone-long-side-threshold: 568px !default;
     width:      100%;
     margin:     0;
     padding:    0;
+    @content;
     &:before {
-        content:"";
-        display: block;
-        padding-top: ($height / $width) * 100%;
+        content:        "";
+        display:        block;
+        padding-top:    ($height / $width) * 100%;
+        pointer-events: none;
     }
 }
 

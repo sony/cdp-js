@@ -18,7 +18,7 @@
         <allow-intent href="market:*" />
     </platform>
     <platform name="ios">
-        <preference name="KeychainAccessibility" value="WhenUnlocked"/>
+        <preference name="KeychainAccessibility" value="WhenUnlocked" />
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
     </platform>
