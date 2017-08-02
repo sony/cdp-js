@@ -1,10 +1,12 @@
 ﻿import {
     Config,
     IPromise,
+    IPromiseBase,
     Promise,
     ErrorInfo,
     makeErrorInfo,
     waitForDeviceReady,
+    Tools,
 } from "cdp";
 import {
     IStorage,
@@ -22,6 +24,14 @@ import {
 } from "./utils";
 
 const TAG = "[cdp.storage.secure-storage] ";
+const CHUNK_SIGNATURE = "chunk:";
+const MAX_DATA_LIMIT  = 127 * 1024;
+
+// 保存可能なデータ形式
+interface KeyValue {
+    key: string;
+    value: string;
+}
 
 /**
  * @class SecureStorage
@@ -55,20 +65,17 @@ export default class SecureStorage implements IStorage {
 
         return new Promise((resolve, reject, dependOn) => {
             options = options || {};
+            let _data: string;
             dependOn(convertAsDataText(data))
                 .then((text: string) => {
-                    this.getPlugin(options)
-                        .then((plugin: ICordovaSecureStorage) => {
-                            plugin.set(
-                                (_key: string) => {
-                                    resolve();
-                                },
-                                (error: string) => {
-                                    reject(this.makeErrorInfoFromPlugin(error));
-                                },
-                                key, text
-                            );
-                        });
+                    _data = text;
+                    return dependOn(this.getPlugin(options));
+                })
+                .then((plugin: ICordovaSecureStorage) => {
+                    return dependOn(this.writeData(plugin, key, _data));
+                })
+                .then(() => {
+                    resolve();
                 })
                 .catch((error) => {
                     reject(error);
@@ -97,24 +104,10 @@ export default class SecureStorage implements IStorage {
                 mimeType = options.dataInfo.mimeType || mimeType;
             }
 
-            const read = (): IPromise<string> => {
-                return new Promise((_resolve, _reject) => {
-                    this.getPlugin(options)
-                        .then((plugin: ICordovaSecureStorage) => {
-                            plugin.get(
-                                (text: string) => {
-                                    _resolve(text);
-                                },
-                                (error: string) => {
-                                    _reject(this.makeErrorInfoFromPlugin(error));
-                                },
-                                key
-                            );
-                        });
-                });
-            };
-
-            dependOn(read())
+            dependOn(this.getPlugin(options))
+                .then((plugin: ICordovaSecureStorage) => {
+                    return dependOn(this.readData(plugin, key));
+                })
                 .then((text: string) => {
                     if (null != text) {
                         return dependOn(convertFromDataText(text, dataType, mimeType));
@@ -122,10 +115,10 @@ export default class SecureStorage implements IStorage {
                         return null;
                     }
                 })
-                .done((data: any) => {
+                .then((data: any) => {
                     resolve(data);
                 })
-                .fail((error) => {
+                .catch((error) => {
                     reject(error);
                 });
         });
@@ -141,20 +134,18 @@ export default class SecureStorage implements IStorage {
             ));
         }
 
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve, reject, dependOn) => {
             options = options || {};
 
-            this.getPlugin(options)
+            dependOn(this.getPlugin(options))
                 .then((plugin: ICordovaSecureStorage) => {
-                    plugin.remove(
-                        () => {
-                            resolve();
-                        },
-                        (error: string) => {
-                            reject(this.makeErrorInfoFromPlugin(error));
-                        },
-                        key
-                    );
+                    return dependOn(this.removeData(plugin, key));
+                })
+                .then(() => {
+                    resolve();
+                })
+                .catch((error) => {
+                    reject(error);
                 });
         });
     }
@@ -176,6 +167,174 @@ export default class SecureStorage implements IStorage {
                     );
                 });
         });
+    }
+
+    ///////////////////////////////////////////////////////////////////////
+    // private methods: データ整形
+
+    // 保存可能なデータサイズを保証し分割する
+    private ensureData(key: string, value: string): KeyValue[] {
+        const chunks = Tools.toStringChunks(value, MAX_DATA_LIMIT);
+        if (1 === chunks.length) {
+            return [{ key: key, value: value }];
+        } else {
+            const retval = [];
+            chunks.forEach((chunk, index) => {
+                retval.push({
+                    key: `${key}[${CHUNK_SIGNATURE}${Tools.toZeroPadding(index, 4)}]`,
+                    value: chunk,
+                });
+            });
+            return retval;
+        }
+    }
+
+    // 書き込み
+    private writeData(plugin: ICordovaSecureStorage, key: string, data: string): IPromise<void> {
+        const completeKeys = [];
+        const cancel = () => {
+            this.procRemoveData(plugin, completeKeys);
+        };
+
+        const promise = new Promise<void>((resolve, reject) => {
+            const dataChunk = this.ensureData(key, data);
+            const proc = () => {
+                const chunk = dataChunk.shift();
+                if ("pending" !== promise.state()) {
+                    return;
+                }
+                if (null == chunk) {
+                    resolve();
+                    return;
+                }
+                plugin.set(
+                    (_key: string) => {
+                        completeKeys.push(_key);
+                        setTimeout(proc);
+                    },
+                    (error: string) => {
+                        reject(this.makeErrorInfoFromPlugin(error));
+                    },
+                    chunk.key, chunk.value
+                );
+            };
+            setTimeout(proc);
+        }, cancel);
+
+        return promise;
+    }
+
+    // 対象の key を取得
+    private queryKeys(plugin: ICordovaSecureStorage, key: string): IPromise<string[]> {
+        let chunkKeys: string[];
+        const promise = new Promise<string[]>((resolve, reject) => {
+            plugin.keys(
+                (keys: string[]) => {
+                    if ("pending" === promise.state()) {
+                        const regexp = new RegExp(`^${key}\\[${CHUNK_SIGNATURE}`);
+                        chunkKeys = keys
+                            .filter((_key) => {
+                                return regexp.test(_key);
+                            })
+                            .sort();
+                        if (chunkKeys.length <= 0) {
+                            chunkKeys.push(key);
+                        }
+                        resolve(chunkKeys);
+                    }
+                },
+                (error: string) => {
+                    reject(this.makeErrorInfoFromPlugin(error));
+                },
+            );
+        });
+        return promise;
+    }
+
+    // 読み込み
+    private readData(plugin: ICordovaSecureStorage, key: string): IPromise<string> {
+        const promise = new Promise<string>((resolve, reject, dependOn) => {
+            const read = (_keys: string[]): IPromise<string> => {
+                let _data = "";
+                const _promise = new Promise<string>((_resolve, _reject) => {
+                    const proc = () => {
+                        if ("pending" !== _promise.state()) {
+                            return;
+                        }
+                        const _key = _keys.shift();
+                        if (null == _key) {
+                            _resolve(_data);
+                            return;
+                        }
+                        plugin.get(
+                            (chunk: string) => {
+                                _data += chunk;
+                                setTimeout(proc);
+                            },
+                            (error: string) => {
+                                _reject(this.makeErrorInfoFromPlugin(error));
+                            },
+                            _key
+                        );
+                    };
+                    setTimeout(proc);
+                });
+                return _promise;
+            };
+
+            dependOn(this.queryKeys(plugin, key))
+                .then((keys) => {
+                    return dependOn(read(keys));
+                })
+                .then((data) => {
+                    resolve(data);
+                })
+                .catch((error) => {
+                    reject(error);
+                });
+        });
+
+        return promise;
+    }
+
+    // 削除処理: キャンセル不可
+    private procRemoveData(plugin: ICordovaSecureStorage, keys: string[]): IPromiseBase<void> {
+        return new Promise((resolve, reject) => {
+            const proc = () => {
+                const removeKey = keys.shift();
+                if (null == removeKey) {
+                    return resolve();
+                }
+                plugin.remove(
+                    () => {
+                        setTimeout(proc);
+                    },
+                    (error: string) => {
+                        reject(this.makeErrorInfoFromPlugin(error));
+                    },
+                    removeKey
+                );
+            };
+            proc();
+        });
+    }
+
+    // 削除
+    private removeData(plugin: ICordovaSecureStorage, key: string): IPromise<void> {
+        const promise = new Promise<void>((resolve, reject, dependOn) => {
+            dependOn(this.queryKeys(plugin, key))
+                .then((keys) => {
+                    return this.procRemoveData(plugin, keys);
+                })
+                .then(() => {
+                    resolve();
+                })
+                .catch((error) => {
+                    reject(error);
+                });
+        });
+
+        return promise;
     }
 
     ///////////////////////////////////////////////////////////////////////
