@@ -20,7 +20,7 @@
 
         <div id="nativebridge-console"></div>
 
-        <hr/>
+        <hr />
 
         <h3 data-i18n="nativebridge.misc.title">nativebridge.misc.title</h3>
         <ul class="cafeteria-example ui-listitem-border-offset-enable" data-role="listview" data-inset="true">
@@ -34,6 +34,48 @@
                 <a href="#" class="command-change-statusbar-dark" data-i18n="nativebridge.misc.changeStatusBarDark">nativebridge.misc.changeStatusBarDark</a>
             </li>
         </ul>
+
+        <hr />
+
+        <h3 data-i18n="nativebridge.storage.label">nativebridge.storage.label</h3>
+        <fieldset class="ui-layout-match-parent" data-role="controlgroup" data-type="horizontal">
+            <div class="ui-layout-center-container">
+                <input type="radio" name="nativebridge-radio-group-storage-kind" id="nativebridge-storage-type-device" value="cdp-storage:device:local-storage" checked="checked">
+                <label class="nativebridge-segument-selector" for="nativebridge-storage-type-device" data-i18n="nativebridge.storage.deviceStorage">nativebridge.storage.deviceStorage</label>
+                <input type="radio" name="nativebridge-radio-group-storage-kind" id="nativebridge-storage-type-secure" value="cdp-storage:device:secure-storage">
+                <label class="nativebridge-segument-selector"for="nativebridge-storage-type-secure" data-i18n="nativebridge.storage.secureStorage">nativebridge.storage.secureStorage</label>
+            </div>
+        </fieldset>
+        <fieldset class="ui-layout-match-parent" data-role="controlgroup" data-type="horizontal">
+            <div class="ui-layout-center-container">
+                <input type="radio" name="nativebridge-radio-group-storage-data-type" id="nativebridge-storage-data-type-object" value="json" checked="checked">
+                <label class="nativebridge-segument-selector"for="nativebridge-storage-data-type-object" data-i18n="nativebridge.storage.object">nativebridge.storage.object</label>
+                <input type="radio" name="nativebridge-radio-group-storage-data-type" id="nativebridge-storage-data-type-binary" value="binary">
+                <label class="nativebridge-segument-selector"for="nativebridge-storage-data-type-binary" data-i18n="nativebridge.storage.binary">nativebridge.storage.binary</label>
+            </div>
+        </fieldset>
+
+        <h3 data-i18n="nativebridge.storage.labelSpecialSettings">nativebridge.storage.labelSpecialSettings</h3>
+        <fieldset class="nativebridge-storage-special-settings ui-layout-match-parent" data-role="controlgroup" data-type="horizontal">
+            <div class="ui-layout-center-container">
+                <input type="radio" name="nativebridge-radio-group-device-storage-root" id="nativebridge-device-storage-root-data" value="dataDirectory" checked="checked">
+                <label class="nativebridge-segument-selector"for="nativebridge-device-storage-root-data" data-i18n="nativebridge.storage.dataDirectory">nativebridge.storage.dataDirectory</label>
+                <input type="radio" name="nativebridge-radio-group-device-storage-root" id="nativebridge-device-storage-root-external" value="externalRootDirectory">
+                <label class="nativebridge-segument-selector"for="nativebridge-device-storage-root-external" data-i18n="nativebridge.storage.externalRootDirectory">nativebridge.storage.externalRootDirectory</label>
+            </div>
+        </fieldset>
+        <div data-mini="true" class="ui-alt">
+            <div class="ui-grid-a">
+                <div class="ui-block-a"><a href="#" class="command-storage ui-btn ui-corner-all" data-action="set" data-i18n="nativebridge.storage.setItem">nativebridge.storage.setItem</a></div>
+                <div class="ui-block-b"><a href="#" class="command-storage ui-btn ui-corner-all" data-action="get" data-i18n="nativebridge.storage.getItem">nativebridge.storage.getItem</a></div>
+            </div>
+            <div class="ui-grid-a">
+                <div class="ui-block-a"><a href="#" class="command-storage ui-btn ui-corner-all" data-action="remove" data-i18n="nativebridge.storage.removeItem">nativebridge.storage.removeItem</a></div>
+                <div class="ui-block-b"><a href="#" class="command-storage ui-btn ui-corner-all" data-action="clear" data-i18n="nativebridge.storage.clear">nativebridge.storage.clear</a></div>
+            </div>
+        </div>
+        <button class="command-clear-cache ui-btn ui-alt ui-emphasis" data-i18n="nativebridge.storage.clearAllCache">nativebridge.storage.clearAllCache</button>
+        <div class="nativebridge-storage-output"></div>
 
     </section>
 </article>

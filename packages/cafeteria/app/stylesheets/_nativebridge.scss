@@ -16,3 +16,20 @@
         color: deepskyblue;
     }
 }
+
+#nativebridge-root {
+    .nativebridge-segument-selector {
+        min-width: 142px;
+    }
+    .nativebridge-storage-output {
+        position: relative;
+        width: 80%;
+        height: 200px;
+        margin: 0 auto;
+        overflow-y: auto;
+        text-indent: 4px;
+        white-space: pre-wrap;
+        color: gold;
+        background-color: black;
+    }
+}

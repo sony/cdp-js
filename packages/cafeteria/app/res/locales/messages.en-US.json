@@ -222,6 +222,21 @@
     },
     "nativebridge": {
         "title": "Native Bridge Functions",
+        "storage": {
+            "label": "Local Storage Management:",
+            "labelSpecialSettings": "Special Settings (Android)",
+            "deviceStorage": "Device Storage",
+            "secureStorage": "Secure Storage",
+            "object": "Object",
+            "binary": "Binary",
+            "dataDirectory": "dataDirectory",
+            "externalRootDirectory": "externalRootDirectory",
+            "setItem": "setItem()",
+            "getItem": "getItem()",
+            "removeItem": "removeItem()",
+            "clear": "clear()",
+            "clearAllCache": "Clear Cache"
+        },
         "simpleGate": {
             "title": "SimpleGate サンプル",
             "coolMethod": "cool",

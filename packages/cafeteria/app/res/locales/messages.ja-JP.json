@@ -222,6 +222,21 @@
     },
     "nativebridge": {
         "title": "Native Bridge 連携",
+        "storage": {
+            "label": "ローカルストレージ管理:",
+            "labelSpecialSettings": "特別設定 (Android)",
+            "deviceStorage": "デバイスストレージ",
+            "secureStorage": "セキュアストレージ",
+            "object": "オブジェクト",
+            "binary": "バイナリ",
+            "dataDirectory": "dataDirectory",
+            "externalRootDirectory": "externalRootDirectory",
+            "setItem": "setItem()",
+            "getItem": "getItem()",
+            "removeItem": "removeItem()",
+            "clear": "clear()",
+            "clearAllCache": "キャッシュの破棄"
+        },
         "simpleGate": {
             "title": "SimpleGate サンプル",
             "coolMethod": "cool",
