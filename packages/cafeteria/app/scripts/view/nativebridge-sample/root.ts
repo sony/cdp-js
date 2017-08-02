@@ -26,7 +26,8 @@ import * as Misc from "../../bridge/misc";
 import { handleErrorInfo  } from "../../utils/error-defs";
 
 const TAG = "[view.nativebridge-sample.RootPageView] ";
-const DEVICE_STORAGE_KEY        = "Cafeteria/DEVICE_STORAGE/TEST_DATA";
+const DEVICE_STORAGE_KEY_BINARY = "Cafeteria/DEVICE_STORAGE/TEST_DATA_BIN";
+const DEVICE_STORAGE_KEY_OBJECT = "Cafeteria/DEVICE_STORAGE/TEST_DATA_OBJ";
 const SECURE_STORAGE_NAMESPACE  = "cafeteria";
 
 /**
@@ -178,7 +179,7 @@ class RootPageView extends PageView {
                 this.deviceStorageGetItem(storage, dataType, root);
                 break;
             case "remove":
-                this.deviceStorageRemoveItem(storage, root);
+                this.deviceStorageRemoveItem(storage, dataType, root);
                 break;
             case "clear":
                 this.deviceStorageClear(storage, root);
@@ -255,6 +256,7 @@ class RootPageView extends PageView {
         const url = ("json" === dataType)
             ? toUrl("/res/data/sample/image/recallplayback.json")
             : toUrl("/res/data/examples/contents/animal/koala.jpg");
+        const key = ("json" === dataType) ? DEVICE_STORAGE_KEY_OBJECT : DEVICE_STORAGE_KEY_BINARY;
 
         $.ajax({
             url: url,
@@ -263,10 +265,10 @@ class RootPageView extends PageView {
             processData: false,
         })
             .then((data: Blob | object) => {
-                return storage.setItem(DEVICE_STORAGE_KEY, data, <IStorageSetItemOptions>{
+                return this._prmsManager.add(storage.setItem(key, data, <IStorageSetItemOptions>{
                     root: this.getDeviceStorageRoot(root),
                     namespace: SECURE_STORAGE_NAMESPACE,
-                });
+                }));
             })
             .done(() => {
                 Toast.show("setItem(): " + dataType);
@@ -278,14 +280,15 @@ class RootPageView extends PageView {
 
     // デバイスストレージからデータ取得
     private deviceStorageGetItem(storage: IStorage, dataType: string, root: string): void {
-        storage.getItem(DEVICE_STORAGE_KEY, <IStorageGetItemOptions>{
+        const key = ("json" === dataType) ? DEVICE_STORAGE_KEY_OBJECT : DEVICE_STORAGE_KEY_BINARY;
+        this._prmsManager.add(storage.getItem(key, <IStorageGetItemOptions>{
             root: this.getDeviceStorageRoot(root),
             dataInfo: {
                 dataType: ("json" === dataType) ? "text" : "blob",
                 mimeType: "image/png",
             },
             namespace: SECURE_STORAGE_NAMESPACE,
-        })
+        }))
             .done((data: any) => {
                 this.refreshDeviceStorageOutput(data);
                 Toast.show("getItem(): " + dataType);
@@ -296,11 +299,12 @@ class RootPageView extends PageView {
     }
 
     // デバイスストレージのデータを破棄
-    private deviceStorageRemoveItem(storage: IStorage, root: string): void {
-        storage.removeItem(DEVICE_STORAGE_KEY, <IStorageRemoveItemOptions>{
+    private deviceStorageRemoveItem(storage: IStorage, dataType: string, root: string): void {
+        const key = ("json" === dataType) ? DEVICE_STORAGE_KEY_OBJECT : DEVICE_STORAGE_KEY_BINARY;
+        this._prmsManager.add(storage.removeItem(key, <IStorageRemoveItemOptions>{
             root: this.getDeviceStorageRoot(root),
             namespace: SECURE_STORAGE_NAMESPACE,
-        })
+        }))
             .done(() => {
                 this.refreshDeviceStorageOutput(null);
                 Toast.show("removeItem()");
@@ -312,10 +316,10 @@ class RootPageView extends PageView {
 
     // デバイスストレージの初期化
     private deviceStorageClear(storage: IStorage, root: string): void {
-        storage.clear(<IStorageOptions>{
+        this._prmsManager.add(storage.clear(<IStorageOptions>{
             root: this.getDeviceStorageRoot(root),
             namespace: SECURE_STORAGE_NAMESPACE,
-        })
+        }))
             .done(() => {
                 this.refreshDeviceStorageOutput(null);
                 Toast.show("clear()");
