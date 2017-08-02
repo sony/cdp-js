@@ -18,6 +18,7 @@
         /**
          * Get BlobBuilder
          *
+         * @obsolete
          * @return {any} BlobBuilder
          */
         private static getBlobBuilder(): any {
@@ -45,6 +46,36 @@
         }
 
         /**
+         * Get BlobBuilder
+         *
+         * @obsolete
+         * @return 構築済み Blob オブジェクト
+         */
+        public static newBlob(blobParts?: any[], options?: BlobPropertyBag): Blob {
+            if (global.Blob) {
+                return new global.Blob(blobParts, options);
+            } else {
+                // under Android 4.4 KitKat
+                options = options || {};
+                const blobBuilderObject: any = Binary.getBlobBuilder();
+                const blobBuilder: any = new blobBuilderObject();
+                const parts = (blobParts instanceof Array) ? blobParts[0] : blobParts;
+                blobBuilder.append(parts);
+                return blobBuilder.getBlob(options.type);
+            }
+        }
+
+        /**
+         * URL Object
+         *
+         * @obsolete
+         * @return {any} URL Object
+         */
+        public static blobURL: URL = (() => {
+            return global.URL || global.webkitURL;
+        })();
+
+        /**
          * ArrayBuffer to Blob
          *
          * @param buf [in] ArrayBuffer data
@@ -52,18 +83,7 @@
          * @returns Blob data
          */
         public static arrayBufferToBlob(buf: ArrayBuffer, mimeType: string): Blob {
-            let blob: Blob = null;
-
-            if (global.Blob) {
-                blob = new global.Blob([buf], { type: mimeType });
-            } else {
-                // under Android 4.4 KitKat
-                const blobBuilderObject: any = Binary.getBlobBuilder();
-                const blobBuilder: any = new blobBuilderObject();
-                blobBuilder.append(buf);
-                blob = blobBuilder.getBlob(mimeType);
-            }
-            return blob;
+            return Binary.newBlob([buf], { type: mimeType });
         }
 
         /**
@@ -74,18 +94,7 @@
          * @return {Blob} Blob data
          */
         public static base64ToBlob(base64: string, mimeType: string): Blob {
-            let blob: Blob = null;
-
-            if (global.Blob) {
-                blob = new global.Blob([Binary.base64ToArrayBuffer(base64)], { type: mimeType });
-            } else {
-                // under Android 4.4 KitKat
-                const blobBuilderObject: any = Binary.getBlobBuilder();
-                const blobBuilder: any = new blobBuilderObject();
-                blobBuilder.append(Binary.base64ToArrayBuffer(base64));
-                blob = blobBuilder.getBlob(mimeType);
-            }
-            return blob;
+            return Binary.newBlob([Binary.base64ToArrayBuffer(base64)], { type: mimeType });
         }
 
         /**
@@ -255,15 +264,5 @@
                 reader.readAsDataURL(blob);
             }, cancel);
         }
-
-        /**
-         * URL Object
-         *
-         * @obsolete
-         * @return {any} URL Object
-         */
-        public static blobURL: URL = (() => {
-            return global.URL || global.webkitURL;
-        })();
     }
 }

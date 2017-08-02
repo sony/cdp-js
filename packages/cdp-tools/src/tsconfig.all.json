@@ -10,9 +10,9 @@
   "files": [
     "scripts/CDP/Tools/Interfaces.ts",
     "scripts/CDP/Tools/ErrorDefs.ts",
-    "scripts/CDP/Tools/Functions.ts",
     "scripts/CDP/Tools/Binary.ts",
     "scripts/CDP/Tools/BinaryTransport.ts",
+    "scripts/CDP/Tools/Functions.ts",
     "scripts/CDP/Tools/DateTime.ts",
     "scripts/CDP/Tools/Template.ts",
     "scripts/CDP/Tools/ProgressCounter.ts"

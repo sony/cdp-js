@@ -50,15 +50,38 @@ namespace CDP.Tools {
      * 文字列のバイト数をカウント
      */
     export function getStringSize(src: string): number {
-        return (new global.Blob([src], { type: "text/plain" })).size;
+        return (Binary.newBlob([src], { type: "text/plain" })).size;
     }
 
     /**
      * 文字列をバイト制限して分割
      */
     export function toStringChunks(src: string, limit: number): string[] {
-        // TODO:
-        return [src];
+
+        const chunks = [];
+
+        const setChunk = (input: string): string[] => {
+            if (limit < getStringSize(input)) {
+                const half = Math.floor(input.length / 2);
+                const lhs = input.slice(0, half);
+                const rhs = input.slice(half);
+                return [lhs, rhs];
+            } else {
+                chunks.push(input);
+                return [];
+            }
+        };
+
+        const makeChunk = (work: string) => {
+            const failures = setChunk(work);
+            while (0 < failures.length) {
+                makeChunk(failures.shift());
+            }
+        };
+
+        makeChunk(src);
+
+        return chunks;
     }
 
     /**
