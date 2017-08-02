@@ -45,14 +45,11 @@
         const canceled = (cause && CANCELED_MESSAGE === cause.message) ? true : false;
         const msg = canceled ? CANCELED_MESSAGE : message;
         const code = canceled ? RESULT_CODE.CANCELED : resultCode;
-        return {
-            ...new Error(msg || messageFromResultCode(code)),
-            ...{
-                name: buildErrorName(code, tag),
-                code: code,
-                cause: cause,
-            }
-        };
+        const errorInfo = <ErrorInfo>new Error(msg || messageFromResultCode(code));
+        errorInfo.name  = buildErrorName(code, tag);
+        errorInfo.code  = code;
+        errorInfo.cause = cause;
+        return errorInfo;
     }
 
     /**
@@ -101,7 +98,7 @@
             } else if ("string" === typeof cause) {
                 return { ...unknown, ...{ message: cause } };
             } else if ("object" === typeof cause) {
-                return { ...unknown, ...cause };
+                return { ...unknown, ...{ message: cause.message }, ...cause };
             }
         }
         return unknown;
@@ -236,8 +233,8 @@
      */
     function buildErrorName(resultCode: number, tag: string): string {
         const prefix = tag || "";
-        if (RESULT_CODE[resultCode]) {
-            return prefix + RESULT_CODE[resultCode] + ": ";
+        if (CDP.RESULT_CODE[resultCode]) {
+            return prefix + CDP.RESULT_CODE[resultCode] + ": ";
         } else {
             return prefix;
         }

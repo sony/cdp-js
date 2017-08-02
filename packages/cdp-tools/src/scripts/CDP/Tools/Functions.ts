@@ -47,6 +47,44 @@ namespace CDP.Tools {
     }
 
     /**
+     * 文字列のバイト数をカウント
+     */
+    export function getStringSize(src: string): number {
+        return (Binary.newBlob([src], { type: "text/plain" })).size;
+    }
+
+    /**
+     * 文字列をバイト制限して分割
+     */
+    export function toStringChunks(src: string, limit: number): string[] {
+
+        const chunks = [];
+
+        const setChunk = (input: string): string[] => {
+            if (limit < getStringSize(input)) {
+                const half = Math.floor(input.length / 2);
+                const lhs = input.slice(0, half);
+                const rhs = input.slice(half);
+                return [lhs, rhs];
+            } else {
+                chunks.push(input);
+                return [];
+            }
+        };
+
+        const makeChunk = (work: string) => {
+            const failures = setChunk(work);
+            while (0 < failures.length) {
+                makeChunk(failures.shift());
+            }
+        };
+
+        makeChunk(src);
+
+        return chunks;
+    }
+
+    /**
      * 多重継承のための実行時継承関数
      *
      * Sub Class 候補オブジェクトに対して Super Class 候補オブジェクトを直前の Super Class として挿入する。

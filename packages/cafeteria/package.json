@@ -120,7 +120,7 @@
     "@types/iscroll": "^5.2.0",
     "@types/jasmine": "^2.5.53",
     "@types/jquery": "^3.2.10",
-    "@types/requirejs": "^2.1.29",
+    "@types/requirejs": "^2.1.30",
     "@types/sylvester": "^0.1.5",
     "@types/underscore": "^1.8.1",
     "autoprefixer": "^7.1.2",

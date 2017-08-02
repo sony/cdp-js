@@ -9,10 +9,10 @@ export const MIME_TYPE_IMG_PNG      = "image/png";
  * @namespace STORAGE_KIND
  * @brief     ストレージ種別の定数宣言
  */
-export namespace STORAGE_KIND {
-    export const DEVICE_STORAGE = "cdp-storage:device:local-storage";
-    export const SECURE_STORAGE = "cdp-storage:device:secure-storage";
-    export const WEB_STORAGE    = "cdp-storage:web:local-storage";
+export const enum STORAGE_KIND {
+    DEVICE_STORAGE = "cdp-storage:device:local-storage",
+    SECURE_STORAGE = "cdp-storage:device:secure-storage",
+    WEB_STORAGE    = "cdp-storage:web:local-storage",
 }
 
 /**

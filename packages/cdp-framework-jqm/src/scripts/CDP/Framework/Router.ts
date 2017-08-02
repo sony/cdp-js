@@ -28,7 +28,7 @@ namespace CDP.Framework {
      */
     export function toUrl(path: string): string {
         if (null != path[0] && "/" === path[0]) {
-            return CDP.webRoot + path.slice(1);
+            return CDP.toUrl(path);
         } else {
             return $.mobile.path.makeUrlAbsolute(path, getCurrentDocumentUrl());
         }

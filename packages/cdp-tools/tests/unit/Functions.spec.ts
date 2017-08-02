@@ -130,6 +130,19 @@ describe("Tools.Functions", () => {
         expect(Functions.toZeroPadding(1, NaN)).toBeNull();
     });
 
+    it("toStringChunks()", () => {
+        const src = "0123456789";
+        const chunks = Functions.toStringChunks(src, 2);
+
+        expect(chunks.length).toEqual(6);
+        expect(chunks[0]).toEqual("01");
+        expect(chunks[1]).toEqual("2");
+        expect(chunks[2]).toEqual("34");
+        expect(chunks[3]).toEqual("56");
+        expect(chunks[4]).toEqual("7");
+        expect(chunks[5]).toEqual("89");
+    });
+
     it("inherit()", () => {
         const dstOrg = <any>new InheritSubClass();
         expect(dstOrg._memberA).toBeUndefined();

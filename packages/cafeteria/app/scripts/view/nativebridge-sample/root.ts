@@ -1,6 +1,8 @@
-﻿import {
+﻿import { global } from "cdp";
+import {
     ErrorInfo,
     isCanceledError,
+    toUrl,
 } from "cdp/framework";
 import {
     IPromise,
@@ -10,11 +12,22 @@ import {
     alert,
     Toast,
 } from "cdp/ui";
+import {
+    IStorage,
+    IStorageOptions,
+    IStorageSetItemOptions,
+    IStorageGetItemOptions,
+    IStorageRemoveItemOptions,
+    STORAGE_KIND,
+    StorageAccess,
+} from "cdp.storage";
 import * as SimpleGate from "../../bridge/simple-gate";
 import * as Misc from "../../bridge/misc";
 import { handleErrorInfo  } from "../../utils/error-defs";
 
 const TAG = "[view.nativebridge-sample.RootPageView] ";
+const DEVICE_STORAGE_KEY        = "Cafeteria/DEVICE_STORAGE/TEST_DATA";
+const SECURE_STORAGE_NAMESPACE  = "cafeteria";
 
 /**
  * @class RootPageView
@@ -49,6 +62,9 @@ class RootPageView extends PageView {
             "vclick .command-gen-uuid": this.onCommandGenUUID,
             "vclick .command-change-statusbar-light": this.onCommandChangeStatusBarLight,
             "vclick .command-change-statusbar-dark": this.onCommandChangeStatusBarDark,
+            // local storage test
+            "vclick .command-storage": this.onStorageTest,
+            "vclick .command-clear-cache": this.onClearCache,
         };
     }
 
@@ -146,6 +162,50 @@ class RootPageView extends PageView {
             });
     }
 
+    // デバイスストレージのテスト
+    private onStorageTest(event: JQueryEventObject): void {
+        const dataType = <string>this.$page.find("input[name='nativebridge-radio-group-storage-data-type']:checked").val();
+        const kind = <string>this.$page.find("input[name='nativebridge-radio-group-storage-kind']:checked").val();
+        const root = <string>this.$page.find("input[name='nativebridge-radio-group-device-storage-root']:checked").val();
+        const storage = StorageAccess.getStorage(kind);
+        const action = $(event.currentTarget).data("action");
+
+        switch (action) {
+            case "set":
+                this.deviceStorageSetItem(storage, dataType, root);
+                break;
+            case "get":
+                this.deviceStorageGetItem(storage, dataType, root);
+                break;
+            case "remove":
+                this.deviceStorageRemoveItem(storage, root);
+                break;
+            case "clear":
+                this.deviceStorageClear(storage, root);
+                break;
+            default:
+                break;
+        }
+    }
+
+    // キャッシュの破棄
+    /* eslint-disable no-fallthrough */
+    private async onClearCache(event: JQueryEventObject): Promise<void> {
+        const kinds = [
+            STORAGE_KIND.DEVICE_STORAGE,
+            STORAGE_KIND.SECURE_STORAGE,
+            STORAGE_KIND.WEB_STORAGE,
+        ];
+        for (let i = 0, n = kinds.length; i < n; i++) {
+            const storage = StorageAccess.getStorage(kinds[i]);
+            await storage.clear(<IStorageOptions>{
+                namespace: SECURE_STORAGE_NAMESPACE,
+            });
+        }
+        this.refreshDeviceStorageOutput(null);
+    }
+    /* eslint-enable no-fallthrough */
+
     ///////////////////////////////////////////////////////////////////////
     // Override: PageView
 
@@ -179,6 +239,113 @@ class RootPageView extends PageView {
     private clearMessage(): void {
         const $console = $("#nativebridge-console");
         $console.find("p").remove();
+    }
+
+    // デバイスストレージの root 取得
+    private getDeviceStorageRoot(root: string): string {
+        if (global.cordova && global.cordova.file) {
+            return cordova.file[root];
+        } else {
+            return null;
+        }
+    }
+
+    // デバイスストレージにデータ設定
+    private deviceStorageSetItem(storage: IStorage, dataType: string, root: string): void {
+        const url = ("json" === dataType)
+            ? toUrl("/res/data/sample/image/recallplayback.json")
+            : toUrl("/res/data/examples/contents/animal/koala.jpg");
+
+        $.ajax({
+            url: url,
+            type: "GET",
+            dataType: dataType,
+            processData: false,
+        })
+            .then((data: Blob | object) => {
+                return storage.setItem(DEVICE_STORAGE_KEY, data, <IStorageSetItemOptions>{
+                    root: this.getDeviceStorageRoot(root),
+                    namespace: SECURE_STORAGE_NAMESPACE,
+                });
+            })
+            .done(() => {
+                Toast.show("setItem(): " + dataType);
+            })
+            .fail((error) => {
+                handleErrorInfo(error);
+            });
+    }
+
+    // デバイスストレージからデータ取得
+    private deviceStorageGetItem(storage: IStorage, dataType: string, root: string): void {
+        storage.getItem(DEVICE_STORAGE_KEY, <IStorageGetItemOptions>{
+            root: this.getDeviceStorageRoot(root),
+            dataInfo: {
+                dataType: ("json" === dataType) ? "text" : "blob",
+                mimeType: "image/png",
+            },
+            namespace: SECURE_STORAGE_NAMESPACE,
+        })
+            .done((data: any) => {
+                this.refreshDeviceStorageOutput(data);
+                Toast.show("getItem(): " + dataType);
+            })
+            .fail((error) => {
+                handleErrorInfo(error);
+            });
+    }
+
+    // デバイスストレージのデータを破棄
+    private deviceStorageRemoveItem(storage: IStorage, root: string): void {
+        storage.removeItem(DEVICE_STORAGE_KEY, <IStorageRemoveItemOptions>{
+            root: this.getDeviceStorageRoot(root),
+            namespace: SECURE_STORAGE_NAMESPACE,
+        })
+            .done(() => {
+                this.refreshDeviceStorageOutput(null);
+                Toast.show("removeItem()");
+            })
+            .fail((error) => {
+                handleErrorInfo(error);
+            });
+    }
+
+    // デバイスストレージの初期化
+    private deviceStorageClear(storage: IStorage, root: string): void {
+        storage.clear(<IStorageOptions>{
+            root: this.getDeviceStorageRoot(root),
+            namespace: SECURE_STORAGE_NAMESPACE,
+        })
+            .done(() => {
+                this.refreshDeviceStorageOutput(null);
+                Toast.show("clear()");
+            })
+            .fail((error) => {
+                handleErrorInfo(error);
+            });
+    }
+
+    // デバイスストレージデータの表示
+    private refreshDeviceStorageOutput(data: Blob | object): void {
+        const $output = this.$page.find(".nativebridge-storage-output-container");
+        // 破棄
+        $output
+            .children()
+            .css("background-image", "none")
+            .text("");
+
+        if (data instanceof Blob || data instanceof File) {
+            let $binary = $output.find(".nativebridge-storage-binary");
+            const reader = new FileReader();
+            reader.onload = () => {
+                $binary.css("background-image", `url('${reader.result}')`);
+                $binary = null;
+            };
+            reader.readAsDataURL(data);
+        } else if (data instanceof Object) {
+            const $object = $output.find(".nativebridge-storage-object");
+            $object.text(JSON.stringify(data, null, 4));
+        }
     }
 }
 
