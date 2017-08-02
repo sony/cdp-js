@@ -128,7 +128,7 @@ namespace CDP {
     function getLocaleFallbackResource(path: string): any {
         let json: JSON;
         $.ajax({
-            url: toUrl(path),
+            url: CDP.toUrl(path),
             method: "GET",
             async: false,
             dataType: "json",
@@ -140,25 +140,6 @@ namespace CDP {
             }
         });
         return json;
-    }
-
-    /**
-     * \~english
-     * Convert path to URL.
-     *
-     * @param path [in] path string
-     *
-     * \~japanese
-     * path を URL に変換
-     *
-     * @param path [in] パスを指定。
-     */
-    function toUrl(path: string): string {
-        if (!path && "/" !== path[0]) {
-            console.error(TAG + "invalid path. path: " + path);
-        } else {
-            return CDP.webRoot + path.slice(1);
-        }
     }
 }
 

@@ -23,6 +23,25 @@
     })();
 
     /**
+     * path を URL に変換
+     *
+     * @param path パスを指定。
+     * @returns webRoot からの URL。
+     */
+    export function toUrl(path: string): string {
+        const root = webRoot || "";
+        if (null != path[0]) {
+            if ("/" === path[0]) {
+                return root + path.slice(1);
+            } else {
+                return root + path;
+            }
+        } else {
+            return root;
+        }
+    }
+
+    /**
      * Config オブジェクトにアクセス
      */
     export const Config: any = CDP.Config || global.Config || {};

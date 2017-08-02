@@ -10,15 +10,15 @@ import {
 } from "./interfaces";
 import { RESULT_CODE } from "./error-defs";
 
-const arrayBufferToBase64   = Tools.Blob.arrayBufferToBase64;
-const uint8ArrayToBase64    = Tools.Blob.uint8ArrayToBase64;
-const base64ToBlob          = Tools.Blob.base64ToBlob;
-const base64ToArrayBuffer   = Tools.Blob.base64ToArrayBuffer;
-const base64ToUint8Array    = Tools.Blob.base64ToUint8Array;
-const arrayBufferToBlob     = Tools.Blob.arrayBufferToBlob;
-const readBlobAsUint8Array  = Tools.Blob.readBlobAsUint8Array;
-const readBlobAsArrayBuffer = Tools.Blob.readBlobAsArrayBuffer;
-const readBlobAsText        = Tools.Blob.readBlobAsText;
+const arrayBufferToBase64   = Tools.Binary.arrayBufferToBase64;
+const uint8ArrayToBase64    = Tools.Binary.uint8ArrayToBase64;
+const base64ToBlob          = Tools.Binary.base64ToBlob;
+const base64ToArrayBuffer   = Tools.Binary.base64ToArrayBuffer;
+const base64ToUint8Array    = Tools.Binary.base64ToUint8Array;
+const arrayBufferToBlob     = Tools.Binary.arrayBufferToBlob;
+const readBlobAsUint8Array  = Tools.Binary.readBlobAsUint8Array;
+const readBlobAsArrayBuffer = Tools.Binary.readBlobAsArrayBuffer;
+const readBlobAsText        = Tools.Binary.readBlobAsText;
 
 const TAG = "[cdp.storage.utils] ";
 

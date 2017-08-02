@@ -9,16 +9,16 @@ namespace CDP.UI {
     /**
      * PageView が発行するイベント定義
      */
-    export namespace PAGEVIEW_EVENTS {
-        export const ORIENTATION_CHANGED = "pageview:orientation-changed";
-        export const INITIALZSE          = "pageview:initialize";
-        export const PAGE_BEFORE_CREATE  = "pageview:before-create";
-        export const PAGE_INIT           = "pageview:page-init";
-        export const PAGE_BEFORE_SHOW    = "pageview:before-show";
-        export const PAGE_SHOW           = "pageview:show";
-        export const PAGE_BEFORE_HIDE    = "pageview:before-hide";
-        export const PAGE_HIDE           = "pageview:hide";
-        export const PAGE_REMOVE         = "pageview:remove";
+    export const enum PAGEVIEW_EVENTS {
+        ORIENTATION_CHANGED = "pageview:orientation-changed",
+        INITIALZSE          = "pageview:initialize",
+        PAGE_BEFORE_CREATE  = "pageview:before-create",
+        PAGE_INIT           = "pageview:page-init",
+        PAGE_BEFORE_SHOW    = "pageview:before-show",
+        PAGE_SHOW           = "pageview:show",
+        PAGE_BEFORE_HIDE    = "pageview:before-hide",
+        PAGE_HIDE           = "pageview:hide",
+        PAGE_REMOVE         = "pageview:remove",
     }
 
     /**
