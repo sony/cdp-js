@@ -47,6 +47,21 @@ namespace CDP.Tools {
     }
 
     /**
+     * 文字列のバイト数をカウント
+     */
+    export function getStringSize(src: string): number {
+        return (new global.Blob([src], { type: "text/plain" })).size;
+    }
+
+    /**
+     * 文字列をバイト制限して分割
+     */
+    export function toStringChunks(src: string, limit: number): string[] {
+        // TODO:
+        return [src];
+    }
+
+    /**
      * 多重継承のための実行時継承関数
      *
      * Sub Class 候補オブジェクトに対して Super Class 候補オブジェクトを直前の Super Class として挿入する。

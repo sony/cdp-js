@@ -2,29 +2,38 @@
 
     import Promise = CDP.Promise;
 
-    const TAG = "[CDP.Tools.Blob] ";
+    const TAG = "[CDP.Tools.Binary] ";
 
-    export module Blob {
+    /**
+     * @class Binary
+     * @brief バイナリユーティリティ
+     */
+    export class Binary {
+
+        // private constructor
+        private constructor() {
+            // noop
+        }
 
         /**
          * Get BlobBuilder
          *
          * @return {any} BlobBuilder
          */
-        function getBlobBuilder(): any {
+        private static getBlobBuilder(): any {
             return global.BlobBuilder || global.WebKitBlobBuilder || global.MozBlobBuilder || global.MSBlobBuilder;
         }
 
         /**
          * エラー情報生成 from DOMError
          *
-         * @param  {RESULT_CODE} resultCode [in] RESULT_CODE を指定
-         * @param  {DOMError}    cause      [in] 下位の DOM エラーを指定
-         * @param  {String}      [tag]      [in] TAG を指定
-         * @param  {String}      [message]  [in] メッセージを指定
-         * @return {ErrorInfo} エラーオブジェクト
+         * @param resultCode [in] RESULT_CODE を指定
+         * @param cause      [in] 下位の DOM エラーを指定
+         * @param [tag]      [in] TAG を指定
+         * @param [message]  [in] メッセージを指定
+         * @returns エラーオブジェクト
          */
-        function makeErrorInfoFromDOMError(resultCode: RESULT_CODE, cause: DOMError, tag?: string, message?: string): ErrorInfo {
+        private static makeErrorInfoFromDOMError(resultCode: RESULT_CODE, cause: DOMError, tag?: string, message?: string): ErrorInfo {
             let _cause: Error;
             if (cause) {
                 _cause = {
@@ -38,22 +47,21 @@
         /**
          * ArrayBuffer to Blob
          *
-         * @param buf {ArrayBuffer} [in] ArrayBuffer data
-         * @param mimeType {string} [in] MimeType of data
-         * @return {Blob} Blob data
+         * @param buf [in] ArrayBuffer data
+         * @param mimeType [in] MimeType of data
+         * @returns Blob data
          */
-        export function arrayBufferToBlob(buf: ArrayBuffer, mimeType: string): Blob {
+        public static arrayBufferToBlob(buf: ArrayBuffer, mimeType: string): Blob {
             let blob: Blob = null;
 
-            const blobBuilderObject: any = getBlobBuilder();
-
-            if (blobBuilderObject != null) {
+            if (global.Blob) {
+                blob = new global.Blob([buf], { type: mimeType });
+            } else {
+                // under Android 4.4 KitKat
+                const blobBuilderObject: any = Binary.getBlobBuilder();
                 const blobBuilder: any = new blobBuilderObject();
                 blobBuilder.append(buf);
                 blob = blobBuilder.getBlob(mimeType);
-            } else {
-                // Android 4.4 KitKat Chromium WebView
-                blob = new global.Blob([buf], { type: mimeType });
             }
             return blob;
         }
@@ -65,18 +73,17 @@
          * @param mimeType {string} [in] MimeType of data
          * @return {Blob} Blob data
          */
-        export function base64ToBlob(base64: string, mimeType: string): Blob {
+        public static base64ToBlob(base64: string, mimeType: string): Blob {
             let blob: Blob = null;
 
-            const blobBuilderObject: any = getBlobBuilder();
-
-            if (blobBuilderObject != null) {
-                const blobBuilder: any = new blobBuilderObject();
-                blobBuilder.append(base64ToArrayBuffer(base64));
-                blob = blobBuilder.getBlob(mimeType);
+            if (global.Blob) {
+                blob = new global.Blob([Binary.base64ToArrayBuffer(base64)], { type: mimeType });
             } else {
-                // Android 4.4 KitKat Chromium WebView
-                blob = new global.Blob([base64ToArrayBuffer(base64)], { type: mimeType });
+                // under Android 4.4 KitKat
+                const blobBuilderObject: any = Binary.getBlobBuilder();
+                const blobBuilder: any = new blobBuilderObject();
+                blobBuilder.append(Binary.base64ToArrayBuffer(base64));
+                blob = blobBuilder.getBlob(mimeType);
             }
             return blob;
         }
@@ -88,9 +95,9 @@
          * @param  {String} [mimeType] [in] mime type を指定. 既定では "image/png"
          * @return {Blob} Blob インスタンス
          */
-        export function dataUrlToBlob(dataUrl: string, mimeType: string = "image/png"): Blob {
+        public static dataUrlToBlob(dataUrl: string, mimeType: string = "image/png"): Blob {
             const base64 = dataUrl.split(",")[1];
-            return base64ToBlob(base64, mimeType);
+            return Binary.base64ToBlob(base64, mimeType);
         }
 
         /**
@@ -99,7 +106,7 @@
          * @param base64 {string} [in] Base64 string data
          * @return {ArrayBuffer} ArrayBuffer data
          */
-        export function base64ToArrayBuffer(base64: string): ArrayBuffer {
+        public static base64ToArrayBuffer(base64: string): ArrayBuffer {
             const bytes = window.atob(base64);
             const arrayBuffer = new ArrayBuffer(bytes.length);
             const data = new Uint8Array(arrayBuffer);
@@ -116,7 +123,7 @@
          * @param base64 {string} [in] Base64 string data
          * @return {Uint8Array} Uint8Array data
          */
-        export function base64ToUint8Array(encoded: string): Uint8Array {
+        public static base64ToUint8Array(encoded: string): Uint8Array {
             const bytes = window.atob(encoded);
             const data = new Uint8Array(bytes.length);
 
@@ -132,9 +139,9 @@
          * @param arrayBuffer {ArrayBuffer} [in] ArrayBuffer data
          * @return {string} base64 data
          */
-        export function arrayBufferToBase64(arrayBuffer: ArrayBuffer): string {
+        public static arrayBufferToBase64(arrayBuffer: ArrayBuffer): string {
             const bytes = new Uint8Array(arrayBuffer);
-            return uint8ArrayToBase64(bytes);
+            return Binary.uint8ArrayToBase64(bytes);
         }
 
         /**
@@ -143,7 +150,7 @@
          * @param bytes {Uint8Array} [in] Uint8Array data
          * @return {string} base64 data
          */
-        export function uint8ArrayToBase64(bytes: Uint8Array): string {
+        public static uint8ArrayToBase64(bytes: Uint8Array): string {
             let data: string = "";
 
             for (let i = 0, len = bytes.byteLength; i < len; ++i) {
@@ -159,7 +166,7 @@
          * @param  {Blob} blob [in] blob data
          * @return {CDP.IPromise<ArrayBuffer>} promise object
          */
-        export function readBlobAsArrayBuffer(blob: Blob): IPromise<ArrayBuffer> {
+        public static readBlobAsArrayBuffer(blob: Blob): IPromise<ArrayBuffer> {
             const reader = new FileReader();
             const cancel = () => reader.abort();
 
@@ -168,7 +175,7 @@
                     resolve(reader.result);
                 };
                 reader.onerror = () => {
-                    reject(makeErrorInfoFromDOMError(
+                    reject(Binary.makeErrorInfoFromDOMError(
                         RESULT_CODE.ERROR_CDP_TOOLS_FILE_READER_ERROR,
                         reader.error,
                         TAG,
@@ -185,9 +192,9 @@
          * @param  {Blob} blob [in] blob data
          * @return {CDP.IPromise<Uint8Array>} promise object
          */
-        export function readBlobAsUint8Array(blob: Blob): IPromise<Uint8Array> {
+        public static readBlobAsUint8Array(blob: Blob): IPromise<Uint8Array> {
             return new Promise((resolve, reject, dependOn) => {
-                dependOn(readBlobAsArrayBuffer(blob))
+                dependOn(Binary.readBlobAsArrayBuffer(blob))
                     .then((result: ArrayBuffer) => {
                         resolve(new Uint8Array(result));
                     })
@@ -203,7 +210,7 @@
          * @param  {Blob} blob [in] blob data
          * @return {CDP.IPromise<Uint8Array>} promise object
          */
-        export function readBlobAsText(blob: Blob, encode: string = "utf-8"): IPromise<string> {
+        public static readBlobAsText(blob: Blob, encode: string = "utf-8"): IPromise<string> {
             const reader = new FileReader();
             const cancel = () => reader.abort();
 
@@ -212,7 +219,7 @@
                     resolve(reader.result);
                 };
                 reader.onerror = () => {
-                    reject(makeErrorInfoFromDOMError(
+                    reject(Binary.makeErrorInfoFromDOMError(
                         RESULT_CODE.ERROR_CDP_TOOLS_FILE_READER_ERROR,
                         reader.error,
                         TAG,
@@ -229,7 +236,7 @@
          * @param  {Blob} blob [in] blob data
          * @return {CDP.IPromise<string>} promise object
          */
-        export function readBlobAsDataURL(blob: Blob): IPromise<string> {
+        public static readBlobAsDataURL(blob: Blob): IPromise<string> {
             const reader = new FileReader();
             const cancel = () => reader.abort();
 
@@ -238,7 +245,7 @@
                     resolve(reader.result);
                 };
                 reader.onerror = () => {
-                    reject(makeErrorInfoFromDOMError(
+                    reject(Binary.makeErrorInfoFromDOMError(
                         RESULT_CODE.ERROR_CDP_TOOLS_FILE_READER_ERROR,
                         reader.error,
                         TAG,
@@ -252,9 +259,10 @@
         /**
          * URL Object
          *
+         * @obsolete
          * @return {any} URL Object
          */
-        export const URL = (() => {
+        public static blobURL: URL = (() => {
             return global.URL || global.webkitURL;
         })();
     }
