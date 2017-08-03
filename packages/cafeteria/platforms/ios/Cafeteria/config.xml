@@ -52,4 +52,5 @@
     <preference name="BackgroundColor" value="0xff000000" />
     <preference name="iosPersistentFileLocation" value="Library" />
     <preference name="AndroidPersistentFileLocation" value="Internal" />
+    <preference name="KeychainAccessibility" value="WhenUnlocked" />
 </widget>
