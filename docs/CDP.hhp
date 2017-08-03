@@ -1,0 +1,22 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=CDP.chm
+Contents file=CDP-table_of_contents.hhc
+Default topic=typedoc\index.html
+Display compile progress=No
+Index file=CDP-index.hhk
+Language=0x411 “ú–{Œê (“ú–{)
+
+
+[FILES]
+typedoc\index.html
+typedoc\assets\css\main.css
+typedoc\assets\images\icons.png
+typedoc\assets\images\icons@2x.png
+typedoc\assets\images\widgets.png
+typedoc\assets\images\widgets@2x.png
+typedoc\assets\js\main.js
+typedoc\assets\js\search.js
+
+[INFOTYPES]
+

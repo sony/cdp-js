@@ -88,7 +88,14 @@
     <Content Include="dist\cdp.swatch.min.css">
       <DependentUpon>cdp.swatch.css</DependentUpon>
     </Content>
+    <Content Include="docs\CDP-index.hhk">
+      <DependentUpon>CDP.hhp</DependentUpon>
+    </Content>
+    <Content Include="docs\CDP-table_of_contents.hhc">
+      <DependentUpon>CDP.hhp</DependentUpon>
+    </Content>
     <Content Include="docs\reports\coverage\index.html" />
+    <Content Include="docs\typedoc\index.html" />
     <Content Include="project.config.js" />
     <Content Include="tasks\command-delegator.js" />
     <Content Include="tasks\command.js" />
@@ -149,5 +156,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="RELEASENOTE.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="docs\CDP.hhp" />
   </ItemGroup>
 </Project>
