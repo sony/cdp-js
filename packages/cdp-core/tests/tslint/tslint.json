@@ -36,7 +36,10 @@
     "no-empty": true,
     "no-eval": true,
     "no-string-literal": true,
-    "no-trailing-whitespace": true,
+    "no-trailing-whitespace": [
+      true,
+      "ignore-jsdoc"
+    ],
     "no-unused-variable": [
       true,
       { "ignore-pattern": "^TAG|^__" }

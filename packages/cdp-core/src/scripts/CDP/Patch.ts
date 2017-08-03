@@ -3,15 +3,20 @@
     const TAG: string = "[CDP.Patch] ";
 
     /**
-     * @class Patch
-     * @brief 実行環境用 Patch 適用ユーティリティクラス
+     * @en Utility class for appling the patch to the run time environment.
+     * @ja 実行環境用 Patch 適用ユーティリティクラス
+     *
+     * @internal
      */
     export class Patch {
         ///////////////////////////////////////////////////////////////////////
         // public static methods:
 
         /**
-         * パッチの適用
+         * @en Apply the patch
+         * @ja パッチの適用
+         *
+         * @internal
          */
         public static apply(): void {
             Patch.consolePatch();
