@@ -176,7 +176,8 @@
         }
 
         const _abort = function (info?: object): void {
-            const detail = info ? $.extend({}, info, { message: "abort" }) : { message: "abort" };
+            const originalMessage = (info && (<any>info).message) ? (<any>info).message : undefined;
+            const detail = info ? $.extend({}, info, { message: "abort", originalMessage: originalMessage }) : { message: "abort" };
             cancel(detail);
             if (null != this.dependency) {
                 if (this.dependency.abort) {
@@ -294,22 +295,17 @@
     export function wait<T>(...deferreds: T[]): IPromiseBase<T>;
     export function wait<T>(...deferreds: any[]): IPromiseBase<T> {
 
-        // 投入法が可変引数だった場合は配列に修正する
+        // 1次元配列に保証
         const _deferreds: JQueryPromise<T>[] = [].concat.apply([], deferreds);
 
         // 実際の作業
         const df = $.Deferred();
         const results = [];
-        let initialized = false;
 
         const isFinished = (): boolean => {
-            if (!initialized) {
-                return false;
-            } else {
-                return !results.some((element: any) => {
-                    return "pending" === element.status;
-                });
-            }
+            return !results.some((element: any) => {
+                return "pending" === element.status;
+            });
         };
 
         _deferreds.forEach((deferred, index) => {
@@ -331,11 +327,6 @@
                     }
                 });
         });
-
-        initialized = true;
-        if (isFinished()) {
-            df.resolve(results);
-        }
 
         return <any>df.promise();
     }
@@ -456,8 +447,10 @@
         }
 
         /**
-         * @en get Promise objects as array.
-         * @ja 管理対象の Promise を配列で取得
+         * @en get Promise objects as array. <br>
+         *     only pending state object are returned.
+         * @ja 管理対象の Promise を配列で取得 <br>
+         *     pending 状態のオブジェクトのみが返る.
          */
         public promises(): IPromise<any>[] {
             return this._pool.map((element) => {
@@ -589,15 +582,15 @@
         }
 
         static all<U>(...deferreds: Array<U | IPromise<U> | JQueryPromise<U>>): IPromiseBase<U> {
-            return <any>$.when(deferreds);
+            return <any>$.when.apply(this, [].concat.apply([], deferreds));
         }
 
         static wait<U>(...deferreds: Array<U | IPromise<U> | JQueryPromise<U>>): IPromiseBase<U> {
-            return <any>wait(deferreds);
+            return <any>wait([].concat.apply([], deferreds));
         }
 
         static race<U>(...deferreds: Array<U | IPromise<U> | JQueryPromise<U>>): IPromiseBase<U> {
-            return <any>race(deferreds);
+            return <any>race([].concat.apply([], deferreds));
         }
     }
 
