@@ -110,9 +110,6 @@
     <Content Include="tasks\internal-rearrange.js" />
     <Content Include="tasks\remap-coverage.js" />
     <Content Include="tasks\srcmap.js" />
-    <Content Include="tests\unit\cdp.core.spec.js">
-      <DependentUpon>cdp.core.spec.ts</DependentUpon>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="docs\en\README.md" />
@@ -127,7 +124,9 @@
     <TypeScriptCompile Include="src\scripts\CDP\Core.ts" />
     <TypeScriptCompile Include="src\scripts\CDP\ErrorDefs.ts" />
     <TypeScriptCompile Include="src\scripts\CDP\Patch.ts" />
-    <TypeScriptCompile Include="tests\unit\cdp.core.spec.ts" />
+    <TypeScriptCompile Include="tests\unit\Core.spec.ts" />
+    <TypeScriptCompile Include="tests\unit\ErrorDefs.spec.ts" />
+    <TypeScriptCompile Include="tests\unit\Patch.spec.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="tasks\banner.js" />
@@ -153,6 +152,15 @@
     <Content Include=".npmignore" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="tests\unit\Core.spec.js">
+      <DependentUpon>Core.spec.ts</DependentUpon>
+    </Content>
+    <Content Include="tests\unit\ErrorDefs.spec.js">
+      <DependentUpon>ErrorDefs.spec.ts</DependentUpon>
+    </Content>
+    <Content Include="tests\unit\Patch.spec.js">
+      <DependentUpon>Patch.spec.ts</DependentUpon>
+    </Content>
     <Content Include="tsconfig.json" />
   </ItemGroup>
   <ItemGroup>

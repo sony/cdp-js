@@ -1,6 +1,8 @@
 ﻿namespace CDP {
 
-    const CANCELED_MESSAGE = "abort";
+    const UNKNOWN_ERROR_NAME    = "Unknown Error";
+    const ERROR_NAME_SEPARATOR  = ": ";
+    const CANCELED_MESSAGE      = "abort";
     const s_code2message: { [resultCode: string]: string } = {
         "0": "operation succeeded.",
         "1": "operation canceled.",
@@ -132,10 +134,14 @@
      *  - `ja` true: キャンセル / false: その他エラー
      */
     export function isCanceledError(error: Error | string): boolean {
-        const errorInfo = <ErrorInfo>error;
-        if (errorInfo) {
-            if (RESULT_CODE.CANCELED === errorInfo.code || CANCELED_MESSAGE === errorInfo.message) {
-                return true;
+        if ("string" === typeof error) {
+            return CANCELED_MESSAGE === error;
+        } else {
+            const errorInfo = <ErrorInfo>error;
+            if (errorInfo) {
+                if (RESULT_CODE.CANCELED === errorInfo.code || CANCELED_MESSAGE === errorInfo.message) {
+                    return true;
+                }
             }
         }
         return false;
@@ -146,21 +152,48 @@
      * @jp あらゆるエラー入力を [[ErrorInfo]] に変換
      */
     export function ensureErrorInfo(cause?: any): ErrorInfo {
-        const errorInfo = <ErrorInfo>cause;
         const unknown: ErrorInfo = {
-            name: "",
+            name: UNKNOWN_ERROR_NAME + ERROR_NAME_SEPARATOR,
             code: RESULT_CODE.FAILED,
-            message: "unknown error",
+            message: "unknown error occured.",
         };
-        if (errorInfo) {
-            if (isCanceledError(errorInfo)) {
-                return errorInfo;
-            } else if ("string" === typeof cause) {
-                return { ...unknown, ...{ message: cause } };
-            } else if ("object" === typeof cause) {
-                return { ...unknown, ...{ message: cause.message }, ...cause };
+        const valid = (error?: any): boolean => {
+            if (!error) {
+                return false;
             }
+            return (
+                "number" === typeof error.code &&
+                "string" === typeof error.name &&
+                "string" === typeof error.message
+            );
+        };
+
+        if (valid(cause)) {
+            return cause;
+        } else if (cause instanceof Error) {
+            (<ErrorInfo>cause).code = RESULT_CODE.FAILED;
+            return <ErrorInfo>cause;
+        } else if ("string" === typeof cause) {
+            if (isCanceledError(cause)) {
+                return makeCanceledErrorInfo();
+            } else {
+                return { ...unknown, ...{ message: cause } };
+            }
+        } else if ("number" === typeof cause) {
+            return {
+                ...unknown,
+                ...<any>{
+                    cause: {
+                        name: UNKNOWN_ERROR_NAME + ERROR_NAME_SEPARATOR,
+                        message: "Please check the error code.",
+                        code: cause
+                    }
+                }
+            };
+        } else if ("object" === typeof cause) {
+            return { ...unknown, ...cause };
         }
+
         return unknown;
     }
 
@@ -270,20 +303,16 @@
 
     const FUNCTION_CODE_RANGE = 10;
 
-    // @brief cdp.core 内のローカルコードオフセット値
+    // cdp.core 内のローカルコードオフセット値
     enum LOCAL_CODE_BASE {
         CORE    = 0,
         PATCH   = 1 * FUNCTION_CODE_RANGE,
     }
 
-    /**
-     * @internal <br>
-     *
-     * @en Error code definition of `cdp-core`.
-     * @ja `cdp-core` のエラーコード定義
-     */
+    // @internal Error code definition of `cdp-core`.
     export enum RESULT_CODE {
         ERROR_CDP_DECLARATION_CDP = 0, // TS2432 対策: 同一 namespace に複数回にわたって同名の enum を宣言する場合に必要.
+        /** `en` [[CDP.initialize]]() failer code. <br> `ja` [[CDP.initialize]]() のエラーコード */
         ERROR_CDP_INITIALIZE_FAILED = DECLARE_ERROR_CODE(RESULT_CODE_BASE.CDP, LOCAL_CODE_BASE.CORE + 1, "initialized failed."),
     }
     // "CDP" 以外の namespace で定義した場合は、ASSIGN ユーティリティをコールする.
@@ -317,9 +346,9 @@
     function buildErrorName(resultCode: number, tag: string): string {
         const prefix = tag || "";
         if (CDP.RESULT_CODE[resultCode]) {
-            return prefix + CDP.RESULT_CODE[resultCode] + ": ";
+            return prefix + CDP.RESULT_CODE[resultCode] + ERROR_NAME_SEPARATOR;
         } else {
-            return prefix;
+            return prefix + UNKNOWN_ERROR_NAME + ERROR_NAME_SEPARATOR;
         }
     }
 }
