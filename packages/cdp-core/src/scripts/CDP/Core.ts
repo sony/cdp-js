@@ -51,7 +51,7 @@
      */
     export function toUrl(path: string): string {
         const root = webRoot || "";
-        if (null != path[0]) {
+        if (null != path && null != path[0]) {
             if ("/" === path[0]) {
                 return root + path.slice(1);
             } else {
@@ -92,11 +92,12 @@
                     options.success();
                 }
             } catch (error) {
+                const cause = ensureErrorInfo(error);
                 const errorInfo = makeErrorInfo(
                     RESULT_CODE.ERROR_CDP_INITIALIZE_FAILED,
                     TAG,
-                    (error && error.message) ? error.message : null,
-                    error
+                    cause.message,
+                    cause
                 );
                 console.error(errorInfo.message);
                 if (options && typeof options.fail === "function") {

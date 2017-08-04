@@ -25,7 +25,7 @@
   "scripts": {
     "setup": "npm install && node ./tasks/command-delegator.js --command=setup",
     "test": "eslint tasks/**/*.js -c eslintrc.json",
-    "ci": "npm run setup && npm test && node ./tasks/command-delegator.js --command=ci && npm run update:reports",
+    "ci": "npm run setup && npm test && node ./tasks/command-delegator.js --command=ci && npm run update:reports && npm run document",
     "clean": "node ./tasks/command-delegator.js --command=clean",
     "package": "node ./tasks/command-delegator.js --command=package && npm run update:package",
     "update": "npm update --save-dev && npm update --save && node ./tasks/command-delegator.js --command=update && npm run update:package",

@@ -17,6 +17,6 @@ test:
 
 general:
     artifacts:
-#        - "docs/typedoc"    # typedoc document
+        - "docs/typedoc"    # typedoc document
         - "docs/reports"    # metrics, coverage reports
 #        - "docs/reports/bugspots.txt" # bugspots report
