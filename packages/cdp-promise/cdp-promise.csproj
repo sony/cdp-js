@@ -104,8 +104,8 @@
     </Content>
     <Content Include="tasks\internal-rearrange.js" />
     <Content Include="tasks\remap-coverage.js" />
-    <Content Include="tests\unit\cdp.promise.spec.js">
-      <DependentUpon>cdp.promise.spec.ts</DependentUpon>
+    <Content Include="tests\unit\Promise.spec.js">
+      <DependentUpon>Promise.spec.ts</DependentUpon>
     </Content>
     <Content Include="tsconfig.base.json">
       <DependentUpon>tsconfig.json</DependentUpon>
@@ -139,7 +139,7 @@
     <TypeScriptCompile Include="src\scripts\%40types\dev.dependencies\index.d.ts" />
     <TypeScriptCompile Include="src\scripts\cdp.promise.ts" />
     <TypeScriptCompile Include="src\scripts\CDP\Promise.ts" />
-    <TypeScriptCompile Include="tests\unit\cdp.promise.spec.ts" />
+    <TypeScriptCompile Include="tests\unit\Promise.spec.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include=".npmignore" />
