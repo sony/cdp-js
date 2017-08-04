@@ -160,4 +160,7 @@
   <ItemGroup>
     <Content Include="docs\CDP.hhp" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="docs\jp\gudelines-typedoc-comment.md" />
+  </ItemGroup>
 </Project>

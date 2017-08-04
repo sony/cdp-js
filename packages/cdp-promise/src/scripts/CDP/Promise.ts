@@ -432,11 +432,14 @@
          * @en call abort() to under the management Promises.
          * @ja 管理対象の Promise に対して abort を発行
          *
+         * @param info
+         *  - `en` abort() argument
+         *  - `ja` abort() に渡される引数
          * @returns
          *  - `en` The cancellation to cancel processing is prohibited.
          *  - `ja` キャンセル処理に対するキャンセルは不可
          */
-        public cancel(info?: any): IPromiseBase<any> {
+        public cancel(info?: object): IPromiseBase<any> {
             const promises = this.promises();
             promises.forEach((element: IPromise<any>) => {
                 if (element.abort) {
