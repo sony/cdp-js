@@ -1,7 +1,7 @@
 ﻿/*!
  * cdp.ui.jqm.js 2.0.0
  *
- * Date: 2017-08-04T12:54:34.826Z
+ * Date: 2017-08-22T02:17:17.592Z
  */
 (function (root, factory) { if (typeof define === "function" && define.amd) { define(["cdp.framework.jqm", "cdp.tools", "cdp.ui.listview"], function () { return factory(root.CDP || (root.CDP = {})); }); } else { factory(root.CDP || (root.CDP = {})); } }(this, function (CDP) { CDP.UI = CDP.UI || {};
 var CDP;
@@ -16,7 +16,7 @@ var CDP;
          * @class Theme
          * @brief UI Theme 設定を行うユーティリティクラス
          */
-        var Theme = (function () {
+        var Theme = /** @class */ (function () {
             function Theme() {
             }
             ///////////////////////////////////////////////////////////////////////
@@ -218,7 +218,7 @@ var CDP;
          * @class ExtensionManager
          * @brief 拡張機能を管理するユーティリティクラス
          */
-        var ExtensionManager = (function () {
+        var ExtensionManager = /** @class */ (function () {
             function ExtensionManager() {
             }
             /**
@@ -280,7 +280,7 @@ var CDP;
              * @class StyleBuilderDefault
              * @brief スタイル変更時に使用する既定の構造体オブジェクト
              */
-            var StyleBuilderDefault = (function () {
+            var StyleBuilderDefault = /** @class */ (function () {
                 function StyleBuilderDefault() {
                 }
                 //! class attribute に設定する文字列を取得
@@ -404,7 +404,7 @@ var CDP;
          * @brief 汎用ダイアログクラス
          *        jQM の popup widget によって実装
          */
-        var Dialog = (function () {
+        var Dialog = /** @class */ (function () {
             /**
              * constructor
              *
@@ -717,7 +717,7 @@ var CDP;
          * @class DialogPrompt
          * @brief prompt ダイアログ (非公開)
          */
-        var DialogPrompt = (function (_super) {
+        var DialogPrompt = /** @class */ (function (_super) {
             __extends(DialogPrompt, _super);
             /**
              * constructor
@@ -782,7 +782,7 @@ var CDP;
          * @class BaseHeaderView
          * @brief 共通ヘッダを操作するクラス
          */
-        var BaseHeaderView = (function (_super) {
+        var BaseHeaderView = /** @class */ (function (_super) {
             __extends(BaseHeaderView, _super);
             /**
              * constructor
@@ -922,7 +922,7 @@ var CDP;
          * @class BasePage
          * @brief Header を備える Page クラス
          */
-        var BasePage = (function (_super) {
+        var BasePage = /** @class */ (function (_super) {
             __extends(BasePage, _super);
             /**
              * constructor
@@ -1048,7 +1048,7 @@ var CDP;
          * @class PageView
          * @brief CDP.Framework.Page と Backbone.View の両方の機能を提供するページの基底クラス
          */
-        var PageView = (function (_super) {
+        var PageView = /** @class */ (function (_super) {
             __extends(PageView, _super);
             /**
              * constructor
@@ -1270,7 +1270,7 @@ var CDP;
          * @class PageContainerView
          * @brief PageView と連携可能な コンテナビュークラス
          */
-        var PageContainerView = (function (_super) {
+        var PageContainerView = /** @class */ (function (_super) {
             __extends(PageContainerView, _super);
             /**
              * constructor
@@ -1407,7 +1407,7 @@ var CDP;
          * @class TabHostView
          * @brief タブ切り替え機能を持つ View クラス
          */
-        var TabHostView = (function (_super) {
+        var TabHostView = /** @class */ (function (_super) {
             __extends(TabHostView, _super);
             /**
              * constructor
@@ -1818,7 +1818,7 @@ var CDP;
          * @class TabView
          * @brief TabHostView にアタッチ可能な View クラス
          */
-        var TabView = (function (_super) {
+        var TabView = /** @class */ (function (_super) {
             __extends(TabView, _super);
             /**
              * constructor
@@ -1939,7 +1939,7 @@ var CDP;
          * @class PageListView
          * @brief 仮想リストビュー機能を持つ PageView クラス
          */
-        var PageListView = (function (_super) {
+        var PageListView = /** @class */ (function (_super) {
             __extends(PageListView, _super);
             /**
              * constructor
@@ -2118,7 +2118,7 @@ var CDP;
          * @class PageExpandableListView
          * @brief 開閉リストビュー機能を持つ PageView クラス
          */
-        var PageExpandableListView = (function (_super) {
+        var PageExpandableListView = /** @class */ (function (_super) {
             __extends(PageExpandableListView, _super);
             /**
              * constructor

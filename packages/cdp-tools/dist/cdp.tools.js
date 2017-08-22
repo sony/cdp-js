@@ -1,7 +1,7 @@
 ﻿/*!
  * cdp.tools.js 2.0.0
  *
- * Date: 2017-08-04T12:52:36.441Z
+ * Date: 2017-08-22T02:14:47.577Z
  */
 (function (root, factory) { if (typeof define === "function" && define.amd) { define(["cdp.core", "cdp.promise"], function () { return factory(root.CDP || (root.CDP = {}), root.jQuery || root.$); }); } else { factory(root.CDP || (root.CDP = {}), root.jQuery || root.$); } }(((this || 0).self || global), function (CDP, $) { CDP.Tools = CDP.Tools || {};
 var CDP;
@@ -51,7 +51,7 @@ var CDP;
          * @class Binary
          * @brief バイナリユーティリティ
          */
-        var Binary = (function () {
+        var Binary = /** @class */ (function () {
             // private constructor
             function Binary() {
                 // noop
@@ -658,7 +658,7 @@ var CDP;
          * @class DateTime
          * @brief 時刻操作のユーティリティクラス
          */
-        var DateTime = (function () {
+        var DateTime = /** @class */ (function () {
             function DateTime() {
             }
             ///////////////////////////////////////////////////////////////////////
@@ -868,7 +868,7 @@ var CDP;
          * @class Template
          * @brief template script を管理するユーティリティクラス
          */
-        var Template = (function () {
+        var Template = /** @class */ (function () {
             function Template() {
             }
             ///////////////////////////////////////////////////////////////////////
@@ -1007,7 +1007,7 @@ var CDP;
          * @class ProgressCounter
          * @brief 進捗の時間を扱うユーティリティクラス
          */
-        var ProgressCounter = (function () {
+        var ProgressCounter = /** @class */ (function () {
             /**
              * constructor
              *

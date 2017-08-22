@@ -46,7 +46,7 @@ function binaryToBase64(data: Blob | ArrayBuffer | Uint8Array): IPromise<string>
                 if (data instanceof ArrayBuffer) {
                     base64 = arrayBufferToBase64(data);
                     resolve(base64);
-                } else if (data instanceof Uint8Array) {
+                } else if (<any>data instanceof Uint8Array) { // TypeScript 2.5+ 判定が完了しているとみなされコンパイルエラーになる問題
                     base64 = uint8ArrayToBase64(data);
                     resolve(base64);
                 } else {
