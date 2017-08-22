@@ -189,7 +189,7 @@ function resolveProdSourceFile(basename, info, ext) {
             srcFile = info.files[info.files.indexOf(info.prod.replace('*', info.version))];
         }
         if (!srcFile) {
-            const regexp = new RegExp(basename + '(-[0-9]+.[0-9]+.[A-Za-z0-9_-]+)?([.-]min.[a-zA-Z]+$)');
+            const regexp = new RegExp(basename + `(-[0-9]+.[0-9]+.[A-Za-z0-9_-]+)?([.-]min${ext})`);
             for (let i = 0, n = info.files.length; i < n; i++) {
                 if (regexp.test(info.files[i])) {
                     srcFile = info.files[i];
