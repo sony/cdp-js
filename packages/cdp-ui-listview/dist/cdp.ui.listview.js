@@ -1,7 +1,7 @@
 ﻿/*!
  * cdp.ui.listview.js 2.0.0
  *
- * Date: 2017-08-04T12:53:31.059Z
+ * Date: 2017-08-22T02:15:57.889Z
  */
 (function (root, factory) { if (typeof define === "function" && define.amd) { define(["jquery", "underscore", "backbone"], function ($, _, Backbone) { return factory(root.CDP || (root.CDP = {}), $, _, Backbone); }); } else if (typeof exports === "object") { module.exports = factory(root.CDP || (root.CDP = {}), require("jquery"), require("underscore"), require("backbone")); } else { factory(root.CDP || (root.CDP = {}), root.$, root._, root.Backbone); } }(((this || 0).self || global), function (CDP, $, _, Backbone) { CDP.UI = CDP.UI || {};
 /// <reference types="jquery" />
@@ -209,7 +209,7 @@ var CDP;
          *        StatusManager のインスタンスごとに任意の状態管理ができる
          *
          */
-        var StatusManager = (function () {
+        var StatusManager = /** @class */ (function () {
             function StatusManager() {
                 this._status = {}; //!< statusScope() に使用される状態管理オブジェクト
             }
@@ -277,7 +277,7 @@ var CDP;
          * @brief 1 ラインに関するプロファイルクラス
          *        framework が使用する
          */
-        var LineProfile = (function () {
+        var LineProfile = /** @class */ (function () {
             /**
              * constructor
              *
@@ -507,7 +507,7 @@ var CDP;
          *        framework が使用する
          *        本クラスでは直接 DOM を操作してはいけない
          */
-        var PageProfile = (function () {
+        var PageProfile = /** @class */ (function () {
             function PageProfile() {
                 this._index = 0; //!< page index
                 this._offset = 0; //!< page の Top からのオフセット
@@ -632,7 +632,7 @@ var CDP;
          * @brief ラインをグループ管理するプロファイルクラス
          *        本クラスでは直接 DOM を操作してはいけない
          */
-        var GroupProfile = (function () {
+        var GroupProfile = /** @class */ (function () {
             /**
              * constructor
              *
@@ -1006,7 +1006,7 @@ var CDP;
          * @class ScrollerElement
          * @brief HTMLElement の Scroller クラス
          */
-        var ScrollerElement = (function () {
+        var ScrollerElement = /** @class */ (function () {
             function ScrollerElement(element, options) {
                 this._$target = null;
                 this._$scrollMap = null;
@@ -1115,7 +1115,7 @@ var CDP;
          * @class ScrollerNative
          * @brief Browser Native の Scroller クラス
          */
-        var ScrollerNative = (function () {
+        var ScrollerNative = /** @class */ (function () {
             //! constructor
             function ScrollerNative(options) {
                 this._$body = null;
@@ -1222,7 +1222,7 @@ var CDP;
          * @class ScrollerIScroll
          * @brief iScroll を使用した Scroller クラス
          */
-        var ScrollerIScroll = (function () {
+        var ScrollerIScroll = /** @class */ (function () {
             function ScrollerIScroll($owner, element, iscrollOptions, listviewOptions) {
                 this._$owner = null;
                 this._iscroll = null;
@@ -1398,7 +1398,7 @@ var CDP;
          * @class ListItemView
          * @brief ListView が扱う ListItem コンテナクラス
          */
-        var ListItemView = (function (_super) {
+        var ListItemView = /** @class */ (function (_super) {
             __extends(ListItemView, _super);
             /**
              * constructor
@@ -1512,7 +1512,7 @@ var CDP;
          * @brief メモリ管理を行うスクロール処理のコアロジック実装クラス
          *        本クラスは IListView インターフェイスを持ち DOM にアクセスするが、Backbone.View を継承しない
          */
-        var ScrollManager = (function () {
+        var ScrollManager = /** @class */ (function () {
             /**
              * constructor
              *
@@ -2485,7 +2485,7 @@ var CDP;
          * @class ListView
          * @brief メモリ管理機能を提供する仮想リストビュークラス
          */
-        var ListView = (function (_super) {
+        var ListView = /** @class */ (function (_super) {
             __extends(ListView, _super);
             /**
              * constructor
@@ -2649,7 +2649,7 @@ var CDP;
          * @class GroupListItemView
          * @brief ExpandableListView が扱う ListItem コンテナクラス
          */
-        var GroupListItemView = (function (_super) {
+        var GroupListItemView = /** @class */ (function (_super) {
             __extends(GroupListItemView, _super);
             /**
              * constructor
@@ -2703,7 +2703,7 @@ var CDP;
          * @class ExpandManager
          * @brief 開閉状態管理クラス
          */
-        var ExpandManager = (function () {
+        var ExpandManager = /** @class */ (function () {
             /**
              * constructor
              *
@@ -2924,7 +2924,7 @@ var CDP;
          * @class ExpandableListView
          * @brief 開閉機能を備えた仮想リストビュークラス
          */
-        var ExpandableListView = (function (_super) {
+        var ExpandableListView = /** @class */ (function (_super) {
             __extends(ExpandableListView, _super);
             /**
              * constructor

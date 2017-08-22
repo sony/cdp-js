@@ -67,21 +67,21 @@
     "jquery": ">=3.0.0"
   },
   "devDependencies": {
-    "@types/jasmine": "^2.5.53",
-    "@types/jquery": "^3.2.10",
-    "@types/requirejs": "^2.1.30",
+    "@types/jasmine": "^2.5.54",
+    "@types/jquery": "^3.2.12",
+    "@types/requirejs": "^2.1.31",
     "convert-source-map": "^1.5.0",
     "del": "^3.0.0",
-    "eslint": "^4.3.0",
+    "eslint": "^4.5.0",
     "fs-extra": "^4.0.1",
     "npm-run-all": "^4.0.2",
     "nyc": "^11.1.0",
     "plato": "^1.7.0",
-    "requirejs": "^2.3.4",
-    "source-map": "^0.5.6",
-    "tslint": "^5.5.0",
+    "requirejs": "^2.3.5",
+    "source-map": "^0.5.7",
+    "tslint": "^5.6.0",
     "typedoc": "^0.8.0",
-    "typescript": "^2.4.2",
-    "uglify-js": "^3.0.27"
+    "typescript": "^2.5.1",
+    "uglify-js": "^3.0.28"
   }
 }

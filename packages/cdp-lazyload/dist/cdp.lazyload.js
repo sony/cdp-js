@@ -1,7 +1,7 @@
 ﻿/*!
  * cdp.lazyload.js 2.0.0
  *
- * Date: 2017-08-04T12:49:02.796Z
+ * Date: 2017-08-22T02:07:39.327Z
  */
 ((function (root, factory) {
     if (typeof define === "function" && define.amd) {

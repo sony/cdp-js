@@ -3,7 +3,6 @@
     MODULE_RESULT_CODE_RANGE,
     DECLARE_ERROR_CODE,
     ASSIGN_RESULT_CODE,
-    ErrorInfo,
     isCanceledError,
     ensureErrorInfo,
 } from "cdp";
