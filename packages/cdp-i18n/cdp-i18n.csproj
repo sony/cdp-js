@@ -181,4 +181,8 @@
       <DependentUpon>cdp.i18n.js</DependentUpon>
     </Content>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="tests\runner\res\messages.en-US.json" />
+    <Content Include="tests\runner\res\messages.ja-JP.json" />
+  </ItemGroup>
 </Project>
