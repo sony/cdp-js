@@ -107,12 +107,18 @@
     <Content Include="src\scripts\cdp.i18n.js">
       <DependentUpon>cdp.i18n.ts</DependentUpon>
     </Content>
+    <Content Include="src\scripts\CDP\ErrorDefs.js">
+      <DependentUpon>ErrorDefs.ts</DependentUpon>
+    </Content>
     <Content Include="src\scripts\CDP\i18n.js">
       <DependentUpon>i18n.ts</DependentUpon>
     </Content>
     <Content Include="tasks\bundle-adjuster.js" />
     <Content Include="tasks\bundle-finalizer.js" />
     <Content Include="tasks\internal-rearrange.js" />
+    <Content Include="tests\unit\i18n.spec.js">
+      <DependentUpon>i18n.spec.ts</DependentUpon>
+    </Content>
     <Content Include="tsconfig.base.json">
       <DependentUpon>tsconfig.json</DependentUpon>
     </Content>
@@ -148,8 +154,9 @@
     <TypeScriptCompile Include="src\scripts\%40types\dev.dependencies\index.d.ts" />
     <TypeScriptCompile Include="src\scripts\%40types\i18next.d.ts" />
     <TypeScriptCompile Include="src\scripts\cdp.i18n.ts" />
+    <TypeScriptCompile Include="src\scripts\CDP\ErrorDefs.ts" />
     <TypeScriptCompile Include="src\scripts\CDP\i18n.ts" />
-    <TypeScriptCompile Include="tests\unit\cdp.i18n.spec.ts" />
+    <TypeScriptCompile Include="tests\unit\i18n.spec.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include=".npmignore" />

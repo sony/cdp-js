@@ -200,7 +200,7 @@
     /**
      * @internal for CDP modules assignable range.
      */
-    export const MODULE_RESULT_CODE_RANGE_CDP = 100;
+    export const _MODULE_RESULT_CODE_RANGE_CDP = 100;
 
     /**
      * @en Offset value enumeration for [[RESULT_CODE]]. <br>
@@ -223,7 +223,7 @@
 //      MODULE_A = 1 * MODULE_RESULT_CODE_RANGE,    // ex) moduleA: abs(1001 ～ 1999)
 //      MODULE_B = 2 * MODULE_RESULT_CODE_RANGE,    // ex) moduleB: abs(2001 ～ 2999)
 //      MODULE_C = 3 * MODULE_RESULT_CODE_RANGE,    // ex) moduleC: abs(3001 ～ 3999)
-        CDP = 1 * MODULE_RESULT_CODE_RANGE_CDP,     // cdp reserved. abs(0 ～ 1000)
+        CDP = 1 * _MODULE_RESULT_CODE_RANGE_CDP,    // cdp reserved. abs(0 ～ 1000)
     }
     // "CDP" 以外の namespace で定義した場合は、ASSIGN ユーティリティをコールする.
 //  ASSIGN_RESULT_CODE_BASE(RESULT_CODE_BASE);

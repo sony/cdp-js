@@ -8,6 +8,7 @@
     "outFile": "../built/cdp.i18n-all.js"
   },
   "files": [
+    "scripts/CDP/ErrorDefs.ts",
     "scripts/CDP/i18n.ts"
   ]
 }
