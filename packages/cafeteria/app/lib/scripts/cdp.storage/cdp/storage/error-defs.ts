@@ -6,7 +6,7 @@
 ///////////////////////////////////////////////////////////////////////
 // module error declaration:
 
-const RESULT_CODE_BASE      = 7 * CDP.MODULE_RESULT_CODE_RANGE_CDP;
+const RESULT_CODE_BASE      = 7 * CDP._MODULE_RESULT_CODE_RANGE_CDP;
 const FUNCTION_CODE_RANGE   = 10;
 
 /**

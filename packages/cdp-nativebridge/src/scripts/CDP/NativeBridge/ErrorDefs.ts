@@ -6,7 +6,7 @@
      */
     export enum RESULT_CODE_BASE {
         CDP_NATIVEBRIDGE_DECLARERATION = 0, // TS2432 対策
-        CDP_NATIVEBRIDGE = 2 * MODULE_RESULT_CODE_RANGE_CDP,
+        CDP_NATIVEBRIDGE = 2 * _MODULE_RESULT_CODE_RANGE_CDP,
     }
 
     ///////////////////////////////////////////////////////////////////////

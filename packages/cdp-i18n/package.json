@@ -34,7 +34,7 @@
     "depends": "npm list --depth=1",
     "depends:prod": "npm list --depth=0 --only=prod",
     "depends:dev": "npm list --depth=0 --only=dev",
-    "debug": "testem -f ./tests/runner/testem-amd.js",
+    "debug": "run-s compile:ts tdd",
     "clean": "node ./tasks/clean.js",
     "clean:temp": "node ./tasks/clean.js --temp",
     "clean:coverage": "node ./tasks/clean.js --coverage",
@@ -53,6 +53,7 @@
     "lint": "run-p -l lint:*",
     "lint:js": "eslint tasks/**/*.js src/**/*.js -c tests/eslint/eslintrc.json",
     "lint:ts": "tslint --type-check -p ./tsconfig.json -c ./tests/tslint/tslint.json -e src/**/*.d.ts",
+    "tdd": "testem -f ./tests/runner/testem-amd.js",
     "unit-test": "npm run coverage:exec",
     "unit-test:ci": "testem ci -f ./tests/runner/testem-ci.js",
     "coverage": "run-s clean:coverage compile:ts coverage:exec",
@@ -61,7 +62,7 @@
     "coverage:remap": "node ./tasks/remap-coverage.js",
     "coverage:report": "nyc report --reporter=lcov --reporter=html --reporter=text --report-dir=docs/reports/coverage --temp-directory=docs/reports/coverage",
     "rearrange": "node ./tasks/external-rearrange.js --no-map && node ./tasks/internal-rearrange.js",
-    "document": "typedoc --out docs/typedoc/ --exclude **/*.spec.ts src/scripts/",
+    "document": "typedoc --out docs/typedoc/ --exclude **/*.spec.ts --mode file src/scripts/CDP/",
     "metrics": "npm run compile:ts:src && plato -r -d docs/reports/metrics -e ./tests/eslint/eslintrc.json src/scripts/**/*.js"
   },
   "dependencies": {

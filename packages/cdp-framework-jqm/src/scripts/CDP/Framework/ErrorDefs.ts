@@ -6,7 +6,7 @@
      */
     export enum RESULT_CODE_BASE {
         CDP_FRAMEWORK_DECLARERATION = 0,    // TS2432 対策
-        CDP_FRAMEWORK = 3 * MODULE_RESULT_CODE_RANGE_CDP,
+        CDP_FRAMEWORK = 4 * _MODULE_RESULT_CODE_RANGE_CDP,
     }
 
     ///////////////////////////////////////////////////////////////////////
