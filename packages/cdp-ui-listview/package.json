@@ -81,7 +81,7 @@
     "hogan.js": "^3.0.2",
     "iscroll": "^5.2.0",
     "npm-run-all": "^4.1.1",
-    "nyc": "^11.2.0",
+    "nyc": "^11.2.1",
     "plato": "^1.7.0",
     "requirejs": "^2.3.5",
     "source-map": "^0.5.7",

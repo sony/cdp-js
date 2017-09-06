@@ -9,16 +9,13 @@
     ///////////////////////////////////////////////////////////////////////
     // module error declaration:
 
-    /**
-     * @enum  LOCAL_CODE_BASE
-     * @brief cdp.i18n 内のローカルコードオフセット値
-     */
+    // @internal cdp.i18n 内のローカルコードオフセット値
     enum LOCAL_CODE_BASE {
         I18N = 0,
     }
 
     /* tslint:disable:max-line-length */
-    // @internal Error code definition of `cdp-i18n`.
+    // Error code definition of `cdp-i18n`.
     export enum RESULT_CODE {
         ERROR_CDP_I18N_DECLARATION = 0, // TS2432 対策
         /** `en` [[CDP.initializeI18N]]() failer code. <br> `ja` [[CDP.initializeI18N]]() のエラーコード */

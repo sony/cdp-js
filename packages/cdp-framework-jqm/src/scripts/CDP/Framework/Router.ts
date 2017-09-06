@@ -11,20 +11,18 @@ namespace CDP.Framework {
     // closure methods
 
     /**
-     * \~english
-     * Convert path to URL.
-     * If the path starts from "/", the function translate the path as child folder of "web root".
-     * Otherwise, it interprets as relative path from current page.
-     * [Note] This behavior go along with jQM, NOT with require.toUrl().
+     * @en Convert path to URL. <br>
+     *     If the path starts from "/", the function translate the path as child folder of "web root". <br>
+     *     Otherwise, it interprets as relative path from current page. <br>
+     *     [Note] This behavior go along with jQM, NOT with require.toUrl().
      *
-     * @param path {String} [in] path string
+     * @ja path を URL に変換 <br>
+     *     "/" から始まるものは web root から、それ以外は現在のページから絶対パスURLに変換する。 <br>
+     *     jQM の挙動にあわせており、require.toUrl() と異なるので注意。
      *
-     * \~japanese
-     * path を URL に変換
-     * "/" から始まるものは web root から、それ以外は現在のページから絶対パスURLに変換する。
-     * jQM の挙動にあわせており、require.toUrl() と異なるので注意。
-     *
-     * @param path {String} [in] パスを指定。
+     * @param path
+     *  - `en` set relative path from [[webRoot]], or relative path from current scirpt owner html (It doesn't start from "/").
+     *  - `ja` [[webRoot]] からの相対パス, もしくはカレントスクリプトを走らせている HTML からの相対パス ("/" なし).
      */
     export function toUrl(path: string): string {
         if (null != path[0] && "/" === path[0]) {
@@ -35,15 +33,10 @@ namespace CDP.Framework {
     }
 
     /**
-     * \~english
-     * Get current document url.
+     * @en Get current document url.
+     * @ja 現在表示しているドキュメントの URL を取得
      *
-     * @private
-     *
-     * \~japanese
-     * 現在表示しているドキュメントの URL を取得
-     *
-     * @private
+     * @internal
      */
     function getCurrentDocumentUrl(): string {
         const $activePage = (<any>$("body")).pagecontainer("getActivePage");
@@ -62,15 +55,10 @@ namespace CDP.Framework {
     }
 
     /**
-     * \~english
-     * Default "before route change" handler.
+     * @en Default "before route change" handler.
+     * @ja 既定の "before route change" ハンドラ
      *
-     * @private
-     *
-     * \~japanese
-     * 既定の "before route change" ハンドラ
-     *
-     * @private
+     * @internal
      */
     let _beforeRouteChange = (): IPromiseBase<any> => {
         return Promise.resolve();
@@ -80,17 +68,17 @@ namespace CDP.Framework {
     const _defaultBeforeRouteChange = _beforeRouteChange;
 
     /**
-     * \~english
-     * Setup "before route change" handler.
+     * @en Setup "before route change" handler.
+     * @ja "before route change" ハンドラ設定
      *
-     * @param  {Function} handler function.
-     * @return {Function} old handler function.
+     * @internal
      *
-     * \~japanese
-     * "before route change" ハンドラ設定
-     *
-     * @param  {Function} handler 指定.
-     * @return {Function} 以前の handler.
+     * @param
+     *  - `en` handler function.
+     *  - `ja` handler 指定.
+     * @returns
+     *  - `en` old handler function.
+     *  - `ja` 以前の handler.
      */
     export function setBeforeRouteChangeHandler(handler: () => IPromiseBase<any>): () => IPromiseBase<any> {
         if (null == handler) {
@@ -105,35 +93,35 @@ namespace CDP.Framework {
     //___________________________________________________________________________________________________________________//
 
     /**
-     * \~english
-     * @interface InitOptions
-     * @brief initialize option definition.
-     * @private
+     * @en initialize option definition.
+     * @ja 初期化オプション
      *
-     * \~japanese
-     * @interface InitOptions
-     * @brief 初期化オプション
-     * @private
+     * @internal
      */
     export interface InitOptions {
-        anchorVclick?: boolean;         // 暗黙の anchor vclick をサポート
-        firstPageTransition?: boolean;  // 初期ページトランジション
+        /**
+         * @en true: supports implicit anchor "vclick".
+         * @ja true: 暗黙の anchor vclick をサポート
+         */
+        anchorVclick?: boolean;
+
+        /**
+         * @en judge the transition is first page's.
+         * @ja 初期ページトランジションであるか判定
+         */
+        firstPageTransition?: boolean;
     }
 
     /**
-     * \~english
-     * @interface RouteContext
-     * @brief Management info for page.
-     *        This interface role is not same as Backbone.Router.routes.
-     *        Using for resolving relation a known fragment value and a page path.
-     * @private
+     * @en Management info for page. <br>
+     *     This interface role is not same as Backbone.Router.routes. <br>
+     *     Using for resolving relation a known fragment value and a page path.
      *
-     * \~japanese
-     * @interface RouteContext
-     * @brief ページ管理情報
-     *        Backbone.Router.routes と同じ役割ではない。
-     *        遷移したことがあるフラグメント値とページのパスの解決に使用される。
-     * @private
+     * @ja ページ管理情報 <br>
+     *     Backbone.Router.routes と同じ役割ではない。 <br>
+     *     遷移したことがあるフラグメント値とページのパスの解決に使用される。
+     *
+     * @internal
      */
     interface RouteContext {
         route: string;
@@ -144,15 +132,10 @@ namespace CDP.Framework {
     }
 
     /**
-     * \~english
-     * @interface NavigateInfo
-     * @brief Stored additional info interface on navigate.
-     * @private
+     * @en Stored additional info interface on navigate.
+     * @ja ページ遷移に関する付加情報を格納するインターフェイス
      *
-     * \~japanese
-     * @interface NavigateInfo
-     * @brief ページ遷移に関する付加情報を格納するインターフェイス
-     * @private
+     * @internal
      */
     interface NavigateInfo {
         url?: string;
@@ -169,15 +152,10 @@ namespace CDP.Framework {
     }
 
     /**
-     * \~english
-     * @interface SubFlowParamEx
-     * @brief Extened SubFlowParam interface in Framework use.
-     * @private
+     * @en Extened SubFlowParam interface in Framework use.
+     * @ja Framework が使用する SubFlowParam 拡張インターフェイス
      *
-     * \~japanese
-     * @interface SubFlowParamEx
-     * @brief Framework が使用する SubFlowParam 拡張インターフェイス
-     * @private
+     * @internal
      */
     interface SubFlowParamEx extends SubFlowParam {
         additionalDistance?: number;
@@ -186,15 +164,11 @@ namespace CDP.Framework {
     //___________________________________________________________________________________________________________________//
 
     /**
-     * \~english
-     * @class Router
-     * @brief Router class for adjusting jQueryMobile functions and Backbone.Router functions.
-     *        Even if Backbone.Router does not start routing, natigate() method works good with jQM framework.
+     * @en Router class for adjusting jQueryMobile functions and Backbone.Router functions. <br>
+     *     Even if Backbone.Router does not start routing, natigate() method works good with jQM framework.
      *
-     * \~japanese
-     * @class Router
-     * @brief jQueryMobile と Backbone.Router を調停する Router クラス
-     *        ルーティングを開始していない場合にも、navigate() は jQM フレームワークを使用して機能する。
+     * @ja jQueryMobile と Backbone.Router を調停する Router クラス <br>
+     *     ルーティングを開始していない場合にも、navigate() は jQM フレームワークを使用して機能する。
      */
     export class Router {
 
@@ -229,19 +203,19 @@ namespace CDP.Framework {
         // public static methods
 
         /**
-         * \~english
-         * for initialize Router. this function is called in framework.
+         * @en for initialize Router. this function is called in framework.
+         * @ja この関数はフレームワーク内部で使用される。
          *
-         * @return {Boolean} true: succeeded / false: failed.
+         * @internal
          *
-         * \~japanese
-         * 初期化
-         * この関数はフレームワーク内部で使用される。
-         *
-         * @param  options {Object} [in] オプション
-         * @return {Boolean} 成否
+         * @param  options
+         *  - `en` init options
+         *  - `ja` 初期化オプション
+         * @returns
+         *  - `en` true: succeeded / false: failed.
+         *  - `ja` true: 成功 / 失敗
          */
-        public static initialize(options: InitOptions): boolean {
+        public static _initialize(options: InitOptions): boolean {
             const $body = $("body");
             if (!!Router.s_router) {
                 console.warn(TAG + "logic error. initialize call twice.");
@@ -274,29 +248,30 @@ namespace CDP.Framework {
 
             Router.bindEvents();
             // Framework のイベントハンドラを更新
-            Framework.setupEventHandlers();
+            Framework._setupEventHandlers();
 
             return true;
         }
 
         /**
-         * \~english
-         * Register to Router.
+         * @en Register to Router.
+         * @ja Router への登録.
          *
-         * @param route    {String}   [in] route string, it can be regular expression.
-         * @param page     {String}   [in] page template path.
-         * @param top      {Boolean}  [in] set "true" if application's top view. (optional)
-         * @param callback {Function} [in] callback for custom page transition. If you don't want to trigger jQM.changePage(), return true by this callback. (optional)
-         * @return {Router} Router instance.
-         *
-         * \~japanese
-         * 登録
-         *
-         * @param route    {String}   [in] ルーティング文字列 / 正規表現
-         * @param page     {String}   [in] page template path. イベント名にも使用される
-         * @param top      {Boolean}  [in] Top ページの場合は true を指定 (任意)
-         * @param callback {Function} [in] 遷移を自身で管理する場合に指定し、戻り値を true に設定すると changePage をコールしない (任意)
-         * @return {Router} インスタンス。ただし method chain をしたい場合は、any cast が必要。
+         * @param route
+         *  - `en` route string, it can be regular expression.
+         *  - `ja` ルーティング文字列 / 正規表現
+         * @param page
+         *  - `en` page template path.
+         *  - `ja` page template path. イベント名にも使用される
+         * @param top
+         *  - `en` set "true" if application's top view. (optional)
+         *  - `ja` Top ページの場合は true を指定 (任意)
+         * @param callback
+         *  - `en` callback for custom page transition. If you don't want to trigger jQM.changePage(), return true by this callback. (optional)
+         *  - `ja` 遷移を自身で管理する場合に指定し、戻り値を true に設定すると changePage をコールしない (任意)
+         * @returns
+         *  - `en` Router instance.
+         *  - `ja` インスタンス。ただし method chain をしたい場合は、any cast が必要。
          */
         public static register(route: string, page: string, top: boolean = false, callback?: (...args: any[]) => boolean): Router {
             // Backbone.Router への登録は history の停止が必要
@@ -324,17 +299,15 @@ namespace CDP.Framework {
         }
 
         /**
-         * \~english
-         * Start listening hash change.
-         * It should be called after register().
+         * @en Start listening hash change. <br>
+         *     It should be called after register().
          *
-         * @param options {Object} [in] options object for Backbone.History.
+         * @ja 履歴監視の開始 <br>
+         *     登録完了後にクライアントが呼ぶことでページ遷移が開始される。
          *
-         * \~japanese
-         * 履歴監視の開始
-         * 登録完了後に呼び出す。
-         *
-         * @param options {Object} [in] Backbone.History にわたるオプション
+         * @param options
+         *  - `en` options object for Backbone.History.
+         *  - `ja` Backbone.History にわたるオプション
          */
         public static start(options?: RouterOptions): void {
             const opt = $.extend({ pageConstruct: true }, options);
@@ -349,15 +322,12 @@ namespace CDP.Framework {
         }
 
         /**
-         * \~english
-         * Stop listening hash change.
+         * @en Stop listening hash change.
+         * @ja 履歴監視の停止
          *
-         * @return {Boolean} previous status.
-         *
-         * \~japanese
-         * 履歴監視の終了
-         *
-         * @return {Boolean} 以前の開始状態を返却
+         * @returns
+         *  - `en` previous status.
+         *  - `ja` 以前の開始状態を返却
          */
         public static stop(): boolean {
             const prevState = (<any>Backbone.History).started;
@@ -366,36 +336,33 @@ namespace CDP.Framework {
         }
 
         /**
-         * \~english
-         * Check routing status.
+         * @en Check routing status.
+         * @ja ルーティングを開始しているか判定
          *
-         * @return {Boolean} true: routing / false: not routing
-         *
-         * \~japanese
-         * ルーティングを開始しているか判定
-         *
-         * @return {Boolean} true: 有効 / false: 無効
+         * @returns
+         *  - `en` true: routing / false: not routing
+         *  - `en` true: 有効 / false: 無効
          */
         public static isRouting(): boolean {
             return (<any>Backbone.History).started;
         }
 
         /**
-         * \~english
-         * URL navigation.
+         * @en URL navigation.
+         * @ja URL遷移
          *
-         * @param url        {String}          [in] set a navigate URL. (relative path / absolute path / fragment)
-         * @param transition {String}          [in] set a transition string (optional)
-         * @param reverse    {Boolean}         [in] set a direction string for transition. true:reverse / false:nomal (optional)
-         * @param options    {NavigateOptions} [in] set a options object for Backbone.Router.navigate(). (optional)
-         *
-         * \~japanese
-         * URL遷移
-         *
-         * @param url        {String}          [in] 遷移 URL を指定 (相対パス/絶対パス/フラグメント)
-         * @param transition {String}          [in] transition に使用する effect を指定 (任意)
-         * @param reverse    {Boolean}         [in] transition に使用する direction を指定 true:reverse/false:通常 (任意)
-         * @param options    {NavigateOptions} [in] Backbone.Router.navigate() に渡されるオプション (任意)
+         * @param url
+         *  - `en` set a navigate URL. (relative path / absolute path / fragment)
+         *  - `ja` 遷移 URL を指定 (相対パス/絶対パス/フラグメント)
+         * @param transition
+         *  - `en` set a transition string.
+         *  - `ja` transition に使用する effect を指定
+         * @param reverse
+         *  - `en` set a direction string for transition. true:reverse / false:nomal
+         *  - `ja` transition に使用する direction を指定 true:reverse/false:通常
+         * @param options
+         *  - `en` set a options object for Backbone.Router.navigate().
+         *  - `ja` Backbone.Router.navigate() に渡されるオプション
          */
         public static navigate(url: string, transition?: string, reverse?: boolean, options?: NavigateOptions): void {
             if (!!Router.s_lastNavigateInfo.inNavigation) {
@@ -473,23 +440,23 @@ namespace CDP.Framework {
         }
 
         /**
-         * \~english
-         * Navigate from Top Page.
-         * If SubFlow set up, the param is cleared.
+         * @en Navigate from Top Page. <br>
+         *     If SubFlow set up, the param is cleared.
          *
-         * @param to         {String|PageStack|PageStack[]} [in] set a navigate URL or PageStackOptions object or array.
-         * @param transition {String}                       [in] set a transition string (optional)
-         * @param reverse    {Boolean}                      [in] set a direction string for transition. true:reverse / false:nomal (optional)
-         * @param options    {NavigateOptions}              [in] set a options object for Backbone.Router.navigate(). (optional)
-         *
-         * \~japanese
-         * トップページからの画面遷移
-         * SubFlow が指定されていた場合はクリアされる
-         *
-         * @param to         {String|PageStack|PageStack[]} [in] 遷移 URL / PageStackOptions オブジェクト/配列
-         * @param transition {String}                       [in] transition に使用する effect を指定 (任意)
-         * @param reverse    {Boolean}                      [in] transition に使用する direction を指定 true:reverse/false:通常 (任意)
-         * @param options    {NavigateOptions}              [in] Backbone.Router.navigate() に渡されるオプション (任意)
+         * @ja トップページからの画面遷移 <br>
+         *     SubFlow が指定されていた場合はクリアされる
+         * @param to
+         *  - `en` set a navigate URL or PageStackOptions object or array.
+         *  - `ja` 遷移 URL / PageStackOptions オブジェクト/配列
+         * @param transition
+         *  - `en` set a transition string
+         *  - `ja` transition に使用する effect を指定
+         * @param reverse
+         *  - `en` set a direction string for transition. true:reverse / false:nomal
+         *  - `ja` transition に使用する direction を指定 true:reverse/false:通常
+         * @param options
+         *  - `en` set a options object for Backbone.Router.navigate().
+         *  - `ja` Backbone.Router.navigate() に渡されるオプション
          */
         public static navigateFromTop(
             to?: string | PageStack | PageStack[],
@@ -497,8 +464,8 @@ namespace CDP.Framework {
             reverse?: boolean,
             options?: NavigateOptions
         ): void {
-            const stack = Router.getJqmHistory().stack;
-            const currentPage = stack[Router.getJqmHistory().activeIndex];
+            const stack = Router._getJqmHistory().stack;
+            const currentPage = stack[Router._getJqmHistory().activeIndex];
             const _transition = transition || currentPage.transition;
             const _reverse = (null != reverse) ? reverse : true;
             const destStacks: PageStack[] = ((): PageStack[] => {
@@ -534,15 +501,13 @@ namespace CDP.Framework {
         }
 
         /**
-         * \~english
-         * Back to previous history.
-         * It's same as browser back button's behaviour.
-         * [Note] If set the jQM: data-rel="back", work as well.
+         * @ en Back to previous history. <br>
+         *      It's same as browser back button's behaviour. <br>
+         *      [Note] If set the jQM: data-rel="back", work as well.
          *
-         * \~japanese
-         * 履歴を戻る
-         * ブラウザの戻るボタンと同じ挙動。
-         * jQM: data-rel="back" を指定しても同じであることに注意。
+         * @ja 履歴を戻る <br>
+         *     ブラウザの戻るボタンと同じ挙動。 <br>
+         *     jQM: data-rel="back" を指定しても同じであることに注意。
          */
         public static back(): void {
             if (!!Router.s_lastNavigateInfo.inNavigation) {
@@ -575,36 +540,32 @@ namespace CDP.Framework {
         }
 
         /**
-         * \~english
-         * Store Intent object.
+         * @en Store Intent object by framwork.
+         * @ja Intent を格納。 フレームワークが使用する。
          *
-         * \~japanese
-         * Intent を格納
+         * @internal
          */
-        public static pushIntent(intent: Intent): void {
+        public static _pushIntent(intent: Intent): void {
             Router.s_lastIntent = $.extend(true, Router.s_lastIntent, intent);
         }
 
         /**
-         * \~english
-         * Get Intent object.
+         * @en Get Intent object by framework.
+         * @ja Intent を取得。フレームワークが使用する。
          *
-         * \~japanese
-         * Intent を取得
+         * @internal
          */
-        public static popIntent(): Intent {
+        public static _popIntent(): Intent {
             const intent = Router.s_lastIntent;
             Router.s_lastIntent = {};
             return intent;
         }
 
         /**
-         * \~english
-         * Get query parameters.
-         *
-         * \~japanese
-         * query parameter に指定された引数の取得
-         * ページ遷移中にのみアクセス可能 (pagebeforecreate ～ pagechange)
+         * @en Get query parameters. <br>
+         *     It can be accessed during "pagebeforecreate" to "pagechange".
+         * @ja query parameter に指定された引数の取得 <br>
+         *     ページ遷移中にのみアクセス可能 (pagebeforecreate ～ pagechange)
          */
         public static getQueryParameters(): any {
             if (Router.s_lastNavigateInfo.intent && Router.s_lastNavigateInfo.intent.params) {
@@ -615,22 +576,21 @@ namespace CDP.Framework {
         }
 
         /**
-         * \~english
-         * Begin sub flow transaction.
+         * @en Begin sub flow transaction.
+         * @ja sub flow トランザクションの開始
          *
-         * @param url        {String}          [in] set a navigate URL. (relative path / absolute path / fragment)
-         * @param options    {NavigateOptions} [in] set a options object for Backbone.Router.navigate(). (optional)
-         * @param transition {String}          [in] set a transition string (optional)
-         * @param reverse    {Boolean}         [in] set a direction string for transition. true:reverse / false:nomal (optional)
-         *
-         * \~japanese
-         * sub flow トランザクションの開始.
-         * navigate() の 糖衣構文
-         *
-         * @param url        {String}          [in] 遷移 URL を指定 (相対パス/絶対パス/フラグメント)
-         * @param options    {NavigateOptions} [in] Backbone.Router.navigate() に渡されるオプション (任意)
-         * @param transition {String}          [in] transition に使用する effect を指定 (任意)
-         * @param reverse    {Boolean}         [in] transition に使用する direction を指定 true:reverse/false:通常 (任意)
+         * @param url
+         *  - `en` set a navigate URL. (relative path / absolute path / fragment)
+         *  - `ja` 遷移 URL を指定 (相対パス/絶対パス/フラグメント)
+         * @param options
+         *  - `en` set a options object for Backbone.Router.navigate().
+         *  - `ja` Backbone.Router.navigate() に渡されるオプション
+         * @param transition
+         *  - `en` set a transition string
+         *  - `ja` transition に使用する effect を指定
+         * @param reverse
+         *  - `en` set a direction string for transition. true:reverse / false:nomal
+         *  - `ja` transition に使用する direction を指定 true:reverse/false:通常
          */
         public static beginSubFlow(url: string, options: NavigateOptions, transition?: string, reverse?: boolean): void {
             const opt: NavigateOptions = $.extend({}, options);
@@ -643,18 +603,15 @@ namespace CDP.Framework {
         }
 
         /**
-         * \~english
-         * Commit sub flow transaction.
+         * @en Commit sub flow transaction.
+         * @ja sub flow トランザクションの終了
          *
-         * @param transition {String}  [in] set a transition string (optional)
-         * @param reverse    {Boolean} [in] set a direction string for transition. true:reverse / false:nomal (optional)
-         *
-         * \~japanese
-         * sub flow トランザクションの終了.
-         * navigate() の 糖衣構文
-         *
-         * @param transition {String}  [in] transition に使用する effect を指定 (任意)
-         * @param reverse    {Boolean} [in] transition に使用する direction を指定 true:reverse/false:通常 (任意)
+         * @param transition
+         * - `en` set a transition string
+         * - `ja` transition に使用する effect を指定
+         * @param reverse
+         * - `en` set a direction string for transition. true:reverse / false:nomal
+         * - `ja` transition に使用する direction を指定 true:reverse/false:通常
          */
         public static commitSubFlow(transition?: string, reverse?: boolean): void {
             Router.navigate(null, transition, reverse, {
@@ -665,18 +622,15 @@ namespace CDP.Framework {
         }
 
         /**
-         * \~english
-         * Cancel sub flow transaction.
+         * @en Cancel sub flow transaction.
+         * @ja sub flow トランザクションのキャンセル
          *
-         * @param transition {String}  [in] set a transition string (optional)
-         * @param reverse    {Boolean} [in] set a direction string for transition. true:reverse[default] / false:nomal (optional)
-         *
-         * \~japanese
-         * sub flow トランザクションのキャンセル.
-         * navigate() の 糖衣構文
-         *
-         * @param transition {String}  [in] transition に使用する effect を指定 (任意)
-         * @param reverse    {Boolean} [in] transition に使用する direction を指定 true:reverse[既定]/false:通常 (任意)
+         * @param transition
+         *  - `en` set a transition string
+         *  - `ja` transition に使用する effect を指定
+         * @param reverse
+         *  - `en` set a direction string for transition. true:reverse[default] / false:nomal
+         *  - `ja` transition に使用する direction を指定 true:reverse[既定]/false:通常
          */
         public static cancelSubFlow(transition?: string, reverse?: boolean): void {
             // 起点のページに戻る
@@ -693,14 +647,11 @@ namespace CDP.Framework {
         }
 
         /**
-         * \~english
-         * Check in sub flow.
-         *
-         * \~japanese
-         * sub flow 内であるか判定
+         * @en Check in sub flow.
+         * @ja sub flow 内であるか判定
          */
         public static isInSubFlow(): boolean {
-            const stack = Router.getJqmHistory().stack;
+            const stack = Router._getJqmHistory().stack;
             const has = _.some(stack, (value) => {
                 return !!value[Router.SUBFLOW_PARAM];
             });
@@ -708,12 +659,8 @@ namespace CDP.Framework {
         }
 
         /**
-         * \~english
-         * Check from hash changed navigation.
-         *
-         * \~japanese
-         * Hash 変更によって Navigate が起こったか判定
-         * "pagechange" が発生するまでに判定可能
+         * @en Check from hash changed navigation.
+         * @ja Hash 変更によって Navigate が起こったか判定. "pagechange" が発生するまでに判定可能
          */
         public static fromHashChanged(): boolean {
             // positiveNavigate = false は含めない
@@ -721,23 +668,24 @@ namespace CDP.Framework {
         }
 
         /**
-         * \~english
-         * Register page stack.
-         * Set registered route(s) to add to page stack on the basis of the present stack position.
+         * @en Register page stack. <br>
+         *     Set registered route(s) to add to page stack on the basis of the present stack position.
          *
-         * @param pageStack    {PageStack|PageStack[]}   [in] PageStackOptions object or array.
-         * @param withNavigate {Boolean}                 [in] true: with navigate final stack. (default) / false: not navigate.
-         * @param options      {NavigateOptions}         [in] set a options object for Backbone.Router.navigate().(optional)
-         * @return {Boolean} true: succeeded / false: failed
+         * @ja ページスタック登録 <br>
+         *     登録済みの route を指定して、現在の位置を基点にページスタックに登録
          *
-         * \~japanese
-         * ページスタック登録
-         * 登録済みの route を指定して、現在の位置を基点にページスタックに登録
-         *
-         * @param pageStack    {PageStack|PageStack[]}   [in] PageStackOptions オブジェクト/配列
-         * @param withNavigate {Boolean}                 [in] true: 最後のスタックに対してページ遷移する. (default) / false: ページ遷移しない.
-         * @param options      {NavigateOptions}         [in] Backbone.Router.navigate() に渡されるオプション (任意)
-         * @return {Boolean} true: 成功 / false: 失敗。
+         * @param pageStack
+         *  - `en` PageStackOptions object or array.
+         *  - `ja` PageStackOptions オブジェクト/配列
+         * @param withNavigate
+         *  - `en` true: with navigate final stack. (default) / false: not navigate.
+         *  - `ja` true: 最後のスタックに対してページ遷移する. (default) / false: ページ遷移しない.
+         * @param options
+         *  - `en` set a options object for Backbone.Router.navigate().
+         *  - `ja` Backbone.Router.navigate() に渡されるオプション
+         * @returns
+         *  - `en` true: succeeded / false: failed
+         *  - `ja` true: 成功 / false: 失敗。
          */
         public static registerPageStack(pageStack: PageStack, withNavigate?: boolean, options?: NavigateOptions): boolean;
         public static registerPageStack(pageStack: PageStack[], withNavigate?: boolean, options?: NavigateOptions): boolean;
@@ -794,12 +742,12 @@ namespace CDP.Framework {
                 const silentLength = newStacks.length - 1;
                 const finalIndex = newStacks.length - 1;
 
-                Router.getJqmHistory().clearForward();
+                Router._getJqmHistory().clearForward();
 
                 for (let i = 0, n = silentLength; i < n; i++) {
                     location.hash = newStacks[i].route;
-                    Router.getJqmHistory().stack.push(newStacks[i]);
-                    Router.getJqmHistory().activeIndex = Router.getJqmHistory().stack.length - 1;
+                    Router._getJqmHistory().stack.push(newStacks[i]);
+                    Router._getJqmHistory().activeIndex = Router._getJqmHistory().stack.length - 1;
                 }
 
                 // final stack with navigate
@@ -825,8 +773,8 @@ namespace CDP.Framework {
                     Router.navigate(newStacks[finalIndex].route, transition, reverse, options);
                 } else {
                     location.hash = newStacks[finalIndex].route;
-                    Router.getJqmHistory().stack.push(newStacks[finalIndex]);
-                    Router.getJqmHistory().activeIndex = Router.getJqmHistory().stack.length - 1;
+                    Router._getJqmHistory().stack.push(newStacks[finalIndex]);
+                    Router._getJqmHistory().activeIndex = Router._getJqmHistory().stack.length - 1;
                 }
 
                 // Router の再開
@@ -839,14 +787,12 @@ namespace CDP.Framework {
         }
 
         /**
-         * \~english
-         * Get jQM's history object
+         * @en Get jQM's history object
+         * @ja jQM の History オブジェクトの取得
          *
-         * \~japanese
-         * jQM の History オブジェクトの取得
-         *
+         * @internal
          */
-        public static getJqmHistory(): any {
+        public static _getJqmHistory(): any {
             return $.mobile.navigate.history;
         }
 
@@ -854,15 +800,8 @@ namespace CDP.Framework {
         // private static methods
 
         /**
-         * \~english
-         * Override: Backbone.History.loadUrl().
-         *
-         * @private
-         *
-         * \~japanese
-         * Backbone.History.loadUrl() のオーバーライド
-         *
-         * @private
+         * @en Override: Backbone.History.loadUrl().
+         * @ja Backbone.History.loadUrl() のオーバーライド
          */
         private static customLoadUrl(fragment: string): boolean {
             const handled = Router.s_loadUrl(fragment);
@@ -873,25 +812,17 @@ namespace CDP.Framework {
         }
 
         /**
-         * \~english
-         * Override: $.mobile.back().
+         * @en Override: $.mobile.back().
+         *  - fail safe processing. <br>
+         *    If using Backbone's Router, <br>
+         *    this class unuses history object of jQuery Mobile 1.4, <br>
+         *    and standardize as browser back button's behaviour. (jQM 1.3 comparable)
          *
-         * fail safe processing.
-         *  If using Backbone's Router,
-         *  this class unuses history object of jQuery Mobile 1.4,
-         *  and standardize as browser back button's behaviour. (jQM 1.3 comparable)
-         *
-         * @private
-         *
-         * \~japanese
-         * $.mobile.back() のオーバーライド
-         *
-         * [TBD] fail safe 処理
-         *  Backbone の Router を使用している場合、
-         *  jQuery Mobile 1.4 以降の内部の History 管理は使用せずに
-         *  1.3 相当のブラウザの[戻る]の挙動に統一する。
-         *
-         * @private
+         * @ja $.mobile.back() のオーバーライド
+         *  - [TBD] fail safe 処理 <br>
+         *    Backbone の Router を使用している場合、 <br>
+         *    jQuery Mobile 1.4 以降の内部の History 管理は使用せずに <br>
+         *    1.3 相当のブラウザの[戻る]の挙動に統一する。
          */
         private static customJqmBack(): void {
             if (Router.isRouting()) {
@@ -926,12 +857,12 @@ namespace CDP.Framework {
                 .on("pagebeforeshow", (event: JQuery.Event) => {
                     // "data-back-dst" を page に設定
                     if (null != Router.s_lastNavigateInfo.backDestination) {
-                        const active: Object = Router.getJqmHistory().getActive();
+                        const active: Object = Router._getJqmHistory().getActive();
                         active[Router.BACK_DESTINATION_URL] = Router.s_lastNavigateInfo.backDestination;
                     }
                 })
                 .on("pageshow", (event: JQuery.Event) => {
-                    const active: Object = Router.getJqmHistory().getActive();
+                    const active: Object = Router._getJqmHistory().getActive();
                     if (active[Router.SUBFLOW_PARAM]) {
                         delete active[Router.SUBFLOW_PARAM];
                     }
@@ -946,21 +877,18 @@ namespace CDP.Framework {
         }
 
         /**
-         * \~english
-         * Store the RootContext.
+         * @en Store the RootContext.
+         * @ja RootContext の格納
          *
-         * @private
-         * @param name    {String}       [in] name of route
-         * @param context {RouteContext} [in] context object
-         * @return true: succeeded / false: already registered
-         *
-         * \~japanese
-         * RootContext の格納
-         *
-         * @private
-         * @param name    {String}       [in] route 名
-         * @param context {RouteContext} [in] context オブジェクト
-         * @return true: 登録成功 / false: すでに登録されている
+         * @param name
+         *  - `en` name of route
+         *  - `ja` route 名
+         * @param context
+         *  - `en` context object
+         *  - `ja` context オブジェクト
+         * @returns
+         *  - `en` true: succeeded / false: already registered
+         *  - `ja` true: 登録成功 / false: すでに登録されている
          */
         private static pushContext(name: string, context: RouteContext): boolean {
             if (!!Router.s_rootContexts[name]) {
@@ -972,17 +900,12 @@ namespace CDP.Framework {
         }
 
         /**
-         * \~english
-         * Check if $.mobile.initializePage() is called or not, and call it if needed.
+         * @en Check if $.mobile.initializePage() is called or not, and call it if needed.
+         * @ja  $.mobile.initializePage() が呼ばれているか確認し、必要なら初期化する。
          *
-         * @private
-         * @param url {String}  [in] set a navigate URL. (relative path / absolute path / fragment)
-         *
-         * \~japanese
-         * $.mobile.initializePage() が呼ばれているか確認し、必要なら初期化する。
-         *
-         * @private
-         * @param url {String} [in] 遷移 URL を指定 (相対パス/絶対パス/フラグメント)
+         * @param url
+         *  - `en` set a navigate URL. (relative path / absolute path / fragment)
+         *  - `ja` 遷移 URL を指定 (相対パス/絶対パス/フラグメント)
          */
         private static initFirstPageIfNeeded(url: string): boolean {
             if (!$.mobile.autoInitializePage) {
@@ -997,17 +920,12 @@ namespace CDP.Framework {
         }
 
         /**
-         * \~english
-         * Check for current page is top.
+         * @en Check for current page is top.
+         * @ja 現在のページが top に指定されているか判定
          *
-         * @private
-         * @return true: top page / false: not top page
-         *
-         * \~japanese
-         * 現在のページが top に指定されているか判定
-         *
-         * @private
-         * @return true: top 指定 / false: top ではない
+         * @returns
+         *  - `en` true: top page / false: not top page
+         *  - `ja` true: top 指定 / false: top ではない
          */
         private static isTopPage(): boolean {
             const fragment = Backbone.history.getFragment($.mobile.path.parseUrl(location.href).hash);
@@ -1018,17 +936,12 @@ namespace CDP.Framework {
         }
 
         /**
-         * \~english
-         * Called when anchor received "vclick" event.
+         * @en Called when anchor received "vclick" event.
+         * @ja anchor が vclick されたときにコールされる
          *
-         * @private
-         * @return true: need default processing / false: need custom processing
-         *
-         * \~japanese
-         * anchor が vclick されたときにコールされる
-         *
-         * @private
-         * @return true: default 処理 / false: カスタム処理
+         * @returns
+         *  - `en` true: need default processing / false: need custom processing
+         *  - `ja` true: default 処理 / false: カスタム処理
          */
         private static onAnchorVclicked(event: JQuery.Event): boolean {
             if (Router.isJustBeforeVclicked()) {
@@ -1039,15 +952,8 @@ namespace CDP.Framework {
         }
 
         /**
-         * \~english
-         * Anchor processing.
-         *
-         * @private
-         *
-         * \~japanese
-         * anchor 処理
-         *
-         * @private
+         * @en Anchor processing.
+         * @ja anchor 処理
          */
         private static followAnchor(event: JQuery.Event): boolean {
             const $target = $(event.currentTarget);
@@ -1082,19 +988,15 @@ namespace CDP.Framework {
         }
 
         /**
-         * \~english
-         * Check default processing needed.
+         * @en Check default processing needed.
+         * @ja 既定の処理を行わせるか判定
          *
-         * @private
-         * @param  url {String} [in] url string
-         * @return true: need default processing / false: need not
-         *
-         * \~japanese
-         * 既定の処理を行わせるか判定
-         *
-         * @private
-         * @param  url {String} [in] url 文字列
-         * @return true: 既定の処理が必要 / false: 不要
+         * @param  url
+         *  - `en` url string
+         *  - `ja` url 文字列
+         * @returns
+         *  - `en` true: need default processing / false: need not
+         *  - `ja` true: 既定の処理が必要 / false: 不要
          */
         private static needDefaultOperation(url: string): boolean {
             if (!url || ("#" === url)) {
@@ -1107,19 +1009,15 @@ namespace CDP.Framework {
         }
 
         /**
-         * \~english
-         * Check status of Backbone.Router if they can resolve route.
+         * @en Check status of Backbone.Router if they can resolve route.
+         * @ja Backbone.Router が route を解決可能か判定
          *
-         * @private
-         * @param  url {String} [in] url 文字列
-         * @return true: can resolve / false: can not
-         *
-         * \~japanese
-         * Backbone.Router が route を解決可能か判定
-         *
-         * @private
-         * @param  url {String} [in] url 文字列
-         * @return true: 解決可能 / false: 解決不可
+         * @param  url
+         *  - `en` url string
+         *  - `ja` url 文字列
+         * @returns
+         *  - `en` true: can resolve / false: can not
+         *  - `ja` true: 解決可能 / false: 解決不可
          */
         private static canResolveRoute(url: string): boolean {
             const fragment = Backbone.history.getFragment(url);
@@ -1131,15 +1029,8 @@ namespace CDP.Framework {
         }
 
         /**
-         * \~english
-         * Check "vclick" fired at the last minute.
-         *
-         * @private
-         *
-         * \~japanese
-         * 直前に vclick が呼ばれたか判定
-         *
-         * @private
+         * @en Check "vclick" fired at the last minute.
+         * @ja 直前に vclick が呼ばれたか判定
          */
         private static isJustBeforeVclicked(): boolean {
             const isBefore = (Date.now() - Router.s_lastClickedTime) < Router.DELAY_TIME * 2;
@@ -1148,15 +1039,8 @@ namespace CDP.Framework {
         }
 
         /**
-         * \~english
-         * Check back button clicked.
-         *
-         * @private
-         *
-         * \~japanese
-         * Back Button がクリックされたか判定
-         *
-         * @private
+         * @en Check back button clicked.
+         * @ja Back Button がクリックされたか判定
          */
         private static isBackButtonClicked(event: JQuery.Event): boolean {
             if ($(event.currentTarget).jqmData("rel") === "back") {
@@ -1167,19 +1051,15 @@ namespace CDP.Framework {
         }
 
         /**
-         * \~english
-         * It called on succeed routing triggered by changing hash.
+         * @en It called on succeed routing triggered by changing hash.
+         * @ja ハッシュ値が変更され、ルーティングが成功したときにコールされる
          *
-         * @private
-         * @param name {String} [in] name of route
-         * @param args {Array}  [in] array of paramter
-         *
-         * \~japanese
-         * ハッシュ値が変更され、ルーティングが成功したときにコールされる
-         *
-         * @private
-         * @param name {String} [in] route 名。page の値が渡る。
-         * @param args {Array}  [in] パラメータ配列。
+         * @param name
+         *  - `en` name of route
+         *  - `ja` route 名。page の値が渡る。
+         * @param args
+         *  - `en` array of paramter
+         *  - `ja` パラメータ配列。
          */
         private static onRouteSucceeded(name: string, ...args: any[]): void {
             const context = <RouteContext>Router.s_rootContexts[name];
@@ -1198,19 +1078,15 @@ namespace CDP.Framework {
         }
 
         /**
-         * \~english
-         * It called on failed routing triggered by changing hash.
+         * @en It called on failed routing triggered by changing hash.
+         * @ja ハッシュ値が変更され、ルーティングが失敗したときにコールされる
          *
-         * @private
-         * @param name {String} [in] name of route
-         * @param args {Array}  [in] array of paramter
-         *
-         * \~japanese
-         * ハッシュ値が変更され、ルーティングが失敗したときにコールされる
-         *
-         * @private
-         * @param name {String} [in] route 名。page の値が渡る。
-         * @param args {Array}  [in] パラメータ配列。
+         * @param name
+         *  - `en` name of route
+         *  - `ja` route 名。page の値が渡る。
+         * @param args
+         *  - `en` array of paramters
+         *  - `ja` パラメータ配列。
          */
         private static onRouteFailed(fragment: string): void {
             Router.s_lastNavigateInfo.inNavigation = true;
@@ -1243,17 +1119,12 @@ namespace CDP.Framework {
         }
 
         /**
-         * \~english
-         * This function just calls jQuery Mobile's navigation method.
+         * @en This function just calls jQuery Mobile's navigation method.
+         * @ja jQuery Mobile によるページ遷移指定
          *
-         * @private
-         * @param path {String} [in] to page path
-         *
-         * \~japanese
-         * jQuery Mobile によるページ遷移指定
-         *
-         * @private
-         * @param path {String} [in] 遷移先パスを指定
+         * @param path
+         *  - `en` to page path
+         *  - `ja` 遷移先パスを指定
          */
         private static changePage(path: string): void {
             let notifyBeforeRouteChange: () => IPromiseBase<any>;
@@ -1269,7 +1140,7 @@ namespace CDP.Framework {
                     if (0 < additional) {
                         // 2回目以降の hash change には反応させない.
                         Router.s_lastNavigateInfo.inAdditionalBack = true;
-                        Router.getJqmHistory().activeIndex -= additional;
+                        Router._getJqmHistory().activeIndex -= additional;
                         history.go(-additional);
                         return;
                     }
@@ -1282,7 +1153,7 @@ namespace CDP.Framework {
                 }
             } else {
                 // 能動的遷移の場合 previousIndex を更新
-                Router.getJqmHistory().previousIndex = Router.getJqmHistory().activeIndex;
+                Router._getJqmHistory().previousIndex = Router._getJqmHistory().activeIndex;
             }
 
             // ページ遷移開始通知. すでにコールされている場合は既定の何もしないコールバックを使用する.
@@ -1292,7 +1163,7 @@ namespace CDP.Framework {
                 .then(() => {
                     // 付加情報
                     if (Router.s_lastNavigateInfo.intent) {
-                        Router.pushIntent(Router.s_lastNavigateInfo.intent);
+                        Router._pushIntent(Router.s_lastNavigateInfo.intent);
                     }
 
                     Router.treatUrlHistory();
@@ -1324,28 +1195,24 @@ namespace CDP.Framework {
         }
 
         /**
-         * \~english
-         * Decide direction parameter.
-         * It's as same as jQM internal implement. (imperfection)
+         * @en Decide direction parameter. <br>
+         *     It's as same as jQM internal implement. (imperfection)
          *
-         * @private
-         * @param path {String} [in] to page path
+         * @ja direction の判定 <br>
+         *     jQM の内部実装と等価 (不完全)
          *
-         * \~japanese
-         * direction の判定
-         * jQM の内部実装と等価 (不完全)
-         *
-         * @private
-         * @param path {String} [in] 遷移先パスを指定
+         * @param path
+         *  - `en` to page path
+         *  - `ja` 遷移先パスを指定
          */
         private static decideDirection(path: string): void {
             const url = $.mobile.path.convertUrlToDataUrl(Framework.toUrl(path));
 
             if (null == Router.s_lastNavigateInfo.transition) {
-                Router.s_lastNavigateInfo.transition = Router.getJqmHistory().getActive().transition;
+                Router.s_lastNavigateInfo.transition = Router._getJqmHistory().getActive().transition;
             }
 
-            Router.getJqmHistory().direct({
+            Router._getJqmHistory().direct({
                 url: url,
                 present: function (newPage: any, direction: string) {
                     switch (direction) {
@@ -1366,13 +1233,13 @@ namespace CDP.Framework {
                 },
                 missing: () => {
                     // 初期ページ URL は判定できない。正常系。
-                    if (1 === Router.getJqmHistory().activeIndex) {
-                        Router.getJqmHistory().previousIndex = 1;
-                        Router.getJqmHistory().activeIndex = 0;
+                    if (1 === Router._getJqmHistory().activeIndex) {
+                        Router._getJqmHistory().previousIndex = 1;
+                        Router._getJqmHistory().activeIndex = 0;
                         if (null == Router.s_lastNavigateInfo.reverse) {
                             Router.s_lastNavigateInfo.reverse = true;
                         }
-                    } else if (0 !== Router.getJqmHistory().activeIndex) {
+                    } else if (0 !== Router._getJqmHistory().activeIndex) {
                         console.warn(TAG + "unknown direction.");
                     }
                 }
@@ -1380,24 +1247,17 @@ namespace CDP.Framework {
         }
 
         /**
-         * \~english
-         * Return additional back distance count when back destination set.
-         * (const function)
+         * @en Return additional back distance count when back destination set. (const function)
+         * @ja 戻り先が指定されているとき、追加の Back 数を返す。(この関数は Router の状態を変更しない。)
          *
-         * @private
-         * @return {Number} count of additiona back distance.
-         *
-         * \~japanese
-         * 戻り先が指定されているとき、追加の Back 数を返します。
-         * (この関数は Router の状態を変更しません。)
-         *
-         * @private
-         * @return {String} 追加で Back に必要な距離.
+         * @returns
+         *  - `en` count of additiona back distance.
+         *  - `ja`追加で Back に必要な距離.
          */
         private static detectAdditionalBackDistance(): number {
-            const stack = Router.getJqmHistory().stack;
-            const historyActiveIndex = Router.getJqmHistory().activeIndex;    // decideDirection() の Router.getJqmHistory().direct() によって、history の activeIndex はすでに変わっている
-            const previousIndex = Router.getJqmHistory().previousIndex;       // [戻る]が押下された場合に値が入る
+            const stack = Router._getJqmHistory().stack;
+            const historyActiveIndex = Router._getJqmHistory().activeIndex;    // decideDirection() の Router._getJqmHistory().direct() によって、history の activeIndex はすでに変わっている
+            const previousIndex = Router._getJqmHistory().previousIndex;       // [戻る]が押下された場合に値が入る
             let i, backDst, distance, fragment, context, jqmDataUrl;
 
             // check "operation". [戻る]および clearForward() されていない状況をチェック
@@ -1443,20 +1303,18 @@ namespace CDP.Framework {
         }
 
         /**
-         * \~english
-         * Start sub flow
-         * Attach SubFlowParam to jqm history stack object.
+         * @en Start sub flow. <br>
+         *     Attach SubFlowParam to jqm history stack object.
          *
-         * @param subFlowParam {SubFlowParam} [in] Sub Flow parameter
+         * @ja Sub Flow の開始 <br>
+         *     SubFlowParam を jqm history stack にアタッチ
          *
-         * \~japanese
-         * Sub Flow の開始
-         * SubFlowParam を jqm history stack にアタッチ
-         *
-         * @param subFlowParam {SubFlowParam} [in] Sub Flow パラメータ
+         * @param subFlowParam
+         *  - `en` Sub Flow parameter.
+         *  - `ja` Sub Flow パラメータ
          */
         private static startSubFlow(subFlowParam: SubFlowParam): void {
-            const active = Router.getJqmHistory().getActive();
+            const active = Router._getJqmHistory().getActive();
             const param = <SubFlowParamEx>subFlowParam;
             if (subFlowParam.destBase) {
                 let distance = 0;
@@ -1471,8 +1329,8 @@ namespace CDP.Framework {
 
                 // dataUrl を元に jQM History を検索
                 const jqmDataUrl = Router.pathToJqmDataUrl(context.page);
-                const stack = Router.getJqmHistory().stack;
-                for (let i = Router.getJqmHistory().activeIndex; 0 <= i; i-- , distance++) {
+                const stack = Router._getJqmHistory().stack;
+                for (let i = Router._getJqmHistory().activeIndex; 0 <= i; i-- , distance++) {
                     if (jqmDataUrl === stack[i].pageUrl) {
                         param.additionalDistance = distance;
                         break;
@@ -1487,17 +1345,15 @@ namespace CDP.Framework {
         }
 
         /**
-         * \~english
-         * End sub flow
-         * navigate and delete SubFlowParam from jqm history stack object.
+         * @en End sub flow <br>
+         *     navigate and delete SubFlowParam from jqm history stack object.
          *
-         * @param navOptions {NavigateOptions} [in] Sub Flow parameter
+         * @ja Sub Flow の終了 <br>
+         *     遷移と SubFlowParam を jqm history stack から削除
          *
-         * \~japanese
-         * Sub Flow の終了
-         * 遷移と SubFlowParam を jqm history stack から削除
-         *
-         * @param navOptions {NavigateOptions} [in] Sub Flow パラメータ
+         * @param navOptions
+         *  - `en` Sub Flow parameter.
+         *  - `ja` Sub Flow パラメータ
          */
         private static finishSubFlow(options: NavigateOptions): void {
             const navOptions: NavigateOptions = $.extend(true, {}, options);
@@ -1527,8 +1383,8 @@ namespace CDP.Framework {
             if (stack) {
                 delete stack[Router.SUBFLOW_PARAM];
 
-                Router.getJqmHistory().activeIndex -= distance;
-                Router.getJqmHistory().clearForward();
+                Router._getJqmHistory().activeIndex -= distance;
+                Router._getJqmHistory().clearForward();
 
                 if (param.destStacks) {
                     Router.stop();
@@ -1550,23 +1406,16 @@ namespace CDP.Framework {
         }
 
         /**
-         * \~english
-         * Return destination Sub Flow information.
-         * (const function)
+         * @en Return destination Sub Flow information. (const function)
+         * @ja Sub Flow 情報を返却 (この関数は Router の状態を変更しない。)
          *
-         * @private
-         * @return {Object} sub flow info.
-         *
-         * \~japanese
-         * Sub Flow 情報を返却
-         * (この関数は Router の状態を変更しません。)
-         *
-         * @private
-         * @return {Object} Sub Flow 情報.
+         * @returns
+         *  - `en` sub flow info.
+         *  - `ja` Sub Flow 情報.
          */
         private static detectSubFlowBaseInfo(): any {
-            const stack = Router.getJqmHistory().stack;
-            const historyActiveIndex = Router.getJqmHistory().activeIndex;
+            const stack = Router._getJqmHistory().stack;
+            const historyActiveIndex = Router._getJqmHistory().activeIndex;
             let i: number, distance: number;
             let param: SubFlowParamEx = <SubFlowParamEx>{};
             let target: Object;
@@ -1598,17 +1447,10 @@ namespace CDP.Framework {
         }
 
         /**
-         * \~english
-         * Convert path to jQM dataUrl.
+         * @en Convert path to jQM dataUrl.
+         * @ja パスを jQM dataUrl に変換
          *
-         * @private
-         * @return {String} jQM data url.
-         *
-         * \~japanese
-         * パスを jQM dataUrl に変換
-         *
-         * @private
-         * @return {String} jQM data url.
+         * @returns jQM data url.
          */
         private static pathToJqmDataUrl(path: string): string {
             const url = Framework.toUrl(path);
@@ -1617,22 +1459,16 @@ namespace CDP.Framework {
         }
 
         /**
-         * \~english
-         * Update jQM urlHistory by window.history object.
-         * To be natural browsing history behavior, application needs to update jQM urlHistory
-         * when clicking back or next button of browser. (imperfection for decideDirection())
+         * @en Update jQM urlHistory by window.history object. <br>
+         *     To be natural browsing history behavior, application needs to update jQM urlHistory <br>
+         *     when clicking back or next button of browser. (imperfection for decideDirection())
          *
-         * @private
-         *
-         * \~japanese
-         * ブラウザの履歴に基づき jQM urlHistory を更新
-         * [戻る]/[進む]が押下された後、ページ遷移されるとき、jQM urlHistory を更新する。(decideDirection() により不完全)
-         *
-         * @private
+         * @ja ブラウザの履歴に基づき jQM urlHistory を更新 <br>
+         *     [戻る]/[進む]が押下された後、ページ遷移されるとき、jQM urlHistory を更新する。(decideDirection() により不完全)
          */
         private static treatUrlHistory(): void {
-            if (Router.s_lastNavigateInfo.positiveNavigate || history.length < Router.getJqmHistory().stack.length) {
-                Router.getJqmHistory().clearForward();
+            if (Router.s_lastNavigateInfo.positiveNavigate || history.length < Router._getJqmHistory().stack.length) {
+                Router._getJqmHistory().clearForward();
             }
         }
     }

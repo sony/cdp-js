@@ -118,9 +118,10 @@ namespace CDP.Framework {
     //___________________________________________________________________________________________________________________//
 
     /**
-     * @class Patch
-     * @brief patch class for jqm framework.
-     *       [review] vclick のパッチを当てることがわかるとよい
+     * @en patch class for jqm framework.
+     * @ja jqm framework 用パッチ適用クラス
+     *
+     * @internal
      */
     export class Patch {
 
@@ -130,11 +131,8 @@ namespace CDP.Framework {
         // public static methods
 
         /**
-         * \~english
-         * Apply patch before initialize.
-         *
-         * \~japanese
-         * 初期化前のパッチの適用
+         * @en Apply patch before initialize.
+         * @ja 初期化前のパッチの適用
          */
         public static applyBeforeInit(): void {
             if (!Patch.isSupportedVclick()) {
@@ -144,23 +142,17 @@ namespace CDP.Framework {
         }
 
         /**
-         * \~english
-         * Apply patch after initialize.
-         *
-         * \~japanese
-         * 初期化後のパッチの適用
+         * @en Apply patch after initialize.
+         * @ja 初期化後のパッチの適用
          */
         public static applyAfterInit(): void {
             _mobilePopupPatch();
         }
 
         /**
-         * \~english
-         * if "vclick" event is unsupported, returns false. ex: Android 4.4 (Kitkat)
-         *
-         * \~japanese
-         * "vclick" event が非サポートである platform (KitKat) は false を返す。
-         * jQM の version up により、解決される場合は無効かする。
+         * @en if "vclick" event is unsupported, returns false. ex: Android 4.4 (Kitkat)
+         * @ja "vclick" event が非サポートである platform (KitKat) は false を返す。 <br>
+         *      jQM の version up により、解決される場合は無効かする。
          */
         public static isSupportedVclick(): boolean {
             // for Android 4.4+ (Kitkat ～)

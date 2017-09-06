@@ -6,13 +6,11 @@ namespace CDP {
     import Promise = CDP.Promise;
 
     /**
-     * \~english
-     * The function returned Promise waits until PhoneGap is ready.
-     * [Note] emulate when PC enviroment.
+     * @en The function returned Promise waits until `cordova` is ready. <br>
+     *     [Note] emulate when PC enviroment.
      *
-     * \~japanese
-     * PhoneGap が有効になるまで待機
-     * PC 環境ではエミュレートされる。
+     * @ja `cordova` が有効になるまで待機 <br>
+     *     PC 環境ではエミュレートされる。
      */
     export function waitForDeviceReady(): Promise<void> {
         return new Promise<void>((resolve) => {
@@ -35,16 +33,15 @@ namespace CDP {
     let _defaultBackButtonHandler: (event?: JQuery.Event) => void = null;
 
     /**
-     * \~english
-     * Setup H/W Back key handler.
+     * @en Setup H/W Back key handler.
+     * @ja H/W Back key ハンドラの設定関数
      *
-     * @param  {Function} handler function.
-     * @return {Function} old handler function.
-     *
-     * \~japanese
-     *
-     * @param  {Function} handler 指定.
-     * @return {Function} 以前の handler.
+     * @param
+     * - `en` handler function.
+     * - `ja` handler 指定.
+     * @returns
+     * - `en` old handler function.
+     * - `ja` 以前の handler.
      */
     export function setBackButtonHandler(handler: (event?: JQuery.Event) => void): (event?: JQuery.Event) => void {
         const oldHandler = _defaultBackButtonHandler;
@@ -71,24 +68,28 @@ namespace CDP {
     export namespace Framework {
 
         /**
-         * @interface PlainSettings
-         * @brief jQuery に設定可能なオプション
+         * @en Any parameter types interface
+         * @ja 任意のパラメータ型定義
          */
         export interface PlainSettings<T = any> {
-            [key: string]: T;                   // ajaxSetup 以外のオプション
+            [key: string]: T;
         }
 
         /**
-         * @interface JQuerySettings
-         * @brief jQuery に設定可能なオプション
+         * @ja Setting parameters for jQuery
+         * @ja jQuery に設定可能なオプション
          */
         export interface JQuerySettings extends PlainSettings {
-            ajaxSetup?: JQuery.AjaxSettings;    // $.ajax の既定オプション
+            /**
+             * @en default $.ajax settings
+             * @ja $.ajax の既定設定
+             */
+            ajaxSetup?: JQuery.AjaxSettings;
         }
 
         /**
-         * @interface FrameworkOptions
-         * @brief Framework に設定可能なオプション
+         * @en Applicable options for [[CDP.Framework]]
+         * @ja [[CDP.Framework]] に設定可能なオプション
          */
         export interface FrameworkOptions {
             jquery?: JQuerySettings;
@@ -110,13 +111,8 @@ namespace CDP {
         let _dfInitialize: JQueryDeferred<void> = $.Deferred<void>();
 
         /**
-         * \~english
-         * Initialization function of Framework.
-         *
-         * \~japanese
-         * Framework の初期化関数
-         *
-         * @param options {FrameworkOptions} [in] options object.
+         * @en Initialization function of Framework.
+         * @ja Framework の初期化関数
          */
         export function initialize(options?: FrameworkOptions): IPromiseBase<void> {
             if ("pending" !== _dfInitialize.state()) {
@@ -157,7 +153,7 @@ namespace CDP {
                                 ;
 
                                 // Router の初期化
-                                if (Router.initialize({
+                                if (Router._initialize({
                                     anchorVclick: config.anchorVclick,
                                     firstPageTransition: config.firstPageTransition,
                                 })) {
@@ -207,30 +203,20 @@ namespace CDP {
         }
 
         /**
-         * \~english
-         * Check for initialization status.
+         * @en Check for initialization status.
+         * @ja 初期化済みか判定
          *
-         * @return {Boolean} true: initialized / false: uninitialized
-         *
-         * \~japanese
-         * 初期化済みか判定
-         *
-         * @return {Boolean} true: 初期化済み / false: 未初期化
+         * @returns
+         * - `en` true: initialized / false: uninitialized
+         * - `ja` true: 初期化済み / false: 未初期化
          */
         export function isInitialized(): boolean {
             return "resolved" === _dfInitialize.state();
         }
 
         /**
-         * \~english
-         * Wait for initialization status.
-         *
-         * @return {IPromiseBase<void>}
-         *
-         * \~japanese
-         * 初期化待ち
-         *
-         * @return {IPromiseBase<void>}
+         * @en Wait for initialization status.
+         * @ja 初期化待ち
          */
         export function waitForInitialize(): IPromiseBase<void> {
             return <any>_dfInitialize.promise();
@@ -239,32 +225,27 @@ namespace CDP {
         const _orientationListenerHolder: OrientationListenerHolder = {};
 
         /**
-         * \~english
-         * Register IOrientationChangedListener to framework.
+         * @en Register IOrientationChangedListener to framework.
+         * @ja IOrientationChangedListener を Framework に登録
          *
-         * @param key      {String}                      [in] ID key
-         * @param listener {IOrientationChangedListener} [in] IOrientationChangedListener instance
-         *
-         * \~japanese
-         * IOrientationChangedListener を Framework に登録
-         *
-         * @param key      {String}                      [in] ID key
-         * @param listener {IOrientationChangedListener} [in] IOrientationChangedListener instance
+         * @param key
+         *  - `en` ID key
+         *  - `ja` クライアントで管理可能な ID
+         * @param listener
+         *  - `en` IOrientationChangedListener instance
+         *  - `ja` IOrientationChangedListener インスタンス
          */
         export function registerOrientationChangedListener(key: string, listener: IOrientationChangedListener): void {
             _orientationListenerHolder[key] = listener;
         }
 
         /**
-         * \~english
-         * Unregister IOrientationChangedListener from framework.
+         * @en Unregister IOrientationChangedListener from framework.
+         * @ja IOrientationChangedListener を Framework から登録解除
          *
-         * @param key {String} [in] ID key
-         *
-         * \~japanese
-         * IOrientationChangedListener を Framework から登録解除
-         *
-         * @param key {String} [in] ID key
+         * @param key
+         *  - `en` ID key by using register
+         *  - `ja` 登録時に使用した ID
          */
         export function unregisterOrientationChangedListener(key: string): void {
             delete _orientationListenerHolder[key];
@@ -273,17 +254,12 @@ namespace CDP {
         let _activePage: IPage = null;
 
         /**
-         * \~english
-         * Setup event handlers when after router initialized.
+         * @en Setup event handlers when after router initialized.
+         * @ja イベントハンドラの設定. Router 初期化後に Framework がコールする.
          *
-         * @private
-         *
-         * \~japanese
-         * イベントハンドラの設定. Router 初期化後に Framework がコールする.
-         *
-         * @private
+         * @internal
          */
-        export function setupEventHandlers(): void {
+        export function _setupEventHandlers(): void {
             (() => {
                 const oldBackButtonHandler = CDP.setBackButtonHandler(null);
                 const baseBackButtonHandler = (event?: JQuery.Event): void => {
@@ -312,19 +288,12 @@ namespace CDP {
         let _lastOrientation: Orientation = null;
 
         /**
-         * \~english
-         * Setup active IPage instance.
+         * @en Setup active IPage instance.
+         * @ja active Page の設定. Framework がコールする.
          *
-         * @private
-         * @param page {IPage} [in] IPage instance.
-         *
-         * \~japanese
-         * active Page の設定. Framework がコールする.
-         *
-         * @private
-         * @param page {IPage} [in] IPage instance.
+         * @internal
          */
-        export function setActivePage(page: IPage): void {
+        export function _setActivePage(page: IPage): void {
             _activePage = page;
             if (_activePage) {
                 _lastOrientation = getOrientation();
@@ -332,16 +301,10 @@ namespace CDP {
         }
 
         /**
-         * \~english
-         * Reterns framework default click event string.
+         * @en Reterns framework default click event string.
+         * @ja Framework が既定に使用するクリックイベント文字列を取得
          *
-         * @private
-         *
-         * \~japanese
-         * Framework が既定に使用するクリックイベント文字列を取得
-         *
-         * @private
-         * @return {String} "vclick" / "click"
+         * @returns "vclick" / "click"
          */
         export function getDefaultClickEvent(): string {
             return Patch.s_vclickEvent;
@@ -351,17 +314,22 @@ namespace CDP {
         let _pageInstances: IPage[] = [];
 
         /**
-         * Page の登録
-         * constructor を指定する. 引数がある場合は、bind を行うこと
+         * @en Register Concrete IPage class. <br>
+         *     If constructor needs arguments, use bind() function.
+         * @ja Page の登録 <br>
+         *     constructor を指定する. 引数がある場合は、bind を行うこと
          *
-         * @param {constructor} ctor [in] コンストラクタを指定
+         * @param ctor
+         *  - `en` Concrete IPage class constructor
+         *  - `ja` コンストラクタを指定
          */
         export function registerPage(ctor: new () => IPage): void {
             _pageConstructors.push(ctor);
         }
 
         /**
-         * 予約されたコンストラクタからPage インスタンスを生成
+         * @en Page instances are generated from the reserved constructor.
+         * @ja 予約されたコンストラクタからPage インスタンスを生成
          */
         export function constructPages(): void {
             _pageConstructors.forEach((ctor: any) => {
@@ -371,24 +339,18 @@ namespace CDP {
         }
 
         /**
-         * Page インスタンスの参照を破棄
+         * @en Release Page instance reference
+         * @ja Page インスタンスの参照を破棄
          */
         export function disposePages(): void {
             _pageInstances = [];
         }
 
         /**
-         * \~english
-         * Get Config object.
+         * @en Get Config object.
+         * @ja Config object の取得
          *
-         * @private
-         * @return {FrameworkOptions} Config object.
-         *
-         * \~japanese
-         * Config object の取得
-         *
-         * @private
-         * @return {FrameworkOptions} Config object.
+         * @internal
          */
         function getConfig(options: FrameworkOptions): FrameworkOptions {
             const defConfig = {
