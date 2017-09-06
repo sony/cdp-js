@@ -1,7 +1,7 @@
 ﻿/*!
  * cdp.tools.js 2.0.0
  *
- * Date: 2017-08-22T06:22:38.468Z
+ * Date: 2017-09-06T05:54:59.429Z
  */
 (function (root, factory) { if (typeof define === "function" && define.amd) { define(["cdp.core", "cdp.promise"], function () { return factory(root.CDP || (root.CDP = {}), root.jQuery || root.$); }); } else { factory(root.CDP || (root.CDP = {}), root.jQuery || root.$); } }(((this || 0).self || global), function (CDP, $) { CDP.Tools = CDP.Tools || {};
 var CDP;
