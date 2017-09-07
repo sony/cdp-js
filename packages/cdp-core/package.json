@@ -68,17 +68,17 @@
     "@types/requirejs": "^2.1.31",
     "convert-source-map": "^1.5.0",
     "del": "^3.0.0",
-    "eslint": "^4.5.0",
+    "eslint": "^4.6.1",
     "fs-extra": "^4.0.1",
     "jquery": "^3.2.1",
-    "npm-run-all": "^4.0.2",
-    "nyc": "^11.1.0",
+    "npm-run-all": "^4.1.1",
+    "nyc": "^11.2.1",
     "plato": "^1.7.0",
     "requirejs": "^2.3.5",
     "source-map": "^0.5.7",
-    "tslint": "^5.6.0",
+    "tslint": "^5.7.0",
     "typedoc": "^0.8.0",
-    "typescript": "^2.5.1",
+    "typescript": "^2.5.2",
     "uglify-js": "^3.0.28"
   }
 }

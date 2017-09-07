@@ -5,33 +5,22 @@
     const TAG = "[CDP.Framework.Page] ";
 
     /**
-     * \~english
-     * @interface ManagedIntent
-     * @brief Internal Intent interface for managed update info.
+     * @en Internal Intent interface for managed update info.
+     * @ja 更新情報が管理された内部 Intent インターフェイスクラス
      *
-     * \~japanese
-     * @interface ManagedIntent
-     * @brief 更新情報が管理された内部 Intent インターフェイスクラス
+     * @internal
      */
     interface ManagedIntent extends Intent {
         /**
-         * \~english
-         * set "true" when update in Page class.
-         *
-         * \~japanese
-         * ページ内で更新された場合 true
+         * @en set "true" when update in Page class.
+         * @ja ページ内で更新された場合 true
          */
         _update: boolean;
     }
 
     /**
-     * \~english
-     * @class Page
-     * @brief Base class of all page unit.
-     *
-     * \~japanese
-     * @class Page
-     * @brief すべてのページの基本となる既定クラス
+     * @en Base class of all page unit.
+     * @ja すべてのページの基本となる既定クラス
      */
     export class Page implements IPage {
 
@@ -50,19 +39,15 @@
         // public methods
 
         /**
-         * \~english
-         * constructor
-         *
-         * @param _url    {String}               [in] page's URL
-         * @param _id     {String}               [in] page's ID
-         * @param options {PageConstructOptions} [in] options
-         *
-         * \~japanese
-         * constructor
-         *
-         * @param _url    {String}               [in] ページ URL
-         * @param _id     {String}               [in] ページ ID
-         * @param options {PageConstructOptions} [in] オプション
+         * @param _url
+         *  - `en` page's URL
+         *  - `ja` ページ URL
+         * @param _id
+         *  - `en` page's ID
+         *  - `ja` ページ ID
+         * @param options
+         *  - `en` construction options
+         *  - `ja` 構築オプション
          */
         constructor(private _url: string, private _id: string, options?: PageConstructOptions) {
             this.setup(options);
@@ -81,16 +66,16 @@
         set intent(newIntent: Intent)   { this._intent = <any>newIntent; this._intent._update = true;       }
 
         //////////////////////////////////////////
-        // public Event Handler
+        // Implemtents: IPage
 
-        //! Orientation の変更を受信
+        // Orientation の変更を受信
         public onOrientationChanged(newOrientation: Orientation): void {
             if (this._owner) {
                 this._owner.onOrientationChanged(newOrientation);
             }
         }
 
-        //! H/W Back Button ハンドラ
+        // H/W Back Button ハンドラ
         public onHardwareBackButton(event?: JQuery.Event): boolean {
             if (this._owner) {
                 return this._owner.onHardwareBackButton(event);
@@ -99,7 +84,7 @@
             }
         }
 
-        //! Router "before route change" ハンドラ
+        // Router "before route change" ハンドラ
         public onBeforeRouteChange(): IPromiseBase<any> {
             if (this._owner) {
                 return this._owner.onBeforeRouteChange();
@@ -108,7 +93,7 @@
             }
         }
 
-        //! 汎用コマンドを受信
+        // 汎用コマンドを受信
         public onCommand(event?: JQuery.Event, kind?: string): boolean {
             if (this._owner) {
                 return this._owner.onCommand(event, kind);
@@ -117,56 +102,56 @@
             }
         }
 
-        //! 最初の OnPageInit() のときにのみコールされる
+        // 最初の OnPageInit() のときにのみコールされる
         public onInitialize(event: JQuery.Event): void {
             if (this._owner) {
                 this._owner.onInitialize(event);
             }
         }
 
-        //! jQM event: "pagebeforecreate" に対応
+        // jQM event: "pagebeforecreate" に対応
         public onPageBeforeCreate(event: JQuery.Event): void {
             if (this._owner) {
                 this._owner.onPageBeforeCreate(event);
             }
         }
 
-        //! jQM event: "pagecreate" (旧:"pageinit") に対応
+        // jQM event: "pagecreate" (旧:"pageinit") に対応
         public onPageInit(event: JQuery.Event): void {
             if (this._owner) {
                 this._owner.onPageInit(event);
             }
         }
 
-        //! jQM event: "pagebeforeshow" に対応
+        // jQM event: "pagebeforeshow" に対応
         public onPageBeforeShow(event: JQuery.Event, data?: ShowEventData): void {
             if (this._owner) {
                 this._owner.onPageBeforeShow(event, data);
             }
         }
 
-        //! jQM event: "pagecontainershow" (旧:"pageshow") に対応
+        // jQM event: "pagecontainershow" (旧:"pageshow") に対応
         public onPageShow(event: JQuery.Event, data?: ShowEventData): void {
             if (this._owner) {
                 this._owner.onPageShow(event, data);
             }
         }
 
-        //! jQM event: "pagebeforehide" に対応
+        // jQM event: "pagebeforehide" に対応
         public onPageBeforeHide(event: JQuery.Event, data?: HideEventData): void {
             if (this._owner) {
                 this._owner.onPageBeforeHide(event, data);
             }
         }
 
-        //! jQM event: "pagecontainerhide" (旧:"pagehide") に対応
+        // jQM event: "pagecontainerhide" (旧:"pagehide") に対応
         public onPageHide(event: JQuery.Event, data?: HideEventData): void {
             if (this._owner) {
                 this._owner.onPageHide(event, data);
             }
         }
 
-        //! jQM event: "pageremove" に対応
+        // jQM event: "pageremove" に対応
         public onPageRemove(event: JQuery.Event): void {
             if (this._owner) {
                 this._owner.onPageRemove(event);
@@ -176,7 +161,7 @@
         //////////////////////////////////////////
         // private methods
 
-        //! mixin 用疑似コンストラクタ
+        // mixin 用疑似コンストラクタ
         private setup(options: PageConstructOptions): void {
             // mixin destination 用の再初期化
             this._initialized = false;
@@ -228,10 +213,10 @@
             Router.register(options.route, this._url, options.top, options.callback);
         }
 
-        //! PageTransitionDirection の判定
+        // PageTransitionDirection の判定
         private getDirection(): PageTransitionDirection {
-            const activeIndex = Router.getJqmHistory().activeIndex;
-            const prevIndex = Router.getJqmHistory().previousIndex;
+            const activeIndex = Router._getJqmHistory().activeIndex;
+            const prevIndex = Router._getJqmHistory().previousIndex;
 
             if (null == activeIndex || null == prevIndex) {
                 return "unknown";
@@ -257,8 +242,8 @@
         }
 
         private pageBeforeShow(event: JQuery.Event, data: ShowEventData): void {
-            Framework.setActivePage(this);
-            this._intent = <ManagedIntent>Router.popIntent();
+            Framework._setActivePage(this);
+            this._intent = <ManagedIntent>Router._popIntent();
             this.onPageBeforeShow(event, $.extend(data, { direction: this.getDirection() }));
         }
 
@@ -270,12 +255,12 @@
             this.onPageBeforeHide(event, $.extend(data, { direction: this.getDirection() }));
             if (null != this._intent && (this._keepIntent || this._intent._update)) {    // intent に更新があった場合
                 delete this._intent._update;
-                Router.pushIntent(this._intent);
+                Router._pushIntent(this._intent);
             } else if (Router.fromHashChanged() && Router.isInSubFlow()) {    // Sub Flow 内で back された場合
-                Router.pushIntent(this._intent);
+                Router._pushIntent(this._intent);
             }
             this._intent = null;
-            Framework.setActivePage(null);
+            Framework._setActivePage(null);
         }
 
         private pageHide(event: JQuery.Event, data: HideEventData): void {

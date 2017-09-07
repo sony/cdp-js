@@ -3,8 +3,10 @@
 namespace CDP.Framework {
 
     /**
-     * platform 判定オブジェクト
-     * [参考] https://w3g.jp/blog/tools/js_browser_sniffing
+     * @en platform judgement utility
+     * @ja platform 判定オブジェクト
+     *
+     * @seehttps://w3g.jp/blog/tools/js_browser_sniffing
      */
     export const Platform = (() => {
         const ua = navigator.userAgent.toLowerCase();
