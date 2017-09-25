@@ -15,5 +15,6 @@ bin/
 external/
 node_modules/
 obj/
+tasks/
 temp/
 tests/unit/**/*.js

@@ -14,8 +14,15 @@ npm-debug.log
 bin/
 exports/**/*.js
 src/scripts/**/*.js
+src/scripts/@types/
+src/scripts/cdp/bridge/
+src/scripts/cdp/core/
+src/scripts/cdp/framework/
+src/scripts/cdp/tools/
+src/scripts/cdp/ui/
 external/
 node_modules/
 obj/
+tasks/
 temp/
 tests/unit/**/*.js
