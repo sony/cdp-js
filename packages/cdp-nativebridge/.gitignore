@@ -17,5 +17,6 @@ src/scripts/**/*.js
 external/
 node_modules/
 obj/
+tasks/
 temp/
 tests/unit/**/*.js

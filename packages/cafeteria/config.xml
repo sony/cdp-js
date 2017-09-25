@@ -23,7 +23,7 @@
         <allow-intent href="itms-apps:*" />
     </platform>
     <engine name="android" spec="^6.2.3" />
-    <engine name="ios" spec="^4.4.0" />
+    <engine name="ios" spec="^4.5.0" />
     <plugin name="cordova-plugin-cdp-nativebridge" spec="^1.1.0" />
     <plugin name="cordova-plugin-file" spec="^4.3.3" />
     <plugin name="cordova-plugin-secure-storage" spec="^2.6.8" />

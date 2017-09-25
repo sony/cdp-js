@@ -16,6 +16,7 @@ npm-debug.log
 node_modules/
 bin/
 obj/
+tasks/
 temp/
 www/
 platforms/*/www/
@@ -23,6 +24,13 @@ platforms/*/assets/www/
 !platforms/*/platform_www/plugins/*/www/
 !plugins/*/www/
 platforms/*/porting/**/*.js
+platforms/ios/Cafeteria.xcarchive
+platforms/ios/CordovaLib/CordovaLib.xcodeproj/xcuserdata/
+platforms/ios/Cafeteria.xcodeproj/xcuserdata/
+platforms/ios/platform_www
+platforms/android/platform_www
 app/**/*.js
 app/**/*.map
+app/external/@types/@cdp
+app/external/cdp
 tests/unit/**/*.js

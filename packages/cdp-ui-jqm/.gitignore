@@ -18,5 +18,6 @@ src/styleseets/**/*.css
 external/
 node_modules/
 obj/
+tasks/
 temp/
 tests/unit/**/*.js
