@@ -1,9 +1,59 @@
 ﻿﻿--------------------------------------------------------------------------------
-NOTICES FOR @OSS
+NOTICES FOR jQuery
 --------------------------------------------------------------------------------
 
-- @OSS - @INCLUDEING_DIR
-    @WEB_LINK_OSS
+ - jQuery Mobile - ./app/external/jquery/stylesheets/jquery.mobile.default-theme.css
 
-    Released under the @LICENSE Licenses.
-    @WEB_LINK_OSS_LICENSE
+    https://github.com/jquery/jquery-mobile
+
+    Released under the MIT Licenses.
+    http://jquery.org/license
+
+--------------------------------------------------------------------------------
+NOTICES FOR Cordova
+--------------------------------------------------------------------------------
+
+ - Cordova - ./packages/cafeteria/platforms/android/cordova/
+           - ./packages/cafeteria/platforms/android/CordovaLib/
+           - ./packages/cafeteria/platforms/ios/cordova/
+           - ./packages/cafeteria/platforms/ios/CordovaLib/
+           - ./packages/cafeteria/plugins/cordova-plugin-compat/
+           - ./packages/cafeteria/plugins/cordova-plugin-file/
+           - ./packages/cafeteria/plugins/cordova-plugin-whitelist/
+    http://cordova.apache.org/
+    https://github.com/apache/cordova-android
+    https://github.com/apache/cordova-ios
+
+
+    Released under the Apache License v2.0.
+    http://cordova.apache.org/#about
+
+--------------------------------------------------------------------------------
+NOTICES FOR cordova-plugin-secure-storage
+--------------------------------------------------------------------------------
+
+ - cordova-plugin-secure-storage - ./packages/cafeteria/plugins/cordova-plugin-secure-storage/
+    https://github.com/Crypho/cordova-plugin-secure-storage
+
+    Released under the MIT Licenses.
+    https://github.com/Crypho/cordova-plugin-secure-storage/blob/master/LICENSE
+
+--------------------------------------------------------------------------------
+NOTICES FOR cordova-plugin-cdp-nativebridge
+--------------------------------------------------------------------------------
+
+ - cordova-plugin-cdp-nativebridge - ./packages/cafeteria/plugins/cordova-plugin-cdp-nativebridge/
+    https://github.com/Crypho/cordova-plugin-secure-storage
+
+    Released under the Apache License v2.0.
+    https://github.com/sony/cordova-plugin-cdp-nativebridge/blob/master/LICENSE
+
+--------------------------------------------------------------------------------
+NOTICES FOR sylvester
+--------------------------------------------------------------------------------
+
+ - sylvester - ./app/external/sylvester/scripts/sylvester.js
+    https://github.com/jcoglan/sylvester
+
+    Released under the MIT Licenses.
+    https://github.com/jcoglan/sylvester

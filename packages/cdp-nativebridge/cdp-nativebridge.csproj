@@ -146,7 +146,6 @@
     <Content Include=".npmignore" />
     <Content Include="BANNER" />
     <Content Include="LICENSE" />
-    <Content Include="NOTICE" />
     <Content Include="package.json" />
     <Content Include="README.md" />
     <Content Include="tsconfig.base.json">

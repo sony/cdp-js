@@ -143,7 +143,6 @@
     <Content Include="docs\images\.gitkeep" />
     <Content Include="docs\jp\README.md" />
     <Content Include="LICENSE" />
-    <Content Include="NOTICE" />
     <Content Include="package.json" />
     <Content Include="README.md" />
     <Content Include="tests\runner\test-main.js" />

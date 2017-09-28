@@ -138,7 +138,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="LICENSE" />
-    <Content Include="NOTICE" />
     <Content Include="package.json" />
     <Content Include="README.md" />
   </ItemGroup>

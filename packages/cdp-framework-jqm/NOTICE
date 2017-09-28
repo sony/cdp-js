@@ -2,18 +2,25 @@
 NOTICES FOR jQuery
 --------------------------------------------------------------------------------
 
-- jQuery - ./dev/app/modules/jquery/scripts/jquery.js
-    https://github.com/jquery/jquery
+ - jQuery Mobile - ./external/jquery/scripts/jquery.mobile.js
+                 - ./external/jquery/stylesheets/jquery.mobile.css
+    https://github.com/jquery/jquery-mobile
+
+    Released under the MIT Licenses.
+    http://jquery.org/license
+
+ - jQuery Migrate - ./external/jquery/scripts/jquery-migrate.js
+    https://github.com/jquery/jquery-migrate
 
     Released under the MIT Licenses.
     http://jquery.org/license
 
 --------------------------------------------------------------------------------
-NOTICES FOR Jasmine.d.ts
+NOTICES FOR jquerymobile.d.ts
 --------------------------------------------------------------------------------
 
- - jasmine.d.ts - ./external/include/jasmine.d.ts
-    https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/jasmine/jasmine.d.ts
+ - jquerymobile.d.ts - ./dist/@types/jquery.mobile.d.ts
+    https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/jquerymobile
 
     Released under the MIT Licenses.
     https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/LICENSE

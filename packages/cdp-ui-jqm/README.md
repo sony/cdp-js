@@ -2,7 +2,7 @@
 
 ## What is this module
 
-* TODO:
+* CDP UI library module based on jQuery Mobile widgets.
 
 
 ### Repository structure

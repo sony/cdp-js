@@ -2,18 +2,97 @@
 NOTICES FOR jQuery
 --------------------------------------------------------------------------------
 
-- jQuery - ./dev/app/modules/jquery/scripts/jquery.js
-    https://github.com/jquery/jquery
+ - jQuery Mobile - ./packages/cdp-framework-jqm/external/jquery/scripts/jquery.mobile.js
+                 - ./packages/cdp-framework-jqm/external/jquery/stylesheets/jquery.mobile.css
+    https://github.com/jquery/jquery-mobile
+
+    Released under the MIT Licenses.
+    http://jquery.org/license
+
+ - jQuery Migrate - ./packages/cdp-framework-jqm/external/jquery/scripts/jquery-migrate.js
+    https://github.com/jquery/jquery-migrate
 
     Released under the MIT Licenses.
     http://jquery.org/license
 
 --------------------------------------------------------------------------------
-NOTICES FOR Jasmine.d.ts
+NOTICES FOR i18next
 --------------------------------------------------------------------------------
 
- - jasmine.d.ts - ./external/include/jasmine.d.ts
-    https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/jasmine/jasmine.d.ts
+ - i18next stuff including ./dist/cdp.js
+   - i18next
+   - i18next-browser-languagedetector
+   - i18next-localstorage-cache
+   - i18next-sprintf-postprocessor
+   - i18next-xhr-backend
+   - jquery-i18next
+    https://www.i18next.com/
+    https://github.com/i18next
+
+
+    Released under the MIT Licenses.
+    https://github.com/i18next/i18next/blob/master/LICENSE
+    https://github.com/i18next/i18next-browser-languageDetector/blob/master/LICENSE
+    https://github.com/i18next/i18next-localStorage-cache/blob/master/LICENSE
+    https://github.com/i18next/i18next-sprintf-postProcessor/blob/master/LICENSE
+    https://github.com/i18next/i18next-xhr-backend/blob/master/LICENSE
+    https://github.com/i18next/jquery-i18next/blob/master/LICENSE
+
+﻿--------------------------------------------------------------------------------
+NOTICES FOR Cordova
+--------------------------------------------------------------------------------
+
+ - Cordova - ./packages/cafeteria/platforms/android/cordova/
+           - ./packages/cafeteria/platforms/android/CordovaLib/
+           - ./packages/cafeteria/platforms/ios/cordova/
+           - ./packages/cafeteria/platforms/ios/CordovaLib/
+           - ./packages/cafeteria/plugins/cordova-plugin-compat/
+           - ./packages/cafeteria/plugins/cordova-plugin-file/
+           - ./packages/cafeteria/plugins/cordova-plugin-whitelist/
+    http://cordova.apache.org/
+    https://github.com/apache/cordova-android
+    https://github.com/apache/cordova-ios
+
+
+    Released under the Apache License v2.0.
+    http://cordova.apache.org/#about
+
+--------------------------------------------------------------------------------
+NOTICES FOR cordova-plugin-secure-storage
+--------------------------------------------------------------------------------
+
+ - cordova-plugin-secure-storage - ./packages/cafeteria/plugins/cordova-plugin-secure-storage/
+    https://github.com/Crypho/cordova-plugin-secure-storage
+
+    Released under the MIT Licenses.
+    https://github.com/Crypho/cordova-plugin-secure-storage/blob/master/LICENSE
+
+--------------------------------------------------------------------------------
+NOTICES FOR cordova-plugin-cdp-nativebridge
+--------------------------------------------------------------------------------
+
+ - cordova-plugin-cdp-nativebridge - ./packages/cafeteria/plugins/cordova-plugin-cdp-nativebridge/
+    https://github.com/Crypho/cordova-plugin-secure-storage
+
+    Released under the Apache License v2.0.
+    https://github.com/sony/cordova-plugin-cdp-nativebridge/blob/master/LICENSE
+
+--------------------------------------------------------------------------------
+NOTICES FOR sylvester
+--------------------------------------------------------------------------------
+
+ - sylvester - ./app/external/sylvester/scripts/sylvester.js
+    https://github.com/jcoglan/sylvester
+
+    Released under the MIT Licenses.
+    https://github.com/jcoglan/sylvester
+
+--------------------------------------------------------------------------------
+NOTICES FOR jquerymobile.d.ts
+--------------------------------------------------------------------------------
+
+ - jquerymobile.d.ts - ./packages/cdp-framework-jqm/dist/@types/jquery.mobile.d.ts
+    https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/jquerymobile
 
     Released under the MIT Licenses.
     https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/LICENSE

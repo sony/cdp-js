@@ -2,7 +2,7 @@
 
 ## What is this module
 
-* TODO:
+* CDP lazyload script utilized module. This module is used by build and test tools.
 
 
 ### Repository structure

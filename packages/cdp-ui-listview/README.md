@@ -2,7 +2,7 @@
 
 ## What is this module
 
-* TODO:
+* CDP virtual listview library module.
 
 
 ### Repository structure

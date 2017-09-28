@@ -2,7 +2,7 @@
 
 ## What is this module
 
-* TODO:
+* Wrapper module for `cordova-plugin-cdp-nativebridge`.
 
 
 ### Repository structure
