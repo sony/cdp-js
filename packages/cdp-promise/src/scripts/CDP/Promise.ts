@@ -534,19 +534,20 @@
          *
          *  function (): IPromise<SomeData> => {
          *      return new Promise((resolve, reject, dependOn) => {
-         *      // async1(), async2() are async function and returned IPromise instance.
-         *      dependOn(async1())
-         *          .then(() => {
-         *              return dependOn(async2());
-         *          })
-         *          .then(() => {
-         *              resolve({ somedata: "hoge" });
-         *          })
-         *          .catch((error) => {
-         *              reject(error);
+         *          // async1(), async2() are async function and returned IPromise instance.
+         *          dependOn(async1())
+         *              .then(() => {
+         *                  return dependOn(async2());
+         *              })
+         *              .then(() => {
+         *                  resolve({ somedata: "hoge" });
+         *              })
+         *              .catch((error) => {
+         *                  reject(error);
+         *              });
          *          });
-         *      });
-         *  };
+         *      };
+         *  }
          * ```
          *
          * @param executor

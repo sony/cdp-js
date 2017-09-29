@@ -87,11 +87,11 @@
     "nyc": "^11.2.1",
     "plato": "^1.7.0",
     "requirejs": "^2.3.5",
-    "source-map": "^0.5.7",
+    "source-map": "^0.6.0",
     "source-map-loader": "^0.2.1",
     "tslint": "^5.7.0",
     "typedoc": "^0.8.0",
-    "typescript": "^2.5.2",
+    "typescript": "^2.5.3",
     "uglify-js": "^3.1.2",
     "webpack": "^3.6.0"
   }

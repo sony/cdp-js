@@ -28,6 +28,7 @@ const dir = {
 const external_rearrange = {
     root: `${dir.external}`,
     ignore_modules: [
+        '^@cdp',
         '^@types',
     ],
     module_adjuster: {

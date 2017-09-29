@@ -2,7 +2,7 @@
 
 ## What is this module
 
-* TODO:
+* CDP misc libraries module.
 
 
 ### Repository structure

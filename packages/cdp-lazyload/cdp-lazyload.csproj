@@ -81,7 +81,6 @@
     <Content Include="docs\images\.gitkeep" />
     <Content Include="docs\jp\README.md" />
     <Content Include="LICENSE" />
-    <Content Include="NOTICE" />
     <Content Include="package.json" />
     <Content Include="README.md" />
     <Content Include="tasks\banner.js" />
@@ -115,5 +114,8 @@
     <Content Include="dist\cdp.lazyload.min.js.map">
       <DependentUpon>cdp.lazyload.js</DependentUpon>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="RELEASENOTE.md" />
   </ItemGroup>
 </Project>

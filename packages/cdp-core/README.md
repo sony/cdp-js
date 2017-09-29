@@ -2,7 +2,11 @@
 
 ## What is this module
 
-* TODO:
+* CDP framework core module.
+
+  - provides
+    - Web root context
+    - Error framework
 
 
 ### Repository structure

@@ -138,7 +138,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="LICENSE" />
-    <Content Include="NOTICE" />
     <Content Include="package.json" />
     <Content Include="README.md" />
   </ItemGroup>
@@ -176,5 +175,8 @@
     <Content Include="tsconfig.base.json">
       <DependentUpon>tsconfig.json</DependentUpon>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="RELEASENOTE.md" />
   </ItemGroup>
 </Project>

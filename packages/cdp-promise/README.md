@@ -2,8 +2,66 @@
 
 ## What is this module
 
-* TODO:
+* This module provides the `cancelable` promise object and utilities based on jQuery.Deferred.
 
+- example1:
+```ts
+// pipe line operation
+function procPipeline(): IPromise<SomeData> {
+    const df = $.Deferred();            // create jQueryDeferred instance.
+    const promise = makePromise(df);    // create IPromise instance.
+
+    // async1(), async2(), async3() are async function and returned IPromise instance.
+    promsie.dependOn(async1())
+        .then(() => {
+            return promsie.dependOn(async2());
+        })
+        .then(() => {
+            return promsie.dependOn(async3());
+        })
+        .done(() => {
+            df.resolve({ somedata: "hoge" });
+        })
+        .fail((error) => {
+            df.reject(error);
+        });
+
+    return promise;
+}
+
+// client of pipe line operation
+function procCaller(): void {
+    const promise = procPipeline();
+    setTimeout(() => {
+        promise.abort(); // The whole cancellation is possible by optional timing.
+        // In whichever processing of async1(), async2() or async3(),
+        // it can be canceled appropriately.
+    });
+}
+```
+
+- example2:
+```ts
+// override global "Promise" for using Cancelable Promise in this module scope.
+import { Promise } from "cdp";
+
+function (): IPromise<SomeData> => {
+    return new Promise((resolve, reject, dependOn) => {
+        // async1(), async2() are async function and returned IPromise instance.
+        dependOn(async1())
+            .then(() => {
+                return dependOn(async2());
+            })
+            .then(() => {
+                resolve({ somedata: "hoge" });
+            })
+            .catch((error) => {
+                reject(error);
+            });
+        });
+    };
+}
+```
 
 ### Repository structure
 Folder and file structure of this repository is the following list.

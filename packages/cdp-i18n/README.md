@@ -2,7 +2,7 @@
 
 ## What is this module
 
-* TODO:
+* CDP i18n module based on i18next.
 
 
 ### Repository structure

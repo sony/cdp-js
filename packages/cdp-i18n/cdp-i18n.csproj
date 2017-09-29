@@ -185,4 +185,7 @@
     <Content Include="tests\runner\res\messages.en-US.json" />
     <Content Include="tests\runner\res\messages.ja-JP.json" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="RELEASENOTE.md" />
+  </ItemGroup>
 </Project>

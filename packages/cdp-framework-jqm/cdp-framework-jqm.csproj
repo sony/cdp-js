@@ -211,4 +211,7 @@
       <DependentUpon>cdp.framework.jqm.js</DependentUpon>
     </Content>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="RELEASENOTE.md" />
+  </ItemGroup>
 </Project>

@@ -2,7 +2,17 @@
 
 ## What is this module
 
-* TODO:
+* CDP mobile framework module based on Backbone.js, jQuery Mobile and i18next.
+
+  - including
+    - @cdp/core
+    - @cdp/promise
+    - @cdp/i18n
+    - @cdp/framework-jqm
+    - @cdp/tools
+    - @cdp/ui-listview
+    - @cdp/ui-jqm
+    - @cdp/nativebridge
 
 
 ### Repository structure

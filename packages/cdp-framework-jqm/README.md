@@ -2,7 +2,7 @@
 
 ## What is this module
 
-* TODO:
+* CDP framework module based on Backbone.js, jQuery Mobile and i18next.
 
 
 ### Repository structure
