@@ -444,4 +444,7 @@
       <DependentUpon>cdp.ui.jqm.swatch.css</DependentUpon>
     </Content>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="RELEASENOTE.md" />
+  </ItemGroup>
 </Project>

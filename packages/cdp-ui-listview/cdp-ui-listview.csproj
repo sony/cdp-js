@@ -228,4 +228,7 @@
       <DependentUpon>cdp.ui.listview.js</DependentUpon>
     </Content>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="RELEASENOTE.md" />
+  </ItemGroup>
 </Project>

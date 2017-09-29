@@ -164,4 +164,7 @@
       <DependentUpon>cdp.promise.js</DependentUpon>
     </Content>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="RELEASENOTE.md" />
+  </ItemGroup>
 </Project>

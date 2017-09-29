@@ -214,4 +214,7 @@
       <DependentUpon>cdp.swatch.css</DependentUpon>
     </Content>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="RELEASENOTE.md" />
+  </ItemGroup>
 </Project>

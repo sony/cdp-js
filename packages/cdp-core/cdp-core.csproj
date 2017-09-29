@@ -176,4 +176,7 @@
       <DependentUpon>tsconfig.json</DependentUpon>
     </Content>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="RELEASENOTE.md" />
+  </ItemGroup>
 </Project>

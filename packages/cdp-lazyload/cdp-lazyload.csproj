@@ -115,4 +115,7 @@
       <DependentUpon>cdp.lazyload.js</DependentUpon>
     </Content>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="RELEASENOTE.md" />
+  </ItemGroup>
 </Project>
