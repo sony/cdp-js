@@ -111,7 +111,7 @@
         "underscore": "^1.8.3"
     },
     "devDependencies": {
-        "@types/backbone": "^1.3.36",
+        "@types/backbone": "^1.3.37",
         "@types/cordova": "^0.0.34",
         "@types/cordova-plugin-file": "0.0.3",
         "@types/flipsnap": "^0.0.28",
@@ -119,15 +119,15 @@
         "@types/i18next": "^8.4.2",
         "@types/iscroll": "^5.2.1",
         "@types/jasmine": "^2.6.0",
-        "@types/jquery": "^3.2.12",
+        "@types/jquery": "^3.2.13",
         "@types/requirejs": "^2.1.31",
         "@types/sylvester": "^0.1.5",
         "@types/underscore": "^1.8.3",
-        "autoprefixer": "^7.1.4",
+        "autoprefixer": "^7.1.5",
         "clean-css": "^4.1.9",
         "convert-source-map": "^1.5.0",
         "del": "^3.0.0",
-        "eslint": "^4.7.2",
+        "eslint": "^4.8.0",
         "fs-extra": "^4.0.2",
         "html-minifier": "^3.5.5",
         "node-sass": "^4.5.3",
@@ -136,11 +136,11 @@
         "plato": "^1.7.0",
         "postcss-cli": "^4.1.1",
         "smartwatch": "^1.0.3",
-        "source-map": "^0.6.0",
+        "source-map": "^0.6.1",
         "tslint": "^5.7.0",
         "typedoc": "^0.9.0",
         "typescript": "^2.5.3",
-        "uglify-js": "^3.1.2"
+        "uglify-js": "^3.1.3"
     },
     "cordova": {
         "plugins": {
