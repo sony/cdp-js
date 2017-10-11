@@ -10,10 +10,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/CDP-Tokyo/cdp-js.git"
+    "url": "https://github.com/sony/cdp-js.git"
   },
   "bugs": {
-    "url": "https://github.com/CDP-Tokyo/cdp-js/issues"
+    "url": "https://github.com/sony/cdp-js/issues"
   },
   "license": "Apache-2.0",
   "keywords": [
@@ -74,6 +74,9 @@
     "last 2 iOS versions"
   ],
   "dependencies": {
+    "@cdp/framework-jqm": ">=2.0.0",
+    "@cdp/tools": ">=2.0.0",
+    "@cdp/ui-listview": ">=2.0.0",
     "backbone": ">=1.3.3",
     "jquery": ">=3.0.0",
     "underscore": ">=1.8.3"

@@ -81,10 +81,10 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/CDP-Tokyo/cdp-js.git"
+        "url": "https://github.com/sony/cdp-js.git"
     },
     "bugs": {
-        "url": "https://github.com/CDP-Tokyo/cdp-js/issues"
+        "url": "https://github.com/sony/cdp-js/issues"
     },
     "license": "Apache-2.0",
     "browserslist": [
