@@ -63,10 +63,10 @@
   },
   "devDependencies": {
     "@types/jasmine": "^2.6.0",
-    "@types/jquery": "^3.2.12",
+    "@types/jquery": "^3.2.13",
     "@types/requirejs": "^2.1.31",
     "del": "^3.0.0",
-    "eslint": "^4.7.2",
+    "eslint": "^4.8.0",
     "fs-extra": "^4.0.2",
     "npm-run-all": "^4.1.1",
     "nyc": "^11.2.1",
@@ -74,6 +74,6 @@
     "requirejs": "^2.3.5",
     "tslint": "^5.7.0",
     "typescript": "^2.5.3",
-    "uglify-js": "^3.1.2"
+    "uglify-js": "^3.1.3"
   }
 }
