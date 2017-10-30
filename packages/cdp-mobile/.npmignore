@@ -3,11 +3,13 @@ built/
 external/
 obj/
 src/
-tesks/
+tasks/
 tests/
 BANNER
+BANNER-INCLUDES
 project.config.js
 tsconfig.json
+tsconfig.base.json
 *.sln
 *.csproj
 *.csproj.user

@@ -1,13 +1,15 @@
 bin/
 built/
 external/
+exports/
 obj/
 src/
-tesks/
+tasks/
 tests/
 BANNER
 project.config.js
 tsconfig.json
+tsconfig.base.json
 *.sln
 *.csproj
 *.csproj.user

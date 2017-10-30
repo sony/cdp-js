@@ -53,7 +53,6 @@ Please see the following documentation.
 
 - [English/英語](docs/en)
 - [Japanese/日本語](docs/jp)
-    - [New Boilerplate解説](https://github.com/CDP-Tokyo/cdp-js/blob/master/packages/cafeteria/docs/ja/README.md)
 
 ## Release Notes
 Please see the following link.
