@@ -163,4 +163,7 @@
   <ItemGroup>
     <Content Include="docs\jp\gudelines-typedoc-comment.md" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="docs\jp\about-cdp-framework.md" />
+  </ItemGroup>
 </Project>

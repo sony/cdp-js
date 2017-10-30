@@ -39,7 +39,7 @@ $ npm run <command>
 | command         | description                                                                                                           |
 |:----------------|:----------------------------------------------------------------------------------------------------------------------|
 | clean           | `docs/reports/metrics` 以外の生成したファイルを削除                                                                   |
-| update          | `devDependencies`, `dependencies`, `@cdp/mobile` および `package.json` の更新. ※要 ssh-agent                         |
+| update          | `devDependencies`, `dependencies`, `@cdp/mobile` および `package.json` の更新.                                        |
 | update:cdp      | `@cdp/mobile` の更新. ※要 ssh-agent                                                                                  |
 | test            | `compile`, `lint`, `unit-test` の実行                                                                                 |
 | rearrange       | `dependencies` に記載されているモジュールを `node_modules` から `external` 以下に再配置. ※既定で 整形, minify を実行 |
@@ -98,7 +98,7 @@ npm scripts, cordova command ともに、以下の便利オプションが指定
 |:------------|:-----------------------------------------------------------------------------------|
 | --no-minify | リリースビルドで `minify` しない                                                   |
 | --map       | リリースビルドで `map file` を生成する. `--no-minify` が指定されていた場合無効.    |
-| --no-hook   | 対象の cordova command を実行しても hook しない (公式 --nohook が効かない)         |
+| --no-hook   | 対象の cordova command を実行しても hook しない (公式 --nohook が効かない?)        |
 
 
 - npm scripts からの指定方法
@@ -162,7 +162,7 @@ import "./advanced-sample/root";
 // <<<TOP_VIEWS_ENTRY<<<
 ```
 
-このあたりは将来、[perroquet](https://github.com/CDP-Tokyo/perroquet) で解決したいと考えています。
+このあたりは将来、別のツールで解決したいと考えています。
 
 以前の boilerplate4 のときのように、`namespace` + `/// <reference path/>` を用いた classical な開発をする場合、  
 手動で、`cdp-lazyload` をセットアップする必要があります。  
