@@ -1,6 +1,8 @@
 ﻿# cdp-js
 
+<!--
 [![CircleCI](https://circleci.com/gh/CDP-Tokyo/cdp-js.svg?style=shield&circle-token=8d7cd7705fe4195f8110e82a76682c11b825dd67)](https://circleci.com/gh/CDP-Tokyo/cdp-js)
+-->
 
 ## What is cdp-js
 
