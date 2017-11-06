@@ -1,4 +1,5 @@
-﻿import * as _framework from "./framework/jqm";
+﻿import * as Backbone from "backbone";
+import * as _framework from "./framework/jqm";
 import * as _tools from "./tools/tools";
 export * from "./core/promise";
 export * from "./ui/listview";
@@ -11,7 +12,7 @@ export type Orientation     = _framework.Orientation;
 export type ShowEventData   = _framework.ShowEventData;
 export type HideEventData   = _framework.HideEventData;
 
-export type  View<TModel extends _framework.Model = _framework.Model> = CDP.Framework.View<TModel>;
+export type  View<TModel extends _framework.Model = _framework.Model> = Backbone.View<TModel>;
 export const View = _framework.View;
 
 // framework ui utils

@@ -1,7 +1,7 @@
 {
   "name": "@cdp/i18n",
   "description": "CDP i18n utility module",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "main": "dist/cdp.i18n.js",
   "types": "dist/@types/cdp.i18n.d.ts",
   "author": {
@@ -66,20 +66,20 @@
     "metrics": "npm run compile:ts:src && plato -r -d docs/reports/metrics -e ./tests/eslint/eslintrc.json src/scripts/**/*.js"
   },
   "dependencies": {
-    "@cdp/core": ">=2.0.0",
+    "@cdp/core": ">=2.0.2",
     "@cdp/promise": ">=2.0.0",
     "jquery": ">=3.0.0"
   },
   "devDependencies": {
     "@types/i18next": "^8.4.2",
     "@types/jasmine": "^2.6.2",
-    "@types/jquery": "^3.2.15",
+    "@types/jquery": "^3.2.16",
     "@types/requirejs": "^2.1.31",
     "convert-source-map": "^1.5.0",
     "del": "^3.0.0",
-    "eslint": "^4.9.0",
+    "eslint": "^4.10.0",
     "fs-extra": "^4.0.2",
-    "i18next": "^10.0.3",
+    "i18next": "^10.0.7",
     "i18next-browser-languagedetector": "^2.0.0",
     "i18next-localstorage-cache": "^1.1.1",
     "i18next-sprintf-postprocessor": "^0.2.2",
@@ -93,8 +93,8 @@
     "source-map-loader": "^0.2.3",
     "tslint": "^5.8.0",
     "typedoc": "^0.9.0",
-    "typescript": "^2.5.3",
-    "uglify-js": "^3.1.5",
+    "typescript": "^2.6.1",
+    "uglify-js": "^3.1.7",
     "webpack": "^3.8.1"
   }
 }

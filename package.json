@@ -1,7 +1,7 @@
 {
   "name": "@cdp/mobile",
   "description": "CDP SDK module for mobile",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "private": true,
   "main": "dist/cdp.js",
   "types": "dist/@types/index.d.ts",
@@ -39,17 +39,17 @@
     "document": "typedoc --out docs/typedoc/ --excludeExternals --includeDeclarations --ignoreCompilerErrors --mode file --module amd dist/@types/"
   },
   "dependencies": {
-    "@types/backbone": "^1.3.37",
+    "@types/backbone": "^1.3.38",
     "@types/i18next": "^8.4.2",
-    "@types/jquery": "^3.2.13",
-    "@types/underscore": "^1.8.3",
-    "backbone": ">=1.3.3",
-    "jquery": ">=3.0.0",
-    "underscore": ">=1.8.3"
+    "@types/jquery": "^3.2.16",
+    "@types/underscore": "^1.8.4",
+    "backbone": "^1.3.3",
+    "jquery": "^3.2.1",
+    "underscore": "^1.8.3"
   },
   "devDependencies": {
     "del": "^3.0.0",
-    "eslint": "^4.8.0",
+    "eslint": "^4.10.0",
     "fs-extra": "^4.0.2",
     "typedoc": "^0.9.0"
   }

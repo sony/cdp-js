@@ -1,7 +1,7 @@
 ﻿/*!
- * cdp.nativebridge.js 2.0.0
+ * cdp.nativebridge.js 2.1.0
  *
- * Date: 2017-10-27T08:06:13.815Z
+ * Date: 2017-11-06T05:39:57.321Z
  */
 (function (root, factory) { if (typeof define === "function" && define.amd) { define(["cdp.core", "cdp.promise"], function () { return factory(root.CDP || (root.CDP = {}), root.jQuery || root.$); }); } else { factory(root.CDP || (root.CDP = {}), root.jQuery || root.$); } }(((this || 0).self || global), function (CDP, $) { CDP.NativeBridge = CDP.NativeBridge || {};
 

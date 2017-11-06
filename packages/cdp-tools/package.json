@@ -1,7 +1,7 @@
 {
   "name": "@cdp/tools",
   "description": "CDP misc utility module",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "main": "dist/cdp.tools.js",
   "types": "dist/@types/cdp.tools.d.ts",
   "author": {
@@ -63,18 +63,18 @@
     "metrics": "npm run compile:ts:src && plato -r -d docs/reports/metrics -e ./tests/eslint/eslintrc.json src/scripts/**/*.js"
   },
   "dependencies": {
-    "@cdp/core": ">=2.0.0",
+    "@cdp/core": ">=2.0.2",
     "@cdp/promise": ">=2.0.0",
-    "jquery": ">=1.8.3"
+    "jquery": ">=3.0.0"
   },
   "devDependencies": {
     "@types/jasmine": "^2.6.2",
-    "@types/jquery": "^3.2.15",
+    "@types/jquery": "^3.2.16",
     "@types/requirejs": "^2.1.31",
-    "@types/underscore": "^1.8.3",
+    "@types/underscore": "^1.8.4",
     "convert-source-map": "^1.5.0",
     "del": "^3.0.0",
-    "eslint": "^4.9.0",
+    "eslint": "^4.10.0",
     "fs-extra": "^4.0.2",
     "hogan.js": "^3.0.2",
     "npm-run-all": "^4.1.1",
@@ -84,7 +84,7 @@
     "source-map": "^0.6.1",
     "tslint": "^5.8.0",
     "typedoc": "^0.9.0",
-    "typescript": "^2.5.3",
-    "uglify-js": "^3.1.5"
+    "typescript": "^2.6.1",
+    "uglify-js": "^3.1.7"
   }
 }
