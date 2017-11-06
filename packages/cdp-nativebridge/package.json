@@ -1,7 +1,7 @@
 {
   "name": "@cdp/nativebridge",
   "description": "CDP native bridge module for mobile",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "main": "dist/cdp.nativebridge.js",
   "types": "dist/@types/cdp.nativebridge.d.ts",
   "author": {
@@ -63,18 +63,18 @@
     "metrics": "npm run compile:ts:src && plato -r -d docs/reports/metrics -e ./tests/eslint/eslintrc.json src/scripts/**/*.js"
   },
   "dependencies": {
-    "@cdp/core": ">=2.0.0",
+    "@cdp/core": ">=2.0.2",
     "@cdp/promise": ">=2.0.0",
     "jquery": ">=3.0.0"
   },
   "devDependencies": {
     "@types/cordova": "0.0.34",
     "@types/jasmine": "^2.6.2",
-    "@types/jquery": "^3.2.15",
+    "@types/jquery": "^3.2.16",
     "@types/requirejs": "^2.1.31",
     "convert-source-map": "^1.5.0",
     "del": "^3.0.0",
-    "eslint": "^4.9.0",
+    "eslint": "^4.10.0",
     "fs-extra": "^4.0.2",
     "hogan.js": "^3.0.2",
     "iscroll": "^5.2.0",
@@ -85,7 +85,7 @@
     "source-map": "^0.6.1",
     "tslint": "^5.8.0",
     "typedoc": "^0.9.0",
-    "typescript": "^2.5.3",
-    "uglify-js": "^3.1.5"
+    "typescript": "^2.6.1",
+    "uglify-js": "^3.1.7"
   }
 }

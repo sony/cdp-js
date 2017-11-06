@@ -11,7 +11,6 @@
     export class ScrollerNative implements IScroller {
         private _$body: JQuery = null;
         private _$target: JQuery = null;
-        private _$scrollMap: JQuery = null;
         private _listviewOptions: ListViewOptions = null;
 
         //! constructor
@@ -87,7 +86,6 @@
 
         //! Scroller の破棄
         destroy(): void {
-            this._$scrollMap = null;
             this._$target = null;
         }
 

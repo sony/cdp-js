@@ -142,7 +142,6 @@ namespace CDP.UI {
         private _scrollEndEventHandler: (event: JQuery.Event) => void = null;   // tabview "scrollstop"
         private _scrollMoveEventHandler: (event: JQuery.Event) => void = null;  // tabview "scroll"
         private _refreshTimerId: number = null;                                 // refresh() 反映確認用
-        private _$contentsHolder: JQuery = null;                                // contents holder
         private _settings: TabHostViewConstructOptions<TModel>;                 // TabHostView 設定値
 
         public static EVENT_SCROLL_MOVE = "tabhost:scrollmove";
@@ -234,8 +233,6 @@ namespace CDP.UI {
                 this.initializeTabViews();
             }
 
-            this._$contentsHolder = this.$el.find(_Config.TABHOST_SELECTOR).parent();
-
             // Flipsnap
             this.setFlipsnapCondition($.extend({}, {
                 distance: initialWidth,
@@ -265,7 +262,6 @@ namespace CDP.UI {
                 tabview.onDestroy();
             });
             this._tabs = [];
-            this._$contentsHolder = null;
         }
 
         ///////////////////////////////////////////////////////////////////////

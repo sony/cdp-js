@@ -1,4 +1,5 @@
-﻿import _framework = require("cdp.framework.jqm");
+﻿import * as Backbone from "backbone";
+import _framework = require("cdp.framework.jqm");
 
 // @module Platform
 export const Platform = _framework.Platform;
@@ -29,13 +30,13 @@ export type  Page = CDP.Framework.Page;
 export const Page = _framework.Page;
 
 // interfaces
-export type  Model                                      = CDP.Framework.Model;
+export type  Model                                      = Backbone.Model;
 export const Model                                      = _framework.Model;
-export type  Collection<TModel extends Model>           = CDP.Framework.Collection<TModel>;
+export type  Collection<TModel extends Model>           = Backbone.Collection<TModel>;
 export const Collection                                 = _framework.Collection;
-export type  View<TModel extends Model = Model>         = CDP.Framework.View<TModel>;
+export type  View<TModel extends Model = Model>         = Backbone.View<TModel>;
 export const View                                       = _framework.View;
-export type  Events                                     = CDP.Framework.Events;
+export type  Events                                     = Backbone.Events;
 export const Events                                     = _framework.Events;
 export type  ModelSetOptions                            = CDP.Framework.ModelSetOptions;
 export type  ModelFetchOptions                          = CDP.Framework.ModelFetchOptions;

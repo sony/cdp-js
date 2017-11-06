@@ -1,7 +1,7 @@
 {
   "name": "@cdp/lazyload",
   "description": "CDP script delay load assistant module",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "main": "dist/cdp.lazyload.js",
   "types": "dist/@types/cdp.lazyload.d.ts",
   "author": {
@@ -59,21 +59,21 @@
     "metrics": "plato -r -d docs/reports/metrics -e ./tests/eslint/eslintrc.json src/**/*.js"
   },
   "dependencies": {
-    "jquery": ">=1.8.3"
+    "jquery": ">=2.0.0"
   },
   "devDependencies": {
     "@types/jasmine": "^2.6.2",
-    "@types/jquery": "^3.2.15",
+    "@types/jquery": "^3.2.16",
     "@types/requirejs": "^2.1.31",
     "del": "^3.0.0",
-    "eslint": "^4.9.0",
+    "eslint": "^4.10.0",
     "fs-extra": "^4.0.2",
     "npm-run-all": "^4.1.1",
     "nyc": "^11.3.0",
     "plato": "^1.7.0",
     "requirejs": "^2.3.5",
     "tslint": "^5.8.0",
-    "typescript": "^2.5.3",
-    "uglify-js": "^3.1.5"
+    "typescript": "^2.6.1",
+    "uglify-js": "^3.1.7"
   }
 }
