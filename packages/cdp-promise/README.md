@@ -12,12 +12,12 @@ function procPipeline(): IPromise<SomeData> {
     const promise = makePromise(df);    // create IPromise instance.
 
     // async1(), async2(), async3() are async function and returned IPromise instance.
-    promsie.dependOn(async1())
+    promise.dependOn(async1())
         .then(() => {
-            return promsie.dependOn(async2());
+            return promise.dependOn(async2());
         })
         .then(() => {
-            return promsie.dependOn(async3());
+            return promise.dependOn(async3());
         })
         .done(() => {
             df.resolve({ somedata: "hoge" });
