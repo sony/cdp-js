@@ -1,7 +1,7 @@
 {
   "name": "@cdp/mobile",
   "description": "CDP SDK module for mobile",
-  "version": "2.1.0",
+  "version": "2.1.1-dev",
   "main": "dist/cdp.js",
   "types": "dist/@types/index.d.ts",
   "author": {
