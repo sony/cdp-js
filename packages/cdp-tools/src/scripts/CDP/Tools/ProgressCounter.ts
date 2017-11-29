@@ -30,7 +30,7 @@
         private _settings: {
             max: number;
             beginTime: number;
-            allowIncrementeRemain: boolean;
+            allowIncrementRemain: boolean;
             lastRemainTime: number;
         };
 
@@ -51,7 +51,7 @@
                 ...{
                     max: 100,
                     beginTime: Date.now(),
-                    allowIncrementeRemain: false,
+                    allowIncrementRemain: false,
                     lastRemainTime: Infinity,
                 }
                 , ...<any>options
@@ -71,7 +71,7 @@
             if (null != progress && 0 !== progress) {
                 remainTime = passTime * this._settings.max / progress - passTime;
             }
-            if (this._settings.allowIncrementeRemain || (remainTime < this._settings.lastRemainTime)) {
+            if (this._settings.allowIncrementRemain || (remainTime < this._settings.lastRemainTime)) {
                 this._settings.lastRemainTime = remainTime;
             } else {
                 remainTime = this._settings.lastRemainTime;
