@@ -25,7 +25,7 @@ describe("Tools.ProgressCounter", () => {
         setTimeout(() => {
             const resultBefore = counter.compute(0);
             expect(resultBefore).not.toBeNull();
-            expect(resultBefore.passTime).toBeGreaterThan(DEFAULT_TIMEOUT);
+            expect(resultBefore.passTime).toBeGreaterThan(DEFAULT_TIMEOUT - 1);
             counter.reset();
             const resultAfter = counter.compute(0);
             expect(resultAfter).not.toBeNull();
