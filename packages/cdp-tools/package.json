@@ -1,7 +1,7 @@
 {
   "name": "@cdp/tools",
   "description": "CDP misc utility module",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "main": "dist/cdp.tools.js",
   "types": "dist/@types/cdp.tools.d.ts",
   "author": {
