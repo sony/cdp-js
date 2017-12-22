@@ -52,6 +52,7 @@ function packageForExternalCSS(options) {
                         break;
                     }
                 }
+                // TODO: version
             }
             fs.writeFileSync(path.join(__dirname, '..', config.dir.pkg, fileName), code);
         }
