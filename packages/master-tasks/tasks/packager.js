@@ -52,7 +52,14 @@ function packageForExternalCSS(options) {
                         break;
                     }
                 }
-                // TODO: version
+                // version revise
+                if ('.map' !== path.extname(fileName)) {
+                    let versionLine = code.match(/( \* [\S].+)([0-9]+.[0-9]+.[A-Za-z0-9_-]+)(\n)/);
+                    if (versionLine) {
+                        let newLine = versionLine[0].replace(/([0-9]+.[0-9]+.[A-Za-z0-9_-]+)/, config.pkg.version);
+                        code = code.replace(/( \* [\S].+)([0-9]+.[0-9]+.[A-Za-z0-9_-]+)(\n)/, newLine);
+                    }
+                }
             }
             fs.writeFileSync(path.join(__dirname, '..', config.dir.pkg, fileName), code);
         }

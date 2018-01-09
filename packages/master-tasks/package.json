@@ -26,6 +26,6 @@
     "mklink": "node provider.js --mode=make"
   },
   "devDependencies": {
-    "eslint": "^4.5.0"
+    "eslint": "^4.15.0"
   }
 }
