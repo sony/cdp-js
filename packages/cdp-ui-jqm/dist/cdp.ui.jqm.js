@@ -1,7 +1,7 @@
 ﻿/*!
  * cdp.ui.jqm.js 2.1.0
  *
- * Date: 2017-11-06T05:38:56.615Z
+ * Date: 2018-01-09T03:20:50.449Z
  */
 (function (root, factory) { if (typeof define === "function" && define.amd) { define(["cdp.framework.jqm", "cdp.tools", "cdp.ui.listview"], function () { return factory(root.CDP || (root.CDP = {})); }); } else { factory(root.CDP || (root.CDP = {})); } }(this, function (CDP) { CDP.UI = CDP.UI || {};
 var CDP;

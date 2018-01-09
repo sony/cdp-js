@@ -68,23 +68,23 @@
     "jquery": ">=3.0.0"
   },
   "devDependencies": {
-    "@types/jasmine": "^2.6.2",
-    "@types/jquery": "^3.2.16",
+    "@types/jasmine": "^2.8.3",
+    "@types/jquery": "^3.2.17",
     "@types/requirejs": "^2.1.31",
-    "@types/underscore": "^1.8.4",
-    "convert-source-map": "^1.5.0",
+    "@types/underscore": "^1.8.6",
+    "convert-source-map": "^1.5.1",
     "del": "^3.0.0",
-    "eslint": "^4.10.0",
-    "fs-extra": "^4.0.2",
+    "eslint": "^4.15.0",
+    "fs-extra": "^5.0.0",
     "hogan.js": "^3.0.2",
-    "npm-run-all": "^4.1.1",
-    "nyc": "^11.3.0",
+    "npm-run-all": "^4.1.2",
+    "nyc": "^11.4.1",
     "plato": "^1.7.0",
     "requirejs": "^2.3.5",
     "source-map": "^0.6.1",
     "tslint": "^5.8.0",
     "typedoc": "^0.9.0",
-    "typescript": "^2.6.1",
-    "uglify-js": "^3.1.7"
+    "typescript": "^2.6.2",
+    "uglify-js": "^3.3.5"
   }
 }
