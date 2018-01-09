@@ -1,7 +1,7 @@
 ﻿/*!
  * cdp.core.js 2.1.0
  *
- * Date: 2017-11-06T05:33:05.221Z
+ * Date: 2018-01-09T03:15:42.708Z
  */
 (function (root, factory) { if (typeof define === "function" && define.amd) { define(function () { return factory(root.CDP || (root.CDP = {})); }); } else if (typeof exports === "object") { module.exports = factory(root.CDP || (root.CDP = {})); } else { factory(root.CDP || (root.CDP = {})); } }(((this || 0).self || global), function (CDP) {
 var CDP;
