@@ -16,216 +16,128 @@ namespace CDP.Tools {
         /**
          * 基点となる日付から、n日後、n日前を算出
          *
-         * @param base    {Date}   [in] 基準日
-         * @param addDays {Number} [in] 加算日. マイナス指定でn日前も設定可能
+         * @param base   {Date}   [in] 基準日
+         * @param add    {Number} [in] 加算日. マイナス指定でn日前も設定可能
+         * @param target {String} [in] { year | month | date | hour | min | sec | msec }
          * @return {Date} 日付オブジェクト
          */
-        public static computeDate(base: Date, addDays: number): Date {
-            const dt = new Date(base.getTime());
-            const baseSec = dt.getTime();
-            const addSec = addDays * 86400000;    //日数 * 1日のミリ秒数
-            const targetSec = baseSec + addSec;
-            dt.setTime(targetSec);
-            return dt;
+        public static computeDate(base: Date, add: number, target: string = "date"): Date {
+            const date = new Date(base.getTime());
+
+            switch (target) {
+                case "year":
+                    date.setUTCFullYear(base.getUTCFullYear() + add);
+                    break;
+                case "month":
+                    date.setUTCMonth(base.getUTCMonth() + add);
+                    break;
+                case "date":
+                    date.setUTCDate(base.getUTCDate() + add);
+                    break;
+                case "hour":
+                    date.setUTCHours(base.getUTCHours() + add);
+                    break;
+                case "min":
+                    date.setUTCMinutes(base.getUTCMinutes() + add);
+                    break;
+                case "sec":
+                    date.setUTCSeconds(base.getUTCSeconds() + add);
+                    break;
+                case "msec":
+                    date.setUTCMilliseconds(base.getUTCMilliseconds() + add);
+                    break;
+                default:
+                    console.warn(TAG + "unknown target: " + target);
+                    date.setUTCDate(base.getUTCDate() + add);
+            }
+
+            return date;
         }
 
         /**
          * Convert string to date object
          *
-         * @param {String} date string ex) YYYY-MM-DDTHH:mm:SS.SSS
+         * @param {String} date string ex) YYYY-MM-DDTHH:mm:ss.sssZ
          * @return {Object} date object
          */
         public static convertISOStringToDate(dateString: string): Date {
-            const dateTime = dateString.split("T"),
-                dateArray = dateTime[0].split("-");
-            let timeArray, secArray, dateObject;
-
-            if (dateTime[1]) {
-                timeArray = dateTime[1].split(":");
-                secArray = timeArray[2].split(".");
-            }
-
-            if (timeArray) {
-                dateObject = new Date(<any>dateArray[0], <any>dateArray[1] - 1, <any>dateArray[2],
-                    <any>timeArray[0], <any>timeArray[1], <any>secArray[0], <any>secArray[1]);
-            } else {
-                if (dateArray[2]) {
-                    dateObject = new Date(<any>dateArray[0], <any>dateArray[1] - 1, <any>dateArray[2]);
-                } else if (dateArray[1]) {
-                    dateObject = new Date(<any>dateArray[0], <any>dateArray[1] - 1);
-                } else {
-                    dateObject = new Date(<any>dateArray[0]);
-                }
-            }
-
-            return dateObject;
+            return new Date(dateString);
         }
 
         /**
-         *  Convert a date object into a string in PMOAPI recorded_date format(the ISO 8601 Extended Format)
+         * Convert date object into string (the ISO 8601 Extended Format)
          *
          * @param date   {Date}   [in] date object
-         * @param target {String} [in] {year | month | date | hour | min | sec | msec }
-         * @return {String}
+         * @param target {String} [in] { year | month | date | min | sec | msec | tz }
+         * @return {String} date string
          */
-        public static convertDateToISOString(date: Date, target: string = "msec"): string {
-            let isoDateString;
+        public static convertDateToISOString(date: Date, target: string = "tz"): string {
+            const isoDateString = date.toISOString();
+
+            let offset = 0;
+            if (27 === isoDateString.length) {  // ±YYYYYY-MM-DDTHH:mm:ss.sssZ
+                offset = 3;
+            }
 
             switch (target) {
                 case "year":
+                    return isoDateString.substr(0, offset + 4);
                 case "month":
+                    return isoDateString.substr(0, offset + 7);
                 case "date":
-                case "hour":
+                    return isoDateString.substr(0, offset + 10);
                 case "min":
+                    return isoDateString.substr(0, offset + 16);
                 case "sec":
+                    return isoDateString.substr(0, offset + 19);
                 case "msec":
-                    break;
+                    return isoDateString.substr(0, offset + 23);
+                case "tz":
+                    return isoDateString;
                 default:
                     console.warn(TAG + "unknown target: " + target);
-                    target = "msec";
-            }
-
-            isoDateString = date.getFullYear();
-            if ("year" === target) {
-                return isoDateString;
-            }
-
-            isoDateString += ("-" + DateTime.numberToDoubleDigitsString(date.getMonth() + 1));
-            if ("month" === target) {
-                return isoDateString;
-            }
-
-            isoDateString += ("-" + DateTime.numberToDoubleDigitsString(date.getDate()));
-            if ("date" === target) {
-                return isoDateString;
-            }
-
-            isoDateString += ("T" + DateTime.numberToDoubleDigitsString(date.getHours()));
-            if ("hour" === target) {
-                return isoDateString;
-            }
-
-            isoDateString += (":" + DateTime.numberToDoubleDigitsString(date.getMinutes()));
-            if ("min" === target) {
-                return isoDateString;
-            }
-
-            isoDateString += (":" + DateTime.numberToDoubleDigitsString(date.getSeconds()));
-            if ("sec" === target) {
-                return isoDateString;
-            }
-
-            isoDateString += ("." + String((date.getMilliseconds() / 1000).toFixed(3)).slice(2, 5));
-            return isoDateString;
+                    return isoDateString;
+                }
         }
-
 
         /**
          * Convert file system compatible string to date object
          *
-         * @param {String} date string ex) yyyy_MM_ddTHH_mm_ss_SSS
+         * @param {String} date string ex) YYYY_MM_DDTHH_mm_ss_sss
          * @return {Object} date object
          */
         public static convertFileSystemStringToDate(dateString: string): Date {
-            const dateTime = dateString.split("T"),
-                dateArray = dateTime[0].split("_");
-            let timeArray, dateObject;
+            const dateTime = dateString.split("T");
+            let isoDateString = dateTime[0].replace(/_/g, "-");
 
             if (dateTime[1]) {
-                timeArray = dateTime[1].split("_");
-            }
+                const timeArray = dateTime[1].split("_");
+                let timeString = "T";
 
-            if (timeArray) {
-                dateObject = new Date(<any>dateArray[0], <any>dateArray[1] - 1, <any>dateArray[2],
-                    <any>timeArray[0], <any>timeArray[1], <any>timeArray[2], <any>timeArray[3]);
-            } else {
-                if (dateArray[2]) {
-                    dateObject = new Date(<any>dateArray[0], <any>dateArray[1] - 1, <any>dateArray[2]);
-                } else if (dateArray[1]) {
-                    dateObject = new Date(<any>dateArray[0], <any>dateArray[1] - 1);
+                if (timeArray.length < 4) {
+                    timeString += timeArray.join(":");
                 } else {
-                    dateObject = new Date(<any>dateArray[0]);
+                    timeString += timeArray.slice(0, 3).join(":");
+                    timeString += "." + timeArray[3];
                 }
+
+                isoDateString += timeString;
             }
 
-            return dateObject;
+            return new Date(isoDateString);
         }
 
         /**
-         *  Convert a date object into a string in file system compatible format(yyyy_MM_ddTHH_mm_ss_SSS)
+         * Convert date object into string in file system compatible format (YYYY_MM_DDTHH_mm_ss_sss)
          *
          * @param date   {Date}   [in] date object
-         * @param target {String} [in] {year | month | date | hour | min | sec | msec }
-         * @return {String}
+         * @param target {String} [in] { year | month | date | min | sec | msec | tz }
+         * @return {String} file system compatible string
          */
-        public static convertDateToFileSystemString(date: Date, target: string = "msec"): string {
-            let fileSystemString;
-
-            switch (target) {
-                case "year":
-                case "month":
-                case "date":
-                case "hour":
-                case "min":
-                case "sec":
-                case "msec":
-                    break;
-                default:
-                    console.warn(TAG + "unknown target: " + target);
-                    target = "msec";
-            }
-
-            fileSystemString = date.getFullYear();
-            if ("year" === target) {
-                return fileSystemString;
-            }
-
-            fileSystemString += ("_" + DateTime.numberToDoubleDigitsString(date.getMonth() + 1));
-            if ("month" === target) {
-                return fileSystemString;
-            }
-
-            fileSystemString += ("_" + DateTime.numberToDoubleDigitsString(date.getDate()));
-            if ("date" === target) {
-                return fileSystemString;
-            }
-
-            fileSystemString += ("T" + DateTime.numberToDoubleDigitsString(date.getHours()));
-            if ("hour" === target) {
-                return fileSystemString;
-            }
-
-            fileSystemString += ("_" + DateTime.numberToDoubleDigitsString(date.getMinutes()));
-            if ("min" === target) {
-                return fileSystemString;
-            }
-
-            fileSystemString += ("_" + DateTime.numberToDoubleDigitsString(date.getSeconds()));
-            if ("sec" === target) {
-                return fileSystemString;
-            }
-
-            fileSystemString += ("_" + String((date.getMilliseconds() / 1000).toFixed(3)).slice(2, 5));
+        public static convertDateToFileSystemString(date: Date, target: string = "tz"): string {
+            const isoDateString = DateTime.convertDateToISOString(date, target);
+            const  fileSystemString = isoDateString.replace(/[-:.]/g, "_");
             return fileSystemString;
-        }
-
-        ///////////////////////////////////////////////////////////////////////
-        // private static method
-
-        /**
-         * Convert num to string(double digits)
-         *
-         * @param  {Number} number (0 <number < 100)
-         * @return {String} double digits string
-         */
-        private static numberToDoubleDigitsString(num: number): string {
-            if (num < 0 || num > 100) {
-                return null;
-            }
-            if (num < 10) {
-                return "0" + num;
-            }
-            return "" + num;
         }
     }
 }
