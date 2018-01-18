@@ -1,4 +1,4 @@
-﻿/*
+/*
  * [NOTE] AMD entries module must be named for releases build
  *
  * 生成する d.ts に AMD module 名を設定するために、
@@ -13,7 +13,8 @@
  * release ビルド時において、複数の module 間で内部で使用される AMD module 名のコンフリクト避けるため、
  * 必ず namespace path がシステム内で一意となるように管理することが必須
  */
-import SmoothScroll from "./cdp/ui/smooth-scroll";
+import _SmoothScroll from "./cdp/ui/smooth-scroll";
+export { _SmoothScroll as SmoothScroll };
 
 /*
  * [NOTE] global export
@@ -26,7 +27,17 @@ import SmoothScroll from "./cdp/ui/smooth-scroll";
 const global = Function("return this")();
 global["CDP"]       = global["CDP"] || {};
 global["CDP"]["UI"] = global["CDP"]["UI"] || {};
-global["CDP"]["UI"].SmoothScroll = SmoothScroll;
+global["CDP"]["UI"].SmoothScroll = _SmoothScroll;
 /* tslint:enable:no-string-literal */
 
-export { SmoothScroll };
+/*
+ * [NOTE] global declaration
+ *
+ * 以下のように global オブジェクトにアサイン可能
+ * ※既存の cdp.ui.*.js に実装する場合は、従来どおり classical module 方式にすること
+ */
+declare global {
+    namespace CDP {
+        const SmoothScroll: typeof _SmoothScroll;
+    }
+}
