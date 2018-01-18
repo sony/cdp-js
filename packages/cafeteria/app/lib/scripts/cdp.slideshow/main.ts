@@ -1,4 +1,4 @@
-﻿/*
+/*
  * [NOTE] AMD entries module must be named for releases build
  *
  * 生成する d.ts に AMD module 名を設定するために、
@@ -13,7 +13,8 @@
  * release ビルド時において、複数の module 間で内部で使用される AMD module 名のコンフリクト避けるため、
  * 必ず namespace path がシステム内で一意となるように管理することが必須
  */
-import * as SlideShow from "./cdp/slideshow/player";
+import * as _SlideShow from "./cdp/slideshow/player";
+export { _SlideShow as SlideShow };
 
 /*
  * [NOTE] global export
@@ -25,8 +26,17 @@ import * as SlideShow from "./cdp/slideshow/player";
 /* tslint:disable:no-string-literal */
 const global = Function("return this")();
 global["CDP"] = global["CDP"] || {};
-global["CDP"].SlideShow = SlideShow;
+global["CDP"].SlideShow = _SlideShow;
 /* tslint:enable:no-string-literal */
 
-//export default SlideShowPlayer;
-export { SlideShow };
+/*
+ * [NOTE] global declaration
+ *
+ * 以下のように global オブジェクトにアサイン可能
+ * ※既存の cdp.ui.*.js に実装する場合は、従来どおり classical module 方式にすること
+ */
+declare global {
+    namespace CDP {
+        const SlideShow: typeof _SlideShow;
+    }
+}
