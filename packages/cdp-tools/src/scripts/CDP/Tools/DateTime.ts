@@ -164,8 +164,12 @@ namespace CDP.Tools {
                     case "Z":
                         break;
                     case "-":
+                        // -HH:mm
+                        hours += parseInt(result[8].substr(1, 2), 10) || 0;
+                        minutes += parseInt(result[8].substr(4, 2), 10) || 0;
+                        break;
                     case "+":
-                        // ±HH:mm
+                        // +HH:mm
                         hours -= parseInt(result[8].substr(1, 2), 10) || 0;
                         minutes -= parseInt(result[8].substr(4, 2), 10) || 0;
                         break;

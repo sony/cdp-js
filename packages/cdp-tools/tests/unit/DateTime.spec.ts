@@ -115,6 +115,19 @@ describe("Tools.DateTime", () => {
         expect(date.getUTCMilliseconds()).toBe(806);
     });
 
+    it("convertISOStringToDate(2013-07-08T20:43:49.806-08:00)", () => {
+        const iso = "2013-07-08T20:43:49.806-08:00"; // 2013-07-09T04:43:49.806Z
+        const date = DateTime.convertISOStringToDate(iso);
+        expect(date).not.toBeNull();
+        expect(date.getUTCFullYear()).toBe(2013);
+        expect(date.getUTCMonth()).toBe(6);
+        expect(date.getUTCDate()).toBe(9);
+        expect(date.getUTCHours()).toBe(4);
+        expect(date.getUTCMinutes()).toBe(43);
+        expect(date.getUTCSeconds()).toBe(49);
+        expect(date.getUTCMilliseconds()).toBe(806);
+    });
+
     it("convertISOStringToDate(-002013-07-08T20:43:49.806Z)", () => {
         const iso = "-002013-07-08T20:43:49.806Z";
         const date = DateTime.convertISOStringToDate(iso);
