@@ -1,6 +1,8 @@
-﻿import { Model, ModelSetOptions } from "cdp/framework";
+import { Model, ModelSetOptions } from "cdp/framework";
 import { Toast, Theme } from "cdp/ui";
 import { DeviceConsole } from "cdp.deviceconsole";
+// DeviceConsole は CDP.DeviceConsole からのアクセスも許可しているため、以下の記述も可能
+// import DeviceConsole = CDP.DeviceConsole;
 
 const TAG = "[model.Options] ";
 

@@ -205,9 +205,7 @@ describe("Tools.DateTime", () => {
     it("convertDateToFileSystemString()", () => {
         const iso = "2013-07-08T20:43:49.806Z";
         const date = DateTime.convertISOStringToDate(iso);
-        let conv = DateTime.convertDateToFileSystemString(date);
-        expect(conv).toBe("2013_07_08T20_43_49_806Z");
-        conv = DateTime.convertDateToFileSystemString(date, "msec");
+        let conv = DateTime.convertDateToFileSystemString(date /* msec */);
         expect(conv).toBe("2013_07_08T20_43_49_806");
         conv = DateTime.convertDateToFileSystemString(date, "sec");
         expect(conv).toBe("2013_07_08T20_43_49");
@@ -228,7 +226,7 @@ describe("Tools.DateTime", () => {
         expect(date.getUTCFullYear()).toBe(2015);
         date = DateTime.computeDate(base, -4, "month");
         expect(date.getUTCMonth()).toBe(2);
-        date = DateTime.computeDate(base, 8);
+        date = DateTime.computeDate(base, 8 /* date */);
         expect(date.getUTCDate()).toBe(16);
         date = DateTime.computeDate(base, -16, "hour");
         expect(date.getUTCHours()).toBe(4);
@@ -240,7 +238,7 @@ describe("Tools.DateTime", () => {
         expect(date.getUTCSeconds()).toBe(45);
         date = DateTime.computeDate(base, 128, "msec");
         expect(date.getUTCMilliseconds()).toBe(934);
-        date = DateTime.computeDate(base, 8, "unknown"/* date */);
+        date = DateTime.computeDate(base, 8, "unknown" /* date */);
         expect(date.getUTCDate()).toBe(16);
     });
 });
