@@ -51,7 +51,7 @@
          * @obsolete
          * @return 構築済み Blob オブジェクト
          */
-        public static newBlob(blobParts?: any[], options?: BlobPropertyBag): Blob {
+        public static newBlob(blobParts: any[] = [], options: BlobPropertyBag = {}): Blob {
             if (global.Blob) {
                 return new global.Blob(blobParts, options);
             } else {
@@ -78,12 +78,48 @@
         /**
          * ArrayBuffer to Blob
          *
-         * @param buf [in] ArrayBuffer data
+         * @param buffer [in] ArrayBuffer data
          * @param mimeType [in] MimeType of data
          * @returns Blob data
          */
-        public static arrayBufferToBlob(buf: ArrayBuffer, mimeType: string): Blob {
-            return Binary.newBlob([buf], { type: mimeType });
+        public static arrayBufferToBlob(buffer: ArrayBuffer, mimeType: string = "application/octet-stream"): Blob {
+            return Binary.newBlob([buffer], { type: mimeType });
+        }
+
+        /**
+         * Uint8Array to Blob
+         *
+         * @param array [in] Uint8Array data
+         * @param mimeType [in] MimeType of data
+         * @returns Blob data
+         */
+        public static uint8ArrayToBlob(array: Uint8Array, mimeType: string = "application/octet-stream"): Blob {
+            return Binary.newBlob([array], { type: mimeType });
+        }
+
+        /**
+         * data URL string to Blob
+         *
+         * @param  {String} dataURL [in] data URL string
+         * @return {Blob} Blob data
+         */
+        public static dataURLToBlob(dataURL: string): Blob {
+            const reDataURL = /^data:(.+?\/.+?)?(;.+?)?,(.*)$/;
+            const result = reDataURL.exec(dataURL);
+            if (null == result) {
+                console.error("Invalid data URI");
+                return null;
+            }
+
+            const mimeType = result[1];
+            const isBase64 = /;base64/.test(result[2]);
+            const data = result[3];
+
+            if (isBase64) {
+                return Binary.base64ToBlob(data, mimeType);
+            } else {
+                return Binary.textToBlob(data, mimeType);
+            }
         }
 
         /**
@@ -93,81 +129,21 @@
          * @param mimeType {string} [in] MimeType of data
          * @return {Blob} Blob data
          */
-        public static base64ToBlob(base64: string, mimeType: string): Blob {
-            return Binary.newBlob([Binary.base64ToArrayBuffer(base64)], { type: mimeType });
+        public static base64ToBlob(base64: string, mimeType: string = "text/plain"): Blob {
+            const binstr = window.atob(base64);
+            return Binary.newBlob([binstr], { type: mimeType });
         }
 
         /**
-         * data-url 形式画像から Blob オブジェクトへ変換
+         * Text string to Blob
          *
-         * @param  {String} dataUrl    [in] data url
-         * @param  {String} [mimeType] [in] mime type を指定. 既定では "image/png"
-         * @return {Blob} Blob インスタンス
+         * @param text {string} [in] text string data
+         * @param mimeType {string} [in] MimeType of data
+         * @return {Blob} Blob data
          */
-        public static dataUrlToBlob(dataUrl: string, mimeType: string = "image/png"): Blob {
-            const base64 = dataUrl.split(",")[1];
-            return Binary.base64ToBlob(base64, mimeType);
+        public static textToBlob(text: string, mimeType: string = "text/plain"): Blob {
+            return Binary.newBlob([text], { type: mimeType });
         }
-
-        /**
-         * Base64 string to ArrayBuffer
-         *
-         * @param base64 {string} [in] Base64 string data
-         * @return {ArrayBuffer} ArrayBuffer data
-         */
-        public static base64ToArrayBuffer(base64: string): ArrayBuffer {
-            const bytes = window.atob(base64);
-            const arrayBuffer = new ArrayBuffer(bytes.length);
-            const data = new Uint8Array(arrayBuffer);
-
-            for (let i = 0, len = bytes.length; i < len; ++i) {
-                data[i] = bytes.charCodeAt(i);
-            }
-            return arrayBuffer;
-        }
-
-        /**
-         * Base64 string to Uint8Array
-         *
-         * @param base64 {string} [in] Base64 string data
-         * @return {Uint8Array} Uint8Array data
-         */
-        public static base64ToUint8Array(encoded: string): Uint8Array {
-            const bytes = window.atob(encoded);
-            const data = new Uint8Array(bytes.length);
-
-            for (let i = 0, len = bytes.length; i < len; ++i) {
-                data[i] = bytes.charCodeAt(i);
-            }
-            return data;
-        }
-
-        /**
-         * ArrayBuffer to base64 string
-         *
-         * @param arrayBuffer {ArrayBuffer} [in] ArrayBuffer data
-         * @return {string} base64 data
-         */
-        public static arrayBufferToBase64(arrayBuffer: ArrayBuffer): string {
-            const bytes = new Uint8Array(arrayBuffer);
-            return Binary.uint8ArrayToBase64(bytes);
-        }
-
-        /**
-         * Uint8Array to base64 string
-         *
-         * @param bytes {Uint8Array} [in] Uint8Array data
-         * @return {string} base64 data
-         */
-        public static uint8ArrayToBase64(bytes: Uint8Array): string {
-            let data: string = "";
-
-            for (let i = 0, len = bytes.byteLength; i < len; ++i) {
-                data += String.fromCharCode(bytes[i]);
-            }
-            return window.btoa(data);
-        }
-
 
         /**
          * read Blob as ArrayBuffer
@@ -204,39 +180,13 @@
         public static readBlobAsUint8Array(blob: Blob): IPromise<Uint8Array> {
             return new Promise((resolve, reject, dependOn) => {
                 dependOn(Binary.readBlobAsArrayBuffer(blob))
-                    .then((result: ArrayBuffer) => {
-                        resolve(new Uint8Array(result));
+                    .then((buffer) => {
+                        resolve(new Uint8Array(buffer));
                     })
                     .catch((error: ErrorInfo) => {
                         reject(error);
                     });
             });
-        }
-
-        /**
-         * read Blob as text string
-         *
-         * @param  {Blob} blob [in] blob data
-         * @return {CDP.IPromise<Uint8Array>} promise object
-         */
-        public static readBlobAsText(blob: Blob, encode: string = "utf-8"): IPromise<string> {
-            const reader = new FileReader();
-            const cancel = () => reader.abort();
-
-            return new Promise((resolve, reject) => {
-                reader.onload = () => {
-                    resolve(reader.result);
-                };
-                reader.onerror = () => {
-                    reject(Binary.makeErrorInfoFromDOMError(
-                        RESULT_CODE.ERROR_CDP_TOOLS_FILE_READER_ERROR,
-                        reader.error,
-                        TAG,
-                        "FileReader.readAsText() failed."
-                    ));
-                };
-                reader.readAsText(blob, encode);
-            }, cancel);
         }
 
         /**
@@ -262,6 +212,52 @@
                     ));
                 };
                 reader.readAsDataURL(blob);
+            }, cancel);
+        }
+
+        /**
+         * read Blob as Base64 string
+         *
+         * @param  {Blob} blob [in] blob data
+         * @return {CDP.IPromise<string>} promise object
+         */
+        public static readBlobAsBase64(blob: Blob): IPromise<string> {
+            return new Promise((resolve, reject, dependOn) => {
+                dependOn(Binary.readBlobAsDataURL(blob))
+                    .then((dataURL) => {
+                        // dataURL is always encoded base64
+                        const base64 = dataURL.split(",")[1];
+                        resolve(base64);
+                    })
+                    .catch((error: ErrorInfo) => {
+                        reject(error);
+                    });
+            });
+        }
+
+        /**
+         * read Blob as text string
+         *
+         * @param  {Blob} blob [in] blob data
+         * @return {CDP.IPromise<Uint8Array>} promise object
+         */
+        public static readBlobAsText(blob: Blob, encoding: string = "utf-8"): IPromise<string> {
+            const reader = new FileReader();
+            const cancel = () => reader.abort();
+
+            return new Promise((resolve, reject) => {
+                reader.onload = () => {
+                    resolve(reader.result);
+                };
+                reader.onerror = () => {
+                    reject(Binary.makeErrorInfoFromDOMError(
+                        RESULT_CODE.ERROR_CDP_TOOLS_FILE_READER_ERROR,
+                        reader.error,
+                        TAG,
+                        "FileReader.readAsText() failed."
+                    ));
+                };
+                reader.readAsText(blob, encoding);
             }, cancel);
         }
     }
