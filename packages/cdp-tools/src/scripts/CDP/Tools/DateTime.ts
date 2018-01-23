@@ -191,13 +191,13 @@ namespace CDP.Tools {
             const reYear = /(\d{4}|[-+]\d{6})/;
             const reMonth = /(\d{2})/;
             const reDay = /(\d{2})/;
-            const reDate = new RegExp(`${reYear.source}(?:_${reMonth.source}(?:_${reDay.source})*)*`);
+            const reDate = new RegExp(`${reYear.source}(?:_${reMonth.source}(?:_${reDay.source})?)?`);
 
             const reHours = /(\d{2})/;
             const reMinutes = /(\d{2})/;
             const reSeconds = /(\d{2})/;
             const reMs = /(\d{3})/;
-            const reTime = new RegExp(`T${reHours.source}_${reMinutes.source}(?:_${reSeconds.source}(?:_${reMs.source})*)*`);
+            const reTime = new RegExp(`T${reHours.source}_${reMinutes.source}(?:_${reSeconds.source}(?:_${reMs.source})?)?`);
 
             const reFileSystemString = new RegExp(`^${reDate.source}(?:${reTime.source})*$`);
 
