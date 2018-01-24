@@ -1,4 +1,4 @@
-﻿namespace CDP.NativeBridge {
+namespace CDP.NativeBridge {
 
     import IPromiseBase = CDP.IPromiseBase;
     import IPromise     = CDP.IPromise;
@@ -6,13 +6,8 @@
     const TAG = "[CDP.NativeBridge.Utils] ";
 
     /**
-     * \~english
-     * @class Utils
-     * @brief The utility class for CDP.NativeBridge.
-     *
-     * \~japanese
-     * @class Utils
-     * @brief CDP.NativeBridge が使用するユーティリティクラス
+     * @en The utility class for CDP.NativeBridge.
+     * @ja CDP.NativeBridge が使用するユーティリティクラス
      */
     export class Utils {
 
@@ -22,15 +17,12 @@
         // public static methods
 
         /**
-         * \~english
-         * Defines error code map from the plugin result to CDP.NativeBridge result code.
+         * @en Defines error code map from the plugin result to CDP.NativeBridge result code.
+         * @ja plugin の Result Code を CDP.NativeBridge にマップする
          *
-         * @param errorCode [in] set result code string. ex): "SUCCESS_OK"
-         *
-         * \~japanese
-         * plugin の Result Code を CDP.NativeBridge にマップする
-         *
-         * @param errorCode [in] Result Code 文字列を指定 ex): "SUCCESS_OK"
+         * @param errorCode
+         *  - `en` set result code string. ex): "SUCCESS_OK"
+         *  - `ja` Result Code 文字列を指定 ex): "SUCCESS_OK"
          */
         public static defineResultCode(errorCode: string): void {
             Object.defineProperty(NativeBridge, errorCode, {
@@ -47,11 +39,8 @@
         }
 
         /**
-         * \~english
-         * Wait for cordova "deviceready" event fired.
-         *
-         * \~japanese
-         * cordova が 使用可能になるまで待機
+         * @en Wait for cordova "deviceready" event fired.
+         * @ja cordova が 使用可能になるまで待機
          */
         public static waitForPluginReady(): IPromiseBase<void> {
             const df = $.Deferred<void>();
@@ -82,20 +71,19 @@
         }
 
         /**
-         * \~english
-         * Create NativeBridge.Promise object from jQueryDeferred object.
+         * @en Create NativeBridge.Promise object from jQueryDeferred object.
+         * @ja Promise オブジェクトの作成
+         *     jQueryDeferred オブジェクトから、NativeBridge.Promise オブジェクトを作成する
          *
-         * @param df [in] set jQueryDeferred instance.
-         * @param useRawPluginResult [in] return plugin result or errorinfo
-         * @returns NativeBridge.Promise object.
-         *
-         * \~japanese
-         * Promise オブジェクトの作成
-         * jQueryDeferred オブジェクトから、NativeBridge.Promise オブジェクトを作成する
-         *
-         * @param df [in] jQueryDeferred instance を指定
-         * @param useRawPluginResult [in] plugin result を返すか否か
-         * @returns NativeBridge.Promise オブジェクト
+         * @param df
+         *  - `en` set jQueryDeferred instance.
+         *  - `ja` jQueryDeferred instance を指定
+         * @param useRawPluginResult
+         *  - `en` return plugin result or errorinfo
+         *  - `ja` plugin result を返すか否か
+         * @returns
+         *  - `en` NativeBridge.Promise object.
+         *  - `ja` NativeBridge.Promise オブジェクト
          */
         public static makePromise(df: JQueryDeferred<IResult>, useRawPluginResult: boolean): IPromise<IResult> {
             return CDP.makePromise(df, {
@@ -133,21 +121,20 @@
         }
 
         /**
-         * \~english
-         * Helper function to correctly set up the prototype chain, for subclasses.
-         * The function behavior is same as extend() function of Backbone.js.
+         * @en Helper function to correctly set up the prototype chain, for subclasses.
+         *     The function behavior is same as extend() function of Backbone.js.
+         * @ja クラス継承のためのヘルパー関数
+         *     Backbone.js extend() 関数と同等
          *
-         * @param protoProps  [in] set prototype properties as object.
-         * @param staticProps [in] set static properties as object.
-         * @returns subclass constructor.
-         *
-         * \~japanese
-         * クラス継承のためのヘルパー関数
-         * Backbone.js extend() 関数と同等
-         *
-         * @param protoProps  [in] prototype properties をオブジェクトで指定
-         * @param staticProps [in] static properties をオブジェクトで指定
-         * @returns サブクラスのコンストラクタ
+         * @param protoProps
+         *  - `en` set prototype properties as object.
+         *  - `ja` prototype properties をオブジェクトで指定
+         * @param staticProps
+         *  - `en` set static properties as object.
+         *  - `ja` static properties をオブジェクトで指定
+         * @returns
+         *  - `en` subclass constructor.
+         *  - `ja` サブクラスのコンストラクタ
          */
         public static extend(protoProps: object, staticProps?: object): object {
             const parent = this;

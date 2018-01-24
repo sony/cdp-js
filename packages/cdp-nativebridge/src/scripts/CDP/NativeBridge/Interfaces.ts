@@ -1,41 +1,30 @@
-﻿/// <reference path="../../@types/cdp.plugin.nativebridge.d.ts" />
+/// <reference path="../../@types/cdp.plugin.nativebridge.d.ts" />
 
 namespace CDP.NativeBridge {
 
     import Plugin   = CDP.Plugin.NativeBridge;
 
     /**
-     * \~english
-     * @interface Feature
-     * @brief feature information.
-     *
-     * \~japanese
-     * @interface Feature
-     * @brief 機能情報
+     * @en Cordova feature information.
+     * @ja 機能情報
      */
     export interface Feature extends Plugin.Feature { }
 
     /**
-     * \~english
-     * @interface ConstructOptions
-     * @brief NativeBridge class's consrtruction options.
-     *
-     * \~japanese
-     * @interface ConstructOptions
-     * @brief 初期化に指定するオプション
+     * @en NativeBridge class's consrtruction options.
+     * @ja 初期化に指定するオプション
      */
     export interface ConstructOptions extends Plugin.ConstructOptions {
-        useRawPluginResult?: boolean;   // [過去互換用] exec コール時に, IResult で返却する場合 true. default: false
+        /**
+         * @en [Backward Compat] if you want to receive IResult instance when exec() called, set the param 'true'. default: false
+         * @ja [過去互換用] exec コール時に, IResult で返却する場合 true. default: false
+         */
+        useRawPluginResult?: boolean;
     }
 
     /**
-     * \~english
-     * @interface IResult
-     * @brief NativeBridge base result information.
-     *
-     * \~japanese
-     * @interface IResult
-     * @brief NativeBridge の基底 Result 情報
+     * @en NativeBridge base result information.
+     * @ja NativeBridge の基底 Result 情報
      */
     export interface IResult extends Plugin.IResult, Error {
         message: string;
@@ -43,16 +32,17 @@ namespace CDP.NativeBridge {
     }
 
     /**
-     * \~english
-     * @interface ExecOptions
-     * @brief exec() method options.
-     *
-     * \~japanese
-     * @interface ExecOptions
-     * @brief exec() に渡すオプション
+     * @en exec() method options.
+     * @ja exec() に渡すオプション
      */
     export interface ExecOptions extends Plugin.ExecOptions {
-        receiveParams?: boolean; // exec 成功時に, ...params, IResult で返却する場合 true
+        /**
+         * @en [Backward Compat] if you want to receive IResult instance when exec() called, set the param 'true'.
+         *     default: use ConstructOptions param
+         * @ja [過去互換用] exec コール時に, IResult で返却する場合 true.
+         *     default: ConstructOptions param 指定された値を使用
+         */
+        useRawPluginResult?: boolean;
     }
 }
 
