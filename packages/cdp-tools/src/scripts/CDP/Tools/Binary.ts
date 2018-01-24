@@ -1,4 +1,4 @@
-﻿namespace CDP.Tools {
+namespace CDP.Tools {
 
     import Promise = CDP.Promise;
 

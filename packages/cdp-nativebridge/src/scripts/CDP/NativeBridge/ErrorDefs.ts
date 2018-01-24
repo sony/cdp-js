@@ -1,9 +1,6 @@
-﻿namespace CDP {
+namespace CDP {
 
-    /**
-     * @enum  RESULT_CODE_BASE
-     * @brief リザルトコードのオフセット値
-     */
+    // @internal Error code offset definition of `cdp-nativebridge`.
     export enum RESULT_CODE_BASE {
         CDP_NATIVEBRIDGE_DECLARERATION = 0, // TS2432 対策
         CDP_NATIVEBRIDGE = 2 * _MODULE_RESULT_CODE_RANGE_CDP,
@@ -14,20 +11,14 @@
 
     const FUNCTION_CODE_RANGE = 10;
 
-    /**
-     * @enum  LOCAL_CODE_BASE
-     * @brief cdp.nativebridge 内のローカルコードオフセット値
-     */
+    // @internal cdp.nativebridge 内のローカルコードオフセット値
     enum LOCAL_CODE_BASE {
         GATE    = 0,
         UTILS   = 1 * FUNCTION_CODE_RANGE,
     }
 
     /* tslint:disable:max-line-length */
-    /**
-     * @enum  RESULT_CODE
-     * @brief cdp-nativebridge のエラーコード定義
-     */
+    // Error code definition of `cdp-nativebridge`.
     export enum RESULT_CODE {
         ERROR_CDP_NATIVEBRIDG_DECLARATION               = 0, // TS2432 対策
         ERROR_CDP_NATIVEBRIDGE_INVALID_ARG              = DECLARE_ERROR_CODE(RESULT_CODE_BASE.CDP_NATIVEBRIDGE, LOCAL_CODE_BASE.GATE + 1, "called with invalid args."),
