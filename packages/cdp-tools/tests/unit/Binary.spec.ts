@@ -82,8 +82,8 @@ describe("Tools.Binary", () => {
             });
     });
 
-    it("Blob <=> DataUrl", (done) => {
-        // from DataUrl to Blob
+    it("Blob <=> dataURL", (done) => {
+        // from dataURL to Blob
         const dataURL = "data:text/plain;base64,SGVsbG8sIFdvcmxkIQ==";  // "Hello, World!
         const blob = Binary.dataURLToBlob(dataURL);
         expect(blob).toBeDefined();
@@ -140,5 +140,21 @@ describe("Tools.Binary", () => {
                 console.error(reason);
                 expect(null).toBe("THIS FLOW IS BUG.");
             });
+    });
+
+    it("ArrayBuffer => dataURL => text", () => {
+        const text = "Hello, CDP!";
+        const buffer = Binary.textToArrayBuffer(text);
+        const dataURL = Binary.arrayBufferToDataURL(buffer);
+        const result = Binary.dataURLToText(dataURL);
+        expect(result).toBe(text);
+    });
+
+    it("ArrayBuffer <= dataURL <= text", () => {
+        const text = "Hello, CDP!";
+        const dataURL = Binary.textToDataURL(text);
+        const buffer = Binary.dataURLToArrayBuffer(dataURL);
+        const result = Binary.arrayBufferToText(buffer);
+        expect(result).toBe(text);
     });
 });
