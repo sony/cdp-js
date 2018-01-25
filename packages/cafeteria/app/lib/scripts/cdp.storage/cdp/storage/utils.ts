@@ -1,4 +1,4 @@
-﻿import {
+import {
     IPromise,
     Promise,
     makeErrorInfo,
@@ -31,8 +31,8 @@ function binaryToBase64(data: Blob | ArrayBuffer | Uint8Array): IPromise<string>
 
         if (data instanceof Blob) {
             dependOn(readBlobAsBase64(data))
-                .then((base64: string) => {
-                    resolve(base64);
+                .then((b64: string) => {
+                    resolve(b64);
                 })
                 .catch((error) => {
                     reject(makeErrorInfo(
