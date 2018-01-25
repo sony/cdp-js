@@ -4,6 +4,12 @@ namespace CDP.Tools {
 
     const TAG = "[CDP.Tools.Binary] ";
 
+    interface IDataURLComponent {
+        mimeType: string;
+        base64: boolean;
+        data: string;
+    }
+
     /**
      * @class Binary
      * @brief バイナリユーティリティ
@@ -51,7 +57,7 @@ namespace CDP.Tools {
          * @obsolete
          * @return 構築済み Blob オブジェクト
          */
-        public static newBlob(blobParts?: any[], options?: BlobPropertyBag): Blob {
+        public static newBlob(blobParts: any[] = [], options: BlobPropertyBag = {}): Blob {
             if (global.Blob) {
                 return new global.Blob(blobParts, options);
             } else {
@@ -78,12 +84,39 @@ namespace CDP.Tools {
         /**
          * ArrayBuffer to Blob
          *
-         * @param buf [in] ArrayBuffer data
+         * @param buffer [in] ArrayBuffer data
          * @param mimeType [in] MimeType of data
          * @returns Blob data
          */
-        public static arrayBufferToBlob(buf: ArrayBuffer, mimeType: string): Blob {
-            return Binary.newBlob([buf], { type: mimeType });
+        public static arrayBufferToBlob(buffer: ArrayBuffer, mimeType: string = "application/octet-stream"): Blob {
+            return Binary.newBlob([buffer], { type: mimeType });
+        }
+
+        /**
+         * Uint8Array to Blob
+         *
+         * @param array [in] Uint8Array data
+         * @param mimeType [in] MimeType of data
+         * @returns Blob data
+         */
+        public static uint8ArrayToBlob(array: Uint8Array, mimeType: string = "application/octet-stream"): Blob {
+            return Binary.newBlob([array], { type: mimeType });
+        }
+
+        /**
+         * data URL string to Blob
+         *
+         * @param  {String} dataURL [in] data URL string
+         * @return {Blob} Blob data
+         */
+        public static dataURLToBlob(dataURL: string): Blob {
+            const result = Binary.execDataURLRegExp(dataURL);
+
+            if (result.base64) {
+                return Binary.base64ToBlob(result.data, result.mimeType);
+            } else {
+                return Binary.textToBlob(result.data, result.mimeType);
+            }
         }
 
         /**
@@ -93,81 +126,22 @@ namespace CDP.Tools {
          * @param mimeType {string} [in] MimeType of data
          * @return {Blob} Blob data
          */
-        public static base64ToBlob(base64: string, mimeType: string): Blob {
-            return Binary.newBlob([Binary.base64ToArrayBuffer(base64)], { type: mimeType });
+        public static base64ToBlob(base64: string, mimeType: string = "text/plain"): Blob {
+            const bytes = Binary.base64ToByteString(base64);
+            const array = Binary.byteStringToUint8Array(bytes);
+            return Binary.uint8ArrayToBlob(array, mimeType);
         }
 
         /**
-         * data-url 形式画像から Blob オブジェクトへ変換
+         * text string to Blob
          *
-         * @param  {String} dataUrl    [in] data url
-         * @param  {String} [mimeType] [in] mime type を指定. 既定では "image/png"
-         * @return {Blob} Blob インスタンス
+         * @param text {string} [in] text string data
+         * @param mimeType {string} [in] MimeType of data
+         * @return {Blob} Blob data
          */
-        public static dataUrlToBlob(dataUrl: string, mimeType: string = "image/png"): Blob {
-            const base64 = dataUrl.split(",")[1];
-            return Binary.base64ToBlob(base64, mimeType);
+        public static textToBlob(text: string, mimeType: string = "text/plain"): Blob {
+            return Binary.newBlob([text], { type: mimeType });
         }
-
-        /**
-         * Base64 string to ArrayBuffer
-         *
-         * @param base64 {string} [in] Base64 string data
-         * @return {ArrayBuffer} ArrayBuffer data
-         */
-        public static base64ToArrayBuffer(base64: string): ArrayBuffer {
-            const bytes = window.atob(base64);
-            const arrayBuffer = new ArrayBuffer(bytes.length);
-            const data = new Uint8Array(arrayBuffer);
-
-            for (let i = 0, len = bytes.length; i < len; ++i) {
-                data[i] = bytes.charCodeAt(i);
-            }
-            return arrayBuffer;
-        }
-
-        /**
-         * Base64 string to Uint8Array
-         *
-         * @param base64 {string} [in] Base64 string data
-         * @return {Uint8Array} Uint8Array data
-         */
-        public static base64ToUint8Array(encoded: string): Uint8Array {
-            const bytes = window.atob(encoded);
-            const data = new Uint8Array(bytes.length);
-
-            for (let i = 0, len = bytes.length; i < len; ++i) {
-                data[i] = bytes.charCodeAt(i);
-            }
-            return data;
-        }
-
-        /**
-         * ArrayBuffer to base64 string
-         *
-         * @param arrayBuffer {ArrayBuffer} [in] ArrayBuffer data
-         * @return {string} base64 data
-         */
-        public static arrayBufferToBase64(arrayBuffer: ArrayBuffer): string {
-            const bytes = new Uint8Array(arrayBuffer);
-            return Binary.uint8ArrayToBase64(bytes);
-        }
-
-        /**
-         * Uint8Array to base64 string
-         *
-         * @param bytes {Uint8Array} [in] Uint8Array data
-         * @return {string} base64 data
-         */
-        public static uint8ArrayToBase64(bytes: Uint8Array): string {
-            let data: string = "";
-
-            for (let i = 0, len = bytes.byteLength; i < len; ++i) {
-                data += String.fromCharCode(bytes[i]);
-            }
-            return window.btoa(data);
-        }
-
 
         /**
          * read Blob as ArrayBuffer
@@ -204,8 +178,8 @@ namespace CDP.Tools {
         public static readBlobAsUint8Array(blob: Blob): IPromise<Uint8Array> {
             return new Promise((resolve, reject, dependOn) => {
                 dependOn(Binary.readBlobAsArrayBuffer(blob))
-                    .then((result: ArrayBuffer) => {
-                        resolve(new Uint8Array(result));
+                    .then((buffer) => {
+                        resolve(new Uint8Array(buffer));
                     })
                     .catch((error: ErrorInfo) => {
                         reject(error);
@@ -214,33 +188,7 @@ namespace CDP.Tools {
         }
 
         /**
-         * read Blob as text string
-         *
-         * @param  {Blob} blob [in] blob data
-         * @return {CDP.IPromise<Uint8Array>} promise object
-         */
-        public static readBlobAsText(blob: Blob, encode: string = "utf-8"): IPromise<string> {
-            const reader = new FileReader();
-            const cancel = () => reader.abort();
-
-            return new Promise((resolve, reject) => {
-                reader.onload = () => {
-                    resolve(reader.result);
-                };
-                reader.onerror = () => {
-                    reject(Binary.makeErrorInfoFromDOMError(
-                        RESULT_CODE.ERROR_CDP_TOOLS_FILE_READER_ERROR,
-                        reader.error,
-                        TAG,
-                        "FileReader.readAsText() failed."
-                    ));
-                };
-                reader.readAsText(blob, encode);
-            }, cancel);
-        }
-
-        /**
-         * read Blob as Data URL
+         * read Blob as data URL
          *
          * @param  {Blob} blob [in] blob data
          * @return {CDP.IPromise<string>} promise object
@@ -263,6 +211,248 @@ namespace CDP.Tools {
                 };
                 reader.readAsDataURL(blob);
             }, cancel);
+        }
+
+        /**
+         * read Blob as Base64 string
+         *
+         * @param  {Blob} blob [in] blob data
+         * @return {CDP.IPromise<string>} promise object
+         */
+        public static readBlobAsBase64(blob: Blob): IPromise<string> {
+            return new Promise((resolve, reject, dependOn) => {
+                dependOn(Binary.readBlobAsDataURL(blob))
+                    .then((dataURL) => {
+                        // dataURL is always encoded base64
+                        const base64 = dataURL.split(",")[1];
+                        resolve(base64);
+                    })
+                    .catch((error: ErrorInfo) => {
+                        reject(error);
+                    });
+            });
+        }
+
+        /**
+         * read Blob as text string
+         *
+         * @param  {Blob} blob [in] blob data
+         * @return {CDP.IPromise<Uint8Array>} promise object
+         */
+        public static readBlobAsText(blob: Blob, encoding: string = "utf-8"): IPromise<string> {
+            const reader = new FileReader();
+            const cancel = () => reader.abort();
+
+            return new Promise((resolve, reject) => {
+                reader.onload = () => {
+                    resolve(decodeURIComponent(reader.result));
+                };
+                reader.onerror = () => {
+                    reject(Binary.makeErrorInfoFromDOMError(
+                        RESULT_CODE.ERROR_CDP_TOOLS_FILE_READER_ERROR,
+                        reader.error,
+                        TAG,
+                        "FileReader.readAsText() failed."
+                    ));
+                };
+                reader.readAsText(blob, encoding);
+            }, cancel);
+        }
+
+        /**
+         * data URL string to ArrayBuffer
+         */
+        public static dataURLToArrayBuffer(dataURL: string): ArrayBuffer {
+            const array = Binary.dataURLToUint8Array(dataURL);
+            return array.buffer;
+        }
+
+        /**
+         * data URL string to Uint8Array
+         */
+        public static dataURLToUint8Array(dataURL: string): Uint8Array {
+            const result = Binary.execDataURLRegExp(dataURL);
+
+            if (result.base64) {
+                return Binary.base64ToUint8Array(result.data);
+            } else {
+                return Binary.textToUint8Array(result.data);
+            }
+        }
+
+        /**
+         * Base64 string to ArrayBuffer
+         */
+        public static base64ToArrayBuffer(base64: string): ArrayBuffer {
+            const array = Binary.base64ToUint8Array(base64);
+            return array.buffer;
+        }
+
+        /**
+         * Base64 string to Uint8Array
+         */
+        public static base64ToUint8Array(base64: string): Uint8Array {
+            const bytes = Binary.base64ToByteString(base64);
+            return Binary.byteStringToUint8Array(bytes);
+        }
+
+        /**
+         * text string to ArrayBuffer
+         */
+        public static textToArrayBuffer(text: string): ArrayBuffer {
+            const array = Binary.textToUint8Array(text);
+            return array.buffer;
+        }
+
+        /**
+         * text string to Uint8Array
+         */
+        public static textToUint8Array(text: string): Uint8Array {
+            const bytes = Binary.textToByteString(text);
+            return Binary.byteStringToUint8Array(bytes);
+        }
+
+        /**
+         * ArrayBuffer to data URL string
+         */
+        public static arrayBufferToDataURL(buffer: ArrayBuffer, mimeType: string = "text/plain"): string {
+            return Binary.uint8ArrayToDataURL(new Uint8Array(buffer), mimeType);
+        }
+
+        /**
+         * ArrayBuffer to Base64 string
+         */
+        public static arrayBufferToBase64(buffer: ArrayBuffer): string {
+            return Binary.uint8ArrayToBase64(new Uint8Array(buffer));
+        }
+
+        /**
+         * ArrayBuffer to text string
+         */
+        public static arrayBufferToText(buffer: ArrayBuffer): string {
+            return Binary.uint8ArrayToText(new Uint8Array(buffer));
+        }
+
+        /**
+         * Uint8Array to data URL string
+         */
+        public static uint8ArrayToDataURL(array: Uint8Array, mimeType: string = "text/plain"): string {
+            const base64 = Binary.uint8ArrayToBase64(array);
+            return `data:${mimeType};base64,${base64}`;
+        }
+
+        /**
+         * Uint8Array to Base64 string
+         */
+        public static uint8ArrayToBase64(array: Uint8Array): string {
+            const bytes = Binary.uint8ArrayToByteString(array);
+            return Binary.byteStringToBase64(bytes);
+        }
+
+        /**
+         * Uint8Array to text string
+         */
+        public static uint8ArrayToText(array: Uint8Array): string {
+            const bytes = Binary.uint8ArrayToByteString(array);
+            return Binary.byteStringToText(bytes);
+        }
+
+        /**
+         * data URL string to text string
+         */
+        public static dataURLToText(dataURL: string): string {
+            const result = Binary.execDataURLRegExp(dataURL);
+
+            if (result.base64) {
+                return Binary.base64ToText(result.data);
+            } else {
+                return decodeURIComponent(result.data);
+            }
+        }
+
+        /**
+         * Base64 string to text string
+         */
+        public static base64ToText(base64: string): string {
+            const bytes = Binary.base64ToByteString(base64);
+            return Binary.byteStringToText(bytes);
+        }
+
+        /**
+         * text string to data URL string
+         */
+        public static textToDataURL(text: string, mimeType: string = "text/plain"): string {
+            const base64 = Binary.textToBase64(text);
+            return `data:${mimeType};base64,${base64}`;
+        }
+
+        /**
+         * text string to Base64 string
+         */
+        public static textToBase64(text: string): string {
+            const bytes = Binary.textToByteString(text);
+            return Binary.byteStringToBase64(bytes);
+        }
+
+        /**
+         * data URI 形式の正規表現
+         * 参考: https://developer.mozilla.org/ja/docs/data_URIs
+         */
+        private static execDataURLRegExp(dataURL: string): IDataURLComponent {
+            /**
+             * [match] 1: MimeType
+             *         2: ";base64" を含むオプション
+             *         3: data 本体
+             */
+            const reDataURL = /^data:(.+?\/.+?)?(;.+?)?,(.*)$/;
+            const result = reDataURL.exec(dataURL);
+
+            const component: IDataURLComponent = {
+                mimeType: "",
+                base64: true,
+                data: "",
+            };
+
+            if (null != result) {
+                component.mimeType = result[1];
+                component.base64 = /;base64/.test(result[2]);
+                component.data = result[3];
+            }
+
+            return component;
+        }
+
+        private static uint8ArrayToByteString(array: Uint8Array) {
+            return Array.prototype.map.call(array, i => String.fromCharCode(i)).join("");
+        }
+
+        private static base64ToByteString(base64: string): string {
+            return window.atob(base64);
+        }
+
+        private static textToByteString(text: string): string {
+            // first we use encodeURIComponent to get percent-encoded UTF-8,
+            // then we convert the percent encodings into raw bytes which
+            // can be fed into btoa.
+            return encodeURIComponent(text).replace(/%([0-9A-F]{2})/g,
+                (match, p1) => String.fromCharCode(parseInt(p1, 16))
+            );
+        }
+
+        private static byteStringToUint8Array(bytes: string): Uint8Array {
+            const array = bytes.split("").map(c => c.charCodeAt(0));
+            return new Uint8Array(array);
+        }
+
+        private static byteStringToBase64(bytes: string): string {
+            return window.btoa(bytes);
+        }
+
+        private static byteStringToText(bytes: string): string {
+            // going backwards: from bytestream, to percent-encoding, to original string.
+            return decodeURIComponent(bytes.split("").map(
+                c => `%${("00" + c.charCodeAt(0).toString(16)).slice(-2)}`
+            ).join(""));
         }
     }
 }

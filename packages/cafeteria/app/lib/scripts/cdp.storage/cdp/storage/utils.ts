@@ -12,12 +12,14 @@ import { RESULT_CODE } from "./error-defs";
 
 const arrayBufferToBase64   = Tools.Binary.arrayBufferToBase64;
 const uint8ArrayToBase64    = Tools.Binary.uint8ArrayToBase64;
-const base64ToBlob          = Tools.Binary.base64ToBlob;
 const base64ToArrayBuffer   = Tools.Binary.base64ToArrayBuffer;
 const base64ToUint8Array    = Tools.Binary.base64ToUint8Array;
 const arrayBufferToBlob     = Tools.Binary.arrayBufferToBlob;
-const readBlobAsUint8Array  = Tools.Binary.readBlobAsUint8Array;
+const uint8ArrayToBlob      = Tools.Binary.uint8ArrayToBlob;
+const base64ToBlob          = Tools.Binary.base64ToBlob;
 const readBlobAsArrayBuffer = Tools.Binary.readBlobAsArrayBuffer;
+const readBlobAsUint8Array  = Tools.Binary.readBlobAsUint8Array;
+const readBlobAsBase64      = Tools.Binary.readBlobAsBase64;
 const readBlobAsText        = Tools.Binary.readBlobAsText;
 
 const TAG = "[cdp.storage.utils] ";
@@ -28,9 +30,8 @@ function binaryToBase64(data: Blob | ArrayBuffer | Uint8Array): IPromise<string>
         let base64: string;
 
         if (data instanceof Blob) {
-            dependOn(readBlobAsArrayBuffer(data))
-                .then((buffer: ArrayBuffer) => {
-                    base64 = arrayBufferToBase64(buffer);
+            dependOn(readBlobAsBase64(data))
+                .then((base64: string) => {
                     resolve(base64);
                 })
                 .catch((error) => {
@@ -171,7 +172,7 @@ export function convertAsDataBlob(data: any, mimeType: string): IPromise<Blob> {
             } else if (data instanceof ArrayBuffer) {
                 blob = arrayBufferToBlob(data, mimeType || MIME_TYPE_BINRAY_DATA);
             } else if (data instanceof Uint8Array) {
-                blob = arrayBufferToBlob((<Uint8Array>data).buffer, mimeType || MIME_TYPE_BINRAY_DATA);
+                blob = uint8ArrayToBlob(data, mimeType || MIME_TYPE_BINRAY_DATA);
             } else {
                 try {
                     const text = JSON.stringify(data);
