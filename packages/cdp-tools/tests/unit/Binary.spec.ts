@@ -41,18 +41,19 @@ describe("Tools.Binary", () => {
 
     it("Blob <=> ArrayBuffer", (done) => {
         // from ArrayBuffer to Blob
-        const size = 8;
+        const array = new Uint8Array([0, 1, 2, 3]);
+        const buffer = array.buffer;
         const type = "application/octet-stream";
-        const buffer = new ArrayBuffer(size);
         const blob = Binary.arrayBufferToBlob(buffer, type);
         expect(blob).toBeDefined();
-        expect(blob.size).toBe(size);
+        expect(blob.size).toBe(buffer.byteLength);
         expect(blob.type).toBe(type);
 
         // from Blob to ArrayBuffer
         Binary.readBlobAsArrayBuffer(blob)
             .then((retval) => {
-                expect(retval).toEqual(buffer);
+                const result = new Uint8Array(retval);
+                expect(result).toEqual(array);
                 done();
             })
             .catch((reason) => {
@@ -63,17 +64,17 @@ describe("Tools.Binary", () => {
 
     it("Blob <=> Uint8Array", (done) => {
         // from Uint8Array to Blob
-        const arr = new Uint8Array([0, 1, 2, 3]);
+        const array = new Uint8Array([0, 1, 2, 3]);
         const type = "application/octet-stream";
-        const blob = Binary.uint8ArrayToBlob(arr, type);
+        const blob = Binary.uint8ArrayToBlob(array, type);
         expect(blob).toBeDefined();
-        expect(blob.size).toBe(arr.byteLength);
+        expect(blob.size).toBe(array.byteLength);
         expect(blob.type).toBe(type);
 
         // from Blob to Uint8Array
         Binary.readBlobAsUint8Array(blob)
             .then((retval) => {
-                expect(retval).toEqual(arr);
+                expect(retval).toEqual(array);
                 done();
             })
             .catch((reason) => {
@@ -84,10 +85,12 @@ describe("Tools.Binary", () => {
 
     it("Blob <=> dataURL", (done) => {
         // from dataURL to Blob
-        const dataURL = "data:text/plain;base64,SGVsbG8sIFdvcmxkIQ==";  // "Hello, World!
+        const text = "Hello, CDP!";
+        const type = "text/plain";
+        const dataURL = Binary.textToDataURL(text, type);
         const blob = Binary.dataURLToBlob(dataURL);
         expect(blob).toBeDefined();
-        expect(blob.type).toBe("text/plain");
+        expect(blob.type).toBe(type);
 
         // from Blob to DataUrl
         Binary.readBlobAsDataURL(blob)
@@ -103,12 +106,12 @@ describe("Tools.Binary", () => {
 
     it("Blob <=> Base64", (done) => {
         // from Base64 to Blob
-        const str = "Hello%2C%20World!";    // escaped "Hello, World!"
-        const base64 = window.btoa(str);
-        const mimeType = "text/plain";
-        const blob = Binary.base64ToBlob(base64, mimeType);
+        const text = "Hello, CDP!";
+        const base64 = Binary.textToBase64(text);
+        const type = "text/plain";
+        const blob = Binary.base64ToBlob(base64, type);
         expect(blob).toBeDefined();
-        expect(blob.type).toBe(mimeType);
+        expect(blob.type).toBe(type);
 
         // from Blob to Base64
         Binary.readBlobAsBase64(blob)
@@ -124,11 +127,11 @@ describe("Tools.Binary", () => {
 
     it("Blob <=> Text", (done) => {
         // from Text to Blob
-        const text = "Hello, World!";
-        const mimeType = "text/plain";
-        const blob = Binary.textToBlob(text, mimeType);
+        const text = "Hello, CDP!";
+        const type = "text/plain";
+        const blob = Binary.textToBlob(text, type);
         expect(blob).toBeDefined();
-        expect(blob.type).toBe(mimeType);
+        expect(blob.type).toBe(type);
 
         // from Blob to Text
         Binary.readBlobAsText(blob)

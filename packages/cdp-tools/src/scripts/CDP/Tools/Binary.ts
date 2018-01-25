@@ -127,8 +127,9 @@
          * @return {Blob} Blob data
          */
         public static base64ToBlob(base64: string, mimeType: string = "text/plain"): Blob {
-            const binstr = window.atob(base64);
-            return Binary.newBlob([binstr], { type: mimeType });
+            const bytes = Binary.base64ToByteString(base64);
+            const array = Binary.byteStringToUint8Array(bytes);
+            return Binary.uint8ArrayToBlob(array, mimeType);
         }
 
         /**
@@ -291,7 +292,8 @@
          * Base64 string to Uint8Array
          */
         public static base64ToUint8Array(base64: string): Uint8Array {
-            return Binary.byteStringToUint8Array(Binary.base64ToByteString(base64));
+            const bytes = Binary.base64ToByteString(base64);
+            return Binary.byteStringToUint8Array(bytes);
         }
 
         /**
@@ -306,7 +308,8 @@
          * text string to Uint8Array
          */
         public static textToUint8Array(text: string): Uint8Array {
-            return Binary.byteStringToUint8Array(Binary.textToByteString(text));
+            const bytes = Binary.textToByteString(text);
+            return Binary.byteStringToUint8Array(bytes);
         }
 
         /**
@@ -342,14 +345,16 @@
          * Uint8Array to Base64 string
          */
         public static uint8ArrayToBase64(array: Uint8Array): string {
-            return Binary.byteStringToBase64(Binary.uint8ArrayToByteString(array));
+            const bytes = Binary.uint8ArrayToByteString(array);
+            return Binary.byteStringToBase64(bytes);
         }
 
         /**
          * Uint8Array to text string
          */
         public static uint8ArrayToText(array: Uint8Array): string {
-            return Binary.byteStringToText(Binary.uint8ArrayToByteString(array));
+            const bytes = Binary.uint8ArrayToByteString(array);
+            return Binary.byteStringToText(bytes);
         }
 
         /**
@@ -369,7 +374,8 @@
          * Base64 string to text string
          */
         public static base64ToText(base64: string): string {
-            return Binary.byteStringToText(Binary.base64ToByteString(base64));
+            const bytes = Binary.base64ToByteString(base64);
+            return Binary.byteStringToText(bytes);
         }
 
         /**
@@ -384,7 +390,8 @@
          * text string to Base64 string
          */
         public static textToBase64(text: string): string {
-            return Binary.byteStringToBase64(Binary.textToByteString(text));
+            const bytes = Binary.textToByteString(text);
+            return Binary.byteStringToBase64(bytes);
         }
 
         /**
