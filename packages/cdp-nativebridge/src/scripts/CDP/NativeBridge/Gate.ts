@@ -1,4 +1,4 @@
-﻿namespace CDP.NativeBridge {
+namespace CDP.NativeBridge {
 
     import IPromise     = CDP.IPromise;
     import IPromiseBase = CDP.IPromiseBase;
@@ -57,15 +57,46 @@
     //___________________________________________________________________________________________________________________//
 
     /**
-     * \~english
-     * @class Gate
-     * @brief The base class for NativeBridge communication.
-     *        You can derive any Gate class from this class.
+     * @en The base class for NativeBridge communication.
+     *     You can derive any Gate class from this class.
+     * @ja NativeBridge と通信するベースクラス
+     *     このクラスから任意の Gate クラスを派生して実装可能
      *
-     * \~japanese
-     * @class Gate
-     * @brief NativeBridge と通信するベースクラス
-     *        このクラスから任意の Gate クラスを派生して実装可能
+     * @example <br>
+     *
+     * ```ts
+     *  import { Gate } from "cdp/bridge";
+     *
+     *  export class SimpleGate extends Gate {
+     *    constructor() {
+     *      super({  // set CDP.NativeBridge.Feature object to super constructor. (required)
+     *        name: "SimpleGate",
+     *        android: {
+     *          // the class name used by reflection in Anroid Java.
+     *          packageInfo: "com.sony.cdp.sample.SimpleGate",
+     *        },
+     *        ios: {
+     *          // the class name used by reflection in Objective-C.
+     *          packageInfo: "SMPSimpleGate",
+     *        },
+     *      });
+     *    }
+     *
+     *    // an example definition of client method.
+     *    //  any type of primitive / JSON is available. (cordova compatible. void is also possible.)
+     *    //  default return value is Promise object.
+     *    public coolMethod(arg1: number, arg2: boolean, arg3: string, arg4: Object): Promise {
+     *      // calling super.exec().
+     *      // the first argument is method name set by string.
+     *      // the second argument is "arguments" set available. (<any> cast required)
+     *      //
+     *      // !! Note !!
+     *      // When null/undefined passes to arguments,
+     *      // you must to set default value to the argument in this layer.
+     *      return super.exec("coolMethod", <any>arguments);
+     *    }
+     *  }
+     * ```
      */
     export class Gate {
 
@@ -78,17 +109,12 @@
         /* tslint:enable:no-unused-variable */
 
         /**
-         * \~english
-         * constructor
-         *
-         * @param feature [in] feature information.
-         * @param options [in] construction options.
-         *
-         * \~japanese
-         * constructor
-         *
-         * @param feature [in] 初期化情報を指定
-         * @param options [in] オプションを指定
+         * @param feature
+         *  - `en` feature information.
+         *  - `ja` 初期化情報を指定
+         * @param options
+         *  - `en` construction options.
+         *  - `ja` オプションを指定
          */
         constructor(feature: Feature, options?: ConstructOptions) {
             this._options = $.extend({
@@ -107,23 +133,23 @@
         // override methods
 
         /**
-         * \~english
-         * Execute task.
-         * the function calls the Native class method from correspondent method name.
+         * @en Execute task.
+         *     the function calls the Native class method from correspondent method name.
+         * @ja タスクの実行
+         *     指定した method 名に対応する Native Class の method を呼び出す。
          *
-         * @param method  [in] method name of Native class
-         * @param args    [in] set arguments by array type.
-         * @param options [in] set exec options.
-         * @returns Promise object.
-         *
-         * \~japanese
-         * タスクの実行
-         * 指定した method 名に対応する Native Class の method を呼び出す。
-         *
-         * @param method  [in] Native Class のメソッド名を指定
-         * @param args    [in] 引数を配列で指定
-         * @param options [in] 実行オプションを指定
-         * @returns Promise オブジェクト
+         * @param method
+         *  - `en` method name of Native class
+         *  - `ja` Native Class のメソッド名を指定
+         * @param args
+         *  - `en` set arguments by array type.
+         *  - `ja` 引数を配列で指定
+         * @param options
+         *  - `en` set exec options.
+         *  - `ja` 実行オプションを指定
+         * @returns
+         *  - `en` Promise object.
+         *  - `ja` Promise オブジェクト
          */
         public exec(method: string, args?: any[], options?: ExecOptions): IPromise<any> {
             const df = $.Deferred();
@@ -170,17 +196,15 @@
         }
 
         /**
-         * \~english
-         * Cancel all tasks.
+         * @en Cancel all tasks.
+         * @ja すべてのタスクのキャンセル
          *
-         * @param options [in] set execute options.
-         * @returns Promise object.
-         *
-         * \~japanese
-         * すべてのタスクのキャンセル
-         *
-         * @param options [in] 実行オプションを指定
-         * @returns Promise オブジェクト
+         * @param options
+         *  - `en` set execute options.
+         *  - `ja` 実行オプションを指定
+         * @returns
+         *  - `en` Promise object.
+         *  - `ja` Promise オブジェクト
          */
         public cancel(options?: ExecOptions): IPromiseBase<IResult> {
             const df = $.Deferred();
@@ -208,19 +232,17 @@
         }
 
         /**
-         * \~english
-         * Destruction for the instance.
-         * release Native class reference. after that, exec() becomes invalid.
+         * @en Destruction for the instance.
+         *     release Native class reference. after that, exec() becomes invalid.
+         * @ja インスタンスの破棄
+         *     Native の参照を解除する。以降、exec は無効となる。
          *
-         * @param options [in] set execute options.
+         * @param options
+         *  - `en` set execute options.
+         *  - `ja` 実行オプションを指定
          * @returns Promise object.
-         *
-         * \~japanese
-         * インスタンスの破棄
-         * Native の参照を解除する。以降、exec は無効となる。
-         *
-         * @param options [in] 実行オプションを指定
-         * @returns Promise オブジェクト
+         *  - `en` Promise object.
+         *  - `ja` Promise オブジェクト
          */
         public dispose(options?: ExecOptions): IPromiseBase<IResult> {
             const df = $.Deferred();
@@ -251,17 +273,14 @@
         // protected methods
 
         /**
-         * \~english
-         * Access to Plugin.NativeBridge object.
-         * If you want to use low level exec(), you can use this accessor.
+         * @en Access to Plugin.NativeBridge object.
+         *     If you want to use low level exec(), you can use this accessor.
+         * @ja Plugin.NativeBridge オブジェクトへのアクセス
+         *     低レベル exec() を使用したい場合に利用可能
          *
-         * @returns Plugin.NativeBridge instance.
-         *
-         * \~japanese
-         * Plugin.NativeBridge オブジェクトへのアクセス
-         * 低レベル exec() を使用したい場合に利用可能
-         *
-         * @returns Plugin.NativeBridge インスタンス.
+         * @returns
+         *  - `en` Plugin.NativeBridge instance.
+         *  - `ja` Plugin.NativeBridge インスタンス
          */
         protected get bridge(): Plugin.NativeBridge {
             return this._bridge;

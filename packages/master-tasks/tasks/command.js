@@ -5,7 +5,11 @@ const spawn = require('child_process').spawn;
 
 function exec(command, args, options) {
     if (!(args instanceof Array)) {
-        args = args.trim().split(' ');
+        if (args) {
+            args = args.trim().split(' ');
+        } else {
+            args = [];
+        }
     }
     return new Promise((resolve, reject) => {
         const opt = Object.assign({}, {
@@ -14,9 +18,12 @@ function exec(command, args, options) {
             stderr: (data) => { /* noop */ },
         }, options);
 
+        const ext = path.extname(command);
         let resolveCmd;
         if ('npm' === command) {
             resolveCmd = 'npm' + (process.platform === 'win32' ? '.cmd' : '');
+        } else if (ext) {
+            resolveCmd = command;
         } else {
             resolveCmd =
                 path.join(__dirname, '..', 'node_modules/.bin', command) +
