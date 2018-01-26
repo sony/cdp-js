@@ -285,7 +285,7 @@ class RootPageView extends PageView {
             root: this.getDeviceStorageRoot(root),
             dataInfo: {
                 dataType: ("json" === dataType) ? "text" : "blob",
-                mimeType: "image/png",
+                mimeType: "image/jpeg",
             },
             namespace: SECURE_STORAGE_NAMESPACE,
         }))
