@@ -1,5 +1,12 @@
-﻿﻿--------------------------------------------------------------------------------
-NOTICES FOR jQuery
+﻿cdp-framework-jqm
+Copyright 2017, 2018 Sony Network Communications Inc.
+
+This product includes software developed at Sony Network Communications Inc.
+
+This product also includes the following third-party components
+
+﻿--------------------------------------------------------------------------------
+jQuery
 --------------------------------------------------------------------------------
 
  - jQuery Mobile - ./external/jquery/scripts/jquery.mobile.js
@@ -16,7 +23,7 @@ NOTICES FOR jQuery
     http://jquery.org/license
 
 --------------------------------------------------------------------------------
-NOTICES FOR jquerymobile.d.ts
+jquerymobile.d.ts
 --------------------------------------------------------------------------------
 
  - jquerymobile.d.ts - ./dist/@types/jquery.mobile.d.ts
