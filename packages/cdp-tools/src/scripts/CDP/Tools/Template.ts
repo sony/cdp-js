@@ -12,6 +12,14 @@ namespace CDP.Tools {
         (data?: any): string;
     }
 
+    interface ElementMap {
+        [key: string]: JQuery;
+    }
+
+    interface SourceMap {
+        [key: string]: string;
+    }
+
     //___________________________________________________________________________________________________________________//
 
     /**
@@ -20,8 +28,8 @@ namespace CDP.Tools {
      */
     export class Template {
 
-        static _mapElement: any;    //!< キーと JQuery Element の Map オブジェクト
-        static _mapSource: any;     //!< URL と ソースファイル(HTML) の Map オブジェクト
+        private static _mapElement: ElementMap; //!< キーと JQuery Element の Map オブジェクト
+        private static _mapSource: SourceMap;   //!< URL と ソースファイル(HTML) の Map オブジェクト
 
         ///////////////////////////////////////////////////////////////////////
         // 公開メソッド
@@ -38,25 +46,20 @@ namespace CDP.Tools {
             const mapElement = Template.getElementMap();
             let $element = mapElement[key];
 
-            try {
-                if (!$element) {
-                    if (src) {
-                        const html = Template.findHtmlFromSource(src);
-                        $element = $(html).find(key);
-                    } else {
-                        $element = $(key);
-                    }
-                    // 要素の検証
-                    if ($element <= 0) {
-                        throw ("invalid [key, src] = [" + key + ", " + src + "]");
-                    }
-                    if (src && cache) {
-                        mapElement[key] = $element;
-                    }
+            if (!$element || !$element[0]) {
+                // 要素の取得
+                if (src) {
+                    const html = Template.findHtmlFromSource(src);
+                    $element = $(html).find(key);
+                } else {
+                    $element = $(key);
                 }
-            } catch (exception) {
-                console.error(TAG + exception);
-                return null;
+                // 要素の検証
+                if (!$element || !$element[0]) {
+                    console.warn(TAG, `invalid [key, src] = [${key}, ${src}]`);
+                } else if (src && cache) {
+                    mapElement[key] = $element;
+                }
             }
 
             return $element;
@@ -82,22 +85,23 @@ namespace CDP.Tools {
         static getJST(key: JQuery): JST;
         static getJST(key: string, src?: string, cache?: boolean): JST;
         static getJST(key: any, src?: string, cache?: boolean): JST {
-            let template: any = null;
-            let jst: JST;
+            let jst: JST = () => "";
             let $element: JQuery;
             if (key instanceof jQuery) {
                 $element = key;
             } else {
                 $element = Template.getTemplateElement(key, src, cache);
             }
-            if (null != global.Hogan) {
-                template = Hogan.compile($element.text());
-                jst = function (data?: any): string {
+            if (!$element || !$element[0]) {
+                console.warn(TAG + "cannot generate template");
+            } else if (null != global.Hogan) {
+                const template = Hogan.compile($element.text());
+                jst = (data?: any) => {
                     return template.render(data);
                 };
             } else if (null != global._) {
-                template = _.template($element.html());
-                jst = function (data?: any): string {
+                const template = _.template($element.html());
+                jst = (data?: any) => {
                     // 改行とタブは削除する
                     return template(data).replace(/\n|\t/g, "");
                 };
@@ -112,25 +116,21 @@ namespace CDP.Tools {
         // 内部メソッド
 
         //! Element Map オブジェクトの取得
-        private static getElementMap(): any {
-            if (!Template._mapElement) {
-                Template._mapElement = {};
-            }
+        private static getElementMap(): ElementMap {
+            Template._mapElement = Template._mapElement || {};
             return Template._mapElement;
         }
 
         //! URL Map オブジェクトの取得
-        private static getSourceMap(): any {
-            if (!Template._mapSource) {
-                Template._mapSource = {};
-            }
+        private static getSourceMap(): SourceMap {
+            Template._mapSource = Template._mapSource || {};
             return Template._mapSource;
         }
 
-        //! URL Map から HTML を検索. 失敗した場合は undefined が返る
+        //! URL Map から HTML を検索. 失敗した場合は空文字が返る
         private static findHtmlFromSource(src: string): string {
             const mapSource = Template.getSourceMap();
-            let html = mapSource[src];
+            let html = mapSource[src] || "";
 
             if (!html) {
                 $.ajax({
@@ -142,7 +142,7 @@ namespace CDP.Tools {
                         html = data;
                     },
                     error: (data: any, status: string) => {
-                        throw ("ajax request failed. status: " + status);
+                        console.error(TAG, `ajax request failed. status: ${status}`);
                     }
                 });
                 // キャッシュに格納
