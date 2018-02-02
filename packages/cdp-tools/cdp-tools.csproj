@@ -192,4 +192,7 @@
   <ItemGroup>
     <Content Include="RELEASENOTE.md" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="NOTICE" />
+  </ItemGroup>
 </Project>
