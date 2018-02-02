@@ -1,5 +1,12 @@
-﻿﻿--------------------------------------------------------------------------------
-NOTICES FOR jQuery
+cdp-js
+Copyright 2017, 2018 Sony Network Communications Inc.
+  		  
+This product includes software developed at Sony Network Communications Inc.
+
+This product also includes the following third-party components
+
+--------------------------------------------------------------------------------
+jQuery
 --------------------------------------------------------------------------------
 
  - jQuery Mobile - ./packages/cdp-framework-jqm/external/jquery/scripts/jquery.mobile.js
@@ -16,7 +23,7 @@ NOTICES FOR jQuery
     http://jquery.org/license
 
 --------------------------------------------------------------------------------
-NOTICES FOR i18next
+i18next
 --------------------------------------------------------------------------------
 
  - i18next stuff including ./dist/cdp.js
@@ -39,7 +46,7 @@ NOTICES FOR i18next
     https://github.com/i18next/jquery-i18next/blob/master/LICENSE
 
 ﻿--------------------------------------------------------------------------------
-NOTICES FOR Cordova
+Cordova
 --------------------------------------------------------------------------------
 
  - Cordova - ./packages/cafeteria/platforms/android/cordova/
@@ -58,7 +65,7 @@ NOTICES FOR Cordova
     http://cordova.apache.org/#about
 
 --------------------------------------------------------------------------------
-NOTICES FOR cordova-plugin-secure-storage
+cordova-plugin-secure-storage
 --------------------------------------------------------------------------------
 
  - cordova-plugin-secure-storage - ./packages/cafeteria/plugins/cordova-plugin-secure-storage/
@@ -68,7 +75,7 @@ NOTICES FOR cordova-plugin-secure-storage
     https://github.com/Crypho/cordova-plugin-secure-storage/blob/master/LICENSE
 
 --------------------------------------------------------------------------------
-NOTICES FOR cordova-plugin-cdp-nativebridge
+cordova-plugin-cdp-nativebridge
 --------------------------------------------------------------------------------
 
  - cordova-plugin-cdp-nativebridge - ./packages/cafeteria/plugins/cordova-plugin-cdp-nativebridge/
@@ -78,7 +85,7 @@ NOTICES FOR cordova-plugin-cdp-nativebridge
     https://github.com/sony/cordova-plugin-cdp-nativebridge/blob/master/LICENSE
 
 --------------------------------------------------------------------------------
-NOTICES FOR sylvester
+sylvester
 --------------------------------------------------------------------------------
 
  - sylvester - ./app/external/sylvester/scripts/sylvester.js
@@ -88,7 +95,7 @@ NOTICES FOR sylvester
     https://github.com/jcoglan/sylvester
 
 --------------------------------------------------------------------------------
-NOTICES FOR jquerymobile.d.ts
+jquerymobile.d.ts
 --------------------------------------------------------------------------------
 
  - jquerymobile.d.ts - ./packages/cdp-framework-jqm/dist/@types/jquery.mobile.d.ts
