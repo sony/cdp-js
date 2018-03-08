@@ -15,7 +15,7 @@ Folder and file structure of this repository is the following list.
 
     root/
         dist/           // for internal release modules directory
-        docs/           // specification documents for sdk modules
+        documents/      // specification documents for sdk modules
         packages/       // including monorepo packages
         tests/          // test for task scripts
 
@@ -53,8 +53,8 @@ If you want to use newest version, you can build the modules yourself as follow 
 ### How to use
 Please see the following documentation.
 
-- [English/英語](docs/en)
-- [Japanese/日本語](docs/jp)
+- [English/英語](documents/en)
+- [Japanese/日本語](documents/jp)
 
 ## Release Notes
 Please see the following link.

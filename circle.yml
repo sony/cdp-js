@@ -12,11 +12,11 @@ test:
     override:
         - npm run ci -s
     post:
-#        - bugspots . > docs/reports/bugspots.txt
+#        - bugspots . > documents/reports/bugspots.txt
 
 
 general:
     artifacts:
-        - "docs/typedoc"    # typedoc document
-        - "docs/reports"    # metrics, coverage reports
-#        - "docs/reports/bugspots.txt" # bugspots report
+        - "documents/typedoc"    # typedoc document
+        - "documents/reports"    # metrics, coverage reports
+#        - "documents/reports/bugspots.txt" # bugspots report
