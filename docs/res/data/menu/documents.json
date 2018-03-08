@@ -1,0 +1,46 @@
+﻿{
+  "items1": [
+    {
+      "label": "CDP概要",
+      "caption": true
+    },
+    {
+      "label": "CDP Boilerplate",
+      "href": "#documents/cdp-boilerplate"
+    },
+    {
+      "label": "チュートリアル",
+      "caption": true
+    },
+    {
+      "label": "Mobile向け",
+      "list2": true,
+      "items2": [
+        {
+          "label": "LoginSPASample",
+          "caption": true
+        },
+        {
+          "label": "アプリ概要",
+          "href": "#documents/tutorial-loginspa"
+        },
+        {
+          "label": "アプリひな形の作成",
+          "href": "#documents/tutorial-loginspa-generator"
+        },
+        {
+          "label": "ログインページの作成",
+          "href": "#documents/tutorial-loginspa-loginpage"
+        },
+        {
+          "label": "ログインボタンの作成",
+          "href": "#documents/tutorial-loginspa-loginbutton"
+        },
+        {
+          "label": "詳細ページの作成",
+          "href": "#documents/tutorial-loginspa-detailpage"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+﻿<article>
+    <script type="text/template" id="getstarted-mac-setup-cordova">
+
+        <h1>環境構築（Mac OS） - Cordova</h1>
+        <p>このページでは、CDP Boilerplateを使ってモバイルアプリケーションを開発するために必要な開発環境の構築方法を説明します。<a href="#getstarted/mac-setup-base">開発環境のセットアップ</a>が完了していることを前提として説明します。</p>
+        <h2>Cordova</h2>
+        <p>CDP Boilerplateを使ってモバイルアプリケーションを開発する際、アプリケーションのパッケージングや、JavaScriptからネイティブコードへのアクセスなどにCordovaを使用します。まず、Cordovaのセットアップを行いましょう。</p>
+        <h3>インストール</h3>
+        <p>以下のコマンドでCordovaをインストールします。</p>
+        <pre class="hljspre">$ npm install -g cordova</pre>
+
+        <h3>確認法</h3>
+        <p>以下のコマンドでCordovaのバージョンが表示されれば、インストール成功です。</p>
+        <pre class="hljspre">$ cordova -v
+7.1.0</pre>
+
+        <h2>Androidアプリケーション開発環境構築</h2>
+        <p>Androidアプリケーションの開発環境を構築します。詳細は、<a href="https://cordova.apache.org/docs/en/latest/guide/platforms/android/index.html">Cordovaのドキュメント</a> を参照してください。<br>既に開発環境を構築済みの場合は、この節をスキップしてください。</p>
+        <h3>JAVA SE Development Kit 8のインストール</h3>
+        <p>Cordovaでは、JAVA SE Development Kit 8が必要になります。<a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">JAVA SE Development Kit 8</a>から適切なインストーラーをダウンロードし、インストールしてください。<br>(例: Windows x64の場合は、jdk-8u[nnn]-windows-x64.exe)</p>
+        <h3>Android Studioのインストール</h2>
+        <p><a href="https://developer.android.com/studio/index.html?hl=i">Download Android Studio and SDK Tools</a>からAndroid Studioのインストーラーをダウンロードし、インストールしてください。</p>
+        <h3>Android SDKのインストール</h3>
+        <p>Cordovaのバージョンによって必要になるAndroid API Level が異なります。Android Studioを起動し、[Quick Start]の[Configure]の中、またはツールバーにある[SDK Manager]を起動し、適切なAndroid SDKをインストールしてください。<br>(例: Cordova 7.1.0に含まれるcordova-androidのバージョンが6.3.0の場合は、Android API Level 26が必要)</p>
+        <h3>環境変数設定</h3>
+        <p>以下の環境変数を設定することを推奨します。このドキュメントでは、この環境変数が設定されているものとして説明が記述されている場合があります。</p>
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>環境変数</th>
+                    <th>値</th>
+                </tr>
+                <tr>
+                    <td>ANDROID_HOME</td>
+                    <td><pre class="hljspre">$ export ANDROID_HOME=/Users/{ユーザー名}/Library/Android/sdk</pre></td>
+                </tr>
+                <tr>
+                    <td>JAVA_HOME</td>
+                    <td><pre class="hljspre">$ export JAVA_HOME=`/usr/libexec/java_home -v 1.8`</pre></td>
+                </tr>
+                <tr>
+                    <td>PATH</td>
+                    <td>$ANDROID_HOME/tools と $ANDROID_HOME/platform-tools を PATH に追加<br> 例: <pre class="hljspre">$ export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools</pre></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>プロキシ設定</h3>
+        <p>Android SDKはGradleを使用してビルドを行います。ビルドのときに、Gradleは外部のツールをダウンロードすることがあるため、環境によってはプロキシの設定が必要となります。 プロキシ環境下で使用しない場合は、この設定は無視してください。</p>
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>環境変数</th>
+                    <th>値</th>
+                </tr>
+                <tr>
+                    <td>GRADLE_OPTS</td>
+                    <td>-Dhttp.proxyHost={proxyserver} -Dhttp.proxyPort={port} -Dhttps.proxyHost={proxyserver} -Dhttps.proxyPort={port}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>iOSアプリケーション開発環境構築</h2>
+        <p>CDP Boilerplateを使ってiOS用アプリケーションを開発するときも、通常のiOS用アプリケーション開発と同等の環境を構築する必要があります。詳細は、<a href="https://cordova.apache.org/docs/en/latest/guide/platforms/ios/index.html">Cordovaのドキュメント</a> を参照してください。</p>
+        <h3>Xcodeのインストール</h3>
+        <p>iOS用アプリケーションの開発には、Mac OS専用の統合開発環境であるXcodeが必要です。</p>
+        <p>XcodeはMac App Storeから入手できます。Safariで<a href="https://itunes.apple.com/jp/app/xcode/id497799835">Mac App StoreのXcodeのページ</a>にアクセスするか、Mac App Storeアプリケーションで、「Xcode」を検索してインストーラーを入手し、インストールしてください。</p>
+        <p>何らかの理由で最新版のXcodeではなく、古いバージョンのXcodeをインストールしたい場合は、以下のページから入手できます。</p>
+        <ul>
+            <li><a href="https://developer.apple.com/download/more/">Downloads for Apple Developers</a></li>
+        </ul>
+
+        <h2>Apple Developer Programに登録する</h2>
+        <p>iOS用アプリケーションを公開するためには、<a href="https://developer.apple.com/programs/jp/">Apple Developer Program</a>に登録する必要があります。作成したアプリを公開するのではなく、手元のiOSデバイスでデバッグ実行するだけであれば、登録は不要です。</p>
+        <p>登録方法については、<a href="https://developer.apple.com/programs/how-it-works/jp/">Appleのドキュメント</a>をご覧ください。企業等にお勤めの方は、各組織のルールに従ってください。</p>
+        <hr>
+        <p>お疲れ様でした。それでは、次のステップに進みましょう。</p>
+        <ul>
+            <li><a href="#getstarted/mac-setup-cdp">CDP Boilerplateの開発ツールのセットアップ</a>へ</li>
+        </ul>
+
+        <div class="footer-inner">
+            <div class="footer-copyright">
+                <p>Copyright 2017 Sony Network Comminications Inc.</p>
+            </div>
+        </div>
+    </script>
+</article>

@@ -1,0 +1,56 @@
+﻿{
+  "items1": [
+    {
+      "label": "はじめに",
+      "href": "#getstarted/top"
+    },
+    {
+      "label": "環境構築 - Windows",
+      "list2": true,
+      "items2": [
+        {
+          "label": "開発環境のセットアップ",
+          "href": "#getstarted/win-setup-base"
+        },
+        {
+          "label": "Cordovaのセットアップ",
+          "href": "#getstarted/win-setup-cordova"
+        },
+        {
+          "label": "CDPのセットアップ",
+          "href": "#getstarted/win-setup-cdp"
+        },
+        {
+          "label": "その他のツール",
+          "href": "#getstarted/win-setup-extra"
+        }
+      ]
+    },
+    {
+      "label": "環境構築 - Mac OS",
+      "list2": true,
+      "items2": [
+        {
+          "label": "開発環境のセットアップ",
+          "href": "#getstarted/mac-setup-base"
+        },
+        {
+          "label": "Cordovaのセットアップ",
+          "href": "#getstarted/mac-setup-cordova"
+        },
+        {
+          "label": "CDPのセットアップ",
+          "href": "#getstarted/mac-setup-cdp"
+        },
+        {
+          "label": "その他のツール",
+          "href": "#getstarted/mac-setup-extra"
+        }
+      ]
+    },
+    {
+      "label": "はじめてのCDPアプリ",
+      "href": "#getstarted/my-first-cdp"
+    }
+  ]
+}

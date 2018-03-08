@@ -1,0 +1,270 @@
+<article>
+    <script type="text/template" id="documents-tutorial-loginspa-loginbutton">
+        <h1>LoginSPASample 3) ログインボタンの作成</h1>
+        <h3 id="310">3-1) Page の追加</h3>
+        <!-- ****************************************************** -->
+        <h4 id="311">3-1-1) DetailPage クラスを追加する</h4>
+        <p>
+            　ログインページに ログインボタンを追加する前に、ログインボタンのクリックで遷移する先である 詳細ページを管理する Page クラスを用意しておきましょう。
+            詳細ページはログインしたユーザーについて詳細情報を表示する画面です。<br>
+            app/scripts/view/detail-page.ts を新規作成し、下記の実装を行ってください。コードの構成は 2-2-1) LoginPage クラスの追加 に類似ています。
+        </p>
+        <pre>
+import {
+    PageView,
+    registerPage,
+} from "cdp/ui";
+
+const TAG: string = "[view.DetailPage] ";
+
+class DetailPage extends PageView {
+
+    constructor() {
+        super("/templates/detail-page.html", "page-detail-page", {
+                route: "detail-page"
+        });
+    }
+
+    onInitialize(event: JQuery.Event): void {
+        super.onInitialize(event);
+    }
+
+    events(): any {
+        return {
+        }
+    }
+
+    render(): DetailPage {
+        return this;
+    }
+}
+
+registerPage(DetailPage);
+        </pre>
+        <!--
+        <pre>
+import {
+    PageView,
+    registerPage,
+} from "cdp/ui";
+// import { DetailPageUserView } from "./detail-page-user-view";
+
+const TAG: string = "[view.DetailPage] ";
+
+class DetailPage extends PageView {
+    //  private _userView: DetailPageUserView = null;
+    constructor() {
+        super("/templates/detail-page.html", "page-detail-page", {
+                route: "detail-page"
+        });
+    }
+    onInitialize(event: JQuery.Event): void {
+        super.onInitialize(event);
+    }
+    events(): any {
+        return {
+        }
+    }
+    render(): DetailPage {
+        //  this._userView.render();
+        return this;
+    }
+
+//	onPageInit(event: JQuery.Event){
+//		super.onPageInit(event);
+//	    let $targetDom = this.$el.find("#page-detail-page-user-view");
+//		this._userView = new DetailPageUserView ( $targetDom );
+//		this.render();
+//	}
+//
+//	onPageRemove(event: JQuery.Event){
+//		super.onPageRemove(event);
+//		this._userView.remove();
+//		this._userView = null;
+//	}
+}
+
+registerPage(DetailPage);
+        </pre>
+        -->
+
+        <div class="hint-container">
+            <h4>【 DetailPage クラスの解説 】</h4>
+            <p>
+                1) 冒頭の import 文については 2-2-1) LoginPage クラスの追加 の解説を参照してください。
+            </p>
+            <p>
+                2) super() の引数について
+            </p>
+            <ul>
+                <li>第1引数は 詳細ページを表示するための UI リソースとして detail-page.html を登録しています
+                （ detail-page.html は あとで実装します）。</li>
+                <li>第2引数はその参照に使用する id="page-detail-page" を登録しています
+                （この id 属性値は このページのルートエレメントとして $el に設定され、jQuery で DOM 操作するためにも利用されます）。</li>
+                <li>{ route: "detail-page" } は 詳細ページに遷移することを "detail-page"という名前で管理することを Router に登録しています）。</li>
+            </ul>
+            <p>
+                3) registerPage(DetailPage) は LoginPage クラスの場合と同様に、DetailPage クラスを new する予約をしています。 
+            </p>
+        </div>
+
+
+        <h3 id="320">3-2)  ログイン機能の追加</h3>
+        <h4 id="321">3-2-1) ログインまわりのコードを追加する</h4>
+        <p>
+            　LoginState クラスにログイン処理に関するロジックを追加していきます。
+            入力したアカウントとパスワードでそのユーザーがログインできるか否かを判断する機能を実装します。 
+            app/scripts/model/login-state.ts に下記の赤文字で示したコードを追加してください。
+        </p>
+        <pre>
+import { Model } from "cdp/framework";
+import { User } from "./user";
+import { UserCollection } from "./user-collection";
+
+const TAG: string = "[model.LoginState] ";
+
+export class LoginState extends Model {
+    private _userCollection: UserCollection = null;
+    defaults() {
+        return {
+        };
+    }
+    constructor(attributes?: any) {
+        super(attributes, null);
+        this._userCollection = new UserCollection();
+        this._userCollection.fetch({
+            url: CDP.Framework.toUrl("/res/data/json/users.json")
+        });
+    }
+    getUserCollection(): UserCollection {
+        return this._userCollection;
+    }
+    <span style="color: #cc0000;"><strong>
+    getActiveUser(): User {
+        return this.get("activeUser");
+    }
+    login(id: string, pw: string): boolean {
+        let user: User = this._userCollection.get(id);
+        if( !user || user.get("pw") != pw) { return false; }
+        this.set("activeUser", user);
+        return true;
+    }
+    </strong></span>
+}
+
+// Make LoginState singleton
+let _loginState: LoginState = null;
+export function getLoginStateInstance() {
+    if( _loginState == null) {
+        _loginState = new LoginState();
+    }
+    return _loginState;
+}
+        </pre>
+
+        <div class="hint-container">
+            <h4>【 LoginState クラスの解説 】</h4>
+            <p> 　ログインページの ID プルダウンリストからログインするユーザー ID を指定し、パスワードを入力して ログインボタンをクリックすると、
+                このあと login-page.ts で追加するイベントハンドラ onSubmitLogin() により上記 login() メソッドが呼び出されます。<br>
+                　login() メソッドは選択されたユーザー ID のパスワードが正しいことを確認すると、 ログインしようとしているユーザーを表す user オブジェクトに "activeUser"という属性を追加します。<br>
+                getActiveUser()メソッドは "activeUser" 属性を持つユーザーを User オブジェクトに取得するメソッドです。
+            </p>
+        </div>
+
+        <h4 id="322">3-2-2) ログインボタンを有効化する</h4>
+        <p>
+            　いよいよ ログインページの ログインボタンを有効化します。<br>
+            　LoginPage クラスに events() にクリックイベント "vclick #submit-login" とイベントハンドラ "onSubmitLogin" を登録します。
+            そしてイベントハンドラの具体的な処理内容を onSubmitLogin() メソッドに実装します。<br>
+            app/scripts/View/login-page.ts を開き、赤文字の部分を追加してください。
+        </p>
+        <pre>
+import {
+    PageView,
+    registerPage,
+} from "cdp/ui";
+import { LoginPageUserListView } from "./login-page-user-list-view";
+import { LoginState, getLoginStateInstance } from "../model/login-state";
+
+const TAG: string = "[view.LoginPage] ";
+
+class LoginPage extends PageView {
+    private _userCollectionView: LoginPageUserListView = null;
+
+    constructor() {
+        super("/templates/login-page.html", "page-login-page", { 
+            route: "login-page" 
+        });
+    }
+    onInitialize(event: JQuery.Event): void {
+        super.onInitialize(event);
+    }
+    events(): any {
+        return {
+            <span style="color: #cc0000;"><strong>"vclick #submit-login": "onSubmitLogin"</strong></span>
+        }
+    }
+    render(): LoginPage {
+        this._userCollectionView.render();
+        return this;
+    }
+    onPageInit(event: JQuery.Event){
+        super.onPageInit(event);
+        let $targetDom = this.$el.find("#select-login-id");
+        this._userCollectionView = new LoginPageUserListView( $targetDom );
+        this.render();
+    }
+    onPageRemove(event: JQuery.Event){
+        super.onPageRemove(event);
+        this._userCollectionView.remove();
+        this._userCollectionView = null;
+    }
+    <span style="color: #cc0000;"><strong>
+    onSubmitLogin(event: JQuery.Event) {
+        let id = &lt;string&gt;$("#select-login-id").val();
+        let pw = &lt;string&gt;$("#password-login-pw").val();
+
+        let ret: boolean = getLoginStateInstance().login(id, pw);
+        if(ret) {
+            CDP.Framework.Router.navigate("#detail-page");
+        } else {
+            alert("Failed to Login");
+        }
+        event.preventDefault();
+    }
+    </strong></span>
+}
+registerPage(LoginPage);
+        </pre>
+
+        <div class="hint-container">
+            <h4>【 LoginPage クラスの解説 】</h4>
+            <p>
+                1) events() について
+            </p>
+                <ul>
+                    <li>ログインページのログインボタンのクリックイベント "vclick #submit-login" とイベントハンドラ "onSubmitLogin" を登録しています （ events() は Backbone.js の関数をオーバーライドして使っています）。</li>
+                    <li>" vclick " イベントは jQuery Mobile の仮想マウスイベント（Virtual mouse events）で、タップ操作とマウス操作に対するイベントを統合して処理することができます。</li>
+                    <li>"#submit-login" は id="submit-login" を有する &lt;button&gt; 要素をイベントの対象とすることを意味します。</li>
+                </ul>
+            <p>
+                2) onSubmitLogin() について
+            </p>
+                <ul>
+                    <li>このイベントハンドラは、ログインボタンをクリックすると変数 id にプルダウンリストから選択したユーザーの ID、 変数 pw に Password 欄に入力されたパスワードを取得します。</li>
+                    <li>getLoginStateInstance().login(id, pw) は、選択したユーザー ID とパスワードで正しくログインできるか否かをチェックしています。
+                        正しくログインできる場合には、CDP.Framework.Router.navigate("#detail-page"); により、id="detail-page"という名前で管理された 詳細ページに遷移します。<br>
+                        id="detail-page"という名前でページ遷移を管理することは、DetailPage クラスを作成したとき constructor() において、{ route: "detail-page" } として登録されています）。</li>
+                    <li>event.preventDefault(); はクリックイベントをキャンセルしています。イベントが親要素に波及することによる想定外のイベント検出を防止するためです。</li>
+                </ul>
+        </div>
+        <p>
+            　ここまで準備できたら、『<a href="#documents/tutorial-loginspa-detailpage">詳細ページの作成</a>』 に進んでください。
+        </p>
+        <div class="footer-inner">
+            <div class="footer-copyright">
+                <p>Copyright 2017 Sony Network Comminications Inc.</p>
+            </div>
+        </div>
+    </script>
+</article>

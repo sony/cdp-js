@@ -1,0 +1,22 @@
+{
+    "users":[
+            {
+                "id": "John",
+                "name": "ジョン",
+                "pw": "john",
+                "pic": "login_user_man.jpg"
+            },
+            {
+                "id": "Karen",
+                "name": "かれん",
+                "pw": "karen",
+                "pic": "login_user_woman.jpg"
+            },
+            {
+                "id": "Dog",
+                "name": "吾輩",
+                "pw": "dog",
+                "pic": "login_user_dog.jpg"
+            }
+    ]
+}

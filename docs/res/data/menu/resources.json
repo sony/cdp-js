@@ -1,0 +1,12 @@
+{
+    "items1": [
+        {
+            "label": "Links",
+            "caption": true
+        },
+        {
+            "label": "外部ドキュメント",
+            "href": "#resources/links-external-documents"
+        }
+    ]
+}

@@ -1,0 +1,148 @@
+<article>
+    <script type="text/template" id="documents-tutorial-loginspa-generator">
+        <h1>LoginSPASample 1) アプリひな形の作成</h1>
+        <h3 id="110">1-1) cdp create mobile の実行</h3>
+        <!-- ****************************************************** -->
+        <p>
+            　まずアプリに必要な全体ツリーを作ることから始めます。cdp-cli を使えば簡単に作成できます。
+            　プロジェクトルートを作るディレクトリーへ移動し、
+            cdp-cli が提供するコマンド "$ cdp create mobile" を実行し、あとは画面の指示に従って進めてください。
+        </p>
+        <ul>
+            <li>プロジェクト名はスネークスタイル＋ハイフン繋ぎで書くことを想定していますが、特にそれに制限される訳ではありません。</li>
+            <li>プロジェクト名などの右側の（）で表示された値は default 値を意味します。何も入力しないでリターンキーを押すと、default 値が設定されます。</li>
+            <li>選択項目においては、上下カーソルキーで項目移動でき、スペースキーで ＊ をオン/オフできます。</li>
+            <li>『追加する機能を選択してください』のところでは、hogan.js にだけ * を付してください
+                （ LoginSPASample アプリは Web アプリとしての必要最低限の機能だけで実装します。今回はテンプレートエンジン Hogan.js 以外は不要です）。</li>
+        </ul>
+        <p>
+            　これによりルートディレクトリー login-spa-sample 以下にアプリの全体ツリーが生成されます。
+            コマンドプロンプトに "Succeeded! 新しいプロジェクトの準備が完了しました。" と表示されれば成功です。
+        </p>
+        <pre>
+$ cdp create mobile
+
+? Please choose your prefered language.
+    Japanese/日本語
+? アプリケーション名を入力してください。
+    Login SPA Sample
+? プロジェクト名を入力してください (login-spa-sample)
+    そのままリターン
+? アプリケーションIDを入力してください。例： org.bar.foo(org.coo.appname)
+    com.cdp.sample.login_spa_sample
+? バージョン情報を入力してください。例：0.0.1(0.0.1)
+    そのままリターン
+? プロジェクトに使用するライセンスを選択してください(Use arrow keys)
+    例えば Apache-2.0 を選択
+? サポートプラットフォームを選択してください。（Press &lt;space&gt; to select,&lt;a&gt; to toggle all, &lt;i&gt; to inverse selection）
+    Android を選択
+? プロジェクト構成を選択してください（Use arrow keys）
+    カスタムを選択
+? プロジェクト追加構成を選択してください。（Press &lt;space&gt; to select,&lt;a&gt; to toggle all, &lt;i&gt; to inverse selection）
+    何も選ばず（ * をつけず）、そのままリターン
+? 追加する機能を選択してください。
+=== Cordova プラグイン ===
+( ) cordova-plugin-cdp-nativebridge: 汎用Native連携
+( ) cordova-plugin-inappbrowser: アプリ内ブラウザ
+( ) cordova-plugin-app-version: アプリバージョン取得
+=== ユーティリティ ===
+(*) hogan.js: '&#123;&#123; mustache &#125;&#125;' 形式のテンプレートエンジン
+( ) hammerjs: タッチジェスチャーユーティリティ
+( ) hammerjs: タッチジェスチャーユーティリティ
+( ) iscroll: scroller ユーティリティ
+( ) flipsnap: carousel ユーティリティ
+(Move up and down to reveal more choices)
+? よろしいですか？(Y/n)
+    Y
+        </pre>
+        <p>
+            　上記手順で用意した全体ツリーには、デフォルトでサンプルアプリが組み込まれます。<br>
+            　いまはサンプルアプリを動作させず、すぐに Web アプリ "LoginSPASample" の実装に取り掛かりますので、
+            最初に、不要となるデフォルトのサンプルアプリに関係する下記フォルダー/ファイルの削除をお願い致します（デフォルトのサンプルアプリを動かす場合は、下記 ※ を参照してください）。
+        </p>
+        <ul>
+            <li>login-spa-sample/app/templates/gallery フォルダー全体</li>
+            <li>login-spa-sample/app/templates/main.html ファイル</li>
+            <li>login-spa-sample/app/script/view/gallery フォルダー全体</li>
+            <li>login-spa-sample/app/script/view/main-view.ts ファイル</li>
+            <li>login-spa-sample/app/script/view/loader.ts ファイル</li>
+            <li>login-spa-sample/app/script/model/sample-model.ts ファイル</li>
+            <li>login-spa-sample/tests/unit/sample-model.spec.ts ファイル</li>
+        </ul>
+        <p>
+            　アプリに必要なライブラリを取り込むために、下記コマンドを実行します。
+        </p>
+        <pre>
+$ cd login-spa-sample
+$ npm install
+        </pre>
+        <p>
+            　※) デフォルトのサンプルアプリの動かし方<br>
+            　もしサンプルアプリを動かしてみる場合は、不要となるデフォルトアプリのフォルダー/ファイルを削除する前に、
+            プロジェクトルートディレクトリーで下記を実行してください。 
+            www ディレクトリーに生成された Web アプリをローカルサーバーで起動し、ブラウザで表示させると、
+            Android や iOS デバイスのスタイル実装例を見ることができます。
+        </p>
+        <pre>
+$ cd login-spa-sample
+$ npm install
+$ npm run build:debug
+        </pre>
+
+
+        <h3 id="120">1-2) Login データの準備</h3>
+        <!-- ****************************************************** -->
+        <h4 id="121">1-2-1) ユーザー情報を格納した JSON ファイルを作成する</h4>
+        <p>
+            　このアプリでは、ログインする各ユーザー情報 "id", "name", "pw", "pic" をハードコーディングした JSON を用います。 
+            "id" はいわゆるユーザーアカウント名、 "name" はユーザーの名前、 "pw" はユーザー毎のパスワード、 "pic" はユーザーの顔写真です。<br>
+            　例えば下記のようなユーザー情報を JSON ファイルに作成し、app/res/data/json/users.json に置いてください。内容はあくまで例です。
+            具体的なアカウント名・名前・パスワード・顔写真画像・画像ファイル名は皆さんの好みのものを設定して頂いて結構です。 
+            data、 json フォルダーは手動で作成してください。
+        </p>
+        <pre>
+{
+    "users":[
+            {
+                "id": "John",
+                "name": "ジョン",
+                "pw": "john",
+                "pic": "login_user_man.jpg"
+            },
+            {
+                "id": "Karen",
+                "name": "かれん",
+                "pw": "karen",
+                "pic": "login_user_woman.jpg"
+            },
+            {
+                "id": "Dog",
+                "name": "吾輩",
+                "pw": "dog",
+                "pic": "login_user_dog.jpg"
+            }
+    ]
+}
+        </pre>
+        
+        <h4 id="122">1-2-2) 画像ファイルを配置する</h4>
+        <p>
+            <!--
+            app/res/ 以下に、次の各ユーザーの画像ファイル <a href="/templates/resources/login-spa-sample/users.zip">users.zip</a> を展開して配置してください。
+            -->
+            　app/res/ 以下に、ユーザー 3 名の画像ファイルを配置してください
+            （下記画像で右クリックして『名前をつけて画像を保存』により、左記ディレクトリに保存してください）。
+        </p>
+        <img src="../../res/images/login-spa-sample/login_user_man.jpg"  alt="login_user_man.jpg" width="30%" /><br>
+        <img src="../../res/images/login-spa-sample/login_user_woman.jpg"  alt="login_user_woman.jpg" width="30%" /><br>
+        <img src="../../res/images/login-spa-sample/login_user_dog.jpg"  alt="login_user_dog.jpg" width="30%" />
+        <p>
+            　ここまで準備できたら、『<a href="#documents/tutorial-loginspa-loginpage">ログインページの作成</a>』 に進んでください。
+        </p>
+        <div class="footer-inner">
+            <div class="footer-copyright">
+                <p>Copyright 2017 Sony Network Comminications Inc.</p>
+            </div>
+        </div>
+    </script>
+</article>

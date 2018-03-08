@@ -1,0 +1,129 @@
+﻿<article data-role="page" id="gallery-listctrl" data-theme="cdp">
+    <header data-role="header" data-position="fixed" data-tap-toggle="false">
+        <button class="command-back ui-back-indicator ui-btn ui-btn-icon-left">Gallery</button>
+        <h1>List Control</h1>
+    </header>
+    <section data-role="content">
+        <h3>data-inset="false" + ui-listitem-border-offset-enable</h3>
+        <ul class="gallery-example ui-listitem-border-offset-enable" data-role="listview" data-inset="false">
+            <li class="ui-control-inline">
+                <fieldset data-role="controlgroup" data-corners="false" data-iconpos="right">
+                    <input type="radio" name="dev-test-b-radio" id="dev-test-b-radio1" value="on" checked="checked">
+                    <label for="dev-test-b-radio1">おはよう</label>
+                    <input type="radio" name="dev-test-b-radio" id="dev-test-b-radio2" value="other">
+                    <label for="dev-test-b-radio2">おやすみ</label>
+                </fieldset>
+            </li>
+            <li class="ui-control-inline ui-listitem-border-offset-icon">
+                <fieldset data-role="controlgroup" data-corners="false">
+                    <input type="checkbox" name="dev-test-b-checkbox" id="dev-test-b-checkbox1" value="on" checked="checked">
+                    <label for="dev-test-b-checkbox1">こんにちは</label>
+                    <input type="checkbox" name="dev-test-b-checkbox" id="dev-test-b-checkbox2" value="other">
+                    <label for="dev-test-b-checkbox2">こんばんは</label>
+                </fieldset>
+            </li>
+            <li>
+                <a href="#" class="ui-btn ui-btn-icon-right ui-icon-carat-r">test</a>
+            </li>
+            <li>
+                <p class="ui-listitem-title">Title</p>
+                <p class="ui-listitem-property">Property</p>
+            </li>
+            <li class="ui-control-inline">
+                <label class="ui-btn" for="dev-test-b-switch">ダミーのスイッチ</label>
+                <input type="checkbox" data-role="flipswitch" name="dev-test-b-switch" id="dev-test-b-switch" />
+            </li>
+            <li class="ui-control-inline ui-listitem-multiline ui-control-right">
+                <label class="ui-btn" for="dev-long-information">
+                    長いテキスト
+                    <span class="ui-listitem-property ui-text-m">この書生の掌の裏《うち》でしばらくはよい心持に坐っておったが、しばらくすると非常な速力で運転し始めた。書生が動くのか自分だけが動くのか分らないが無暗《むやみ》に眼が廻る。胸が悪くなる。到底《とうてい》助からないと思っていると、どさりと音がして眼から火が出た。それまでは記憶しているがあとは何の事やらいくら考え出そうとしても分らない。</span>
+                </label>
+                <input id="dev-long-information" type="checkbox" data-role="flipswitch" name="dev-long-information">
+            </li>
+            <li class="ui-control-inline ui-control-right">
+                <!--<label for="dev-test-b-range">ダミー範囲</label>-->
+                <input type="range" name="dev-test-b-range" id="dev-test-b-range" data-popup-enabled="false" data-highlight="true" min="0" max="100" value="50">
+            </li>
+            <li class="ui-field-contain">
+                <label for="dev-text-x" class="ui-float-label">field contain</label>
+                <input type="text" data-clear-btn="true" name="dev-text-x" id="dev-text-x" placeholder="field containl">
+            </li>
+        </ul>
+
+        <hr class="ui-separator" />
+
+        <h3>data-inset="true"</h3>
+        <ul class="gallery-example" data-role="listview" data-inset="true">
+            <li class="ui-control-inline">
+                <fieldset data-role="controlgroup" data-corners="false" data-iconpos="right">
+                    <input type="radio" name="dev-test-b-radioA" id="dev-test-b-radio1A" value="on" checked="checked">
+                    <label for="dev-test-b-radio1A">おはよう</label>
+                    <input type="radio" name="dev-test-b-radioA" id="dev-test-b-radio2A" value="other">
+                    <label for="dev-test-b-radio2A">おやすみ</label>
+                </fieldset>
+            </li>
+            <li class="ui-control-inline ui-listitem-border-offset-icon">
+                <fieldset data-role="controlgroup" data-corners="false">
+                    <input type="checkbox" name="dev-test-b-checkboxA" id="dev-test-b-checkbox1A" value="on" checked="checked">
+                    <label for="dev-test-b-checkbox1A">こんにちは</label>
+                    <input type="checkbox" name="dev-test-b-checkboxA" id="dev-test-b-checkbox2A" value="other">
+                    <label for="dev-test-b-checkbox2A">こんばんは</label>
+                </fieldset>
+            </li>
+            <li>
+                <a href="#" class="ui-btn ui-btn-icon-right ui-icon-carat-r">test</a>
+            </li>
+            <li>
+                <p class="ui-listitem-title">Title</p>
+                <p class="ui-listitem-property">Property</p>
+            </li>
+            <li class="ui-control-inline">
+                <label class="ui-btn" for="dev-test-b-switchA">ダミーのスイッチ</label>
+                <input type="checkbox" data-role="flipswitch" name="dev-test-b-switchA" id="dev-test-b-switchA" />
+            </li>
+            <li class="ui-control-inline ui-listitem-multiline">
+                <label class="ui-btn ui-control-right" for="dev-long-informationA">
+                    長いテキスト
+                    <span class="ui-listitem-property ui-text-m">この書生の掌の裏《うち》でしばらくはよい心持に坐っておったが、しばらくすると非常な速力で運転し始めた。書生が動くのか自分だけが動くのか分らないが無暗《むやみ》に眼が廻る。胸が悪くなる。到底《とうてい》助からないと思っていると、どさりと音がして眼から火が出た。それまでは記憶しているがあとは何の事やらいくら考え出そうとしても分らない。</span>
+                </label>
+                <input id="dev-long-informationA" type="checkbox" data-role="flipswitch" name="dev-long-informationA">
+            </li>
+            <li class="ui-control-inline ui-control-right">
+                <!--<label for="dev-test-b-range">ダミー範囲</label>-->
+                <input type="range" name="dev-test-b-range" id="dev-test-b-rangeA" data-popup-enabled="false" data-highlight="true" min="0" max="100" value="50">
+            </li>
+            <li class="ui-field-contain">
+                <label for="dev-text-xA" class="ui-float-label">field contain</label>
+                <input type="text" data-clear-btn="true" name="dev-text-xA" id="dev-text-xA" placeholder="field containl">
+            </li>
+        </ul>
+
+        <hr class="ui-separator" />
+
+        <ul data-role="listview" data-inset="false">
+            <li data-role="list-divider">list-divider with data-inset="false"</li>
+            <li>
+                <a href="#" class="ui-btn ui-btn-icon-right ui-icon-carat-r">test</a>
+            </li>
+            <li data-role="list-divider">list-divider2</li>
+            <li>
+                <p class="ui-listitem-title">Title</p>
+                <p class="ui-listitem-property">Property</p>
+            </li>
+        </ul>
+
+        <hr class="ui-separator" />
+
+        <ul data-role="listview" data-inset="true">
+            <li data-role="list-divider">list-divider with data-inset="true"</li>
+            <li>
+                <a href="#" class="ui-btn ui-btn-icon-right ui-icon-carat-r">test</a>
+            </li>
+            <li data-role="list-divider">list-divider2</li>
+            <li>
+                <p class="ui-listitem-title">Title</p>
+                <p class="ui-listitem-property">Property</p>
+            </li>
+        </ul>
+    </section>
+</article>

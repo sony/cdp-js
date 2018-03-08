@@ -1,0 +1,55 @@
+﻿<article>
+    <script type="text/template" id="getstarted-win-setup-base">
+        <h1>環境構築（Windows）</h1>
+        <p>このページでは、Windows環境でCDP Boilerplateを使ってアプリケーションを開発するときに必要な開発環境の構築方法を説明します。なお、Cordovaを使ってモバイルアプリケーションを開発する場合、<a href="#getstarted/win-setup-cordova">Cordovaのセットアップ</a>も参照してください。</p>
+        <h2>Node.js</h2>
+        <p>CDP Boilerplateでは、Node.jsのNode Package Manager（npm）を使って、必要なツールやパッケージをインストールします。そのため、CDP Boilerplateでアプリケーションを開発する上で、Node.jsのインストールが必要です。</p>
+        <h3>インストール</h3>
+        <p><a href="https://nodejs.org/">Node.js</a>のサイトにアクセスし、最新のLTS版（安定版）のNode.jsのインストーラーをダウンロードし、Node.jsをインストールしてください。</p>
+        <h3>確認</h3>
+        <p>Node.jsのインストールに成功すると、`node`コマンドを使えるようになります。コマンドプロンプトなどで`node`コマンドが認識されることを確認してください。</p>
+        <pre class="hljspre">$ node -v
+v8.9.1</pre>
+
+        <h3>プロキシ設定</h3>
+        <p>プロキシ環境で開発を行う場合、Node.js上で動作するツールのインストールを正常に行うために、Node Package Manager（npm）に対してプロキシ設定を行う必要があります。 以下のコマンドを実行して、npmのプロキシ設定を行ってください。プロキシ環境ではない場合は、この設定は不要です。</p>
+        <pre class="hljspre">$ npm config set proxy=http://{proxyserver}:{port}
+$ npm config set https-proxy=http://{proxyserver}:{port}</pre>
+
+        <h2>node-gyp</h2>
+        <p>node-gypはネイティブのNodeモジュールをビルドするためのツールです。ネイティブのNodeモジュールをインストールするときに、node-gypを使ってビルドを行うことがあるため、node-gypをインストールしておきましょう。</p>
+        <h3>インストール</h3>
+        <p>以下のコマンドでnode-gypをインストールします。</p>
+        <pre class="hljspre">$ npm install -g node-gyp</pre>
+        
+        <h2>windows-build-tools</h2>
+        <p>node-gypでビルドするときに、C++コンパイラーを使います。Visual Studioなどをインストールしていない場合、C++コンパイラーが開発環境に存在しないことがあります。必要なコンパイラーを入手し、インストールする方法もありますが、windows-build-toolsをインストールすることで、必要なものを自動的にインストールできます。インストールするものによっては管理者権限が必要な場合があります。その場合には、管理者権限で起動したコマンドプロンプトなどをお使いください。</p>
+        <h3>インストール</h3>
+        <p>以下のコマンドでwindows-build-toolsをインストールします。</p>
+        <pre class="hljspre">$ npm install -g windows-build-tools</pre>
+
+        <h2>Git</h2>
+        <p>CDP Boilerplateでは一部ツールのソースコードを取得するために、Gitを使用します。開発環境にGitがインストールされていない場合は、Gitをインストールしてください。</p>
+        <h3>インストール</h3>
+        <p><a href="https://git-for-windows.github.io/">Git for Windows</a>にアクセスし、[Download]ボタンを押してインストーラーをダウンロードし、Gitのインストールを行ってください。</p>
+        <p>Gitのインストール設定の[Adjusting your PATH environment]は「Use Git from the Windows Command Prompt」を選択することをおすすめします。</p>
+        <h3>確認</h3>
+        <p>コマンドプロンプトなどで以下のコマンドを実行して、インストールしたGitのバージョンが表示されたら成功です。インストール時に「Use Git from the Windows Command Prompt」を選択しなかった場合は、インストールしたフォルダーでコマンドを実行してください。</p>
+        <pre class="hljspre">$ git --version
+git version 2.15.0.windows.1</pre>
+        <h3>プロキシ設定</h3>
+        <p>プロキシ環境で開発を行う場合、外部のレポジトリーからソースコードを取得するために、プロキシ設定を行う必要があります。 以下のコマンドを実行して、Gitのプロキシ設定を行ってください。プロキシ環境ではない場合は、この設定は不要です。</p>
+        <pre class="hljspre">$ git config --global http.proxy http://{proxyserver}:{port}</pre>
+        <hr>
+        <p>お疲れ様でした。それでは次のステップに進みましょう。</p>
+        <ul>
+            <li>モバイル向けアプリケーションを開発する場合は、<a href="#getstarted/win-setup-cordova">Cordovaのセットアップ</a>へ</li>
+        </ul>
+
+        <div class="footer-inner">
+            <div class="footer-copyright">
+                <p>Copyright 2017 Sony Network Comminications Inc.</p>
+            </div>
+        </div>
+    </script>
+</article>

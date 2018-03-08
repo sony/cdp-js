@@ -1,0 +1,57 @@
+<article>
+        <script type="text/template" id="getstarted-mac-setup-extra">
+    
+            <h1>環境構築（Mac OS） - 便利なツール</h1>
+            <p>このページでは、CDP Boilerplateを使ったアプリケーションの開発をより便利にするツールを紹介します。</p>
+
+            <h2>Visual Studio Code</h2>
+            <p><a href="https://code.visualstudio.com/">Visual Studio Code</a>はMicrosoft製のソースコードエディターです。Visual Studio Codeは、以下の点でCDP Boilerplateを使ったアプリケーション開発に適しています。</p>
+            <uL>
+                <li>TypeScriptを公式サポートしている</li>
+                <li>Windowsだけでなく、Mac OS XやLinux環境で動作する</li>
+            </ul>
+            <p>ただし、CDP Boilerplateは、アプリケーション開発で使用するエディターやIDEを制限しておりません。使い慣れたエディターでアプリケーション開発を行うことができます。</p>
+            <h3>インストール</h2>
+            <p><a href="https://code.visualstudio.com/">Visual Studio Code</a>のページにアクセスし、Downloadボタンを押してインストーラーをダウンロードしてください。もしくは、<a href="https://code.visualstudio.com/Download">ダウンロードページ</a>から適切なインストーラーをダウンロードしてください。</p>
+            <p>ダウンロードしたインストーラーで、Visual Studio Codeをインストールしてください。</p>
+            <!--<p>インストールする際、以下の項目にチェックすると、Visual Studio Codeをより使いやすくなります。</p>
+            <ul>
+                <li>エクスプローラーのファイル コンテキスト メニューに [Code で開く] アクションを追加する</li>
+                <li>エクスプローラーのディレクトリ コンテキスト メニューに [Code で開く] アクションを追加する</li>
+            </ul> -->
+
+            <h2>testem</h2>
+            <p><a href="https://github.com/testem/testem">testem</a>は、JavaScriptのテストランナーツールです。testemを使うことで、Webブラウザー上でJavaScriptのテストを行うことができます。</p>
+            <p>CDP Boilerplateはtestemを使ったUnit Testをサポートしています。Unit Testを効率的に実行するために、testmをインストールすることを推奨します。</p>
+            <h3>インストール</h3>
+            <p>以下のコマンドでtestemをインストールします。</p>
+            <pre class="hljspre">$ npm install -g testem</pre>
+            <h3>確認法</h3>
+            <p>testemのインストールが完了すると、以下のコマンドでtestemのバージョンが表示されます。</p>
+            <pre class="hljspre">$ testem -V
+1.18.4</pre>
+
+            <h2>Phantom JS</h2>
+            <p><a href="http://phantomjs.org/">Phontom JS</a>はWebKitベースのヘッドレスブラウザーです。ヘッドレスブラウザーは、画面のないWebブラウザーのことをいい、CUIやプログラムで操作できます。ヘッドレスブラウザーはJavaScriptの自動化テストでよく使われます。Phantom JSは最も有名なヘッドレスブラウザーのひとつです。</p>
+            <h3>インストール</h3>
+            <p>以下のコマンドでPhantom JSをインストールします。</p>
+            <pre class="hljspre">$ npm install -g phantomjs-prebuilt</pre>
+            <h3>確認法</h3>
+            <p>Phantom JSのインストールが完了すると、以下のコマンドでPhantom JSのバージョンが表示されます。</p>
+            <pre class="hljspre">$ phantomjs -v
+2.1.16</pre>
+
+            <h2>local-web-server</h2>
+            <p>CDP Boilerplateベースのアプリケーションの開発にあたり、開発環境でローカルWebサーバーを利用できると、PC上でのデバッグを行いやすくなります。ここでは、local-web-serverというローカルWebサーバーツールの導入方法を紹介しますが、ローカルWebサーバーを立ち上げられるツールであれば、お好きなものをお使いいただいて構いません。</p>
+            <h3>インストール</h3>
+            <p>以下のコマンドでlocal-web-serverをインストールします。</p>
+            <pre class="hljspre">$ npm install -g local-web-server</pre>
+
+            <div class="footer-inner">
+                <div class="footer-copyright">
+                    <p>Copyright 2017 Sony Network Comminications Inc.</p>
+                </div>
+            </div>
+        </script>
+    </article>
+    
