@@ -20,6 +20,12 @@ Folder and file structure of this repository is the following list.
         tests/          // test for task scripts
 
 
+### How to start developping
+
+You can use our scaffolding tool, [cdp-cli](https://github.com/sony/cdp-cli), for starting development on cdp-js.
+- Let you see https://github.com/sony/cdp-cli for more detail.
+
+
 ### How to install (for internal release)
 
 * npm
@@ -55,6 +61,9 @@ Please see the following documentation.
 
 - [English/英語](documents/en)
 - [Japanese/日本語](documents/jp)
+
+Or following site also has many description.
+- https://sony.github.io/cdp-js
 
 ## Release Notes
 Please see the following link.
