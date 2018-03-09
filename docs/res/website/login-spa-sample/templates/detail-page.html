@@ -1,0 +1,38 @@
+<article data-role="page" id="page-detail-page" data-theme="cdp">
+    <header data-role="header" data-position="fixed" data-tap-toggle="false">
+        <button class="command-back ui-back-indicator ui-btn ui-btn-icon-left">Back</button>
+        <h1>Detail Page</h1>
+    </header>
+    <section data-role="content">
+        <table data-role="table" class="ui-responsive" id="table-detail-view">
+            <thead>
+                <tr>
+                    <th data-priority="2">property</th>
+                    <th data-priority="1">value</th>
+                </tr>
+            </thead>
+            <tbody id="page-detail-page-user-view" />
+        </table>
+    </section>
+    <script type="text/template" id="page-detail-page-properties-list">
+        <tr>
+            <td>ID</td>
+            <td>
+                <div id="text-detail-id">{{user.id}}</div>
+            </td>
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td>
+                <div id="text-detail-name">{{user.name}}</div>
+            </td>
+        </tr>
+        <tr>
+            <td>Pic</td>
+            <td><img id="img-detail-picture" src="/res/images/login-spa-sample/{{user.pic}}" /></td>
+            <!--
+            <td><img id="img-detail-picture" src="/res/{{user.pic}}" /></td>
+            -->
+        </tr>
+    </script>
+</article>

@@ -1,0 +1,728 @@
+<article>
+    <script type="text/template" id="documents-tutorial-loginspa-loginpage">
+        <h1>LoginSPASample 2) ログインページの作成</h1>
+        <h3 id="210">2-1) Model の追加</h3>
+        <!-- ****************************************************** -->
+        <h4 id="211">2-1-1) User クラスを追加する</h4>
+        <p>
+            　app/scripts/model ディレクトリーに移動し、モジュール user.ts を新規作成し、下記のように User クラスを実装してください。<br>
+            　User クラスは users.json に列挙されたユーザーひとりひとりに関するデータ、
+            例えば { "id": "Dog", "name": "吾輩", "pw": "dog", "pic": "login_user_dog.jpg" } を意味します。
+        </p>
+        <pre>
+import { Model } from "cdp/framework";
+
+const TAG: string = "[model.User] ";
+
+export class User extends Model {
+    defaults() {
+        return {
+        };
+    }
+    constructor(attributes?: any) {
+        super(attributes, null);
+    }
+}
+        </pre>
+        <div class="hint-container">
+            <h4>
+            【 User クラスの解説 】
+            </h4>
+                <p>1) 1行目では Backbone.js の Model をインポートしています。
+                "cdp/framework" は Backbone.js の Model、Collection、View 等をラップしたものです。
+                </p>
+                <p>2) 3行目では インポートした Model を継承して User クラスを作成します。
+                </p>
+                <p>3) このアプリでは、ユーザーデータを操作するにあたり、UserCollection クラスを用います。
+                User クラスは UserCollection クラスを構成するために形式的に必要になるだけであり、
+                デフォルト値を設定する必要もないので、defaults(){ … } 内は return だけとなっています。
+                </p>
+                <p>4) constructor() は Backbone.Model のデフォルトコンストラクタです。
+                </p>
+                <p>5) User クラスは export され、UserCollectin クラスを定義するモジュール user-collection.ts 等でインポートして利用されます。
+                </p>
+                <p>6) const TAG: string = "[model.User] " は ログ出力に使っているだけなので気にしなくて大丈夫です。
+                </p>
+        </div>
+
+
+        <h4 id="212">2-1-2) UserCollection クラスを追加する</h4>
+        <p>
+            　app/scripts/model ディレクトリーに モジュール user-collection.ts を新規作成し、下記のように UserCollection クラスを実装してください。<br>
+            　UserCollection クラスはユーザー全員のデータをまとめて扱うためのクラスです。
+        </p>
+        <pre>
+import { Collection } from "cdp/framework";
+import { User } from "./user";
+
+const TAG: string = "[model.UserCollection] ";
+
+export class UserCollection extends Collection&lt;User&gt; {
+    parse(response) {
+        return response.users;
+    }
+}
+        </pre>
+        <div class="hint-container">
+            <h4>【 UserCollection クラスの解説 】</h4>
+                <p>1) 1行目で "cdp/framework" から Backbone.js の Collection をインポートします 
+                （前述のように、"cdp/framework" は、Backbone.js の Model、Collection、VIew 等をラップしたものです）。
+                </p>
+                <p>2) 2行目で user.ts から User クラスをインポートしています。UserCollection クラスは User クラスで表されるユーザーを複数まとめて扱うものなのでインポートする必要があります。
+                </p>
+                <p>3) UserCollection クラスは Backbone.Collection を継承して作ります。Colletion&lt;User&gt; の &lt;User&gt; は TypeScript 固有の記法で、User という Model に紐づく Collection であることを明示しています。
+                </p>
+                <p>4) UserCollection クラスの {} 内の処理により、users.json に定義されたユーザーデータが、アプリ動作時に UserCollection クラスに読み込まれます。
+                    即ち、UserCollection クラスは後述の LoginState クラスの constructor() 内でインスタンス化され、fetch 操作により users.json を取得するようになります。
+                    そして UserCollection の parse(response) では users.json を分解して、戻り値として個々のユーザーについてのオブジェクトを収めた配列を返します。
+                </p>
+                <p>5) const TAG: string = "[model.UserCollection] "  は ログ出力に使っているだけなので気にしなくて大丈夫です。
+                </p>
+        </div>
+        <div class="hint-container">
+            <h4>【 Backbone.js の MVC について 】</h4>
+                <p>
+                    1) JavaScript 向けフレームワークを利用すると、MVC（Model-View-Controller）と総称されるパターンに基づいてコードを整理することができます（左下図参照）。 これはアプリの UI とロジックを分離することで、アプリの複雑度を上げないようにするための知恵です。
+                </p>
+                <p>
+                    2) Model はアプリケーションで扱うデータ、ビジネスロジック、関数などを表現します。 View は画面に表示される情報を表現し、Model の変化を受けて表示が更新されます。 Controller は人の指示を受け取って Model を操作します（左下図参照）。
+                </p>
+                <p>
+                    3) MVC パターンにはいろいろな種類があり、Backbone.js では "C" の部分が Controller でなく、Collection になります（右下図参照）。 Collection は Model で表現するデータを集合として取り扱うためのものです。Controller の責務は、Backbone.js においては View に統合されます。 両図のようなものを総称して MV* パターンと呼ぶことがあります。
+                </p>
+                <p>
+                    4) cdp-cli は Backbone.js を利用しています。
+                </p>
+                <ul>
+                    <li>"User" は Backbone.Model を継承して { "id": "Dog", "name": "吾輩", "pw": "dog", "pic": "login_user_dog.jpg" } といったユーザーひとり分のデータを扱う Model オブジェクトです。</li>
+                    <li>"UserCollection" は Backbone.Collection を継承して複数人分のデータを扱う Collection オブジェクトです。</li>
+                    <li>LoginPageUserListView や DetailPageUserView クラスは Backbone.View を継承した View オブジェクトであり、 Model あるいは Collection の変化に応じて UI 表示を更新します。</li>
+                </ul>
+                <img src="../../res/images/login-spa-sample/MVC_pattern.png" alt="img/MVCパターン" width="50%" />
+                <p>
+                    5) これら Model、View、Collection とは別に、CDP では jQuery Mobile をベースとした、ページのライフサイクル等を管理するクラスを提供しています。 この点については別途解説することにします。
+                </p>
+        </div>
+        <div class="hint-container">
+            <h4>【 TypeScript の記法について 】</h4>
+                <p>
+                    　上記コードの " class UserCollection extends Collection&lt;User&gt; " における " &lt;User&gt; " の部分は 
+                    TypeScript のジェネリック型を明示する記法であって、 &lt;User&gt; を付加することで Collection が User という Model を限定的に扱うことを明示しています。
+                </p>
+        </div>
+
+
+
+        <h4 id="213">2-1-3) LoginState クラスを追加する</h4>
+        <p>
+            　users.json にリストされたユーザー情報を他のクラスにおいても読み出せるように、
+            app/scripts/model ディレクトリーに モジュール login-state.ts を新規作成し、 LoginState クラスを実装しましょう。<br>
+            　下に示した実装だけではまだ LoginState クラスは完成版ではありません。
+            いまの段階で必要となる シングルトン（// Make LoginState singleton 以下の部分）とそのメソッド getUserCollection() などの部分のみ実装します。
+            残りのメソッド等は必要になった時点で追加することとします。<br>
+            　完成した LoginState クラスのシングルトンとそのメソッドは、アプリを構成する他のクラスにおいて呼び出され、 
+            users.json に定義されたユーザー全員の情報を返したり、 
+            指定したユーザーが正しい ID とパスワードでログインしようとしているか否かの判断結果を返したりするために利用します。
+        </p>
+        <pre>
+import { Model } from "cdp/framework";
+import { User } from "./user";
+import { UserCollection } from "./user-collection";
+
+const TAG: string = "[model.LoginState] ";
+
+export class LoginState extends Model {
+    private _userCollection: UserCollection = null;
+    defaults() {
+        return {
+        };
+    }
+
+    constructor(attributes?: any) {
+        super(attributes, null);
+        this._userCollection = new UserCollection();
+        this._userCollection.fetch({
+            url: CDP.Framework.toUrl("/res/data/json/users.json")
+        });
+    }
+
+    getUserCollection(): UserCollection {
+        return this._userCollection;
+    }
+}
+
+// Make LoginState singleton
+let _loginState: LoginState = null;
+export function getLoginStateInstance() {
+    if( _loginState == null) {
+        _loginState = new LoginState();
+    }
+    return _loginState;
+}
+        </pre>
+        <!--
+        <pre>
+import { Model } from "cdp/framework";
+import { User } from "./user";
+import { UserCollection } from "./user-collection";
+
+const TAG: string = "[model.LoginState] ";
+
+export class LoginState extends Model {
+    private _userCollection: UserCollection = null;
+    defaults() {
+        return {
+        };
+    }
+
+    constructor(attributes?: any) {
+        super(attributes, null);
+        this._userCollection = new UserCollection();
+        this._userCollection.fetch({
+            url: CDP.Framework.toUrl("/res/data/json/users.json")
+        });
+    }
+
+    getUserCollection(): UserCollection {
+        return this._userCollection;
+    }
+
+//	getActiveUser(): User {
+//		return this.get("activeUser");
+//	}
+//
+//	login(id: string, pw: string): boolean {
+//		let user: User = this._userCollection.get(id);
+//		if( !user || user.get("pw") != pw) { return false; }
+//
+//		this.set("activeUser", user);
+//
+//		return true;
+//	}
+}
+
+// Make LoginState singleton
+let _loginState: LoginState = null;
+export function getLoginStateInstance() {
+    if( _loginState == null) {
+        _loginState = new LoginState();
+    }
+    return _loginState;
+}
+        </pre>            
+        -->
+
+        <div class="hint-container">
+            <h4>【 LoginState クラスの解説 】</h4>
+            <p> 
+                1) 冒頭で "cdp/framework" から Backbone.js の Model をインポートします。
+                user.ts から User クラス、user-collection.ts から UserCollection クラスをインポートします。
+            </p>
+            <p>
+                2) 5行目で、LoginState クラスは Backbone.js の Model を継承して作ります。
+            </p>
+            <p>
+                3) 6行目で、LoginState クラス定義冒頭の "_userCollection" は、 
+                users.json にリストされたユーザー全員の情報を受け取るための UserCollection 型の変数を用意しています。
+            </p>
+            <p>
+                4) constructor() について
+            </p>
+                <ul>
+                    <li>コンストラクタは、LoginState クラスがインスタンス化される際に実行されます。</li>
+                    <li>親クラス Model の属性は利用しないので、super(attributes, null); としています。</li>
+                    <li>UserCollection クラスが new され、users.json からユーザー全員のデータを fetch して this._userCollection に格納します。</li>
+                    <li>CDP.Framework.toUrl() は CDP が提供するユーティリティ関数で、それが実行されるスクリプトの位置を問わず、リソースにアクセスするための絶対パスを返します。 
+                        例えば、ローカルホストでアプリを動かした場合であれば、 "http://localhost/res/data/json/users.json" という url を返します。</li>
+                </ul>
+            <p>
+                5) LoginState シングルトン（ "// Make LoginState singleton" 以下）について
+            </p>
+                <ul>
+                    <li>これは、アプリ全体を通じて利用する LoginState シングルトンを定義しています。</li>
+                    <li>LoginState クラスはこの中で new され、getLoginStateInstance() というシングルトンを生成します。</li>
+                    <li>例えば、他のクラスにおいて Model.getLoginStateInstance().getUserCollection(); を実行すると、
+                        そのクラスにおいて UserCollection オブジェクトに格納されたユーザー全員の情報を取得して利用することができます。</li>
+                </ul>
+            <p>
+                6) getUserCollection() について
+            </p>
+                <ul>
+                    <li>上述のように、シングルトンと合わせて使うことで、this._userCollection に格納されたユーザー全員の情報を得るためのメソッドです。</li>
+                </ul>
+        </div>
+        
+        
+        <h3 id="220">2-2) Page の追加</h3>
+        <!-- ****************************************************** -->
+        <h4 id="221">2-2-1) LoginPage クラスを追加する</h4>
+        <p>
+            　ログインページの表示を管理する Page クラスを追加します。<br>
+            app/scripts/view の下に、login-page.ts を新規作成し、次のコードを実装してください
+            （ただし、LoginPage クラスは下記コードで完成ではありません。このあとの各段階で必要なコードを追加していきます）。
+        </p>
+        <pre>
+import {
+    PageView,
+    registerPage,
+} from "cdp/ui";
+
+import { LoginState, getLoginStateInstance } from "../model/login-state";
+
+const TAG: string = "[view.LoginPage] ";
+
+class LoginPage extends PageView {
+
+    constructor() {
+        super("/templates/login-page.html", "page-login-page", { 
+            route: "login-page" 
+        });
+    }
+
+    onInitialize(event: JQuery.Event): void {
+        super.onInitialize(event);
+    }
+
+    events(): any {
+        return {
+        }
+    }
+
+    render(): LoginPage {
+        return this;
+    }
+}
+
+registerPage(LoginPage);
+        </pre>
+        <!--
+        <pre>
+import {
+    PageView,
+    registerPage,
+} from "cdp/ui";
+
+// import { LoginPageUserListView } from "./login-page-user-list-view";
+import { LoginState, getLoginStateInstance } from "../model/login-state";
+
+const TAG: string = "[view.LoginPage] ";
+
+class LoginPage extends PageView {
+    // private _userCollectionView: LoginPageUserListView = null;
+    constructor() {
+        super("/templates/login-page.html", "page-login-page", { 
+            route: "login-page" 
+        });
+    }
+    onInitialize(event: JQuery.Event): void {
+        super.onInitialize(event);
+    }
+    events(): any {
+        return {
+            // "vclick #submit-login": "onSubmitLogin"
+        }
+    }
+    render(): LoginPage {
+        // this._userCollectionView.render();
+        return this;
+    }
+
+//	onPageInit(event: JQuery.Event){
+//		super.onPageInit(event);
+//		let $targetDom = this.$el.find("#select-login-id");
+//		this._userCollectionView = new LoginPageUserListView( $targetDom );
+//		this.render();
+//	}
+
+//	onPageRemove(event: JQuery.Event){
+//		super.onPageRemove(event);
+//		this._userCollectionView.remove();
+//		this._userCollectionView = null;
+//	}
+	
+//	onSubmitLogin(event: JQuery.Event) {
+//      let id = &lt;string&gt;$("#select-login-id").val();
+//      let pw = &lt;string&gt;$("#password-login-pw").val();
+
+//		let ret: boolean = getLoginStateInstance().login(id, pw);
+//		if(ret) {
+//			CDP.Framework.Router.navigate("#detail-page");
+//		} else {
+//			alert("Failed to Login");
+//		}
+
+//		event.preventDefault();
+//	}
+}
+registerPage(LoginPage);
+        </pre>
+        -->
+
+        <div class="hint-container">
+            <h4>【 LoginPageクラスの解説 】</h4>
+            <p>
+                1) 冒頭の import 文で cdp/ui モジュールから PageView クラスと registerPage メソッドをインポートしています。
+            </p>
+                <ul>
+                    <li>LoginPage クラスは PageView クラスを継承して作ります。
+                        CDP フレームワークが提供する PageView クラスはアプリケーションにおいてページのライフサイクルと機能を提供します。</li>
+                    <li>registerPage() メソッドは、LoginPage クラスの new を予約する機能を持ちます。
+                    つまり、LoginPage クラスは定義直後に new するのではなく、new の予約だけされ、実際に new されるのはアプリ起動時です
+                    （具体的には、アプリの起動を司る app/scripts/app.ts 内の onStart() メソッド内の Router.start() 実行時に new されます）。<br>
+                    　もし LoginPage クラスの定義直後に new すると、このモジュールが読み込まれたときに new されることとなりますが、
+                    たとえばこのクラスが別の Model などをメンバに持っていたりすると、ライフサイクル管理に支障来す懸念が生じます。
+                    そもそも View は遷移する前に new するのが正しい取り扱い方なので、ここではこのクラスが new されるのを『予約』だけするようにしています。</li>
+                </ul>
+            <p>
+                2) constructor() の super() の引数 について
+            </p>
+                <ul>
+                    <li>第1引数は login-page.html を ログインページを表示するための UI リソースとして登録します。</li>
+                    <li>第2引数はその参照に使用する id="page-login-page" を登録しています 
+                    （この id 属性値は このページのルートエレメントとして $el に設定され、login-page.html 内を jQuery で DOM 操作するために利用されます）。</li>
+                    <li>{ route: "login-page" } は、"login-page" という名前でログインページへの遷移を Router に登録するという意味です。</li>
+                </ul>
+            <p>
+                3) registerPage(LoginPage) について<br>
+                　1) で説明したように、 LoginPage クラスを new する予約をしています。 
+            </p>
+        </div>
+        
+        <h4 id="222">2-2-2) アプリ起動画面を登録する</h4>
+        <p>
+            　上記で起動画面を管理する LoginPage クラスを作成しましたが、アプリ起動時に LoginPage クラスを起動画面として表示することを登録しなければなりません。<br>
+            　そのためには下記のように、app/scripts/app.ts をエディタで開き、//==> remove で示した行を削除し、//==> add で示した行を追加してください。
+            追加した行はアプリの起動画面となる UI リソース を登録するものであり、本アプリの場合 app/templates/login-page.html というHTMLファイルを起動画面（ログインページ）の表示に使用することを登録しています。<br>
+            　Router.register("", "/templates/login-page.html", true) における true は、アプリ起動画面でBackボタンを押したときに、アプリを終了する設定です。
+        </p>		
+        <pre>
+import "hogan";
+import { Router } from "cdp/framework";
+import { Theme } from "cdp/ui";
+import "./view/loader";
+
+const TAG: string = "[app] ";
+
+function onStart(): void {
+    // for dev. always show vertical scroll bar.
+    Theme.detectUIPlatform();
+
+    // Router.register("", "/templates/main.html", true);       //==> remove
+    <span style="color: #cc0000;"><strong>Router.register("", "/templates/login-page.html", true);</strong></span>    //==> add
+    // start Router.
+    Router.start();
+}
+export { onStart as main };
+        </pre>
+        
+
+        <h4 id="223">2-2-3) ログインページの UI リソースを追加する</h4>
+        <p>
+            　ログインページの UI リソースとなる app/templates/login-page.html を追加します。login-page.html を新規作成し、
+            次のコードを実装してください。赤文字の部分は、このアプリ特有のコードを意味します。<br>
+            　最初の &lt;div&gt; 要素内に、全ユーザー ID のプルダウンリストを表示するための &lt;select&gt; 要素、
+            プルダウンリストから選択したユーザーのパスワードを入力する &lt;input&gt; 要素、ログインボタンを用意しています。<br> 　
+            &lt;script&gt; ~ &lt;/script&gt; 要素には <a href="http://twitter.github.io/hogan.js/" target="_blank">Hogan.js</a> を使ってプルダウンリストを表示する際に利用するテンプレートを登録しています。 
+        </p>
+        <pre>
+&lt;article data-role="page" id="<span style="color: #cc0000;"><strong>page-login-page</strong></span>" data-theme="cdp"&gt;
+    &lt;header data-role="header" data-position="<span style="color: #cc0000;"><strong>fixed</strong></span>" data-tap-toggle="false"&gt;
+        <span style="color: #cc0000;"><strong>&lt;h1&gt;Login Page&lt;/h1&gt;</strong></span>
+    &lt;/header&gt;
+    &lt;section data-role="content"&gt;
+        <span style="color: #cc0000;"><strong>&lt;div class="ui-field-contain"&gt;
+            &lt;label for="select-login-id"&gt;ID: &lt;/label&gt;
+            &lt;select id="select-login-id"&gt;&lt;/select&gt;
+            &lt;label for="password-login-pw"&gt;Password: &lt;/label&gt;
+            &lt;input type="password" id="password-login-pw" value="" autocomplete="off"&gt;
+            &lt;button class="ui-shadow ui-btn ui-corner-all" type="submit" id="submit-login"&gt;Login&lt;/button&gt;
+        &lt;/div&gt;</strong></span>
+    &lt;/section&gt;
+
+    <span style="color: #cc0000;"><strong>&lt;script type="text/template" id="page-login-page-login-id-list"&gt;
+        &#123;&#123;#users&#125;&#125;
+            &lt;option value="&#123;&#123;id&#125;&#125;"&gt;&#123;&#123;id&#125;&#125;&lt;/option&gt;
+        &#123;&#123;/users&#125;&#125;
+    &lt;/script&gt;</strong></span>
+&lt;/article&gt;
+        </pre>
+
+        <div class="hint-container">
+            <h4>【 jQuery Mobile のページウィジェット、data 属性の解説 】</h4>
+            <p>
+                　画面の UI リソースは、 <a href="https://jquerymobile.com/" target="_blank">jQuery Mobile</a> のページウィジェットとして生成されます。
+                data-role, data-theme, class="ui-xxx" などは jQuery Mobile の定義です。<br> 　
+                たとえば &lt;article data-role="page"&gt; ~ &lt;/section&gt; タグは、これが jQuery Mobile で言うところのページであることを意味します。 
+                jQuery Mobile のページはヘッダ、コンテンツ、フッタで構成され、&lt;header data-role="header"&gt; はこのページのヘッダ部分であることを意味します。 
+                &lt;section data-role="content"&gt; はこれがこのページのコンテンツ部分であることを意味します。 login-page.html にはフッタ部分がありません。<br>                　&lt;article&gt; 要素内の id="page-login-page" は、LoginPage クラスがインスタンス化される際に login-page.html を参照するため、並びにこの &lt;article&gt; 要素をページのルートエレメントに設定するために使用されます。
+            </p>
+        </div>
+
+        <h4 id="224">2-2-4) LoginPage クラスに機能を追加する</h4>
+        <p>
+            　ログインページの表示を管理する LoginPage クラスに機能を追加します。
+            このクラス内部で LoginPageUserListView クラスをインスタンス化して ログインページ中にユーザー全員の ID プルダウンリストを表示する準備をします
+            （ LoginPageUserListView クラスは追っかけ実装します）。<br>
+            では、app/scripts/view/login-page.ts に赤文字のコードを追加してください。
+        </p>
+        <pre>
+import {
+    PageView,
+    registerPage
+} from "cdp/ui";
+<span style="color: #cc0000;"><strong>import { LoginPageUserListView } from "./login-page-user-list-view";</strong></span>
+import { LoginState, getLoginStateInstance } from "../model/login-state";
+
+const TAG: string = "[view.LoginPage] ";
+
+class LoginPage extends PageView {
+    <span style="color: #cc0000;"><strong>private _userCollectionView: LoginPageUserListView = null;</strong></span>
+    constructor() {
+        super("/templates/login-page.html", "page-login-page", { 
+            route: "login-page" 
+        });
+    }
+
+    onInitialize(event: JQuery.Event): void {
+        super.onInitialize(event);
+    }
+
+    events(): any {
+        return {
+        }
+    }
+
+    render(): LoginPage {
+        <span style="color: #cc0000;"><strong>this._userCollectionView.render();</strong></span>
+        return this;
+    }
+    <span style="color: #cc0000;"><strong>
+    onPageInit(event: JQuery.Event){
+        super.onPageInit(event);
+        let $targetDom = this.$el.find("#select-login-id");
+        this._userCollectionView = new LoginPageUserListView( $targetDom );
+        this.render();
+    }
+    
+    onPageRemove(event: JQuery.Event){
+        super.onPageRemove(event);
+        this._userCollectionView.remove();
+        this._userCollectionView = null;
+    }
+    </strong></span>
+}
+
+registerPage(LoginPage);
+        </pre>
+        <!--
+        <pre>
+import {
+    PageView,
+    registerPage
+} from "cdp/ui";
+<span style="color: #cc0000;"><strong>import { LoginPageUserListView } from "./login-page-user-list-view";</strong></span>
+import { LoginState, getLoginStateInstance } from "../model/login-state";
+
+const TAG: string = "[view.LoginPage] ";
+
+class LoginPage extends PageView {
+    <span style="color: #cc0000;"><strong>private _userCollectionView: LoginPageUserListView = null;</strong></span>
+    constructor() {
+        super("/templates/login-page.html", "page-login-page", { 
+            route: "login-page" 
+        });
+    }
+    onInitialize(event: JQuery.Event): void {
+        super.onInitialize(event);
+    }
+    events(): any {
+        return {
+            // "vclick #submit-login": "onSubmitLogin"
+        }
+    }
+    render(): LoginPage {
+        <span style="color: #cc0000;"><strong>this._userCollectionView.render();</strong></span>
+        return this;
+    }
+    <span style="color: #cc0000;"><strong>
+    onPageInit(event: JQuery.Event){
+        super.onPageInit(event);
+        let $targetDom = this.$el.find("#select-login-id");
+        this._userCollectionView = new LoginPageUserListView( $targetDom );
+        this.render();
+    }
+    onPageRemove(event: JQuery.Event){
+        super.onPageRemove(event);
+        this._userCollectionView.remove();
+        this._userCollectionView = null;
+    }
+    </strong></span>
+
+//	onSubmitLogin(event: JQuery.Event) {
+//      let id = &lt;string&gt;$("#select-login-id").val();
+//      let pw = &lt;string&gt;$("#password-login-pw").val();
+//
+//		let ret: boolean = getLoginStateInstance().login(id, pw);
+//		if(ret) {
+//			CDP.Framework.Router.navigate("#detail-page");
+//		} else {
+//			alert("Failed to Login");
+//		}
+//
+//		event.preventDefault();
+//	}
+}
+
+registerPage(LoginPage);
+        </pre>
+        -->
+
+        <div class="hint-container">
+            <h4>【 LoginPage クラスの解説 】</h4>
+            <p>
+                1) クラス定義部分の "_userCollectionView" は LoginPageUserListView クラスのオブジェクトを格納します。
+            </p>
+            <p>
+                2) onPageInit() について
+            </p>
+            <ul>
+                <li>1行目の super.onPageInit(event); は、jQuery Mobile の onPageInit() 機能を利用して画面表示を行っているところです。</li>
+                <li>2行目以降は、super にオーバーライドしている機能です。詳しく書くと、<br>
+                    <ul>
+                        <li>this.$el.find("#select-login-id") の $el はこのページを DOM 操作する際のルートエレメントを指しています
+                            （具体的には、LoginPage クラスの constructor() の第2引数で、login-page.html の id="page-login-page" を有する &lt;article&gt; 要素が登録されます）。</li>
+                        <li>$el を起点として find() メソッドにより login-page.html 内で id="select-login-id" を有する要素を探し、 
+                            得られた要素 &lt;select id="select-login-id"&gt; を LoginPageUserListView クラスをインスタンス化する際に引数 $targetDom として渡しています。</li>
+                    </ul>
+                </li>
+            </ul>
+            <p>
+                3) render() メソッドに追加した this._userCollectionView.render(); 内の render() <br>
+                　これは、LoginPageUserListView クラス側に定義された render() のことです。
+                &lt;select&gt; 配下にユーザー ID プルダウンリストを挿入する処理を行うのは、LoginPageUserListView クラスの役目です。
+            </p>
+            <p>
+                4) onPageRemove() は、Login Page 画面でログインボタンが押されてこのページから離れる際に、不要となったビューオブジェクト " this._userCollectionView " が残らないように削除・初期化しています。
+            </p>
+        </div>
+
+
+        <h3 id="240">2-4) View の追加</h3>
+<!-- ****************************************************** -->
+        <h4 id="241">2-4-1) LoginPageUserListView クラスを追加する</h4>
+        <p>
+            　新たに app/scripts/view/login-page-user-list-view.ts を作成し、LoginPageUserListView クラスを実装します。
+            このクラスの役割はログインページにユーザー ID のプルダウンリストを表示することです。	
+        </p>
+        <pre>
+import {
+    View,
+    JST,
+    getTemplate
+} from "cdp/ui";
+import { UserCollection } from "../model/user-collection";
+import { LoginState, getLoginStateInstance } from "../model/login-state";
+
+const TAG: string = "[view.LoginPageUserListView] ";
+
+export class LoginPageUserListView extends View&lt;Backbone.Model&gt; {   
+    private _$loginId: JQuery = null;
+    private _template: JST= null;
+    constructor(target: JQuery, options?: Backbone.ViewOptions&lt;Backbone.Model&gt;) {  
+        super(options);
+        this._$loginId = target;
+        this._template = getTemplate("#page-login-page-login-id-list");
+
+        let collection: UserCollection = getLoginStateInstance().getUserCollection();
+        this.listenTo(collection, "sync", this.render);
+        this.listenTo(collection, "error", () => {
+            alert("Failed to read JSON file");
+        });
+    }
+    events(): any {
+        return {
+        }
+    }
+    render(): LoginPageUserListView {
+        let users: UserCollection = getLoginStateInstance().getUserCollection();
+        let usersJson: string = users.toJSON();
+        let loginHtml: string = this._template({
+            users: usersJson
+        });
+        let $loginDom: JQuery = this._$loginId.append( $(loginHtml) );
+        $loginDom.selectmenu("refresh");
+
+        return this;
+    }
+};
+        </pre>
+
+        <div class="hint-container">
+            <h4>【 LoginPageUserListView の解説 】</h4>
+            <p>
+                1) このクラスで必要となるクラスやメソッドを冒頭でインポートしています。<br>
+                　LoginPageUserListView クラスは Backbone.js の View を継承して作ります。
+                インタフェース "JST" と メソッド "getTemplate" は Hogan 等によるテンプレート操作をラップしたツールです。
+                getTemplate() は受け取ったテンプレートを内部でコンパイルしてくれます。
+            </p>
+            <p>
+                2) constructor() について
+            </p>
+                <ul>
+                    <li>引数 target は、LoginPage クラスの onPageInit() メソッドにおいて LoginPageUserListView をインスタンス化する際に、引数 $targetDom を受け取ります。
+                    これは login-page.html の &lt;select id="select-login-id"&gt; 要素を指します。
+                    constructor() の引数 target はこれを受け取り、_$loginId に格納します。</li>
+                    <li>getTemplate() は 引数の jQuery セレクタ "#page-login-page-login-id-list" で指定された 
+                    login-page.html 中の &lt;script&gt; に定義されたテンプレートを取得し、コンパイルします。
+                    コンパイルした結果は this._template に格納されます。
+                    つまり、このテンプレートに従い &lt;option&gt; 要素を使って ユーザー ID の選択肢となる HTML を作成し、_$loginId で指定された &lt;select&gt; 要素配下に挿入しようという訳です。</li>
+                    <li>変数 collection は userCollection オブジェクトであり、 シングルトン getLoginStateInstance() とそのメソッド getUserCollection() を使って users.json から取得したユーザー全員の情報が格納されます。</li>
+                    <li>イベントリスナ this.listenTo() は、"sync" イベントにより collection が更新されたことを知る都度、LoginPageUserListView クラス内に追加した render() メソッドを実行します。</li>
+                </ul>
+            <p>
+                3) render() について
+            </p>
+                <ul>
+                    <li>このメソッドは、まずシングルトン getLoginStateInstance() を使って全ユーザーのデータを変数 users に取得します。</li>
+                    <li>変数 usersJson には、toJSON() によって各ユーザーのデータオブジェクト {id, name, pic, pw} を要素とする配列が代入されます。
+                    この配列はコンパイル済のテンプレートに渡され、各ユーザー毎に &lt;option value="John"&gt;John&lt;/option&gt; のような HTML 文字列に変換され、loginHtml に格納されます。</li>
+                    <li>this._$loginId.append($(loginHtml)) で、login-page.html の &lt;select id="select-login-id"&gt; 要素の下に 
+                    &lt;option&gt; 要素で各ユーザーの ID の HTML を配置し、 $loginDom.selectmenu("refresh") によりプルダウンリストが表示可能な状態にしています。</li>
+                </ul>
+        </div>
+    
+        <h3 id="250">2-5) ログインページの動作を確認</h3>
+<!-- ****************************************************** -->
+        <p>
+            　ここまでの段階でアプリ動作を観察してみましょう。コンパイル・ビルドするにはプロジェクトルートで次のコマンドを実行します。（ビルドコマンドだけでできないの？）<br>
+            　但し、コンパイル・ビルドする前に、ひとつファイルを追加しなければなりません。app/scripts/vew/loader.ts を新規作成し、アプリ起動時にここに登録した View を読み込ませます。
+        </p>
+        <pre>
+import "./login-page";
+import "./login-page-user-list-view";
+        </pre>
+        <p>
+            では、下記によりコンパイル・ビルドしてください。
+        </p>
+        <pre>
+$ npm run compile:dev
+$ npm run build:debug -s
+        </pre>
+        <p>
+            www フォルダーに生成された Web アプリをローカルサーバーで開くと、次のような画面が表示されます。 Login ボタンは HTML が実装されただけなので、クリックしてもまだ動作しません。
+        </p>
+        <!--
+        <img src="../../res/images/login-spa-sample/Capture_2_5.png" alt="Capture_2_5" width="50%" />
+        -->
+        <img src="../../res/images/login-spa-sample/Capture_2_5.png" alt="Capture_2_5" width="50%" />
+        <br>
+        <p>
+            　ここまで準備できたら、『<a href="#documents/tutorial-loginspa-loginbutton">ログインボタンの作成</a>』 に進んでください。
+        </p>
+        <div class="footer-inner">
+            <div class="footer-copyright">
+                <p>Copyright 2017 Sony Network Comminications Inc.</p>
+            </div>
+        </div>
+    </script>
+</article>

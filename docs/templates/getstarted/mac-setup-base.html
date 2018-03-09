@@ -1,0 +1,57 @@
+﻿<article>
+    <script type="text/template" id="getstarted-mac-setup-base">
+
+        <h1>環境構築（Mac OS）</h1>
+        <p>このページでは、Mac OS環境でCDP Boilerplateを使ってアプリケーションを開発するときに必要な開発環境の構築方法を説明します。なお、Cordovaを使ってモバイルアプリケーションを開発する場合、<a href="#getstarted/mac-setup-cordova">Cordovaのセットアップ</a>も参照してください。</p>
+        <h2>Node.js</h2>
+        <p>CDP Boilerplateでは、Node.jsのNode Package Manager（npm）を使って、必要なツールやパッケージをインストールします。そのため、CDP Boilerplateでアプリケーションを開発する上で、Node.jsのインストールが必要です。</p>
+        <h3>インストール</h3>
+        <p><a href="https://nodejs.org/">Node.js</a>のサイトにアクセスし、最新のLTS版（安定版）のNode.jsのインストーラーをダウンロードし、Node.jsをインストールしてください。</p>
+        <h3>確認</h3>
+        <p>Node.jsのインストールに成功すると、`node`コマンドを使えるようになります。コマンドプロンプトなどで`node`コマンドが認識されることを確認してください。</p>
+        <pre class="hljspre">$ node -v
+v8.9.1</pre>
+
+        <h3>プロキシ設定</h3>
+        <p>プロキシ環境で開発を行う場合、Node.js上で動作するツールのインストールを正常に行うために、Node Package Manager（npm）に対してプロキシ設定を行う必要があります。 以下のコマンドを実行して、npmのプロキシ設定を行ってください。プロキシ環境ではない場合は、この設定は不要です。</p>
+        <pre class="hljspre">$ sudo npm config set proxy=http://{proxyserver}:{port}
+$ sudo npm config set https-proxy=http://{proxyserver}:{port}</pre>
+
+        <h2>Git</h2>
+        <p>CDP Boilerplateでは、一部ツールのソースコードを取得するために、Gitを使用します。開発環境にGitがインストールされていない場合は、Gitをインストールしてください。</p>
+        <h3>インストール</h3>
+        <h4>Xcode Command Line Toolsをインストールする</h4>
+        <p>Mac OS環境で最も簡単なGitの導入方法は、Xcode Command Line Toolsをインストールすることです。お使いのMac OS環境にXcodeがインストールされている場合、Xcode Command Line Toolsをインストールしてください。Xcode Command Line ToolsにはMac OS用のGitが内包されており、コンソールからGitコマンドを使えるようになります。</p>
+        <p>以下のページで、Xcode Command Line Toolsを入手できます。アクセスするときに、Apple IDでのサインインが求められます。</p>
+        <ul>
+            <li><a href="https://developer.apple.com/download/more/">Downloads for Apple Developers</a></li>
+        </ul>
+
+        <h4>Mac OS用のGitをインストールする</h4>
+        <p>Xcode Command Line Toolsをインストールできない場合は、Mac OS用のGitをインストールしましょう。以下のページで。Mac OS用のGitを入手できます。</p>
+        <ul>
+            <li><a href="https://code.google.com/archive/p/git-osx-installer/">git-osx-installer</a></li>
+        </ul>
+
+        <h3>確認</h3>
+        <p>コマンドプロンプトなどで以下のコマンドを実行して、インストールしたGitのバージョンが表示されたら成功です。</p>
+        <pre class="hljspre">$ git --version
+git version 2.6.2</pre>
+        <h3>プロキシ設定</h3>
+        <p>プロキシ環境で開発を行う場合、外部のレポジトリーからソースコードを取得するために、プロキシ設定を行う必要があります。 以下のコマンドを実行して、Gitのプロキシ設定を行ってください。プロキシ環境ではない場合は、この設定は不要です。</p>
+        <pre class="hljspre">$ sudo git config --global http.proxy http://{proxyserver}:{port}
+$ sudo git config --global https.proxy http://{proxyserver}:{port}</pre>
+
+        <hr>
+        <p>お疲れ様でした。それでは次のステップに進みましょう。</p>
+        <ul>
+            <li>モバイル向けアプリケーションを開発する場合は、<a href="#getstarted/mac-setup-cordova">Cordovaのセットアップ</a>へ</li>
+        </ul>
+
+        <div class="footer-inner">
+            <div class="footer-copyright">
+                <p>Copyright 2017 Sony Network Comminications Inc.</p>
+            </div>
+        </div>
+    </script>
+</article>

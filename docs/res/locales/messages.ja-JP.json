@@ -1,0 +1,14 @@
+{
+  "pageCommon": {
+    "appName" : "CdpBpDoc",
+    "close" : "閉じる",
+    "goBack" : "戻る",
+    "on" : "On",
+    "off" : "Off"
+  },
+  "pageExample": {
+    "description": "サンプル実装:",
+    "showToast": "Toast サンプル",
+    "toGallery": "UI ギャラリーへ"
+  }
+}

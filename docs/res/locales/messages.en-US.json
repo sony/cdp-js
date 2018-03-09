@@ -1,0 +1,14 @@
+{
+  "pageCommon": {
+    "appName": "CdpBpDoc",
+    "close": "Close",
+    "goBack": "Back",
+    "on": "On",
+    "off": "Off"
+  },
+  "pageExample": {
+    "description": "Sample Implementation Entries:",
+    "showToast": "Show Sample Toast",
+    "toGallery": "To UI Gallery"
+  }
+}

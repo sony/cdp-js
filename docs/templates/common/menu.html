@@ -1,0 +1,32 @@
+﻿<article>
+    <script type="text/template" id="template-menu-list-container">
+        <nav class="menu-list-container">
+            <ul class="menu-list-1">
+                {{#items1}}
+                <li class="menu-list-1-item{{#list2}} expandable collapsed{{/list2}}{{#caption}} caption{{/caption}}">
+                    {{#href}}<a href="{{href}}">{{label}}</a>{{/href}} {{^href}}
+                    <a href="#">{{label}}</a>{{/href}} {{#list2}}
+                    <ul class="menu-list-2">
+                        {{#items2}}
+                        <li class="menu-list-2-item{{#list3}} expandable collapsed{{/list3}}{{#caption}} caption{{/caption}}">
+                            {{#href}}<a href="{{href}}">{{label}}</a>{{/href}} {{^href}}
+                            <a href="#">{{label}}</a>{{/href}} {{#list3}}
+                            <ul class="menu-list-3">
+                                {{#items3}}
+                                <li class="menu-list-3-item">
+                                    {{#href}}<a href="{{href}}">{{label}}</a>{{/href}} {{^href}}
+                                    <a href="#">{{label}}</a>{{/href}}
+                                </li>
+                                {{/items3}}
+                            </ul>
+                            {{/list3}}
+                        </li>
+                        {{/items2}}
+                    </ul>
+                    {{/list2}}
+                </li>
+                {{/items1}}
+            </ul>
+        </nav>
+    </script>
+</article>

@@ -1,0 +1,104 @@
+<article>
+    <script type="text/template" id="documents-tutorial-loginspa">
+        <h1>LoginSPASample アプリ概要</h1>
+        <p>
+            　このチュートリアルでは アプリケーションのひな形生成ツール "cdp-cli" を使って、
+            簡易なログイン機能を持つ Web アプリ "LoginSPASample" を作ります。<br>
+            　なお、環境準備の作成についてはメニューの <a href="#getstarted/top"><strong>『 はじめる 』</strong></a> を参照してください。
+            ご利用の PC 環境（WindowsPC、Mac）に合わせて、開発環境のセットアップ、Cordova のセットアップ、CDP のセットアップを進めてください。
+            CDP のセットアップのところで "cdp-cli" のインストール方法を説明しています。
+        </p>
+        <p>
+            　このアプリはふたつの画面で構成されます。 
+            ログインページ（下図）はアプリの起動画面であり、ユーザー ID のプルダウンリストからユーザーを選択し、
+            正しい Password を入力して Login ボタンを押すと、詳細ページに遷移します。
+            詳細ページはログインしたユーザーの詳細データ（ ID、名前、顔写真）を表示します。<br>
+            　試しに起動画面の ID ボタンで "Karen" を選択し、Password 入力欄に "karen" と入力してから Login ボタンをクリックしてください。
+            画面は詳細ページに切り替わり、ログインユーザの詳細データが表示されます。
+            Back ボタン（詳細ページのタイトルに表示された 左矢印）を押すと ログインページに戻ります。
+        </p>
+
+        <div class="demo-container-loginspa chrome-frame zoom-out">
+            <div class="demo-area">
+                <iframe src="/res/website/login-spa-sample/index.html" sandbox="allow-same-origin allow-forms allow-scripts allow-modals" scrolling="no">LoginSPASample</iframe>
+            </div>
+        </div>
+        <p>
+            　アプリのクラス連携を下図に示しておきます。このイメージを掴んでおけば、実装に取り組みやすいと思います。
+        </p>
+        <img src="../../res/images/login-spa-sample/これから作るアプリ_UI構造.png" alt="これから作るアプリ_UI構造" width="100%" />
+        <p>
+			　各クラスやファイルの役割をごく簡単に説明すると、次のようになります。<br>
+			- users.json はこのアプリで扱うユーザーとその情報を予め格納したファイル<br>
+			- User は users.json に格納されたユーザーひとりひとりに関するデータを表現するクラス<br>
+			- UserCollection はこれらユーザー全員のデータをまとめて扱うためのクラス<br>
+			- LoginState はユーザー全員あるいはログインしたユーザーのデータを操作するためのクラス<br>
+			- LoginPage は ログインページの、DetailPage は詳細ページのライフサイクルを管理するクラス<br>
+			- LoginPageUserListView は LoginPage クラス内で ユーザー ID のプルダウンリストを表示するクラス<br>
+			- DetailPageUserView は DetailPage クラス内で ログインしたユーザーの詳細データを表示するクラス<br>
+        </p>
+        <p>
+            　cdp-cli は <a href="http://backbonejs.org/" target="_blank">Backbone.js</a> 、
+            <a href="https://jquerymobile.com/" target="_blank">jQuery Mobile</a> 、 
+            さらに CDP Boilerplate が提供するクラス等をベースとしてアプリケーションを構成していきます。 
+            アプリケーションを実装する言語として <a href="https://www.typescriptlang.org/" target="_blank">TypeScript</a> を用います。<br>
+            　これらとの関わりは、アプリケーションの実装を進めていく中で説明していきます。
+        </p>
+        <h2 class="text-primary">目次</h2>
+        <!-- *************************************************************************************************************** -->
+        <p>
+            　これから LoginSPASample をおおむね次の手順にしたがって実装していきます。
+        </p>
+        <ol>    <!-- class="list-unstyled" は効いていない -->
+            <li class="list-unstyled"><a href="#documents/tutorial-loginspa-generator">アプリひな形の作成</a></li>
+            <li class="list-unstyled"><a href="#documents/tutorial-loginspa-loginpage">ログインページの作成</a></li>
+            <li class="list-unstyled"><a href="#documents/tutorial-loginspa-loginbutton">ログインボタンの作成</a></li>
+            <li class="list-unstyled"><a href="#documents/tutorial-loginspa-detailpage">詳細ページの作成</a></li>
+        </ol>
+        
+        <!--
+            <a href="#documents/tutorial-loginspa-generator"><li>アプリひな形の作成</li></a>
+                1-1) cdp create mobile の実行
+                1-2) Login データの準備
+                    1-2-1) ユーザー情報を格納した JSON ファイルを作成する
+                    1-2-2) 画像ファイルを配置する
+            <a href="#documents/tutorial-loginspa-loginpage"><li>ログインページの作成</li></a>
+                2-1) Model の追加
+                    2-1-1) User クラスを追加する
+                    2-1-2) UserCollection クラスを追加する
+                    2-1-3) LoginState クラスを追加する
+                2-2) Page の追加
+                    2-2-1) LoginPage クラスを追加する
+                    2-2-2) アプリ起動画面を登録する
+                    2-2-3) Login Page 画面の UI リソースを追加する
+                    2-2-4) LoginPage クラスに機能を追加する
+                2-4) View の追加
+                    2-4-1) LoginPageUserListView クラスを追加する
+                2-5) Login Page の動作を確認する
+            <a href="#documents/tutorial-loginspa-loginbutton"><li>ログインボタンの作成</li></a>
+                3-1) Page の追加
+                    3-1-1) Detail Page を追加する
+                3-2) ログイン機能の追加
+                    3-2-1) ログインまわりのコードを追加する
+                    3-2-2) ログインボタンを有効化する
+            <a href="#documents/tutorial-loginspa-detailpage"><li>詳細ページの作成</li></a>
+                4-1) Page の編集
+                    4-1-1) Detail Page 画面の UI リソースを追加する
+                    4-1-2) DetailPage クラスに機能を追加する
+                4-2) View の追加
+                    4-2-1) DetailPageUserView クラスを追加する
+                4-3) LoginSPASample の動作を確認する
+        -->
+        <p>
+            　それではアプリの作成に取り掛かりましょう。
+            『<a href="#documents/tutorial-loginspa-generator">アプリひな形の作成</a>』に進んでください。
+            ところどころに水色の枠で囲んだ補足解説を入れています。
+            とにかくアプリを動かしてみたい方は、それらの解説を読み飛ばしてください。
+        </p>
+        <div class="footer-inner">
+            <div class="footer-copyright">
+                <p>Copyright 2017 Sony Network Comminications Inc.</p>
+            </div>
+        </div>
+    </script>
+</article>

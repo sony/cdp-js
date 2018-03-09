@@ -12,6 +12,7 @@ const target = {
 
 const dir = {
     pkg: 'dist',
+    rootdoc: 'documents',
     doc: 'docs',
     task: 'tasks',
 };

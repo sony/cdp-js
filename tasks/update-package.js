@@ -55,9 +55,9 @@ function distribution() {
 
 function reports() {
     // clean "dist"
-    del.sync(path.join(ROOT_DIR, `${config.dir.doc}/reports`));
+    del.sync(path.join(ROOT_DIR, `${config.dir.rootdoc}/reports`));
     // copy "dist"
-    fs.copySync(path.join(DESTRIBUTION_TARGET_DIR, `${config.dir.doc}/reports`), path.join(ROOT_DIR, `${config.dir.doc}/reports`));
+    fs.copySync(path.join(DESTRIBUTION_TARGET_DIR, `${config.dir.doc}/reports`), path.join(ROOT_DIR, `${config.dir.rootdoc}/reports`));
 }
 
 function main() {

@@ -1,0 +1,307 @@
+﻿<article>
+    <script type="text/template" id="getstarted-my-first-cdp">
+        <h1>はじめてのCDPアプリ</h1>
+        <p>CDPアプリケーションの開発環境構築、お疲れ様でした。</p>
+        <p>それでは早速、CDPアプリケーションを作ってみましょう！ このページでは、CDP CLIを使って非常に簡単なモバイルアプリケーションの作り方を説明します。</p>
+        <h2>CDP CLIでモバイルアプリひな形を作ろう</h2>
+        <p>まずはCDP Boilerplateを使って、モバイルアプリケーションのひな形を作りましょう。アプリケーションを作りたいディレクトリーに移動し、以下のコマンドを入力します。</p>
+        <pre class="hljspre">cdp create mobile</pre>
+        <p>コマンドを入力すると、「Welcome to CDP Boilerplate Generator!」と表示されます。言語を選択できますので、ここでは[Japanese/日本語]を選択しましょう。</p>
+        <p>CDP CLIでは、対話形式でアプリケーションのひな形を作成します。アプリケーションのひな形を作成するために、いくつかの質問に答えましょう。</p>
+        <table><tbody>
+            <tr>
+                <th>質問</th>
+                <th>説明</ht>
+            </tr>
+            <tr>
+                <td><p>アプリケーション名を入力してください。</p></td>
+                <td>
+                    <p>アプリケーションの名前です。</p>
+                    <p>このチュートリアルでは、「MyFirstCDP」という名前で作成します。</p>
+                </td>
+            </tr>
+            <tr>
+                <td><p>プロジェクト名を入力してください。</p></td>
+                <td>
+                    <p>アプリケーションのプロジェクトの名前です。アプリケーションのディレクトリー名や、プロジェクトファイルの名前などに影響します。</p>
+                    <p>未入力の場合は、アプリケージョンの名前から自動的にプロジェクト名が決定します。このチュートリアルでは、「my-first-cdp」という名前で作成します。</p>
+                </td>
+            </tr>
+            <tr>
+                <td><p>アプリケーションIDを入力してください。</p></td>
+                <td>
+                    <p>iOSやAndroidのアプリケーションのIDを指定します。アプリケーションIDは一意のIDでなければなりません。アプリケーションIDの先頭に、逆DNS形式の文字列を付けることが一般的です。例えば、組織のドメインが`example.co.jp`で、`myapp`という名前のアプリを作成する場合は、`jp.co.example.myapp`となります。</p>
+                    <p>このチュートリアルでは、「`com.cdp.myfirstcdp`」というIDを指定します。</p>
+                </td>
+            </tr>
+            <tr>
+                <td><p>バージョン情報を入力してください。</p></td>
+                <td>
+                    <p>アプリケーションのバージョンを指定します。</p>
+                    <p>このチュートリアルでは、「0.0.1」を指定します。</p>
+                </td>
+            </tr>
+            <tr>
+                <td><p>プロジェクトに使用するライセンスを選択してください。</p></td>
+                <td>
+                    <p>このアプリケーションのライセンスを選択します。アプリケーションをOSSとして公開する場合は、適切なライセンスを選択してください。</p>
+                    <p>このチュートリアルでは、「プロプライエタリライセンス (NONE)」を選択します。</p>
+                </td>
+            </tr>
+            <tr>
+                <td><p>サポートプラットフォームを選択してください。</p></td>
+                <td>
+                    <p>このアプリケーションのターゲットとなるプラットフォームを選択します。CDP CLIは、ここで指定したプラットフォームを、Cordovaコマンド`cordova platform add`で追加します。ここでプラットフォームを選択しなくても、あとから`cordova platform add`で追加することもできます。また、Windows環境では`cordova platform add ios`を実行できないため、<b>Windows環境で「ios」を選択してアプリケーションの作成を行っても、iOSプロジェクトの作成に失敗します。</b>Mac OS環境で改めて`cordova platform add ios`を実行して、iOSプロジェクトを追加してください。</p>
+                    <p>このチュートリアルでは、「Android」のみを選択します。</p>
+                </td>
+            </tr>
+            <tr>
+                <td><p>プロジェクト構成を選択してください。</p></td>
+                <td>
+                    <p>開発するアプリケーションの種類に応じて、プロジェクトに特別なディレクトリーを追加したり、プロジェクトに含めるライブラリーを選択したりします。</p>
+                    <p>このチュートリアルでは、「おすすめ」を選択します。</p>
+                </td>
+            </tr>
+        </tbody></table>
+
+        <p>すべての質問に回答したら、「よろしいですか？」と尋ねられますので、問題なければ`y`と入力してください。`y`と入力すると、アプリケーションのひな形が作成されます。</p>
+        <p>アプリケーションのひな形が作成されたら、アプリケーションのディレクトリーに移動し、以下のコマンドを実行してください。</p>
+        <pre class="hljspre">npm install</pre>
+        <p>コマンドを実行すると、アプリケーションに必要なライブラリーやツールを取得します。</p>
+
+        <h2>ブラウザーで動かしてみよう</h2>
+        <p>作ったアプリをブラウザーで動かしてみましょう。</p>
+        <p>まずは以下のコマンドでTypeScriptやSCSSのビルドを行います。</p>
+        <pre class="hljspre">npm run build:debug</pre>
+        <p>ビルドが成功すると、`www`にTypeScriptやSCSSがコンパイルされたものが配置されます。`www`に移動して、以下のコマンドでローカルサーバーを立ち上げます。(この例は、`local-web-server`を使ったものです。使用するツールによって、ローカルサーバーの立ち上げ方は異なります。また、ポート番号は適宜変更してください。)</p>
+        <pre class="hljspre">ws -p 8080</pre>
+        <p>ローカルサーバーのURLが表示されるので、Webブラウザーでアクセスします。</p>
+        <p>ローディング画面の後にMyFirstCDPと表示されれば、成功です。</p>
+        <p>なお、メイン画面に[Toastサンプル]ボタンや[UI ギャラリー]ボタン、ヘッダーには設定ボタンが配置されていますが、これらはダミーのものなので、実際にアプリケーションを開発するときには削除してください。</p>
+
+        <!-- デモの中身の差し替えが必要 -->
+        <div class="demo-container iphone7-portrait zoom-out">
+            <div class="demo-area">
+                <iframe src="/res/website/my-first-cdp-01/index.html" sandbox="allow-same-origin allow-forms allow-scripts">MyFirstCDP-01</iframe>
+            </div>
+        </div>
+
+        <h2>アプリを改造してみよう</h2>
+        <p>作成したアプリケーションであるMyFirstCDPに手を加えてみましょう。このチュートリアルでは、以下の機能を追加します。</p>
+        <ul>
+            <li>新しいページ（画面）を追加し、ページ遷移できるようにする</li>
+            <li>押すとメッセージが表示されるボタンを作る</li>
+        </ul>
+
+        <h3>ページを追加する</h3>
+        <p>MyFirstCDPに新しいページを追加してみましょう。`new-screen`という名前の新しいページを追加します。</p>
+
+        <h4>HTMLファイルを追加する</h4>
+        <p>ページの構成要素はHTMLファイルに記述します。`my-first-cdp/app/templates/`に`new-screen.html`を作成しましょう。このファイルが、新しいページの構成要素となります。まずは、`new-screen.html`に以下を記述してください。</p>
+        <pre class="hljspre html"><article class="ui-header-no-fix" data-role="page" id="page-new-screen" data-theme="cdp">
+    <header data-role="header" data-position="inline">
+        <h1>New Screen</h1>
+        <a href="#" data-rel="back">戻る</a>
+    </header>
+    <section data-role="content">
+    </section>
+</article>
+</pre>
+        <div class="hint-container">
+            <h3>ソースコード解説</h3>
+            <p>CDPアプリケーションは、jQuery Mobileを採用しています。そのため、HTMLファイルを作成するときに、jQuery Mobileの記述法が使えます。「ページ」という言葉はjQuery Mobileの用語で、「画面」と同じものを指すと思ってください。なお、このドキュメントでは「画面」という意味で「ページ」という言葉を使うことがあることを、ご了承ください。</p>
+            <p>以下、記述したHTMLファイルについて簡単に解説します。</p>
+            <ul>
+                <li>`&lt;article&gt;`はページの土台となる要素です。CDPアプリケーションでは、`data-role="page"`が記述された要素をページとして扱われます。
+                    <ul>
+                        <li>`id="page-new-screen"`はページ固有のIDを記述します。このIDは、ページ遷移を実現する際に必要です。</li>
+                    </ul>
+                </li>
+                <li>`&lt;header data-role="header"&gt;`は、ページのヘッダー部分になります。
+                    <ul>
+                        <li>`&lt;a href="#" data-rel="back"&gt;`は戻るボタンととして動作します。</li>
+                        <li>ヘッダー内の`&lt;a&gt;`は、自動的にボタンとして装飾されます。</li>
+                    </ul>
+                </li>
+                <li>`&lt;section data-role="content"&gt;`はページのメイン部分になります。</li>
+            </ul>
+        </div>
+
+        <h4>ページのスクリプトファイルを追加する</h4>
+        <p>次に`new-screen`ページのスクリプトファイルを作りましょう。ページのスクリプトファイルは、ページ遷移のルーティングや、ページ内のイベントハンドリングなどで使います。</p>
+        <p>`my-first-cdp/app/scripts/view/`に`new-screen-page.ts`を作成しましょう。`new-screen-page.ts`に以下のコードを記述してください。</p>
+        <pre class="hljspre typescript">import {
+    PageView,
+    registerPage,
+} from "cdp/ui";
+
+const TAG = "[view.NewScreenPage] ";
+
+/**
+ * @class NewScreenPage
+ * @brief new-screenページメインビュークラス
+ */
+export class NewScreenPage extends PageView {
+
+    /**
+     * constructor
+     */
+    constructor() {
+        super("/templates/new-screen.html", "page-new-screen", {
+            route: "new-screen"
+        });
+    }
+}
+
+registerPage(NewScreenPage);
+</pre>
+
+        <h4>ページのスクリプトファイルをロードする</h4>
+        <p>スクリプトファイルを追加しただけでは、スクリプトはロードされないため、動作しません。`my-first-cdp/app/scripts/view/loader.ts`に、以下のコードを追加してください。</p>
+        <pre class="hljspre">import "./new-screen-page";</pre>
+
+        <h4>ページ遷移する</h4>
+        <p>メインページからnew-screenページへ遷移できるようにしましょう。`my-first-cdp/app/templates/main.html`に以下の記述を追加しましょう。</p>
+        <pre class="hljspre html"><article class="ui-header-no-fix" data-role="page" id="page-main" data-theme="cdp">
+    <header data-role="header" data-position="inline">
+        <h1 data-i18n="pageCommon.appName">pageCommon.appName</h1>
+        <a href="#options" class="ui-btn-right" data-transition="slideup" data-icon="gear" data-iconpos="notext"></a>
+    </header>
+    <section data-role="content">
+        <h3 data-i18n="pageExample.description">pageExample.description</h3>
+        <button class="command-hello" data-i18n="pageExample.showToast">pageExample.showToast</button>
+        <a href="#gallery-listctrl" data-role="button" data-transition="platform-default" data-icon="grid" data-i18n="pageExample.toGallery">pageExample.toGallery</a>
+        <!-- 追加 -->
+        <a href="#new-screen" data-role="button" data-transition="platform-default">New Screenへ</a>
+</section>
+</article></pre>
+
+        <p>`&lt;a&gt;`タグの`href`属性に、`my-first-cdp/app/scripts/view/new-screen-page.ts`の`constructor`で、`route`と指定したIDを指定します。`data-role="button"`を記述すると、jQuery Mobileによって`&lt;a&gt;`タグにボタンのスタイルが適用されます。</p>
+
+        <h4>動作確認する</h4>
+        <p>ここまででいったんビルドして、ブラウザーで動作確認してみましょう。</p>
+        <p>メインページに、[New Screenへ]というボタンが追加されました。</p>
+        <p>[New Screenへ]ボタンを押すと、New Screenページへ遷移できました。</p>
+
+        <!-- デモの中身の差し替えが必要 -->
+        <div class="demo-container iphone7-portrait zoom-out">
+            <div class="demo-area">
+                <iframe src="/res/website/my-first-cdp-02/index.html" sandbox="allow-same-origin allow-forms allow-scripts">MyFirstCDP-02</iframe>
+            </div>
+        </div>
+
+        <h3>ボタンを作る</h3>
+        <p>追加したnew-screenページに、押すとメッセージが表示されるボタンを配置してみましょう。このチュートリアルでは、CDP Boilerplateに含まれているUIライブラリーの`Toast`を使ってメッセージを表示します。</p>
+        <h4>ボタンを配置する</h4>
+        <p>はじめにnew-screenページにボタンを配置します。`my-first-cdp/app/templates/new-screen.html`に以下のコードを追加してください。</p>
+        <pre class="hljspre html"><article class="ui-header-no-fix" data-role="page" id="page-new-screen" data-theme="cdp">
+    <header data-role="header" data-position="inline">
+        <h1>New Screen</h1>
+        <a href="#" data-rel="back">戻る</a>
+    </header>
+    <section data-role="content">
+        <!-- 追加ここから -->
+        <button class="command-show-message">メッセージを表示</button>
+        <!-- 追加ここまで -->
+    </section>
+</article>
+</pre>
+        <p>追加した`button`要素に、`command-show-message`というclass属性を追加します。このclass属性は、ボタンを押したときの処理を実装するときに使われます。</p>
+
+        <h4>ボタンを押したときの処理を実装する</h4>
+        <p>ボタンを配置したら、ボタンを押したときにメッセージが表示されるように実装します。`my-first-cdp/app/scripts/view/new-screen-page.ts`に、以下のようにコードを追加しましょう。</p>
+                <pre class="hljspre typescript">import {
+    PageView,
+    registerPage,
+} from "cdp/ui";
+
+const TAG = "[view.NewScreenPage] ";
+
+/**
+ * @class NewScreenPage
+ * @brief new-screenページメインビュークラス
+ */
+export class NewScreenPage extends PageView {
+
+    /**
+     * constructor
+     */
+    constructor() {
+        super("/templates/new-screen.html", "page-new-screen", {
+            route: "new-screen"
+        });
+    }
+
+    // 追加 ここから
+
+    ///////////////////////////////////////////////////////////////////////
+    // Event Handler
+
+    //! イベントハンドラーのマッピング
+    events(): any {
+        return {
+            "vclick .command-show-message": this.onShowMessage,
+        };
+    }
+
+    //! ".command-show-message" のイベントハンドラ
+    private onShowMessage(event: JQueryEventObject): void {
+        console.log("show message button is clicked!");
+    }
+
+    // 追加 ここまで
+}
+
+registerPage(NewScreenPage);
+</pre>
+
+        <p>追加したコードの`events`は、Backbone.jsの`events`メソッドをオーバーライドしたものです。ここにこのページで扱うイベントをまとめて登録することができます。今回追加したコードでは、「`command-show-message`というclass属性をもつ要素をクリック(`vclick`)されたら、このページクラスの`onShowMessage`メソッドを呼び出す」という登録を行っています。</p>
+        <p>ボタンをクリックしたときに呼び出される`onShowMessage`メソッドの実装も必要です。まずは、ボタンが押されたときに`onShowMessage`が呼び出されることを確認するために、コンソールにログを表示しています。</p>
+
+        <h4>ボタンが押されたらログが表示されることを確認する</h4>
+        <p>ここまでコードを書いたら、いったんビルドをして、ブラウザーで動作確認してみましょう。new-screenページに[メッセージを表示]ボタンが置かれていること、そしてそのボタンを押すとコンソールにログが表示されることを確認しましょう。ログはブラウザーのデベロッパーツールで確認できます。デベロッパーツールは、`Ctrl`+`Shift`+`i`で表示できます。</p>
+
+        <h4>Toastでメッセージを表示する</h4>
+        <p>ボタンを押すと`onShowMessage`メソッドが呼ばれることを確認したら、ボタンを押すとToastでメッセージが表示されるようにしましょう。`my-first-cdp/app/scripts/view/new-screen-page.ts`の冒頭に、以下のコードを追加してください。</p>
+        <pre class="hljspre typescript">import {
+    PageView,
+    registerPage,
+    Toast, // 追加
+} from "cdp/ui";</pre>
+        <p>このコードを追加することで、CDP Boilerplateに含まれているUIライブラリーのToastを使えるようになります。それでは、`onShowMessage`でToastでメッセージを表示するようにコードを書き換えましょう。</p>
+
+        <pre class="hljspre typescript">//! ".command-show-message" のイベントハンドラ
+    private onShowMessage(event: JQueryEventObject): void {
+        Toast.show("こんにちは！");
+    }</pre>
+        <p>`Toash.show()`で、指定した文字列を表示することができます。これで、ボタンを押すとToastでメッセージが表示されます。</p>
+
+        <h4>Toastで表示されることの確認</h4>
+        <p>もう一度ビルドを行い、ブラウザーで動作確認してみましょう。new-screenページの[メッセージを表示]ボタンを押すと、Toastでメッセージが表示されれば成功です。</p>
+        <!-- デモの中身の差し替えが必要 -->
+        <div class="demo-container iphone7-portrait zoom-out">
+            <div class="demo-area">
+                <iframe src="/res/website/my-first-cdp-03/index.html" sandbox="allow-same-origin allow-forms allow-scripts">MyFirstCDP-03</iframe>
+            </div>
+        </div>
+
+        <h2>モバイル向けにビルドしよう</h2>
+        <p>ブラウザーで動作確認ができたら、いよいよ実機上で動作確認をしてみましょう。各プラットフォーム向けのアプリへのパッケージングは、Cordovaのコマンドラインツールで行います。今回のアプリケーションは、Android向けで作成したため、Android向けにアプリケーションをビルドしましょう。</p>
+        <p>Androidデバイスをコンピューターと接続します。このとき、通常のAndroidアプリケーションの開発のときと同様に、デバイスのドライバーをインストールしたり、デバイスの設定で開発者向けオプションを有効にしたりする必要があります。デバイスを接続したら、以下のコマンドを実行してください。</p>
+        <pre class="hljspre">cordova run android</pre>
+        <p>このコマンドを実行すると、TypeScriptやSCSSのコンパイル後、Android向けにパッケージングされ、デバイスにアプリケーションがインストールされます。</p>
+        <p>インストールが完了したら、デバイス上でアプリケーションが起動します。作成したアプリケーションが、ブラウザー上と同じように動作することを確認してください。</p>
+        <hr>
+        <p>お疲れ様でした。これでCDP Boilerplateを使ったアプリケーション作成の流れを一通り学べました。</p>
+        <p>もう少し実践的なアプリケーションを作成したい場合は、以下のチュートリアルを参照してください。</p>
+        <ul>
+            <li><a href="#documents/tutorial-loginspa">簡易なログイン機能を持つアプリ "LoginSPASample" を作ろう </a>へ</li>
+        </ul>
+
+        <div class="footer-inner">
+            <div class="footer-copyright">
+                <p>Copyright 2017 Sony Network Comminications Inc.</p>
+            </div>
+        </div>
+    </script>
+</article>

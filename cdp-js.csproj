@@ -88,23 +88,23 @@
     <Content Include="dist\cdp.swatch.min.css">
       <DependentUpon>cdp.swatch.css</DependentUpon>
     </Content>
-    <Content Include="docs\CDP-index.hhk">
+    <Content Include="documents\CDP-index.hhk">
       <DependentUpon>CDP.hhp</DependentUpon>
     </Content>
-    <Content Include="docs\CDP-table_of_contents.hhc">
+    <Content Include="documents\CDP-table_of_contents.hhc">
       <DependentUpon>CDP.hhp</DependentUpon>
     </Content>
-    <Content Include="docs\reports\coverage\index.html" />
-    <Content Include="docs\typedoc\index.html" />
+    <Content Include="documents\reports\coverage\index.html" />
+    <Content Include="documents\typedoc\index.html" />
     <Content Include="project.config.js" />
     <Content Include="tasks\command-delegator.js" />
     <Content Include="tasks\command.js" />
     <Content Include="tasks\update-package.js" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="docs\en\README.md" />
-    <Content Include="docs\images\.gitkeep" />
-    <Content Include="docs\jp\README.md" />
+    <Content Include="documents\en\README.md" />
+    <Content Include="documents\images\.gitkeep" />
+    <Content Include="documents\jp\README.md" />
     <Content Include="LICENSE" />
     <Content Include="NOTICE" />
     <Content Include="package.json" />
@@ -158,12 +158,12 @@
     <Content Include="RELEASENOTE.md" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="docs\CDP.hhp" />
+    <Content Include="documents\CDP.hhp" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="docs\jp\gudelines-typedoc-comment.md" />
+    <Content Include="documents\jp\gudelines-typedoc-comment.md" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="docs\jp\about-cdp-framework.md" />
+    <Content Include="documents\jp\about-cdp-framework.md" />
   </ItemGroup>
 </Project>

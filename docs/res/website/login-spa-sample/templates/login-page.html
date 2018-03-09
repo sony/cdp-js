@@ -1,0 +1,20 @@
+<article data-role="page" id="page-login-page" data-theme="cdp">
+    <header data-role="header" data-position="fixed" data-tap-toggle="false">
+        <h1>Login Page</h1>
+    </header>
+    <section data-role="content">
+        <div class="ui-field-contain">
+            <label for="select-login-id">ID: </label>
+            <select id="select-login-id"></select>
+            <label for="password-login-pw">Password: </label>
+            <input type="password" id="password-login-pw" value="" autocomplete="off">
+            <button class="ui-shadow ui-btn ui-corner-all" type="submit" id="submit-login">Login</button>
+        </div>
+    </section>
+
+    <script type="text/template" id="page-login-page-login-id-list">
+        {{#users}}
+            <option value="{{id}}">{{id}}</option>
+        {{/users}}
+    </script>
+</article>
