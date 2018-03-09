@@ -142,7 +142,7 @@ export class LoginState extends Model {
         super(attributes, null);
         this._userCollection = new UserCollection();
         this._userCollection.fetch({
-            url: CDP.Framework.toUrl("/res/data/json/users.json")
+            url: CDP.Framework.toUrl("../../res/data/json/users.json")
         });
     }
 
@@ -179,7 +179,7 @@ export class LoginState extends Model {
         super(attributes, null);
         this._userCollection = new UserCollection();
         this._userCollection.fetch({
-            url: CDP.Framework.toUrl("/res/data/json/users.json")
+            url: CDP.Framework.toUrl("../../res/data/json/users.json")
         });
     }
 
