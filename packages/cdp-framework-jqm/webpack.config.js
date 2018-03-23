@@ -13,6 +13,7 @@ module.exports = {
         library: ['CDP', 'Framework'],
         libraryTarget: 'umd',
     },
+    mode: 'development',
     devtool: 'inline-source-map',
     module: {
         rules: [
@@ -65,7 +66,7 @@ module.exports = {
         new webpack.BannerPlugin({
             banner: banner('.js', config.main.basename),
             raw: true,
-            ntryOnly: true,
+            entryOnly: true,
         }),
     ],
 };
