@@ -10,6 +10,7 @@ const config    = require('../project.config');
 
 const PACKAGE_NAME  = config.pkg.name;
 const NAMESPACE     = config.main ? (config.main.namespace || '') : '';
+const LIBRARY       = config.main ? (config.main.library || '') : '';
 const SOURCE_MAP_NAMESPACE = (() => {
     if (NAMESPACE) {
         return NAMESPACE + ':///' + PACKAGE_NAME + '/';
@@ -52,6 +53,7 @@ function normalize_lib_src(location) {
     src = normalize_src(src, {
         srcmapRename: (srcPath) => {
             return srcPath
+                .replace(`webpack://${LIBRARY}/`, `webpack:///`)
                 .replace(`webpack:///${NAMESPACE}:/`, `${NAMESPACE}:///`)
                 .replace(`webpack:///${config.dir.src}/`, SOURCE_MAP_NAMESPACE)
                 .replace('webpack:/webpack', 'webpack:///webpack')
@@ -123,6 +125,7 @@ function normalize_package_src() {
             srcmapRename: (srcPath) => {
                 const regex_src = new RegExp('^' + config.dir.src + '\\/');
                 return srcPath
+                    .replace(`webpack://${LIBRARY}/`, `webpack:///`)
                     .replace('webpack:///' + config.dir.src + '/', SOURCE_MAP_NAMESPACE)
                     .replace('webpack:/webpack', 'webpack:///webpack')
                     .replace('webpack:/external', 'webpack:///external/')

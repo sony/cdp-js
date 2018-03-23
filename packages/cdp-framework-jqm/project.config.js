@@ -46,6 +46,7 @@ const main = {
     basename: 'cdp.framework.jqm',
     bundle_d_ts: 'cdp.framework.jqm.d.ts',
     namespace: 'cdp',
+    library: 'CDP.Framework',
 };
 
 const built_cleanee = {

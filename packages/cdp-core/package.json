@@ -63,18 +63,18 @@
     "metrics": "npm run compile:ts:src && plato -r -d docs/reports/metrics -e ./tests/eslint/eslintrc.json src/scripts/**/*.js"
   },
   "devDependencies": {
-    "@types/jasmine": "^2.8.5",
-    "@types/jquery": "^3.3.0",
+    "@types/jasmine": "^2.8.6",
+    "@types/jquery": "^3.3.1",
     "@types/requirejs": "^2.1.31",
-    "eslint": "^4.16.0",
-    "jquery": "^3.3.1",
+    "eslint": "^4.19.1",
+    "jquery": ">=3.0.0",
     "npm-run-all": "^4.1.2",
-    "nyc": "^11.4.1",
+    "nyc": "^11.6.0",
     "plato": "^1.7.0",
     "requirejs": "^2.3.5",
     "tslint": "^5.9.1",
-    "typedoc": "^0.9.0",
-    "typescript": "^2.6.2",
-    "uglify-js": "^3.3.8"
+    "typedoc": "^0.11.1",
+    "typescript": "^2.7.2",
+    "uglify-js": "^3.3.16"
   }
 }

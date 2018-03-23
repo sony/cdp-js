@@ -82,6 +82,7 @@ const main = {
     basename: 'cdp.i18n',
     bundle_d_ts: 'cdp.i18n.d.ts',
     namespace: 'cdp',
+    library: 'CDP',
 };
 
 const built_cleanee = {
