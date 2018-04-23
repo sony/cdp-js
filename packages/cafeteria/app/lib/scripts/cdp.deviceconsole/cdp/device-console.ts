@@ -160,6 +160,12 @@ export default class DeviceConsole implements Console {
 
     //___________________________________________________________________________________________________________________//
 
+    get memory(): any {
+        if (DeviceConsole.s_console) {
+            return DeviceConsole.s_console;
+        }
+    }
+
     count(countTitle?: string): void {
         if (DeviceConsole.s_console) {
             DeviceConsole.s_console.count(countTitle);
@@ -181,6 +187,24 @@ export default class DeviceConsole implements Console {
     timeEnd(timerName?: string): void {
         if (DeviceConsole.s_console) {
             DeviceConsole.s_console.timeEnd(timerName);
+        }
+    }
+
+    timeStamp(label?: string): void {
+        if (DeviceConsole.s_console) {
+            DeviceConsole.s_console.timeStamp(label);
+        }
+    }
+
+    timeline(label?: string): void {
+        if (DeviceConsole.s_console) {
+            DeviceConsole.s_console.timeline(label);
+        }
+    }
+
+    timelineEnd(label?: string): void {
+        if (DeviceConsole.s_console) {
+            DeviceConsole.s_console.timelineEnd(label);
         }
     }
 
@@ -318,6 +342,12 @@ export default class DeviceConsole implements Console {
             }
         }
         DeviceConsole.output(message);
+    }
+
+    markTimeline(label?: string): void {
+        if (DeviceConsole.s_console) {
+            DeviceConsole.s_console.markTimeline(label);
+        }
     }
 
     profileEnd(): void {

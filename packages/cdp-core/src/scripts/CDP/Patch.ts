@@ -56,8 +56,8 @@
 
         // WinRT 用 patch
         private static nodePatch(): void {
-            if ("object" === typeof MSApp) {
-                const _MSApp: any = MSApp;
+            if ("object" === global.MSApp) {
+                const _MSApp: any = global.MSApp;
 
                 const originalAppendChild = Node.prototype.appendChild;
                 Node.prototype.appendChild = function (node: any) {
