@@ -85,11 +85,11 @@ function getCodeFromNode(node, renameSources, options) {
         }
     }
 
-    return node.toString().replace(/\r\n/gm, '\n') +
+    return node.toString() +
         convert.fromObject(objMap)
             .toComment(options)
             .replace(/charset=utf-8;/gm, '')
-            .replace('data:application/json;', 'data:application/json;charset=utf-8;');
+            .replace('data:application/json;', 'data:application/json;charset=utf-8;') + '\n';
 }
 
 // separate source script and map from file
@@ -131,7 +131,9 @@ function convertCode2Script(code) {
     // clean source code comment
     return code
         .replace(/\/\/\/ <reference path="[\s\S]*?>/gm, '')
-        .replace(convert.mapFileCommentRegex, '');
+        .replace(/\r\n/gm, '\n')
+        .replace(convert.mapFileCommentRegex, '')
+        .trim('\n') + '\n';
 }
 
 // get code map with path from node
