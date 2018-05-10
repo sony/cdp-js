@@ -11,6 +11,14 @@ function exec(command, args, options) {
             args = [];
         }
     }
+
+    // trim quotation
+    args = args.map((arg) => {
+        return arg
+            .replace(/^'+|'+$/g, '')
+            .replace(/^"+|"+$/g, '');
+    });
+
     return new Promise((resolve, reject) => {
         const opt = Object.assign({}, {
             stdio: 'inherit',
@@ -29,6 +37,7 @@ function exec(command, args, options) {
                 path.join(__dirname, '..', 'node_modules/.bin', command) +
                 (process.platform === 'win32' ? '.cmd' : '');
         }
+
         const child = spawn(resolveCmd, args, opt)
             .on('error', (msg) => {
                 reject(msg);
